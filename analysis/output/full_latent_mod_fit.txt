@@ -1,0 +1,205 @@
+lavaan 0.6-4 ended normally after 31 iterations
+
+  Optimization method                           NLMINB
+  Number of free parameters                         24
+
+                                                  Used       Total
+  Number of observations                           444        1084
+
+  Estimator                                         ML
+  Model Fit Test Statistic                      17.957
+  Degrees of freedom                                 4
+  P-value (Chi-square)                           0.001
+
+Model test baseline model:
+
+  Minimum Function Test Statistic              330.161
+  Degrees of freedom                                21
+  P-value                                        0.000
+
+User model versus baseline model:
+
+  Comparative Fit Index (CFI)                    0.955
+  Tucker-Lewis Index (TLI)                       0.763
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)              -3831.694
+  Loglikelihood unrestricted model (H1)      -3822.716
+
+  Number of free parameters                         24
+  Akaike (AIC)                                7711.388
+  Bayesian (BIC)                              7809.688
+  Sample-size adjusted Bayesian (BIC)         7733.522
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.089
+  90 Percent Confidence Interval          0.050  0.132
+  P-value RMSEA <= 0.05                          0.051
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.029
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+  Standard Errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  aridity =~                                          
+    aridty_ndx_std    1.000                           
+  fire =~                                             
+    fr_rtrn_mn_lg_    1.000                           
+  div =~                                              
+    shannon_cb_std    1.000                           
+  struc =~                                            
+    cov_height_std    1.000                           
+    cov_dbh_std       0.725    0.107    6.743    0.000
+  biomass =~                                          
+    bchave_log_std    1.000                           
+  soil =~                                             
+    ocdens_std        1.000                           
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  struc ~                                             
+    fire             -0.031    0.038   -0.831    0.406
+    aridity           0.217    0.049    4.432    0.000
+    div        (a)    0.115    0.047    2.452    0.014
+    soil             -0.137    0.040   -3.412    0.001
+  biomass ~                                           
+    struc      (b)    0.287    0.074    3.879    0.000
+    soil              0.138    0.040    3.451    0.001
+    fire              0.062    0.037    1.674    0.094
+    aridity          -0.016    0.049   -0.329    0.742
+    div        (c)   -0.252    0.046   -5.411    0.000
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  aridity ~~                                          
+    fire             -0.241    0.043   -5.568    0.000
+    div               0.146    0.034    4.285    0.000
+    soil              0.135    0.040    3.409    0.001
+  fire ~~                                             
+    div              -0.087    0.041   -2.103    0.035
+    soil             -0.075    0.048   -1.575    0.115
+  div ~~                                              
+    soil              0.061    0.038    1.582    0.114
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+   .aridty_ndx_std    0.000                           
+   .fr_rtrn_mn_lg_    0.000                           
+   .shannon_cb_std    0.000                           
+   .cov_height_std    0.311    0.073    4.270    0.000
+   .cov_dbh_std       0.283    0.041    6.858    0.000
+   .bchave_log_std    0.000                           
+   .ocdens_std        0.000                           
+    aridity           0.719    0.048   14.900    0.000
+    fire              1.079    0.072   14.900    0.000
+    div               0.690    0.046   14.900    0.000
+   .struc             0.435    0.078    5.571    0.000
+   .biomass           0.597    0.041   14.491    0.000
+    soil              0.940    0.063   14.900    0.000
+
+Defined Parameters:
+                   Estimate  Std.Err  z-value  P(>|z|)
+    bmss_dv_v_strc    0.033    0.016    2.118    0.034
+    biomass_dv_ttl   -0.219    0.047   -4.700    0.000
+
+$FIT
+             npar              fmin             chisq                df 
+           24.000             0.020            17.957             4.000 
+           pvalue    baseline.chisq       baseline.df   baseline.pvalue 
+            0.001           330.161            21.000             0.000 
+              cfi               tli              logl unrestricted.logl 
+            0.955             0.763         -3831.694         -3822.716 
+              aic               bic            ntotal              bic2 
+         7711.388          7809.688           444.000          7733.522 
+            rmsea    rmsea.ci.lower    rmsea.ci.upper      rmsea.pvalue 
+            0.089             0.050             0.132             0.051 
+             srmr 
+            0.029 
+
+$PE
+                        lhs op                      rhs                 label
+1                   aridity =~        aridity_index_std                      
+2                      fire =~ fire_return_mean_log_std                      
+3                       div =~         shannon_cube_std                      
+4                     struc =~           cov_height_std                      
+5                     struc =~              cov_dbh_std                      
+6                   biomass =~           bchave_log_std                      
+7                      soil =~               ocdens_std                      
+8                     struc  ~                     fire                      
+9                     struc  ~                  aridity                      
+10                    struc  ~                      div                     a
+11                    struc  ~                     soil                      
+12                  biomass  ~                    struc                     b
+13                  biomass  ~                     soil                      
+14                  biomass  ~                     fire                      
+15                  biomass  ~                  aridity                      
+16                  biomass  ~                      div                     c
+17        aridity_index_std ~~        aridity_index_std                      
+18 fire_return_mean_log_std ~~ fire_return_mean_log_std                      
+19         shannon_cube_std ~~         shannon_cube_std                      
+20           cov_height_std ~~           cov_height_std                      
+21              cov_dbh_std ~~              cov_dbh_std                      
+22           bchave_log_std ~~           bchave_log_std                      
+23               ocdens_std ~~               ocdens_std                      
+24                  aridity ~~                  aridity                      
+25                     fire ~~                     fire                      
+26                      div ~~                      div                      
+27                    struc ~~                    struc                      
+28                  biomass ~~                  biomass                      
+29                     soil ~~                     soil                      
+30                  aridity ~~                     fire                      
+31                  aridity ~~                      div                      
+32                  aridity ~~                     soil                      
+33                     fire ~~                      div                      
+34                     fire ~~                     soil                      
+35                      div ~~                     soil                      
+36    biomass_div_via_struc :=                      a*b biomass_div_via_struc
+37        biomass_div_total :=                  c+(a*b)     biomass_div_total
+   exo         est         se          z       pvalue
+1    0  1.00000000 0.00000000         NA           NA
+2    0  1.00000000 0.00000000         NA           NA
+3    0  1.00000000 0.00000000         NA           NA
+4    0  1.00000000 0.00000000         NA           NA
+5    0  0.72468739 0.10747934  6.7425736 1.556044e-11
+6    0  1.00000000 0.00000000         NA           NA
+7    0  1.00000000 0.00000000         NA           NA
+8    0 -0.03147068 0.03786168 -0.8312014 4.058598e-01
+9    0  0.21718286 0.04900308  4.4320245 9.335240e-06
+10   0  0.11501449 0.04691489  2.4515562 1.422400e-02
+11   0 -0.13714329 0.04019266 -3.4121478 6.445317e-04
+12   0  0.28658395 0.07387307  3.8794101 1.047101e-04
+13   0  0.13825504 0.04006320  3.4509234 5.586721e-04
+14   0  0.06247024 0.03731629  1.6740742 9.411603e-02
+15   0 -0.01621714 0.04924173 -0.3293374 7.419007e-01
+16   0 -0.25159242 0.04649467 -5.4112099 6.260035e-08
+17   0  0.00000000 0.00000000         NA           NA
+18   0  0.00000000 0.00000000         NA           NA
+19   0  0.00000000 0.00000000         NA           NA
+20   0  0.31080303 0.07278229  4.2703114 1.952002e-05
+21   0  0.28287647 0.04124862  6.8578400 6.990852e-12
+22   0  0.00000000 0.00000000         NA           NA
+23   0  0.00000000 0.00000000         NA           NA
+24   0  0.71898793 0.04825531 14.8996644 0.000000e+00
+25   0  1.07862521 0.07239258 14.8996644 0.000000e+00
+26   0  0.69045321 0.04634019 14.8996644 0.000000e+00
+27   0  0.43469956 0.07802604  5.5712111 2.529746e-08
+28   0  0.59664193 0.04117336 14.4909716 0.000000e+00
+29   0  0.93984514 0.06307828 14.8996644 0.000000e+00
+30   0 -0.24128411 0.04333342 -5.5680842 2.575554e-08
+31   0  0.14632340 0.03415116  4.2845803 1.830844e-05
+32   0  0.13478483 0.03953287  3.4094374 6.509701e-04
+33   0 -0.08657548 0.04116096 -2.1033400 3.543606e-02
+34   0 -0.07546504 0.04791687 -1.5749160 1.152758e-01
+35   0  0.06065678 0.03833818  1.5821506 1.136152e-01
+36   0  0.03296131 0.01556069  2.1182419 3.415459e-02
+37   0 -0.21863111 0.04651854 -4.6998705 2.603265e-06
+

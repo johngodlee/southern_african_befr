@@ -1,0 +1,134 @@
+\documentclass{article}
+
+\usepackage{geometry}  % Set margins
+	\geometry{left=2.2cm,
+		right=2.2cm,
+		top=2.2cm,
+		bottom=2cm}
+\parskip 0.15cm
+\setlength{\parindent}{0cm}
+
+\usepackage{graphics}
+\usepackage{graphicx}
+\graphicspath{ {img/} }
+\usepackage{float}  % Fancy graphics placement [H] [H!] arguments
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\newcommand{\textapprox}{\raisebox{0.5ex}{\texttildelow}}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\usepackage{cite}
+\usepackage{natbib}
+\bibliographystyle{agsmnourl}  % Use my custom agsm bibliography template which never includes URLs in articles
+\usepackage{url}
+
+\renewcommand{\refname}{\vspace{-1cm}}
+
+\title{\vspace{-1cm}Progress in analyses - Regional Biodiversity - Biomass relationship}
+\date{}
+
+\begin{document}
+
+\maketitle{}
+
+\section{Hypotheses and research question}
+
+\begin{itemize}
+	\item{Higher species richness will result in higher biomass stocks due to niche complementarity.}
+	\item{Species composition will have more effect on biomass than species richness \textit{per se} due to selection effects.}
+	\item{Increased aridity will result in a strong richness - biomass relationship}
+	\item{There will be a positive effect of abundance evenness oon biomass stocks.}
+\end{itemize}
+
+\section{Data description}
+
+\begin{itemize}
+	\item{Above ground biomass}
+		\begin{itemize}
+			\item{SEOSAW} 
+			\item{DBH, height, species, wood density, \verb|BIOMASS| package}
+			\item{\citet{SEOSAW}}
+		\end{itemize}
+	\item{Species composition of stems}
+		\begin{itemize}
+			\item{SEOSAW}
+			\item{Species richness, species abundance}
+		\end{itemize}
+	\item{Aridity}
+		\begin{itemize}
+			\item{Global Aridity Index (\verb|Global-Aridity_ET0|)}
+			\item{Calculated from Worldclim data}
+			\item{\citet{Trabucco2009}}
+		\end{itemize}
+	\item{Fire frequency}
+		\begin{itemize}
+			\item{MODIS fire return interval}
+			\item{\citet{}}
+		\end{itemize}
+	\item{Stand structural complexity}
+		\begin{itemize}
+			\item{SEOSAW}
+			\item{DBH coef. var.}
+			\item{Height coef. var.}
+		\end{itemize}
+\end{itemize}
+
+\section{Method}
+
+\subsection{Data cleaning}
+
+\begin{enumerate}
+	\item{Aggregate Zambia plots}
+	\item{Remove stems \textless 5 cm DBH, \textless 1 m height}
+	\item{Remove plots with \textless 10 stems ha\textsuperscript{-1}}
+	\item{Remove plots with a small area}
+	\item{Remove plots that have:}
+		\begin{itemize}
+			\item{Wood harvesting}
+			\item{Farming}
+			\item{Livestock grazing}
+			\item{Experimental treatments}
+		\end{itemize}
+	\item{Remove plots which are composition outliers}
+\end{enumerate}
+
+\subsection{Data analysis}
+
+Data was log or cube tranformed where appropriate to achieve a normal distribution. All data was standardized to allow direct comparison of effect sizes within path analyses of the Structural Equation Models (SEMs).
+
+Linear models of each bivariate relationship present in the full SEM were analysed to specify the direction of paths. 
+
+A full SEM was specified, after which variables were incrementally removed in order to assess which variables were redundant in explaining variation in Biomass
+
+\end{document}
+
+% Trabucco, A., and Zomer, R.J. 2009. Global Aridity Index (Global-Aridity) and Global Potential Evapo-Transpiration (Global-PET) Geospatial Database. CGIAR Consortium for Spatial Information. Published online, available from the CGIAR-CSI GeoPortal at: http://www.csi.cgiar.org/

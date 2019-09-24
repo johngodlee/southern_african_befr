@@ -93,14 +93,14 @@ closest2d <- function (id,lat,long,lat_in,long_in,nos_dim) {
 setwd("/Users/johngodlee/google_drive/postgrad/phd/thesis/chapters/chapter_1_biomass_region_befr/analysis/productivity_calculations") ; 
 wkdir = getwd()
 # compile fortran code into a shared object which R can load as a function
-system("gfortran acm_luke/src/ACM_GPP_ET.f90 acm_luke/src/ACM_GPP_ET_R_interface.f90 -o acm_luke/src/acm_gpp_et.so -fPIC -shared")
-system("mv acm_luke/src/acm_gpp_et.so .")
+system("gfortran src/ACM_GPP_ET_R_interface.f90 -o src/acm_gpp_et.so -fPIC -shared")
+system("mv src/acm_gpp_et.so .")
 
 ###
 ## Check how many site files we have to work with
 
 # search for files in our assumed inputs directory
-files_to_do = list.files("./inputs", full.names=TRUE)
+files_to_do = list.files("./acm_input", full.names=TRUE)
 # filter for those which are *csv
 files_to_do = files_to_do[grepl("csv",files_to_do)]
 # filter for those which have correct prefix "ACM_GPP_ET_"
@@ -269,7 +269,7 @@ acm_gpp_et_output = list(    units = units,
                      timeseries_ci = timeseries_ci)
 
 # Now save the file
-save(acm_gpp_et_output, file="./outputs/ACM_GPP_ET_test_output.RData")
+save(acm_gpp_et_output, file="./acm_output/ACM_GPP_ET_test_output.RData")
 
 ###
 ## Generate simple plots for the first two sites

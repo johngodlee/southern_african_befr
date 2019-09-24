@@ -17,11 +17,11 @@ rm(list=ls())
 # Packages
 library(dplyr)
 library(tidyr)
-library(ggplot2)
+library(ggplot2)  # ggplot()
 library(psych)  # pairs.panels()
 library(gridExtra)  # grid.arrange()
-library(lme4)
-library(MuMIn)
+library(lme4)  # lmer()
+library(MuMIn)  # r.squared.GLMM()
 
 
 # Functions

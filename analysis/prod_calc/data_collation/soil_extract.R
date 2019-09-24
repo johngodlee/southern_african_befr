@@ -12,7 +12,7 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 # Load data ----
 
-load("raw_data/seosaw_plot_summary24Sept_v1.Rdata")
+load("../seosaw_plot_summary5Apr_v1.Rdata")
 
 # Filter data to soil properties ----
 soil <- data.frame(plotcode = ssaw7$soil$plotcode, 
@@ -25,4 +25,4 @@ soil <- data.frame(plotcode = ssaw7$soil$plotcode,
                    CECSOL_M_sl1_1km_ll = ssaw7$soil$CECSOL_M_sl1_1km_ll)
 
 # Write data ----
-write.csv(soil, "extracted_data/soil_data_plots.csv", row.names = FALSE)
+write.csv(soil, "../extracted_data/soil_data_plots.csv", row.names = FALSE)

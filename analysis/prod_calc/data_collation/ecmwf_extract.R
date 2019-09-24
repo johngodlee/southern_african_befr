@@ -16,7 +16,7 @@ library(ncdf4)
 
 # Import netcdf files ----
 # Get file names
-nc_list <- list.files(paste0(getwd(),"/raw_data/ecmwf/ecmwf_nc"), 
+nc_list <- list.files(paste0(getwd(),"../raw_data/era5"), 
                        pattern="nc$", 
                        full.names=FALSE)
 
@@ -38,8 +38,6 @@ plot_match <- c("ABG-001", "ZLT-009", "MAR-030")
 plot_test <- plot_loc[grep(paste(plot_match, collapse = "|"), plot_loc$plotcode),]
 plot_test$plotcode <- as.character(plot_test$plotcode)
 plot_loc_list <- split(plot_test, seq(nrow(plot_test)))
-
-
 
 # Automate extraction of sol in a for loop ---- 
 ##' Read sol for each timestep across all months for SEOSAW plots

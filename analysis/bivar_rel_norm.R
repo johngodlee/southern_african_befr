@@ -64,6 +64,8 @@ source("clust_pal.R")
 
 facet_levels <- c(
   "aridity_index",
+  "total_precip",
+  "precip_seasonality",
   "mean_temp",
   "temp_seasonality",
   "bchave",
@@ -76,6 +78,7 @@ facet_levels <- c(
   "mean_height",
   "stems_ha",
   "shannon",
+  "shannon_equit",
   "sp_rich",
   "sp_rich_raref",
   "fire_return_mean",
@@ -98,6 +101,7 @@ facet_levels <- c(
   "mean_height_std", 
   "stems_ha_log_std", 
   "shannon_cube_std",
+  "shannon_equit_std",
   "sp_rich_std", 
   "sp_rich_raref_std", 
   "fire_return_mean_log_std",
@@ -105,6 +109,8 @@ facet_levels <- c(
 
 facet_labels <- c(  
   expression("Aridity" ~ "index"),
+  expression("Mean" ~ "Annual" ~ "Precipitation" ~ (mm ~ y^-1)),
+  expression("Precipitation" ~ "seasonality"),
   expression("Mean" ~ "annual" ~ "temp." ~ (degree * C)), 
   expression("Temp." ~ "seasonality" ~ (degree * C)),
   expression("AGB" ~ t ~ ha^-1),
@@ -116,7 +122,8 @@ facet_labels <- c(
   expression("Mean" ~ "DBH" ~ (cm)),
   expression("Mean" ~ "height" ~ (m)),
   expression("Stem" ~ "density" ~ ">5" ~ cm ~ (n ~ ha^-1)),
-  expression("Shannon" ~ "Index" ~ (H)),
+  expression("Shannon" ~ "Index" ~ (H*"'")),
+  expression("Shannon" ~ "equitability" ~ (E[H])),
   expression("Species" ~ "richness"),
   expression("Rarefied" ~ "species" ~ "richness"),
   expression("Mean" ~ "fire" ~ "return" ~ "interval" ~ (yr)),
@@ -126,23 +133,24 @@ facet_labels <- c(
   expression("log(Stem" ~ "density)" ~ ">5" ~ cm ~ (n ~ ha^-1)),
   expression("Shannon" ~ "Index" ~ (H^3)),
   expression("log(Mean" ~ "fire" ~ "return" ~ "interval)" ~ (yr)),
-  expression("std(Aridity" ~ "index)"),
-  expression("std(Mean" ~ "annual" ~ "temp.)" ~ (degree * C)), 
-  expression("std(Temp." ~ "seasonality)" ~ (degree * C)),
-  expression("std(log(Woody" ~ "biomass))" ~ ha^-1),
-  expression("std(Cation" ~ "exchange" ~ "capacity)"),
-  expression("std(Sand" ~ "%)"), 
-  expression("std(Organic" ~ "C" ~ "%)"),
-  expression("std(Coef." ~ "var." ~ "DBH)"),
-  expression("std(Coef." ~ "var." ~ "height)"),
-  expression("std(log(Mean" ~ "DBH))" ~ (cm)),
-  expression("std(Mean" ~ "height)" ~ (m)),
-  expression("std(log(Stem" ~ "density))" ~ ">5" ~ cm ~ (n ~ ha^-1)),
-  expression("std(Shannon" ~ "Index)" ~ (H)),
-  expression("std(Species" ~ "richness)"),
-  expression("std(Rarefied" ~ "species)" ~ "richness"),
-  expression("std(log(Mean" ~ "fire" ~ "return" ~ "interval))" ~ (yr)),
-  expression("std(Number" ~ "of" ~ "fires" ~ "2001-18)"))
+  expression("Aridity" ~ "index" ~ "(std)"),
+  expression("Mean" ~ "annual" ~ "temp." ~ "(std)" ~ (degree * C)), 
+  expression("Temp." ~ "seasonality" ~ "(std)" ~ (degree * C)),
+  expression("log(Woody" ~ "biomass)" ~ "(std)" ~ ha^-1),
+  expression("Cation" ~ "exchange" ~ "capacity" ~ "(std)"),
+  expression("Sand" ~ "(std)"), 
+  expression("Organic" ~ "C" ~ "(std)" ~ "(%)"),
+  expression("Coef." ~ "var." ~ "DBH" ~ "(std)"),
+  expression("Coef." ~ "var." ~ "height" ~ "(std)"),
+  expression("log(Mean" ~ "DBH)" ~ "(std)" ~ (cm)),
+  expression("Mean" ~ "height" ~ "(std)" ~ (m)),
+  expression("log(Stem" ~ "density" ~ ">5" ~ cm ~ "(std)" ~ (n ~ ha^-1)),
+  expression("Shannon" ~ "Index" ~ "(std)" ~ (H^3)),
+  expression("Shannon"~ "equitability" ~ "(std)" ~ (E[H])),
+  expression("Species" ~ "richness" ~ "(std)"),
+  expression("Rarefied" ~ "species" ~ "richness" ~ "(std)"),
+  expression("log(Mean" ~ "fire" ~ "return" ~ "interval)" ~ "(std)" ~ (yr)),
+  expression("Number" ~ "of" ~ "fires" ~ "2001-18" ~ "(std)"))
 
 
 
@@ -154,8 +162,10 @@ sem_data_fil_agg <- read.csv("data/plot_data_fil_agg.csv")
 # Which variables need to be log transformed? ----
 ##' Look at histograms
 histogram_raw <- sem_data_fil_agg %>%
-	select(stems_ha, bchave, sp_rich, sp_rich_raref, shannon, cation_ex_cap, sand_per, ocdens, aridity_index, 
-		mean_height, cov_height, mean_dbh, cov_dbh, fire_return_mean, firecount_2001_2018, mean_temp, temp_seasonality) %>%
+	dplyr::select(stems_ha, bchave, sp_rich, sp_rich_raref, shannon, shannon_equit, 
+	  cation_ex_cap, sand_per, ocdens, aridity_index, total_precip, precip_seasonality,
+		mean_height, cov_height, mean_dbh, cov_dbh, fire_return_mean, firecount_2001_2018, 
+	  mean_temp, temp_seasonality) %>%
 	gather(variable, value) %>%
 	mutate(facet_label = factor(variable,
 	  levels = facet_levels,
@@ -186,11 +196,12 @@ sem_data_norm <- sem_data_fil_agg %>%
 		sp_rich = sp_rich,
 		fire_return_mean_log = log(fire_return_mean),
 	  ocdens = ocdens) %>% 
-	select(-bchave, -mean_dbh, -stems_ha, -shannon, -fire_return_mean)
+	dplyr::select(-bchave, -mean_dbh, -stems_ha, -shannon, -fire_return_mean)
 
 histogram_trans <- sem_data_norm %>%
-	select(stems_ha_log, bchave_log, sp_rich, sp_rich_raref, shannon_cube, 
+	dplyr::select(stems_ha_log, bchave_log, sp_rich, sp_rich_raref, shannon_cube, shannon_equit,
 		cation_ex_cap, sand_per, ocdens, aridity_index,
+	  total_precip, precip_seasonality,
 		mean_height, cov_height, mean_dbh_log, cov_dbh, 
 		fire_return_mean_log, mean_temp, temp_seasonality, firecount_2001_2018) %>%
 	gather(variable, value) %>%
@@ -210,6 +221,8 @@ dev.off()
 # Standardize each variable
 sem_data_norm_std <- sem_data_norm %>%
 	mutate_at(.vars = c("aridity_index",
+	  "total_precip",
+	  "precip_seasonality",
 		"mean_temp",
 		"temp_seasonality",
 		"bchave_log",
@@ -222,6 +235,7 @@ sem_data_norm_std <- sem_data_norm %>%
 		"mean_height",
 		"stems_ha_log",
 		"shannon_cube",
+	  "shannon_equit",
 		"sp_rich",
 	  "sp_rich_raref",
 		"fire_return_mean_log",
@@ -229,8 +243,9 @@ sem_data_norm_std <- sem_data_norm %>%
 		.funs = list(std = ~(scale(.) %>% as.vector)))
 
 histogram_trans_std <- sem_data_norm_std %>%
-	select(stems_ha_log_std, bchave_log_std, sp_rich_std, sp_rich_raref_std, shannon_cube_std, 
-	  cation_ex_cap_std, sand_per_std, ocdens_std, aridity_index_std,
+	dplyr::select(stems_ha_log_std, bchave_log_std, sp_rich_std, sp_rich_raref_std, 
+	  shannon_cube_std, shannon_equit_std, cation_ex_cap_std, sand_per_std, ocdens_std, 
+	  aridity_index_std, total_precip_std, precip_seasonality_std,
 		mean_height_std, cov_height_std, mean_dbh_log_std, cov_dbh_std, 
 	  fire_return_mean_log_std, mean_temp_std, temp_seasonality_std, firecount_2001_2018_std) %>%
 	gather(variable, value) %>%
@@ -255,22 +270,27 @@ bivar_list <- c(
   "bchave_log_std ~ cov_dbh_std",
   "bchave_log_std ~ cov_height_std",
   "bchave_log_std ~ shannon_cube_std",
+  "bchave_log_std ~ shannon_equit_std",
   "bchave_log_std ~ sp_rich_raref_std",
   "bchave_log_std ~ fire_return_mean_log_std",
   "bchave_log_std ~ aridity_index_std",
   "bchave_log_std ~ mean_temp_std",
   "bchave_log_std ~ temp_seasonality_std",
+  "bchave_log_std ~ total_precip_std",
+  "bchave_log_std ~ precip_seasonality_std",
   "bchave_log_std ~ stems_ha_log_std",
   "cov_height_std ~ cation_ex_cap_std",
   "cov_height_std ~ aridity_index_std",
   "cov_height_std ~ fire_return_mean_log_std",
   "cov_height_std ~ shannon_cube_std",
+  "cov_height_std ~ shannon_equit_std",
   "cov_height_std ~ sp_rich_raref_std",
   "cov_height_std ~ ocdens_std",
   "cov_dbh_std ~ cation_ex_cap_std",
   "cov_dbh_std ~ aridity_index_std",
   "cov_dbh_std ~ fire_return_mean_log_std",
   "cov_dbh_std ~ shannon_cube_std",
+  "cov_dbh_std ~ shannon_equit_std",
   "cov_dbh_std ~ sp_rich_raref_std",
   "cov_dbh_std ~ ocdens_std")
 
@@ -390,10 +410,13 @@ cluster_compare <- data.frame(
   sp_rich = sem_data_norm_std$sp_rich,
   sp_rich_raref = sem_data_norm_std$sp_rich_raref,
   shannon_cube = sem_data_norm_std$shannon_cube,
+  shannon_equit = sem_data_norm_std$shannon_equit,
   cation_ex_cap = sem_data_norm_std$cation_ex_cap,
   sand_per = sem_data_norm_std$sand_per,
   ocdens = sem_data_norm_std$ocdens, 
   aridity_index = sem_data_norm_std$aridity_index,
+  total_precip = sem_data_norm_std$total_precip,
+  precip_seasonality = sem_data_norm_std$precip_seasonality,
   mean_temp = sem_data_norm_std$mean_temp,
   temp_seasonality = sem_data_norm_std$temp_seasonality,
   mean_height = sem_data_norm_std$mean_height,
@@ -409,16 +432,16 @@ cluster_compare <- data.frame(
   summarise_all(list(~mean(.), ~sd(.))) 
 
 cluster_compare_mean <- cluster_compare %>%
-  select(clust5, ends_with("mean")) %>%
+  dplyr::select(clust5, ends_with("mean")) %>%
   gather(., key = "variable", value = "mean", ends_with("mean")) %>%
   separate(variable, into = c("variable", "stat"), sep="_(?=[^_]+$)") %>%
-  select(-stat)
+  dplyr::select(-stat)
 
 cluster_compare_sd <- cluster_compare %>%
-  select(clust5, ends_with("sd")) %>%
+  dplyr::select(clust5, ends_with("sd")) %>%
   gather(., key = "variable", value = "sd", ends_with("sd")) %>%
   separate(variable, into = c("variable", "stat"), sep="_(?=[^_]+$)") %>%
-  select(-stat)
+  dplyr::select(-stat)
 
 cluster_compare_gather <- left_join(cluster_compare_mean, cluster_compare_sd, by = c("clust5", "variable"))
 
@@ -430,6 +453,8 @@ cluster_compare_gather$clust5 <- as.character(cluster_compare_gather$clust5)
 cluster_compare_gather <- cluster_compare_gather %>%
   mutate(facet_label = factor(variable,
     levels = c("aridity_index",
+      "total_precip",
+      "precip_seasonality",
       "mean_temp",
       "temp_seasonality", 
       "bchave_log", 
@@ -442,12 +467,15 @@ cluster_compare_gather <- cluster_compare_gather %>%
       "mean_height", 
       "stems_ha_log", 
       "shannon_cube",
+      "shannon_equit",
       "sp_rich", 
       "sp_rich_raref", 
       "fire_return_mean_log",
       "firecount_2001_2018"),
     labels = c(
       expression("Aridity" ~ "index"),
+      expression("Mean" ~ "Annual" ~ "Precipitation" ~ (mm ~ y^-1)),
+      expression("Precipitation" ~ "seasonality"),
       expression("Mean" ~ "annual" ~ "temp." ~ (degree * C)), 
       expression("Temp." ~ "seasonality" ~ (degree * C)),
       expression("log(Woody" ~ "biomass)" ~ ha^-1),
@@ -460,6 +488,7 @@ cluster_compare_gather <- cluster_compare_gather %>%
       expression("Mean" ~ "height" ~ (m)),
       expression("log(Stem" ~ "density)" ~ ">5" ~ cm ~ (n ~ ha^-1)),
       expression("Shannon" ~ "Index" ~ (H)),
+      expression("Shannon" ~ "equitability" ~ (E[H])),
       expression("Species" ~ "richness"),
       expression("Rarefied" ~ "species" ~ "richness"),
       expression("log(Mean" ~ "fire" ~ "return" ~ "interval)" ~ (yr)),

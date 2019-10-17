@@ -2,8 +2,10 @@
 \contentsline {subsection}{\numberline {1.1}Hypotheses}{3}% 
 \contentsline {section}{\numberline {2}Methods}{3}% 
 \contentsline {subsection}{\numberline {2.1}Study location}{3}% 
-\contentsline {subsection}{\numberline {2.2}Data collection}{3}% 
-\contentsline {subsection}{\numberline {2.3}Data analysis}{3}% 
-\contentsline {subsubsection}{\numberline {2.3.1}Structural Equation Modelling}{3}% 
-\contentsline {section}{\numberline {3}Results}{4}% 
-\contentsline {section}{\numberline {4}Discussion}{4}% 
+\contentsline {subsection}{\numberline {2.2}Data collection}{5}% 
+\contentsline {subsection}{\numberline {2.3}Data analysis}{6}% 
+\contentsline {subsubsection}{\numberline {2.3.1}Biogeographical clusters}{6}% 
+\contentsline {subsubsection}{\numberline {2.3.2}Structural Equation Modelling}{6}% 
+\contentsline {section}{\numberline {3}Results}{8}% 
+\contentsline {subsection}{\numberline {3.1}Structural diversity}{9}% 
+\contentsline {section}{\numberline {4}Discussion}{9}% 

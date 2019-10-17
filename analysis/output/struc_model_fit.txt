@@ -1,0 +1,31 @@
+$FIT
+             npar              fmin             chisq                df            pvalue    baseline.chisq 
+           11.000             0.466           607.208            10.000             0.000          1051.363 
+      baseline.df   baseline.pvalue               cfi               tli              logl unrestricted.logl 
+           15.000             0.000             0.424             0.136         -5019.664         -4716.060 
+              aic               bic            ntotal              bic2             rmsea    rmsea.ci.lower 
+        10061.328         10110.609           652.000         10075.684             0.303             0.282 
+   rmsea.ci.upper      rmsea.pvalue              srmr 
+            0.323             0.000             0.253 
+
+$PE
+                     lhs op               rhs                 label exo        est         se         z       pvalue
+1                    div =~ sp_rich_raref_std                         0  1.0000000 0.00000000        NA           NA
+2                    div =~ shannon_equit_std                         0  1.0000000 0.00000000        NA           NA
+3                    div =~  shannon_cube_std                         0  1.0000000 0.00000000        NA           NA
+4                  struc =~       cov_dbh_std                         0  1.0000000 0.00000000        NA           NA
+5                  struc =~    cov_height_std                         0  1.0000000 0.00000000        NA           NA
+6             bchave_log  ~               div                     c   0 -0.3202565 0.06117095 -5.235435 1.645971e-07
+7             bchave_log  ~             struc                     b   0  0.3900006 0.05646266  6.907230 4.942047e-12
+8                  struc  ~               div                     a   0  0.2812964 0.05717945  4.919537 8.674896e-07
+9      sp_rich_raref_std ~~ sp_rich_raref_std                         0  0.5653526 0.03954484 14.296495 0.000000e+00
+10     shannon_equit_std ~~ shannon_equit_std                         0  1.4850071 0.08897738 16.689715 0.000000e+00
+11      shannon_cube_std ~~  shannon_cube_std                         0  0.2556255 0.02659057  9.613391 0.000000e+00
+12           cov_dbh_std ~~       cov_dbh_std                         0  0.2340184 0.02798921  8.361022 0.000000e+00
+13        cov_height_std ~~    cov_height_std                         0  0.4846095 0.03654851 13.259350 0.000000e+00
+14            bchave_log ~~        bchave_log                         0  0.5697431 0.03384604 16.833375 0.000000e+00
+15                   div ~~               div                         0  0.4019108 0.03257067 12.339654 0.000000e+00
+16                 struc ~~             struc                         0  0.4325597 0.03558895 12.154328 0.000000e+00
+17 biomass_div_via_struc :=               a*b biomass_div_via_struc   0  0.1097058 0.02860234  3.835552 1.252826e-04
+18     biomass_div_total :=           c+(a*b)     biomass_div_total   0 -0.2105507 0.05873875 -3.584529 3.376877e-04
+

@@ -13,65 +13,157 @@
 
 \section{Introduction}
 
-A globally observed decline in biodiversity may lead to a decrease in ecosystem functioning and health, with knock-on effects for the benefits humans derive from ecosystems as ecosystem services \citep{}. Carbon storage as biomass within ecosystems is a commonly studied ecosystem function, as is Gross Primary Productivity (GPP). The storage of atmospheric CO\textsubscript{2} as biomass buffers increases in atmospheric CO\textsubscript{2} caused by human actions. Accumulation of biomass in vegetation and soils indirectly benefits other ecosystem functions, being correlated with ecosystem stability and resilience to disturbance \citep{}. Understanding how ecosystem structure and species diversity affects biomass storage is important in order to predict how changes to communities may impact the global carbon balance which will impact future climate change \citep{}.
+A number of studies have shown relationships between biodiversity and ecosystem functionality \citep{Review}. The strength and direction of these observed relationships varies depending on the ecosystem being studied \citep{}, the ecosystem function(s) of interest \citep{}, and the inclusion of environmental covariates in statistical models \citep{}, but there appears to be a generalisable positive correlation between biodiversity and ecosystem functionality \citep{}. Over the past decade, many observational studies of the Biodiversity-Ecosystem Function Relationship (BEFR) have been conducted in tropical and temperate forests, and grasslands \citep{Chen2011}. The representation of dry tropical ecosystems in the BEFR literature however, is poor. \citet{Clarke2017} conducted a meta-analysis of 182 published BEFR studies, finding that only 13\% were conducted in the tropics, with 42\% of those being conducted in Costa Rica.
 
-Savannas and sparse woodlands are the dominant vegetation type across southern Africa, spanning \textgreater{}4 million km\textsuperscript{2} across the region. Climatic conditions and biogeography vary across the region, resulting in a diverse range of woodland tree species assemblages, which retain the common features of an open tree canopy and an understorey generally dominated by C4 grass species \citep{Frost1996}. Southern African woodlands are highly diverse, thought to harbour \textapprox{}8500 plant species of which there are \textgreater{}300 tree species \citep{Frost1996}. Southern African Woodlands have been identified by previous studies as a priority for conservation efforts \citep{Brooks2006, Mittermeier2003, Frost1996}. Many conservation projects in the region currently aim to conserve biodiversity and carbon stocks simultaneously under the banner of REDD+ \citep{Hinsley2015}. A small number of academic studies have shown that above ground woody carbon stocks correlate positively with tree species richness \citep{McNicol2017} \todo{others}, but all have been hampered by a restricted plot network. This study is the first regional analysis of the BEFR in southern African woodlands, using plots which straddle multi-dimensional environmental gradients (Figure \ref{}).
+In the seasonally dry woodlands of southern Africa, human actions are driving rapid changes in biodiversity. Resource extraction directly influences biodiversity via selective tree-felling for timber, charcoal making, non-timber forest products and through land use change to agriculture \citep{Ryan2016}. Climate change is also indirectly affecting the biodiversity of southern African woodlands, altering temperature and precipitation dynamics and affecting climate seasonality \citep{}. Savannas and sparse woodlands are the dominant vegetation type across the southern African region, spanning \textgreater{}4 million km\textsuperscript{2}. The carbon stored in these woodlands is comparable to that found in the wet forests of the Congo basin and are of global importance to the carbon cycle. Climatic conditions and biogeography vary across southern African woodlands, resulting in a diverse range of woodland tree species assemblages, which retain the common features of an open tree canopy and an understorey generally dominated by C4 grass species \citep{Frost1996}. Southern African woodlands are highly diverse, thought to harbour \textapprox{}8500 plant species of which there are \textgreater{}300 tree species \citep{Frost1996}. They have been identified by previous studies as a priority for conservation efforts \citep{Brooks2006, Mittermeier2003, Frost1996}. Many conservation projects in the region currently aim to conserve biodiversity and woody biomass stocks simultaneously under the banner of REDD+ \citep{Hinsley2015}. A small number of academic studies in these woodlands have shown that above ground woody carbon/biomass stocks correlate positively with tree species richness \citep{McNicol2017, and, others}, but all have been hampered by a restricted climatic and biogeographical range of study sites, meaning that generalisable regional trends cannot be reliably inferred. \citet{Fayolle2018} 
 
-The role of environmental factors in shaping the BEFR is poorly understood \citep{Ratcliffe2017}. Climatic variation is known to affect woody biomass production \citep{Michaletz2014}, so it is important to control for these factors and acknowledge their interaction with woody species diversity \textit{and} biomass stocks to effectively model the effects of biodiversity on biomass stocks in a regional analysis. \citet{Sankaran2005} used data from 854 African field sites to show that mean annual precipitation sets the upper limit for woody cover in these ecosystems, while other factors such as herbivory, fire and soil properties contribute to reducing woody cover below this maximum. \citet{Condit2013} found that dry season intensity was the main determinant of tree species distribution in Panamanian tropical forests, which may affect ecosystem level productivity and thus biomass stocks through selection effects, which may promote the growth of a certain highly productive species only under certain environmental conditions. In European forests \citep{Ratcliffe2017} found a general trend towards stronger positive relationships between tree species richness and various ecosystem functions in more arid environments, suggesting variation in the balance between competitive and facilitative effects along the aridity gradient as the driver of this relationship, an example of the Stress Gradient Hypothesis \citep{Dohn2013}. Water availability imposes a physiological limit on growth rate, which interacts with mortality due to stochastic processes such as fire and herbivory to limit maximum potential biomass stocks. Temperature imposes a similar physiological limit on woody growth rate by limiting metabolic process rates. Temperature and water availability together impact the transpiration rate of a tree, with high temperatures and low water availability limiting growth and potentially causing damage or mortality by causing cavitation of vessels within the tree \citep{Rowland2015a, Fensham2009}. In southern African woodlands however, many species are drought adapted and lose their leaves in the dry season, limiting water loss \citep{Solbrig1996}. The effect of extreme climatic conditions may depend on the degree to which the current biota is adapted to it. Furthermore, across many forested ecosystems, water availability, modulated through precipitation and soil type positively correlates with tree species richness \citep{Vila2005}, meaning that extremely arid areas may be limited in their potential ecosystem function. Species composition may therefore have a greater effect on the interaction between environment and biodiversity - ecosystem function relationships, than species richness \textit{per se}.
+The role of environmental factors in shaping the BEFR generally is poorly understood \citep{Ratcliffe2017}. Climatic variation is known to affect woody biomass \citep{Michaletz2014}, so it is important to account for these factors and acknowledge their interaction with woody species diversity \textit{and} biomass stocks to effectively model the effects of biodiversity on biomass stocks in a regional analysis. \citet{Sankaran2005} used data from 854 African woodland field sites to show that mean annual precipitation sets the upper limit for woody cover in these ecosystems, which is presumably positively correlated with biomass, while other factors such as herbivory, fire regime and soil properties also contribute at a local scale to reduce woody cover below this maximum. However, this study did not consider the role of species diversity in the complex interactions between environment and tree cover. 
 
-Unlike temperate and wet tropical forests, where ecosystem assemblage is often determined by competition between tree species in an equilibrium state \citep{}, southern African woodlands are highly structured by disturbance in the form of fire and herbivory, which limit the growth of trees which would otherwise form a closed canopy forest \citep{}. At the dry end of the woodland gradient, woodlands are limited by low precipitation, which allows C4 grasses to compete with tree seedlings.
+\citet{Condit2013} found that dry season intensity was the main determinant of tree species distribution in Panamanian tropical forests, which may affect ecosystem level productivity and thus woody biomass through selection effects, promoting the growth of a certain highly productive species only under certain environmental conditions. In European forests \citep{Ratcliffe2017} found a general trend towards stronger positive relationships between tree species richness and various ecosystem functions in more arid environments, suggesting variation in the balance between competitive and facilitative effects along the aridity gradient as the driver of this relationship, an example of the Stress Gradient Hypothesis \citep{Dohn2013}. Water availability imposes a physiological limit on growth rate, which interacts with mortality due to stochastic processes such as fire and herbivory to limit maximum potential woody biomass \citep{}. Temperature imposes a similar physiological limit on woody growth rate by limiting metabolic rates. Temperature and water availability together impact the transpiration rate of a tree, with high temperatures and low water availability limiting growth and potentially causing damage or mortality through cavitation of vessels within the tree \citep{Rowland2015a, Fensham2009}. In southern African woodlands however, many species are drought adapted and lose their leaves in the dry season, limiting water loss \citep{Solbrig1996}, so this effect may not be present in historically droughted areas. The effect of extreme climatic conditions on woody biomass may depend on the degree to which the current biota is adapted to it. Furthermore, across many forested ecosystems, water availability, modulated through precipitation and soil type positively correlates with tree species richness \citep{Vila2005}, meaning that extremely arid areas may be limited in their potential ecosystem functionality via two effects, the direct effect of resource availability in the form of moisture availability and soil nutrients, and indirectly through the effect of these environmental factors on species composition. Species composition may therefore have a greater effect on the interaction between environment and biodiversity - ecosystem function relationships, than species richness \textit{per se}.
 
-An underpinning principle of the Biodiversity-Ecosystem Function Relationship (BEFR) is that of niche complementarity. Species are assumed to differ in their functional niche by the fact that they may coexist in a steady-state ecological community, therefore the more species are present the greater the area of the total fundamental niche of the ecosystem is filled, allowing more efficient use of natural resouerces and higher values of productivity and biomass \citep{}. This theory however, which has been supported by many experiments and observational studies in temperate and wet tropical ecosystems, may not hold in savannas, which are structured by disturbance rather than competition.
+\todo{Species abundance evenness and selection effects.}
 
-Precipitation acts as a key determinant of woodland structure
+While southern African woodlands are species rich in the herbaceous understorey, the tree layer is relatively species poor \citep{}. \citet{Miombo-Book} however, writes that they are structurally diverse in the tree layer, with trees of the same species occupying distinct layers of the canopy at different growth stages. This structural diversity may be one mechanism through which species diversity appears to influence woody biomass. Trees occupying different canopy layers can create a more full canopy with a greater total foliage density, enhancing productivity and allowing greater standing woody biomass in a smaller area. An underpinning principle of the Biodiversity-Ecosystem Function Relationship (BEFR) is that of niche complementarity. Species are assumed to differ in their functional niche by the fact that they may coexist in a steady-state ecological community, therefore the more species are present the greater the area of the total fundamental niche of the ecosystem is filled, allowing more efficient use of natural resources and higher gross primary productivity and biomass \citep{}. This theory however, which has been supported by many experiments and observational studies in temperate and wet tropical ecosystems, may not hold in savannas, which are structured by disturbance rather than competition.
 
-Grimes, mass ratio, selection effects and complementarity effects 
+High levels of disturbance in the form of seasonal fires and herbivory from large mammals \citep{Fire is a herbivore} may moderate the strength of observable BEFRs in southern African woodlands. Fire disturbance in forests has been linked to abundance dependent mortality among smaller stems \citep{Roques2001}. A dominant and competitive species which tends to produce many small fast-growing stems is more likely to experience mortality during a fire as the higher surface area to volume ratio of the trunk increases the likelihood of combustion \citep{}. Such fast-growing bushy species exist in southern African woodlands and often proliferate when fire is deliberately excluded, leading to the growth of thicket vegetation which precludes the growth of high biomass tree species \citep{nieto2018}. Additionally, the dominance of a single species is likely to decrease overall functioning by decreasing niche space utilisation \citep{Cardinale2002}.
 
-In this study, we made the first known attempt to make a regional estimation of the Biodiversity Ecosystem Function Relationship in southern African woodlands. We used aboveground woody biomass and estimates of ecosystem productivity as measures of ecosystem functionality to understand the co-relationship between tree species biodiversity and ecosystem functionality. We compared the relative effects of tree species biodiversity with that of other environmental factors known to affect ecosystem productivity and biomass accumulation such as precipitation and temperature. In acknowledgement of the wide variation in biogeographically determined community composition across the region, we also used previously determined biogeographical clusters \citep{} to understand how species composition as well as species biodiversity \textit{per se} affected ecosystem functionality. Initially, we made four hypotheses: 1) across the region, after other environmental factors had been accounted for, woodland plots with a higher species richness would have a higher aboveground biomass, 2) increased aridity would increase the strength of the biomass tree species richness relationship, 3) species composition would have a greater affect on aboveground biomass than species diversity \textit{per se}. We used Structural Equation Modelling as a preferred method to simultaneously account for environmental factors and biogeographic factors, which often interact in their effect on ecosystem structure and therefore biomass. 
+In this study, we made the first known regional estimation of the Biodiversity-Ecosystem Function Relationship in southern African woodlands, using inventory plots which straddle multi-dimensional environmental and biogeographical gradients (Figure \ref{}). We used aboveground woody biomass \todo{and estimates of ecosystem productivity} as measures of ecosystem functionality to understand the co-relationship between tree species biodiversity and ecosystem functionality. We compared the relative effects of tree species biodiversity with that of other environmental factors known to affect ecosystem productivity and biomass accumulation such as precipitation and temperature. In acknowledgement of the wide variation in biogeographically determined community composition across the region, we also used biogeographical clusters \citep{} to understand how species composition as well as species biodiversity \textit{per se} affected ecosystem functionality. Initially, we made four hypotheses: 1) across the region, after other environmental factors had been accounted for, woodland plots with a higher species richness would have a higher aboveground biomass, 2) increased aridity would increase the strength of the biomass tree species richness relationship, 3) species composition would have a greater affect on aboveground biomass than species diversity \textit{per se}. We used Structural Equation Modelling as a preferred method to simultaneously account for environmental factors and biogeographic factors, which often interact in their effect on ecosystem structure and therefore biomass. 
 
 
 \subsection{Hypotheses}
 
-We hypothesised that plots with a higher species richness will maintain higher biomass stocks.
-
-Species composition will influence above-ground productivity more than species richness \textit{per se}. 
-
-Plots in more arid regions will feature a stronger positive effect of tree species richness on above ground biomass stocks, due to abiotic facilitation effects, despite lower overall tree species richness.
-
-Structural characteristics of the woodland will interact with species composition and richness to provide an indirect path of influecne between species composition and biomass stocks.
+\begin{enumerate}
+	\item{Plots with a higher tree species diversity will maintain higher biomass stocks.}
+	\item{Species abundance evenness will influence above-ground productivity more than species richness \textit{per se}.}
+	\item{Plots in more arid regions will feature a stronger positive effect of tree species richness on above ground biomass stocks, due to abiotic facilitation effects, despite lower overall tree species richness.}
+	\item{Structural characteristics of the woodland will interact with species composition and richness to provide an indirect path of influence between species composition and biomass stocks.}
+\end{enumerate}
 
 
 \section{Methods}
 
 \subsection{Study location}
 
+The study used 1066 woodland monitoring from a larger network located across 10 countries within southern Africa in so-called Miombo woodland (Figure \ref{plot_loc}). The study region spans a precipitation gradient from \textapprox{}460 mm y\textsuperscript{-1} in the \todo{where} and \textapprox{}1700 mm y\textsuperscript{-1} in the \todo{where}. The study sites straddle the climate space of the region as a whole (Figure \ref{temp_precip_hull}a). The 2D convex hull of Mean Annual Precipitation (MAP) and Mean Annual Temperature of the study sites covers 92.7\% of the pixel-wise climate space of the Miombo woodland area as defined by \citet{White}, using WorldClim estimates of temperature and precipitation between the year 1970 and 2000 with a pixel size of 30 seconds (0.86 km\textsuperscript{2} at the equator). 
+
+\begin{figure}[H]
+	\centering
+	\subfloat[]{{\includegraphics[width=0.4\textwidth]{plot_loc}}}%
+    \qquad
+    \subfloat[]{{\includegraphics[width=0.4\textwidth]{temp_precip_hull}}}%
+    \caption{The locations of the 1066 plots used in this study, by geographic location (a) with respect to the distribution of Miombo woodland vegetation \citep{White}, and in climate space (b), showing the plot locations as points compared to the climate space of the whole region as estimated using the WorldClim dataset over the Miombo woodland vegetation extent.}
+\end{figure}
+
+Plots were chosen from a larger pool of 5395 plots based on the quality of data collection and plot setup. Plot vegetation was identified under the broad term of ``savanna'', which includes ``woodland'', ``savanna woodland'', and ``tree savanna''. Plots with evidence of farming, human resource extraction or experimental treatements such as prescribed burning or herbivore exclusion were exlcuded from the initial pool. Only plots \textgreater{}0.1 hectares were used as per hectare biomass estimation from small plots is highly influenced by rare large trees. Only plots with a stem density \textless{}10 stems ha\textsuperscript{-1} were used, to ensure all plots were within woodland rather than ``grassy savanna'', which are considered a separate biome with very different species composition \citep{Parr2014}.
+
+Many plots provided by the Zambian Forestry Commission were arranged in clusters of four 20x50 m plots, 20 metres apart. These plots were aggregated for analyses and their values averaged for use in further plot level data cleaning.
+
+A Principle Coordinate Analysis (PCoA) was conducted on tree species abundance matrix data for each plot to identify compositional outliers, which were considered not representative southern African woodlands. Plots within the upper 95th percentile of plot neighbour distance in the PCoA were excluded from further analyses (Figure \ref{pcoa_outlier}). This removed 66 plots.
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.5\textwidth]{pcoa_outlier}
+	\caption{Principle Co-ordinate Analysis of tree species diversity of the 1122 plots chosen from the larger pool of 5395 plots. The PCoA is constructed from a tree species abundance matrix. Plots which are within the upper 95th percentile of plot neighbour euclidean distance in the PCoA are marked in red, to be excluded from further analysis.}
+	\label{pcoa_outlier}
+\end{figure}
+
 \subsection{Data collection}
 
-All analyses were performed in R version 3.6.0
+We considered only trees and shrubs in our analyses of above-ground biomass, including woody species including palms and cycads but excluding lianas. Only stems \textgreater{}5 cm DBH (Diameter at Breast Height, 1.3 m) were included in analyses. AGB estimation for trees \textless{}5 cm DBH is imprecise due to its sensitivity to many environmental and historical factors \citep{}. Additionally, for some species, species identification is difficult for saplings.
 
-Plot data were collated from a network of plots across southern Africa, across 12 countries (Figure \ref{plot_map}). Plots are managed for various monitoring and scientific purposes by a number of researchersPlots used in the study were chosen from the full plot network of 5385 plots to satisfy a number of conditions. Plots were \textgreater{}0.1 ha in area \todo{why}. Only stems \textgreater{}5 cm DBH (Diameter at Breast Height, 1.3 m) were included in analyses. To ensure all plots were within woodland rather than ``grass savanna'', plots with a stem density \textless{}20 stems ha\textsuperscript{-1} were excluded. Grass savannas are considered a separate biome according to \citet{Parr2014} \todo{why}. Plots which had been farmed with livestock or for arable in the previous 30 years were excluded as were plots which had been used in experimental treatments such as fire or herbivore exclusion. Plots created by the Zambian Forestry Commission were originally located in clusters of four adjacent 20x50 m plots. Measurements from these plot clusters were aggregated prior to analysis. This left 1084 plots in 10 countries.
+All stems \textgreater{}5 cm DBH were measured within each plot. For each tree, species, DBH and height to the highest branch material were recorded. Height was measured through a variety of means \todo{audit of height methods}. When DBH could not be measured at 1.3 m due to trunk abnormalities, it was measured at the closest regular portion of the trunk to 1.3 m. The height of this measurement was recorded and used to estimate the DBH\textsubscript{e} at 1.3 m using a cubic polynomial, parameters estimated using a test dataset \citep{Ryanunbublished}.
 
-The plots used in this study occurred across a wide cimatic gradient (Figure \ref{env_map}). 
-
-All stems \textgreater{}5 cm DBH were measured within each plot. For each tree, species, DBH and height to the highest branch material were recorded. Height was measured through a variety of means \todo{audit of height methods}
-
-
-\subsection{Data analysis}
-Rarefied species richness accounted for variation in plot size and therefore sampling effort across the region. Rarefied species richness was calculated using the \verb|vegan| package in R, using a sample size of 20 stems.
-
-Species richness and the Shannon index (Shannon \& Weaver 1949) (Equation 1) were calculated to assess species diversity.
+Aboveground biomass for each plot was calculated using Equation \ref{chave_agb}, taken from \citet{Chave2014}. Wood density estimates were taken from the global wood density database for each species where possible \citep{Chave2009, Zanne2009}. Wood density for species without species level estimates was estimated from the mean of their respective genus. 
 
 \begin{equation}
-	H = -\sum{}P_i \ln{P_i} / \ln{S} 
+	AGB_{est} = 0.0673 \times (\rho D^{2} H)^{0.976}
+	\label{chave_agb}
 \end{equation}
+
+Where $\rho$ is the species level mean wood density, $D$ is the DBH at 1.3 m, and $H$ is the tree height.
+
+Climatic data was collected from the ECMWF ERA5 dataset \citep{}. Values were aggregated for each year between 2000 and 2018, then averaged across the years to provide single values per plot. Temperature and precipitation seasonality were both calculated as the coefficient of variation of these variables across the 18 years of available data. Soils data was extracted from the \todo{WHERE}. 
+
+Fire return interval ($F_{ret}$) was calculated using the MODIS burned area product V6 (MCD46A1) \citep{}. Data was downloaded from January 2000 to December 2018. Mean fire return interval was calculated as:
+
+\begin{equation}
+	F_{ret} = \frac{\sum_{i = 1}^{n} t_{i} - t_{i-1}}{n-1}
+\end{equation}
+
+Where $t_{i}$ is the date of fire $i$, and $n$ is the total number of fires in the time period. Fire return interval data was binned into five ordinal categories ranging from ``frequent fire'' to ``no fire''. Bin values for categories where fire had occurred were defined as four bins with percentiles based on equal numbers of plots. Plots without a single fire recorded in the 18 year survey period were assumed to not be affected by fire. 
+
+\subsection{Data analysis}
+Rarefied species richness accounted for variation in plot size and therefore sampling effort across the region. Rarefied species richness was calculated using the \verb|vegan| package in R, using a sample size of 20 stems. Plot size varied from 0.1 hectares to 10 hectares.
+
+To assess tree species abundance evenness, the Shannon Equitability index \citep{} (Equation \ref{shannon_equit}) was calculated: 
+
+\begin{equation}
+	E_{H'} = \frac{-\sum_{i = 1}^{s} p_i \ln{p_i}}{\ln{S}}
+	\label{shannon_equit}
+\end{equation}
+
+Where $p$ is the proportion abundance of a tree species $i$ across all individuals in the plot and $S$ is the total number of species in the plot.. The numerator of the Shannon Equitability index ($E_{H'}$) is the frequently used Shannon-Wiener diversity index ($H'$).
+
+
+\subsubsection{Biogeographical clusters}
+
+Plots were assigned to biogeographical groups after \citet{Fayolle2018}. Groups were identified using an Africa wide analysis of floristic units using plot data in savannas with tree species diversity and relative abundance data. Groups were identified using unconstrained correspondence analysis and ordination. Plot data used in this study occurred in five biogeographical groups, here referred to as: \todo{AS WHAT?}.
+
 
 \subsubsection{Structural Equation Modelling}
 
-Structural Equation Models were compared using different combinations of variables. Path analysis investigated the 
+Structural Equation Models (SEM) investigated the regional determinants of woody Above-Ground Biomass (AGB). All SEMs were constructed and analysed in the \textit{lavaan} package in R version 3.6.0. SEM was used because of its suitability for modelling complex causal interactions in ecological systems \citep{Lehmann2014_161-166}. A key aspect to our decision to use SEMs is that they can explicitly model indirect effects, which is impossible in multiple regression. Using SEMs also allowed us to describe theoretical latent constructs which have been suggested by theory to act upon diversity and biomass/productivity in previous studies despite these factors not having single observable values in our dataset. For example, moisture availability is known to affect productivity, but it's actual value is determined by the interaction of multiple observable variables over the time scales relevant to tree lifetime growth: precipitation, the seasonality of that precipitation, and soil composition. Indepedently of total precipitation, precipitation seasonality (measured as the covariance of daily precipitation) determines, simplistically, whether water arrives uniformly over a given time period or as few high volume floods, the latter leading to much water being lost before it can be used for plant growth. We specified composite variables for moisture availability, temperature suitability, soil fertility, fire regime, tree species diversity and tree structural diversity. Latent variables. Although the fire regime composite only had a single indicator variable, it was nevertheless included in a latent variable to account for measurement error.
+
+A conceptual model was defined based on \textit{a priori} hypotheses of the direct and indirect effects of abiotic and biotic factors on AGB (Figure \ref{con_mod}). Latent variables were defined based on theoretical unmeasured factors known to affect AGB: moisture availability, temperature suitability for plant growth, soil fertility, fire regime intensity, tree species diversity, and tree structural diversity. Observed variables were collected in order to best inform these latent constructs.
+
+Observed variables of the latent variables were standardized to Z-scores for analysis. Standardization puts latent variables on the same scale, with a mean of zero and a standard deviation of one. It allows path regression coefficients to be easily compared between paths to assess their relative effect strength, and eliminates problems arising from the observed variables being on different scales. Standardization also controls for variables with different orders of magnitude which could otherwise prevent adequate model estimation from the covariance matrix.
+
+The factor loadings of each observed variable in a latent variable were set to 1 in all cases, assuming that each has an equal contribution to its latent variable. Due to some latent variables being regressed against both structural diversity and AGB, factor loadings from multiple regressions against either of these response variables could not be used to inform factor loadings in the SEM.
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.8\textwidth]{con_mod}
+	\caption{Conceptual model showing the theoretical relationships between environmental factors, structural and species tree diversity and AGB. Hypothesised paths of causal inference are depicted as arrows from predictor to response.}
+	\label{con_mod}
+\end{figure}
+
+The model allowed us to compare the relative effect sizes of the latent variables in determining AGB, and to assess the indirect effects of abiotic environment on AGB via species and structural tree diversity. Models including either abiotic or biotic factors only were compared using Comparative Fit Index (CFI), Akaike Information Criterion (AIC) and the R\textsuperscript{2} coefficient of determination for AGB. 
+
+Two sets of SEMs were fitted. The first used only tree diversity latent constructs to estimate diversity, with the indirect effect of species diversity on AGB via structural diversity being explicitly modelled as a mediation effect to examine the strength and form of this relationship. The latent variable loadings differed between biogeographic clusters of plots. The second incorporated environmental covariates to understand the relative effects of climate, soils, disturbance on diversity and biomass.
 
 \section{Results}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.6\textwidth]{corr_mat}
+	\caption{Correlogram of exogenous variables used in the analysis, with correlation coefficients shaded according to sign (+ve red, -ve blue) and strength of correlation.}
+	\label{corr_mat}
+\end{figure}
+
+Simple correlations showed a positive association between Aboveground Biomass (AGB) and a composite latent variable representing tree species diversity ($r_{(1031)}$ = 0.30, $t$ = 11.3).
+
+In a simple path model describing the indirect effect of tree species diversity on AGB via the mediating effect of stand structural diversity, species diversity had a negative effect on AGB when the indirect path via stand structural diversity was accounted for (Figure \ref{struc_model_slopes}). Stand structural diversity had a strong positive effect on AGB (\todo{Test stats}). 
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=\textwidth]{struc_model_slopes}
+	\caption{Path coefficients (slopes) for the effects of tree diversity on AGB, mediated by the effect of stand structural diversity. Path coefficients are +/- 1 standard error. Path coefficients where the standard error does not overlap zero are considered to be non-significant effects.}
+	\label{struc_model_slopes}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=\textwidth]{full_latent_model_slopes}
+	\caption{Path coefficients (slopes) for the interactive effects of abiotic environment and tree diversity on AGB across all plots. Path coefficients are +/- 1 standard error. Path coefficients where the standard error does not overlap zero are considered to be non-significant effects.}
+	\label{full_latent_model_slopes}
+\end{figure}
+
+\subsection{Structural diversity}
+
+The latent variable of tree species diversity had a negative direct effect on AGB across the region. 
 
 \section{Discussion}
 
 \end{document}
 
+% Seidel 2019: Large trees tend to possess a greater structural complexity than small trees, not due to their size per se, but due to more complex architecture.

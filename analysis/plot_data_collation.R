@@ -45,6 +45,12 @@ ocdens <- read.csv("data/seosaw_ocdens.csv")
 fire_return <- read.csv("data/fire_return.csv")
 ##' Data copied from burn /exports/...
 
+# WorldClim temp.
+temp <- read.csv("data/plot_temp.csv")
+
+# WorldClim precip.
+precip <- read.csv("data/plot_precip.csv")
+
 # Clean data ----
 
 # Create large raw dataframe
@@ -58,7 +64,9 @@ plot_data <- ssaw8$struct %>%
   left_join(., ssaw8$cluster, by = c("plotcode" = "plotcode")) %>%
   left_join(., aridity_index, by = c("plotcode" = "plotcode")) %>%
   left_join(., ocdens, by = c("plotcode" = "plotcode")) %>%
-  left_join(., fire_return, by = c("plotcode" = "plotcode")) %>%
+  left_join(., fire_return, by = c("plotcode" = "plotcode")) %>%  
+  left_join(., temp, by = c("plotcode" = "plotcode")) %>%
+  left_join(., precip, by = c("plotcode" = "plotcode")) %>%
   dplyr::select(plotcode,
     longitude_of_centre = longitude_of_centre.x.x,
     latitude_of_centre = latitude_of_centre.x.x,
@@ -81,14 +89,42 @@ plot_data <- ssaw8$struct %>%
     sand_per = SNDPPT_M_sl1_1km_ll,
     org_c_per = ORCDRC_M_sl1_1km_ll,
     aridity_index = ai,
+    total_precip = bio12,
+    wc_total_precip = p_plot,
+    precip_seasonality = bio15,
+    wc_precip_seasonality = p_cov_plot,
     ocdens = ocdens,
     mean_temp = bio1,
+    wc_mean_temp = t_plot,
     temp_seasonality = bio4,
+    wc_temp_seasonality = t_cov_plot,
     pi, 
     plot_id,
     fire_return_mean,
     firecount_2001_2018,
     clust7, clust5, clust4)
+
+# Compare SEOSAW worldclim temp with worldclim from my extraction
+ggplot(plot_data, aes(x = mean_temp, y = wc_mean_temp)) + 
+  geom_point()
+
+ggplot(plot_data, aes(x = temp_seasonality, y = wc_temp_seasonality)) + 
+  geom_point()
+
+# Compare SEOSAW worldclim precip with worldclim from my extraction
+ggplot(plot_data, aes(x = total_precip, y = wc_total_precip)) + 
+  geom_point()
+
+ggplot(plot_data, aes(x = precip_seasonality, y = wc_precip_seasonality)) + 
+  geom_point()
+
+# Keep WC estimates from here on
+plot_data <- plot_data %>%
+  dplyr::select(-total_precip, -mean_temp, -temp_seasonality, -precip_seasonality) %>%
+  rename(total_precip = wc_total_precip,
+    precip_seasonality = wc_precip_seasonality,
+    mean_temp = wc_mean_temp,
+    temp_seasonality = wc_temp_seasonality)
 
 # Aggregate Zambian Forestry Commission plots ----
 
@@ -129,6 +165,8 @@ plot_data_zam_agg <- plot_data_zam %>%
     sand_per = mean(sand_per, na.rm = TRUE),
     org_c_per = mean(org_c_per, na.rm = TRUE),
     aridity_index = mean(aridity_index, na.rm = TRUE),
+    total_precip = mean(total_precip, na.rm = TRUE),
+    precip_seasonality = mean(precip_seasonality, na.rm = TRUE),
     ocdens = mean(ocdens, na.rm = TRUE),
     mean_temp = mean(mean_temp, na.rm = TRUE),
     temp_seasonality = mean(temp_seasonality, na.rm = TRUE),
@@ -148,7 +186,7 @@ plot_data_zam$full_agg <- "full"
 plot_data_zam_agg$full_agg <- "agg"
 
 plot_zam_agg_noagg <- rbind(plot_data_zam, 
-  select(plot_data_zam_agg, -plot_group))
+  dplyr::select(plot_data_zam_agg, -plot_group))
 
 # Box plot of species richness
 rich_box <- ggplot() + 
@@ -271,7 +309,8 @@ plot_data_agg <- plot_data_agg %>%
     used_for_farming_in_last_30_years %in% c(NA, "N", "No (becaues of slope mostly its hilly, but in low lying areas farming is practised)", "", "?"),
     protected_from_fire %in% c(NA, "N", "No", "", "not intentionally"),
     cattle_graze_here %in% c(NA, "N", "Yes but mainly along the boundaries/edge", "", "No", "N "),
-    goats_graze_here %in% c(NA, "N", "Yes bu mainly along the boundaries/edge", "", "No")) %>%
+    goats_graze_here %in% c(NA, "N", "Yes bu mainly along the boundaries/edge", "", "No"),
+    !is.na(clust5)) %>%
   dplyr::select(-shape_of_plot, -manipulation_experiment, 
     -timber_harvesting_occurring, 
     -was_the_plot_high_graded_in_last_100_years, 
@@ -286,7 +325,12 @@ plot_data_agg <- plot_data_agg %>%
     -goats_graze_here,
     -plotcode_vec)
 
-# Estimate rarefied species richness ----
+# Remove plot with a crazy number of species
+##' The 10 Ha plot in DRC
+plot_data_agg <- plot_data_agg %>% 
+  filter(sp_rich != max(plot_data_agg$sp_rich))
+
+# Estimate rarefied species richness
 ab_mat <- s_fil %>% 
   filter(plot_group %in% plot_data_agg$plot_group) %>%
   dplyr::select(plot_group, gen_sp) %>%
@@ -296,7 +340,9 @@ row.names(ab_mat) <- ab_mat$plot_group
 
 ab_mat <- dplyr::select(ab_mat, -plot_group)
 
-rarecurve(ab_mat, step = 1, label = FALSE)
+rarecurve_list <- rarecurve(ab_mat, step = 1, label = FALSE)
+
+## GGPLOT ##
 
 raref <- as.data.frame(rarefy(ab_mat, sample = 15, se = TRUE))
 raref_df <- data.frame(t(raref))
@@ -305,7 +351,21 @@ names(raref_df) <- c("sp_rich_raref", "sp_rich_raref_sd", "plot_group")
 
 plot_data_agg <- left_join(plot_data_agg, raref_df, by = "plot_group")
 
+# Estimate Species abundance evenness from Shannon
+plot_data_agg$shannon_equit <- plot_data_agg$shannon / plot_data_agg$sp_rich
+
+# Create and index of fire intensity to account for plots with no fire
+##' Currently only 684 plots have fire
+plot_data_agg$fire_index <- as.character(cut_number(plot_data_agg$fire_return_mean, n = 4, 
+  labels = c("Frequent", "Occassional", "Rare", "Very rare")))
+plot_data_agg$fire_index[is.na(plot_data_agg$fire_index)] <- "No fire"
+plot_data_agg$fire_index <- factor(plot_data_agg$fire_index, levels = c("Frequent", "Occassional", "Rare", "Very rare", "No fire"))
+
+# Ensure that variables all have the same sign
+plot_data_agg$precip_seasonality <- 1 / plot_data_agg$precip_seasonality * 10000
+plot_data_agg$temp_seasonality <- 1 / plot_data_agg$temp_seasonality * 10000
+plot_data_agg$sand_per <- 1 / plot_data_agg$temp_seasonality * 10000
+
 # Write to CSV
 write.csv(plot_data_agg, "data/plot_data_fil_agg.csv", row.names = FALSE)
   
- 

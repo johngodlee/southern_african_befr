@@ -1,8 +1,8 @@
 #!/bin/bash
 
-FILES=(../inputs/ACM_GPP_ET_*.csv)
+FILES=(acm_input/ACM_GPP_ET_*.csv)
 
-LATS=$(cat lat_vec.txt)
+LATS=$(cat extracted_data/lat_vec.txt)
 
 LENGTH=${#FILES[@]}
 

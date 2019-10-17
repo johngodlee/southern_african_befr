@@ -1,0 +1,136 @@
+lavaan 0.6-5 ended normally after 29 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of free parameters                         10
+                                                      
+                                                  Used       Total
+  Number of observations                           655        1039
+                                                                  
+Model Test User Model:
+                                                      
+  Test statistic                                 0.000
+  Degrees of freedom                                 0
+
+Model Test Baseline Model:
+
+  Test statistic                                46.942
+  Degrees of freedom                                 9
+  P-value                                        0.000
+
+User Model versus Baseline Model:
+
+  Comparative Fit Index (CFI)                    1.000
+  Tucker-Lewis Index (TLI)                       1.000
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)               -737.420
+  Loglikelihood unrestricted model (H1)       -737.420
+                                                      
+  Akaike (AIC)                                1494.839
+  Bayesian (BIC)                              1539.686
+  Sample-size adjusted Bayesian (BIC)         1507.936
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.000
+  90 Percent confidence interval - lower         0.000
+  90 Percent confidence interval - upper         0.000
+  P-value RMSEA <= 0.05                             NA
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.000
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+  Standard errors                             Standard
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  bchave_log ~                                        
+    ocdens_std        0.034    0.038    0.896    0.370
+    sand_per_std      0.082    0.107    0.764    0.445
+    catin_x_cp_std   -0.078    0.047   -1.667    0.095
+    aridty_ndx_std   -0.194    0.180   -1.076    0.282
+    total_prcp_std    0.273    0.201    1.359    0.174
+    prcp_ssnlty_st    0.155    0.061    2.542    0.011
+    mean_temp_std    -0.128    0.041   -3.114    0.002
+    tmp_ssnlty_std    0.086    0.083    1.040    0.298
+    fr_rtrn_mn_lg_    0.083    0.031    2.628    0.009
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+   .bchave_log        0.556    0.031   18.097    0.000
+
+$FIT
+             npar              fmin             chisq                df            pvalue    baseline.chisq 
+           10.000             0.000             0.000             0.000                NA            46.942 
+      baseline.df   baseline.pvalue               cfi               tli              logl unrestricted.logl 
+            9.000             0.000             1.000             1.000          -737.420          -737.420 
+              aic               bic            ntotal              bic2             rmsea    rmsea.ci.lower 
+         1494.839          1539.686           655.000          1507.936             0.000             0.000 
+   rmsea.ci.upper      rmsea.pvalue              srmr 
+            0.000                NA             0.000 
+
+$PE
+                        lhs op                      rhs exo          est         se          z      pvalue
+1                bchave_log  ~               ocdens_std   0  0.034178891 0.03816132  0.8956423 0.370443817
+2                bchave_log  ~             sand_per_std   0  0.082130696 0.10747450  0.7641877 0.444755379
+3                bchave_log  ~        cation_ex_cap_std   0 -0.078304534 0.04696020 -1.6674660 0.095421771
+4                bchave_log  ~        aridity_index_std   0 -0.193716003 0.18010026 -1.0756009 0.282105784
+5                bchave_log  ~         total_precip_std   0  0.272957701 0.20078142  1.3594769 0.173995519
+6                bchave_log  ~   precip_seasonality_std   0  0.155121167 0.06102620  2.5418782 0.011025859
+7                bchave_log  ~            mean_temp_std   0 -0.128322350 0.04120995 -3.1138684 0.001846518
+8                bchave_log  ~     temp_seasonality_std   0  0.086496313 0.08313871  1.0403855 0.298160820
+9                bchave_log  ~ fire_return_mean_log_std   0  0.082502421 0.03139256  2.6280881 0.008586627
+10               bchave_log ~~               bchave_log   0  0.556429988 0.03074715 18.0969611 0.000000000
+11               ocdens_std ~~               ocdens_std   1  1.000493042 0.00000000         NA          NA
+12               ocdens_std ~~             sand_per_std   1  0.030209621 0.00000000         NA          NA
+13               ocdens_std ~~        cation_ex_cap_std   1  0.318994768 0.00000000         NA          NA
+14               ocdens_std ~~        aridity_index_std   1  0.276384354 0.00000000         NA          NA
+15               ocdens_std ~~         total_precip_std   1  0.210681679 0.00000000         NA          NA
+16               ocdens_std ~~   precip_seasonality_std   1  0.406468755 0.00000000         NA          NA
+17               ocdens_std ~~            mean_temp_std   1 -0.271609834 0.00000000         NA          NA
+18               ocdens_std ~~     temp_seasonality_std   1 -0.181649185 0.00000000         NA          NA
+19               ocdens_std ~~ fire_return_mean_log_std   1  0.001073571 0.00000000         NA          NA
+20             sand_per_std ~~             sand_per_std   1  1.105644762 0.00000000         NA          NA
+21             sand_per_std ~~        cation_ex_cap_std   1 -0.008758881 0.00000000         NA          NA
+22             sand_per_std ~~        aridity_index_std   1 -0.657341557 0.00000000         NA          NA
+23             sand_per_std ~~         total_precip_std   1 -0.651553123 0.00000000         NA          NA
+24             sand_per_std ~~   precip_seasonality_std   1 -0.007655545 0.00000000         NA          NA
+25             sand_per_std ~~            mean_temp_std   1 -0.493018319 0.00000000         NA          NA
+26             sand_per_std ~~     temp_seasonality_std   1 -1.069126543 0.00000000         NA          NA
+27             sand_per_std ~~ fire_return_mean_log_std   1  0.285739686 0.00000000         NA          NA
+28        cation_ex_cap_std ~~        cation_ex_cap_std   1  0.915320882 0.00000000         NA          NA
+29        cation_ex_cap_std ~~        aridity_index_std   1  0.139928701 0.00000000         NA          NA
+30        cation_ex_cap_std ~~         total_precip_std   1 -0.028307345 0.00000000         NA          NA
+31        cation_ex_cap_std ~~   precip_seasonality_std   1  0.597988180 0.00000000         NA          NA
+32        cation_ex_cap_std ~~            mean_temp_std   1  0.206651516 0.00000000         NA          NA
+33        cation_ex_cap_std ~~     temp_seasonality_std   1 -0.029395450 0.00000000         NA          NA
+34        cation_ex_cap_std ~~ fire_return_mean_log_std   1  0.091629542 0.00000000         NA          NA
+35        aridity_index_std ~~        aridity_index_std   1  0.863592457 0.00000000         NA          NA
+36        aridity_index_std ~~         total_precip_std   1  0.777828945 0.00000000         NA          NA
+37        aridity_index_std ~~   precip_seasonality_std   1  0.227724819 0.00000000         NA          NA
+38        aridity_index_std ~~            mean_temp_std   1  0.168906626 0.00000000         NA          NA
+39        aridity_index_std ~~     temp_seasonality_std   1  0.504491454 0.00000000         NA          NA
+40        aridity_index_std ~~ fire_return_mean_log_std   1 -0.250815479 0.00000000         NA          NA
+41         total_precip_std ~~         total_precip_std   1  0.766780639 0.00000000         NA          NA
+42         total_precip_std ~~   precip_seasonality_std   1  0.042402947 0.00000000         NA          NA
+43         total_precip_std ~~            mean_temp_std   1  0.110740830 0.00000000         NA          NA
+44         total_precip_std ~~     temp_seasonality_std   1  0.501221821 0.00000000         NA          NA
+45         total_precip_std ~~ fire_return_mean_log_std   1 -0.269131978 0.00000000         NA          NA
+46   precip_seasonality_std ~~   precip_seasonality_std   1  0.803385212 0.00000000         NA          NA
+47   precip_seasonality_std ~~            mean_temp_std   1  0.013291586 0.00000000         NA          NA
+48   precip_seasonality_std ~~     temp_seasonality_std   1 -0.027861219 0.00000000         NA          NA
+49   precip_seasonality_std ~~ fire_return_mean_log_std   1  0.046002906 0.00000000         NA          NA
+50            mean_temp_std ~~            mean_temp_std   1  0.957793175 0.00000000         NA          NA
+51            mean_temp_std ~~     temp_seasonality_std   1  0.536292658 0.00000000         NA          NA
+52            mean_temp_std ~~ fire_return_mean_log_std   1 -0.105578913 0.00000000         NA          NA
+53     temp_seasonality_std ~~     temp_seasonality_std   1  1.209902606 0.00000000         NA          NA
+54     temp_seasonality_std ~~ fire_return_mean_log_std   1 -0.264691771 0.00000000         NA          NA
+55 fire_return_mean_log_std ~~ fire_return_mean_log_std   1  0.979100487 0.00000000         NA          NA
+

@@ -90,7 +90,7 @@ closest2d <- function (id,lat,long,lat_in,long_in,nos_dim) {
 # set to the working directory for your analysis, 
 # NOTE 1: this script assumes that within this directory contains a "src" directory containing the ACM-GPP-ET model
 # NOTE 2: this script assumes that within this directory contains a "input" directory containing the *csv file inputs
-setwd("/Users/johngodlee/google_drive/postgrad/phd/thesis/chapters/chapter_1_biomass_region_befr/analysis/productivity_calculations") ; 
+setwd("/Users/johngodlee/google_drive/postgrad/phd/thesis/chapters/chapter_1_biomass_region_befr/analysis/prod_calc") ; 
 wkdir = getwd()
 # compile fortran code into a shared object which R can load as a function
 system("gfortran src/ACM_GPP_ET_R_interface.f90 -o src/acm_gpp_et.so -fPIC -shared")
@@ -272,18 +272,24 @@ acm_gpp_et_output = list(    units = units,
 save(acm_gpp_et_output, file="./acm_output/ACM_GPP_ET_test_output.RData")
 
 ###
-## Generate simple plots for the first two sites
+## Generate simple plots for the first three sites
 
-if (n > 1) {par(mfrow=c(2,4), mar = c(4,4,3,1), omi=c(0.1,0.1,0.1,0.1))} else {par(mfrow=c(2,2), mar = c(4,4,3,1), omi=c(0.1,0.1,0.1,0.1))}
+if (n > 1) {par(mfrow=c(3,4), mar = c(4,4,3,1), omi=c(0.1,0.1,0.1,0.1))} else {par(mfrow=c(2,2), mar = c(4,4,3,1), omi=c(0.1,0.1,0.1,0.1))}
 plot(timeseries_lai[1,]~seq(1,length(drivers$doy)), ylab="LAI", xlab="Day of simulation")
 plot(timeseries_gpp[1,]~seq(1,length(drivers$doy)), ylab="GPP", xlab="Day of simulation")
 plot(timeseries_transpiration[1,]~seq(1,length(drivers$doy)), ylab="Transpiration", xlab="Day of simulation")
 plot(timeseries_soilwatermm[1,]~seq(1,length(drivers$doy)), ylab="Top soil water (mm)", xlab="Day of simulation")
 if (n > 1) {
-    plot(timeseries_lai[n,]~seq(1,length(drivers$doy)), ylab="LAI", xlab="Day of simulation")
-    plot(timeseries_gpp[n,]~seq(1,length(drivers$doy)), ylab="GPP", xlab="Day of simulation")
-    plot(timeseries_transpiration[n,]~seq(1,length(drivers$doy)), ylab="Transpiration", xlab="Day of simulation")
-    plot(timeseries_soilwatermm[n,]~seq(1,length(drivers$doy)), ylab="Top soil water (mm)", xlab="Day of simulation")
+    plot(timeseries_lai[2,]~seq(1,length(drivers$doy)), ylab="LAI", xlab="Day of simulation")
+    plot(timeseries_gpp[2,]~seq(1,length(drivers$doy)), ylab="GPP", xlab="Day of simulation")
+    plot(timeseries_transpiration[2,]~seq(1,length(drivers$doy)), ylab="Transpiration", xlab="Day of simulation")
+    plot(timeseries_soilwatermm[2,]~seq(1,length(drivers$doy)), ylab="Top soil water (mm)", xlab="Day of simulation")
+} # n > 1
+if (n > 1) {
+  plot(timeseries_lai[3,]~seq(1,length(drivers$doy)), ylab="LAI", xlab="Day of simulation")
+  plot(timeseries_gpp[3,]~seq(1,length(drivers$doy)), ylab="GPP", xlab="Day of simulation")
+  plot(timeseries_transpiration[3,]~seq(1,length(drivers$doy)), ylab="Transpiration", xlab="Day of simulation")
+  plot(timeseries_soilwatermm[3,]~seq(1,length(drivers$doy)), ylab="Top soil water (mm)", xlab="Day of simulation")
 } # n > 1
 
 

@@ -1,0 +1,4217 @@
+Driver: GRIB/GRIdded Binary (.grb)
+Files: ecmwf_africa2012-06-01_2012-06-30.nc
+Size is 108, 109
+Coordinate System is:
+GEOGCS["Coordinate System imported from GRIB file",
+    DATUM["unknown",
+        SPHEROID["Sphere",6367470,0]],
+    PRIMEM["Greenwich",0],
+    UNIT["degree",0.0174532925199433]]
+Origin = (-20.625000000000000,40.875000000000000)
+Pixel Size = (0.750000000000000,-0.750000000000000)
+Corner Coordinates:
+Upper Left  ( -20.6250000,  40.8750000) ( 20d37'30.00"W, 40d52'30.00"N)
+Lower Left  ( -20.6250000, -40.8750000) ( 20d37'30.00"W, 40d52'30.00"S)
+Upper Right (  60.3750000,  40.8750000) ( 60d22'30.00"E, 40d52'30.00"N)
+Lower Right (  60.3750000, -40.8750000) ( 60d22'30.00"E, 40d52'30.00"S)
+Center      (  19.8750000,   0.0000000) ( 19d52'30.00"E,  0d 0' 0.01"N)
+Band 1 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338508800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338552000 sec UTC
+Band 2 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338508800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338552000 sec UTC
+Band 3 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338508800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338552000 sec UTC
+Band 4 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338508800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338552000 sec UTC
+Band 5 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338508800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338552000 sec UTC
+Band 6 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338508800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1338552000 sec UTC
+Band 7 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338508800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338552000 sec UTC
+Band 8 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338552000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338595200 sec UTC
+Band 9 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338552000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338595200 sec UTC
+Band 10 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338552000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338595200 sec UTC
+Band 11 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338552000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338595200 sec UTC
+Band 12 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338552000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338595200 sec UTC
+Band 13 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338552000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1338595200 sec UTC
+Band 14 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338552000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338595200 sec UTC
+Band 15 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338595200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338638400 sec UTC
+Band 16 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338595200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338638400 sec UTC
+Band 17 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338595200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338638400 sec UTC
+Band 18 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338595200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338638400 sec UTC
+Band 19 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338595200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338638400 sec UTC
+Band 20 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338595200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1338638400 sec UTC
+Band 21 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338595200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338638400 sec UTC
+Band 22 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338638400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338681600 sec UTC
+Band 23 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338638400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338681600 sec UTC
+Band 24 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338638400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338681600 sec UTC
+Band 25 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338638400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338681600 sec UTC
+Band 26 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338638400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338681600 sec UTC
+Band 27 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338638400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1338681600 sec UTC
+Band 28 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338638400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338681600 sec UTC
+Band 29 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338681600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338724800 sec UTC
+Band 30 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338681600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338724800 sec UTC
+Band 31 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338681600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338724800 sec UTC
+Band 32 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338681600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338724800 sec UTC
+Band 33 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338681600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338724800 sec UTC
+Band 34 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338681600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1338724800 sec UTC
+Band 35 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338681600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338724800 sec UTC
+Band 36 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338724800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338768000 sec UTC
+Band 37 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338724800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338768000 sec UTC
+Band 38 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338724800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338768000 sec UTC
+Band 39 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338724800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338768000 sec UTC
+Band 40 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338724800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338768000 sec UTC
+Band 41 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338724800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1338768000 sec UTC
+Band 42 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338724800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338768000 sec UTC
+Band 43 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338768000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338811200 sec UTC
+Band 44 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338768000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338811200 sec UTC
+Band 45 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338768000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338811200 sec UTC
+Band 46 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338768000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338811200 sec UTC
+Band 47 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338768000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338811200 sec UTC
+Band 48 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338768000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1338811200 sec UTC
+Band 49 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338768000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338811200 sec UTC
+Band 50 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338811200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338854400 sec UTC
+Band 51 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338811200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338854400 sec UTC
+Band 52 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338811200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338854400 sec UTC
+Band 53 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338811200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338854400 sec UTC
+Band 54 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338811200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338854400 sec UTC
+Band 55 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338811200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1338854400 sec UTC
+Band 56 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338811200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338854400 sec UTC
+Band 57 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338854400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338897600 sec UTC
+Band 58 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338854400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338897600 sec UTC
+Band 59 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338854400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338897600 sec UTC
+Band 60 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338854400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338897600 sec UTC
+Band 61 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338854400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338897600 sec UTC
+Band 62 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338854400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1338897600 sec UTC
+Band 63 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338854400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338897600 sec UTC
+Band 64 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338897600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338940800 sec UTC
+Band 65 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338897600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338940800 sec UTC
+Band 66 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338897600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338940800 sec UTC
+Band 67 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338897600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338940800 sec UTC
+Band 68 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338897600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338940800 sec UTC
+Band 69 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338897600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1338940800 sec UTC
+Band 70 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338897600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338940800 sec UTC
+Band 71 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338940800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338984000 sec UTC
+Band 72 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338940800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338984000 sec UTC
+Band 73 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338940800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1338984000 sec UTC
+Band 74 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338940800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338984000 sec UTC
+Band 75 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338940800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1338984000 sec UTC
+Band 76 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338940800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1338984000 sec UTC
+Band 77 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338940800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1338984000 sec UTC
+Band 78 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338984000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339027200 sec UTC
+Band 79 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338984000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339027200 sec UTC
+Band 80 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338984000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339027200 sec UTC
+Band 81 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338984000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339027200 sec UTC
+Band 82 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338984000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339027200 sec UTC
+Band 83 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338984000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339027200 sec UTC
+Band 84 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1338984000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339027200 sec UTC
+Band 85 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339027200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339070400 sec UTC
+Band 86 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339027200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339070400 sec UTC
+Band 87 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339027200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339070400 sec UTC
+Band 88 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339027200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339070400 sec UTC
+Band 89 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339027200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339070400 sec UTC
+Band 90 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339027200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339070400 sec UTC
+Band 91 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339027200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339070400 sec UTC
+Band 92 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339070400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339113600 sec UTC
+Band 93 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339070400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339113600 sec UTC
+Band 94 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339070400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339113600 sec UTC
+Band 95 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339070400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339113600 sec UTC
+Band 96 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339070400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339113600 sec UTC
+Band 97 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339070400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339113600 sec UTC
+Band 98 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339070400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339113600 sec UTC
+Band 99 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339113600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339156800 sec UTC
+Band 100 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339113600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339156800 sec UTC
+Band 101 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339113600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339156800 sec UTC
+Band 102 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339113600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339156800 sec UTC
+Band 103 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339113600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339156800 sec UTC
+Band 104 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339113600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339156800 sec UTC
+Band 105 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339113600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339156800 sec UTC
+Band 106 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339156800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339200000 sec UTC
+Band 107 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339156800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339200000 sec UTC
+Band 108 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339156800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339200000 sec UTC
+Band 109 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339156800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339200000 sec UTC
+Band 110 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339156800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339200000 sec UTC
+Band 111 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339156800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339200000 sec UTC
+Band 112 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339156800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339200000 sec UTC
+Band 113 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339200000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339243200 sec UTC
+Band 114 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339200000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339243200 sec UTC
+Band 115 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339200000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339243200 sec UTC
+Band 116 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339200000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339243200 sec UTC
+Band 117 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339200000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339243200 sec UTC
+Band 118 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339200000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339243200 sec UTC
+Band 119 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339200000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339243200 sec UTC
+Band 120 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339243200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339286400 sec UTC
+Band 121 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339243200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339286400 sec UTC
+Band 122 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339243200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339286400 sec UTC
+Band 123 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339243200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339286400 sec UTC
+Band 124 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339243200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339286400 sec UTC
+Band 125 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339243200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339286400 sec UTC
+Band 126 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339243200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339286400 sec UTC
+Band 127 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339286400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339329600 sec UTC
+Band 128 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339286400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339329600 sec UTC
+Band 129 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339286400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339329600 sec UTC
+Band 130 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339286400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339329600 sec UTC
+Band 131 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339286400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339329600 sec UTC
+Band 132 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339286400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339329600 sec UTC
+Band 133 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339286400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339329600 sec UTC
+Band 134 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339329600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339372800 sec UTC
+Band 135 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339329600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339372800 sec UTC
+Band 136 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339329600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339372800 sec UTC
+Band 137 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339329600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339372800 sec UTC
+Band 138 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339329600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339372800 sec UTC
+Band 139 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339329600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339372800 sec UTC
+Band 140 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339329600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339372800 sec UTC
+Band 141 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339372800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339416000 sec UTC
+Band 142 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339372800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339416000 sec UTC
+Band 143 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339372800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339416000 sec UTC
+Band 144 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339372800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339416000 sec UTC
+Band 145 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339372800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339416000 sec UTC
+Band 146 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339372800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339416000 sec UTC
+Band 147 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339372800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339416000 sec UTC
+Band 148 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339416000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339459200 sec UTC
+Band 149 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339416000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339459200 sec UTC
+Band 150 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339416000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339459200 sec UTC
+Band 151 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339416000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339459200 sec UTC
+Band 152 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339416000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339459200 sec UTC
+Band 153 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339416000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339459200 sec UTC
+Band 154 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339416000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339459200 sec UTC
+Band 155 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339459200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339502400 sec UTC
+Band 156 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339459200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339502400 sec UTC
+Band 157 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339459200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339502400 sec UTC
+Band 158 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339459200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339502400 sec UTC
+Band 159 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339459200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339502400 sec UTC
+Band 160 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339459200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339502400 sec UTC
+Band 161 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339459200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339502400 sec UTC
+Band 162 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339502400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339545600 sec UTC
+Band 163 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339502400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339545600 sec UTC
+Band 164 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339502400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339545600 sec UTC
+Band 165 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339502400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339545600 sec UTC
+Band 166 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339502400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339545600 sec UTC
+Band 167 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339502400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339545600 sec UTC
+Band 168 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339502400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339545600 sec UTC
+Band 169 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339545600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339588800 sec UTC
+Band 170 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339545600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339588800 sec UTC
+Band 171 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339545600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339588800 sec UTC
+Band 172 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339545600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339588800 sec UTC
+Band 173 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339545600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339588800 sec UTC
+Band 174 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339545600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339588800 sec UTC
+Band 175 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339545600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339588800 sec UTC
+Band 176 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339588800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339632000 sec UTC
+Band 177 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339588800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339632000 sec UTC
+Band 178 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339588800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339632000 sec UTC
+Band 179 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339588800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339632000 sec UTC
+Band 180 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339588800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339632000 sec UTC
+Band 181 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339588800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339632000 sec UTC
+Band 182 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339588800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339632000 sec UTC
+Band 183 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339632000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339675200 sec UTC
+Band 184 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339632000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339675200 sec UTC
+Band 185 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339632000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339675200 sec UTC
+Band 186 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339632000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339675200 sec UTC
+Band 187 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339632000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339675200 sec UTC
+Band 188 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339632000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339675200 sec UTC
+Band 189 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339632000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339675200 sec UTC
+Band 190 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339675200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339718400 sec UTC
+Band 191 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339675200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339718400 sec UTC
+Band 192 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339675200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339718400 sec UTC
+Band 193 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339675200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339718400 sec UTC
+Band 194 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339675200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339718400 sec UTC
+Band 195 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339675200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339718400 sec UTC
+Band 196 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339675200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339718400 sec UTC
+Band 197 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339718400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339761600 sec UTC
+Band 198 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339718400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339761600 sec UTC
+Band 199 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339718400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339761600 sec UTC
+Band 200 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339718400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339761600 sec UTC
+Band 201 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339718400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339761600 sec UTC
+Band 202 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339718400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339761600 sec UTC
+Band 203 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339718400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339761600 sec UTC
+Band 204 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339761600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339804800 sec UTC
+Band 205 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339761600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339804800 sec UTC
+Band 206 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339761600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339804800 sec UTC
+Band 207 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339761600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339804800 sec UTC
+Band 208 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339761600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339804800 sec UTC
+Band 209 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339761600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339804800 sec UTC
+Band 210 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339761600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339804800 sec UTC
+Band 211 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339804800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339848000 sec UTC
+Band 212 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339804800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339848000 sec UTC
+Band 213 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339804800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339848000 sec UTC
+Band 214 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339804800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339848000 sec UTC
+Band 215 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339804800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339848000 sec UTC
+Band 216 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339804800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339848000 sec UTC
+Band 217 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339804800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339848000 sec UTC
+Band 218 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339848000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339891200 sec UTC
+Band 219 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339848000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339891200 sec UTC
+Band 220 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339848000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339891200 sec UTC
+Band 221 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339848000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339891200 sec UTC
+Band 222 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339848000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339891200 sec UTC
+Band 223 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339848000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339891200 sec UTC
+Band 224 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339848000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339891200 sec UTC
+Band 225 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339891200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339934400 sec UTC
+Band 226 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339891200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339934400 sec UTC
+Band 227 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339891200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339934400 sec UTC
+Band 228 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339891200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339934400 sec UTC
+Band 229 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339891200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339934400 sec UTC
+Band 230 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339891200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339934400 sec UTC
+Band 231 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339891200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339934400 sec UTC
+Band 232 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339934400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339977600 sec UTC
+Band 233 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339934400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339977600 sec UTC
+Band 234 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339934400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1339977600 sec UTC
+Band 235 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339934400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339977600 sec UTC
+Band 236 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339934400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1339977600 sec UTC
+Band 237 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339934400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1339977600 sec UTC
+Band 238 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339934400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1339977600 sec UTC
+Band 239 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339977600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340020800 sec UTC
+Band 240 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339977600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340020800 sec UTC
+Band 241 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339977600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340020800 sec UTC
+Band 242 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339977600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340020800 sec UTC
+Band 243 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339977600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340020800 sec UTC
+Band 244 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339977600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340020800 sec UTC
+Band 245 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1339977600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340020800 sec UTC
+Band 246 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340020800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340064000 sec UTC
+Band 247 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340020800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340064000 sec UTC
+Band 248 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340020800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340064000 sec UTC
+Band 249 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340020800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340064000 sec UTC
+Band 250 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340020800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340064000 sec UTC
+Band 251 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340020800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340064000 sec UTC
+Band 252 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340020800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340064000 sec UTC
+Band 253 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340064000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340107200 sec UTC
+Band 254 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340064000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340107200 sec UTC
+Band 255 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340064000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340107200 sec UTC
+Band 256 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340064000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340107200 sec UTC
+Band 257 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340064000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340107200 sec UTC
+Band 258 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340064000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340107200 sec UTC
+Band 259 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340064000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340107200 sec UTC
+Band 260 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340107200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340150400 sec UTC
+Band 261 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340107200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340150400 sec UTC
+Band 262 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340107200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340150400 sec UTC
+Band 263 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340107200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340150400 sec UTC
+Band 264 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340107200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340150400 sec UTC
+Band 265 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340107200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340150400 sec UTC
+Band 266 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340107200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340150400 sec UTC
+Band 267 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340150400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340193600 sec UTC
+Band 268 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340150400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340193600 sec UTC
+Band 269 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340150400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340193600 sec UTC
+Band 270 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340150400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340193600 sec UTC
+Band 271 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340150400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340193600 sec UTC
+Band 272 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340150400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340193600 sec UTC
+Band 273 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340150400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340193600 sec UTC
+Band 274 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340193600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340236800 sec UTC
+Band 275 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340193600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340236800 sec UTC
+Band 276 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340193600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340236800 sec UTC
+Band 277 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340193600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340236800 sec UTC
+Band 278 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340193600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340236800 sec UTC
+Band 279 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340193600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340236800 sec UTC
+Band 280 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340193600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340236800 sec UTC
+Band 281 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340236800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340280000 sec UTC
+Band 282 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340236800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340280000 sec UTC
+Band 283 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340236800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340280000 sec UTC
+Band 284 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340236800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340280000 sec UTC
+Band 285 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340236800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340280000 sec UTC
+Band 286 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340236800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340280000 sec UTC
+Band 287 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340236800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340280000 sec UTC
+Band 288 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340280000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340323200 sec UTC
+Band 289 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340280000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340323200 sec UTC
+Band 290 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340280000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340323200 sec UTC
+Band 291 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340280000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340323200 sec UTC
+Band 292 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340280000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340323200 sec UTC
+Band 293 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340280000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340323200 sec UTC
+Band 294 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340280000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340323200 sec UTC
+Band 295 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340323200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340366400 sec UTC
+Band 296 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340323200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340366400 sec UTC
+Band 297 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340323200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340366400 sec UTC
+Band 298 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340323200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340366400 sec UTC
+Band 299 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340323200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340366400 sec UTC
+Band 300 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340323200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340366400 sec UTC
+Band 301 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340323200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340366400 sec UTC
+Band 302 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340366400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340409600 sec UTC
+Band 303 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340366400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340409600 sec UTC
+Band 304 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340366400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340409600 sec UTC
+Band 305 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340366400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340409600 sec UTC
+Band 306 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340366400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340409600 sec UTC
+Band 307 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340366400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340409600 sec UTC
+Band 308 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340366400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340409600 sec UTC
+Band 309 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340409600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340452800 sec UTC
+Band 310 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340409600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340452800 sec UTC
+Band 311 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340409600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340452800 sec UTC
+Band 312 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340409600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340452800 sec UTC
+Band 313 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340409600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340452800 sec UTC
+Band 314 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340409600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340452800 sec UTC
+Band 315 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340409600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340452800 sec UTC
+Band 316 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340452800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340496000 sec UTC
+Band 317 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340452800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340496000 sec UTC
+Band 318 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340452800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340496000 sec UTC
+Band 319 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340452800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340496000 sec UTC
+Band 320 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340452800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340496000 sec UTC
+Band 321 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340452800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340496000 sec UTC
+Band 322 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340452800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340496000 sec UTC
+Band 323 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340496000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340539200 sec UTC
+Band 324 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340496000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340539200 sec UTC
+Band 325 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340496000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340539200 sec UTC
+Band 326 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340496000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340539200 sec UTC
+Band 327 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340496000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340539200 sec UTC
+Band 328 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340496000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340539200 sec UTC
+Band 329 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340496000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340539200 sec UTC
+Band 330 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340539200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340582400 sec UTC
+Band 331 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340539200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340582400 sec UTC
+Band 332 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340539200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340582400 sec UTC
+Band 333 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340539200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340582400 sec UTC
+Band 334 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340539200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340582400 sec UTC
+Band 335 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340539200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340582400 sec UTC
+Band 336 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340539200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340582400 sec UTC
+Band 337 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340582400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340625600 sec UTC
+Band 338 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340582400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340625600 sec UTC
+Band 339 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340582400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340625600 sec UTC
+Band 340 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340582400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340625600 sec UTC
+Band 341 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340582400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340625600 sec UTC
+Band 342 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340582400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340625600 sec UTC
+Band 343 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340582400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340625600 sec UTC
+Band 344 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340625600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340668800 sec UTC
+Band 345 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340625600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340668800 sec UTC
+Band 346 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340625600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340668800 sec UTC
+Band 347 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340625600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340668800 sec UTC
+Band 348 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340625600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340668800 sec UTC
+Band 349 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340625600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340668800 sec UTC
+Band 350 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340625600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340668800 sec UTC
+Band 351 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340668800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340712000 sec UTC
+Band 352 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340668800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340712000 sec UTC
+Band 353 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340668800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340712000 sec UTC
+Band 354 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340668800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340712000 sec UTC
+Band 355 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340668800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340712000 sec UTC
+Band 356 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340668800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340712000 sec UTC
+Band 357 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340668800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340712000 sec UTC
+Band 358 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340712000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340755200 sec UTC
+Band 359 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340712000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340755200 sec UTC
+Band 360 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340712000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340755200 sec UTC
+Band 361 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340712000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340755200 sec UTC
+Band 362 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340712000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340755200 sec UTC
+Band 363 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340712000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340755200 sec UTC
+Band 364 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340712000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340755200 sec UTC
+Band 365 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340755200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340798400 sec UTC
+Band 366 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340755200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340798400 sec UTC
+Band 367 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340755200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340798400 sec UTC
+Band 368 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340755200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340798400 sec UTC
+Band 369 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340755200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340798400 sec UTC
+Band 370 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340755200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340798400 sec UTC
+Band 371 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340755200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340798400 sec UTC
+Band 372 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340798400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340841600 sec UTC
+Band 373 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340798400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340841600 sec UTC
+Band 374 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340798400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340841600 sec UTC
+Band 375 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340798400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340841600 sec UTC
+Band 376 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340798400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340841600 sec UTC
+Band 377 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340798400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340841600 sec UTC
+Band 378 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340798400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340841600 sec UTC
+Band 379 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340841600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340884800 sec UTC
+Band 380 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340841600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340884800 sec UTC
+Band 381 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340841600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340884800 sec UTC
+Band 382 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340841600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340884800 sec UTC
+Band 383 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340841600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340884800 sec UTC
+Band 384 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340841600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340884800 sec UTC
+Band 385 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340841600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340884800 sec UTC
+Band 386 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340884800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340928000 sec UTC
+Band 387 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340884800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340928000 sec UTC
+Band 388 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340884800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340928000 sec UTC
+Band 389 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340884800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340928000 sec UTC
+Band 390 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340884800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340928000 sec UTC
+Band 391 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340884800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340928000 sec UTC
+Band 392 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340884800 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340928000 sec UTC
+Band 393 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340928000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340971200 sec UTC
+Band 394 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340928000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340971200 sec UTC
+Band 395 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340928000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1340971200 sec UTC
+Band 396 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340928000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340971200 sec UTC
+Band 397 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340928000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1340971200 sec UTC
+Band 398 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340928000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1340971200 sec UTC
+Band 399 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340928000 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1340971200 sec UTC
+Band 400 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340971200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1341014400 sec UTC
+Band 401 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340971200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1341014400 sec UTC
+Band 402 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340971200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1341014400 sec UTC
+Band 403 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340971200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1341014400 sec UTC
+Band 404 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340971200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1341014400 sec UTC
+Band 405 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340971200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1341014400 sec UTC
+Band 406 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1340971200 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1341014400 sec UTC
+Band 407 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341014400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1341057600 sec UTC
+Band 408 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341014400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1341057600 sec UTC
+Band 409 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341014400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1341057600 sec UTC
+Band 410 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341014400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1341057600 sec UTC
+Band 411 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341014400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1341057600 sec UTC
+Band 412 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341014400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1341057600 sec UTC
+Band 413 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341014400 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1341057600 sec UTC
+Band 414 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top solar radiation [W*s/m^2]
+    GRIB_ELEMENT=TSR
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341057600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1341100800 sec UTC
+Band 415 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Max 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MX2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341057600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1341100800 sec UTC
+Band 416 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Min 2m temp since previous post-processing [C]
+    GRIB_ELEMENT=MN2T
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341057600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[C]
+    GRIB_VALID_TIME=  1341100800 sec UTC
+Band 417 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Top net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=TSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341057600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1341100800 sec UTC
+Band 418 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface net solar radiation clear sky [W/m^2]
+    GRIB_ELEMENT=SSRC
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341057600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W/m^2]
+    GRIB_VALID_TIME=  1341100800 sec UTC
+Band 419 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Total precipitation [m]
+    GRIB_ELEMENT=TP
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341057600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[m]
+    GRIB_VALID_TIME=  1341100800 sec UTC
+Band 420 Block=108x1 Type=Float64, ColorInterp=Undefined
+  Description = 0[-] SFC (Ground or water surface)
+  Metadata:
+    GRIB_COMMENT=Surface solar radiation downwards [W*s/m^2]
+    GRIB_ELEMENT=SSRD
+    GRIB_FORECAST_SECONDS=43200 sec
+    GRIB_REF_TIME=  1341057600 sec UTC
+    GRIB_SHORT_NAME=0-SFC
+    GRIB_UNIT=[W*s/m^2]
+    GRIB_VALID_TIME=  1341100800 sec UTC

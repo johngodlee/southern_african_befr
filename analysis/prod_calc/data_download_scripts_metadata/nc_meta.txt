@@ -1,0 +1,39 @@
+File ecmwf/ecmwf_nc/ecmwf_africa2010-01-01_2010-01-31.nc (NC_FORMAT_NETCDF4):
+
+     6 variables (excluding dimension variables):
+        float var178[lon,lat,time]   (Chunking: [108,109,1])  
+            table: 128
+        float var201[lon,lat,time]   (Chunking: [108,109,1])  
+            table: 128
+        float var202[lon,lat,time]   (Chunking: [108,109,1])  
+            table: 128
+        float var208[lon,lat,time]   (Chunking: [108,109,1])  
+            table: 128
+        float var210[lon,lat,time]   (Chunking: [108,109,1])  
+            table: 128
+        float var228[lon,lat,time]   (Chunking: [108,109,1])  
+            table: 128
+
+     3 dimensions:
+        time  Size:248   *** is unlimited ***
+            standard_name: time
+            units: hours since 2010-1-1 00:00:00
+            calendar: proleptic_gregorian
+            axis: T
+        lon  Size:108
+            standard_name: longitude
+            long_name: longitude
+            units: degrees_east
+            axis: X
+        lat  Size:109
+            standard_name: latitude
+            long_name: latitude
+            units: degrees_north
+            axis: Y
+
+    5 global attributes:
+        CDI: Climate Data Interface version 1.9.5 (http://mpimet.mpg.de/cdi)
+        Conventions: CF-1.6
+        history: Tue Oct 30 10:52:02 2018: cdo -f nc4 copy ecmwf_africa2010-01-01_2010-01-31.grb ecmwf_africa2010-01-01_2010-01-31.nc
+        institution: European Centre for Medium-Range Weather Forecasts
+        CDO: Climate Data Operators version 1.9.5 (http://mpimet.mpg.de/cdo)

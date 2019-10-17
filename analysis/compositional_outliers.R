@@ -44,7 +44,7 @@ stem_ab_mat <- s_fil %>%
 # Set rownames
 rownames(stem_ab_mat) <- stem_ab_mat$plot_group
 
-stem_ab_mat <- select(stem_ab_mat, -plot_group)
+stem_ab_mat <- dplyr::select(stem_ab_mat, -plot_group)
 
 stem_ab_mat_dist <- vegdist(stem_ab_mat,  method = "bray")
 

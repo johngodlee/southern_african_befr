@@ -1,0 +1,338 @@
+[[1]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ total_precip + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 2810.5
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.4927 -0.6170  0.1431  0.6861  2.0046 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.01234  0.1111  
+ Residual             0.74176  0.8613  
+Number of obs: 1097, groups:  clust5, 5
+
+Fixed effects:
+              Estimate Std. Error t value
+(Intercept)  2.8051181  0.1165167  24.075
+total_precip 0.0008143  0.0001102   7.388
+
+Correlation of Fixed Effects:
+            (Intr)
+total_precp -0.859
+
+[[2]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ precip_seasonality + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 2814.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.3528 -0.5734  0.1128  0.7263  2.5582 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.09941  0.3153  
+ Residual             0.74275  0.8618  
+Number of obs: 1097, groups:  clust5, 5
+
+Fixed effects:
+                   Estimate Std. Error t value
+(Intercept)        2.709698   0.186646  14.518
+precip_seasonality 0.007337   0.001034   7.096
+
+Correlation of Fixed Effects:
+            (Intr)
+prcp_ssnlty -0.626
+
+[[3]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ mean_temp + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 2829
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.5366 -0.5349  0.0969  0.6413  2.6383 
+
+Random effects:
+ Groups   Name        Variance  Std.Dev.
+ clust5   (Intercept) 0.0007216 0.02686 
+ Residual             0.7642593 0.87422 
+Number of obs: 1097, groups:  clust5, 5
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)  5.14309    0.30272  16.990
+mean_temp   -0.07314    0.01388  -5.268
+
+Correlation of Fixed Effects:
+          (Intr)
+mean_temp -0.995
+
+[[4]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ fire_return_mean_log + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 1587.5
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.0359 -0.5806  0.1194  0.6949  2.0313 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.0135   0.1162  
+ Residual             0.6066   0.7789  
+Number of obs: 674, groups:  clust5, 5
+
+Fixed effects:
+                     Estimate Std. Error t value
+(Intercept)           2.96478    0.35938   8.250
+fire_return_mean_log  0.08482    0.05176   1.639
+
+Correlation of Fixed Effects:
+            (Intr)
+fr_rtrn_mn_ -0.983
+
+[[5]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ sp_rich_raref + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 2821.6
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.3751 -0.5702  0.0808  0.6689  2.7438 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.009591 0.09793 
+ Residual             0.756347 0.86968 
+Number of obs: 1097, groups:  clust5, 5
+
+Fixed effects:
+              Estimate Std. Error t value
+(Intercept)    3.09864    0.09510  32.584
+sp_rich_raref  0.07429    0.01293   5.745
+
+Correlation of Fixed Effects:
+            (Intr)
+sp_rich_rrf -0.819
+
+[[6]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ shannon_cube + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 2777.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.4993 -0.5989  0.1097  0.6727  2.8118 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.01227  0.1108  
+ Residual             0.74959  0.8658  
+Number of obs: 1085, groups:  clust5, 5
+
+Fixed effects:
+             Estimate Std. Error t value
+(Intercept)   3.79967    0.08793  43.215
+shannon_cube -0.50126    0.12948  -3.871
+
+Correlation of Fixed Effects:
+            (Intr)
+shannon_cub -0.733
+
+[[7]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ shannon_equit + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 2676.7
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.3735 -0.5725  0.0750  0.6559  3.7983 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.01751  0.1323  
+ Residual             0.68360  0.8268  
+Number of obs: 1085, groups:  clust5, 5
+
+Fixed effects:
+              Estimate Std. Error t value
+(Intercept)     3.9986     0.0793   50.42
+shannon_equit  -3.4642     0.3162  -10.95
+
+Correlation of Fixed Effects:
+            (Intr)
+shannon_eqt -0.519
+
+[[8]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ stems_ha_log + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 2760.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.4633 -0.5862  0.1158  0.6650  2.8742 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.01228  0.1108  
+ Residual             0.71587  0.8461  
+Number of obs: 1097, groups:  clust5, 5
+
+Fixed effects:
+             Estimate Std. Error t value
+(Intercept)   1.58058    0.20893   7.565
+stems_ha_log  0.34243    0.03493   9.803
+
+Correlation of Fixed Effects:
+            (Intr)
+stems_ha_lg -0.959
+
+[[9]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ cov_height + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 1662.6
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.2258 -0.6264  0.0840  0.7132  2.5337 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.03862  0.1965  
+ Residual             0.61588  0.7848  
+Number of obs: 698, groups:  clust5, 5
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept) 3.055976   0.139624  21.887
+cov_height  0.014232   0.003066   4.642
+
+Correlation of Fixed Effects:
+           (Intr)
+cov_height -0.709
+
+[[10]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ cov_dbh + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 2691
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.7302 -0.6076  0.0844  0.7164  2.6183 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.03041  0.1744  
+ Residual             0.66639  0.8163  
+Number of obs: 1097, groups:  clust5, 5
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept) 2.436473   0.117698   20.70
+cov_dbh     0.019803   0.001465   13.52
+
+Correlation of Fixed Effects:
+        (Intr)
+cov_dbh -0.694
+
+[[11]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ ocdens + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 2751.3
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.4297 -0.5282  0.1094  0.6827  2.2499 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.02257  0.1502  
+ Residual             0.70300  0.8385  
+Number of obs: 1097, groups:  clust5, 5
+
+Fixed effects:
+             Estimate Std. Error t value
+(Intercept) 2.6591489  0.1109553   23.97
+ocdens      0.0037474  0.0003469   10.80
+
+Correlation of Fixed Effects:
+       (Intr)
+ocdens -0.737
+
+[[12]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ sand_per + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 2852.5
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.7083 -0.5790  0.1252  0.6722  2.5028 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.006933 0.08327 
+ Residual             0.778195 0.88215 
+Number of obs: 1097, groups:  clust5, 5
+
+Fixed effects:
+             Estimate Std. Error t value
+(Intercept)  3.725337   0.130693  28.504
+sand_per    -0.014217   0.009693  -1.467
+
+Correlation of Fixed Effects:
+         (Intr)
+sand_per -0.927
+
+[[13]]
+Linear mixed model fit by REML ['lmerMod']
+Formula: bchave_log ~ cation_ex_cap + (1 | clust5)
+   Data: plot_data
+
+REML criterion at convergence: 2848.9
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.6628 -0.5891  0.1120  0.6931  2.5759 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ clust5   (Intercept) 0.01173  0.1083  
+ Residual             0.77453  0.8801  
+Number of obs: 1097, groups:  clust5, 5
+
+Fixed effects:
+              Estimate Std. Error t value
+(Intercept)   3.314783   0.110024  30.128
+cation_ex_cap 0.020666   0.008335   2.479
+
+Correlation of Fixed Effects:
+            (Intr)
+cation_x_cp -0.845
+

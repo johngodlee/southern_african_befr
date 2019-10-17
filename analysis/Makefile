@@ -4,15 +4,15 @@
 
 # Variables
 STEMS=data/clean_input_data.Rdata
-
 PLOTS=data/seosaw_plot_summary5Apr2019.Rdata
 
 # Main
 # When the master data, or the scripts change, recompile models
-all: plot_data_descrip.R lmm.R sem.R data/plot_data_fil_agg_norm_std_outlier.csv 
+all: plot_data_descrip.R lmm.R sem.R data/plot_data_fil_agg_norm_std_outlier.csv data/region_temp_precip.csv
 	Rscript plot_data_descrip.R
 	Rscript lmm.R
 	Rscript sem.R
+	./img_transfer.sh
 
 # Data collation
 # When any of the scripts or the prelim data change, recompile master dataset
@@ -29,6 +29,10 @@ data/plot_data_fil_agg_norm_std.csv: bivar_rel_norm.R data/plot_data_fil_agg.csv
 # Aggregate the data
 data/plot_data_fil_agg.csv: plot_data_collation.R data/seosaw_aridity_index.csv data/fire_return.csv data/seosaw_ocdens.csv $(PLOTS) $(STEMS)
 	Rscript plot_data_collation.R
+
+# Get regional climate space
+data/region_temp_precip.csv: data/wc2.0_30s_tavg/* data/wc2.0_30s_prec/*
+	Rscript temp_precip_region.R
 
 # Process aridity data
 data/seosaw_aridity_index.csv: aridity_index_seosaw.R data/ai_et0_crop/ai_et0_crop.tif $(PLOTS) 

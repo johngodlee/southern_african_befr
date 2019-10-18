@@ -1,0 +1,32 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Thu, Oct 17, 2019 - 12:52:33
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{struc_model_summ} 
+\begin{tabular}{@{\extracolsep{5pt}} ccccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+lhs & op & rhs & label & exo & est & se & z & pvalue \\ 
+\hline \\[-1.8ex] 
+div & =\textasciitilde & sp\_rich\_raref\_std &  & $0$ & $1$ & $0$ & $$ & $$ \\ 
+div & =\textasciitilde & shannon\_equit\_std &  & $0$ & $1$ & $0$ & $$ & $$ \\ 
+div & =\textasciitilde & shannon\_cube\_std &  & $0$ & $1$ & $0$ & $$ & $$ \\ 
+struc & =\textasciitilde & cov\_dbh\_std &  & $0$ & $1$ & $0$ & $$ & $$ \\ 
+struc & =\textasciitilde & cov\_height\_std &  & $0$ & $1$ & $0$ & $$ & $$ \\ 
+bchave\_log & \textasciitilde & div & c & $0$ & $$-$0.320$ & $0.061$ & $$-$5.235$ & $0.00000$ \\ 
+bchave\_log & \textasciitilde & struc & b & $0$ & $0.390$ & $0.056$ & $6.907$ & $0$ \\ 
+struc & \textasciitilde & div & a & $0$ & $0.281$ & $0.057$ & $4.920$ & $0.00000$ \\ 
+sp\_rich\_raref\_std & \textasciitilde\textasciitilde & sp\_rich\_raref\_std &  & $0$ & $0.565$ & $0.040$ & $14.296$ & $0$ \\ 
+shannon\_equit\_std & \textasciitilde\textasciitilde & shannon\_equit\_std &  & $0$ & $1.485$ & $0.089$ & $16.690$ & $0$ \\ 
+shannon\_cube\_std & \textasciitilde\textasciitilde & shannon\_cube\_std &  & $0$ & $0.256$ & $0.027$ & $9.613$ & $0$ \\ 
+cov\_dbh\_std & \textasciitilde\textasciitilde & cov\_dbh\_std &  & $0$ & $0.234$ & $0.028$ & $8.361$ & $0$ \\ 
+cov\_height\_std & \textasciitilde\textasciitilde & cov\_height\_std &  & $0$ & $0.485$ & $0.037$ & $13.259$ & $0$ \\ 
+bchave\_log & \textasciitilde\textasciitilde & bchave\_log &  & $0$ & $0.570$ & $0.034$ & $16.833$ & $0$ \\ 
+div & \textasciitilde\textasciitilde & div &  & $0$ & $0.402$ & $0.033$ & $12.340$ & $0$ \\ 
+struc & \textasciitilde\textasciitilde & struc &  & $0$ & $0.433$ & $0.036$ & $12.154$ & $0$ \\ 
+biomass\_div\_via\_struc & := & a\textasteriskcentered b & biomass\_div\_via\_struc & $0$ & $0.110$ & $0.029$ & $3.836$ & $0.0001$ \\ 
+biomass\_div\_total & := & c+(a\textasteriskcentered b) & biomass\_div\_total & $0$ & $$-$0.211$ & $0.059$ & $$-$3.585$ & $0.0003$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 

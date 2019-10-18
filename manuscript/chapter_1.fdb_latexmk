@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1571306625 "chapter_1.tex" "chapter_1.pdf" "chapter_1" 1571306626
+["pdflatex"] 1571306625 "chapter_1.tex" "chapter_1.pdf" "chapter_1" 1571312064
   "/Users/johngodlee/.texmf/code_format.tex" 1571073695 857 601e50ac7629ea4e5f739ceaa1f228f4 ""
   "/Users/johngodlee/.texmf/mynotes.sty" 1571170324 1408 6eb27cce338d337575678cdeab730632 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
@@ -106,7 +106,7 @@
   "img/struc_model_slopes.pdf" 1570202632 5165 d619f3c2d13f203345aeff95723682ef ""
   "img/temp_precip_hull.pdf" 1570202632 2177001 ef4cc36ba3a485a4b0d3fb9b4b526be4 ""
   (generated)
-  "chapter_1.log"
   "chapter_1.aux"
   "chapter_1.toc"
+  "chapter_1.log"
   "chapter_1.pdf"

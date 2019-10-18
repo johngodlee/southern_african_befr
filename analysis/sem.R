@@ -33,6 +33,8 @@ library(lavaan)
 library(semPlot)
 library(semTools)
 library(ggcorrplot)
+library(lme4)
+library(stargazer)
 
 # Import data ----
 
@@ -88,43 +90,20 @@ ggcorrplot(cor(corr_df, use = "complete.obs"),
   digits = 2, lab_size = 4)
 dev.off()
 
-# Environmental path model ----
+# Environmental model ----
 ##' Only the effects of climate and environment on biomass, 
-##' no tree diversity factors
+##' No tree diversity factors
 ##' No latent variables
 
-env_path_model_spec <- "
-# Factors affecting biomass
-
-## Soil
-bchave_log ~ ocdens_std
-bchave_log ~ sand_per_std
-bchave_log ~ cation_ex_cap_std
-
-## Moisture
-bchave_log ~ aridity_index_std
-bchave_log ~ total_precip_std
-bchave_log ~ precip_seasonality_std
-
-## Temp
-bchave_log ~ mean_temp_std
-bchave_log ~ temp_seasonality_std
-
-## Fire
-bchave_log ~ fire_return_mean_log_std
-"
-
-env_path_model_fit <- cfa(env_path_model_spec, data = sem_data)
+env_path_model_fit <- lmer(bchave_log ~ ocdens_std + sand_per_std + cation_ex_cap_std +
+  aridity_index_std + total_precip_std + precip_seasonality_std +
+  mean_temp_std + temp_seasonality_std + 
+  fire_return_mean_log_std + (1|clust5), data = sem_data)
 
 sink("output/env_path_model_fit.txt")
-print(summary(env_path_model_fit, fit.measures = TRUE))
+print(summary(env_path_model_fit))
+print(MuMIn::r.squaredGLMM(env_path_model_fit))
 sink()
-
-pdf(file = "img/env_path_model.pdf", width = 12, height = 8)
-semPaths(env_path_model_fit ,'mod', "est", 
-  layout = "tree", curvature = 1, residuals = FALSE, nCharNodes = 0,
-  label.cex = 2)
-dev.off()
 
 # Indirect effect of diversity on biomass via structure ----
 struc_model_spec <- "
@@ -151,6 +130,12 @@ struc_model_summ <- summary(struc_model_fit, fit.measures = TRUE)
 sink("output/struc_model_fit.txt")
 print(struc_model_summ)
 sink()
+
+fileConn<-file("output/struc_model_coef_stargazer.txt")
+writeLines(stargazer(struc_model_summ$PE, 
+  summary = FALSE, rownames = FALSE, label = "struc_model_summ", digit.separate = 0), fileConn)
+close(fileConn)
+
 
 pdf(file = "img/struc_model.pdf", width = 12, height = 8)
 semPaths(struc_model_fit ,'mod', "est", 

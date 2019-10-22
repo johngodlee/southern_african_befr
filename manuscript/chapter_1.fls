@@ -146,9 +146,14 @@ INPUT ./img/con_mod.pdf
 INPUT img/corr_mat.pdf
 INPUT ./img/corr_mat.pdf
 INPUT ./img/corr_mat.pdf
-INPUT img/struc_model_slopes.pdf
-INPUT ./img/struc_model_slopes.pdf
-INPUT ./img/struc_model_slopes.pdf
+INPUT img/struc_model_slopes_clust_all.pdf
+INPUT ./img/struc_model_slopes_clust_all.pdf
+INPUT ./img/struc_model_slopes_clust_all.pdf
+INPUT include/struc_model_fit_clust_stats.tex
+INPUT include/struc_model_fit_clust_stats.tex
+INPUT img/sem_struc_path.pdf
+INPUT ./img/sem_struc_path.pdf
+INPUT ./img/sem_struc_path.pdf
 INPUT img/full_latent_model_slopes.pdf
 INPUT ./img/full_latent_model_slopes.pdf
 INPUT ./img/full_latent_model_slopes.pdf

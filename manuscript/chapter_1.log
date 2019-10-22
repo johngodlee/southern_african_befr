@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.13)  17 OCT 2019 11:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.13)  22 OCT 2019 11:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -455,6 +455,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 Package natbib Warning: Citation `Review' on page 1 undefined on input line 16.
 
 
+Package natbib Warning: Citation `Liang2016' on page 1 undefined on input line 16.
+
+
 Package natbib Warning: Citation `Chen2011' on page 1 undefined on input line 16.
 
 
@@ -515,138 +518,156 @@ Package natbib Warning: Citation `Ratcliffe2017' on page 2 undefined on input li
 Package natbib Warning: Citation `Dohn2013' on page 2 undefined on input line 22.
 
 
-Package natbib Warning: Citation `Rowland2015a' on page 2 undefined on input line 22.
+Package natbib Warning: Citation `Rowland2015a' on page 2 undefined on input line 24.
 
 
-Package natbib Warning: Citation `Fensham2009' on page 2 undefined on input line 22.
+Package natbib Warning: Citation `Fensham2009' on page 2 undefined on input line 24.
 
 
-Package natbib Warning: Citation `Solbrig1996' on page 2 undefined on input line 22.
+Package natbib Warning: Citation `Solbrig1996' on page 2 undefined on input line 24.
 
 
-Package natbib Warning: Citation `Vila2005' on page 2 undefined on input line 22.
+Package natbib Warning: Citation `Vila2005' on page 2 undefined on input line 24.
 
 
-Package natbib Warning: Citation `Miombo-Book' on page 2 undefined on input line 26.
-
-
-Package natbib Warning: Citation `Fire is a herbivore' on page 2 undefined on input line 28.
-
-
-Package natbib Warning: Citation `Roques2001' on page 2 undefined on input line 28.
-
-
-Package natbib Warning: Citation `nieto2018' on page 2 undefined on input line 28.
-
-
-Package natbib Warning: Citation `Cardinale2002' on page 2 undefined on input line 28.
+Package natbib Warning: Citation `Miombo-Book' on page 2 undefined on input line 28.
 
 [2]
 
-LaTeX Warning: Reference `' on page 3 undefined on input line 30.
+Package natbib Warning: Citation `Fire is a herbivore' on page 3 undefined on input line 30.
 
 
-LaTeX Warning: Reference `plot_loc' on page 3 undefined on input line 47.
+Package natbib Warning: Citation `Roques2001' on page 3 undefined on input line 30.
 
 
-LaTeX Warning: Reference `temp_precip_hull' on page 3 undefined on input line 47.
+Package natbib Warning: Citation `nieto2018' on page 3 undefined on input line 30.
 
 
-Package natbib Warning: Citation `White' on page 3 undefined on input line 47.
+Package natbib Warning: Citation `Cardinale2002' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Reference `' on page 3 undefined on input line 32.
+
+
+LaTeX Warning: Reference `plot_loc' on page 3 undefined on input line 49.
+
+
+LaTeX Warning: Reference `temp_precip_hull' on page 3 undefined on input line 49.
+
+
+Package natbib Warning: Citation `White' on page 3 undefined on input line 49.
 
 <img/plot_loc.pdf, id=17, 361.35pt x 578.16pt>
 File: img/plot_loc.pdf Graphic file (type pdf)
 <use img/plot_loc.pdf>
-Package pdftex.def Info: img/plot_loc.pdf  used on input line 51.
+Package pdftex.def Info: img/plot_loc.pdf  used on input line 53.
 (pdftex.def)             Requested size: 188.9235pt x 302.277pt.
 <img/temp_precip_hull.pdf, id=18, 433.62pt x 433.62pt>
 File: img/temp_precip_hull.pdf Graphic file (type pdf)
 <use img/temp_precip_hull.pdf>
-Package pdftex.def Info: img/temp_precip_hull.pdf  used on input line 53.
+Package pdftex.def Info: img/temp_precip_hull.pdf  used on input line 55.
 (pdftex.def)             Requested size: 188.9235pt x 188.92754pt.
 
-Package natbib Warning: Citation `White' on page 3 undefined on input line 54.
+Package natbib Warning: Citation `White' on page 3 undefined on input line 56.
 
 
-Package natbib Warning: Citation `White' on page 3 undefined on input line 54.
+Package natbib Warning: Citation `White' on page 3 undefined on input line 56.
 
 [3]
 
-Package natbib Warning: Citation `Parr2014' on page 4 undefined on input line 57.
+Package natbib Warning: Citation `Parr2014' on page 4 undefined on input line 59.
 
 <img/pcoa_outlier.pdf, id=23, 722.7pt x 722.7pt>
 File: img/pcoa_outlier.pdf Graphic file (type pdf)
 <use img/pcoa_outlier.pdf>
-Package pdftex.def Info: img/pcoa_outlier.pdf  used on input line 65.
+Package pdftex.def Info: img/pcoa_outlier.pdf  used on input line 67.
 (pdftex.def)             Requested size: 236.15797pt x 236.1539pt.
 [4 <./img/plot_loc.pdf> <./img/temp_precip_hull.pdf>]
 
-Package natbib Warning: Citation `Ryanunbublished' on page 5 undefined on input line 74.
+Package natbib Warning: Citation `Ryanunbublished' on page 5 undefined on input line 76.
 
 
-Package natbib Warning: Citation `Chave2014' on page 5 undefined on input line 76.
+Package natbib Warning: Citation `Chave2014' on page 5 undefined on input line 78.
 
 
-Package natbib Warning: Citation `Chave2009' on page 5 undefined on input line 76.
+Package natbib Warning: Citation `Chave2009' on page 5 undefined on input line 78.
 
 
-Package natbib Warning: Citation `Zanne2009' on page 5 undefined on input line 76.
+Package natbib Warning: Citation `Zanne2009' on page 5 undefined on input line 78.
 
 [5 <./img/pcoa_outlier.pdf>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 96.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 98.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 
-Package natbib Warning: Citation `Fayolle2018' on page 6 undefined on input line 110.
+Package natbib Warning: Citation `Fayolle2018' on page 6 undefined on input line 112.
 
 
-Package natbib Warning: Citation `Lehmann2014_161-166' on page 6 undefined on input line 115.
+Package natbib Warning: Citation `Fayolle2018' on page 6 undefined on input line 112.
+
+
+LaTeX Warning: Reference `clust_tabl' on page 6 undefined on input line 112.
+
+
+Package natbib Warning: Citation `Lehmann2014_161-166' on page 6 undefined on input line 117.
 
 [6]
 <img/con_mod.pdf, id=67, 963.6pt x 542.025pt>
 File: img/con_mod.pdf Graphic file (type pdf)
 <use img/con_mod.pdf>
-Package pdftex.def Info: img/con_mod.pdf  used on input line 125.
+Package pdftex.def Info: img/con_mod.pdf  used on input line 123.
 (pdftex.def)             Requested size: 377.85419pt x 212.53851pt.
 <img/corr_mat.pdf, id=68, 578.16pt x 578.16pt>
 File: img/corr_mat.pdf Graphic file (type pdf)
 <use img/corr_mat.pdf>
-Package pdftex.def Info: img/corr_mat.pdf  used on input line 138.
+Package pdftex.def Info: img/corr_mat.pdf  used on input line 140.
 (pdftex.def)             Requested size: 283.39244pt x 283.3891pt.
  [7 <./img/con_mod.pdf>]
-<img/struc_model_slopes.pdf, id=88, 867.24pt x 289.08pt>
-File: img/struc_model_slopes.pdf Graphic file (type pdf)
-<use img/struc_model_slopes.pdf>
-Package pdftex.def Info: img/struc_model_slopes.pdf  used on input line 149.
-(pdftex.def)             Requested size: 472.31595pt x 157.4418pt.
-<img/full_latent_model_slopes.pdf, id=89, 867.24pt x 289.08pt>
+<img/struc_model_slopes_clust_all.pdf, id=88, 722.7pt x 722.7pt>
+File: img/struc_model_slopes_clust_all.pdf Graphic file (type pdf)
+<use img/struc_model_slopes_clust_all.pdf>
+Package pdftex.def Info: img/struc_model_slopes_clust_all.pdf  used on input line 151.
+(pdftex.def)             Requested size: 472.31595pt x 472.31883pt.
+ [8 <./img/corr_mat.pdf>] (./include/struc_model_fit_clust_stats.tex
+Overfull \hbox (224.05788pt too wide) in paragraph at lines 7--19
+ [][] 
+ []
+
+)
+<img/sem_struc_path.pdf, id=97, 963.6pt x 542.025pt>
+File: img/sem_struc_path.pdf Graphic file (type pdf)
+<use img/sem_struc_path.pdf>
+Package pdftex.def Info: img/sem_struc_path.pdf  used on input line 160.
+(pdftex.def)             Requested size: 472.31595pt x 265.67728pt.
+ [9 <./img/struc_model_slopes_clust_all.pdf>]
+<img/full_latent_model_slopes.pdf, id=107, 867.24pt x 289.08pt>
 File: img/full_latent_model_slopes.pdf Graphic file (type pdf)
 <use img/full_latent_model_slopes.pdf>
-Package pdftex.def Info: img/full_latent_model_slopes.pdf  used on input line 156.
+Package pdftex.def Info: img/full_latent_model_slopes.pdf  used on input line 167.
 (pdftex.def)             Requested size: 472.31595pt x 157.4418pt.
- [8 <./img/corr_mat.pdf> <./img/struc_model_slopes.pdf>]
+
 
 Package natbib Warning: There were undefined citations.
 
-[9 <./img/full_latent_model_slopes.pdf>] (./chapter_1.aux)
+[10 <./img/sem_struc_path.pdf> <./img/full_latent_model_slopes.pdf>] (./chapter_1.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6552 strings out of 492616
- 95970 string characters out of 6129481
- 172203 words of memory out of 5000000
- 10376 multiletter control sequences out of 15000+600000
+ 6565 strings out of 492616
+ 96358 string characters out of 6129481
+ 171221 words of memory out of 5000000
+ 10384 multiletter control sequences out of 15000+600000
  15568 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 51i,10n,49p,2363b,378s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 51i,10n,49p,1959b,378s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on chapter_1.pdf (9 pages, 2614264 bytes).
+Output written on chapter_1.pdf (10 pages, 2657793 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 127 compressed objects within 2 object streams
+ 195 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

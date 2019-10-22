@@ -36,6 +36,8 @@ library(ggcorrplot)
 library(lme4)
 library(stargazer)
 
+source("clust_pal.R")
+
 # Import data ----
 
 # Aggregated and filtered data
@@ -55,7 +57,8 @@ sem_data<- sem_data %>%
 # Create a dataframe 
 corr_df <- sem_data %>%
   select(sand_per_std, ocdens_std, cation_ex_cap_std, 
-    total_precip_std, precip_seasonality_std, mean_temp_std, temp_seasonality_std,
+    total_precip_std, precip_seasonality_std, 
+    mean_temp_std, temp_seasonality_std, isothermality_std,
     fire_return_mean_log_std, sp_rich_raref_std, shannon_equit_std,
     cov_height_std, cov_dbh_std, bchave_log) %>%
   rename(`Sand %` = sand_per_std,
@@ -65,6 +68,7 @@ corr_df <- sem_data %>%
     `MAP CoV` = precip_seasonality_std, 
     `MAT` = mean_temp_std, 
     `MAT CoV` = temp_seasonality_std,
+    `Isothermality` = isothermality_std,
     `Fire return interval` = fire_return_mean_log_std, 
     `Raref. Sp. Rich.` = sp_rich_raref_std, 
     `Shannon equit.` = shannon_equit_std,
@@ -97,7 +101,7 @@ dev.off()
 
 env_path_model_fit <- lmer(bchave_log ~ ocdens_std + sand_per_std + cation_ex_cap_std +
   aridity_index_std + total_precip_std + precip_seasonality_std +
-  mean_temp_std + temp_seasonality_std + 
+  mean_temp_std + temp_seasonality_std + isothermality_std +
   fire_return_mean_log_std + (1|clust5), data = sem_data)
 
 sink("output/env_path_model_fit.txt")
@@ -106,14 +110,16 @@ print(MuMIn::r.squaredGLMM(env_path_model_fit))
 sink()
 
 # Indirect effect of diversity on biomass via structure ----
+
 struc_model_spec <- "
 # Latent vars
-div     =~  1*sp_rich_raref_std + 1*shannon_equit_std + 1*shannon_cube_std
-struc   =~  1*cov_dbh_std + 1*cov_height_std
+div     =~  1*sp_rich_raref_std + shannon_equit_std
+struc   =~  1*cov_dbh_std + cov_height_std
+biomass =~  1*bchave_log
 
 # Regressions
-bchave_log ~ c*div
-bchave_log ~ b*struc
+biomass ~ c*div
+biomass ~ b*struc
 struc ~ a*div
 
 # Explicitly model direct and indirect effects
@@ -121,7 +127,8 @@ biomass_div_via_struc := a*b
 biomass_div_total := c + (a*b)
 "
 
-##' Lots of missing values for canopy height covariance, because many plots have no height data
+##' Lots of missing values for canopy height covariance, 
+##' because many plots have no height data
 
 struc_model_fit <- cfa(struc_model_spec, data = sem_data)
 
@@ -136,11 +143,10 @@ writeLines(stargazer(struc_model_summ$PE,
   summary = FALSE, rownames = FALSE, label = "struc_model_summ", digit.separate = 0), fileConn)
 close(fileConn)
 
-
 pdf(file = "img/struc_model.pdf", width = 12, height = 8)
 semPaths(struc_model_fit ,'mod', "est", 
   layout = "circle", curvature = 1, residuals = FALSE, intercepts = FALSE, nCharNodes = 0,
-  label.cex = 2, ask = FALSE)
+  label.cex = 2, ask = FALSE, exoCov = FALSE)
 dev.off()
 
 # Dot and line plots for the slopes and errors
@@ -148,7 +154,7 @@ struc_model_regs <- struc_model_summ$PE %>%
   filter(op %in% c("~", ":=")) %>%
   mutate(
     op = case_when(
-      op == "~" & lhs == "bchave_log" ~ "Direct: Biomass",
+      op == "~" & lhs == "biomass" ~ "Direct: Biomass",
       TRUE ~ "Other eff."),
     rhs = case_when(
       op == "Direct: Biomass" & rhs == "div" ~ "Diversity",
@@ -187,6 +193,7 @@ struc_model_summ_clust_list[[i]] <- summary(struc_model_fit_clust_list[[i]], fit
 
 struc_model_diag_clust_list[[i]] <- semPaths(struc_model_fit_clust_list[[i]] ,'mod', "est", 
   layout = "circle", curvature = 1, residuals = FALSE, intercepts = FALSE, nCharNodes = 0,
+  exoCov = FALSE,
   label.cex = 2, ask = FALSE)
 
 pdf(file = paste0("img/struc_model_clust_", sem_data_clust_list[[i]]$clust5[1], ".pdf"), width = 12, height = 4)
@@ -201,14 +208,15 @@ struc_model_regs_list[[i]] <- struc_model_summ_clust_list[[i]]$PE %>%
   filter(op %in% c("~", ":=")) %>%
   mutate(
     op = case_when(
-      op == "~" & lhs == "bchave_log" ~ "Direct: Biomass",
+      op == "~" & lhs == "biomass" ~ "Direct: Biomass",
       TRUE ~ "Other eff."),
     rhs = case_when(
       op == "Direct: Biomass" & rhs == "div" ~ "Diversity",
       rhs == "struc" ~ "Struct.",
       op == "Other eff." & rhs == "div" ~ "Div. -> Struct",
       rhs == "a*b" ~ "Indirect: Div. -> Struct. -> Biomass",
-      rhs == "c+(a*b)" ~ "Total effect: Div. -> Biomass"))
+      rhs == "c+(a*b)" ~ "Total effect: Div. -> Biomass"),
+    model = first(sem_data_clust_list[[i]]$clust5))
 
 pdf(file = paste0("img/struc_model_slopes_clust_", sem_data_clust_list[[i]]$clust5[1], ".pdf"), width = 12, height = 4)
 print(ggplot() + 
@@ -226,13 +234,38 @@ print(ggplot() +
 dev.off()
 }
 
+# Combine all into one dot and line plot
+struc_model_regs_all <- do.call(rbind, struc_model_regs_list)
+
+pdf("img/struc_model_slopes_clust_all.pdf", width = 10, height = 10)
+ggplot() + 
+  geom_hline(yintercept = 0, linetype = 2) + 
+  geom_errorbar(data = struc_model_regs_all, 
+    aes(x = rhs, ymin = est - se, ymax = est + se, 
+      colour = factor(model, levels = c("1", "2", "3", "4", "5"))),
+    width = 0.4, position = position_dodge(width = 0.5)) + 
+  geom_point(data = struc_model_regs_all, 
+    aes(x = rhs, y = est, 
+      fill = factor(model, levels = c("1", "2", "3", "4", "5"))),
+    colour = "black", shape = 21, size = 2, 
+    position = position_dodge(width = 0.5)) +
+  scale_colour_manual(values = clust_pal, name = "Cluster") + 
+  scale_fill_manual(values = clust_pal, name = "Cluster") + 
+  facet_grid(op~., scales = "free_y", switch = "y") + 
+  labs(x = "Factor", y = expression("Path coefficient")) + 
+  coord_flip() + 
+  theme_classic() + 
+  theme(panel.grid.major.y = element_line(colour = "#E0E0E0"))
+dev.off()
+
+
 # extract model fit statistics and save to file
 struc_fit_df <- as.data.frame(sapply(struc_model_summ_clust_list, function(x){
   as.data.frame(t(data.frame(x$FIT)))
 }))
 
 struc_fit_df_clean <- struc_fit_df %>%
-  mutate(stat =  rownames_to_column(struc_fit_df)[,1]) %>%
+  mutate(stat =  row.names(.)) %>%
   select(stat = stat, 1:5) %>%
   rename_at(vars(contains('V')), funs(sub('V', 'C', .)))
 
@@ -240,154 +273,117 @@ sink(paste0("output/struc_model_fit_clust_stats.txt"))
   struc_fit_df_clean
 sink()
 
+struc_fit_df_clean_names <- struc_fit_df_clean$stat
 
-# Model of diversity and biomass with respect to precipitation ----
+struc_fit_df_clean_output <- as.data.frame(t(struc_fit_df_clean[,-1]))
+names(struc_fit_df_clean_output) <- struc_fit_df_clean_names
 
-sp_rich_precip_mod <- lm(bchave_log ~ shannon_cube_std * total_precip_std, data = sem_data)
+struc_fit_df_clean_output <- struc_fit_df_clean_output %>%
+  dplyr::select(npar, chisq, df, cfi, tli, logl, aic, bic, ntotal, 
+    rmsea,rmsea.ci.lower, rmsea.ci.upper, srmr) %>%
+  mutate(npar = round(as.numeric(npar)),
+    chisq = round(as.numeric(chisq), digits = 2),
+    df = round(as.numeric(df)),
+    cfi = round(as.numeric(cfi), digits = 3),
+    tli = round(as.numeric(tli), digits = 3),
+    logl = round(as.numeric(logl), digits = 1),
+    aic = round(as.numeric(aic), digits = 1),
+    bic = round(as.numeric(bic), digits = 1),
+    ntotal = round(as.numeric(ntotal)),
+    rmsea = round(as.numeric(rmsea), digits = 2),
+    rmsea.ci.lower = round(as.numeric(rmsea.ci.lower), digits = 3),
+    rmsea.ci.upper = round(as.numeric(rmsea.ci.upper), digits = 3),
+    srmr = round(as.numeric(srmr), digits = 3)
+    )
 
-summary(sp_rich_precip_mod)
+row.names(struc_fit_df_clean_output) <- c(paste0("C", 1:5))
+
+fileConn <- file("output/include/struc_model_fit_clust_stats.tex")
+writeLines(stargazer(struc_fit_df_clean_output, 
+  summary = FALSE,
+  label = "struc_model_fit_clust_stats", digit.separate = 0), fileConn)
+close(fileConn)
+
+
+# Multiple regressions for each latent on biomass ----
+# Model list
+mreg_list <- list(
+  mod_precip <- lm(bchave_log ~ total_precip_std + precip_seasonality_std, data = sem_data),
+  mod_temp <- lm(bchave_log ~ mean_temp_std + temp_seasonality_std, data = sem_data),
+  mod_div <- lm(bchave_log ~ sp_rich_raref_std + shannon_equit_std, data = sem_data),
+  mod_soil <- lm(bchave_log ~ ocdens_std + sand_per_std + cation_ex_cap_std, data = sem_data),
+  mod_struc <- lm(bchave_log ~ cov_dbh_std + cov_height_std, data = sem_data)
+  )
+
+names(mreg_list) <- c("precip", "temp", "div", "soil", "struc")
+
+beta_list <- list()
+comp_loading_list <- list()
+comp_list <- list()
+comp_mod_summ_list <- list()
+for(i in 1:length(mreg_list)){
+  
+  # Get beta coefficients for each model term
+  beta_list_mod <- list()
+  for(j in 1:(length(mreg_list[[i]]$coefficients) - 1)){
+    beta_list_mod[[j]] <- summary(mreg_list[[i]])$coefficients[j + 1, 1]
+  }
+  
+  beta_list[[i]] <- beta_list_mod
+  
+  # Estimate composite variables using beta coeffs. as loadings
+  comp_list_list <- list()
+  for(x in 1:length(beta_list[[i]])){
+    comp_list_list[[x]] <- as.vector(beta_list[[i]][[x]] * mreg_list[[i]]$model[x + 1])
+  }
+  comp_loading_list[[i]] <- comp_list_list
+  
+  comp_list[[i]] <- Reduce(`+`, comp_loading_list[[i]])
+  
+  # Run linear models with composite variables
+  comp_mod_summ_list[[i]] <- summary(
+    lm(mreg_list[[i]]$model$bchave_log ~ unlist(comp_list[[i]], use.names = FALSE))
+    )
+  
+  names(comp_mod_summ_list[i]) <- names(mreg_list[i])
+}
+
+# Save model output to file
+sink("output/lmm_composite_summ.txt")
+struc_fit_df_clean
+sink()
+
 
 # Full latent variable model ----
 ##' Environmental and biodiversity variables
 ##' Latent constructs
 ##' Mediation 
 
-# Find loadings of indicator variables
-
-## Precip
-precip_biomass_lm <- lm(bchave_log ~ total_precip_std + precip_seasonality_std, data = sem_data)
-total_precip_std_beta <- summary(precip_biomass_lm)$coefficients[2, 1]
-precip_seasonality_std_beta <-  summary(precip_biomass_lm)$coefficients[3, 1]
-precip_comp <- total_precip_std_beta * sem_data$total_precip_std + precip_seasonality_std_beta * sem_data$precip_seasonality_std
-summary(lm(sem_data$bchave_log ~ precip_comp))
-
-mod <- "
-precip_comp <~  0.2033567 * total_precip_std + 0.09073649 * precip_seasonality_std
-bchave_log ~ precip_comp
-"
-mod_sem <- sem(mod, data = sem_data, missing = "ML")
-summary(mod_sem, standardize = TRUE)
-
-## Temp
-temp_biomass_lm <- lm(bchave_log ~ mean_temp_std + temp_seasonality_std, data = sem_data)
-mean_temp_std_beta <- summary(temp_biomass_lm)$coefficients[2, 1]
-temp_seasonality_std_beta <-  summary(temp_biomass_lm)$coefficients[3, 1]
-temp_comp <- mean_temp_std_beta * sem_data$mean_temp_std + temp_seasonality_std_beta * sem_data$temp_seasonality_std
-summary(lm(sem_data$bchave_log ~ temp_comp))
-
-mod <- "
-temp_comp <~  -0.1769788 * mean_temp_std + 0.1115555 * temp_seasonality_std
-bchave_log ~ temp_comp
-"
-mod_sem <- sem(mod, data = sem_data, missing = "ML")
-summary(mod_sem, standardize = TRUE, fit.measures = TRUE)
-
-## Diversity
-div_biomass_lm <- lm(bchave_log ~ sp_rich_raref_std + shannon_equit_std, data = sem_data)
-sp_rich_raref_std_beta <- summary(div_biomass_lm)$coefficients[2, 1]
-shannon_equit_std_beta <-  summary(div_biomass_lm)$coefficients[3, 1]
-div_comp <- sp_rich_raref_std_beta * sem_data$sp_rich_raref_std + shannon_equit_std_beta * sem_data$shannon_equit_std
-summary(lm(sem_data$bchave_log ~ div_comp))
-
-mod <- "
-div_comp <~  0.08263048 * sp_rich_raref_std + -0.2517915 * shannon_equit_std
-bchave_log ~ div_comp
-"
-mod_sem <- sem(mod, data = sem_data, missing = "ML")
-summary(mod_sem, standardize = TRUE, fit.measures = TRUE)
-
-## Soil
-soil_biomass_lm <- lm(bchave_log ~ ocdens_std + sand_per_std + cation_ex_cap_std, data = sem_data)
-ocdens_std_beta <- summary(soil_biomass_lm)$coefficients[2, 1]
-sand_per_std_beta <-  summary(soil_biomass_lm)$coefficients[3, 1]
-cation_ex_cap_std_beta <-  summary(soil_biomass_lm)$coefficients[4, 1]
-
-soil_comp <- ocdens_std_beta * sem_data$ocdens_std + 
-  sand_per_std_beta * sem_data$sand_per_std + 
-  cation_ex_cap_std_beta * sem_data$cation_ex_cap_std 
-
-summary(lm(sem_data$bchave_log ~ soil_comp))
-
-mod <- "
-soil_comp <~  0.2567115 * ocdens_std + -0.059792 * sand_per_std + -0.0190841 * cation_ex_cap_std
-bchave_log ~ soil_comp
-"
-mod_sem <- sem(mod, data = sem_data, missing = "ML")
-summary(mod_sem, standardize = TRUE, fit.measures = TRUE)
-
-# Structure
-struc_biomass_lm <- lm(bchave_log ~ cov_dbh_std + cov_height_std, data = sem_data)
-cov_dbh_std_beta <- summary(struc_biomass_lm)$coefficients[2, 1]
-cov_height_std_beta <-  summary(struc_biomass_lm)$coefficients[3, 1]
-
-struc_comp <- cov_dbh_std_beta * sem_data$cov_dbh_std + 
-  cov_height_std_beta * sem_data$cov_height_std
-summary(lm(sem_data$bchave_log ~ struc_comp))
-
-mod <- "
-struc_comp <~  0.113934 * cov_dbh_std + 0.07923529 * cov_height_std
-bchave_log ~ struc_comp
-"
-mod_sem <- sem(mod, data = sem_data, missing = "ML")
-summary(mod_sem, standardize = TRUE, fit.measures = TRUE)
-
-
-# Correlation matrix of composite variables
-corr_comp_df <- data.frame(precip_comp, temp_comp, 
-  sem_data$fire_return_mean_log_std,
-  soil_comp, struc_comp, div_comp, sem_data$bchave_log) %>%
-  rename(
-    `Moisture` = precip_comp, 
-    `Temperature` = temp_comp, 
-    `Fire` = sem_data.fire_return_mean_log_std,
-    `Soil fertility` = soil_comp, 
-    `Struct. div.` = struc_comp, 
-    `Species div.` = div_comp, 
-    `AGB` = sem_data.bchave_log)
-
-pdf(file = "img/corr_mat_comp.pdf", width = 8, height = 8)
-ggcorrplot(cor(corr_comp_df, use = "complete.obs"), 
-  type = "lower", 
-  lab = TRUE,
-  method = "square",
-  colors = c("blue", "white", "red"),
-  ggtheme = theme_classic, 
-  show.legend = FALSE,
-  outline.color = "black",
-  digits = 2, lab_size = 4)
-dev.off()
-
-
-
 full_latent_mod_spec <- "
 # Latent vars
-precip =~  1*total_precip_std + precip_seasonality_std + sand_per_std
-fire    =~ fire_return_mean_log_std
-temp =~  1*mean_temp_std + temp_seasonality_std
-div =~  1*sp_rich_raref_std + shannon_equit_std
-struc   =~ cov_dbh_std
-soil =~  ocdens_std + sand_per_std + 1*cation_ex_cap_std
+precip  =~ 1*total_precip_std + precip_seasonality_std
+temp    =~ 1*isothermality_std + mean_temp_std + temp_seasonality_std
+div     =~ 1*sp_rich_std + shannon_equit_std
+soil    =~ 1*ocdens_std + sand_per_std + cation_ex_cap_std
+biomass =~ 1*bchave_log
 
-# Regressions - path analysis
-## Structural complexity
-struc ~ fire
-struc ~ precip
-struc ~ a*div
+## Diversity
+div ~ b*precip
+div ~ soil
 
 ## Biomass
-bchave_log ~ b*struc
-bchave_log ~ soil
-bchave_log ~ fire
-bchave_log ~ precip
-bchave_log ~ temp
-bchave_log ~ c*div
+biomass ~ soil
+biomass ~ c*precip
+biomass ~ temp
+biomass ~ a*div
 
 # Explicitly model direct and indirect effects
-biomass_div_via_struc := a*b
-biomass_div_total := c + (a*b)
+biomass_precip_via_div := a*b
+biomass_precip_total := c + (a*b)
 "
 
-full_latent_mod_fit <- sem(full_latent_mod_spec, data = sem_data)
+full_latent_mod_fit <- sem(full_latent_mod_spec, 
+  data = sem_data, orthogonal = TRUE)
 
 full_latent_mod_summ <- summary(full_latent_mod_fit, fit.measures = TRUE)
 
@@ -397,8 +393,9 @@ sink()
 
 pdf(file = "img/full_latent_mod.pdf", width = 12, height = 8)
 semPaths(full_latent_mod_fit ,'mod', "est", 
-  layout = "tree", curvature = 1, 
+  layout = "tree2", curvature = 1, 
   residuals = FALSE, intercepts = FALSE, thresholds = FALSE, nCharNodes = 0,
+  exoCov = FALSE,
   label.cex = 2)
 dev.off()
 
@@ -408,16 +405,15 @@ full_latent_mod_regs <- full_latent_mod_summ$PE %>%
   mutate(
     op = case_when(
       op == "~" & lhs == "biomass" ~ "Direct: biomass",
-      op == "~" & lhs == "struc" ~ "Direct: struct.",
+      op == "~" & lhs == "div" ~ "Direct: diversity",
       TRUE ~ "Other eff."),
     rhs = case_when(
-      rhs == "a*b" ~ "Indirect: Div. -> Struct. -> Biomass",
-      rhs == "c+(a*b)" ~ "Total effect: Div. -> Biomass",
-      rhs == "struc" ~ "Structural div.",
+      rhs == "a*b" ~ "Indirect: Moisture -> Div. -> Biomass",
+      rhs == "c+(a*b)" ~ "Total effect: Moisture -> Biomass",
       rhs == "soil" ~ "Soil fertility",
-      rhs == "fire" ~ "Fire disturbance",
       rhs == "div" ~ "Species diversity",
       rhs == "precip" ~ "Moisture avail.",
+      rhs == "temp" ~ "Temperature",
       TRUE ~ rhs))
 
 pdf(file = "img/full_latent_model_slopes.pdf", width = 12, height = 4)
@@ -434,4 +430,91 @@ ggplot() +
   theme(legend.position = "none", 
     panel.grid.major.y = element_line(colour = "#E0E0E0"))
 dev.off()
+
+# Full latent model for all groups
+full_model_fit_clust_list <- list()
+full_model_summ_clust_list <- list()
+full_model_diag_clust_list <- list()
+full_model_regs_list <- list()
+
+sem_data_clust_list <- split(sem_data, sem_data$clust4)
+
+for(i in 1:length(sem_data_clust_list)){
+  full_model_fit_clust_list[[i]] <- sem(full_latent_mod_spec, data = sem_data_clust_list[[i]])
+  
+  full_model_summ_clust_list[[i]] <- summary(full_model_fit_clust_list[[i]], fit.measures = TRUE)
+  
+  full_model_diag_clust_list[[i]] <- semPaths(full_model_fit_clust_list[[i]] ,'mod', "est", 
+    layout = "tree", curvature = 1, residuals = FALSE, intercepts = FALSE, nCharNodes = 0,
+    exoCov = FALSE,
+    label.cex = 2, ask = FALSE)
+  
+  pdf(file = paste0("img/full_model_clust_", sem_data_clust_list[[i]]$clust5[1], ".pdf"), width = 12, height = 4)
+  plot(full_model_diag_clust_list[[i]])
+  dev.off()
+  
+  sink(paste0("output/full_model_fit_clust_", sem_data_clust_list[[i]]$clust5[1], ".txt"))
+  print(full_model_summ_clust_list[[i]])
+  sink()
+  
+  full_model_regs_list[[i]] <- full_model_summ_clust_list[[i]]$PE %>% 
+    filter(op %in% c("~", ":=")) %>%
+    mutate(
+      op = case_when(
+        op == "~" & lhs == "biomass" ~ "Direct: biomass",
+        op == "~" & lhs == "div" ~ "Direct: diversity",
+        TRUE ~ "Other eff."),
+      rhs = case_when(
+        rhs == "a*b" ~ "Indirect: Moisture -> Div. -> Biomass",
+        rhs == "c+(a*b)" ~ "Total effect: Moisture -> Biomass",
+        rhs == "soil" ~ "Soil fertility",
+        rhs == "div" ~ "Species diversity",
+        rhs == "precip" ~ "Moisture avail.",
+        rhs == "temp" ~ "Temperature",
+        TRUE ~ rhs),
+      model = first(sem_data_clust_list[[i]]$clust5))
+  
+  pdf(file = paste0("img/full_model_slopes_clust_", sem_data_clust_list[[i]]$clust5[1], ".pdf"), width = 12, height = 4)
+  print(ggplot() + 
+      geom_hline(yintercept = 0, linetype = 2) + 
+      geom_errorbar(data = full_model_regs_list[[i]], aes(x = rhs, ymin = est - se, ymax = est + se),
+        width = 0.2) + 
+      geom_point(data = full_model_regs_list[[i]], aes(x = rhs, y = est, fill = rhs),
+        colour = "black", shape = 21, size = 2) +
+      facet_grid(op~., scales = "free_y", switch = "y") + 
+      labs(x = "Factor", y = expression("Path coefficient")) + 
+      coord_flip() + 
+      theme_classic() + 
+      theme(legend.position = "none", 
+        panel.grid.major.y = element_line(colour = "#E0E0E0")))
+  dev.off()
+}
+
+# Combine all into one dot and line plot
+full_model_regs_all <- do.call(rbind, full_model_regs_list)
+
+pdf("img/full_model_slopes_clust_all.pdf", width = 10, height = 10)
+ggplot() + 
+  geom_hline(yintercept = 0, linetype = 2) + 
+  geom_errorbar(data = full_model_regs_all, 
+    aes(x = rhs, ymin = est - se, ymax = est + se, 
+      colour = factor(model, levels = c("1", "2", "3", "4", "5"))),
+    width = 0.4, position = position_dodge(width = 0.5)) + 
+  geom_point(data = full_model_regs_all, 
+    aes(x = rhs, y = est, 
+      fill = factor(model, levels = c("1", "2", "3", "4", "5"))),
+    colour = "black", shape = 21, size = 2, 
+    position = position_dodge(width = 0.5)) +
+  scale_colour_manual(values = clust_pal, name = "Cluster") + 
+  scale_fill_manual(values = clust_pal, name = "Cluster") + 
+  facet_grid(op~., scales = "free_y", switch = "y") + 
+  labs(x = "Factor", y = expression("Path coefficient")) + 
+  coord_flip() + 
+  theme_classic() + 
+  theme(panel.grid.major.y = element_line(colour = "#E0E0E0"))
+dev.off()
+
+
+
+
 

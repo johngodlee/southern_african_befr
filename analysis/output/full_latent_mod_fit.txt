@@ -1,224 +1,92 @@
 $FIT
              npar              fmin             chisq                df            pvalue 
-           31.000             0.137                NA           -19.000                NA 
-              cfi               tli              logl unrestricted.logl               aic 
-               NA                NA          -731.077          -643.121          1524.153 
-              bic            ntotal              bic2             rmsea    rmsea.ci.lower 
-         1662.507           641.000          1564.084                NA                NA 
-   rmsea.ci.upper      rmsea.pvalue              srmr 
-               NA                NA             0.060 
+           27.000             2.175          6628.786            39.000             0.000 
+   baseline.chisq       baseline.df   baseline.pvalue               cfi               tli 
+         8589.830            55.000             0.000             0.228            -0.089 
+             logl unrestricted.logl               aic               bic            ntotal 
+       -22509.600        -19195.206         45073.199         45217.085          1524.000 
+             bic2             rmsea    rmsea.ci.lower    rmsea.ci.upper      rmsea.pvalue 
+        45131.313             0.333             0.326             0.340             0.000 
+             srmr 
+            0.224 
 
 $PE
-                         lhs op                      rhs                 label exo          est
-1                     precip <~         total_precip_std                         0  0.000000000
-2                     precip <~   precip_seasonality_std                         0  0.000000000
-3                       fire <~ fire_return_mean_log_std                         0  0.000000000
-4                       temp <~            mean_temp_std                         0  0.000000000
-5                       temp <~     temp_seasonality_std                         0  0.000000000
-6                        div <~        sp_rich_raref_std                         0  0.000000000
-7                        div <~        shannon_equit_std                         0  0.000000000
-8                      struc <~              cov_dbh_std                         0  0.000000000
-9                       soil <~               ocdens_std                         0  0.000000000
-10                      soil <~             sand_per_std                         0  0.000000000
-11                      soil <~        cation_ex_cap_std                         0  0.000000000
-12                     struc  ~                     fire                         0  0.000000000
-13                     struc  ~                   precip                         0  0.000000000
-14                     struc  ~                      div                     a   0  0.000000000
-15                bchave_log  ~                    struc                     b   0  0.000000000
-16                bchave_log  ~                     soil                         0  0.000000000
-17                bchave_log  ~                     fire                         0  0.000000000
-18                bchave_log  ~                   precip                         0  0.000000000
-19                bchave_log  ~                     temp                         0  0.000000000
-20                bchave_log  ~                      div                     c   0  0.000000000
-21                bchave_log ~~               bchave_log                         0  0.573024560
-22                    precip ~~                   precip                         0  0.000000000
-23                      fire ~~                     fire                         0  0.000000000
-24                      temp ~~                     temp                         0  0.000000000
-25                       div ~~                      div                         0  0.000000000
-26                     struc ~~                    struc                         0  0.000000000
-27                      soil ~~                     soil                         0  0.000000000
-28                    precip ~~                     fire                         0  0.000000000
-29                    precip ~~                     temp                         0  0.000000000
-30                    precip ~~                      div                         0  0.000000000
-31                    precip ~~                     soil                         0  0.000000000
-32                      fire ~~                     temp                         0  0.000000000
-33                      fire ~~                      div                         0  0.000000000
-34                      fire ~~                     soil                         0  0.000000000
-35                      temp ~~                      div                         0  0.000000000
-36                      temp ~~                     soil                         0  0.000000000
-37                       div ~~                     soil                         0  0.000000000
-38          total_precip_std ~~         total_precip_std                         1  0.753034531
-39          total_precip_std ~~   precip_seasonality_std                         1  0.039726902
-40          total_precip_std ~~ fire_return_mean_log_std                         1 -0.294659494
-41          total_precip_std ~~            mean_temp_std                         1  0.133976171
-42          total_precip_std ~~     temp_seasonality_std                         1  0.493605346
-43          total_precip_std ~~        sp_rich_raref_std                         1  0.283091628
-44          total_precip_std ~~        shannon_equit_std                         1 -0.194251190
-45          total_precip_std ~~              cov_dbh_std                         1  0.016945935
-46          total_precip_std ~~               ocdens_std                         1  0.179627548
-47          total_precip_std ~~             sand_per_std                         1 -0.634726699
-48          total_precip_std ~~        cation_ex_cap_std                         1 -0.045988795
-49    precip_seasonality_std ~~   precip_seasonality_std                         1  0.819383727
-50    precip_seasonality_std ~~ fire_return_mean_log_std                         1  0.009404181
-51    precip_seasonality_std ~~            mean_temp_std                         1  0.011436219
-52    precip_seasonality_std ~~     temp_seasonality_std                         1 -0.031595650
-53    precip_seasonality_std ~~        sp_rich_raref_std                         1 -0.174597753
-54    precip_seasonality_std ~~        shannon_equit_std                         1 -0.224275419
-55    precip_seasonality_std ~~              cov_dbh_std                         1  0.328889088
-56    precip_seasonality_std ~~               ocdens_std                         1  0.415065118
-57    precip_seasonality_std ~~             sand_per_std                         1 -0.002832113
-58    precip_seasonality_std ~~        cation_ex_cap_std                         1  0.576568297
-59  fire_return_mean_log_std ~~ fire_return_mean_log_std                         1  0.982340645
-60  fire_return_mean_log_std ~~            mean_temp_std                         1 -0.159494731
-61  fire_return_mean_log_std ~~     temp_seasonality_std                         1 -0.335847966
-62  fire_return_mean_log_std ~~        sp_rich_raref_std                         1 -0.080652662
-63  fire_return_mean_log_std ~~        shannon_equit_std                         1  0.036234679
-64  fire_return_mean_log_std ~~              cov_dbh_std                         1 -0.050075008
-65  fire_return_mean_log_std ~~               ocdens_std                         1  0.074922915
-66  fire_return_mean_log_std ~~             sand_per_std                         1  0.352986708
-67  fire_return_mean_log_std ~~        cation_ex_cap_std                         1  0.062918465
-68             mean_temp_std ~~            mean_temp_std                         1  0.972114550
-69             mean_temp_std ~~     temp_seasonality_std                         1  0.558675793
-70             mean_temp_std ~~        sp_rich_raref_std                         1 -0.226944826
-71             mean_temp_std ~~        shannon_equit_std                         1 -0.073939173
-72             mean_temp_std ~~              cov_dbh_std                         1  0.117711037
-73             mean_temp_std ~~               ocdens_std                         1 -0.270957436
-74             mean_temp_std ~~             sand_per_std                         1 -0.524314390
-75             mean_temp_std ~~        cation_ex_cap_std                         1  0.204363658
-76      temp_seasonality_std ~~     temp_seasonality_std                         1  1.230517264
-77      temp_seasonality_std ~~        sp_rich_raref_std                         1  0.158259491
-78      temp_seasonality_std ~~        shannon_equit_std                         1 -0.236220471
-79      temp_seasonality_std ~~              cov_dbh_std                         1  0.144183483
-80      temp_seasonality_std ~~               ocdens_std                         1 -0.214965616
-81      temp_seasonality_std ~~             sand_per_std                         1 -1.080419129
-82      temp_seasonality_std ~~        cation_ex_cap_std                         1 -0.043676355
-83         sp_rich_raref_std ~~        sp_rich_raref_std                         1  0.818106044
-84         sp_rich_raref_std ~~        shannon_equit_std                         1 -0.243238325
-85         sp_rich_raref_std ~~              cov_dbh_std                         1  0.010217232
-86         sp_rich_raref_std ~~               ocdens_std                         1  0.035048118
-87         sp_rich_raref_std ~~             sand_per_std                         1 -0.214476117
-88         sp_rich_raref_std ~~        cation_ex_cap_std                         1 -0.225622670
-89         shannon_equit_std ~~        shannon_equit_std                         1  0.949833603
-90         shannon_equit_std ~~              cov_dbh_std                         1 -0.128478350
-91         shannon_equit_std ~~               ocdens_std                         1 -0.072165929
-92         shannon_equit_std ~~             sand_per_std                         1  0.229247155
-93         shannon_equit_std ~~        cation_ex_cap_std                         1 -0.030555822
-94               cov_dbh_std ~~              cov_dbh_std                         1  0.795173568
-95               cov_dbh_std ~~               ocdens_std                         1  0.054298389
-96               cov_dbh_std ~~             sand_per_std                         1 -0.108184173
-97               cov_dbh_std ~~        cation_ex_cap_std                         1  0.284686543
-98                ocdens_std ~~               ocdens_std                         1  0.957768172
-99                ocdens_std ~~             sand_per_std                         1  0.070423557
-100               ocdens_std ~~        cation_ex_cap_std                         1  0.293086171
-101             sand_per_std ~~             sand_per_std                         1  1.113579692
-102             sand_per_std ~~        cation_ex_cap_std                         1  0.015020732
-103        cation_ex_cap_std ~~        cation_ex_cap_std                         1  0.969815367
-104    biomass_div_via_struc :=                      a*b biomass_div_via_struc   0  0.000000000
-105        biomass_div_total :=                  c+(a*b)     biomass_div_total   0  0.000000000
-    se  z pvalue
-1   NA NA     NA
-2   NA NA     NA
-3   NA NA     NA
-4   NA NA     NA
-5   NA NA     NA
-6   NA NA     NA
-7   NA NA     NA
-8   NA NA     NA
-9   NA NA     NA
-10  NA NA     NA
-11  NA NA     NA
-12  NA NA     NA
-13  NA NA     NA
-14  NA NA     NA
-15  NA NA     NA
-16  NA NA     NA
-17  NA NA     NA
-18  NA NA     NA
-19  NA NA     NA
-20  NA NA     NA
-21  NA NA     NA
-22   0 NA     NA
-23   0 NA     NA
-24   0 NA     NA
-25   0 NA     NA
-26   0 NA     NA
-27   0 NA     NA
-28  NA NA     NA
-29  NA NA     NA
-30  NA NA     NA
-31  NA NA     NA
-32  NA NA     NA
-33  NA NA     NA
-34  NA NA     NA
-35  NA NA     NA
-36  NA NA     NA
-37  NA NA     NA
-38   0 NA     NA
-39   0 NA     NA
-40   0 NA     NA
-41   0 NA     NA
-42   0 NA     NA
-43   0 NA     NA
-44   0 NA     NA
-45   0 NA     NA
-46   0 NA     NA
-47   0 NA     NA
-48   0 NA     NA
-49   0 NA     NA
-50   0 NA     NA
-51   0 NA     NA
-52   0 NA     NA
-53   0 NA     NA
-54   0 NA     NA
-55   0 NA     NA
-56   0 NA     NA
-57   0 NA     NA
-58   0 NA     NA
-59   0 NA     NA
-60   0 NA     NA
-61   0 NA     NA
-62   0 NA     NA
-63   0 NA     NA
-64   0 NA     NA
-65   0 NA     NA
-66   0 NA     NA
-67   0 NA     NA
-68   0 NA     NA
-69   0 NA     NA
-70   0 NA     NA
-71   0 NA     NA
-72   0 NA     NA
-73   0 NA     NA
-74   0 NA     NA
-75   0 NA     NA
-76   0 NA     NA
-77   0 NA     NA
-78   0 NA     NA
-79   0 NA     NA
-80   0 NA     NA
-81   0 NA     NA
-82   0 NA     NA
-83   0 NA     NA
-84   0 NA     NA
-85   0 NA     NA
-86   0 NA     NA
-87   0 NA     NA
-88   0 NA     NA
-89   0 NA     NA
-90   0 NA     NA
-91   0 NA     NA
-92   0 NA     NA
-93   0 NA     NA
-94   0 NA     NA
-95   0 NA     NA
-96   0 NA     NA
-97   0 NA     NA
-98   0 NA     NA
-99   0 NA     NA
-100  0 NA     NA
-101  0 NA     NA
-102  0 NA     NA
-103  0 NA     NA
-104  0 NA     NA
-105  0 NA     NA
+                      lhs op                    rhs                  label exo         est
+1                  precip =~       total_precip_std                          0  1.00000000
+2                  precip =~ precip_seasonality_std                          0  0.98171254
+3                    temp =~      isothermality_std                          0  1.00000000
+4                    temp =~          mean_temp_std                          0  0.65321011
+5                    temp =~   temp_seasonality_std                          0  1.12905857
+6                     div =~            sp_rich_std                          0  1.00000000
+7                     div =~      shannon_equit_std                          0 -0.75637757
+8                    soil =~             ocdens_std                          0  1.00000000
+9                    soil =~           sand_per_std                          0  0.24291476
+10                   soil =~      cation_ex_cap_std                          0 -0.82502022
+11                biomass =~             bchave_log                          0  1.00000000
+12                    div  ~                 precip                      b   0  6.04421581
+13                    div  ~                   soil                          0 -0.02875634
+14                biomass  ~                   soil                          0 -0.30993171
+15                biomass  ~                 precip                      c   0 -0.26218507
+16                biomass  ~                   temp                          0 -0.06407704
+17                biomass  ~                    div                      a   0  0.59915076
+18       total_precip_std ~~       total_precip_std                          0  0.83976362
+19 precip_seasonality_std ~~ precip_seasonality_std                          0  1.11013209
+20      isothermality_std ~~      isothermality_std                          0  0.51925199
+21          mean_temp_std ~~          mean_temp_std                          0  0.79062792
+22   temp_seasonality_std ~~   temp_seasonality_std                          0  0.37372278
+23            sp_rich_std ~~            sp_rich_std                          0  0.26655943
+24      shannon_equit_std ~~      shannon_equit_std                          0  0.64141168
+25             ocdens_std ~~             ocdens_std                          0  1.12550010
+26           sand_per_std ~~           sand_per_std                          0  1.00283636
+27      cation_ex_cap_std ~~      cation_ex_cap_std                          0  1.10808640
+28             bchave_log ~~             bchave_log                          0  0.00000000
+29                 precip ~~                 precip                          0  0.04014748
+30                   temp ~~                   temp                          0  0.52339935
+31                    div ~~                    div                          0 -0.79547749
+32                   soil ~~                   soil                          0 -0.25093231
+33                biomass ~~                biomass                          0  0.64041957
+34                 precip ~~                   temp                          0  0.00000000
+35                 precip ~~                   soil                          0  0.00000000
+36                   temp ~~                   soil                          0  0.00000000
+37 biomass_precip_via_div :=                    a*b biomass_precip_via_div   0  3.62139646
+38   biomass_precip_total :=                c+(a*b)   biomass_precip_total   0  3.35921140
+           se           z       pvalue
+1  0.00000000          NA           NA
+2  0.13474147   7.2858974 3.195222e-13
+3  0.00000000          NA           NA
+4  0.04446266  14.6912049 0.000000e+00
+5  0.07641107  14.7761132 0.000000e+00
+6  0.00000000          NA           NA
+7  0.04935920 -15.3239418 0.000000e+00
+8  0.00000000          NA           NA
+9  0.08443653   2.8768919 4.016132e-03
+10 0.29731940  -2.7748617 5.522518e-03
+11 0.00000000          NA           NA
+12 3.82117335   1.5817696 1.137022e-01
+13 0.05651782  -0.5088013 6.108915e-01
+14 0.09391843  -3.3000095 9.668157e-04
+15 0.36227734  -0.7237137 4.692415e-01
+16 0.03252969  -1.9698016 4.886111e-02
+17 0.12283677   4.8776174 1.073749e-06
+18 0.03921828  21.4125539 0.000000e+00
+19 0.04675817  23.7419911 0.000000e+00
+20 0.03781056  13.7329892 0.000000e+00
+21 0.03190354  24.7818268 0.000000e+00
+22 0.04393939   8.5054159 0.000000e+00
+23 0.03994669   6.6728791 2.508327e-11
+24 0.03211981  19.9693515 0.000000e+00
+25 0.10693426  10.5251590 0.000000e+00
+26 0.03765062  26.6353192 0.000000e+00
+27 0.07861135  14.0957561 0.000000e+00
+28 0.00000000          NA           NA
+29 0.02651820   1.5139592 1.300362e-01
+30 0.04635339  11.2915018 0.000000e+00
+31 0.90558776  -0.8784102 3.797212e-01
+32 0.09546673  -2.6284791 8.576763e-03
+33 0.03081820  20.7805657 0.000000e+00
+34 0.00000000          NA           NA
+35 0.00000000          NA           NA
+36 0.00000000          NA           NA
+37 2.09163965   1.7313673 8.338628e-02
+38 2.14787103   1.5639726 1.178240e-01
 

@@ -68,6 +68,7 @@ facet_levels <- c(
   "precip_seasonality",
   "mean_temp",
   "temp_seasonality",
+  "isothermality",
   "bchave",
   "cation_ex_cap",
   "sand_per",
@@ -91,6 +92,7 @@ facet_levels <- c(
   "aridity_index_std",
   "mean_temp_std",
   "temp_seasonality_std", 
+  "isothermality_std",
   "bchave_log_std", 
   "cation_ex_cap_std",
   "sand_per_std", 
@@ -113,6 +115,7 @@ facet_labels <- c(
   expression("Precipitation" ~ "seasonality"),
   expression("Mean" ~ "annual" ~ "temp." ~ (degree * C)), 
   expression("Temp." ~ "seasonality" ~ (degree * C)),
+  expression("Isothermality"),
   expression("AGB" ~ t ~ ha^-1),
   expression("Cation" ~ "exchange" ~ "capacity"),
   expression("Sand" ~ "%"), 
@@ -136,6 +139,7 @@ facet_labels <- c(
   expression("Aridity" ~ "index" ~ "(std)"),
   expression("Mean" ~ "annual" ~ "temp." ~ "(std)" ~ (degree * C)), 
   expression("Temp." ~ "seasonality" ~ "(std)" ~ (degree * C)),
+  expression("Isothermality" ~ "(std)"),
   expression("log(Woody" ~ "biomass)" ~ "(std)" ~ ha^-1),
   expression("Cation" ~ "exchange" ~ "capacity" ~ "(std)"),
   expression("Sand" ~ "(std)"), 
@@ -165,7 +169,7 @@ histogram_raw <- sem_data_fil_agg %>%
 	dplyr::select(stems_ha, bchave, sp_rich, sp_rich_raref, shannon, shannon_equit, 
 	  cation_ex_cap, sand_per, ocdens, aridity_index, total_precip, precip_seasonality,
 		mean_height, cov_height, mean_dbh, cov_dbh, fire_return_mean, firecount_2001_2018, 
-	  mean_temp, temp_seasonality) %>%
+	  mean_temp, temp_seasonality, isothermality) %>%
 	gather(variable, value) %>%
 	mutate(facet_label = factor(variable,
 	  levels = facet_levels,
@@ -203,7 +207,7 @@ histogram_trans <- sem_data_norm %>%
 		cation_ex_cap, sand_per, ocdens, aridity_index,
 	  total_precip, precip_seasonality,
 		mean_height, cov_height, mean_dbh_log, cov_dbh, 
-		fire_return_mean_log, mean_temp, temp_seasonality, firecount_2001_2018) %>%
+		fire_return_mean_log, mean_temp, temp_seasonality, isothermality, firecount_2001_2018) %>%
 	gather(variable, value) %>%
 	mutate(facet_label = factor(variable,
 	  levels = facet_levels,
@@ -225,6 +229,7 @@ sem_data_norm_std <- sem_data_norm %>%
 	  "precip_seasonality",
 		"mean_temp",
 		"temp_seasonality",
+	  "isothermality",
 		"bchave_log",
 		"cation_ex_cap",
 		"sand_per",
@@ -247,7 +252,7 @@ histogram_trans_std <- sem_data_norm_std %>%
 	  shannon_cube_std, shannon_equit_std, cation_ex_cap_std, sand_per_std, ocdens_std, 
 	  aridity_index_std, total_precip_std, precip_seasonality_std,
 		mean_height_std, cov_height_std, mean_dbh_log_std, cov_dbh_std, 
-	  fire_return_mean_log_std, mean_temp_std, temp_seasonality_std, firecount_2001_2018_std) %>%
+	  fire_return_mean_log_std, mean_temp_std, temp_seasonality_std, isothermality_std, firecount_2001_2018_std) %>%
 	gather(variable, value) %>%
   mutate(facet_label = factor(variable,
     levels = facet_levels,
@@ -276,6 +281,7 @@ bivar_list <- c(
   "bchave_log_std ~ aridity_index_std",
   "bchave_log_std ~ mean_temp_std",
   "bchave_log_std ~ temp_seasonality_std",
+  "bchave_log_std ~ isothermality_std",
   "bchave_log_std ~ total_precip_std",
   "bchave_log_std ~ precip_seasonality_std",
   "bchave_log_std ~ stems_ha_log_std",
@@ -419,6 +425,7 @@ cluster_compare <- data.frame(
   precip_seasonality = sem_data_norm_std$precip_seasonality,
   mean_temp = sem_data_norm_std$mean_temp,
   temp_seasonality = sem_data_norm_std$temp_seasonality,
+  isothermality = sem_data_norm_std$isothermality,
   mean_height = sem_data_norm_std$mean_height,
   stems_ha_log = sem_data_norm_std$stems_ha_log,
   cov_height = sem_data_norm_std$cov_height,
@@ -457,6 +464,7 @@ cluster_compare_gather <- cluster_compare_gather %>%
       "precip_seasonality",
       "mean_temp",
       "temp_seasonality", 
+      "isothermality",
       "bchave_log", 
       "cation_ex_cap",
       "sand_per", 
@@ -478,6 +486,7 @@ cluster_compare_gather <- cluster_compare_gather %>%
       expression("Precipitation" ~ "seasonality"),
       expression("Mean" ~ "annual" ~ "temp." ~ (degree * C)), 
       expression("Temp." ~ "seasonality" ~ (degree * C)),
+      expression("Isothermality"),
       expression("log(Woody" ~ "biomass)" ~ ha^-1),
       expression("Cation" ~ "exchange" ~ "capacity"),
       expression("Sand" ~ "%"), 

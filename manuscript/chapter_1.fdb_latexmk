@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1571306625 "chapter_1.tex" "chapter_1.pdf" "chapter_1" 1571312064
+["pdflatex"] 1571741112 "chapter_1.tex" "chapter_1.pdf" "chapter_1" 1571741113
   "/Users/johngodlee/.texmf/code_format.tex" 1571073695 857 601e50ac7629ea4e5f739ceaa1f228f4 ""
   "/Users/johngodlee/.texmf/mynotes.sty" 1571170324 1408 6eb27cce338d337575678cdeab730632 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
@@ -95,18 +95,20 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1560438610 4259636 c3c34e0b28d65e9ba03c0e352c7e170a ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "chapter_1.aux" 1571306626 4952 62bc3e8dc232686249e734ad5e4db618 "pdflatex"
-  "chapter_1.tex" 1571306625 24870 e2c8891edbf4a6f84c111065f008d224 ""
-  "chapter_1.toc" 1571306626 712 cce1113860efaf3c168c58be96fdbbcb "pdflatex"
+  "chapter_1.aux" 1571741113 5426 7ef04bfd614a3cf0c20b229795c5d16a "pdflatex"
+  "chapter_1.tex" 1571741110 26139 f896c3bca2f0d5a4b115efa33e1b467e ""
+  "chapter_1.toc" 1571741113 714 4fbfeaa7e8736f4d1c51dd2bc33e57ef "pdflatex"
   "img/con_mod.pdf" 1570016906 34202 48e70b4d86d039e9134c3862201e21d8 ""
   "img/corr_mat.pdf" 1570784945 6082 67019c9858eee3d12558603cb319e10c ""
   "img/full_latent_model_slopes.pdf" 1570439920 5801 8ade46f5672bf3e89e94386228a5e6f8 ""
   "img/pcoa_outlier.pdf" 1570566080 67948 ff0d4989a69f0400130abe3a8e36d339 ""
   "img/plot_loc.pdf" 1570202632 90240 80b37e07d1fa18658ad79579b80f2372 ""
-  "img/struc_model_slopes.pdf" 1570202632 5165 d619f3c2d13f203345aeff95723682ef ""
+  "img/sem_struc_path.pdf" 1571660982 72003 6577b448185034c32e2209e5cd41993b ""
+  "img/struc_model_slopes_clust_all.pdf" 1571739265 6385 40829d4020c8396ac673d92dbb07beb6 ""
   "img/temp_precip_hull.pdf" 1570202632 2177001 ef4cc36ba3a485a4b0d3fb9b4b526be4 ""
+  "include/struc_model_fit_clust_stats.tex" 1571740776 1163 2e744f1032f81befa10b7ea00524e6ba ""
   (generated)
+  "chapter_1.pdf"
+  "chapter_1.log"
   "chapter_1.aux"
   "chapter_1.toc"
-  "chapter_1.log"
-  "chapter_1.pdf"

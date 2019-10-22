@@ -1,0 +1,92 @@
+$FIT
+             npar              fmin             chisq                df            pvalue 
+           30.000             1.587           660.076            36.000             0.000 
+   baseline.chisq       baseline.df   baseline.pvalue               cfi               tli 
+         1490.328            55.000             0.000             0.565             0.336 
+             logl unrestricted.logl               aic               bic            ntotal 
+        -2426.907         -2096.869          4913.814          5013.941           208.000 
+             bic2             rmsea    rmsea.ci.lower    rmsea.ci.upper      rmsea.pvalue 
+         4918.886             0.289             0.270             0.308             0.000 
+             srmr 
+            0.157 
+
+$PE
+                      lhs op                    rhs                  label exo         est
+1                  precip =~       total_precip_std                          0  1.00000000
+2                  precip =~ precip_seasonality_std                          0  2.38681386
+3                    temp =~      isothermality_std                          0  1.00000000
+4                    temp =~          mean_temp_std                          0  0.79445458
+5                    temp =~   temp_seasonality_std                          0  1.03402238
+6                     div =~            sp_rich_std                          0  1.00000000
+7                     div =~      shannon_equit_std                          0 -0.64887806
+8                    soil =~             ocdens_std                          0  1.00000000
+9                    soil =~           sand_per_std                          0 -0.19509588
+10                   soil =~      cation_ex_cap_std                          0  0.64241910
+11                biomass =~             bchave_log                          0  1.00000000
+12                    div  ~                 precip                      b   0  6.20128222
+13                    div  ~                   soil                          0 -3.07916956
+14                biomass  ~                   soil                          0 -5.15848381
+15                biomass  ~                 precip                      c   0  8.83962410
+16                biomass  ~                   temp                          0 -0.77422653
+17                biomass  ~                    div                      a   0  0.36448453
+18       total_precip_std ~~       total_precip_std                          0  0.11455386
+19 precip_seasonality_std ~~ precip_seasonality_std                          0  0.43325010
+20      isothermality_std ~~      isothermality_std                          0  0.30374061
+21          mean_temp_std ~~          mean_temp_std                          0  0.31978530
+22   temp_seasonality_std ~~   temp_seasonality_std                          0  0.22991377
+23            sp_rich_std ~~            sp_rich_std                          0  0.10571340
+24      shannon_equit_std ~~      shannon_equit_std                          0  0.66539637
+25             ocdens_std ~~             ocdens_std                          0  0.12477435
+26           sand_per_std ~~           sand_per_std                          0  0.39768484
+27      cation_ex_cap_std ~~      cation_ex_cap_std                          0  0.37834749
+28             bchave_log ~~             bchave_log                          0  0.00000000
+29                 precip ~~                 precip                          0  0.23789828
+30                   temp ~~                   temp                          0  0.20702375
+31                    div ~~                    div                          0  0.68087865
+32                   soil ~~                   soil                          0  0.65080730
+33                biomass ~~                biomass                          0  0.56067312
+34                 precip ~~                   temp                          0 -0.02664544
+35                 precip ~~                   soil                          0  0.39053984
+36                   temp ~~                   soil                          0 -0.06781953
+37 biomass_precip_via_div :=                    a*b biomass_precip_via_div   0  2.26027144
+38   biomass_precip_total :=                c+(a*b)   biomass_precip_total   0 11.09989555
+            se          z       pvalue
+1   0.00000000         NA           NA
+2   0.15935869 14.9776196 0.000000e+00
+3   0.00000000         NA           NA
+4   0.15221833  5.2191781 1.797189e-07
+5   0.19777146  5.2283699 1.710111e-07
+6   0.00000000         NA           NA
+7   0.08507007 -7.6275718 2.398082e-14
+8   0.00000000         NA           NA
+9   0.05708961 -3.4173624 6.323104e-04
+10  0.06054944 10.6098270 0.000000e+00
+11  0.00000000         NA           NA
+12  4.94067148  1.2551497 2.094244e-01
+13  2.98423237 -1.0318129 3.021598e-01
+14  9.41727223 -0.5477684 5.838510e-01
+15 15.54366253  0.5686963 5.695622e-01
+16  1.01890516 -0.7598612 4.473375e-01
+17  0.23430055  1.5556282 1.197965e-01
+18  0.01398049  8.1938353 2.220446e-16
+19  0.06188075  7.0013708 2.534639e-12
+20  0.04748026  6.3971978 1.582543e-10
+21  0.03957413  8.0806660 6.661338e-16
+22  0.04517408  5.0895063 3.589968e-07
+23  0.11118228  0.9508116 3.417000e-01
+24  0.08018475  8.2982908 0.000000e+00
+25  0.02717484  4.5915396 4.399882e-06
+26  0.03921736 10.1405295 0.000000e+00
+27  0.03971792  9.5258627 0.000000e+00
+28  0.00000000         NA           NA
+29  0.03372750  7.0535411 1.744160e-12
+30  0.05466845  3.7868962 1.525408e-04
+31  0.19525883  3.4870569 4.883674e-04
+32  0.07888591  8.2499811 2.220446e-16
+33  0.40997523  1.3675780 1.714442e-01
+34  0.02079389 -1.2814072 2.000507e-01
+35  0.04509117  8.6611152 0.000000e+00
+36  0.03470552 -1.9541424 5.068438e-02
+37  1.39096311  1.6249687 1.041692e-01
+38 15.58463458  0.7122333 4.763203e-01
+

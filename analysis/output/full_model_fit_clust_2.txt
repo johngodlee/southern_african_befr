@@ -1,0 +1,80 @@
+$PE
+                      lhs op                    rhs                  label exo           est se  z
+1                  precip =~       total_precip_std                          0  1.000000e+00  0 NA
+2                  precip =~ precip_seasonality_std                          0  2.256535e-01 NA NA
+3                    temp =~      isothermality_std                          0  1.000000e+00  0 NA
+4                    temp =~          mean_temp_std                          0  6.486554e-01 NA NA
+5                    temp =~   temp_seasonality_std                          0  1.433758e+00 NA NA
+6                     div =~            sp_rich_std                          0  1.000000e+00  0 NA
+7                     div =~      shannon_equit_std                          0 -8.016459e-01 NA NA
+8                    soil =~             ocdens_std                          0  1.000000e+00  0 NA
+9                    soil =~           sand_per_std                          0 -7.489401e+02 NA NA
+10                   soil =~      cation_ex_cap_std                          0 -4.148878e-01 NA NA
+11                biomass =~             bchave_log                          0  1.000000e+00  0 NA
+12                    div  ~                 precip                      b   0  2.269381e-01 NA NA
+13                    div  ~                   soil                          0  2.446758e-01 NA NA
+14                biomass  ~                   soil                          0 -3.517826e-01 NA NA
+15                biomass  ~                 precip                      c   0  3.898947e-01 NA NA
+16                biomass  ~                   temp                          0 -4.074867e-01 NA NA
+17                biomass  ~                    div                      a   0  6.528268e-01 NA NA
+18       total_precip_std ~~       total_precip_std                          0  8.995788e-02 NA NA
+19 precip_seasonality_std ~~ precip_seasonality_std                          0  3.600464e-02 NA NA
+20      isothermality_std ~~      isothermality_std                          0  5.673276e-01 NA NA
+21          mean_temp_std ~~          mean_temp_std                          0  5.902105e-01 NA NA
+22   temp_seasonality_std ~~   temp_seasonality_std                          0 -1.905021e-02 NA NA
+23            sp_rich_std ~~            sp_rich_std                          0  2.395655e-01 NA NA
+24      shannon_equit_std ~~      shannon_equit_std                          0  2.977036e-01 NA NA
+25             ocdens_std ~~             ocdens_std                          0  6.575475e-01 NA NA
+26           sand_per_std ~~           sand_per_std                          0 -2.418337e+01 NA NA
+27      cation_ex_cap_std ~~      cation_ex_cap_std                          0  2.549539e-01 NA NA
+28             bchave_log ~~             bchave_log                          0  0.000000e+00  0 NA
+29                 precip ~~                 precip                          0  4.728412e-01 NA NA
+30                   temp ~~                   temp                          0  4.762117e-01 NA NA
+31                    div ~~                    div                          0  3.787743e-01 NA NA
+32                   soil ~~                   soil                          0  4.488571e-05 NA NA
+33                biomass ~~                biomass                          0  4.703125e-01 NA NA
+34                 precip ~~                   temp                          0  3.231730e-01 NA NA
+35                 precip ~~                   soil                          0  6.921908e-04 NA NA
+36                   temp ~~                   soil                          0  8.778485e-04 NA NA
+37 biomass_precip_via_div :=                    a*b biomass_precip_via_div   0  1.481513e-01  0 NA
+38   biomass_precip_total :=                c+(a*b)   biomass_precip_total   0  5.380460e-01  0 NA
+   pvalue
+1      NA
+2      NA
+3      NA
+4      NA
+5      NA
+6      NA
+7      NA
+8      NA
+9      NA
+10     NA
+11     NA
+12     NA
+13     NA
+14     NA
+15     NA
+16     NA
+17     NA
+18     NA
+19     NA
+20     NA
+21     NA
+22     NA
+23     NA
+24     NA
+25     NA
+26     NA
+27     NA
+28     NA
+29     NA
+30     NA
+31     NA
+32     NA
+33     NA
+34     NA
+35     NA
+36     NA
+37     NA
+38     NA
+

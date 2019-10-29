@@ -1,45 +1,47 @@
 Linear mixed model fit by REML ['lmerMod']
 Formula: bchave_log ~ ocdens_std + sand_per_std + cation_ex_cap_std +  
-    aridity_index_std + total_precip_std + precip_seasonality_std +  
-    mean_temp_std + temp_seasonality_std + fire_return_mean_log_std +  
-    (1 | clust5)
+    aridity_index_std + total_precip_std + precip_seasonality_log_std +  
+    mean_temp_std + temp_seasonality_log_std + isothermality_std +  
+    fire_return_mean_log_std + (1 | clust5)
    Data: sem_data
 
-REML criterion at convergence: 3138.3
+REML criterion at convergence: 2979.8
 
 Scaled residuals: 
     Min      1Q  Median      3Q     Max 
--4.7625 -0.4462  0.1784  0.6769  2.0944 
+-4.7092 -0.4281  0.1758  0.6493  2.3474 
 
 Random effects:
  Groups   Name        Variance Std.Dev.
- clust5   (Intercept) 0.1915   0.4377  
- Residual             0.8793   0.9377  
-Number of obs: 1141, groups:  clust5, 5
+ clust5   (Intercept) 0.1897   0.4356  
+ Residual             0.7802   0.8833  
+Number of obs: 1130, groups:  clust5, 5
 
 Fixed effects:
-                         Estimate Std. Error t value
-(Intercept)               3.35659    0.20141  16.665
-ocdens_std                0.08500    0.03761   2.260
-sand_per_std             -0.01666    0.10435  -0.160
-cation_ex_cap_std        -0.07697    0.03814  -2.018
-aridity_index_std        -0.55597    0.17156  -3.241
-total_precip_std          0.51802    0.18985   2.729
-precip_seasonality_std    0.36516    0.06280   5.814
-mean_temp_std            -0.06100    0.04062  -1.502
-temp_seasonality_std      0.01893    0.07968   0.238
-fire_return_mean_log_std  0.06357    0.02920   2.177
+                           Estimate Std. Error t value
+(Intercept)                 3.38450    0.19991  16.930
+ocdens_std                  0.07703    0.03570   2.158
+sand_per_std                0.20828    0.04383   4.752
+cation_ex_cap_std          -0.23740    0.04495  -5.281
+aridity_index_std          -0.35841    0.17165  -2.088
+total_precip_std            0.18886    0.18740   1.008
+precip_seasonality_log_std  0.39338    0.06390   6.156
+mean_temp_std              -0.02995    0.04420  -0.678
+temp_seasonality_log_std    0.08250    0.04658   1.771
+isothermality_std          -0.12576    0.03707  -3.392
+fire_return_mean_log_std    0.03941    0.02783   1.416
 
 Correlation of Fixed Effects:
-            (Intr) ocdns_ snd_p_ ctn___ ardt__ ttl_p_ prcp__ mn_tm_ tmp_s_
-ocdens_std   0.025                                                        
-sand_pr_std -0.006  0.074                                                 
-ctn_x_cp_st -0.045 -0.339 -0.014                                          
-ardty_ndx_s  0.078  0.143 -0.172 -0.210                                   
-ttl_prcp_st -0.066 -0.193  0.343  0.194 -0.952                            
-prcp_ssnlt_ -0.067 -0.245  0.093  0.007 -0.519  0.462                     
-men_tmp_std -0.043  0.255  0.271 -0.189 -0.164  0.224 -0.020              
-tmp_ssnlty_  0.004  0.138  0.891 -0.011 -0.076  0.176  0.040  0.046       
-fr_rtrn_m__ -0.017 -0.073  0.015  0.016 -0.060  0.102  0.032  0.013  0.038
-            R2m       R2c
-[1,] 0.06698513 0.2338666
+            (Intr) ocdns_ snd_p_ ctn___ ardt__ ttl_p_ prc___ mn_tm_ tmp___ isthr_
+ocdens_std   0.024                                                               
+sand_pr_std  0.005  0.007                                                        
+ctn_x_cp_st -0.034 -0.301 -0.535                                                 
+ardty_ndx_s  0.070  0.205  0.212 -0.337                                          
+ttl_prcp_st -0.058 -0.267 -0.285  0.373 -0.961                                   
+prcp_ssnl__ -0.061 -0.259 -0.119  0.049 -0.520  0.450                            
+men_tmp_std  0.034 -0.224 -0.474  0.421 -0.056  0.051  0.114                     
+tmp_ssnlt__  0.009  0.177 -0.048 -0.106  0.226 -0.369  0.027  0.317              
+isthrmlty_s  0.020 -0.059  0.027  0.241 -0.106  0.142 -0.288  0.087 -0.509       
+fr_rtrn_m__ -0.016 -0.082 -0.043  0.064 -0.090  0.130  0.030  0.020 -0.004  0.090
+           R2m       R2c
+[1,] 0.0977554 0.2742519

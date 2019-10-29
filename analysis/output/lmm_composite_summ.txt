@@ -1,22 +1,110 @@
-                stat          C1           C2         C3           C4          C5
-1               npar          12           12         12           12          12
-2               fmin 0.006915033   0.01844187 0.05003465   0.03248867 0.009482556
-3              chisq    4.660732     22.83104   7.905475     1.689411    1.118942
-4                 df           3            3          3            3           3
-5             pvalue   0.1983936 4.379371e-05  0.0480062    0.6392905   0.7725036
-6     baseline.chisq    494.6848     1091.542   136.5667     91.01706    101.5904
-7        baseline.df          10           10         10           10          10
-8    baseline.pvalue           0            0          0 3.330669e-15           0
-9                cfi   0.9965736    0.9816641   0.961242            1           1
-10               tli   0.9885786    0.9388804  0.8708066     1.053922    1.068459
-11              logl   -1854.016    -2838.596   -502.265    -139.5719   -368.1811
-12 unrestricted.logl   -1851.685     -2827.18  -498.3122    -138.7272   -367.6216
-13               aic    3732.032     5701.191    1028.53     303.1439    760.3622
-14               bic    3777.873     5754.328   1056.963      318.241    785.2926
-15            ntotal         337          619         79           26          59
-16              bic2    3739.807     5716.231   1019.127     280.9937     747.556
-17             rmsea  0.04052978    0.1033396  0.1438687            0           0
-18    rmsea.ci.lower           0   0.06643806 0.01213941            0           0
-19    rmsea.ci.upper   0.1078714    0.1447879  0.2703095    0.2648987   0.1462232
-20      rmsea.pvalue   0.4979482   0.01027927 0.08434368     0.662983   0.8090741
-21              srmr  0.01597319   0.01722908 0.07258426   0.04836237  0.03358323
+[[1]]
+
+Call:
+lm(formula = mreg_list[[i]]$model$bchave_log ~ unlist(comp_list[[i]], 
+    use.names = FALSE))
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.5398 -0.5185  0.2276  0.7318  2.1554 
+
+Coefficients:
+                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                3.32684    0.02549 130.521   <2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.10161   9.841   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.071 on 1765 degrees of freedom
+Multiple R-squared:  0.05202,	Adjusted R-squared:  0.05148 
+F-statistic: 96.85 on 1 and 1765 DF,  p-value: < 2.2e-16
+
+
+[[2]]
+
+Call:
+lm(formula = mreg_list[[i]]$model$bchave_log ~ unlist(comp_list[[i]], 
+    use.names = FALSE))
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.6738 -0.4729  0.2126  0.7142  2.2959 
+
+Coefficients:
+                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                3.32205    0.02578  128.85  < 2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.13623    7.34 3.24e-13 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.084 on 1765 degrees of freedom
+Multiple R-squared:  0.02962,	Adjusted R-squared:  0.02907 
+F-statistic: 53.88 on 1 and 1765 DF,  p-value: 3.235e-13
+
+
+[[3]]
+
+Call:
+lm(formula = mreg_list[[i]]$model$bchave_log ~ unlist(comp_list[[i]], 
+    use.names = FALSE))
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.4058 -0.5074  0.0833  0.6165  3.1368 
+
+Coefficients:
+                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                3.31284    0.02232  148.43   <2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.03885   25.74   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.9381 on 1765 degrees of freedom
+Multiple R-squared:  0.273,	Adjusted R-squared:  0.2725 
+F-statistic: 662.6 on 1 and 1765 DF,  p-value: < 2.2e-16
+
+
+[[4]]
+
+Call:
+lm(formula = mreg_list[[i]]$model$bchave_log ~ unlist(comp_list[[i]], 
+    use.names = FALSE))
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.4964 -0.4461  0.2014  0.6840  2.1144 
+
+Coefficients:
+                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                3.32205    0.02488  133.54   <2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.07278   13.74   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.046 on 1765 degrees of freedom
+Multiple R-squared:  0.09662,	Adjusted R-squared:  0.09611 
+F-statistic: 188.8 on 1 and 1765 DF,  p-value: < 2.2e-16
+
+
+[[5]]
+
+Call:
+lm(formula = mreg_list[[i]]$model$bchave_log ~ unlist(comp_list[[i]], 
+    use.names = FALSE))
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3456 -0.5683  0.1397  0.6588  2.2271 
+
+Coefficients:
+                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                3.41401    0.02538  134.53   <2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.06651   15.04   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.9183 on 1324 degrees of freedom
+Multiple R-squared:  0.1458,	Adjusted R-squared:  0.1452 
+F-statistic: 226.1 on 1 and 1324 DF,  p-value: < 2.2e-16
+
+

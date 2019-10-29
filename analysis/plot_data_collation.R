@@ -13,37 +13,27 @@ rm(list=ls())
 
 # Packages
 library(dplyr)
-library(ggplot2)
 library(tidyr)
-library(reshape2)
-library(vegan)
-library(gridExtra)
+library(iNEXT)
 
 # Import data ----
 
+source("full_best.R")
+
 # Base SEOSAW plot summary dataset
 load("data/seosaw_plot_summary5Apr2019.Rdata")
-##' AGB
-##' Shannon / Sp. R
-##' Stem density
-##' Soil nutrients (CEC)
-##' Plot location
 
 # Per stem data 
 load("data/clean_input_data.Rdata")
-##' Coefficient of variation height
-##' Coefficient of variation DBH
 
 # Aridity data 
 aridity_index <- read.csv("data/seosaw_aridity_index.csv")
-##' Aridity index from WorldClim calculations
 
 # Soil organic carbon
 ocdens <- read.csv("data/seosaw_ocdens.csv")
 
 # MODIS fire data 
 fire_return <- read.csv("data/fire_return.csv")
-##' Data copied from burn /exports/...
 
 # WorldClim temp.
 temp <- read.csv("data/plot_temp.csv")
@@ -84,21 +74,16 @@ plot_data <- ssaw8$struct %>%
     protected_from_fire, elephant_exclosure, 
     cattle_graze_here, goats_graze_here,
     sp_rich = div.S,
-    shannon = div.J,
     cation_ex_cap = CECSOL_M_sl1_1km_ll,
     sand_per = SNDPPT_M_sl1_1km_ll,
     org_c_per = ORCDRC_M_sl1_1km_ll,
     aridity_index = ai,
-    total_precip = bio12,
-    wc_total_precip = p_plot,
-    precip_seasonality = bio15,
-    wc_precip_seasonality = p_cov_plot,
+    total_precip = p_plot,
+    precip_seasonality = p_cov_plot,
     ocdens = ocdens,
-    mean_temp = bio1,
-    wc_mean_temp = t_plot,
-    temp_seasonality = bio4,
+    mean_temp = t_plot,
     isothermality = bio3,
-    wc_temp_seasonality = t_cov_plot,
+    temp_seasonality = t_cov_plot,
     pi, 
     plot_id,
     fire_return_mean,
@@ -117,28 +102,6 @@ plot_data <- ssaw8$struct %>%
     goats_graze_here %in% c(NA, "N", "Yes bu mainly along the boundaries/edge", "", "No"),
     !is.na(clust5))
 
-# Compare SEOSAW worldclim temp with worldclim from my extraction
-ggplot(plot_data, aes(x = mean_temp, y = wc_mean_temp)) + 
-  geom_point()
-
-ggplot(plot_data, aes(x = temp_seasonality, y = wc_temp_seasonality)) + 
-  geom_point()
-
-# Compare SEOSAW worldclim precip with worldclim from my extraction
-ggplot(plot_data, aes(x = total_precip, y = wc_total_precip)) + 
-  geom_point()
-
-ggplot(plot_data, aes(x = precip_seasonality, y = wc_precip_seasonality)) + 
-  geom_point()
-
-# Keep WC estimates from here on
-plot_data <- plot_data %>%
-  dplyr::select(-total_precip, -mean_temp, -temp_seasonality, -precip_seasonality) %>%
-  rename(total_precip = wc_total_precip,
-    precip_seasonality = wc_precip_seasonality,
-    mean_temp = wc_mean_temp,
-    temp_seasonality = wc_temp_seasonality)
-
 # Aggregate Zambian Forestry Commission plots ----
 
 # Split into Zambia and non-Zambia datasets
@@ -151,6 +114,7 @@ plot_data_nozam <- plot_data %>%
 # Aggregate values for Zambian plots and randomly sample rows
 plot_data_zam_agg <- plot_data_zam %>%
   separate(plot_id, c("plot_group", "plot_subset"), remove = FALSE) %>%
+  mutate(plot_group = paste0(plot_group, "_zambia")) %>%
   group_by(plot_group) %>%
   summarise(plotcode = paste0(plotcode, collapse = ","),
     longitude_of_centre = mean(longitude_of_centre, na.rm = TRUE),
@@ -173,7 +137,6 @@ plot_data_zam_agg <- plot_data_zam %>%
     cattle_graze_here = first(na.omit(cattle_graze_here)),
     goats_graze_here = first(na.omit(goats_graze_here)),
     sp_rich = round(mean(sp_rich, na.rm = TRUE)),
-    shannon = mean(shannon, na.rm = TRUE),
     cation_ex_cap = mean(cation_ex_cap, na.rm = TRUE),
     sand_per = mean(sand_per, na.rm = TRUE),
     org_c_per = mean(org_c_per, na.rm = TRUE),
@@ -203,7 +166,7 @@ plotcode_plot_group_lookup <- plot_data_agg %>%
   dplyr::select(plotcode_vec, plot_group) %>%
   unnest(plotcode_vec)
 
-write.csv(plotcode_plot_group_lookup, "data/plotcode_plot_group_lookup.csv", row.names = FALSE)
+write.csv(plotcode_plot_group_lookup, paste0("data/plotcode_plot_group_lookup", ext, ".csv"), row.names = FALSE)
 
 s <- left_join(s, plotcode_plot_group_lookup, by = c("plotcode" = "plotcode_vec"))
 
@@ -211,7 +174,9 @@ s <- left_join(s, plotcode_plot_group_lookup, by = c("plotcode" = "plotcode_vec"
 # Big trees only 
 s_fil <- s %>%
   filter(!is.na(plot_group), 
-    diam >= 5)
+    diam >= 5) %>%
+  filter(alive %in% c("A", NA),
+    !is.na(gen_sp))
 
 s_fil_summ <- s_fil %>%
   group_by(plot_group) %>%
@@ -244,45 +209,70 @@ plot_data_agg <- left_join(plot_data_agg, s_fil_summ, by = c("plot_group" = "plo
     -goats_graze_here,
     -plotcode_vec)
 
-# Estimate rarefied species richness ----
+# Estimate rarefied species diversity ----
 
 # Create matrix for estimating rarefied sp. rich.
 ## Aggregate by plot_group
 ab_mat <- s_fil %>% 
   filter(plot_group %in% plot_data_agg$plot_group) %>%
-  dplyr::select(plot_group, gen_sp) %>%
-  dcast(., plot_group~gen_sp)
+  group_by(plot_group, gen_sp, .drop = FALSE) %>%
+  tally() %>%
+  spread(gen_sp, n, fill = 0) %>%
+  ungroup() %>%
+  data.frame() 
 
 # Make tidy
 row.names(ab_mat) <- ab_mat$plot_group
-ab_mat <- dplyr::select(ab_mat, -plot_group)
+ab_mat_clean <- dplyr::select(ab_mat, -plot_group)
 
-## Remove plots with fewer than 10 individuals
-ab_mat_clean <- ab_mat[ rowSums(ab_mat) >= 10, ]
+# Hill number estimation of species richness and shannon index
+chao_rich_list <- apply(ab_mat_clean, 1, ChaoRichness)
 
-# Rarefy species richness
-raref <- data.frame(t(as.data.frame(rarefy(ab_mat_clean, sample = 10, se = TRUE))))
-raref$plot_group <- row.names(raref)
-names(raref) <- c("sp_rich_raref", "sp_rich_raref_sd", "plot_group")
+chao_rich_df <- do.call("rbind", chao_rich_list)
 
-# Join rarefied species richness data to main data
-plot_data_agg <- left_join(plot_data_agg, raref, by = c("plot_group", "plot_group"))
+chao_rich_df$plot_group <- row.names(chao_rich_df)
+
+names(chao_rich_df) <- c("sp_r", "sp_rich_raref", "sp_rich_raref_se", "sp_rich_lower_ci_95", "sp_rich_upper_ci_95", "plot_group")
+
+chao_shannon_list <- apply(ab_mat_clean, 1, ChaoShannon, transform = TRUE)
+
+chao_shannon_df <- do.call("rbind", chao_shannon_list)
+
+chao_shannon_df$plot_group <- row.names(chao_shannon_df)
+
+names(chao_shannon_df) <- c("shannon_obs", "shannon_exp", "shannon_se", "shannon_lower_ci_95", "shannon_upper_ci_95", "plot_group")
+
+chao_df <- left_join(chao_rich_df, chao_shannon_df, by = c("plot_group" = "plot_group"))
+
+# Join estimated species richness data to main data
+plot_data_agg <- left_join(plot_data_agg, chao_df, by = c("plot_group", "plot_group"))
 
 # Estimate Species abundance evenness from Shannon
-plot_data_agg$shannon_equit <- plot_data_agg$shannon / plot_data_agg$sp_rich_raref
+plot_data_agg$shannon_equit <- plot_data_agg$shannon_exp / plot_data_agg$sp_rich_raref
 
-# Create and index of fire intensity to account for plots with no fire
-##' Currently only 684 plots have fire
-plot_data_agg$fire_index <- as.character(cut_number(plot_data_agg$fire_return_mean, n = 4, 
-  labels = c("Frequent", "Occassional", "Rare", "Very rare")))
-plot_data_agg$fire_index[is.na(plot_data_agg$fire_index)] <- "No fire"
-plot_data_agg$fire_index <- factor(plot_data_agg$fire_index, levels = c("Frequent", "Occassional", "Rare", "Very rare", "No fire"))
+# Remove plots with zero Shannon equitability and shannon index
+plot_data_agg <- plot_data_agg %>%
+  filter(shannon_equit > 0,
+    shannon_exp > 0)
 
 # Ensure that variables all have the same sign
 plot_data_agg$precip_seasonality <- 1 / plot_data_agg$precip_seasonality * 10000
 plot_data_agg$temp_seasonality <- 1 / plot_data_agg$temp_seasonality * 10000
-plot_data_agg$sand_per <- 1 / plot_data_agg$temp_seasonality * 10000
+plot_data_agg$sand_per <- 1 / plot_data_agg$sand_per * 10000
+plot_data_agg$mean_temp <- 1 / plot_data_agg$mean_temp * 10000
+
+if(full_best == "full"){
 
 # Write to CSV
 write.csv(plot_data_agg, "data/plot_data_fil_agg.csv", row.names = FALSE)
   
+  }else{
+  
+# Optionally only pick the "best" plots
+##' The 200-300 plots that are the most foresty
+##' measured by stems ha and/or biomass
+plot_data_agg_best <- subset(plot_data_agg, 
+  subset=(plot_data_agg$stems_ha >= quantile(plot_data_agg$stems_ha, 0.80)))
+
+write.csv(plot_data_agg_best, "data/plot_data_fil_agg_best.csv", row.names = FALSE)
+}

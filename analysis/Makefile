@@ -10,6 +10,7 @@ PLOTS=data/seosaw_plot_summary5Apr2019.Rdata
 # When the master data, or the scripts change, recompile models
 all: plot_data_descrip.R lmm.R sem.R data/plot_data_fil_agg_norm_std_outlier.csv data/region_temp_precip.csv
 	Rscript plot_data_descrip.R
+	Rscript cluster_species.R
 	Rscript lmm.R
 	Rscript sem.R
 	./img_transfer.sh

@@ -61,174 +61,68 @@ theme.bivar <- function(base_size = 12, base_font_family = "Helvetica"){
     )}
 
 source("clust_pal.R")
-
-facet_levels <- c(
-  "aridity_index",
-  "total_precip",
-  "precip_seasonality",
-  "mean_temp",
-  "temp_seasonality",
-  "isothermality",
-  "bchave",
-  "cation_ex_cap",
-  "sand_per",
-  "ocdens",
-  "cov_dbh",
-  "cov_height",
-  "mean_dbh",
-  "mean_height",
-  "stems_ha",
-  "shannon",
-  "shannon_equit",
-  "sp_rich",
-  "sp_rich_raref",
-  "fire_return_mean",
-  "firecount_2001_2018",
-  "bchave_log", 
-  "mean_dbh_log",
-  "stems_ha_log", 
-  "shannon_cube",
-  "fire_return_mean_log",
-  "aridity_index_std",
-  "mean_temp_std",
-  "temp_seasonality_std", 
-  "isothermality_std",
-  "bchave_log_std", 
-  "cation_ex_cap_std",
-  "sand_per_std", 
-  "ocdens_std", 
-  "cov_dbh_std", 
-  "cov_height_std", 
-  "mean_dbh_log_std",
-  "mean_height_std", 
-  "stems_ha_log_std", 
-  "shannon_cube_std",
-  "shannon_equit_std",
-  "sp_rich_std", 
-  "sp_rich_raref_std", 
-  "fire_return_mean_log_std",
-  "firecount_2001_2018_std")
-
-facet_labels <- c(  
-  expression("Aridity" ~ "index"),
-  expression("Mean" ~ "Annual" ~ "Precipitation" ~ (mm ~ y^-1)),
-  expression("Precipitation" ~ "seasonality"),
-  expression("Mean" ~ "annual" ~ "temp." ~ (degree * C)), 
-  expression("Temp." ~ "seasonality" ~ (degree * C)),
-  expression("Isothermality"),
-  expression("AGB" ~ t ~ ha^-1),
-  expression("Cation" ~ "exchange" ~ "capacity"),
-  expression("Sand" ~ "%"), 
-  expression("Organic" ~ "C" ~ "%"),
-  expression("Coef." ~ "var." ~ "DBH"),
-  expression("Coef." ~ "var." ~ "height"),
-  expression("Mean" ~ "DBH" ~ (cm)),
-  expression("Mean" ~ "height" ~ (m)),
-  expression("Stem" ~ "density" ~ ">5" ~ cm ~ (n ~ ha^-1)),
-  expression("Shannon" ~ "Index" ~ (H*"'")),
-  expression("Shannon" ~ "equitability" ~ (E[H])),
-  expression("Species" ~ "richness"),
-  expression("Rarefied" ~ "species" ~ "richness"),
-  expression("Mean" ~ "fire" ~ "return" ~ "interval" ~ (yr)),
-  expression("Number" ~ "of" ~ "fires" ~ "2001-18"),
-  expression("log(Woody" ~ "biomass)" ~ ha^-1),
-  expression("log(Mean" ~ "DBH)" ~ (cm)),
-  expression("log(Stem" ~ "density)" ~ ">5" ~ cm ~ (n ~ ha^-1)),
-  expression("Shannon" ~ "Index" ~ (H^3)),
-  expression("log(Mean" ~ "fire" ~ "return" ~ "interval)" ~ (yr)),
-  expression("Aridity" ~ "index" ~ "(std)"),
-  expression("Mean" ~ "annual" ~ "temp." ~ "(std)" ~ (degree * C)), 
-  expression("Temp." ~ "seasonality" ~ "(std)" ~ (degree * C)),
-  expression("Isothermality" ~ "(std)"),
-  expression("log(Woody" ~ "biomass)" ~ "(std)" ~ ha^-1),
-  expression("Cation" ~ "exchange" ~ "capacity" ~ "(std)"),
-  expression("Sand" ~ "(std)"), 
-  expression("Organic" ~ "C" ~ "(std)" ~ "(%)"),
-  expression("Coef." ~ "var." ~ "DBH" ~ "(std)"),
-  expression("Coef." ~ "var." ~ "height" ~ "(std)"),
-  expression("log(Mean" ~ "DBH)" ~ "(std)" ~ (cm)),
-  expression("Mean" ~ "height" ~ "(std)" ~ (m)),
-  expression("log(Stem" ~ "density" ~ ">5" ~ cm ~ "(std)" ~ (n ~ ha^-1)),
-  expression("Shannon" ~ "Index" ~ "(std)" ~ (H^3)),
-  expression("Shannon"~ "equitability" ~ "(std)" ~ (E[H])),
-  expression("Species" ~ "richness" ~ "(std)"),
-  expression("Rarefied" ~ "species" ~ "richness" ~ "(std)"),
-  expression("log(Mean" ~ "fire" ~ "return" ~ "interval)" ~ "(std)" ~ (yr)),
-  expression("Number" ~ "of" ~ "fires" ~ "2001-18" ~ "(std)"))
-
-
+source("full_best.R")
 
 # Import data ----
 
-sem_data_fil_agg <- read.csv("data/plot_data_fil_agg.csv")
+sem_data_fil_agg <- read.csv(paste0("data/plot_data_fil_agg", ext, ".csv"))
 
 
 # Which variables need to be log transformed? ----
 ##' Look at histograms
 histogram_raw <- sem_data_fil_agg %>%
-	dplyr::select(stems_ha, bchave, sp_rich, sp_rich_raref, shannon, shannon_equit, 
+	dplyr::select(stems_ha, bchave, sp_rich, sp_rich_raref, shannon_exp, shannon_equit, 
 	  cation_ex_cap, sand_per, ocdens, aridity_index, total_precip, precip_seasonality,
 		mean_height, cov_height, mean_dbh, cov_dbh, fire_return_mean, firecount_2001_2018, 
 	  mean_temp, temp_seasonality, isothermality) %>%
 	gather(variable, value) %>%
-	mutate(facet_label = factor(variable,
-	  levels = facet_levels,
-	  labels = facet_labels)) %>%
 	ggplot(aes(x = value)) + 
 	geom_histogram(colour = "black", fill = "grey") + 
-	facet_wrap(~facet_label, scales = "free", labeller = label_parsed) + 
+	facet_wrap(~variable, scales = "free", labeller = label_parsed) + 
 	theme.bivar() + 
 	labs(x = "", y = "")
 	
-pdf(file = "img/histogram_raw.pdf", width = 12, height = 7)
+pdf(file = paste0("img/histogram_raw", ext, ".pdf"), width = 12, height = 7)
 histogram_raw
 dev.off()
-##' bchave
-##' mean_dbh
-##' stems_ha
-##' shannon - Not right-skewed, transform != log
-##' sp_rich - But this is count data
-##' Fire return interval
-##' Number of fires 2001-2018
-##' Organic C %
 
-sem_data_norm <- sem_data_fil_agg %>%
+sem_data_trans <- sem_data_fil_agg %>%
 	mutate(bchave_log = log(bchave),
 		mean_dbh_log = log(mean_dbh),
 		stems_ha_log = log(stems_ha), 
-		shannon_cube = shannon^3, # Log doesn't work to normalise the data
-		sp_rich = sp_rich,
+		shannon_log = log(shannon_exp), 
+	  shannon_equit_log = -log(shannon_equit),
+	  sp_rich_raref_log = log(sp_rich_raref),
 		fire_return_mean_log = log(fire_return_mean),
-	  ocdens = ocdens) %>% 
-	dplyr::select(-bchave, -mean_dbh, -stems_ha, -shannon, -fire_return_mean)
+	  temp_seasonality_log = log(temp_seasonality),
+	  precip_seasonality_log = log(precip_seasonality),
+	  ocdens = ocdens)
 
-histogram_trans <- sem_data_norm %>%
-	dplyr::select(stems_ha_log, bchave_log, sp_rich, sp_rich_raref, shannon_cube, shannon_equit,
+histogram_trans <- sem_data_trans %>%
+	dplyr::select(stems_ha_log, bchave_log, sp_rich, 
+	  sp_rich_raref_log, shannon_log, shannon_equit_log,
 		cation_ex_cap, sand_per, ocdens, aridity_index,
-	  total_precip, precip_seasonality,
+	  total_precip, precip_seasonality_log,
 		mean_height, cov_height, mean_dbh_log, cov_dbh, 
-		fire_return_mean_log, mean_temp, temp_seasonality, isothermality, firecount_2001_2018) %>%
+		fire_return_mean_log, mean_temp, temp_seasonality_log, isothermality, firecount_2001_2018) %>%
 	gather(variable, value) %>%
-	mutate(facet_label = factor(variable,
-	  levels = facet_levels,
-	  labels = facet_labels)) %>%
 	ggplot(., aes(x = value)) + 
 	geom_histogram(colour = "black", fill = "grey") + 
-	facet_wrap(~facet_label, scales = "free", labeller = label_parsed) + 
+	facet_wrap(~variable, scales = "free", labeller = label_parsed) + 
 	theme.bivar() +
 	labs(x = "", y = "")
 
-pdf(file = "img/histogram_trans.pdf", width = 12, height = 7)
+pdf(file =  paste0("img/histogram_trans", ext, ".pdf"), width = 12, height = 7)
 histogram_trans
 dev.off()
 
 # Standardize each variable
-sem_data_norm_std <- sem_data_norm %>%
+sem_data_norm_std <- sem_data_trans %>%
 	mutate_at(.vars = c("aridity_index",
 	  "total_precip",
-	  "precip_seasonality",
+	  "precip_seasonality_log",
 		"mean_temp",
-		"temp_seasonality",
+		"temp_seasonality_log",
 	  "isothermality",
 		"bchave_log",
 		"cation_ex_cap",
@@ -239,31 +133,28 @@ sem_data_norm_std <- sem_data_norm %>%
 		"mean_dbh_log",
 		"mean_height",
 		"stems_ha_log",
-		"shannon_cube",
-	  "shannon_equit",
+		"shannon_log",
+	  "shannon_equit_log",
 		"sp_rich",
-	  "sp_rich_raref",
+	  "sp_rich_raref_log",
 		"fire_return_mean_log",
 	  "firecount_2001_2018"),
 		.funs = list(std = ~(scale(.) %>% as.vector)))
 
 histogram_trans_std <- sem_data_norm_std %>%
-	dplyr::select(stems_ha_log_std, bchave_log_std, sp_rich_std, sp_rich_raref_std, 
-	  shannon_cube_std, shannon_equit_std, cation_ex_cap_std, sand_per_std, ocdens_std, 
-	  aridity_index_std, total_precip_std, precip_seasonality_std,
+	dplyr::select(stems_ha_log_std, bchave_log_std, sp_rich_std, sp_rich_raref_log_std, 
+	  shannon_log_std, shannon_equit_log_std, cation_ex_cap_std, sand_per_std, ocdens_std, 
+	  aridity_index_std, total_precip_std, precip_seasonality_log_std,
 		mean_height_std, cov_height_std, mean_dbh_log_std, cov_dbh_std, 
-	  fire_return_mean_log_std, mean_temp_std, temp_seasonality_std, isothermality_std, firecount_2001_2018_std) %>%
+	  fire_return_mean_log_std, mean_temp_std, temp_seasonality_log_std, isothermality_std, firecount_2001_2018_std) %>%
 	gather(variable, value) %>%
-  mutate(facet_label = factor(variable,
-    levels = facet_levels,
-    labels = facet_labels)) %>%
 	ggplot(., aes(x = value)) + 
 	geom_histogram(colour = "black", fill = "grey") + 
-	facet_wrap(~facet_label, scales = "free", labeller = label_parsed) + 
+	facet_wrap(~variable, scales = "free", labeller = label_parsed) + 
 	theme.bivar() +
 	labs(x = "", y = "")
 
-pdf(file = "img/histogram_trans_std.pdf", width = 12, height = 7)
+pdf(file =  paste0("img/histogram_trans_std", ext, ".pdf"), width = 12, height = 7)
 histogram_trans_std
 dev.off()
  
@@ -274,30 +165,30 @@ bivar_list <- c(
   "bchave_log_std ~ ocdens_std",
   "bchave_log_std ~ cov_dbh_std",
   "bchave_log_std ~ cov_height_std",
-  "bchave_log_std ~ shannon_cube_std",
-  "bchave_log_std ~ shannon_equit_std",
-  "bchave_log_std ~ sp_rich_raref_std",
+  "bchave_log_std ~ shannon_log_std",
+  "bchave_log_std ~ shannon_equit_log_std",
+  "bchave_log_std ~ sp_rich_raref_log_std",
   "bchave_log_std ~ fire_return_mean_log_std",
   "bchave_log_std ~ aridity_index_std",
   "bchave_log_std ~ mean_temp_std",
-  "bchave_log_std ~ temp_seasonality_std",
+  "bchave_log_std ~ temp_seasonality_log_std",
   "bchave_log_std ~ isothermality_std",
   "bchave_log_std ~ total_precip_std",
-  "bchave_log_std ~ precip_seasonality_std",
+  "bchave_log_std ~ precip_seasonality_log_std",
   "bchave_log_std ~ stems_ha_log_std",
   "cov_height_std ~ cation_ex_cap_std",
   "cov_height_std ~ aridity_index_std",
   "cov_height_std ~ fire_return_mean_log_std",
-  "cov_height_std ~ shannon_cube_std",
-  "cov_height_std ~ shannon_equit_std",
-  "cov_height_std ~ sp_rich_raref_std",
+  "cov_height_std ~ shannon_log_std",
+  "cov_height_std ~ shannon_equit_log_std",
+  "cov_height_std ~ sp_rich_raref_log_std",
   "cov_height_std ~ ocdens_std",
   "cov_dbh_std ~ cation_ex_cap_std",
   "cov_dbh_std ~ aridity_index_std",
   "cov_dbh_std ~ fire_return_mean_log_std",
-  "cov_dbh_std ~ shannon_cube_std",
-  "cov_dbh_std ~ shannon_equit_std",
-  "cov_dbh_std ~ sp_rich_raref_std",
+  "cov_dbh_std ~ shannon_log_std",
+  "cov_dbh_std ~ shannon_equit_log_std",
+  "cov_dbh_std ~ sp_rich_raref_log_std",
   "cov_dbh_std ~ ocdens_std")
 
 # Create models
@@ -354,7 +245,7 @@ bivar_lm_stats_output <- bivar_lm_stats %>%
 		"<0.05"),
 		r2_stat = round(.$r2_stat, digits = 3))
 
-write.csv(bivar_lm_stats_output, "output/bivar_lm.csv", row.names = FALSE)
+write.csv(bivar_lm_stats_output, paste0("output/bivar_lm", ext, ".csv"), row.names = FALSE)
 
 # Create plots ----
 plot_list = list()
@@ -392,9 +283,7 @@ for (i in 1:length(bivar_list)) {
 	  scale_fill_manual(name = "Cluster", values = clust_pal) + 
 	  scale_colour_manual(name = "Cluster", values = clust_pal) + 
 	  theme.bivar() + 
-	  theme(legend.position = "none") + 
-	  labs(x = facet_labels[grep(paste0("\\b", x, "\\b"), facet_levels)],
-	    y = facet_labels[grep(paste0("\\b", y, "\\b"), facet_levels)])
+	  theme(legend.position = "none")
 	plot_list[[i]] = p
 }
 
@@ -402,29 +291,28 @@ for (i in 1:length(bivar_list)) {
 n <- length(plot_list)
 n_col <- floor(sqrt(n))
 
-pdf(file = "img/bivariate_relationships.pdf", width = 14, height = 10)
+pdf(file =  paste0("img/bivariate_relationships", ext, ".pdf"), width = 14, height = 10)
 do.call("grid.arrange", c(plot_list, ncol = 5))
 dev.off()
 
 # Save standardized data to csv ----
-
-write.csv(sem_data_norm_std, file = "data/plot_data_fil_agg_norm_std.csv", row.names = FALSE)
+write.csv(sem_data_norm_std, file = paste0("data/plot_data_fil_agg", ext, "_norm_std.csv"), row.names = FALSE)
 
 # Look at how relationships vary with cluster ----
 cluster_compare <- data.frame(
   bchave_log = sem_data_norm_std$bchave_log,
   sp_rich = sem_data_norm_std$sp_rich,
-  sp_rich_raref = sem_data_norm_std$sp_rich_raref,
-  shannon_cube = sem_data_norm_std$shannon_cube,
-  shannon_equit = sem_data_norm_std$shannon_equit,
+  sp_rich_raref = sem_data_norm_std$sp_rich_raref_log,
+  shannon_log = sem_data_norm_std$shannon_log,
+  shannon_equit_log = sem_data_norm_std$shannon_equit_log,
   cation_ex_cap = sem_data_norm_std$cation_ex_cap,
   sand_per = sem_data_norm_std$sand_per,
   ocdens = sem_data_norm_std$ocdens, 
   aridity_index = sem_data_norm_std$aridity_index,
   total_precip = sem_data_norm_std$total_precip,
-  precip_seasonality = sem_data_norm_std$precip_seasonality,
+  precip_seasonality_log = sem_data_norm_std$precip_seasonality_log,
   mean_temp = sem_data_norm_std$mean_temp,
-  temp_seasonality = sem_data_norm_std$temp_seasonality,
+  temp_seasonality = sem_data_norm_std$temp_seasonality_log,
   isothermality = sem_data_norm_std$isothermality,
   mean_height = sem_data_norm_std$mean_height,
   stems_ha_log = sem_data_norm_std$stems_ha_log,
@@ -457,57 +345,11 @@ cluster_compare_gather$sd_lo <- cluster_compare_gather$mean - cluster_compare_ga
 
 cluster_compare_gather$clust5 <- as.character(cluster_compare_gather$clust5)
 
-cluster_compare_gather <- cluster_compare_gather %>%
-  mutate(facet_label = factor(variable,
-    levels = c("aridity_index",
-      "total_precip",
-      "precip_seasonality",
-      "mean_temp",
-      "temp_seasonality", 
-      "isothermality",
-      "bchave_log", 
-      "cation_ex_cap",
-      "sand_per", 
-      "ocdens", 
-      "cov_dbh", 
-      "cov_height", 
-      "mean_dbh_log",
-      "mean_height", 
-      "stems_ha_log", 
-      "shannon_cube",
-      "shannon_equit",
-      "sp_rich", 
-      "sp_rich_raref", 
-      "fire_return_mean_log",
-      "firecount_2001_2018"),
-    labels = c(
-      expression("Aridity" ~ "index"),
-      expression("Mean" ~ "Annual" ~ "Precipitation" ~ (mm ~ y^-1)),
-      expression("Precipitation" ~ "seasonality"),
-      expression("Mean" ~ "annual" ~ "temp." ~ (degree * C)), 
-      expression("Temp." ~ "seasonality" ~ (degree * C)),
-      expression("Isothermality"),
-      expression("log(Woody" ~ "biomass)" ~ ha^-1),
-      expression("Cation" ~ "exchange" ~ "capacity"),
-      expression("Sand" ~ "%"), 
-      expression("Organic" ~ "C" ~ "%"),
-      expression("Coef." ~ "var." ~ "DBH"),
-      expression("Coef." ~ "var." ~ "height"),
-      expression("log(Mean" ~ "DBH)" ~ (cm)),
-      expression("Mean" ~ "height" ~ (m)),
-      expression("log(Stem" ~ "density)" ~ ">5" ~ cm ~ (n ~ ha^-1)),
-      expression("Shannon" ~ "Index" ~ (H)),
-      expression("Shannon" ~ "equitability" ~ (E[H])),
-      expression("Species" ~ "richness"),
-      expression("Rarefied" ~ "species" ~ "richness"),
-      expression("log(Mean" ~ "fire" ~ "return" ~ "interval)" ~ (yr)),
-      expression("Number" ~ "of" ~ "fires" ~ "2001-18"))))
-
-pdf(file = "img/cluster_variable_bar.pdf", width = 10, height = 7)
+pdf(file = paste0("img/cluster_variable_bar", ext, ".pdf"), width = 10, height = 7)
 ggplot(cluster_compare_gather, aes(x = clust5, y = mean, fill = clust5)) + 
     geom_bar(stat = "identity", colour = "black") + 
     geom_errorbar(aes(x = clust5, ymin = sd_lo, ymax = sd_hi), width = 0.5) + 
-  facet_wrap(~facet_label, scales = "free_y", labeller = label_parsed) + 
+  facet_wrap(~variable, scales = "free_y", labeller = label_parsed) + 
   scale_fill_manual(values = clust_pal) + 
   theme.bivar() + 
   theme(legend.position = "none") + 
@@ -558,4 +400,4 @@ bivar_lmer_stats_output <- bivar_lm_stats %>%
     t_stat = round(.$t_stat, digits = 2),
     r2_stat = round(.$r2_stat, digits = 3))
 
-write.csv(bivar_lmer_stats_output, "output/bivar_lmer.csv", row.names = FALSE)
+write.csv(bivar_lmer_stats_output, paste0("output/bivar_lmer", ext, ".csv"), row.names = FALSE)

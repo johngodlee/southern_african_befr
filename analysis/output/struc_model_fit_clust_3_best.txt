@@ -1,0 +1,40 @@
+$PE
+                     lhs op                   rhs                 label exo           est se  z
+1                    div =~ sp_rich_raref_log_std                     x   0  1.000000e+00  0 NA
+2                    div =~ shannon_equit_log_std                     x   0  1.000000e+00  0 NA
+3                  struc =~           cov_dbh_std                     y   0  1.000000e+00  0 NA
+4                  struc =~        cov_height_std                     y   0  1.000000e+00  0 NA
+5                biomass =~            bchave_log                         0  1.000000e+00  0 NA
+6                biomass  ~                   div                     c   0 -2.407921e+03 NA NA
+7                biomass  ~                 struc                     b   0  2.706777e+03 NA NA
+8                  struc  ~                   div                     a   0  8.898963e-01 NA NA
+9  sp_rich_raref_log_std ~~ sp_rich_raref_log_std                         0  8.099629e-02 NA NA
+10 shannon_equit_log_std ~~ shannon_equit_log_std                         0  3.087563e-01 NA NA
+11           cov_dbh_std ~~           cov_dbh_std                         0  1.143893e+00 NA NA
+12        cov_height_std ~~        cov_height_std                         0  5.268953e-01 NA NA
+13            bchave_log ~~            bchave_log                         0  0.000000e+00  0 NA
+14                   div ~~                   div                         0  5.293612e-01 NA NA
+15                 struc ~~                 struc                         0  2.074258e-04 NA NA
+16               biomass ~~               biomass                         0 -1.518439e+03 NA NA
+17 biomass_div_via_struc :=                   a*b biomass_div_via_struc   0  2.408751e+03  0 NA
+18     biomass_div_total :=               c+(a*b)     biomass_div_total   0  8.295418e-01  0 NA
+   pvalue        std.lv       std.all       std.nox
+1      NA  7.275721e-01  9.312878e-01  9.312878e-01
+2      NA  7.275721e-01  7.947373e-01  7.947373e-01
+3      NA  6.476239e-01  5.179650e-01  5.179650e-01
+4      NA  6.476239e-01  6.657416e-01  6.657416e-01
+5      NA  1.288322e+00  1.000000e+00  1.000000e+00
+6      NA -1.359859e+03 -1.359859e+03 -1.359859e+03
+7      NA  1.360664e+03  1.360664e+03  1.360664e+03
+8      NA  9.997527e-01  9.997527e-01  9.997527e-01
+9      NA  8.099629e-02  1.327030e-01  1.327030e-01
+10     NA  3.087563e-01  3.683926e-01  3.683926e-01
+11     NA  1.143893e+00  7.317123e-01  7.317123e-01
+12     NA  5.268953e-01  5.567881e-01  5.567881e-01
+13     NA  0.000000e+00  0.000000e+00  0.000000e+00
+14     NA  1.000000e+00  1.000000e+00  1.000000e+00
+15     NA  4.945577e-04  4.945577e-04  4.945577e-04
+16     NA -9.148464e+02 -9.148464e+02 -9.148464e+02
+17     NA  1.360327e+03  1.360327e+03  1.360327e+03
+18     NA  4.684787e-01  4.684787e-01  4.684787e-01
+

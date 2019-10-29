@@ -2,6 +2,10 @@
 
 \usepackage{mynotes}
 
+\usepackage{dcolumn}
+\usepackage{multirow}
+
+
 \title{A regional scale assessment of the biodiversity - ecosystem function relationship in southern African woodlands}
 \author{John L. Godlee}
 \date{}
@@ -29,15 +33,14 @@ While southern African woodlands are species rich in the herbaceous understorey,
 
 High levels of disturbance in the form of seasonal fires and herbivory from large mammals \citep{Fire is a herbivore} may moderate the strength of observable BEFRs in southern African woodlands. Fire disturbance in forests has been linked to abundance dependent mortality among smaller stems \citep{Roques2001}. A dominant and competitive species which tends to produce many small fast-growing stems is more likely to experience mortality during a fire as the higher surface area to volume ratio of the trunk increases the likelihood of combustion \citep{}. Such fast-growing bushy species exist in southern African woodlands and often proliferate when fire is deliberately excluded, leading to the growth of thicket vegetation which precludes the growth of high biomass tree species \citep{nieto2018}. Additionally, the dominance of a single species is likely to decrease overall functioning by decreasing niche space utilisation \citep{Cardinale2002}.
 
-In this study, we made the first known regional estimation of the Biodiversity-Ecosystem Function Relationship in southern African woodlands, using inventory plots which straddle multi-dimensional environmental and biogeographical gradients (Figure \ref{}). We used aboveground woody biomass \todo{and estimates of ecosystem productivity} as measures of ecosystem functionality to understand the co-relationship between tree species biodiversity and ecosystem functionality. We compared the relative effects of tree species biodiversity with that of other environmental factors known to affect ecosystem productivity and biomass accumulation such as precipitation and temperature. In acknowledgement of the wide variation in biogeographically determined community composition across the region, we also used biogeographical clusters \citep{} to understand how species composition as well as species biodiversity \textit{per se} affected ecosystem functionality. Initially, we made four hypotheses: 1) across the region, after other environmental factors had been accounted for, woodland plots with a higher species richness would have a higher aboveground biomass, 2) increased aridity would increase the strength of the biomass tree species richness relationship, 3) species composition would have a greater affect on aboveground biomass than species diversity \textit{per se}. We used Structural Equation Modelling as a preferred method to simultaneously account for environmental factors and biogeographic factors, which often interact in their effect on ecosystem structure and therefore biomass. 
+In this study, we made the first known regional estimation of the Biodiversity-Ecosystem Function Relationship in southern African woodlands, using inventory plots which straddle multi-dimensional environmental and biogeographical gradients (Figure \ref{}). We used aboveground woody biomass \todo{and estimates of ecosystem productivity} as measures of ecosystem functionality to understand the co-relationship between tree species biodiversity and ecosystem functionality. We compared the relative effects of tree species biodiversity with that of other environmental factors known to affect ecosystem productivity and biomass accumulation such as precipitation and temperature. We incorporated biogeographical clusters \citep{} into our analyses to understand how species composition as well as species biodiversity \textit{per se} affected ecosystem functionality. Initially, we made four hypotheses: 1) across the region, after other environmental factors had been accounted for, woodland plots with a higher species richness would have a higher aboveground biomass, 2) increased aridity would increase the strength of the biomass tree species richness relationship, 3) species composition would have a greater affect on aboveground biomass than species diversity \textit{per se}. We used Structural Equation Modelling as a preferred method to simultaneously account for environmental factors and biotic factors, which often interact in their effect on ecosystem structure and therefore biomass \citep{}.
 
 
 \subsection{Hypotheses}
 
 \begin{enumerate}
 	\item{Plots with a higher tree species diversity will maintain higher biomass stocks.}
-	\item{Species abundance evenness will influence above-ground productivity more than species richness \textit{per se}.}
-	\item{Plots in more arid regions will feature a stronger positive effect of tree species richness on above ground biomass stocks, due to abiotic facilitation effects, despite lower overall tree species richness.}
+	\item{More arid plots and plots with less fertile soil will show a stronger positive effect of tree species richness on above ground woody biomass, due to abiotic facilitation effects, despite lower overall tree species richness.}
 	\item{Structural characteristics of the woodland will interact with species composition and richness to provide an indirect path of influence between species composition and biomass stocks.}
 \end{enumerate}
 
@@ -46,7 +49,7 @@ In this study, we made the first known regional estimation of the Biodiversity-E
 
 \subsection{Study location}
 
-The study used 1066 woodland monitoring from a larger network located across 10 countries within southern Africa in so-called Miombo woodland (Figure \ref{plot_loc}). The study region spans a precipitation gradient from \textapprox{}460 mm y\textsuperscript{-1} in the \todo{where} and \textapprox{}1700 mm y\textsuperscript{-1} in the \todo{where}. The study sites straddle the climate space of the region as a whole (Figure \ref{temp_precip_hull}a). The 2D convex hull of Mean Annual Precipitation (MAP) and Mean Annual Temperature of the study sites covers 92.7\% of the pixel-wise climate space of the Miombo woodland area as defined by \citet{White}, using WorldClim estimates of temperature and precipitation between the year 1970 and 2000 with a pixel size of 30 seconds (0.86 km\textsuperscript{2} at the equator). 
+The study used 1066 woodland monitoring from a larger network located across 10 countries within southern Africa in so-called Miombo woodland (Figure \ref{plot_loc}). The study region spans a precipitation gradient from \textapprox{}460 mm y\textsuperscript{-1} in southern Mozambique and southern Zimbabwe and \textapprox{}1700 mm y\textsuperscript{-1} in the north of Zambia, Malawi and northern Mozambique. The study sites straddle the climate space of the region as a whole (Figure \ref{temp_precip_hull}a). The 2D convex hull of Mean Annual Precipitation (MAP) and Mean Annual Temperature (MAT) of the study sites covers 92.7\% of the pixel-wise climate space of the Miombo woodland area as defined by \citet{White}, using WorldClim estimates of temperature and precipitation between the year 1970 and 2000 with a pixel size of 30 seconds (0.86 km\textsuperscript{2} at the equator). 
 
 \begin{figure}[H]
 	\centering
@@ -56,11 +59,11 @@ The study used 1066 woodland monitoring from a larger network located across 10 
     \caption{The locations of the 1066 plots used in this study, by geographic location (a) with respect to the distribution of Miombo woodland vegetation \citep{White}, and in climate space (b), showing the plot locations as points compared to the climate space of the whole region as estimated using the WorldClim dataset over the Miombo woodland vegetation extent.}
 \end{figure}
 
-Plots were chosen from a larger pool of 5395 plots based on the quality of data collection and plot setup. Plot vegetation was identified under the broad term of ``savanna'', which includes ``woodland'', ``savanna woodland'', and ``tree savanna''. Plots with evidence of farming, human resource extraction or experimental treatements such as prescribed burning or herbivore exclusion were exlcuded from the initial pool. Only plots \textgreater{}0.1 hectares were used as per hectare biomass estimation from small plots is highly influenced by rare large trees. Only plots with a stem density \textless{}10 stems ha\textsuperscript{-1} were used, to ensure all plots were within woodland rather than ``grassy savanna'', which are considered a separate biome with very different species composition \citep{Parr2014}.
+Plots were chosen from a larger pool of 5395 plots based on the quality and completeness of data collection, and plot setup. Plot vegetation was identified under the broad term of ``savanna'', which includes ``woodland'', ``savanna woodland'', and ``tree savanna''. Plots with evidence of farming, human resource extraction or experimental treatements such as prescribed burning or herbivore exclusion were exlcuded from the initial pool. Only plots \textgreater{}0.1 hectares were used as per hectare biomass estimation from small plots is highly influenced by rare large trees. Only plots with a stem density \textgreater{}10 stems ha\textsuperscript{-1} were used, to ensure all plots were within woodland rather than ``grassy savanna'', which are considered a separate biome with very different species composition \citep{Parr2014}.
 
-Many plots provided by the Zambian Forestry Commission were arranged in clusters of four 20x50 m plots, 20 metres apart. These plots were aggregated for analyses and their values averaged for use in further plot level data cleaning.
+Many plots provided by the Zambian Forestry Commission were arranged in clusters of up to four 20x50 m plots, 20 metres apart. These plots were aggregated for analyses and their values averaged for use in further plot level data cleaning.
 
-A Principle Coordinate Analysis (PCoA) was conducted on tree species abundance matrix data for each plot to identify compositional outliers, which were considered not representative southern African woodlands. Plots within the upper 95th percentile of plot neighbour distance in the PCoA were excluded from further analyses (Figure \ref{pcoa_outlier}). This removed 66 plots.
+A Principle Coordinate Analysis (PCoA) was conducted on tree species abundance matrix data for each suitable plot to identify compositional outliers, which were considered not representative southern African woodlands. Plots within the upper 95th percentile of neighbour distance in the PCoA were excluded from further analyses (Figure \ref{pcoa_outlier}). This procedure removed 66 plots.
 
 \begin{figure}[H]
 \centering
@@ -71,9 +74,9 @@ A Principle Coordinate Analysis (PCoA) was conducted on tree species abundance m
 
 \subsection{Data collection}
 
-We considered only trees and shrubs in our analyses of above-ground biomass, including woody species including palms and cycads but excluding lianas. Only stems \textgreater{}5 cm DBH (Diameter at Breast Height, 1.3 m) were included in analyses. AGB estimation for trees \textless{}5 cm DBH is imprecise due to its sensitivity to many environmental and historical factors \citep{}. Additionally, for some species, species identification is difficult for saplings.
+We considered only trees and shrubs in our analyses of above-ground biomass, including woody species such as palms and cycads which are functionally tree-like but excluding lianas which fill a different ecological niche. Only stems \textgreater{}5 cm DBH (Diameter at Breast Height, 1.3 m) were included in analyses. AGB estimation for stems \textless{}5 cm DBH is imprecise due to its sensitivity to many environmental and historical factors \citep{}. Additionally, for some species, species identification is difficult for saplings.
 
-All stems \textgreater{}5 cm DBH were measured within each plot. For each tree, species, DBH and height to the highest branch material were recorded. Height was measured through a variety of means including laser rangefinders, manual clinometers and measuring sticks, which resulted in a variety of measurement uncertainty in the dataset, however, averaged over such a large number of stems this should not meaningfully alter the results of our analysis. When DBH could not be measured at 1.3 m due to trunk abnormalities, it was measured at the closest regular portion of the trunk to 1.3 m. The height of this measurement was recorded and used to estimate the DBH\textsubscript{e} at 1.3 m using a cubic polynomial, parameters estimated using a test dataset \citep{Ryanunbublished}.
+All stems \textgreater{}5 cm DBH were measured within each plot resulting in a total of 160,076 stems with measurements. Note that a tree may be comprised of multiple stems, but for this analysis each stem is treated as an individual. For each stem, species, DBH and height to the highest branch material were recorded. Height was measured through a variety of means including laser rangefinders, manual clinometers and measuring sticks, which may cause potentially large measurement uncertainty in the dataset. Averaged over such a large number of stems however, this should not meaningfully alter the results of our analysis. When DBH could not be measured at 1.3 m due to trunk abnormalities, it was measured at the closest regular portion of the trunk to 1.3 m. The height of this measurement was recorded and used to estimate the DBH\textsubscript{e} at 1.3 m using a cubic polynomial, parameters estimated using a test dataset \citep{Ryanunbublished}.
 
 Aboveground biomass for each plot was calculated using Equation \ref{chave_agb}, taken from \citet{Chave2014}. Wood density estimates were taken from the global wood density database for each species where possible \citep{Chave2009, Zanne2009}. Wood density for species without species level estimates was estimated from the mean of their respective genus. 
 
@@ -84,76 +87,81 @@ Aboveground biomass for each plot was calculated using Equation \ref{chave_agb},
 
 Where $\rho$ is the species level mean wood density, $D$ is the DBH at 1.3 m, and $H$ is the tree height.
 
-Climatic data was collected from the ECMWF ERA5 dataset \citep{}. Values were aggregated for each year between 2000 and 2018, then averaged across the years to provide single values per plot. Temperature and precipitation seasonality were both calculated as the coefficient of variation of these variables across the 18 years of available data. Soils data was extracted from the \todo{WHERE}. 
+Climatic data was collected from the ECMWF ERA5 dataset \citep{}. Values of mean annual temperature (MAT) and mean annual precipitation (MAP) were calculated from daily data between 2000 and 2018, then averaged across years to provide a single mean annual estimate per plot. Temperature and precipitation seasonality were both calculated as the coefficient of variation of these variables across the 18 years of available data. Soil fertility data was extracted from the ISRIC gridded soil information data product at 250 m resolution, taking the grid cell value for each plot \citep{Hengl2017}. We extracted Cation Exchange Capacity (CEC), Organic Carbon Density, and the percentage sand content of the soil. These data are a modelled product compiled from various remote sensed and directly measured data sources. 
 
-Fire return interval ($F_{ret}$) was calculated using the MODIS burned area product V6 (MCD46A1) \citep{}. Data was downloaded from January 2000 to December 2018. Mean fire return interval was calculated as:
+\todo{Fire return interval ($F_{ret}$) was calculated using the MODIS burned area product V6 (MCD46A1) \citep{}. Data was downloaded from January 2000 to December 2018. Mean fire return interval was calculated as:}
 
 \begin{equation}
-	F_{ret} = \frac{\sum_{i = 1}^{n} t_{i} - t_{i-1}}{n-1}
+	\todo{F_{ret} = \frac{\sum_{i = 1}^{n} t_{i} - t_{i-1}}{n-1}}
 \end{equation}
 
-Where $t_{i}$ is the date of fire $i$, and $n$ is the total number of fires in the time period. Fire return interval data was binned into five ordinal categories ranging from ``frequent fire'' to ``no fire''. Bin values for categories where fire had occurred were defined as four bins with percentiles based on equal numbers of plots. Plots without a single fire recorded in the 18 year survey period were assumed to not be affected by fire. 
+\todo{Where $t_{i}$ is the date of fire $i$, and $n$ is the total number of fires in the time period.}
 
 \subsection{Data analysis}
-Rarefied species richness accounted for variation in plot size and therefore sampling effort across the region. Rarefied species richness was calculated using the \verb|vegan| package in R, using a sample size of 20 stems. Plot size varied from 0.1 hectares to 10 hectares.
+Estimated tree species richness was calculated for each plot using \verb|ChaoRichness()| from the \verb|iNEXT| package in R \citep{Hsieh2016}. This procedure uses Hill numbers to extrapolate a species rarefaction curve to its predicted asymptote and uses this value as its estimated species richnes value. These estimated species richness values are referred to as rarefied species richness throughout the paper. Rarefied species richness accounted for variation in plot size (0.1-10 ha) and therefore sampling effort across the region. Larger plots will tend to encompass more individuals, and therefore probabilistically more species, according to the species-area relationship \citep{}.
 
 To assess tree species abundance evenness, the Shannon Equitability index \citep{} (Equation \ref{shannon_equit}) was calculated: 
 
 \begin{equation}
-	E_{H'} = \frac{-\sum_{i = 1}^{s} p_i \ln{p_i}}{\ln{S}}
+	\begin{gathered}
+		E_{H'} = \frac{H'_{e}}{\ln{S}} \\
+	\end{gathered}
 	\label{shannon_equit}
 \end{equation}
 
-Where $p$ is the proportion abundance of a tree species $i$ across all individuals in the plot and $S$ is the total number of species in the plot.. The numerator of the Shannon Equitability index ($E_{H'}$) is the frequently used Shannon-Wiener diversity index ($H'$).
-
+Where $H'_{e}$ is an estimation of the Shannon diversity index by extrapolation of the observed Shannon diversity index ($H'$) to its asymptote via Hill numbers using the \verb|ChaoShannon()| function from the \verb|iNEXT| package in R \citep{Hsieh2016}, and $S$ is the total number of species in the plot.
 
 \subsubsection{Biogeographical clusters}
 
-Plots were assigned to biogeographical groups, after \citet{Fayolle2018}. Groups were identified in \citet{Fayolle2018} using an Africa wide analysis of floristic units using plot data in savannas with tree species diversity and relative abundance data. Groups were identified using unconstrained correspondence analysis and ordination. Plot data used in this study occurred in five biogeographical groups, see Table \ref{clust_tabl} for a description of each biogeographical cluster.
+Plots were assigned to biogeographical groups based on tree species composition. Groups were identified in \citet{Fayolle2018} using an Africa wide analysis of floristic units using plot data in savannas with tree species diversity and relative abundance data. Groups were identified using unconstrained correspondence analysis and ordination. Plot data used in this study occurred in five biogeographical groups, see Table \ref{clust_test} for a description of each biogeographical cluster and Map \ref{clust_map} for the spatial distribution of plots from each of these clusters.
 
+\input{include/clust_summ}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.6\textwidth]{clust_map}
+	\caption{}
+	\label{clust_map}
+\end{figure}
 
 \subsubsection{Structural Equation Modelling}
 
-Structural Equation Models (SEM) investigated the regional determinants of woody Above-Ground Biomass (AGB). All SEMs were constructed and analysed in the \textit{lavaan} package in R version 3.6.0. SEM was used because of its suitability for modelling complex causal interactions in ecological systems \citep{Lehmann2014_161-166}. A key aspect to our decision to use SEMs is that they can explicitly model indirect effects, which is impossible in multiple regression. Using SEMs also allowed us to describe theoretical latent constructs which have been suggested by theory to act upon diversity and biomass/productivity in previous studies despite these factors not having single observable values in our dataset. For example, moisture availability is known to affect productivity, but it's actual value is determined by the interaction of multiple observable variables over the time scales relevant to tree lifetime growth: precipitation, the seasonality of that precipitation, and soil composition. Indepedently of total precipitation, precipitation seasonality (measured as the covariance of daily precipitation) determines, simplistically, whether water arrives uniformly over a given time period or as few high volume floods, the latter leading to much water being lost before it can be used for plant growth. 
+Structural Equation Models (SEM) investigated the determinants of woody Above-Ground Biomass (AGB). All SEMs were constructed and analysed in the \verb|lavaan| package in R version 3.6.0 \citep{R}. SEM was used because of its suitability for modelling complex causal interactions in ecological systems \citep{Lehmann2014_161-166}. A key aspect to our decision to use SEMs is that they can explicitly model indirect effects, which is impossible in multiple regression. Using SEMs also allowed us to describe theoretical latent constructs which have been suggested by theory to act upon diversity and biomass/productivity in previous studies despite these factors not having single observable values in our dataset. For example, moisture availability is known to affect productivity \citep{}, but it's actual value is determined by the interaction of multiple observable variables over the time scales relevant to tree lifetime growth: precipitation and the seasonality of that precipitation. Indepedently of total precipitation, precipitation seasonality, measured as the covariance of daily precipitation, determines whether water arrives uniformly over a given time period or as few high volume floods, the latter leading to much water being lost before it can be used for plant growth. 
 
-We specified a conceptual model with latent variables based on theoretical unmeasured factors known to affect AGB: moisture availability, temperature suitability for plant growth, soil fertility, fire regime intensity, tree species diversity and tree structural diversity (Figure \ref{con_mod}). Although the fire regime composite only had a single indicator variable, it was nevertheless included in a latent variable to soak up measurement error \citep{}.
+We specified a conceptual model with latent variables based on theoretical unmeasured factors known to affect AGB: moisture availability, temperature suitability for plant growth, soil fertility, fire regime intensity, tree species diversity and tree structural diversity (Figure \ref{con_mod}). \todo{Although the fire regime composite only had a single indicator variable, it was nevertheless included in a latent variable to soak up measurement error \citep{}.}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.8\textwidth]{con_mod}
-	\caption{Conceptual model showing the theoretical relationships between environmental factors, structural and species tree diversity and AGB. Hypothesised paths of causal inference are depicted as arrows from predictor to response.}
+	\caption{Conceptual model showing the theoretical relationships between environmental factors, structural and species tree diversity and AGB. Hypothesised paths of causal inference are depicted as arrows from predictor to response. The shaded box defines the model which includes only tree diversity variables.}
 	\label{con_mod}
 \end{figure}
 
-Observed variables of the latent variables were standardized to Z-scores for analysis. Standardization put each latent variable on the same scale, with a mean of zero and a standard deviation of one. It allows path regression coefficients to be easily compared between paths to assess their relative effect strength, and eliminates problems arising from the observed variables being on different scales. Standardization also controls for variables with different orders of magnitude which could otherwise prevent adequate model estimation from the covariance matrix.
+Observed variables were standardized to Z-scores for analysis. Standardization put each latent variable on the same scale, with a mean of zero and a standard deviation of one. It allows path regression coefficients to be easily compared between paths to assess their relative effect strength, and eliminates confusion in model interpretation arising from the observed variables being on different scales \citep{}. Standardization also controls for variables with different orders of magnitude which could otherwise prevent adequate model estimation from the covariance matrix in \verb|lavaan| \citep{}. 
 
-The factor loadings of the observed variable assumed to contribute most to each latent variable were set to 1 as per convention \citep{}. Due to some latent variables being regressed against both structural diversity and AGB, exact factor loadings from multiple regressions against either of these response variables could not be used to inform factor loadings in the SEM and were therefore estimated by the SEM model.
+The factor loadings of the observed variable assumed to contribute most to each latent variable were set to 1 as per convention \citep{}, with other observed variables being allowed to vary. Due to some latent variables being regressed against both structural diversity and AGB, exact factor loadings from multiple regressions against either of these response variables could not be used to inform factor loadings in the SEM and were therefore estimated by the SEM model.
 
-For each biogeographical cluster, and at the regional level, we employed SEM to assess the relative importance of each latent variable in determining AGB. We assessed the indirect effects of abiotic environment on AGB via species and structural tree diversity to understand the interactive nature of species diversity and abiotic environment in determining AGB. In a model selection process, latent variable paths for each biogeographical cluster model were removed sequentially to investigate their removal on model fit. Model fit at each stage of the model selection process was evaluated using the Comparative Fit Index (CFI), the Tucker Lewis Index (TLI) and the R\textsuperscript{2} coefficient of determination for AGB. The best models according to these goodness-of-fit statistics are presented in the results. See \todo{Appendix 1 for a full description of all models in the model description process.}
+For each biogeographical cluster separately, and at the regional scale, we employed SEM to assess the relative importance of each latent variable in determining AGB. We assessed the indirect effects of abiotic environment on AGB via the mediators of tree species diversity and tree structural diversity to understand the interactive nature of tree diversity and abiotic environment in determining AGB. Model fit  was evaluated using the Comparative Fit Index (CFI), the Tucker Lewis Index (TLI), the Root Mean Squared Error (RMSEA) and the R\textsuperscript{2} coefficient of determination for AGB. We follow the recommendations of \citet{Hu1999} which define threshold values of acceptability for these model fit indices: CFI \textgreater{} 0.95, TLI \textgreater{} 0.95, RMSEA \textless{} 0.06.
 
-Two sets of SEMs were fitted. The first used only tree diversity latent constructs to estimate diversity, with the indirect effect of species diversity on AGB via structural diversity being explicitly modelled as a mediation effect to examine the strength and form of this relationship. The second incorporated environmental covariates to understand the relative effects of climate, soils, disturbance on diversity and AGB.
+
+Two sets of SEMs were fitted (Figure \ref{con_mod}). The first used only tree diversity latent variables to estimate diversity, with the indirect effect of species diversity on AGB via structural diversity being explicitly modelled as a mediation effect to examine the strength and form of this relationship. The second incorporated environmental covariates to understand the relative effects of climate, soils, disturbance on diversity and AGB. Full Information Max-Likelihood (FIML) was used in each model to estimate the values of missing data in each latent variable \citep{Kline2005}.
+
+For models on the whole region, standardized path coefficients are reported in order to better compare the relative contribution of different paths within the model. When comparing the path coefficients of models using individual biogeographical clusters, unstandardized path coefficients are used in order to more readily compare the same path coefficient across different models while accounting for variation in mean values between biogeographical clusters.
 
 \section{Results}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.6\textwidth]{corr_mat}
-	\caption{Correlogram of exogenous variables used in the analysis, with correlation coefficients shaded according to sign (+ve red, -ve blue) and strength of correlation.}
+	\caption{Correlogram of observed exogenous variables used in the SEMs, with correlation coefficients shaded according to sign (+ve red, -ve blue) and strength of correlation.}
 	\label{corr_mat}
 \end{figure}
 
-Simple correlations showed a positive association between Aboveground Biomass (AGB) and a latent variable representing tree species diversity ($r_{(1522)}$ = 0.30, $t$ = 12.2). The tree structural diversity latent variable also had a positive association with AGB ($r_{(1327)}$ = 0.18, $t$ = 15.0).
+At the regional level, tree species and structural diversity observed variables had weak positive correlations with AGB (Figure \ref{corr_mat}), while environmental observed variables had very weak correlations with AGB.
 
-In an SEM describing the indirect effect of tree species diversity on AGB via the mediating effect of stand structural diversity, species diversity had a negative effect on AGB when the indirect path via stand structural diversity was accounted for (Figure \ref{struc_model_slopes}). Stand structural diversity had a strong positive effect on AGB (\todo{Test stats}). This effect was observed in biogeographical clusters 1, 2 and 3. Clusters 4 and 5 had small sample sizes due to missing data and so path regression uncertainties were high, with confidence intervals overlapping zero. 
+In an SEM describing the effect of tree species diversity on AGB via the mediating effect of stand structural diversity (Figure \ref{sem_struc_path}, species diversity had a positive effect on AGB when the indirect path via stand structural diversity was accounted for (Figure \ref{struc_model_slopes}). Stand structural diversity had a positive effect on AGB (\todo{Test stats}). The indirect effect of diversity on biomass via structural diversity was small but significant (). Model fit for this model was good \todo{MORE}.
 
-\begin{figure}[H]
-\centering
-	\includegraphics[width=\textwidth]{struc_model_slopes_clust_all}
-	\caption{Path coefficients (slopes) for the effects of tree diversity on AGB, mediated by the effect of stand structural diversity. Path coefficients are +/- 1 standard error. Path coefficients where the standard error does not overlap zero are considered to be non-significant effects.}
-	\label{struc_model_slopes}
-\end{figure}
-
-\input{include/struc_model_fit_clust_stats}
+When the model was run again using only data
 
 \begin{figure}[H]
 \centering
@@ -164,18 +172,57 @@ In an SEM describing the indirect effect of tree species diversity on AGB via th
 
 \begin{figure}[H]
 \centering
-	\includegraphics[width=\textwidth]{full_latent_model_slopes}
-	\caption{Path coefficients (slopes) for the interactive effects of abiotic environment and tree diversity on AGB across all plots. Path coefficients are +/- 1 standard error. Path coefficients where the standard error does not overlap zero are considered to be non-significant effects.}
-	\label{full_latent_model_slopes}
+	\includegraphics[width=\textwidth]{struc_model_slopes}
+	\caption{Standardized path coefficients for the effects of tree diversity on AGB, mediated by the effect of stand structural diversity. Due to all observed variables being standardized and centred, path coefficients are expressed in terms of standard deviations on the latent variable response scale +/- 1 standard error. Path coefficients where the standard error does not overlap zero are considered to be significant effects.}
+	\label{struc_model_slopes}
 \end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=\textwidth]{struc_model_slopes_all}
+	\caption{Unstandardized path coefficients for the effects of tree diversity on AGB, mediated by the effect of stand structural diversity. Path coefficients are +/- 1 standard error. Path coefficients where the standard error does not overlap zero are considered to be significant effects.}
+	\label{struc_model_slopes_all}
+\end{figure}
+
+\input{include/struc_model_fit_clust_stats}
+
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=\textwidth]{sem_full_path}
+	\caption{Path diagram with regression coefficients for the full model incorporating environmental covariates and tree species diversity in all five clusters.}
+	\label{sem_full_path}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=\textwidth]{full_model_slopes}
+	\caption{Standardized path coefficients for the interactive effects of abiotic environment and tree diversity on AGB across all plots. Path coefficients are +/- 1 standard error. Path coefficients where the standard error does not overlap zero are considered to be significant effects.}
+	\label{full_model_slopes}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=\textwidth]{full_model_slopes_all}
+	\caption{Unstandardized path coefficients for the interactive effects of abiotic environment and tree diversity on AGB across all plots. Path coefficients are +/- 1 standard error. Path coefficients where the standard error does not overlap zero are considered to be significant effects.}
+	\label{full_model_slopes_all}
+\end{figure}
+
+\input{include/full_model_fit_clust_stats}
 
 \subsection{Structural diversity}
 
-The latent variable of tree species diversity had a weak positive effect on AGB across the region. A stronger positive effect was seen between structural diversity and aboveground biomass, with species diversity acting \textit{through} structural diversity to effect aboveground biomass.
+The latent variable of tree species diversity had a positive effect on AGB across the region. A stronger positive effect was seen between structural diversity and aboveground biomass, with species diversity acting \textit{through} structural diversity to effect aboveground biomass.
+
+\subsection{Variation between biogeographical clusters}
+
 
 \section{Discussion}
 
 %\bibliography{/Users/johngodlee/google_drive/bib/lib}
+
+\subsection{Conclusion}
 
 
 \end{document}

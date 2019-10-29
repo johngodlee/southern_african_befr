@@ -17,10 +17,13 @@ library(ggplot2)
 library(tidyr)
 library(dave)
 
+source("full_best.R")
+
 # Functions
 
 # Import data ----
-plot_data <- read.csv("data/plot_data_fil_agg_norm_std.csv")
+plot_data <- read.csv(paste0("data/plot_data_fil_agg", ext, "_norm_std.csv"))
+
 plotcode_plot_group_lookup <- read.csv("data/plotcode_plot_group_lookup.csv")
 load("data/clean_input_data.Rdata")
 
@@ -36,8 +39,8 @@ s_fil <- s %>%
 # Create community composition matrix
 stem_ab_mat <- s_fil %>%
   group_by(plot_group, gen_sp, .drop = FALSE) %>%
-	tally() %>%
-	spread(gen_sp, n, fill = 0) %>%
+  tally() %>%
+  spread(gen_sp, n, fill = 0) %>%
   ungroup() %>%
   data.frame() 
 
@@ -67,23 +70,23 @@ NMDS.scree <- function(x) { #where x is the name of the data frame variable
 #NMDS.scree(stem_ab_mat_dist)
 
 # Run NMDS
-#nmds_stems <- metaMDS(stem_ab_mat, 
+#nmds_stems <- metaMDS(stem_ab_mat,
 #  try = 20)
 
-# Re-run NMDS with noshare and more dimensions
-#nmds_stems_2 <- metaMDS(stem_ab_mat,
-#  try = 50,
-#  k = 3,
-#  noshare = 0.1, 
-#  previous.best = nmds_stems)
+#saveRDS(nmds_stems, file = "data/nmds_stems.rds")
 
 # Identify outlier threshold for ~5% of plots
-outlier_list <- list()
+# outlier_list <- list()
+# 
+# for(i in 1:100){
+#   x <- seq(from = 0.005, to = 0.5, by = 0.005)[i]
+#   outlier_list[[i]] <- outlier(stem_ab_mat, thresh = x, y = 0.5)
+# }
+# 
+# # Save to data file
+# saveRDS(outlier_list, file = paste0("data/outlier_list", ext, ".rds"))
 
-for(i in 1:100){
-  x <- seq(from = 0.005, to = 0.5, by = 0.005)[i]
-  outlier_list[[i]] <- outlier(stem_ab_mat, thresh = x, y = 0.5)
-}
+outlier_list <- readRDS(paste0("data/outlier_list", ext, ".rds"))
 
 thresh <- sapply(outlier_list, function(x){
   x$threshold
@@ -108,7 +111,7 @@ outlier_thresh <- ggplot(outlier_df, aes(x = thresh, y = outlier_num)) +
   theme_classic() + 
   labs(x = "Bray-Curtis distance threshold", y = "Number of outliers")
 
-pdf(file = "img/outlier_thresh.pdf", width = 10, height = 8)
+pdf(file = paste0("img/outlier_thresh", ext, ".pdf"), width = 10, height = 8)
 outlier_thresh
 dev.off()
 
@@ -135,7 +138,7 @@ pcoa <- ggplot(outlier_best_plot, aes(x = x, y = y)) +
   theme(legend.position = c(0.9, 0.2),
     legend.background = element_rect(fill = "#E6E6E6", colour = "black"))
 
-pdf(file = "img/pcoa_outlier.pdf", width = 10, height = 10)
+pdf(file = paste0("img/pcoa_outlier", ext, ".pdf"), width = 10, height = 10)
 pcoa
 dev.off()
 
@@ -144,5 +147,5 @@ plot_data_clean <- plot_data %>%
   filter(plot_group %in% row.names(outlier_best$new.data))
 
 # Save plot data
-write.csv(plot_data_clean, "data/plot_data_fil_agg_norm_std_outlier.csv", row.names = FALSE)
+write.csv(plot_data_clean, paste0("data/plot_data_fil_agg", ext, "_norm_std_outlier.csv"), row.names = FALSE)
 

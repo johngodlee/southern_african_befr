@@ -1,54 +1,52 @@
 $FIT
-             npar              fmin             chisq                df 
-           12.000             0.009             1.119             3.000 
-           pvalue    baseline.chisq       baseline.df   baseline.pvalue 
-            0.773           101.590            10.000             0.000 
-              cfi               tli              logl unrestricted.logl 
-            1.000             1.068          -368.181          -367.622 
-              aic               bic            ntotal              bic2 
-          760.362           785.293            59.000           747.556 
-            rmsea    rmsea.ci.lower    rmsea.ci.upper      rmsea.pvalue 
-            0.000             0.000             0.146             0.809 
+             npar              fmin             chisq                df            pvalue 
+           10.000             0.089            14.884             5.000             0.011 
+   baseline.chisq       baseline.df   baseline.pvalue               cfi               tli 
+          134.719            10.000             0.000             0.921             0.841 
+             logl unrestricted.logl               aic               bic            ntotal 
+         -543.202          -535.760          1106.405          1130.713            84.000 
+             bic2             rmsea    rmsea.ci.lower    rmsea.ci.upper      rmsea.pvalue 
+         1099.168             0.153             0.067             0.246             0.029 
              srmr 
-            0.034 
+            0.062 
 
 $PE
-                     lhs op               rhs                 label exo         est
-1                    div =~ sp_rich_raref_std                         0  1.00000000
-2                    div =~ shannon_equit_std                         0 -0.95895420
-3                  struc =~       cov_dbh_std                         0  1.00000000
-4                  struc =~    cov_height_std                         0  0.77365021
-5                biomass =~        bchave_log                         0  1.00000000
-6                biomass  ~               div                     c   0 -0.22518510
-7                biomass  ~             struc                     b   0  0.54217449
-8                  struc  ~               div                     a   0  0.16825466
-9      sp_rich_raref_std ~~ sp_rich_raref_std                         0 -0.10685199
-10     shannon_equit_std ~~ shannon_equit_std                         0  1.30802160
-11           cov_dbh_std ~~       cov_dbh_std                         0  0.19673088
-12        cov_height_std ~~    cov_height_std                         0  0.33364148
-13            bchave_log ~~        bchave_log                         0  0.00000000
-14                   div ~~               div                         0  1.30464366
-15                 struc ~~             struc                         0  0.60954517
-16               biomass ~~           biomass                         0  0.34217552
-17 biomass_div_via_struc :=               a*b biomass_div_via_struc   0  0.09122339
-18     biomass_div_total :=           c+(a*b)     biomass_div_total   0 -0.13396171
-           se          z       pvalue
-1  0.00000000         NA           NA
-2  0.30823417 -3.1111223 1.863777e-03
-3  0.00000000         NA           NA
-4  0.17335542  4.4627980 8.089629e-06
-5  0.00000000         NA           NA
-6  0.10294489 -2.1874335 2.871089e-02
-7  0.14346937  3.7790261 1.574430e-04
-8  0.10866291  1.5484093 1.215238e-01
-9  0.38022880 -0.2810202 7.786949e-01
-10 0.42418062  3.0836430 2.044828e-03
-11 0.12606120  1.5605981 1.186186e-01
-12 0.09484959  3.5175847 4.354933e-04
-13 0.00000000         NA           NA
-14 0.43867294  2.9740692 2.938788e-03
-15 0.18554091  3.2852332 1.018980e-03
-16 0.07565071  4.5230975 6.094115e-06
-17 0.06413569  1.4223499 1.549247e-01
-18 0.08905166 -1.5043146 1.325004e-01
+                     lhs op                   rhs                 label exo       est
+1                    div =~ sp_rich_raref_log_std                     x   0 1.0000000
+2                    div =~ shannon_equit_log_std                     x   0 1.0000000
+3                  struc =~           cov_dbh_std                     y   0 1.0000000
+4                  struc =~        cov_height_std                     y   0 1.0000000
+5                biomass =~            bchave_log                         0 1.0000000
+6                biomass  ~                   div                     c   0 0.3466118
+7                biomass  ~                 struc                     b   0 0.5784015
+8                  struc  ~                   div                     a   0 0.2059044
+9  sp_rich_raref_log_std ~~ sp_rich_raref_log_std                         0 0.5485176
+10 shannon_equit_log_std ~~ shannon_equit_log_std                         0 0.3254933
+11           cov_dbh_std ~~           cov_dbh_std                         0 0.3000791
+12        cov_height_std ~~        cov_height_std                         0 0.3761339
+13            bchave_log ~~            bchave_log                         0 0.0000000
+14                   div ~~                   div                         0 0.8905467
+15                 struc ~~                 struc                         0 0.4806313
+16               biomass ~~               biomass                         0 0.6075305
+17 biomass_div_via_struc :=                   a*b biomass_div_via_struc   0 0.1190954
+18     biomass_div_total :=               c+(a*b)     biomass_div_total   0 0.4657072
+           se        z       pvalue    std.lv   std.all   std.nox
+1  0.00000000       NA           NA 0.9436878 0.7866621 0.7866621
+2  0.00000000       NA           NA 0.9436878 0.8557648 0.8557648
+3  0.00000000       NA           NA 0.7199913 0.7958419 0.7958419
+4  0.00000000       NA           NA 0.7199913 0.7612580 0.7612580
+5  0.00000000       NA           NA 0.9805455 1.0000000 1.0000000
+6  0.11390760 3.042921 2.342939e-03 0.3335830 0.3335830 0.3335830
+7  0.15711916 3.681292 2.320553e-04 0.4247065 0.4247065 0.4247065
+8  0.10438909 1.972470 4.855595e-02 0.2698775 0.2698775 0.2698775
+9  0.12915206 4.247068 2.165859e-05 0.5485176 0.3811627 0.3811627
+10 0.10972313 2.966496 3.012140e-03 0.3254933 0.2676666 0.2676666
+11 0.08092520 3.708105 2.088163e-04 0.3000791 0.3666357 0.3666357
+12 0.08816685 4.266160 1.988658e-05 0.3761339 0.4204862 0.4204862
+13 0.00000000       NA           NA 0.0000000 0.0000000 0.0000000
+14 0.17364368 5.128587 2.919248e-07 1.0000000 1.0000000 1.0000000
+15 0.10475934 4.587957 4.476051e-06 0.9271661 0.9271661 0.9271661
+16 0.10663496 5.697292 1.217250e-08 0.6318770 0.6318770 0.6318770
+17 0.06628772 1.796643 7.239227e-02 0.1146187 0.1146187 0.1146187
+18 0.11803384 3.945540 7.962037e-05 0.4482018 0.4482018 0.4482018
 

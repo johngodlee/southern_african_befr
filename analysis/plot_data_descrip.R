@@ -24,8 +24,6 @@ library(ggnewscale)
 # Plot data
 plot_data_final <- read.csv("data/plot_data_fil_agg_norm_std_outlier.csv")
 
-plot_data_final$fire_index <- factor(plot_data_final$fire_index, levels = c("Frequent", "Occassional", "Rare", "Very rare", "No fire"))
-
 # Regional tmeperature and precipitation data for the Miombo woodlands
 t_p <- read.csv("data/region_temp_precip.csv")
 
@@ -63,7 +61,7 @@ plot_map <- ggplot() +
     data = white_veg_miombo, alpha = 1) +
   # geom_point(data = ssaw8$plotInfoFull, aes(x = longitude_of_centre, y = latitude_of_centre), alpha = 0.6) + 
     geom_point(data = plot_data_final, 
-      aes(x = longitude_of_centre, y = latitude_of_centre, fill = as.character(clust5)), 
+      aes(x = longitude_of_centre, y = latitude_of_centre, fill = paste0("C", as.character(clust5))), 
     colour = "black", shape = 21, size = 2, alpha = 1) +
   map_africa_colour +
   scale_fill_manual(name = "Cluster", values = clust_pal) + 
@@ -115,15 +113,8 @@ var_map <- function(x, var, lab = expression("log(AGB) (t ha"^-1*")")){
 # Biomass
 pdf(file = "img/biomass_map.pdf", width = 5, height = 8)
 var_map(plot_data_final, 
-  var = plot_data_final$bchave_log, 
+  var = plot_data_final$bchave, 
   lab = expression("log(AGB) (t ha"^-1*")"))
-dev.off()
-
-# Aridity
-pdf(file = "img/aridity_map.pdf", width = 5, height = 8)
-var_map(plot_data_final, 
-  var = plot_data_final$aridity_index, 
-  lab = expression("Ardity" ~ "Index"))
 dev.off()
 
 # Precipitation
@@ -150,22 +141,15 @@ dev.off()
 # Shannon Diversity index
 pdf(file = "img/shannon_map.pdf", width = 5, height = 8)
 var_map(plot_data_final,
-  var = plot_data_final$shannon_cube,
+  var = plot_data_final$shannon_log,
   lab = expression("Shannon" ~ "index" ~ (H)))
 dev.off()
 
-# Fire index
+# Fire return
 pdf(file = "img/fire_index_map.pdf", width = 5, height = 8)
-ggplot() + 
-  map_africa + 
-  geom_point(data = plot_data_final,
-    aes(x = longitude_of_centre, y = latitude_of_centre, fill = plot_data_final$fire_index), 
-    size = 2, shape = 21, colour = "black", position = "jitter") +
-  scale_fill_viridis_d(direction = -1) + 
-  coord_map() + 
-  ylim(-35.5, 10) + 
-  labs(x = "Longitude", y = "Latitude") + 
-  theme_classic()
+var_map(plot_data_final,
+  var = plot_data_final$fire_return_mean_log,
+  lab = expression("log(Fire" ~ "Return" ~ "interval)"))
 dev.off()
 
 # Biogeographic clusters
@@ -275,6 +259,37 @@ ggplot(plot_data_final, aes(x = total_precip)) +
 tail(sort(plot_data_final$total_precip), n = 20)
 head(sort(plot_data_final$total_precip), n = 20)
 
+# Where are the wettest plots found?
+plot_data_precip_max_min <- plot_data_final %>%
+  filter(total_precip > quantile(total_precip, 0.9) | 
+      total_precip < quantile(total_precip, 0.1)) %>%
+  mutate(hi_lo = case_when(
+    total_precip > median(plot_data_final$total_precip) ~ "hi",
+    total_precip < median(plot_data_final$total_precip) ~ "lo"
+  ))
+
+pdf(file = "img/precip_extremes_map.pdf", width = 5, height = 8)
+ggplot() + 
+  map_africa_fill + 
+  geom_polygon(aes(x = long, y = lat, group = group), 
+    fill = "#16CC7D", colour = "#16CC7D",
+    data = white_veg_miombo, alpha = 1) +
+  geom_point(data = plot_data_precip_max_min, 
+    aes(x = longitude_of_centre, y = latitude_of_centre, fill = hi_lo), 
+    colour = "black", shape = 21, size = 2, alpha = 1) +
+  map_africa_colour +
+  scale_fill_manual(name = "Precip.", values =  c("#56CDD6", "#DECA59"))+ 
+  coord_map() + 
+  ylim(-35.5, 10) + 
+  labs(x = "Longitude", y = "Latitude") + 
+  theme_classic() + 
+  theme(legend.position = c(0.9, 0.2))
+dev.off()
+
+# How many stems are used?
+sum(plot_data_final$n_stems)
+
+
 # Make cluster non-ordinal
 plot_data_final$clust5 <- as.character(plot_data_final$clust5)
 
@@ -285,23 +300,10 @@ plot_data_final <- plot_data_final %>%
 # Plot all variables against bchave_log in a facet wrap ----
 # Climatic variables
 plot_data_gather_clim <- plot_data_final %>%
-  select(clust5, bchave_log, total_precip, precip_seasonality, mean_temp, temp_seasonality, 
+  select(clust5, bchave_log, total_precip, precip_seasonality_log, mean_temp, temp_seasonality_log, 
     fire_return_mean_log,
     ocdens, sand_per, cation_ex_cap) %>%
-  gather(key = "variable", value = "value", 3:10) %>%
-  mutate(facet_label = factor(variable, 
-    levels = c("total_precip", "precip_seasonality", "mean_temp", "temp_seasonality", 
-      "fire_return_mean_log", "ocdens", "sand_per", "cation_ex_cap"),
-    labels = c(
-      expression("Mean" ~ "annual" ~ "precip." ~ (mm ~ yr^-1)),
-      expression("Precip." ~ "seasonality"),
-      expression("Mean" ~ "annual" ~ "temp." ~ (degree * C)), 
-      expression("Temp." ~ "seasonality"),
-      expression("log(Mean" ~ "fire" ~ "return" ~ "interval)" ~ (yr)),
-      expression("Organic" ~ "C" ~ "%"),
-      expression("Sand" ~ "%"),
-      expression("Cation" ~ "exchange" ~ "cap."))))
-
+  gather(key = "variable", value = "value", 3:10)
 pdf(file = "img/biomass_clim_lm_clust.pdf", width = 12, height = 10)
 ggplot(plot_data_gather_clim, aes(x = value, y = bchave_log)) + 
   geom_point(aes(fill = clust5), colour = "black", shape = 21) + 
@@ -310,28 +312,14 @@ ggplot(plot_data_gather_clim, aes(x = value, y = bchave_log)) +
   scale_fill_manual(name = "Cluster", values = clust_pal) + 
   scale_colour_manual(name = "Cluster", values = clust_pal) + 
   theme_classic() + 
-  facet_wrap(~facet_label, scales = "free_x", labeller = label_parsed)
+  facet_wrap(~variable, scales = "free_x", labeller = label_parsed)
 dev.off()
 
 # Diversity variables
 plot_data_gather_div <- plot_data_final %>%
   select(clust5, bchave_log, mean_height, cov_height, mean_dbh_log,
-    cov_dbh, stems_ha_log, shannon_cube, sp_rich, sp_rich_raref) %>%
-  gather(key = "variable", value = "value", 3:10) %>%
-  mutate(facet_label = factor(variable, 
-    levels = c("mean_height", "cov_height", "mean_dbh_log", "cov_dbh", 
-      "stems_ha_log", "shannon_cube", "shannon_equit", "sp_rich", "sp_rich_raref"),
-    labels = c(
-      expression("Mean" ~ "height" ~ (m)),
-      expression("Coef." ~ "var." ~ "height"),
-      expression("log(Mean" ~ "DBH)" ~ (cm)),
-      expression("Coef." ~ "var." ~ "DBH"),
-      expression("log(Stem" ~ "density)" ~ ">5" ~ cm ~ (n ~ ha^-1)),
-      expression("Shannon" ~ "index" ~ (H)),
-      expression("Shannon" ~ "equitability" ~ (E[H])),
-      expression("Species" ~ "richness"),
-      expression("Rarefied" ~ "species" ~ "richness")
-    )))
+    cov_dbh, stems_ha_log, shannon_log, sp_rich, sp_rich_raref_log) %>%
+  gather(key = "variable", value = "value", 3:10)
 
 pdf(file = "img/biomass_div_lm_clust.pdf", width = 12, height = 10)
 ggplot(plot_data_gather_div, aes(x = value, y = bchave_log)) + 

@@ -26,20 +26,22 @@ source("clust_pal.R")
 # Aggregated and filtered data
 plot_data <- read.csv("data/plot_data_fil_agg_norm_std.csv")
 
+plot_data$clust5 <- as.character(plot_data$clust5)
+
 # Mixed models ----
 # Model specification
 model_list <- list(
   model_precip = lmer(bchave_log ~ total_precip_std + (1|clust5), data = plot_data),
-  model_precip_s = lmer(bchave_log ~ precip_seasonality_std + (1|clust5), data = plot_data),
+  model_precip_s = lmer(bchave_log ~ precip_seasonality_log_std + (1|clust5), data = plot_data),
   
   model_temp = lmer(bchave_log ~ mean_temp_std + (1|clust5), data = plot_data),
-  model_temp_s = lmer(bchave_log ~ temp_seasonality_std + (1|clust5), data = plot_data),
+  model_temp_s = lmer(bchave_log ~ temp_seasonality_log_std + (1|clust5), data = plot_data),
   
   model_fire_return = lmer(bchave_log ~ fire_return_mean_log_std + (1|clust5), data = plot_data),
 
-  model_spr = lmer(bchave_log ~ sp_rich_raref_std + (1|clust5), data = plot_data),
-  model_shannon = lmer(bchave_log ~ shannon_cube_std + (1|clust5), data = plot_data),
-  model_equit = lmer(bchave_log ~ shannon_equit_std + (1|clust5), data = plot_data),
+  model_spr = lmer(bchave_log ~ sp_rich_raref_log_std + (1|clust5), data = plot_data),
+  model_shannon = lmer(bchave_log ~ shannon_log_std + (1|clust5), data = plot_data),
+  model_equit = lmer(bchave_log ~ shannon_equit_log_std + (1|clust5), data = plot_data),
   model_stem_n = lmer(bchave_log ~ stems_ha_log_std + (1|clust5), data = plot_data),
   
   model_cov_height = lmer(bchave_log ~ cov_height_std + (1|clust5), data = plot_data),

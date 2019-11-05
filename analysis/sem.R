@@ -108,13 +108,13 @@ sink()
 
 struc_model_spec <- "
 # Latent vars
-div     =~  x*sp_rich_raref_log_std + x*shannon_equit_log_std
-struc   =~  y*cov_dbh_std + y*cov_height_std
-biomass =~  1*bchave_log
+div     =~  sp_rich_raref_log_std + shannon_equit_log_std
+struc   =~  cov_dbh_std + cov_height_std
+
 
 # Regressions
-biomass ~ c*div
-biomass ~ b*struc
+bchave_log_std ~ c*div
+bchave_log_std ~ b*struc
 struc ~ a*div
 
 # Explicitly model direct and indirect effects
@@ -127,13 +127,13 @@ biomass_div_total := c + (a*b)
 
 struc_model_fit <- sem(struc_model_spec, data = sem_data)
 
-struc_model_summ <- summary(struc_model_fit, fit.measures = TRUE, standardized = TRUE)
+struc_model_summ <- summary(struc_model_fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
 
 sink(paste0("output/struc_model_fit", ext, ".txt"))
 print(struc_model_summ)
 sink()
 
-pdf(file = paste0("img/struc_model", ext, ".pdf"), width = 12, height = 8)
+pdf(file = paste0("img/struc_mod", ext, ".pdf"), width = 12, height = 8)
 semPaths(struc_model_fit ,'mod', "est", 
   layout = "circle", curvature = 1, residuals = FALSE, intercepts = FALSE, nCharNodes = 0,
   label.cex = 2, ask = FALSE, exoCov = FALSE)
@@ -144,7 +144,7 @@ mod_summ_mutate_struc <- function(x){
   filter(x, op %in% c("~", ":=")) %>%
   mutate(.,
     op = case_when(
-      op == "~" & lhs == "biomass" ~ "Direct: Biomass",
+      op == "~" & lhs == "bchave_log_std" ~ "Direct: Biomass",
       TRUE ~ "Other eff."),
     rhs = case_when(
       op == "Direct: Biomass" & rhs == "div" ~ "Diversity",
@@ -183,7 +183,8 @@ clust_mod <- function(mod, mod_name, mutate_summ){
   for(i in 1:length(sem_data_clust_list)){
     model_fit_clust_list[[i]] <- sem(mod, data = sem_data_clust_list[[i]])
   
-  model_summ_clust_list[[i]] <- summary(model_fit_clust_list[[i]], fit.measures = TRUE, standardized = TRUE)
+  model_summ_clust_list[[i]] <- summary(model_fit_clust_list[[i]], 
+    fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
   
   model_diag_clust_list[[i]] <- semPaths(model_fit_clust_list[[i]] ,'mod', "est", 
     layout = "circle", curvature = 1, residuals = FALSE, 
@@ -224,7 +225,7 @@ clust_mod <- function(mod, mod_name, mutate_summ){
   assign(paste0(mod_name, "_model_diag_clust_list"), model_diag_clust_list, envir = .GlobalEnv)
 }
 
-clust_mod(struc_model_spec, "struc", mod_summ_mutate)
+clust_mod(struc_model_spec, "struc", mod_summ_mutate_struc)
 
 # Combine all into one dot and line plot
 
@@ -236,7 +237,7 @@ all_mod$model <- "all"
 
 model_regs_all <- rbind(model_regs_all, all_mod)
 
-pdf(paste0("img/", file), width = 10, height = 10)
+pdf(paste0("img/", file), width = 12, height = 10)
 print(ggplot() + 
   geom_hline(yintercept = 0, linetype = 2) + 
   geom_errorbar(data = model_regs_all, 
@@ -260,15 +261,17 @@ dev.off()
 
 mod_slopes_all(struc_model_regs_list, struc_model_regs, paste0("struc_model_slopes_all", ext, ".pdf"))
 
-sem_fit_tab <- function(mod_summ_list, file){
-fit_df <- as.data.frame(sapply(mod_summ_list, function(x){
+sem_fit_tab <- function(mod_summ_list, mod_all, file){
+mod_summ_list_all <- c(mod_summ_list, list(mod_all))
+fit_df <- as.data.frame(sapply(mod_summ_list_all, function(x){
   as.data.frame(t(data.frame(x$FIT)))
 }))
 
 fit_df_clean <- fit_df %>%
   mutate(stat =  row.names(.)) %>%
-  select(stat = stat, 1:5) %>%
-  rename_at(vars(contains('V')), funs(sub('V', 'C', .)))
+  select(stat = stat, 1:6) %>%
+  rename_at(vars(contains('V')), funs(sub('V', 'C', .))) %>%
+  rename("All" = C6)
 
 sink(paste0("output/", file, ".txt" ))
 fit_df_clean
@@ -302,9 +305,9 @@ writeLines(stargazer(fit_df_clean_output,
   summary = FALSE,
   label = file, digit.separate = 0, rownames = FALSE), fileConn)
 close(fileConn)
-}
+} 
 
-sem_fit_tab(struc_model_summ_clust_list, file = paste0("struc_model_fit_clust_stats", ext))
+sem_fit_tab(struc_model_summ_clust_list, struc_model_summ, file = paste0("struc_model_fit_clust_stats", ext))
 
 # Structural SEM - Variation in stem density ----
 
@@ -320,6 +323,7 @@ for(i in 1:length(min_quantile)){
 }
 
 quant_stems_ha <- sapply(sem_data_quant_list, function(x){median(x$stems_ha)})
+quant_plots <- sapply(sem_data_quant_list, nrow)
 quant_sp_rich_raref <- sapply(sem_data_quant_list, function(x){median(x$sp_rich_raref)})
 
 struc_sem_quant_list <- list()
@@ -329,37 +333,48 @@ struc_sem_quant_regs_list <- list()
 for(i in 1:length(sem_data_quant_list)){
   struc_sem_quant_list[[i]] <- sem(struc_model_spec, data = sem_data_quant_list[[i]])
   struc_sem_quant_summ_list[[i]] <- summary(struc_sem_quant_list[[i]], 
-    fit.measures = TRUE, standardized = TRUE)
+    fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
   
   struc_sem_quant_regs_list[[i]] <- struc_sem_quant_summ_list[[i]]$PE %>% 
-    mod_summ_mutate(.) %>%
-    mutate(quant = quant_stems_ha[[i]],
-      sp_rich = quant_sp_rich_raref[[i]])
+    mod_summ_mutate_struc(.) %>%
+    mutate(quant = mean(min_quantile[[i]], max_quantile[[i]]),
+      stems_ha = quant_stems_ha[[i]],
+      n_plots = quant_plots[[i]],
+      sp_rich_raref = quant_sp_rich_raref[[i]])
 }
 
 struc_sem_quant_regs <- do.call(rbind, struc_sem_quant_regs_list) %>%
-  select(rhs, quant, sp_rich, est, std.all) %>%
-  gather(estimate, value, -rhs, -quant, -sp_rich)
+  select(rhs, quant, stems_ha, sp_rich_raref, n_plots, est, std.all)
 
 pdf("img/sem_struc_stems_ha.pdf", width = 10, height = 8)
 ggplot(data = struc_sem_quant_regs) + 
-  geom_line(aes(x = quant, y = value, colour = estimate)) +  
+  geom_line(aes(x = stems_ha, y = est)) +  
+  geom_hline(aes(yintercept = 0), linetype = 5) + 
   facet_wrap(~rhs) +
   labs(x = expression("Stems" ~ ha^-1), y = "Path coefficient") + 
   theme_classic()
 dev.off()
 
-pdf("img/sp_rich_stems_ha.pdf", width = 10, height = 8)
+pdf("img/sp_rich_stems_ha.pdf", width = 10, height = 6)
 ggplot(data = filter(struc_sem_quant_regs, rhs == "Diversity")) + 
-  geom_point(aes(x = quant, y = sp_rich)) +  
-  geom_smooth(aes(x = quant, y = sp_rich)) + 
+  geom_point(aes(x = quant, y = sp_rich_raref)) +  
+  geom_smooth(aes(x = quant, y = sp_rich_raref)) + 
   labs(x = expression("Stems" ~ ha^-1), y = "Rarefied species richness") + 
   theme_classic()
 dev.off()
 
+# Where is the peak of the relationship?
+struc_sem_quant_regs[struc_sem_quant_regs$est == max(struc_sem_quant_regs$est),]
+
+# Where is the minimum stem density threshold for an effect on biomass?
+struc_sem_quant_regs[struc_sem_quant_regs$est == unname(sapply(data.frame(struc_sem_quant_regs$est), 
+  function(x) x[which.min(abs(x))])),]
+
 ##' It looks like stems_ha increases the strength of the relationship
 ##' between diversity and biomass, but is this just because at higher 
 ##' stem densities you're more likely to get higher species richness?
+##' I checked out the relationship between stem density and species richness and it doesn't 
+##' seem to be all that strong
 
 # Multiple regressions for each latent on biomass ----
 # Model list
@@ -410,7 +425,7 @@ comp_mod_summ_list
 sink()
 
 
-# Full latent variable SEM ----
+# Full SEM ----
 ##' Environmental and biodiversity variables
 ##' Latent constructs
 ##' Mediation 
@@ -420,7 +435,7 @@ full_mod_spec <- "
 moisture =~ total_precip_std + precip_seasonality_log_std + 
 mean_temp_std + temp_seasonality_log_std
 div      =~ sp_rich_raref_log_std + shannon_equit_log_std
-soil     =~ ocdens_std + cation_ex_cap_std + sand_per_std
+soil     =~ sand_per_std + ocdens_std + cation_ex_cap_std
 struc    =~ cov_dbh_std + cov_height_std
 
 ## Diversity
@@ -449,7 +464,7 @@ full_mod_fit <- sem(full_mod_spec,
   data = sem_data)
 
 full_mod_summ <- summary(full_mod_fit, 
-  fit.measures = TRUE, standardized = TRUE)
+  fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
 
 sink(paste0("output/full_mod_fit", ext, ".txt"))
 print(full_mod_summ)
@@ -464,7 +479,7 @@ semPaths(full_mod_fit ,'mod', "est",
 dev.off()
 
 # Dot and line plots
-full_dot <- function(x){
+mod_summ_full <- function(x){
   filter(x, op %in% c("~", ":=")) %>%
   mutate(
     op = case_when(
@@ -492,7 +507,7 @@ full_dot <- function(x){
       levels = c('Moisture','Soil','Species\ndiversity','Other eff.')))
   }
 
-full_mod_regs <- full_dot(full_mod_summ$PE)
+full_mod_regs <- mod_summ_full(full_mod_summ$PE)
 
 pdf(file = paste0("img/full_model_slopes", ext, ".pdf"), width = 12, height = 4)
 ggplot() + 
@@ -509,8 +524,8 @@ ggplot() +
     panel.grid.major.y = element_line(colour = "#E0E0E0"))
 dev.off()
 
-# Full latent variable SEM for each cluster ----
-clust_mod(full_mod_spec, "full", full_dot)
+# Full SEM for each cluster ----
+clust_mod(full_mod_spec, "full", mod_summ_full)
 
 warnings()
 
@@ -518,5 +533,50 @@ warnings()
 mod_slopes_all(full_model_regs_list, full_mod_regs, paste0("full_model_slopes_all", ext, ".pdf"))
 
 # extract model fit statistics and save to file
-sem_fit_tab(full_model_summ_clust_list, file = paste0("full_model_fit_clust_stats", ext))
+sem_fit_tab(full_model_summ_clust_list, full_mod_summ, file = paste0("full_model_fit_clust_stats", ext))
+
+
+# Chi squared test of full model vs. structural model ----
+lavTestLRT(full_mod_fit, struc_model_fit, 
+  method = "default", A.method = "delta",
+  scaled.shifted = TRUE,
+  H1 = TRUE, type = "Chisq", model.names = NULL)
+
+##' It might make it impossible to compare models if they contain different
+##' sets of observed variables, whether they are nested or not. It seems 
+##' this test is made more for testing different correlation structures and paths.
+
+# Precipitation and soil as moderators ----
+##' Uses latent variables as interaction terms
+
+# CFA to get latent constructs
+precip_cfa_spec <- "
+moisture =~ total_precip_std + precip_seasonality_log_std + temp_seasonality_log_std
+div      =~ sp_rich_raref_log_std + shannon_equit_log_std
+soil     =~ sand_per_std + ocdens_std + cation_ex_cap_std
+struc    =~ cov_dbh_std + cov_height_std
+"
+
+precip_cfa_fit <- cfa(precip_cfa_spec, sem_data, missing = "ml.x")
+
+# 2. extract the predicted values of the cfa and add them to the dataframe
+sem_data <- data.frame(sem_data, predict(precip_cfa_fit))
+
+# Create variable with interaction of precip and div
+sem_data <- sem_data %>%
+  mutate(moisture_div_int = moisture * div,
+    soil_div_int = soil * div)
+
+# Regression with predefined interactions
+int_spec <- "
+bchave_log_std ~ div + moisture_div_int + soil_div_int
+"
+
+precip_int_fit <- sem(int_spec, sem_data)
+
+int_mod_summ <- summary(precip_int_fit, rsquare = TRUE,  fit.measures = TRUE, standardized = TRUE)
+
+sink(paste0("output/int_mod_fit", ext, ".txt"))
+print(int_mod_summ)
+sink()
 

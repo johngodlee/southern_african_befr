@@ -9,9 +9,12 @@ Residuals:
 -6.5398 -0.5185  0.2276  0.7318  2.1554 
 
 Coefficients:
-                                          Estimate Std. Error t value Pr(>|t|)    
-(Intercept)                                3.32684    0.02549 130.521   <2e-16 ***
-unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.10161   9.841   <2e-16 ***
+                                          Estimate Std. Error t value
+(Intercept)                                3.32684    0.02549 130.521
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.10161   9.841
+                                          Pr(>|t|)    
+(Intercept)                                 <2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -31,9 +34,12 @@ Residuals:
 -6.6738 -0.4729  0.2126  0.7142  2.2959 
 
 Coefficients:
-                                          Estimate Std. Error t value Pr(>|t|)    
-(Intercept)                                3.32205    0.02578  128.85  < 2e-16 ***
-unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.13623    7.34 3.24e-13 ***
+                                          Estimate Std. Error t value
+(Intercept)                                3.32205    0.02578  128.85
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.13623    7.34
+                                          Pr(>|t|)    
+(Intercept)                                < 2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE) 3.24e-13 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -53,9 +59,12 @@ Residuals:
 -5.4058 -0.5074  0.0833  0.6165  3.1368 
 
 Coefficients:
-                                          Estimate Std. Error t value Pr(>|t|)    
-(Intercept)                                3.31284    0.02232  148.43   <2e-16 ***
-unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.03885   25.74   <2e-16 ***
+                                          Estimate Std. Error t value
+(Intercept)                                3.31284    0.02232  148.43
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.03885   25.74
+                                          Pr(>|t|)    
+(Intercept)                                 <2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -75,9 +84,12 @@ Residuals:
 -6.4964 -0.4461  0.2014  0.6840  2.1144 
 
 Coefficients:
-                                          Estimate Std. Error t value Pr(>|t|)    
-(Intercept)                                3.32205    0.02488  133.54   <2e-16 ***
-unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.07278   13.74   <2e-16 ***
+                                          Estimate Std. Error t value
+(Intercept)                                3.32205    0.02488  133.54
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.07278   13.74
+                                          Pr(>|t|)    
+(Intercept)                                 <2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -97,9 +109,12 @@ Residuals:
 -3.3456 -0.5683  0.1397  0.6588  2.2271 
 
 Coefficients:
-                                          Estimate Std. Error t value Pr(>|t|)    
-(Intercept)                                3.41401    0.02538  134.53   <2e-16 ***
-unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.06651   15.04   <2e-16 ***
+                                          Estimate Std. Error t value
+(Intercept)                                3.41401    0.02538  134.53
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.06651   15.04
+                                          Pr(>|t|)    
+(Intercept)                                 <2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 

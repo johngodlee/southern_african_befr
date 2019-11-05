@@ -2,19 +2,9 @@ This is BibTeX, Version 0.99d (TeX Live 2019)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: chapter_1.aux
 The style file: /Users/johngodlee/.texmf/agsmnourl.bst
-White space in argument---line 32 of file chapter_1.aux
- : \citation{Fire
- :                is a herbivore}
-I'm skipping whatever remains of this command
 Database file #1: /Users/johngodlee/google_drive/bib/lib.bib
 Warning--I didn't find a database entry for "Review"
 Warning--I didn't find a database entry for ""
-Warning--I didn't find a database entry for "Clarke2017"
-Warning--I didn't find a database entry for "Frost1996"
-Warning--I didn't find a database entry for "Brooks2006"
-Warning--I didn't find a database entry for "Mittermeier2003"
-Warning--I didn't find a database entry for "Hinsley2015"
-Warning--I didn't find a database entry for "McNicol2017"
 Warning--I didn't find a database entry for "and"
 Warning--I didn't find a database entry for "others"
 Warning--I didn't find a database entry for "Michaletz2014"
@@ -23,53 +13,75 @@ Warning--I didn't find a database entry for "Dohn2013"
 Warning--I didn't find a database entry for "Rowland2015a"
 Warning--I didn't find a database entry for "Fensham2009"
 Warning--I didn't find a database entry for "Miombo-Book"
+Warning--I didn't find a database entry for "Fireherbivore"
 Warning--I didn't find a database entry for "Roques2001"
 Warning--I didn't find a database entry for "nieto2018"
 Warning--I didn't find a database entry for "Cardinale2002"
+Warning--I didn't find a database entry for "White1983"
 Warning--I didn't find a database entry for "White"
+Warning--I didn't find a database entry for "worldclim"
 Warning--I didn't find a database entry for "Parr2014"
 Warning--I didn't find a database entry for "Ryanunbublished"
 Warning--I didn't find a database entry for "Zanne2009"
+Warning--I didn't find a database entry for "Hengl2017"
+Warning--I didn't find a database entry for "Dufrene1997"
+Warning--I didn't find a database entry for "R"
 Warning--I didn't find a database entry for "Lehmann2014_161-166"
-You've used 10 entries,
+Warning--I didn't find a database entry for "Hu1999"
+Warning--I didn't find a database entry for "Kline2005"
+Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
+while executing---line 1215 of file /Users/johngodlee/.texmf/agsmnourl.bst
+Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
+while executing---line 1251 of file /Users/johngodlee/.texmf/agsmnourl.bst
+Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
+while executing---line 1255 of file /Users/johngodlee/.texmf/agsmnourl.bst
+Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
+while executing---line 1287 of file /Users/johngodlee/.texmf/agsmnourl.bst
+Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
+while executing---line 1320 of file /Users/johngodlee/.texmf/agsmnourl.bst
+Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
+while executing---line 1339 of file /Users/johngodlee/.texmf/agsmnourl.bst
+Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
+while executing---line 1339 of file /Users/johngodlee/.texmf/agsmnourl.bst
+You've used 21 entries,
             2878 wiz_defined-function locations,
-            753 strings with 10763 characters,
-and the built_in function-call counts, 371895 in all, are:
-= -- 63069
-> -- 5320
+            838 strings with 12785 characters,
+and the built_in function-call counts, 438295 in all, are:
+= -- 74042
+> -- 6206
 < -- 0
-+ -- 32927
-- -- 1750
-* -- 34949
-:= -- 69412
-add.period$ -- 10
-call.type$ -- 10
-change.case$ -- 139
-chr.to.int$ -- 10
-cite$ -- 10
-duplicate$ -- 160
-empty$ -- 346
-format.name$ -- 1780
-if$ -- 66961
++ -- 38300
+- -- 2024
+* -- 40876
+:= -- 82403
+add.period$ -- 22
+call.type$ -- 21
+change.case$ -- 292
+chr.to.int$ -- 21
+cite$ -- 21
+duplicate$ -- 341
+empty$ -- 726
+format.name$ -- 2087
+if$ -- 78901
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 11
-newline$ -- 33
-num.names$ -- 110
-pop$ -- 25
+missing$ -- 21
+newline$ -- 67
+num.names$ -- 229
+pop$ -- 57
 preamble$ -- 1
-purify$ -- 150
+purify$ -- 315
 quote$ -- 0
-skip$ -- 127
+skip$ -- 269
 stack$ -- 0
-substring$ -- 94004
-swap$ -- 28
-text.length$ -- 140
+substring$ -- 109837
+swap$ -- 63
+text.length$ -- 294
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 38
+type$ -- 82
 warning$ -- 0
-while$ -- 227
+while$ -- 479
 width$ -- 0
-write$ -- 143
-(There was 1 error message)
+write$ -- 293
+(There were 7 error messages)

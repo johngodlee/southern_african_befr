@@ -1,5 +1,14 @@
 \begin{thebibliography}{xx}
 
+\harvarditem[Brooks et~al.]{Brooks, Mittermeier, {da Fonseca}, Gerlach,
+  Hoffmann, Lamoreux, Mittermeier, Pilgrim \harvardand\
+  Rodrigues}{2006}{Brooks2006}
+Brooks, T.~M., Mittermeier, R.~A., {da Fonseca}, G. A.~B., Gerlach, J.,
+  Hoffmann, M., Lamoreux, J.~F., Mittermeier, C.~G., Pilgrim, J.~D.
+  \harvardand\ Rodrigues, S.~L.  \harvardyearleft 2006\harvardyearright ,
+  `Global biodiversity conservation priorities', {\em Science} {\bf
+  313},~58--61.
+
 \harvarditem[Chave et~al.]{Chave, Coomes, Jansen, Lewis, Swenson \harvardand\
   Zanne}{2009}{Chave2009}
 Chave, J., Coomes, D., Jansen, S., Lewis, S.~L., Swenson, N.~G. \harvardand\
@@ -28,6 +37,13 @@ Chen, I., Hill, J.~K., Ohlem{\"u}ller, R., Roy, D.~B. \harvardand\ Thomas,
   associated with high levels of climate warming', {\em Science} {\bf
   333},~1024--1026.
 
+\harvarditem[Clarke et~al.]{Clarke, York, Rasheed \harvardand\
+  Northfield}{2017}{Clarke2017}
+Clarke, D.~A., York, P.~H., Rasheed, M.~A. \harvardand\ Northfield, T.~D.
+  \harvardyearleft 2017\harvardyearright , `Does biodiversity - ecosystem
+  function literature neglect tropical ecosystems', {\em Trends in Ecology \&
+  Evolution} {\bf 32}(5),~320--323.
+
 \harvarditem[Fayolle et~al.]{Fayolle, Swaine, Aleman, Azihou, Bauman, {te
   Beest}, Chidumayo, Cromsigt, Dessard, Finkch, Gon\c{c}alves, Gillet, Gorel,
   Hick, Holdo, Kirunda, Mahy, McNicol, Ryan, Revermann, Plumptre, Pritchard,
@@ -42,6 +58,28 @@ Fayolle, A., Swaine, M.~D., Aleman, J., Azihou, A.~F., Bauman, D., {te Beest},
   `A sharp floristic discontinuity revealed by the biogeographic
   regionalization of african savannas', {\em Journal of Biogeography} {\bf
   46}(2),~1--12.
+
+\harvarditem{Frost}{1996}{Frost1996}
+Frost, P.  \harvardyearleft 1996\harvardyearright , The ecology of miombo
+  woodlands, {\em in} B.~Campbell, ed., `The miombo in transition: woodlands
+  and welfare in Africa', Center for International Forestry Research, Bogor,
+  Indonesia, pp.~11--55.
+
+\harvarditem[Hinsley et~al.]{Hinsley, Entwistle \harvardand\
+  Pio}{2015}{Hinsley2015}
+Hinsley, A., Entwistle, A. \harvardand\ Pio, D.~V.  \harvardyearleft
+  2015\harvardyearright , `Does the long-term success of redd+ also depend on
+  biodiversity', {\em Oryx} {\bf 49}(2),~216--221.
+
+\harvarditem[Hsieh et~al.]{Hsieh, Ma \harvardand\ Chao}{2016}{Hsieh2016}
+Hsieh, T.~C., Ma, K.~H. \harvardand\ Chao, A.  \harvardyearleft
+  2016\harvardyearright , `inext: an r package for rarefaction and
+  extrapolation of species diversity (hill numbers)', {\em Methods in Ecology
+  and Evolution} {\bf 7},~1451--1456.
+
+\harvarditem{Jax}{2005}{Jax2005}
+Jax, K.  \harvardyearleft 2005\harvardyearright , `Function and ``functioning''
+  in ecology: what does it mean?', {\em Oikos} {\bf 111}(3),~641--648.
 
 \harvarditem[Liang et~al.]{Liang, Crowther, Picard, Wiser, Zhou, Alberti,
   Schulze, McGuire, Bozzato, Pretzsch, De-Miguel, Paquette, Herault,
@@ -75,6 +113,21 @@ Liang, J., Crowther, T.~W., Picard, N., Wiser, S., Zhou, M., Alberti, G.,
   relationship predominant in global forests', {\em Science} {\bf
   354}(6309),~aaf8957--aaf8957.
 
+\harvarditem[McNicol et~al.]{McNicol, Ryan, Dexter, Ball \harvardand\
+  Williams}{2018}{McNicol2018}
+McNicol, I.~M., Ryan, C.~M., Dexter, K.~G., Ball, S. M.~J. \harvardand\
+  Williams, M.  \harvardyearleft 2018\harvardyearright , `Aboveground carbon
+  storage and its links to stand structure, tree diversity and floristic
+  composition in south-eastern tanzania', {\em Ecosystems} {\bf 21},~740--754.
+
+\harvarditem[Mittermeier et~al.]{Mittermeier, Mittermeier, Brooks, Pilgrim,
+  Konstant, {da Fonseca} \harvardand\ Kormos}{2003}{Mittermeier2003}
+Mittermeier, R.~A., Mittermeier, C.~G., Brooks, T.~M., Pilgrim, J.~D.,
+  Konstant, W.~R., {da Fonseca}, G. A.~B. \harvardand\ Kormos, C.
+  \harvardyearleft 2003\harvardyearright , `Wilderness and biodiversity
+  conservation', {\em Proceedings of the National Academy of Sciences} {\bf
+  100}(18),~10309--10313.
+
 \harvarditem[Ratcliffe et~al.]{Ratcliffe, Wirth, Jucker, {van der Plas},
   Scherer-Lorenzen, Verheyen, Allan, Benavides, Bruelheide, Ohse, Paquette,
   Ampoorter, Bastias, Bauhus, Bonal, Bouriaud, Bussotti, Carnol, Castagneyrol,
@@ -98,6 +151,11 @@ Ratcliffe, S., Wirth, C., Jucker, T., {van der Plas}, F., Scherer-Lorenzen, M.,
   Baeten, L.  \harvardyearleft 2017\harvardyearright , `Biodiversity and
   ecosystem functioning relations in european forests depend on environmental
   context', {\em Ecology Letters} {\bf 20},~1414--1426.
+
+\harvarditem{Roberts}{2019}{labdsv}
+Roberts, D.~W.  \harvardyearleft 2019\harvardyearright , {\em labdsv:
+  Ordination and Multivariate Analysis for Ecology}.
+\newblock R package version 2.0-1.
 
 \harvarditem[Ryan et~al.]{Ryan, Pritchard, McNicol, Owen, Fisher \harvardand\
   Lehmann}{2016}{Ryan2016}
@@ -126,6 +184,17 @@ Sankaran, M., Hanan, N.~P., Scholes, R.~J., Ratnam, J., Augustine, D.~J., Cade,
 Solbrig, O.~T., Medina, E. \harvardand\ Silva, J.~F.  \harvardyearleft
   1996\harvardyearright , {\em Biodiversity and Savanna Ecosystem Processes},
   Springer-Verlag, Berlin, Germany.
+
+\harvarditem{Tilman \harvardand\ Downing}{1994}{Tilman1994}
+Tilman, D. \harvardand\ Downing, J.~A.  \harvardyearleft 1994\harvardyearright
+  , `Biodiversity and stability in grasslands', {\em Nature} {\bf
+  367},~363--365.
+
+\harvarditem[Tilman et~al.]{Tilman, Isbell \harvardand\
+  Cowles}{2014}{Tilman2014}
+Tilman, D., Isbell, F. \harvardand\ Cowles, J.~M.  \harvardyearleft
+  2014\harvardyearright , `Biodiversity and ecosystem functioning', {\em Annual
+  Review of Ecology, Evolution, and Systematics} {\bf 45},~471--493.
 
 \harvarditem[Vil\`{a} et~al.]{Vil\`{a}, Inchausti, Vayreda, Barrantes, Gracia,
   Ib\`{a}\~{n}ez \harvardand\ Mata}{2005}{Vila2005}

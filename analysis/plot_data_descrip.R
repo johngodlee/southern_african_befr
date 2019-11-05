@@ -152,18 +152,22 @@ var_map(plot_data_final,
   lab = expression("log(Fire" ~ "Return" ~ "interval)"))
 dev.off()
 
+plot_data_final$clust5_plot <- as.character(paste0("C",plot_data_final$clust5))
+
 # Biogeographic clusters
 pdf(file = "img/clust_map.pdf", width = 5, height = 8)
 ggplot() + 
   map_africa + 
   geom_point(data = plot_data_final, 
-    aes(x = longitude_of_centre, y = latitude_of_centre, fill = as.character(plot_data_final$clust5)), 
+    aes(x = longitude_of_centre, y = latitude_of_centre, fill = clust5_plot), 
     size = 2, shape = 21, colour = "black", position = "jitter") +
   scale_fill_manual(name = "Cluster", values = clust_pal) + 
+  facet_wrap(~clust5_plot) + 
   coord_map() + 
   ylim(-35.5, 10) + 
   labs(x = "Longitude", y = "Latitude") + 
-  theme_classic()
+  theme_classic() + 
+  theme(legend.position = "none")
 dev.off()
 
 # Relationship between temp and precip
@@ -250,7 +254,18 @@ length(unique(plot_data_final$country))
 length(unique(ssaw8$plotInfoFull$plotcode))
 
 # How many plots does the clean dataset have?
-length(unique(plot_data_final$plot_group))
+n_plots_num <- length(unique(plot_data_final$plot_group))
+
+# Plot number pre-PCOA
+n_plots_pcoa <- n_plots_num + 66
+
+fileConn <- file(paste0("output/include/n_plots.tex"))
+writeLines(
+  c(
+    paste0("\\newcommand{\\nplots}{", n_plots_num, "}"),
+    paste0("\\newcommand{\\nplotspcoa}{", n_plots_pcoa, "}")),
+  fileConn)
+close(fileConn)
 
 # What is the range of precipitation values?
 ggplot(plot_data_final, aes(x = total_precip)) + 

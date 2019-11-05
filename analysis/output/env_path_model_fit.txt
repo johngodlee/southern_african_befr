@@ -32,16 +32,27 @@ isothermality_std          -0.12576    0.03707  -3.392
 fire_return_mean_log_std    0.03941    0.02783   1.416
 
 Correlation of Fixed Effects:
-            (Intr) ocdns_ snd_p_ ctn___ ardt__ ttl_p_ prc___ mn_tm_ tmp___ isthr_
-ocdens_std   0.024                                                               
-sand_pr_std  0.005  0.007                                                        
-ctn_x_cp_st -0.034 -0.301 -0.535                                                 
-ardty_ndx_s  0.070  0.205  0.212 -0.337                                          
-ttl_prcp_st -0.058 -0.267 -0.285  0.373 -0.961                                   
-prcp_ssnl__ -0.061 -0.259 -0.119  0.049 -0.520  0.450                            
-men_tmp_std  0.034 -0.224 -0.474  0.421 -0.056  0.051  0.114                     
-tmp_ssnlt__  0.009  0.177 -0.048 -0.106  0.226 -0.369  0.027  0.317              
-isthrmlty_s  0.020 -0.059  0.027  0.241 -0.106  0.142 -0.288  0.087 -0.509       
-fr_rtrn_m__ -0.016 -0.082 -0.043  0.064 -0.090  0.130  0.030  0.020 -0.004  0.090
+            (Intr) ocdns_ snd_p_ ctn___ ardt__ ttl_p_ prc___ mn_tm_ tmp___
+ocdens_std   0.024                                                        
+sand_pr_std  0.005  0.007                                                 
+ctn_x_cp_st -0.034 -0.301 -0.535                                          
+ardty_ndx_s  0.070  0.205  0.212 -0.337                                   
+ttl_prcp_st -0.058 -0.267 -0.285  0.373 -0.961                            
+prcp_ssnl__ -0.061 -0.259 -0.119  0.049 -0.520  0.450                     
+men_tmp_std  0.034 -0.224 -0.474  0.421 -0.056  0.051  0.114              
+tmp_ssnlt__  0.009  0.177 -0.048 -0.106  0.226 -0.369  0.027  0.317       
+isthrmlty_s  0.020 -0.059  0.027  0.241 -0.106  0.142 -0.288  0.087 -0.509
+fr_rtrn_m__ -0.016 -0.082 -0.043  0.064 -0.090  0.130  0.030  0.020 -0.004
+            isthr_
+ocdens_std        
+sand_pr_std       
+ctn_x_cp_st       
+ardty_ndx_s       
+ttl_prcp_st       
+prcp_ssnl__       
+men_tmp_std       
+tmp_ssnlt__       
+isthrmlty_s       
+fr_rtrn_m__  0.090
            R2m       R2c
 [1,] 0.0977554 0.2742519

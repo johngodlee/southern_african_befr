@@ -40,9 +40,9 @@ data/seosaw_aridity_index.csv: aridity_index_seosaw.R data/ai_et0_crop/ai_et0_cr
 	Rscript aridity_index_seosaw.R
 
 # Crop aridity geoTIFF
-data/ai_et0_crop/ai_et0_crop.tif: data/ai_et0/ai_et0.tif ai_crop.sh $(PLOTS)
-	mkdir -p data/ai_et0_crop/
-	./ai_crop.sh
+# data/ai_et0_crop/ai_et0_crop.tif: data/ai_et0/ai_et0.tif ai_crop.sh $(PLOTS)
+#	mkdir -p data/ai_et0_crop/
+#	./ai_crop.sh
 
 data/seosaw_ocdens.csv: soil_carbon.R data/OCDENS_M_sl2_250m_ll_crop.tif $(PLOTS) 
 	Rscript soil_carbon.R

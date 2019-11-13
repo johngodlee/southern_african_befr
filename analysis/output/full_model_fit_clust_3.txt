@@ -1,187 +1,148 @@
 $FIT
-             npar              fmin             chisq                df 
-           32.000             1.337           280.807            46.000 
-           pvalue    baseline.chisq       baseline.df   baseline.pvalue 
-            0.000           840.690            66.000             0.000 
-              cfi               tli              logl unrestricted.logl 
-            0.697             0.565          -938.929          -798.525 
-              aic               bic            ntotal              bic2 
-         1941.858          2026.785           105.000          1925.691 
-            rmsea    rmsea.ci.lower    rmsea.ci.upper      rmsea.pvalue 
-            0.220             0.196             0.246             0.000 
-             srmr 
-            0.204 
+             npar              fmin             chisq                df            pvalue    baseline.chisq       baseline.df 
+           36.000             2.120           262.906            55.000             0.000           646.269            78.000 
+  baseline.pvalue               cfi               tli              logl unrestricted.logl               aic               bic 
+            0.000             0.634             0.481          -641.320          -509.867          1354.640          1431.217 
+           ntotal              bic2             rmsea    rmsea.ci.lower    rmsea.ci.upper      rmsea.pvalue              srmr 
+           62.000          1317.950             0.247             0.217             0.277             0.000             0.190 
 
 $PE
-                          lhs op                        rhs
-1                    moisture =~           total_precip_std
-2                    moisture =~ precip_seasonality_log_std
-3                    moisture =~              mean_temp_std
-4                    moisture =~   temp_seasonality_log_std
-5                         div =~      sp_rich_raref_log_std
-6                         div =~      shannon_equit_log_std
-7                        soil =~               sand_per_std
-8                        soil =~                 ocdens_std
-9                        soil =~          cation_ex_cap_std
-10                      struc =~                cov_dbh_std
-11                      struc =~             cov_height_std
-12                        div  ~                   moisture
-13                        div  ~                       soil
-14                      struc  ~                   moisture
-15                      struc  ~                        div
-16             bchave_log_std  ~                       soil
-17             bchave_log_std  ~                   moisture
-18             bchave_log_std  ~                        div
-19             bchave_log_std  ~                      struc
-20           total_precip_std ~~           total_precip_std
-21 precip_seasonality_log_std ~~ precip_seasonality_log_std
-22              mean_temp_std ~~              mean_temp_std
-23   temp_seasonality_log_std ~~   temp_seasonality_log_std
-24      sp_rich_raref_log_std ~~      sp_rich_raref_log_std
-25      shannon_equit_log_std ~~      shannon_equit_log_std
-26               sand_per_std ~~               sand_per_std
-27                 ocdens_std ~~                 ocdens_std
-28          cation_ex_cap_std ~~          cation_ex_cap_std
-29                cov_dbh_std ~~                cov_dbh_std
-30             cov_height_std ~~             cov_height_std
-31             bchave_log_std ~~             bchave_log_std
-32                   moisture ~~                   moisture
-33                        div ~~                        div
-34                       soil ~~                       soil
-35                      struc ~~                      struc
-36                   moisture ~~                       soil
-37   biomass_moisture_via_div :=                        a*b
-38     biomass_moisture_total :=                    c+(a*b)
-39      biomass_div_via_struc :=                        d*b
-40          biomass_div_total :=                    e+(d*b)
-41       biomass_soil_via_div :=                        g*b
-42         biomass_soil_total :=                    f+(g*b)
-43           total_precip_std r2           total_precip_std
-44 precip_seasonality_log_std r2 precip_seasonality_log_std
-45              mean_temp_std r2              mean_temp_std
-46   temp_seasonality_log_std r2   temp_seasonality_log_std
-47      sp_rich_raref_log_std r2      sp_rich_raref_log_std
-48      shannon_equit_log_std r2      shannon_equit_log_std
-49               sand_per_std r2               sand_per_std
-50                 ocdens_std r2                 ocdens_std
-51          cation_ex_cap_std r2          cation_ex_cap_std
-52                cov_dbh_std r2                cov_dbh_std
-53             cov_height_std r2             cov_height_std
-54             bchave_log_std r2             bchave_log_std
-55                        div r2                        div
-56                      struc r2                      struc
-                      label exo           est          se           z
-1                             0  1.0000000000 0.000000000          NA
-2                             0  0.0162986350 0.009176782  1.77607299
-3                             0 -0.6177093939 0.302308651 -2.04330704
-4                             0 -0.3111973351 0.145269332 -2.14220945
-5                             0  1.0000000000 0.000000000          NA
-6                             0  0.2434602504 0.188614612  1.29078149
-7                             0  1.0000000000 0.000000000          NA
-8                             0  1.6317162959 0.245313521  6.65155467
-9                             0  1.6459000777 0.174067736  9.45551495
-10                            0  1.0000000000 0.000000000          NA
-11                            0  0.9048382720 0.128308986  7.05202574
-12                        a   0 -0.0009788722 0.028496878 -0.03435016
-13                        g   0 -0.0552092791 0.131545053 -0.41969864
-14                            0  0.0765661716 0.049590157  1.54397920
-15                        d   0  0.1914225911 0.162250410  1.17979727
-16                        f   0  0.1207320225 0.169347479  0.71292483
-17                        c   0  0.0671609826 0.043744366  1.53530587
-18                        b   0 -0.1299084606 0.121303238 -1.07093976
-19                        e   0  0.7243938368 0.138949058  5.21337709
-20                            0  0.4240743853 0.151725289  2.79501452
-21                            0  0.0268102063 0.003708910  7.22859522
-22                            0  0.3877896989 0.075923919  5.10760910
-23                            0  0.1178765185 0.021285394  5.53790628
-24                            0 -0.9959536037 1.160181476 -0.85844639
-25                            0  0.5163175484 0.098680899  5.23219339
-26                            0  0.1145287112 0.022976351  4.98463457
-27                            0  1.1358151961 0.161763939  7.02143630
-28                            0 -0.0428966574 0.045884442 -0.93488458
-29                            0  0.4505733551 0.103528203  4.35217981
-30                            0  0.4213059933 0.089293799  4.71819988
-31                            0  0.6091437834 0.103485166  5.88629081
-32                            0 -0.2290128552 0.129978050 -1.76193484
-33                            0  1.5941881508 1.146936118  1.38995374
-34                            0  0.2104095762 0.045159328  4.65927169
-35                            0  0.7035915790 0.169587507  4.14884087
-36                            0  0.0138648425 0.005586105  2.48202343
-37 biomass_moisture_via_div   0  0.0001271638 0.003710720  0.03426930
-38   biomass_moisture_total   0  0.0672881464 0.044672924  1.50624003
-39    biomass_div_via_struc   0 -0.0248674141 0.043458833 -0.57220621
-40        biomass_div_total   0  0.6995264227 0.129908986  5.38474238
-41     biomass_soil_via_div   0  0.0071721525 0.018707709  0.38337951
-42       biomass_soil_total   0  0.1279041750 0.173644064  0.73658824
-43                            0 -1.1740544385          NA          NA
-44                            0 -0.0022743053          NA          NA
-45                            0 -0.2908834718          NA          NA
-46                            0 -0.2317546848          NA          NA
-47                            0            NA          NA          NA
-48                            0  0.1547525213          NA          NA
-49                            0  0.6475370382          NA          NA
-50                            0  0.3303096030          NA          NA
-51                            0            NA          NA          NA
-52                            0  0.6280081602          NA          NA
-53                            0  0.5964860101          NA          NA
-54                            0  0.3774600025          NA          NA
-55                            0  0.0004029400          NA          NA
-56                            0  0.0750393587          NA          NA
-         pvalue       std.lv      std.all      std.nox
-1            NA          NaN          NaN          NaN
-2  7.572089e-02          NaN          NaN          NaN
-3  4.102205e-02          NaN          NaN          NaN
-4  3.217663e-02          NaN          NaN          NaN
-5            NA  1.262866094  1.631880772  1.631880772
-6  1.967795e-01  0.307457696  0.393385970  0.393385970
-7            NA  0.458704236  0.804696861  0.804696861
-8  2.900125e-11  0.748475177  0.574725676  0.574725676
-9  0.000000e+00  0.754981338  1.039895362  1.039895362
-10           NA  0.872165071  0.792469659  0.792469659
-11 1.763256e-12  0.789168336  0.772325068  0.772325068
-12 9.725979e-01          NaN          NaN          NaN
-13 6.747056e-01 -0.020053377 -0.020053377 -0.020053377
-14 1.225934e-01          NaN          NaN          NaN
-15 2.380809e-01  0.277173563  0.277173563  0.277173563
-16 4.758923e-01  0.055380290  0.055985937  0.055985937
-17 1.247087e-01          NaN          NaN          NaN
-18 2.841965e-01 -0.164056990 -0.165851140 -0.165851140
-19 1.854334e-07  0.631791002  0.638700356  0.638700356
-20 5.189738e-03  0.424074385  2.174054439  2.174054439
-21 4.880540e-13  0.026810206  1.002274305  1.002274305
-22 3.262607e-07  0.387789699  1.290883472  1.290883472
-23 3.061090e-08  0.117876519  1.231754685  1.231754685
-24 3.906460e-01 -0.995953604 -1.663034853 -1.663034853
-25 1.675104e-07  0.516317548  0.845247479  0.845247479
-26 6.207903e-07  0.114528711  0.352462962  0.352462962
-27 2.196021e-12  1.135815196  0.669690397  0.669690397
-28 3.498478e-01 -0.042896657 -0.081382364 -0.081382364
-29 1.347906e-05  0.450573355  0.371991840  0.371991840
-30 2.379407e-06  0.421305993  0.403513990  0.403513990
-31 3.949591e-09  0.609143783  0.622539998  0.622539998
-32 7.808031e-02          NaN          NaN          NaN
-33 1.645429e-01  0.999597060  0.999597060  0.999597060
-34 3.173301e-06  1.000000000  1.000000000  1.000000000
-35 3.341630e-05  0.924960641  0.924960641  0.924960641
-36 1.306387e-02  0.063161474  0.063161474  0.063161474
-37 9.726624e-01          Inf          Inf          Inf
-38 1.320056e-01          Inf          Inf          Inf
-39 5.671823e-01 -0.045472260 -0.045969551 -0.045969551
-40 7.254848e-08  0.586318742  0.592730805  0.592730805
-41 7.014384e-01  0.003289897  0.003325875  0.003325875
-42 4.613728e-01  0.058670187  0.059311812  0.059311812
-43           NA           NA           NA           NA
-44           NA           NA           NA           NA
-45           NA           NA           NA           NA
-46           NA           NA           NA           NA
-47           NA           NA           NA           NA
-48           NA           NA           NA           NA
-49           NA           NA           NA           NA
-50           NA           NA           NA           NA
-51           NA           NA           NA           NA
-52           NA           NA           NA           NA
-53           NA           NA           NA           NA
-54           NA           NA           NA           NA
-55           NA           NA           NA           NA
-56           NA           NA           NA           NA
+                              lhs op                            rhs                          label exo          est          se
+1                        moisture =~               total_precip_std                                  0  1.000000000 0.000000000
+2                        moisture =~ precip_seasonality_rev_log_std                                  0  0.043611925 0.019437930
+3                        moisture =~              mean_temp_rev_std                                  0  0.391447596 0.111663508
+4                        moisture =~   temp_seasonality_rev_log_std                                  0  0.205140623 0.062530719
+5                             div =~          sp_rich_raref_log_std                                  0  1.000000000 0.000000000
+6                             div =~          shannon_equit_log_std                                  0  1.101238536 0.159636970
+7                            soil =~               sand_per_rev_std                                  0  1.000000000 0.000000000
+8                            soil =~                     ocdens_std                                  0  1.088783218 0.248360342
+9                            soil =~              cation_ex_cap_std                                  0  0.839171759 0.091023629
+10                          struc =~                 cov_height_std                                  0  1.000000000 0.000000000
+11                          struc =~                    cov_dbh_std                                  0  1.059711699 0.317363503
+12                            div  ~                       moisture                              a   0  0.181245538 0.082629439
+13                            div  ~                           soil                              j   0  0.098166549 0.127273619
+14                          struc  ~                            div                              f   0  0.187415938 0.186960136
+15               stems_ha_log_std  ~                       moisture                              d   0 -0.104001631 0.065176904
+16               stems_ha_log_std  ~                           soil                              i   0  0.287172262 0.173747679
+17               stems_ha_log_std  ~                            div                              h   0  0.619041722 0.208101300
+18                 bchave_log_std  ~                           soil                              k   0  0.005219482 0.137551317
+19                 bchave_log_std  ~                       moisture                              c   0 -0.119844932 0.061264237
+20                 bchave_log_std  ~                            div                              b   0  0.598351312 0.188582523
+21                 bchave_log_std  ~                          struc                              g   0  0.668067953 0.208393713
+22                 bchave_log_std  ~               stems_ha_log_std                              e   0 -0.062587462 0.102267849
+23               total_precip_std ~~               total_precip_std                                  0 -0.229578326 0.090664010
+24 precip_seasonality_rev_log_std ~~ precip_seasonality_rev_log_std                                  0  0.033836920 0.005960536
+25              mean_temp_rev_std ~~              mean_temp_rev_std                                  0  0.177549890 0.032437770
+26   temp_seasonality_rev_log_std ~~   temp_seasonality_rev_log_std                                  0  0.062741055 0.011125534
+27          sp_rich_raref_log_std ~~          sp_rich_raref_log_std                                  0  0.277124287 0.063994762
+28          shannon_equit_log_std ~~          shannon_equit_log_std                                  0  0.107491421 0.052385661
+29               sand_per_rev_std ~~               sand_per_rev_std                                  0  0.093327271 0.041134417
+30                     ocdens_std ~~                     ocdens_std                                  0  1.672469228 0.311344113
+31              cation_ex_cap_std ~~              cation_ex_cap_std                                  0  0.107228880 0.032906548
+32                 cov_height_std ~~                 cov_height_std                                  0  0.500559079 0.164418679
+33                    cov_dbh_std ~~                    cov_dbh_std                                  0  0.713974366 0.200855569
+34               stems_ha_log_std ~~               stems_ha_log_std                                  0  0.817899375 0.151921487
+35                 bchave_log_std ~~                 bchave_log_std                                  0  0.403793918 0.100908447
+36                       moisture ~~                       moisture                                  0  0.428871697 0.078107509
+37                            div ~~                            div                                  0  0.395502309 0.113759760
+38                           soil ~~                           soil                                  0  0.529240216 0.116760517
+39                          struc ~~                          struc                                  0  0.493043300 0.204737158
+40                       moisture ~~                           soil                                  0  0.127233047 0.036590248
+41       biomass_moisture_via_div :=                            a*b       biomass_moisture_via_div   0  0.108448506 0.055637883
+42     biomass_moisture_via_stems :=                            d*e     biomass_moisture_via_stems   0  0.006509198 0.010577899
+43 biomass_moisture_via_div_struc :=                          a*f*g biomass_moisture_via_div_struc   0  0.022693134 0.024666553
+44 biomass_moisture_via_div_stems :=                          a*h*e biomass_moisture_via_div_stems   0 -0.007022223 0.012295505
+45         biomass_moisture_total :=  c+(a*b)+(d*e)+(a*f*g)+(a*h*e)         biomass_moisture_total   0  0.010783683 0.054324394
+46           biomass_soil_via_div :=                            j*b           biomass_soil_via_div   0  0.058738083 0.078203158
+47         biomass_soil_via_stems :=                            i*e         biomass_soil_via_stems   0 -0.017973383 0.030984481
+48     biomass_soil_via_div_struc :=                          j*f*g     biomass_soil_via_div_struc   0  0.012291098 0.020025711
+49     biomass_soil_via_div_stems :=                          j*h*e     biomass_soil_via_div_stems   0 -0.003803389 0.008084342
+50             biomass_soil_total :=  k+(j*b)+(d*e)+(a*f*g)+(a*h*e)             biomass_soil_total   0  0.086137675 0.151986717
+51          biomass_div_via_struc :=                            f*g          biomass_div_via_struc   0  0.125206582 0.125199275
+52          biomass_div_via_stems :=                            h*e          biomass_div_via_stems   0 -0.038744250 0.065611051
+53              biomass_div_total :=                  b+(f*g)+(h*e)              biomass_div_total   0  0.684813644 0.187056690
+54               total_precip_std r2               total_precip_std                                  0           NA          NA
+55 precip_seasonality_rev_log_std r2 precip_seasonality_rev_log_std                                  0  0.023539739          NA
+56              mean_temp_rev_std r2              mean_temp_rev_std                                  0  0.270142227          NA
+57   temp_seasonality_rev_log_std r2   temp_seasonality_rev_log_std                                  0  0.223397255          NA
+58          sp_rich_raref_log_std r2          sp_rich_raref_log_std                                  0  0.602028845          NA
+59          shannon_equit_log_std r2          shannon_equit_log_std                                  0  0.825469364          NA
+60               sand_per_rev_std r2               sand_per_rev_std                                  0  0.850092924          NA
+61                     ocdens_std r2                     ocdens_std                                  0  0.272794081          NA
+62              cation_ex_cap_std r2              cation_ex_cap_std                                  0  0.776571464          NA
+63                 cov_height_std r2                 cov_height_std                                  0  0.503574809          NA
+64                    cov_dbh_std r2                    cov_dbh_std                                  0  0.444028528          NA
+65               stems_ha_log_std r2               stems_ha_log_std                                  0  0.209214273          NA
+66                 bchave_log_std r2                 bchave_log_std                                  0  0.504120589          NA
+67                            div r2                            div                                  0  0.056572069          NA
+68                          struc r2                          struc                                  0  0.028999320          NA
+            z       pvalue       std.lv      std.all      std.nox
+1          NA           NA  0.654882964  1.466956607  1.466956607
+2   2.2436507 2.485488e-02  0.028560707  0.153426658  0.153426658
+3   3.5056000 4.555793e-04  0.256352362  0.519752082  0.519752082
+4   3.2806375 1.035728e-03  0.134343100  0.472649188  0.472649188
+5          NA           NA  0.647470739  0.775905178  0.775905178
+6   6.8983929 5.259349e-12  0.713019729  0.908553446  0.908553446
+7          NA           NA  0.727488980  0.922004840  0.922004840
+8   4.3838852 1.165812e-05  0.792077792  0.522296928  0.522296928
+9   9.2192738 0.000000e+00  0.610488207  0.881232923  0.881232923
+10         NA           NA  0.712578581  0.709630051  0.709630051
+11  3.3391102 8.404723e-04  0.755127859  0.666354656  0.666354656
+12  2.1934741 2.827324e-02  0.183320431  0.183320431  0.183320431
+13  0.7713032 4.405272e-01  0.110298548  0.110298548  0.110298548
+14  1.0024380 3.161321e-01  0.170291866  0.170291866  0.170291866
+15 -1.5956823 1.105597e-01 -0.068108897 -0.066970465 -0.066970465
+16  1.6528121 9.836912e-02  0.208914656  0.205422676  0.205422676
+17  2.9747134 2.932624e-03  0.400811402  0.394111892  0.394111892
+18  0.0379457 9.697310e-01  0.003797115  0.004207866  0.004207866
+19 -1.9561973 5.044192e-02 -0.078484404 -0.086974416 -0.086974416
+20  3.1728885 1.509305e-03  0.387414967  0.429323386  0.429323386
+21  3.2057971 1.346889e-03  0.476050914  0.527547483  0.527547483
+22 -0.6119955 5.405407e-01 -0.062587462 -0.070536844 -0.070536844
+23 -2.5321881 1.133532e-02 -0.229578326 -1.151961685 -1.151961685
+24  5.6768249 1.372178e-08  0.033836920  0.976460261  0.976460261
+25  5.4735542 4.410979e-08  0.177549890  0.729857773  0.729857773
+26  5.6393746 1.706689e-08  0.062741055  0.776602745  0.776602745
+27  4.3304214 1.488243e-05  0.277124287  0.397971155  0.397971155
+28  2.0519245 4.017700e-02  0.107491421  0.174530636  0.174530636
+29  2.2688366 2.327826e-02  0.093327271  0.149907076  0.149907076
+30  5.3717708 7.796715e-08  1.672469228  0.727205919  0.727205919
+31  3.2585879 1.119682e-03  0.107228880  0.223428536  0.223428536
+32  3.0444173 2.331315e-03  0.500559079  0.496425191  0.496425191
+33  3.5546655 3.784602e-04  0.713974366  0.555971472  0.555971472
+34  5.3836978 7.297098e-08  0.817899375  0.790785727  0.790785727
+35  4.0015869 6.291908e-05  0.403793918  0.495879411  0.495879411
+36  5.4907870 4.001467e-08  1.000000000  1.000000000  1.000000000
+37  3.4766451 5.077295e-04  0.943427931  0.943427931  0.943427931
+38  4.5326985 5.823491e-06  1.000000000  1.000000000  1.000000000
+39  2.4081769 1.603241e-02  0.971000680  0.971000680  0.971000680
+40  3.4772393 5.066055e-04  0.267060597  0.267060597  0.267060597
+41  1.9491846 5.127338e-02  0.071021079  0.078703748  0.078703748
+42  0.6153583 5.383181e-01  0.004262763  0.004723885  0.004723885
+43  0.9199962 3.575748e-01  0.014861347  0.016468966  0.016468966
+44 -0.5711211 5.679175e-01 -0.004598734 -0.005096200 -0.005096200
+45  0.1985054 8.426497e-01  0.007062051  0.007825984  0.007825984
+46  0.7510961 4.525948e-01  0.042731308  0.047353746  0.047353746
+47 -0.5800769 5.618627e-01 -0.013075438 -0.014489867 -0.014489867
+48  0.6137659 5.393700e-01  0.008941638  0.009908896  0.009908896
+49 -0.4704637 6.380238e-01 -0.002766924 -0.003066234 -0.003066234
+50  0.5667448 5.708876e-01  0.061053800  0.067658264  0.067658264
+51  1.0000584 3.172823e-01  0.081067598  0.089837045  0.089837045
+52 -0.5905141 5.548460e-01 -0.025085768 -0.027799409 -0.027799409
+53  3.6609952 2.512375e-04  0.443396797  0.491361023  0.491361023
+54         NA           NA           NA           NA           NA
+55         NA           NA           NA           NA           NA
+56         NA           NA           NA           NA           NA
+57         NA           NA           NA           NA           NA
+58         NA           NA           NA           NA           NA
+59         NA           NA           NA           NA           NA
+60         NA           NA           NA           NA           NA
+61         NA           NA           NA           NA           NA
+62         NA           NA           NA           NA           NA
+63         NA           NA           NA           NA           NA
+64         NA           NA           NA           NA           NA
+65         NA           NA           NA           NA           NA
+66         NA           NA           NA           NA           NA
+67         NA           NA           NA           NA           NA
+68         NA           NA           NA           NA           NA
 

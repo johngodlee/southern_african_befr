@@ -67,14 +67,14 @@ source("full_best.R")
 
 sem_data_fil_agg <- read.csv(paste0("data/plot_data_fil_agg", ext, ".csv"))
 
-
 # Which variables need to be log transformed? ----
 ##' Look at histograms
 histogram_raw <- sem_data_fil_agg %>%
-	dplyr::select(stems_ha, bchave, sp_rich, sp_rich_raref, shannon_exp, shannon_equit, 
-	  cation_ex_cap, sand_per, ocdens, aridity_index, total_precip, precip_seasonality,
-		mean_height, cov_height, mean_dbh, cov_dbh, fire_return_mean, firecount_2001_2018, 
-	  mean_temp, temp_seasonality, isothermality) %>%
+	dplyr::select(stems_ha, bchave, sp_rich, 
+	  sp_rich_raref, shannon_exp, shannon_equit,
+	  cation_ex_cap, sand_per_rev, ocdens, aridity_index, total_precip, precip_seasonality_rev,
+		mean_height, cov_height, mean_dbh, cov_dbh, diam_even, bchave_mean_95, fire_return_mean, firecount_2001_2018, 
+	  mean_temp_rev, temp_seasonality_rev, isothermality) %>%
 	gather(variable, value) %>%
 	ggplot(aes(x = value)) + 
 	geom_histogram(colour = "black", fill = "grey") + 
@@ -94,17 +94,17 @@ sem_data_trans <- sem_data_fil_agg %>%
 	  shannon_equit_log = -log(shannon_equit),
 	  sp_rich_raref_log = log(sp_rich_raref),
 		fire_return_mean_log = log(fire_return_mean),
-	  temp_seasonality_log = log(temp_seasonality),
-	  precip_seasonality_log = log(precip_seasonality),
+	  temp_seasonality_rev_log = log(temp_seasonality_rev),
+	  precip_seasonality_rev_log = log(precip_seasonality_rev),
 	  ocdens = ocdens)
 
 histogram_trans <- sem_data_trans %>%
 	dplyr::select(stems_ha_log, bchave_log, sp_rich, 
-	  sp_rich_raref_log, shannon_log, shannon_equit_log,
-		cation_ex_cap, sand_per, ocdens, aridity_index,
-	  total_precip, precip_seasonality_log,
-		mean_height, cov_height, mean_dbh_log, cov_dbh, 
-		fire_return_mean_log, mean_temp, temp_seasonality_log, isothermality, firecount_2001_2018) %>%
+	  sp_rich_raref_log, shannon_log, shannon_equit_log, diam_even,
+		cation_ex_cap, sand_per_rev, ocdens, aridity_index,
+	  total_precip, precip_seasonality_rev_log,
+		mean_height, cov_height, mean_dbh_log, cov_dbh, bchave_mean_95,
+		fire_return_mean_log, mean_temp_rev, temp_seasonality_rev_log, isothermality, firecount_2001_2018) %>%
 	gather(variable, value) %>%
 	ggplot(., aes(x = value)) + 
 	geom_histogram(colour = "black", fill = "grey") + 
@@ -120,13 +120,13 @@ dev.off()
 sem_data_norm_std <- sem_data_trans %>%
 	mutate_at(.vars = c("aridity_index",
 	  "total_precip",
-	  "precip_seasonality_log",
-		"mean_temp",
-		"temp_seasonality_log",
+	  "precip_seasonality_rev_log",
+		"mean_temp_rev",
+		"temp_seasonality_rev_log",
 	  "isothermality",
 		"bchave_log",
 		"cation_ex_cap",
-		"sand_per",
+		"sand_per_rev",
 		"ocdens",
 		"cov_dbh",
 		"cov_height",
@@ -135,6 +135,8 @@ sem_data_norm_std <- sem_data_trans %>%
 		"stems_ha_log",
 		"shannon_log",
 	  "shannon_equit_log",
+	  "diam_even",
+	  "bchave_mean_95",
 		"sp_rich",
 	  "sp_rich_raref_log",
 		"fire_return_mean_log",
@@ -143,10 +145,10 @@ sem_data_norm_std <- sem_data_trans %>%
 
 histogram_trans_std <- sem_data_norm_std %>%
 	dplyr::select(stems_ha_log_std, bchave_log_std, sp_rich_std, sp_rich_raref_log_std, 
-	  shannon_log_std, shannon_equit_log_std, cation_ex_cap_std, sand_per_std, ocdens_std, 
-	  aridity_index_std, total_precip_std, precip_seasonality_log_std,
-		mean_height_std, cov_height_std, mean_dbh_log_std, cov_dbh_std, 
-	  fire_return_mean_log_std, mean_temp_std, temp_seasonality_log_std, isothermality_std, firecount_2001_2018_std) %>%
+	  shannon_log_std, shannon_equit_log_std, diam_even_std, cation_ex_cap_std, sand_per_rev_std, ocdens_std, 
+	  aridity_index_std, total_precip_std, precip_seasonality_rev_log_std,
+		mean_height_std, cov_height_std, mean_dbh_log_std, cov_dbh_std, bchave_mean_95_std, 
+	  fire_return_mean_log_std, mean_temp_rev_std, temp_seasonality_rev_log_std, isothermality_std, firecount_2001_2018_std) %>%
 	gather(variable, value) %>%
 	ggplot(., aes(x = value)) + 
 	geom_histogram(colour = "black", fill = "grey") + 
@@ -170,11 +172,11 @@ bivar_list <- c(
   "bchave_log_std ~ sp_rich_raref_log_std",
   "bchave_log_std ~ fire_return_mean_log_std",
   "bchave_log_std ~ aridity_index_std",
-  "bchave_log_std ~ mean_temp_std",
-  "bchave_log_std ~ temp_seasonality_log_std",
+  "bchave_log_std ~ mean_temp_rev_std",
+  "bchave_log_std ~ temp_seasonality_rev_log_std",
   "bchave_log_std ~ isothermality_std",
   "bchave_log_std ~ total_precip_std",
-  "bchave_log_std ~ precip_seasonality_log_std",
+  "bchave_log_std ~ precip_seasonality_rev_log_std",
   "bchave_log_std ~ stems_ha_log_std",
   "cov_height_std ~ cation_ex_cap_std",
   "cov_height_std ~ aridity_index_std",
@@ -305,20 +307,22 @@ cluster_compare <- data.frame(
   sp_rich_raref = sem_data_norm_std$sp_rich_raref_log,
   shannon_log = sem_data_norm_std$shannon_log,
   shannon_equit_log = sem_data_norm_std$shannon_equit_log,
+  diam_even = sem_data_norm_std$diam_even,
   cation_ex_cap = sem_data_norm_std$cation_ex_cap,
-  sand_per = sem_data_norm_std$sand_per,
+  sand_per_rev = sem_data_norm_std$sand_per_rev,
   ocdens = sem_data_norm_std$ocdens, 
   aridity_index = sem_data_norm_std$aridity_index,
   total_precip = sem_data_norm_std$total_precip,
-  precip_seasonality_log = sem_data_norm_std$precip_seasonality_log,
-  mean_temp = sem_data_norm_std$mean_temp,
-  temp_seasonality = sem_data_norm_std$temp_seasonality_log,
+  precip_seasonality_rev_log = sem_data_norm_std$precip_seasonality_rev_log,
+  mean_temp_rev = sem_data_norm_std$mean_temp_rev,
+  temp_seasonality_rev_log = sem_data_norm_std$temp_seasonality_rev_log,
   isothermality = sem_data_norm_std$isothermality,
   mean_height = sem_data_norm_std$mean_height,
   stems_ha_log = sem_data_norm_std$stems_ha_log,
   cov_height = sem_data_norm_std$cov_height,
   mean_dbh_log = sem_data_norm_std$mean_dbh_log,
   cov_dbh = sem_data_norm_std$cov_dbh,
+  bchave_mean_95 = sem_data_norm_std$bchave_mean_95,
   fire_return_mean_log = sem_data_norm_std$fire_return_mean_log,
   firecount_2001_2018 = sem_data_norm_std$firecount_2001_2018,
   clust5 = sem_data_norm_std$clust5) %>%
@@ -401,3 +405,4 @@ bivar_lmer_stats_output <- bivar_lm_stats %>%
     r2_stat = round(.$r2_stat, digits = 3))
 
 write.csv(bivar_lmer_stats_output, paste0("output/bivar_lmer", ext, ".csv"), row.names = FALSE)
+

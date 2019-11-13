@@ -2,15 +2,20 @@
 \contentsline {subsection}{\numberline {1.1}Hypotheses}{4}{subsection.1.1}% 
 \contentsline {section}{\numberline {2}Methods}{4}{section.2}% 
 \contentsline {subsection}{\numberline {2.1}Study location}{4}{subsection.2.1}% 
-\contentsline {subsection}{\numberline {2.2}Data collection}{6}{subsection.2.2}% 
-\contentsline {subsection}{\numberline {2.3}Data analysis}{7}{subsection.2.3}% 
-\contentsline {subsubsection}{\numberline {2.3.1}Vegetation clusters}{7}{subsubsection.2.3.1}% 
-\contentsline {subsubsection}{\numberline {2.3.2}Structural Equation Modelling}{9}{subsubsection.2.3.2}% 
+\contentsline {subsection}{\numberline {2.2}Data collection}{5}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Data analysis}{6}{subsection.2.3}% 
+\contentsline {subsubsection}{\numberline {2.3.1}Vegetation clusters}{6}{subsubsection.2.3.1}% 
+\contentsline {subsubsection}{\numberline {2.3.2}Structural Equation Modelling}{8}{subsubsection.2.3.2}% 
 \contentsline {section}{\numberline {3}Results}{11}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}Structural diversity and species diversity models}{11}{subsection.3.1}% 
-\contentsline {subsubsection}{\numberline {3.1.1}Mediation by stem density}{13}{subsubsection.3.1.1}% 
-\contentsline {subsection}{\numberline {3.2}Models with environmental covariates}{14}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}Structural diversity}{15}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}Interaction effects of moisture availability and soil}{16}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {3.1}Structural and species diversity models}{11}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Variation among vegetation clusters in structural and species diversity effects}{13}{subsection.3.2}% 
+\contentsline {subsubsection}{\numberline {3.2.1}Moderation of Diversity-AGB relationship by stem density}{14}{subsubsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.3}Mediation of environmental covariates via diversity}{14}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Moderation effects of moisture availability and soil}{16}{subsection.3.4}% 
 \contentsline {section}{\numberline {4}Discussion}{16}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}Conclusion}{18}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.1}Effect of tree species diversity on AGB}{16}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Structural diversity as a mechanism for the BEFR}{16}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Moderation effects of moisture availability and soil fertility}{16}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {4.4}Vegetation type specific responses}{16}{subsection.4.4}% 
+\contentsline {subsection}{\numberline {4.5}Stem density effects}{16}{subsection.4.5}% 
+\contentsline {subsection}{\numberline {4.6}Conclusion}{16}{subsection.4.6}% 

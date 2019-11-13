@@ -18,6 +18,7 @@ library(tidyr)
 library(maps)
 library(rgdal)
 library(ggnewscale)
+library(gridExtra)
 
 # Import data ----
 
@@ -41,6 +42,9 @@ white_veg_miombo <- white_veg_fort %>%
 
 # Original data
 load("data/seosaw_plot_summary5Apr2019.Rdata")
+
+# Biomass quantiles
+bchave_quantile_df <- read.csv("data/bchave_quantile.csv")
 
 source("clust_pal.R")
 
@@ -203,10 +207,10 @@ t_p_sp <- SpatialPointsDataFrame(
   coords = t_p_std_nona, data = t_p_std_nona)
 
 # Create a convex hull spatialpolygons object
-plot_hull <- chull(plot_data_final$mean_temp_std, plot_data_final$total_precip_std)
+plot_hull <- chull(plot_data_final$mean_temp_rev_std, plot_data_final$total_precip_std)
 plot_hull <- c(plot_hull, plot_hull[1])
 plot_hull_data <- plot_data_final[plot_hull,]
-plot_hull_coords <- plot_hull_data %>% dplyr::select(mean_temp_std, total_precip_std)
+plot_hull_coords <- plot_hull_data %>% dplyr::select(mean_temp_rev_std, total_precip_std)
 
 plot_hull_poly <- Polygon(plot_hull_coords, hole=F)
 plot_hull_polys <- Polygons(list(plot_hull_poly), 1)
@@ -215,8 +219,14 @@ plot_hull_polys_sp = SpatialPolygons(list(plot_hull_polys))
 # Count number of pixels covered by polygon
 t_p_hull <- over(t_p_sp, plot_hull_polys_sp)
 
-100 - length(t_p_hull[is.na(t_p_hull)]) / length(t_p_hull[!is.na(t_p_hull)]) * 100
+pixel_cover <- round(100 - length(t_p_hull[is.na(t_p_hull)]) / length(t_p_hull[!is.na(t_p_hull)]) * 100, 
+  digits = 1)
 
+fileConn <- file(paste0("output/include/hull_cover.tex"))
+writeLines(
+    paste0("\\newcommand{\\hullcover}{", pixel_cover, "}"),
+  fileConn)
+close(fileConn)
 # Plot the convex hull and the points together
 plot_hull_fort <- fortify(plot_hull_polys_sp)
 
@@ -231,7 +241,7 @@ ggplot() +
     breaks = c(1, 5, 10, 50, 100, 200, 400)) + 
   new_scale_fill() +
   geom_point(data = plot_data_final,
-    mapping = aes(x = mean_temp_std, y = total_precip_std, fill = as.character(clust5)), 
+    mapping = aes(x = mean_temp_rev_std, y = total_precip_std, fill = as.character(clust5)), 
     colour = "black", shape = 21) + 
   geom_polygon(data = plot_hull_fort,
     aes(x = long, y = lat), fill = NA, colour = "#A3152A") + 
@@ -366,3 +376,145 @@ ggplot(plot_data_final, aes(x = sp_rich_raref, y = bchave_log)) +
   labs(x = "Rarefied Species richness", y = expression("AGB" ~ (t ~ ha^-1))) + 
   theme_classic()
 dev.off()
+
+# How do extrapolated species richnesses compare to actual?
+pdf(file = "img/sp_rich_vs_raref_clust.pdf", width = 12, height = 7)
+ggplot(plot_data_final, aes(x = sp_rich, y = sp_rich_raref)) + 
+  geom_point(aes(colour = clust5), 
+    alpha = 0.6) + 
+  geom_abline(aes(intercept = 0, slope = 1), 
+    linetype = 2) + 
+  facet_wrap(~clust5, nrow = 1) + 
+  theme_classic() +
+  coord_equal()
+dev.off()
+
+plot_data_final[which.max(plot_data_final$sp_rich),]
+
+plot_data_final[which.min(plot_data_final$sp_rich_raref),]
+
+# Investigating DBH evenness measures and relationship with other variables
+plot_data_final_gather <- plot_data_final %>%
+  dplyr::select(diam_even_std, ends_with("_std")) %>%
+  gather("var", "value", -diam_even_std)
+
+pdf(file = paste0("img/diam_even_bivar", ".pdf"), width = 18, height = 18)
+ggplot(plot_data_final_gather, aes(x = diam_even_std, y = value)) + 
+  geom_point(alpha = 0.6) + 
+  stat_smooth(colour = "red") +
+  stat_smooth(method = "lm") + 
+  facet_wrap(~var, scales = "free_y") + 
+  theme_classic()
+dev.off()
+
+# Species richness as determinant of biomass in large trees
+##' measured as mean 95th percentile of height
+
+sp_bchave <- ggplot(plot_data_final, aes(x = sp_rich, y = bchave_log)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  ggtitle("S ~ log(AGB)") + 
+  theme_classic()
+
+sp_bchave_big <- ggplot(plot_data_final, aes(x = sp_rich, y = log(bchave_mean_95))) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  ggtitle("S ~ log(AGB big trees)") + 
+  theme_classic()
+
+sp_raref_bchave <- ggplot(plot_data_final, aes(x = sp_rich_raref, y = bchave_log)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  ggtitle("S raref ~ log(AGB)") + 
+  theme_classic()
+
+sp_raref_bchave_big <- ggplot(plot_data_final, aes(x = sp_rich_raref, y = log(bchave_mean_95))) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  ggtitle("S raref ~ log(AGB big trees)") + 
+  theme_classic()
+
+log_sp_raref_bchave <- ggplot(plot_data_final, aes(x = log(sp_rich_raref), y = bchave_log)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  ggtitle("log(S raref) ~ log(AGB)") + 
+  theme_classic()
+
+log_sp_raref_bchave_big <- ggplot(plot_data_final, aes(x = log(sp_rich_raref), y = log(bchave_mean_95))) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  ggtitle("log(S raref) ~ log(AGB big trees)") + 
+  theme_classic()
+
+
+pdf(file = "img/big_trees_bchave_sp_rich.pdf", width = 18, height = 18)
+grid.arrange(sp_bchave, sp_bchave_big, 
+  sp_raref_bchave, sp_raref_bchave_big,
+  log_sp_raref_bchave, log_sp_raref_bchave_big, nrow = 3)
+dev.off()
+
+# Biomass quantiles and their relationship with Species richness
+
+bchave_quantile_df$sp_rich_raref_std <- scale(bchave_quantile_df$sp_rich_raref)
+
+bchave_quantile_df_gather <- bchave_quantile_df %>% 
+  gather("quantile", "value", -plot_group, -sp_rich_raref, -sp_rich, -sp_rich_raref_std)
+
+quantile_labs <- paste0(quantile_lo, "-", (seq(from = 0, to = 0.95, by = 0.05) + 0.05) * 100)
+
+bchave_quantile_df_gather$quantile <- factor(bchave_quantile_df_gather$quantile,
+  levels = c("bchave_mean_95_0.0.05", "bchave_mean_95_0.05.0.1", "bchave_mean_95_0.1.0.15",
+    "bchave_mean_95_0.15.0.2", "bchave_mean_95_0.2.0.25", "bchave_mean_95_0.25.0.3",
+    "bchave_mean_95_0.3.0.35", "bchave_mean_95_0.35.0.4", "bchave_mean_95_0.4.0.45",
+     "bchave_mean_95_0.45.0.5", "bchave_mean_95_0.5.0.55", "bchave_mean_95_0.55.0.6",
+     "bchave_mean_95_0.6.0.65", "bchave_mean_95_0.65.0.7", "bchave_mean_95_0.7.0.75",
+     "bchave_mean_95_0.75.0.8", "bchave_mean_95_0.8.0.85", "bchave_mean_95_0.85.0.9",
+     "bchave_mean_95_0.9.0.95", "bchave_mean_95_0.95.1"),
+  labels = quantile_labs)
+
+
+pdf(file = "img/bchave_quantile_slope_sp_rich_raw.pdf", width = 12, height = 10)
+ggplot(bchave_quantile_df_gather, aes(x = sp_rich_raref, y = log(value))) + 
+  geom_point(aes(colour = quantile), alpha = 0.6) + 
+  geom_smooth(method = "lm", colour = "black") + 
+  facet_wrap(~quantile, scales = "fixed", labeller = labeller()) +
+  labs(x = "Extrapolated species richness\nof plot", y = "log(AGB of percentile)") + 
+  theme_classic() + 
+  theme(legend.position = "none")
+dev.off()
+
+bchave_quantile_lm_list <- list()
+for(i in names(bchave_quantile_df)[startsWith(names(bchave_quantile_df), "bchave_mean_95_0")]){
+  bchave_quantile_lm_list[[i]] <- lm(get(i) ~ sp_rich_raref, 
+    data = bchave_quantile_df)
+}
+
+bchave_quantile_lm_coef <- sapply(bchave_quantile_lm_list, function(x){x$coefficients[2]})
+bchave_quantile_lm_se <- sapply(bchave_quantile_lm_list, function(x){summary(x)$coefficients[2,2]})
+
+quantile_lo <- seq(from = 0, to = 0.95, by = 0.05) * 100
+
+bchave_quantile_lm_coef_df <- data.frame(quantile_lo, bchave_quantile_lm_coef,
+  bchave_quantile_lm_se)
+
+
+pdf(file = "img/bchave_quantile_slope_sp_rich.pdf", width = 8, height = 5)
+ggplot() + 
+  geom_point(data = bchave_quantile_lm_coef_df, 
+    aes(x = quantile_lo, y = bchave_quantile_lm_coef)) + 
+  geom_errorbar(data = bchave_quantile_lm_coef_df, 
+    aes(x = quantile_lo, 
+      ymax = bchave_quantile_lm_coef + bchave_quantile_lm_se, 
+      ymin =  bchave_quantile_lm_coef - bchave_quantile_lm_se)) +
+  theme_classic() + 
+  labs(x = "Percentile of tree size\nmeasured by AGB", y = "Slope of linear model\n(AGB ~ Species rich.)") + 
+  scale_x_continuous(breaks = quantile_lo, labels = quantile_labs) + 
+  theme(axis.text.x=element_text( 
+    angle=45, 
+    vjust=1, 
+    hjust=1)) 
+dev.off()
+
+
+
+

@@ -6,6 +6,7 @@ STRUC_HEAD="{Cluster} \& {Params.} \& {n} \& {\$\\\\chi\^{2}\$} \& {DoF} \& {CFI
 
 # Transfer images from analysis to manuscript
 
+
 cp img/plot_loc.pdf $OUT
 
 cp img/temp_precip_hull.pdf $OUT
@@ -35,6 +36,22 @@ cp img/sem_struc_stems_ha.pdf $OUT
 cp sem_path_diag/con_mod.pdf $OUT
 
 cp output/include/n_plots.tex $INC
+
+cp output/include/n_outliers.tex $INC
+
+cp output/include/hull_cover.tex $INC
+
+cp output/include/path_coef_full.tex $INC
+
+cp output/include/path_coef_struc.tex $INC
+
+cp sem_path_diag/path_diagram_*.tex output/include/
+
+cp output/include/path_diagram_struc.tex $INC
+
+cp output/include/path_diagram_full.tex $INC
+
+cp output/include/path_diagram_concept.tex $INC
 
 # Transfer tables from analysis to manuscript
 
@@ -77,8 +94,8 @@ sed -i -r '12,16s/\w+ \w+\.*/\\textit\{&\}/g' "${INC}clust_summ.tex"
 
 sed -i '12,16s/spp\.\}/\}spp./g' "${INC}clust_summ.tex"
 
-sed -i '10s/.*/{Cluster} \& {Indicator species} \& {Rarefied species richness} \& {Stems ha\\textsuperscript{-1}} \& {AGB (t ha\\textsuperscript{-1})} \\\\/' "${INC}clust_summ.tex"
+sed -i '10s/.*/{Cluster} \& {Indicator species} \& {Species richness} \& {Stems ha\\textsuperscript{-1}} \& {AGB (t ha\\textsuperscript{-1})} \\\\/' "${INC}clust_summ.tex"
 
 sed -i '13,16i\\\hline' "${INC}clust_summ.tex"
 
-sed -i 's/caption{}/caption{Description of the biogeographical clusters (C1-C5) to which each plot in the study was assigned. Indicator species were generated using Dufrene-Legendre indicator species analysis \\citep{Dufrene1997} implemented with \\texttt{indval()} from the \\texttt{labdsv} R package \\citep{labdsv}. Numeric values are $\\pm$ 1 standard deviation.}/g' "${INC}clust_summ.tex" 
+sed -i 's/caption{}/caption{Description of the biogeographical clusters (C1-C5) to which each plot in the study was assigned. Indicator species were generated using Dufrene-Legendre indicator species analysis \\citep{Dufrene1997} implemented with \\texttt{indval()} from the \\texttt{labdsv} R package \\citep{labdsv}. Numeric values are means $\\pm$ 1 standard deviation.}/g' "${INC}clust_summ.tex" 

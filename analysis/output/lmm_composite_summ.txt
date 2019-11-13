@@ -6,21 +6,21 @@ lm(formula = mreg_list[[i]]$model$bchave_log ~ unlist(comp_list[[i]],
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--6.5398 -0.5185  0.2276  0.7318  2.1554 
+-6.5730 -0.4738  0.2012  0.6810  1.9183 
 
 Coefficients:
                                           Estimate Std. Error t value
-(Intercept)                                3.32684    0.02549 130.521
-unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.10161   9.841
+(Intercept)                                3.36231    0.02787 120.655
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.15742   6.352
                                           Pr(>|t|)    
-(Intercept)                                 <2e-16 ***
-unlist(comp_list[[i]], use.names = FALSE)   <2e-16 ***
+(Intercept)                                < 2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE) 2.87e-10 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.071 on 1765 degrees of freedom
-Multiple R-squared:  0.05202,	Adjusted R-squared:  0.05148 
-F-statistic: 96.85 on 1 and 1765 DF,  p-value: < 2.2e-16
+Residual standard error: 1.038 on 1385 degrees of freedom
+Multiple R-squared:  0.02831,	Adjusted R-squared:  0.02761 
+F-statistic: 40.35 on 1 and 1385 DF,  p-value: 2.869e-10
 
 
 [[2]]
@@ -31,21 +31,21 @@ lm(formula = mreg_list[[i]]$model$bchave_log ~ unlist(comp_list[[i]],
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--6.6738 -0.4729  0.2126  0.7142  2.2959 
+-6.7116 -0.4414  0.1745  0.6625  2.3022 
 
 Coefficients:
                                           Estimate Std. Error t value
-(Intercept)                                3.32205    0.02578  128.85
-unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.13623    7.34
+(Intercept)                                3.35890    0.02806 119.720
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.22000   4.545
                                           Pr(>|t|)    
 (Intercept)                                < 2e-16 ***
-unlist(comp_list[[i]], use.names = FALSE) 3.24e-13 ***
+unlist(comp_list[[i]], use.names = FALSE) 5.96e-06 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.084 on 1765 degrees of freedom
-Multiple R-squared:  0.02962,	Adjusted R-squared:  0.02907 
-F-statistic: 53.88 on 1 and 1765 DF,  p-value: 3.235e-13
+Residual standard error: 1.045 on 1385 degrees of freedom
+Multiple R-squared:  0.0147,	Adjusted R-squared:  0.01399 
+F-statistic: 20.66 on 1 and 1385 DF,  p-value: 5.962e-06
 
 
 [[3]]
@@ -56,21 +56,21 @@ lm(formula = mreg_list[[i]]$model$bchave_log ~ unlist(comp_list[[i]],
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--5.4058 -0.5074  0.0833  0.6165  3.1368 
+-5.3087 -0.5017  0.0704  0.6010  2.7491 
 
 Coefficients:
                                           Estimate Std. Error t value
-(Intercept)                                3.31284    0.02232  148.43
-unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.03885   25.74
+(Intercept)                                3.35307    0.02458  136.40
+unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.04733   21.13
                                           Pr(>|t|)    
 (Intercept)                                 <2e-16 ***
 unlist(comp_list[[i]], use.names = FALSE)   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 0.9381 on 1765 degrees of freedom
-Multiple R-squared:  0.273,	Adjusted R-squared:  0.2725 
-F-statistic: 662.6 on 1 and 1765 DF,  p-value: < 2.2e-16
+Residual standard error: 0.9154 on 1385 degrees of freedom
+Multiple R-squared:  0.2437,	Adjusted R-squared:  0.2432 
+F-statistic: 446.3 on 1 and 1385 DF,  p-value: < 2.2e-16
 
 
 [[4]]
@@ -81,21 +81,21 @@ lm(formula = mreg_list[[i]]$model$bchave_log ~ unlist(comp_list[[i]],
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--6.4964 -0.4461  0.2014  0.6840  2.1144 
+-6.5567 -0.4513  0.1785  0.6528  2.0474 
 
 Coefficients:
                                           Estimate Std. Error t value
-(Intercept)                                3.32205    0.02488  133.54
-unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.07278   13.74
+(Intercept)                                 3.3595     0.0274 122.620
+unlist(comp_list[[i]], use.names = FALSE)   1.0000     0.1060   9.437
                                           Pr(>|t|)    
 (Intercept)                                 <2e-16 ***
 unlist(comp_list[[i]], use.names = FALSE)   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.046 on 1765 degrees of freedom
-Multiple R-squared:  0.09662,	Adjusted R-squared:  0.09611 
-F-statistic: 188.8 on 1 and 1765 DF,  p-value: < 2.2e-16
+Residual standard error: 1.02 on 1385 degrees of freedom
+Multiple R-squared:  0.06042,	Adjusted R-squared:  0.05974 
+F-statistic: 89.06 on 1 and 1385 DF,  p-value: < 2.2e-16
 
 
 [[5]]
@@ -106,20 +106,20 @@ lm(formula = mreg_list[[i]]$model$bchave_log ~ unlist(comp_list[[i]],
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--3.3456 -0.5683  0.1397  0.6588  2.2271 
+-3.3851 -0.5217  0.1229  0.5971  2.0405 
 
 Coefficients:
                                           Estimate Std. Error t value
-(Intercept)                                3.41401    0.02538  134.53
-unlist(comp_list[[i]], use.names = FALSE)  1.00000    0.06651   15.04
+(Intercept)                                 3.4543     0.0271 127.468
+unlist(comp_list[[i]], use.names = FALSE)   1.0000     0.1120   8.926
                                           Pr(>|t|)    
 (Intercept)                                 <2e-16 ***
 unlist(comp_list[[i]], use.names = FALSE)   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 0.9183 on 1324 degrees of freedom
-Multiple R-squared:  0.1458,	Adjusted R-squared:  0.1452 
-F-statistic: 226.1 on 1 and 1324 DF,  p-value: < 2.2e-16
+Residual standard error: 0.8414 on 972 degrees of freedom
+Multiple R-squared:  0.07575,	Adjusted R-squared:  0.0748 
+F-statistic: 79.67 on 1 and 972 DF,  p-value: < 2.2e-16
 
 

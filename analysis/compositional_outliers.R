@@ -1,6 +1,6 @@
 # Identifying plots with tree species compositional outliers so they can be removed from the dataset 
 # John Godlee (johngodlee@gmail.com)
-# 2019_07_11
+# 2019_11_05
 
 # Preamble ----
 
@@ -19,8 +19,6 @@ library(dave)
 
 source("full_best.R")
 
-# Functions
-
 # Import data ----
 plot_data <- read.csv(paste0("data/plot_data_fil_agg", ext, "_norm_std.csv"))
 
@@ -28,7 +26,7 @@ plotcode_plot_group_lookup <- read.csv("data/plotcode_plot_group_lookup.csv")
 load("data/clean_input_data.Rdata")
 
 # Filter stem data to only include suitable plots and living stems
-##; Suitable plots idetified in data_collation.R
+##; Suitable plots identified in data_collation.R
 s_fil <- s %>%
   left_join(., plotcode_plot_group_lookup, by = c("plotcode" = "plotcode_vec")) %>%
   inner_join(., data.frame(plot_group = plot_data$plot_group), 
@@ -49,33 +47,11 @@ rownames(stem_ab_mat) <- stem_ab_mat$plot_group
 
 stem_ab_mat <- dplyr::select(stem_ab_mat, -plot_group)
 
-stem_ab_mat_dist <- vegdist(stem_ab_mat,  method = "bray")
+#vegan::metaMDS(stem_ab_mat) 
+# No convergent solutions - best solution after 20 tries
 
-# Define function NMDS.scree() 
-##' performs a NMDS for 1-10 dimensions,
-##' plots number of dimensions vs stress
-NMDS.scree <- function(x) { #where x is the name of the data frame variable
-  plot(rep(1, 10), 
-    replicate(10, metaMDS(x, autotransform = F, k = 1)$stress), 
-    xlim = c(1, 10),ylim = c(0, 0.30), 
-    xlab = "# of Dimensions", ylab = "Stress", 
-    main = "NMDS stress plot")
-  
-  for(i in 1:10){
-    points(rep(i + 1,10),
-      replicate(10, metaMDS(x, autotransform = F, k = i + 1)$stress))
-  }
-}
 
-#NMDS.scree(stem_ab_mat_dist)
-
-# Run NMDS
-#nmds_stems <- metaMDS(stem_ab_mat,
-#  try = 20)
-
-#saveRDS(nmds_stems, file = "data/nmds_stems.rds")
-
-# Identify outlier threshold for ~5% of plots
+# # Identify outlier threshold for ~5% of plots
 # outlier_list <- list()
 # 
 # for(i in 1:100){
@@ -88,6 +64,7 @@ NMDS.scree <- function(x) { #where x is the name of the data frame variable
 
 outlier_list <- readRDS(paste0("data/outlier_list", ext, ".rds"))
 
+# Create plot of threshold values and number of outliers
 thresh <- sapply(outlier_list, function(x){
   x$threshold
 })
@@ -98,9 +75,9 @@ outlier_num <- sapply(outlier_list, function(x){
 
 outlier_df <- data.frame(thresh, outlier_num)
 
-thresh_0.05 <- as.numeric(unname(outlier_df[which.min(abs(outlier_df$outlier_num - (nrow(stem_ab_mat) * 0.05))), ]))
+thresh_0.05 <- as.numeric(unname(outlier_df[
+  which.min(abs(outlier_df$outlier_num - (nrow(stem_ab_mat) * 0.05))), ]))
 
-# Plot relationship between outliers and threshold
 outlier_thresh <- ggplot(outlier_df, aes(x = thresh, y = outlier_num)) + 
   geom_smooth(span = 0.2, colour = "#B00000") + 
   geom_point() +
@@ -109,16 +86,19 @@ outlier_thresh <- ggplot(outlier_df, aes(x = thresh, y = outlier_num)) +
   geom_label(aes(x = thresh_0.05[1], y = 150, label = thresh_0.05[1])) + 
   geom_label(aes(y = thresh_0.05[2], x = 0.15, label = thresh_0.05[2])) + 
   theme_classic() + 
-  labs(x = "Bray-Curtis distance threshold", y = "Number of outliers")
+  labs(x = "Distance threshold", y = "Number of outliers")
 
 pdf(file = paste0("img/outlier_thresh", ext, ".pdf"), width = 10, height = 8)
 outlier_thresh
 dev.off()
 
 # Plot Principle COordinate Analysis (PCOA) of outliers with other points
-outlier_best <- outlier_list[[as.numeric(rownames(outlier_df[which.min(abs(outlier_df$outlier_num - (nrow(stem_ab_mat) * 0.05))), ]))]]
+outlier_best <- outlier_list[[as.numeric(rownames(outlier_df[
+  which.min(abs(outlier_df$outlier_num - (nrow(stem_ab_mat) * 0.05))), 
+  ]))]]
 
-outlier_best_plot <- data.frame(outlier_best$pco.points, dist = outlier_best$neigh.dist)
+outlier_best_plot <- data.frame(outlier_best$pco.points, 
+  dist = outlier_best$neigh.dist)
 
 outlier_best_plot <- outlier_best_plot %>%
   mutate(outlier = case_when(
@@ -142,10 +122,24 @@ pdf(file = paste0("img/pcoa_outlier", ext, ".pdf"), width = 10, height = 10)
 pcoa
 dev.off()
 
+n_outliers <- thresh_0.05[2]
+
+fileConn <- file(paste0("output/include/n_outliers.tex"))
+writeLines(paste0("\\newcommand{\\noutliers}{", n_outliers, "}"),
+  fileConn)
+close(fileConn)
+
+
 # Exclude outliers from plot_data and save
 plot_data_clean <- plot_data %>%
   filter(plot_group %in% row.names(outlier_best$new.data))
 
 # Save plot data
-write.csv(plot_data_clean, paste0("data/plot_data_fil_agg", ext, "_norm_std_outlier.csv"), row.names = FALSE)
+write.csv(plot_data_clean, 
+  paste0("data/plot_data_fil_agg", ext, "_norm_std_outlier.csv"), 
+  row.names = FALSE)
+
+
+
+
 

@@ -78,8 +78,8 @@ clust_summ <- plot_data %>%
     n_stems_ha = n_stems / area_of_plot) %>%
   summarise(bchave_mean = round(mean(bchave, na.rm = TRUE), digits = 1),
     bchave_sd = round(sd(bchave, na.rm = TRUE), digits=  2),
-    sp_rich_raref_mean = round(mean(sp_rich_raref, na.rm = TRUE), digits = 0),
-    sp_rich_raref_sd = round(sd(sp_rich_raref, na.rm = TRUE), digits = 1),
+    sp_rich_mean = round(mean(sp_rich, na.rm = TRUE), digits = 0),
+    sp_rich_sd = round(sd(sp_rich, na.rm = TRUE), digits = 1),
     n_stems_ha_mean = round(mean(n_stems_ha, na.rm = TRUE), digits = 0),
     n_stems_ha_sd = round(sd(n_stems_ha, na.rm = TRUE), digits = 1)) %>%
   mutate(c_name, c_ind,

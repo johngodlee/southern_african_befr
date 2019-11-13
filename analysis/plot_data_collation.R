@@ -15,6 +15,7 @@ rm(list=ls())
 library(dplyr)
 library(tidyr)
 library(iNEXT)
+library(vegan)
 
 # Import data ----
 
@@ -166,9 +167,12 @@ plotcode_plot_group_lookup <- plot_data_agg %>%
   dplyr::select(plotcode_vec, plot_group) %>%
   unnest(plotcode_vec)
 
-write.csv(plotcode_plot_group_lookup, paste0("data/plotcode_plot_group_lookup", ext, ".csv"), row.names = FALSE)
-
 s <- left_join(s, plotcode_plot_group_lookup, by = c("plotcode" = "plotcode_vec"))
+
+s_diam_summ <- s %>% 
+  group_by(plot_group) %>%
+  summarise(min_diam = min(diam, na.rm = TRUE)) %>%
+  filter(min_diam < 10)
 
 # Calculate dbh and height covariance ----
 # Big trees only 
@@ -178,20 +182,72 @@ s_fil <- s %>%
   filter(alive %in% c("A", NA),
     !is.na(gen_sp))
 
+dbh_class_lo <- as.character(seq(from = 5, to = 180, by = 5))
+dbh_class_hi <- as.character(seq(from = 9, to = 184, by = 5))
+
+dbh_labels <- paste0(dbh_class_lo, "-", dbh_class_hi)
+
 s_fil_summ <- s_fil %>%
   group_by(plot_group) %>%
   summarise(n_stems = n(),
     var_height = var(height, na.rm = TRUE),
     mean_height = mean(height, na.rm = TRUE),
     sd_height = sd(height, na.rm = TRUE),
+    max_height = max(height, na.rm = TRUE),
     var_dbh = var(diam, na.rm = TRUE),
     mean_dbh = mean(diam, na.rm = TRUE),
-    sd_dbh = sd(diam, na.rm = TRUE)) %>%
+    sd_dbh = sd(diam, na.rm = TRUE),
+    max_dbh = max(diam, na.rm = TRUE)) %>%
   mutate(cov_height = sd_height / mean_height * 100,
     cov_dbh = sd_dbh / mean_dbh * 100)
 
+# Calculate shannon index of diameter classes
+s_fil$diam_bin <- cut(s_fil$diam, breaks = seq(from = 5, to = 185, by = 5), 
+  labels = dbh_labels, include.lowest = TRUE)
+
+diam_fil_even <- s_fil %>%
+  group_by(plot_group, diam_bin, .drop = FALSE) %>%
+  tally() %>%
+  spread(diam_bin, n, fill = 0) %>%
+  ungroup() %>%
+  data.frame() 
+
+row.names(diam_fil_even) <- diam_fil_even$plot_group
+diam_fil_even_clean <- dplyr::select(diam_fil_even, -plot_group)
+
+diam_even <- data.frame(diam_shannon = diversity(diam_fil_even_clean), 
+  diam_bin_n = rowSums(diam_fil_even_clean > 0))
+diam_even$plot_group <- row.names(diam_even)
+diam_even$diam_even <- diam_even$diam_shannon / diam_even$diam_bin_n
+
+# Mean of 95th percentile of tree biomass of each plot
+s_fil_bchave_95 <- s_fil %>%
+  group_by(plot_group) %>%
+  filter(Bchave > quantile(Bchave, 0.95)) %>%
+  summarise(bchave_mean_95 = sum(Bchave))
+
+quantile_lo <- seq(from = 0, to = 0.95, by = 0.05)
+quantile_hi <- seq(from = 0.05, to = 1, by = 0.05)
+
+bchave_quantile_list <- list()
+for(i in 1:length(quantile_lo)){
+  varname <- paste0("bchave_mean_95_", quantile_lo[[i]], "-", quantile_hi[[i]])
+  varname_n <- paste0("n_", quantile_lo[[i]], "-", quantile_hi[[i]])
+  
+  bchave_quantile_list[[i]] <- s_fil %>%
+    group_by(plot_group) %>%
+    filter(Bchave < quantile(Bchave, quantile_hi[[i]]), 
+      Bchave > quantile(Bchave, quantile_lo[[i]])) %>%
+    summarise(!!varname := sum(Bchave),
+      !!varname_n := n())
+}
+
+bchave_quantile_df <- purrr::reduce(bchave_quantile_list, full_join, by = "plot_group")
+
 # Clean dataframe, add stem summary data ----
 plot_data_agg <- left_join(plot_data_agg, s_fil_summ, by = c("plot_group" = "plot_group")) %>%
+  left_join(., diam_even, by =  c("plot_group" = "plot_group")) %>%
+  left_join(., s_fil_bchave_95, by =  c("plot_group" = "plot_group")) %>%
   mutate(stems_ha = n_stems / area_of_plot) %>%
   filter(area_of_plot >= 0.1,
   stems_ha >= 10) %>%
@@ -206,8 +262,7 @@ plot_data_agg <- left_join(plot_data_agg, s_fil_summ, by = c("plot_group" = "plo
     -protected_from_fire, 
     -elephant_exclosure, 
     -cattle_graze_here, 
-    -goats_graze_here,
-    -plotcode_vec)
+    -goats_graze_here)
 
 # Estimate rarefied species diversity ----
 
@@ -253,15 +308,30 @@ plot_data_agg$shannon_equit <- plot_data_agg$shannon_exp / plot_data_agg$sp_rich
 # Remove plots with zero Shannon equitability and shannon index
 plot_data_agg <- plot_data_agg %>%
   filter(shannon_equit > 0,
-    shannon_exp > 0)
+    shannon_exp > 0) %>%
+# Exclude big 10 Ha plot
+  filter(plotcode != "DKS001") %>%
+# Exclude plots where min diam. is not less than ten cm
+  filter(plot_group %in% s_diam_summ$plot_group)
 
 # Ensure that variables all have the same sign
-plot_data_agg$precip_seasonality <- 1 / plot_data_agg$precip_seasonality * 10000
-plot_data_agg$temp_seasonality <- 1 / plot_data_agg$temp_seasonality * 10000
-plot_data_agg$sand_per <- 1 / plot_data_agg$sand_per * 10000
-plot_data_agg$mean_temp <- 1 / plot_data_agg$mean_temp * 10000
+plot_data_agg$precip_seasonality_rev <- -1 * plot_data_agg$precip_seasonality + 1000
+plot_data_agg$temp_seasonality_rev <- -1 * plot_data_agg$temp_seasonality + 1000
+plot_data_agg$sand_per_rev <- -1 * plot_data_agg$sand_per + 1000
+plot_data_agg$mean_temp_rev <- -1 * plot_data_agg$mean_temp + 1000
+
+
 
 if(full_best == "full"){
+
+# Save final DBH lookup
+plotcode_plot_group_lookup <- plot_data_agg %>%
+  dplyr::select(plotcode_vec, plot_group) %>%
+  unnest(plotcode_vec)
+  
+write.csv(plotcode_plot_group_lookup, paste0("data/plotcode_plot_group_lookup", ext, ".csv"), row.names = FALSE)
+
+plot_data_agg <- plot_data_agg %>% dplyr::select(-plotcode_vec)
 
 # Write to CSV
 write.csv(plot_data_agg, "data/plot_data_fil_agg.csv", row.names = FALSE)
@@ -275,4 +345,11 @@ plot_data_agg_best <- subset(plot_data_agg,
   subset=(plot_data_agg$stems_ha >= quantile(plot_data_agg$stems_ha, 0.80)))
 
 write.csv(plot_data_agg_best, "data/plot_data_fil_agg_best.csv", row.names = FALSE)
-}
+  }
+
+# Save DBH quantiles 
+bchave_quantile_df <- left_join(plot_data_agg, bchave_quantile_df, by = "plot_group") %>%
+  select(plot_group, sp_rich, sp_rich_raref, starts_with("bchave_mean_95_0"))
+
+write.csv(bchave_quantile_df, "data/bchave_quantile.csv", row.names = FALSE)
+

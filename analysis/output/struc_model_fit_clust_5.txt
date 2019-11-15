@@ -1,58 +1,58 @@
 $PE
-                     lhs op                   rhs                 label exo
-1                    div =~ sp_rich_raref_log_std                         0
-2                    div =~ shannon_equit_log_std                         0
-3                  struc =~        cov_height_std                         0
-4                  struc =~           cov_dbh_std                         0
-5         bchave_log_std  ~                   div                     c   0
-6         bchave_log_std  ~                 struc                     b   0
-7                  struc  ~                   div                     a   0
-8         bchave_log_std  ~      stems_ha_log_std                     d   0
-9       stems_ha_log_std  ~                   div                     e   0
-10 sp_rich_raref_log_std ~~ sp_rich_raref_log_std                         0
-11 shannon_equit_log_std ~~ shannon_equit_log_std                         0
-12        cov_height_std ~~        cov_height_std                         0
-13           cov_dbh_std ~~           cov_dbh_std                         0
-14        bchave_log_std ~~        bchave_log_std                         0
-15      stems_ha_log_std ~~      stems_ha_log_std                         0
-16                   div ~~                   div                         0
-17                 struc ~~                 struc                         0
-18 biomass_div_via_struc :=                   a*b biomass_div_via_struc   0
-19 biomass_div_via_stems :=                   d*e biomass_div_via_stems   0
-20     biomass_div_total :=         c+(a*b)+(d*e)     biomass_div_total   0
-21 sp_rich_raref_log_std r2 sp_rich_raref_log_std                         0
-22 shannon_equit_log_std r2 shannon_equit_log_std                         0
-23        cov_height_std r2        cov_height_std                         0
-24           cov_dbh_std r2           cov_dbh_std                         0
-25        bchave_log_std r2        bchave_log_std                         0
-26      stems_ha_log_std r2      stems_ha_log_std                         0
-27                 struc r2                 struc                         0
-             est se  z pvalue        std.lv       std.all       std.nox
-1   1.000000e+00  0 NA     NA  2.407441e+02  1.875747e+02  1.875747e+02
-2   1.547833e-05 NA NA     NA  3.726318e-03  3.167712e-03  3.167712e-03
-3   1.000000e+00  0 NA     NA  5.580311e-01  7.025341e-01  7.025341e-01
-4   1.190997e+00 NA NA     NA  6.646135e-01  7.308919e-01  7.308919e-01
-5  -4.762537e-06 NA NA     NA -1.146553e-03 -1.825040e-03 -1.825040e-03
-6   5.747606e-01 NA NA     NA  3.207343e-01  5.105328e-01  5.105328e-01
-7   1.580587e-06 NA NA     NA  6.818921e-04  6.818921e-04  6.818921e-04
-8   2.860214e-01 NA NA     NA  2.860214e-01  3.206135e-01  3.206135e-01
-9   1.091156e-06 NA NA     NA  2.626893e-04  3.730246e-04  3.730246e-04
-10 -5.795609e+04 NA NA     NA -5.795609e+04 -3.518326e+04 -3.518326e+04
-11  1.383770e+00 NA NA     NA  1.383770e+00  9.999900e-01  9.999900e-01
-12  3.195324e-01 NA NA     NA  3.195324e-01  5.064459e-01  5.064459e-01
-13  3.851490e-01 NA NA     NA  3.851490e-01  4.657971e-01  4.657971e-01
-14  2.512371e-01 NA NA     NA  2.512371e-01  6.365615e-01  6.365615e-01
-15  4.959180e-01 NA NA     NA  4.959180e-01  9.999999e-01  9.999999e-01
-16  5.795774e+04 NA NA     NA  1.000000e+00  1.000000e+00  1.000000e+00
-17  3.113985e-01 NA NA     NA  9.999995e-01  9.999995e-01  9.999995e-01
-18  9.084589e-07  0 NA     NA  2.187061e-04  3.481283e-04  3.481283e-04
-19  3.120939e-07  0 NA     NA  7.513477e-05  1.195967e-04  1.195967e-04
-20 -3.541984e-06  0 NA     NA -8.527119e-04 -1.357315e-03 -1.357315e-03
-21            NA NA NA     NA            NA            NA            NA
-22  1.003440e-05 NA NA     NA            NA            NA            NA
-23  4.935541e-01 NA NA     NA            NA            NA            NA
-24  5.342029e-01 NA NA     NA            NA            NA            NA
-25  3.634385e-01 NA NA     NA            NA            NA            NA
-26  1.391473e-07 NA NA     NA            NA            NA            NA
-27  4.649768e-07 NA NA     NA            NA            NA            NA
+                     lhs op                   rhs                 label exo           est se  z pvalue
+1                    div =~ sp_rich_raref_log_std                         0  1.000000e+00  0 NA     NA
+2                    div =~ shannon_equit_log_std                         0  1.547833e-05 NA NA     NA
+3                  struc =~        cov_height_std                         0  1.000000e+00  0 NA     NA
+4                  struc =~           cov_dbh_std                         0  1.190997e+00 NA NA     NA
+5         bchave_log_std  ~                   div                     c   0 -4.762537e-06 NA NA     NA
+6         bchave_log_std  ~                 struc                     b   0  5.747606e-01 NA NA     NA
+7                  struc  ~                   div                     a   0  1.580587e-06 NA NA     NA
+8         bchave_log_std  ~      stems_ha_log_std                     d   0  2.860214e-01 NA NA     NA
+9       stems_ha_log_std  ~                   div                     e   0  1.091156e-06 NA NA     NA
+10 sp_rich_raref_log_std ~~ sp_rich_raref_log_std                         0 -5.795609e+04 NA NA     NA
+11 shannon_equit_log_std ~~ shannon_equit_log_std                         0  1.383770e+00 NA NA     NA
+12        cov_height_std ~~        cov_height_std                         0  3.195324e-01 NA NA     NA
+13           cov_dbh_std ~~           cov_dbh_std                         0  3.851490e-01 NA NA     NA
+14        bchave_log_std ~~        bchave_log_std                         0  2.512371e-01 NA NA     NA
+15      stems_ha_log_std ~~      stems_ha_log_std                         0  4.959180e-01 NA NA     NA
+16                   div ~~                   div                         0  5.795774e+04 NA NA     NA
+17                 struc ~~                 struc                         0  3.113985e-01 NA NA     NA
+18 biomass_div_via_struc :=                   a*b biomass_div_via_struc   0  9.084589e-07  0 NA     NA
+19 biomass_div_via_stems :=                   d*e biomass_div_via_stems   0  3.120939e-07  0 NA     NA
+20     biomass_div_total :=         c+(a*b)+(d*e)     biomass_div_total   0 -3.541984e-06  0 NA     NA
+21 sp_rich_raref_log_std r2 sp_rich_raref_log_std                         0            NA NA NA     NA
+22 shannon_equit_log_std r2 shannon_equit_log_std                         0  1.003440e-05 NA NA     NA
+23        cov_height_std r2        cov_height_std                         0  4.935541e-01 NA NA     NA
+24           cov_dbh_std r2           cov_dbh_std                         0  5.342029e-01 NA NA     NA
+25        bchave_log_std r2        bchave_log_std                         0  3.634385e-01 NA NA     NA
+26      stems_ha_log_std r2      stems_ha_log_std                         0  1.391473e-07 NA NA     NA
+27                 struc r2                 struc                         0  4.649768e-07 NA NA     NA
+          std.lv       std.all       std.nox
+1   2.407441e+02  1.875747e+02  1.875747e+02
+2   3.726318e-03  3.167712e-03  3.167712e-03
+3   5.580311e-01  7.025341e-01  7.025341e-01
+4   6.646135e-01  7.308919e-01  7.308919e-01
+5  -1.146553e-03 -1.825040e-03 -1.825040e-03
+6   3.207343e-01  5.105328e-01  5.105328e-01
+7   6.818921e-04  6.818921e-04  6.818921e-04
+8   2.860214e-01  3.206135e-01  3.206135e-01
+9   2.626893e-04  3.730246e-04  3.730246e-04
+10 -5.795609e+04 -3.518326e+04 -3.518326e+04
+11  1.383770e+00  9.999900e-01  9.999900e-01
+12  3.195324e-01  5.064459e-01  5.064459e-01
+13  3.851490e-01  4.657971e-01  4.657971e-01
+14  2.512371e-01  6.365615e-01  6.365615e-01
+15  4.959180e-01  9.999999e-01  9.999999e-01
+16  1.000000e+00  1.000000e+00  1.000000e+00
+17  9.999995e-01  9.999995e-01  9.999995e-01
+18  2.187061e-04  3.481283e-04  3.481283e-04
+19  7.513477e-05  1.195967e-04  1.195967e-04
+20 -8.527119e-04 -1.357315e-03 -1.357315e-03
+21            NA            NA            NA
+22            NA            NA            NA
+23            NA            NA            NA
+24            NA            NA            NA
+25            NA            NA            NA
+26            NA            NA            NA
+27            NA            NA            NA
 

@@ -2,7 +2,8 @@
 	observed/.style={rectangle,draw,thick,inner sep=5pt,minimum size=1cm, align=center},
 	latent/.style={circle, draw, thick, inner sep=0pt, minimum size=2cm, align=center}, 
 	path/.style={->, thick, >=stealth'},
-	loading/.style={->, thick, dashed, >=stealth'}]
+	loading/.style={->, thick, dotted, >=stealth'},
+	loadingset/.style={->, thick, dashed, >=stealth'}]
 
 \tikzset{mystyle/.style={->,double=black}}
 \node [latent] (m) {Moisture};
@@ -20,8 +21,8 @@
 
 
 \coordinate[below= 0.7in of s] (somid);
-\node [observed] (sc) [left = 0.5in of somid] {SOC};
-\node [observed] (ss) at (somid) {Sand};
+\node [observed] (ss) [left = 0.5in of somid] {Sand};
+\node [observed] (sc) at (somid) {SOC};
 \node [observed] (so) [right = 0.5in of somid] {CEC};
 
 \coordinate[left= 0.3in of d] (domid);
@@ -43,20 +44,20 @@
 \draw [path] (m) to node {\pcfmb{}} (b);
 \draw [path] (s) to node[below=0.1in, pos=0.5] {\pcfsb{}} (b);
 
-\draw [loading] (m) to node[left, pos=0.5] {\pcfmmp{}} (mp);
+\draw [loadingset] (m) to node[left, pos=0.5] {\pcfmmp{}} (mp);
 \draw [loading] (m) to node[left, pos=0.5] {\pcfmmpc{}} (mpc);
 \draw [loading] (m) to node[right, pos=0.5] {\pcfmmt{}} (mt);
 \draw [loading] (m) to node[right, pos=0.5] {\pcfmmtc{}} (mtc);
 
+\draw [loadingset] (s) to node[left, pos=0.5] {\pcfsss{}} (ss);
 \draw [loading] (s) to node[left, pos=0.5] {\pcfssc{}} (sc);
-\draw [loading] (s) to node[left, pos=0.5] {\pcfsss{}} (ss);
 \draw [loading] (s) to node[right, pos=0.5] {\pcfsso{}} (so);
 
-\draw [loading] (d) to node {\pcfdds{}} (ds);
+\draw [loadingset] (d) to node {\pcfdds{}} (ds);
 \draw [loading] (d) to node[left, pos=0] {\pcfdde{}} (de);
 
 \draw [loading] (h) to node[] {\pcfhhd{}} (hd);
-\draw [loading] (h) to node {\pcfhhh{}} (hh);
+\draw [loadingset] (h) to node {\pcfhhh{}} (hh);
 
 \coordinate[below= 3in of i] (ibleft); 
 \coordinate[below= 3in of b] (ibright); 

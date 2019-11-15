@@ -7,81 +7,50 @@ Warning--I didn't find a database entry for "Review"
 Warning--I didn't find a database entry for ""
 Warning--I didn't find a database entry for "and"
 Warning--I didn't find a database entry for "others"
-Warning--I didn't find a database entry for "Michaletz2014"
-Warning--I didn't find a database entry for "Condit2013"
-Warning--I didn't find a database entry for "Dohn2013"
-Warning--I didn't find a database entry for "Rowland2015a"
-Warning--I didn't find a database entry for "Fensham2009"
-Warning--I didn't find a database entry for "Miombo-Book"
-Warning--I didn't find a database entry for "Fireherbivore"
-Warning--I didn't find a database entry for "Roques2001"
-Warning--I didn't find a database entry for "nieto2018"
-Warning--I didn't find a database entry for "Cardinale2002"
-Warning--I didn't find a database entry for "White1983"
-Warning--I didn't find a database entry for "White"
-Warning--I didn't find a database entry for "worldclim"
-Warning--I didn't find a database entry for "Parr2014"
-Warning--I didn't find a database entry for "Ryanunbublished"
-Warning--I didn't find a database entry for "Zanne2009"
-Warning--I didn't find a database entry for "Hengl2017"
+Warning--I didn't find a database entry for "Otto"
 Warning--I didn't find a database entry for "Dufrene1997"
-Warning--I didn't find a database entry for "R"
-Warning--I didn't find a database entry for "Lehmann2014_161-166"
-Warning--I didn't find a database entry for "Hu1999"
-Warning--I didn't find a database entry for "Kline2005"
-Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
-while executing---line 1215 of file /Users/johngodlee/.texmf/agsmnourl.bst
-Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
-while executing---line 1251 of file /Users/johngodlee/.texmf/agsmnourl.bst
-Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
-while executing---line 1255 of file /Users/johngodlee/.texmf/agsmnourl.bst
-Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
-while executing---line 1287 of file /Users/johngodlee/.texmf/agsmnourl.bst
-Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
-while executing---line 1320 of file /Users/johngodlee/.texmf/agsmnourl.bst
-Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
-while executing---line 1339 of file /Users/johngodlee/.texmf/agsmnourl.bst
-Name 8 in "Brooks, T. M. and Mittermeier, R. A. and {da Fonseca}, G. A. B. and Gerlach, J. and Hoffmann, M. and Lamoreux, J. F. and Mittermeier, C. G. and Pilgrim, J. D, and Rodrigues, S. L." has a comma at the end for entry Brooks2006
-while executing---line 1339 of file /Users/johngodlee/.texmf/agsmnourl.bst
-You've used 21 entries,
+Warning--I didn't find a database entry for "Ali2019a"
+Warning--I didn't find a database entry for "Ali2019b"
+Warning--I didn't find a database entry for "Poorter2017"
+You've used 42 entries,
             2878 wiz_defined-function locations,
-            838 strings with 12785 characters,
-and the built_in function-call counts, 438295 in all, are:
-= -- 74042
-> -- 6206
+            947 strings with 17094 characters,
+and the built_in function-call counts, 620339 in all, are:
+= -- 104508
+> -- 8643
 < -- 0
-+ -- 38300
-- -- 2024
-* -- 40876
-:= -- 82403
-add.period$ -- 22
-call.type$ -- 21
-change.case$ -- 292
-chr.to.int$ -- 21
-cite$ -- 21
-duplicate$ -- 341
-empty$ -- 726
-format.name$ -- 2087
-if$ -- 78901
++ -- 53574
+- -- 2794
+* -- 57436
+:= -- 117437
+add.period$ -- 45
+call.type$ -- 42
+change.case$ -- 582
+chr.to.int$ -- 42
+cite$ -- 42
+duplicate$ -- 667
+empty$ -- 1394
+format.name$ -- 2929
+if$ -- 111640
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 21
-newline$ -- 67
-num.names$ -- 229
-pop$ -- 57
+missing$ -- 40
+newline$ -- 132
+num.names$ -- 453
+pop$ -- 116
 preamble$ -- 1
-purify$ -- 315
+purify$ -- 630
 quote$ -- 0
-skip$ -- 269
+skip$ -- 520
 stack$ -- 0
-substring$ -- 109837
-swap$ -- 63
-text.length$ -- 294
+substring$ -- 154268
+swap$ -- 118
+text.length$ -- 588
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 82
+type$ -- 164
 warning$ -- 0
-while$ -- 479
+while$ -- 952
 width$ -- 0
-write$ -- 293
-(There were 7 error messages)
+write$ -- 577
+(There were 9 warnings)

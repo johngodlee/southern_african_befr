@@ -86,6 +86,68 @@ pdf(file = paste0("img/histogram_raw", ext, ".pdf"), width = 12, height = 7)
 histogram_raw
 dev.off()
 
+facet_levels <- c(
+  "total_precip",
+  "precip_seasonality",
+  "mean_temp",
+  "temp_seasonality",
+  "bchave",
+  "cation_ex_cap",
+  "sand_per",
+  "ocdens",
+  "cov_dbh",
+  "cov_height",
+  "stems_ha",
+  "shannon_equit",
+  "sp_rich_raref",
+  "bchave_log", 
+  "stems_ha_log",
+  "sp_rich_raref_log",
+  "shannon_equit_log", 
+  "precip_seasonality_log", 
+  "temp_seasonality_log")
+
+facet_labels <- c(  
+  expression("MAP" ~ (mm ~ y^-1)),
+  expression("Precip." ~ "seasonality"),
+  expression("MAT" ~ (degree * C)), 
+  expression("Temp." ~ "seasonality"),
+  expression("AGB" ~ (t ~ ha^-1)),
+  expression("CEC"),
+  expression("Sand" ~ "%"), 
+  expression("Org." ~ "C" ~ "%"),
+  expression("Coef." ~ "var." ~ "DBH"),
+  expression("Coef." ~ "var." ~ "height"),
+  expression("Stem" ~ "density" ~ ">5" ~ cm ~ (n ~ ha^-1)),
+  expression("Shannon" ~ "equit." ~ (E[H])),
+  expression("Extrap." ~ "species" ~ "rich."),
+  expression("log(AGB)" ~ (t ~ ha^-1)),
+  expression("log(Stem" ~ "density)" ~ ">5" ~ cm ~ (n ~ ha^-1)),
+  expression("log(Extrap." ~ "species" ~ "rich.)"),
+  expression("log(Shannon" ~ "equit.)" ~ (E[H])),
+  expression("log(Precip." ~ "seasonality)"),
+  expression("log(Temp." ~ "seasonality)"))
+
+histogram_raw_obs <- sem_data_fil_agg %>%
+  dplyr::select(bchave, stems_ha, 
+    sp_rich_raref, shannon_equit,
+    cation_ex_cap, sand_per, ocdens, 
+    total_precip, precip_seasonality, mean_temp, temp_seasonality,
+    cov_height, cov_dbh) %>%
+  gather(variable, value) %>%
+  mutate(facet_label = factor(variable,
+    levels = facet_levels,
+    labels = facet_labels)) %>%
+  ggplot(aes(x = value)) + 
+  geom_histogram(colour = "black", fill = "grey") + 
+  facet_wrap(~facet_label, scales = "free", labeller = label_parsed) + 
+  theme.bivar() + 
+  labs(x = "", y = "")
+
+pdf(file = paste0("img/histogram_raw_obs", ext, ".pdf"), width = 12, height = 7)
+histogram_raw_obs
+dev.off()
+
 sem_data_trans <- sem_data_fil_agg %>%
 	mutate(bchave_log = log(bchave),
 		mean_dbh_log = log(mean_dbh),
@@ -96,6 +158,8 @@ sem_data_trans <- sem_data_fil_agg %>%
 		fire_return_mean_log = log(fire_return_mean),
 	  temp_seasonality_rev_log = log(temp_seasonality_rev),
 	  precip_seasonality_rev_log = log(precip_seasonality_rev),
+	  temp_seasonality_log = log(temp_seasonality),
+	  precip_seasonality_log = log(precip_seasonality),
 	  ocdens = ocdens)
 
 histogram_trans <- sem_data_trans %>%
@@ -114,6 +178,26 @@ histogram_trans <- sem_data_trans %>%
 
 pdf(file =  paste0("img/histogram_trans", ext, ".pdf"), width = 12, height = 7)
 histogram_trans
+dev.off()
+
+histogram_trans_obs <- sem_data_trans %>%
+  dplyr::select(stems_ha_log, bchave_log, 
+    sp_rich_raref_log, shannon_equit_log,
+    cation_ex_cap, sand_per, ocdens,
+    total_precip, precip_seasonality_log, cov_height, cov_dbh,
+    mean_temp, temp_seasonality_log) %>%
+  gather(variable, value) %>%
+  mutate(facet_label = factor(variable,
+    levels = facet_levels,
+    labels = facet_labels)) %>%
+  ggplot(., aes(x = value)) + 
+  geom_histogram(colour = "black", fill = "grey") + 
+  facet_wrap(~facet_label, scales = "free", labeller = label_parsed) + 
+  theme.bivar() +
+  labs(x = "", y = "")
+
+pdf(file =  paste0("img/histogram_trans_obs", ext, ".pdf"), width = 12, height = 7)
+histogram_trans_obs
 dev.off()
 
 # Standardize each variable

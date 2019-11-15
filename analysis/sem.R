@@ -37,6 +37,9 @@ library(ggcorrplot)
 library(lme4)
 library(stargazer)
 library(tidyr)
+library(psych)
+library(beepr)
+library(ggnewscale)
 
 source("clust_pal.R")
 source("full_best.R")
@@ -84,12 +87,18 @@ label_df <- data.frame(lab = names(corr_df),
   x_loc = seq(from = 1, to = length(names(corr_df)), by = 1),
   y_loc = seq(from = 0.8, to = length(names(corr_df)) - 1 + 0.8, by = 1))
 
-corr_ci <- print(corr.test(corr_df, alpha = 0.05, adjust = "none"), short = FALSE)
+corr <- psych::corr.test(corr_df, alpha = 0.05, adjust = "none")
+corr_ci <- print(corr, short = FALSE)
 corr_ci$vars <- row.names(corr_ci)
 corr_ci$conf <- (corr_ci$lower.adj > 0) == (corr_ci$upper.adj > 0)
 corr_ci$conf_x <- unlist(sapply(1:12, function(i){print(c(1:12)[i:12])}))
 rev_mat <- 12:1
 corr_ci$conf_y <- unlist(sapply(1:12, function(i){rep(i, times = rev_mat[i])}))
+n_seq <- 2:13
+corr_ci$n <- unlist(sapply(1:12, function(i){corr[[2]][n_seq[i]:13,i]}))
+corr_ci$p <- round(unlist(sapply(1:12, function(i){corr[[4]][n_seq[i]:13,i]})), digits = 3)
+corr_ci$x_var <- unlist(sapply(1:12, function(i){rep(row.names(corr[[1]])[i], rev_mat[i])}))
+corr_ci$y_var <- unlist(sapply(1:12, function(i){row.names(corr[[1]])[n_seq[i]:13]}))
 
 # Plot
 pdf(file = paste0("img/corr_mat", ext, ".pdf"), width = 8, height = 8)
@@ -113,10 +122,15 @@ ggcorrplot(cor(corr_df, use = "complete.obs"),
     aes(x = conf_x, y = conf_y), fill = NA, colour = "black", shape = 21, size = 11)
 dev.off()
 
-c("#D65A2D", "#287F9C", "#468A21", "#149CA1",  "#844099")
+# Correlations table
+corr_ci_tab <- corr_ci %>%
+  dplyr::select(x_var, y_var, raw.r, raw.lower, raw.upper, n, p)
 
-
-
+fileConn <- file(paste0("output/include/corr_ci_tab.tex"))
+writeLines(stargazer(corr_ci_tab, 
+  summary = FALSE, label = "corr_ci_tab", digit.separate = 0, rownames = FALSE),
+  fileConn)
+close(fileConn)
 
 # Environmental model ----
 ##' Only the effects of climate and environment on biomass, 
@@ -212,7 +226,7 @@ mod_summ_mutate_struc <- function(x){
       lhs == "stems_ha_log_std" & op == "Other eff." & rhs == "div" ~ "Div. -> Stem dens.",
       op == "Other eff." & rhs == "a*b" ~ "Indirect: Div. -> Struct. -> AGB",
       op == "Other eff." & rhs == "d*e" ~ "Indirect: Div. -> Stem dens -> AGB",
-      op == "Other eff." & rhs == "c+(a*b)+(d*e)" ~ "Total effect: Div. -> AGB",
+      op == "Other eff." & (rhs == "c+(a*b)+(d*e)" | rhs == "c+(a*b)")  ~ "Total effect: Div. -> AGB",
     TRUE ~ rhs))
 }
 
@@ -397,8 +411,23 @@ struc_sem_quant_list <- list()
 struc_sem_quant_summ_list <- list()
 struc_sem_quant_regs_list <- list()
 
+struc_model_no_stem_dens_spec <- "
+# Latent vars
+div     =~  sp_rich_raref_log_std + shannon_equit_log_std
+struc   =~  cov_height_std + cov_dbh_std
+
+# Regressions
+bchave_log_std ~ c*div
+bchave_log_std ~ b*struc
+struc ~ a*div
+
+# Explicitly model direct and indirect effects
+biomass_div_via_struc := a*b
+biomass_div_total := c + (a*b)
+"
+
 for(i in 1:length(sem_data_quant_list)){
-  struc_sem_quant_list[[i]] <- sem(struc_model_spec, data = sem_data_quant_list[[i]])
+  struc_sem_quant_list[[i]] <- sem(struc_model_no_stem_dens_spec, data = sem_data_quant_list[[i]])
   struc_sem_quant_summ_list[[i]] <- summary(struc_sem_quant_list[[i]], 
     fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
   
@@ -409,9 +438,18 @@ for(i in 1:length(sem_data_quant_list)){
       n_plots = quant_plots[[i]],
       sp_rich_raref = quant_sp_rich_raref[[i]])
 }
+beep()
 
 struc_sem_quant_regs <- do.call(rbind, struc_sem_quant_regs_list) %>%
-  select(rhs, quant, stems_ha, sp_rich_raref, n_plots, est, std.all)
+  select(rhs, quant, stems_ha, sp_rich_raref, n_plots, est, std.all) %>%
+  mutate(rhs = case_when(
+    rhs == "Div. -> Struct" ~ "Species div -> Struct. div",
+    rhs == "Indirect: Div. -> Struct. -> AGB" ~ "Indirect: Species div -> Struct. div -> AGB",
+    rhs == "Total effect: Div. -> AGB" ~ "Total effect: Species div -> AGB",
+    rhs == "Diversity" ~ "Species div. -> AGB",
+    rhs == "Struct." ~ "Struct. div -> AGB",
+    TRUE ~ rhs
+  ))
 
 pdf("img/sem_struc_stems_ha.pdf", width = 10, height = 8)
 ggplot(data = struc_sem_quant_regs) + 
@@ -449,14 +487,12 @@ struc_sem_quant_regs[struc_sem_quant_regs$est == unname(sapply(
 # Multiple regressions for each latent on biomass ----
 # Model list
 mreg_list <- list(
-  mod_precip <- lm(bchave_log ~ total_precip_std + precip_seasonality_rev_log_std, data = sem_data),
-  mod_temp <- lm(bchave_log ~ mean_temp_rev_std + temp_seasonality_rev_log_std, data = sem_data),
+  mod_mois <- lm(bchave_log ~ total_precip_std + precip_seasonality_rev_log_std + mean_temp_rev_std + temp_seasonality_rev_log_std, data = sem_data),
   mod_div <- lm(bchave_log ~ sp_rich_raref_log_std + shannon_equit_log_std, data = sem_data),
-  mod_soil <- lm(bchave_log ~ ocdens_std + sand_per_rev_std + cation_ex_cap_std, data = sem_data),
-  mod_struc <- lm(bchave_log ~ cov_dbh_std + cov_height_std, data = sem_data)
-  )
+  mod_soil <- lm(bchave_log ~ ocdens_std + sand_per_rev_std + cation_ex_cap_std, data = sem_data)
+)
 
-names(mreg_list) <- c("precip", "temp", "div", "soil", "struc")
+names(mreg_list) <- c("mois", "div", "soil")
 
 beta_list <- list()
 comp_loading_list <- list()
@@ -639,7 +675,7 @@ full_mod_summ$PE %>%filter(op %in% c("~", ":="))
 
 full_mod_regs <- mod_summ_full(full_mod_summ$PE)
 
-pdf(file = paste0("img/full_model_slopes", ext, ".pdf"), width = 12, height = 4)
+pdf(file = paste0("img/full_model_slopes", ext, ".pdf"), width = 12, height = 6)
 ggplot() + 
   geom_hline(yintercept = 0, linetype = 2) + 
   geom_errorbar(data = full_mod_regs, 
@@ -682,42 +718,70 @@ lavTestLRT(full_mod_fit, struc_model_fit,
 # Precipitation and soil as moderators ----
 ##' Uses latent variables as interaction terms
 
-# CFA to get latent constructs
-precip_cfa_spec <- "
-moisture =~ total_precip_std + precip_seasonality_rev_log_std + 
-mean_temp_rev_std + temp_seasonality_rev_log_std
-div      =~ sp_rich_raref_log_std + shannon_equit_log_std
-soil     =~ sand_per_std + ocdens_std + cation_ex_cap_std
-struc    =~ cov_dbh_std + cov_height_std
-"
-
-precip_cfa_fit <- cfa(precip_cfa_spec, sem_data, missing = "ml.x")
-
-# 2. extract the predicted values of the cfa and add them to the dataframe
-sem_data <- data.frame(sem_data, predict(precip_cfa_fit))
-
-# Create variable with interaction of precip and div
-sem_data <- sem_data %>%
-  mutate(moisture_div_int = moisture * div,
-    soil_div_int = soil * div)
-
 # Regression with predefined interactions
-int_spec <- "
-bchave_log_std ~ div + moisture_div_int + soil_div_int
-"
+int_df <- data.frame(bchave = sem_data$bchave_log_std, sp_rich_raref_log_std = comp_list[[2]]$sp_rich_raref_log_std, 
+  total_precip_std = comp_list[[1]]$total_precip_std, ocdens_std = comp_list[[3]]$ocdens_std) %>%
+  mutate_all(.funs = list(std = ~(scale(.) %>% as.vector)))
 
-precip_int_fit <- sem(int_spec, sem_data)
+mois_div_int_mod <- lm(bchave_std ~ sp_rich_raref_log_std_std + total_precip_std_std + sp_rich_raref_log_std_std*total_precip_std_std , data = int_df)
 
-int_mod_summ <- summary(precip_int_fit, 
-  rsquare = TRUE,  fit.measures = TRUE, standardized = TRUE)
+z1 <- seq(min(int_df$sp_rich_raref_log_std_std), max(int_df$sp_rich_raref_log_std_std))
+z2 <- seq(-2, 2)
 
-semPaths(precip_int_fit,'mod', "est", 
-  layout = "tree2", curvature = 1, 
-  residuals = FALSE, intercepts = FALSE, thresholds = FALSE, nCharNodes = 0,
-  exoCov = FALSE,
-  label.cex = 2)
+newdf <- expand.grid(sp_rich_raref_log_std_std=z1,total_precip_std_std=z2)
 
-sink(paste0("output/int_mod_fit", ext, ".txt"))
-print(int_mod_summ)
-sink()
+mois_int <- ggplot() + 
+  geom_point(data = int_df, 
+    aes(x = sp_rich_raref_log_std_std, y = bchave_std, fill = total_precip_std_std),
+    shape = 21) + 
+  scale_fill_viridis_c(name="Moisture\navailability (SD)", option = "C") + 
+  new_scale("fill") + 
+  stat_smooth(data=transform(newdf, 
+    yp=predict(mois_div_int_mod, newdf)), 
+    aes(y=yp, x=sp_rich_raref_log_std_std, color=factor(total_precip_std_std)), 
+    method="lm") + 
+  scale_colour_viridis_d(name=, option = "C", guide = FALSE) + 
+  labs(x="Tree species diversity", y="AGB") + 
+  theme_classic() + 
+  theme(legend.position = c(0.9,0.3))
 
+pdf("img/mois_int.pdf", width = 8, height = 5)
+mois_int
+dev.off()
+
+soil_div_int_mod <- lm(bchave_std ~ sp_rich_raref_log_std_std + ocdens_std_std + sp_rich_raref_log_std_std*ocdens_std_std , data = int_df)
+
+z1 <- seq(min(int_df$sp_rich_raref_log_std_std), max(int_df$sp_rich_raref_log_std_std))
+z2 <- seq(-2, 2)
+
+newdf <- expand.grid(sp_rich_raref_log_std_std=z1,ocdens_std_std=z2)
+
+soil_int <- ggplot() + 
+  geom_point(data = int_df, 
+    aes(x = sp_rich_raref_log_std_std, y = bchave_std, fill = ocdens_std_std),
+    shape = 21) + 
+  scale_fill_viridis_c(name="Soil\nfertility (SD)", option = "C") + 
+  new_scale("fill") + 
+  stat_smooth(data=transform(newdf, 
+    yp=predict(soil_div_int_mod, newdf)), 
+    aes(y=yp, x=sp_rich_raref_log_std_std, color=factor(ocdens_std_std)), 
+    method="lm") + 
+  scale_colour_viridis_d(name=, option = "C", guide = FALSE) + 
+  labs(x="Tree species diversity", y="AGB") + 
+  theme_classic() + 
+  theme(legend.position = c(0.9,0.3))
+
+pdf("img/soil_int.pdf", width = 8, height = 5)
+soil_int
+dev.off()
+
+# Summary of models
+fileConn <- file(paste0("output/include/mois_div_int_mod.tex"))
+writeLines(stargazer(mois_div_int_mod, notes.label = "", notes.append = FALSE),
+  fileConn)
+close(fileConn)
+
+fileConn <- file(paste0("output/include/soil_div_int_mod.tex"))
+writeLines(stargazer(soil_div_int_mod, notes.label = "", notes.append = FALSE),
+  fileConn)
+close(fileConn)

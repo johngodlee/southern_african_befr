@@ -2,7 +2,8 @@
 	observed/.style={rectangle,draw,thick,inner sep=5pt, outer sep=2pt, minimum size=1cm, align=center},
 	latent/.style={circle, draw, thick, inner sep=0pt, outer sep=2pt, minimum size=2cm, align=center}, 
 	path/.style={->, thick, >=stealth'},
-	loading/.style={->, thick, dashed, >=stealth'}]
+	loading/.style={->, thick, dotted, >=stealth'},
+	loadingset/.style={->, thick, dashed, >=stealth'}]
 
 \tikzset{mystyle/.style={->,double=black}}
 \node [latent] (d) {Species\\Diversity}; 
@@ -18,9 +19,9 @@
 \node [observed] (hh) [right = 0.2in of homid] {Height\\CoV};
 
 
-\draw [loading] (d) to node[left, pos=0.5] {\pcsdsd{}} (ds);
+\draw [loadingset] (d) to node[left, pos=0.5] {\pcsdsd{}} (ds);
 \draw [loading] (d) to node[right, pos=0.5] {\pcsded{}} (de);
-\draw [loading] (h) to node[left, pos=0.5]  {\pcshdh{}} (hd);
+\draw [loadingset] (h) to node[left, pos=0.5]  {\pcshdh{}} (hd);
 \draw [loading] (h) to node[right, pos=0.5] {\pcshhh{}} (hh);
 
 \draw [path] (d) to node {\pcsdh{}} (h);

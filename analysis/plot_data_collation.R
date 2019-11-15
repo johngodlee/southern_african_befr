@@ -310,9 +310,9 @@ plot_data_agg <- plot_data_agg %>%
   filter(shannon_equit > 0,
     shannon_exp > 0) %>%
 # Exclude big 10 Ha plot
-  filter(plotcode != "DKS001") %>%
+  filter(plotcode != "DKS001")# %>%
 # Exclude plots where min diam. is not less than ten cm
-  filter(plot_group %in% s_diam_summ$plot_group)
+ # filter(plot_group %in% s_diam_summ$plot_group)
 
 # Ensure that variables all have the same sign
 plot_data_agg$precip_seasonality_rev <- -1 * plot_data_agg$precip_seasonality + 1000

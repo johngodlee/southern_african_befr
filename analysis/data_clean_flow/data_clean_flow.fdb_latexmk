@@ -1,0 +1,11 @@
+# Fdb version 3
+["pdflatex"] 1573742000 "data_clean_flow.tex" "data_clean_flow.pdf" "data_clean_flow" 1573742000
+  "/usr/local/texlive/2019/texmf-dist/tex/latex/base/omlcmr.fd" 1523050425 2473 8052e27f66be3b6e63e955171dae6bfe ""
+  "/usr/local/texlive/2019/texmf-dist/web2c/texmf.cnf" 1557092114 35484 cb1661360667bf4db662a8895053b554 ""
+  "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1560438610 4259636 c3c34e0b28d65e9ba03c0e352c7e170a ""
+  "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
+  "data_clean_flow.aux" 1573741980 8 a94a2480d3289e625eea47cd1b285758 "pdflatex"
+  "data_clean_flow.tex" 1573741999 1619 4d69dfa83fa6a2a0ecc5ce4f1ce70337 ""
+  (generated)
+  "data_clean_flow.pdf"
+  "data_clean_flow.log"

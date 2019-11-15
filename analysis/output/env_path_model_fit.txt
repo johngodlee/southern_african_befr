@@ -1,8 +1,7 @@
 Linear mixed model fit by REML ['lmerMod']
 Formula: bchave_log ~ ocdens_std + sand_per_std + cation_ex_cap_std +  
     aridity_index_std + total_precip_std + precip_seasonality_log_std +  
-    mean_temp_std + temp_seasonality_log_std + isothermality_std +  
-    fire_return_mean_log_std + (1 | clust5)
+    mean_temp_std + temp_seasonality_log_std + isothermality_std +      fire_return_mean_log_std + (1 | clust5)
    Data: sem_data
 
 REML criterion at convergence: 2350
@@ -32,27 +31,16 @@ isothermality_std          -0.165392   0.041752  -3.961
 fire_return_mean_log_std    0.005412   0.029335   0.184
 
 Correlation of Fixed Effects:
-            (Intr) ocdns_ snd_p_ ctn___ ardt__ ttl_p_ prc___ mn_tm_ tmp___
-ocdens_std   0.020                                                        
-sand_pr_std -0.020 -0.016                                                 
-ctn_x_cp_st -0.054 -0.249  0.613                                          
-ardty_ndx_s  0.111  0.162 -0.083 -0.236                                   
-ttl_prcp_st -0.090 -0.219  0.180  0.300 -0.954                            
-prcp_ssnl__  0.086  0.296 -0.031 -0.009  0.556 -0.476                     
-men_tmp_std -0.056  0.220 -0.476 -0.452 -0.111  0.091 -0.020              
-tmp_ssnlt__  0.001 -0.105 -0.126  0.028 -0.209  0.365  0.019  0.320       
-isthrmlty_s  0.052  0.083 -0.054  0.165  0.058 -0.005  0.453 -0.150  0.450
-fr_rtrn_m__ -0.020 -0.093  0.001  0.028 -0.081  0.122 -0.071 -0.014 -0.005
-            isthr_
-ocdens_std        
-sand_pr_std       
-ctn_x_cp_st       
-ardty_ndx_s       
-ttl_prcp_st       
-prcp_ssnl__       
-men_tmp_std       
-tmp_ssnlt__       
-isthrmlty_s       
-fr_rtrn_m__  0.052
+            (Intr) ocdns_ snd_p_ ctn___ ardt__ ttl_p_ prc___ mn_tm_ tmp___ isthr_
+ocdens_std   0.020                                                               
+sand_pr_std -0.020 -0.016                                                        
+ctn_x_cp_st -0.054 -0.249  0.613                                                 
+ardty_ndx_s  0.111  0.162 -0.083 -0.236                                          
+ttl_prcp_st -0.090 -0.219  0.180  0.300 -0.954                                   
+prcp_ssnl__  0.086  0.296 -0.031 -0.009  0.556 -0.476                            
+men_tmp_std -0.056  0.220 -0.476 -0.452 -0.111  0.091 -0.020                     
+tmp_ssnlt__  0.001 -0.105 -0.126  0.028 -0.209  0.365  0.019  0.320              
+isthrmlty_s  0.052  0.083 -0.054  0.165  0.058 -0.005  0.453 -0.150  0.450       
+fr_rtrn_m__ -0.020 -0.093  0.001  0.028 -0.081  0.122 -0.071 -0.014 -0.005  0.052
             R2m       R2c
 [1,] 0.08147648 0.1651326

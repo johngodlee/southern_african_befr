@@ -108,11 +108,11 @@ sed -i -r '12,16s/\w+ \w+\.*/\\textit\{&\}/g' "${INC}clust_summ.tex"
 
 sed -i '12,16s/spp\.\}/\}spp./g' "${INC}clust_summ.tex"
 
-sed -i '10s/.*/{Cluster} \& {Indicator species} \& {Species richness} \& {Stems ha\\textsuperscript{-1}} \& {AGB (t ha\\textsuperscript{-1})} \\\\/' "${INC}clust_summ.tex"
+sed -i '10s/.*/{Cluster} \& {Indicator species} \& {Species richness} \& {N plots} \& {Stems ha\\textsuperscript{-1}} \& {AGB (t ha\\textsuperscript{-1})} \\\\/' "${INC}clust_summ.tex"
 
 sed -i '13,16i\\\hline' "${INC}clust_summ.tex"
 
-sed -i 's/caption{}/caption{Description of the biogeographical clusters (C1-C5) to which each plot in the study was assigned. Indicator species were generated using Dufrene-Legendre indicator species analysis \\citep{Dufrene1997} implemented with \\texttt{indval()} from the \\texttt{labdsv} R package \\citep{labdsv}. Numeric values are medians and interquartile ranges.}/g' "${INC}clust_summ.tex" 
+sed -i 's/caption{}/caption{Description of the biogeographical clusters (C1-C5) to which each plot in the study was assigned. Indicator species were generated using Dufrene-Legendre indicator species analysis \\citep{Dufrene1997} implemented with \\texttt{indval()} from the \\texttt{labdsv} R package \\citep{labdsv}. Numeric values of species richness, stems ha\\textsuperscript{-1} and AGB are medians and interquartile ranges.}/g' "${INC}clust_summ.tex" 
 
 ## Correlation coefficients table
 cp output/include/corr_ci_tab.tex $INC

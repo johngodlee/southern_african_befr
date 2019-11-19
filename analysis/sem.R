@@ -340,11 +340,13 @@ print(ggplot() +
   geom_hline(yintercept = 0, linetype = 2) + 
   geom_errorbar(data = model_regs_all, 
     aes(x = rhs, ymin = est - se, ymax = est + se, 
-      colour = factor(model, levels = c("1", "2", "3", "4", "5", "all"))),
+      colour = factor(model, levels = c("1", "2", "3", "4", "5", "all"), 
+        labels = c("C1", "C2", "C3", "C4", "C5", "All"))),
     width = 0.4, position = position_dodge(width = 0.5)) + 
   geom_point(data = model_regs_all, 
     aes(x = rhs, y = est, 
-      fill = factor(model, levels = c("1", "2", "3", "4", "5", "all"))),
+      fill = factor(model, levels = c("1", "2", "3", "4", "5", "all"), 
+        labels = c("C1", "C2", "C3", "C4", "C5", "All"))),
     colour = "black", shape = 21, size = 2, 
     position = position_dodge(width = 0.5)) +
   scale_colour_manual(values = c(clust_pal, "black"), name = "Cluster") + 
@@ -616,12 +618,18 @@ full_mod_summ <- summary(full_mod_fit,
   fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
 
 full_model_edge_df <- full_mod_summ$PE %>%
-  filter(op %in% c("=~", "~")) %>%
-  mutate(est = round(est, digits = 2))
+  filter(op %in% c("=~", "~", ":=")) %>%
+  mutate(est = round(est, digits = 2),
+    se = round(se, digits = 3),
+    p = round(pvalue, digits = 3))
 
 fileConn <- file(paste0("output/include/path_coef_full.tex"))
 writeLines(
   c(
+    paste0("\\newcommand{\\rgmbd}{", "$\\beta =$ ", full_model_edge_df$est[23], "$\\pm$", full_model_edge_df$se[23],", p <0.05}"),
+    paste0("\\newcommand{\\rgsbd}{",  "$\\beta =$ ", full_model_edge_df$est[28], "$\\pm$", full_model_edge_df$se[28], ", p = ", full_model_edge_df$p[28], "}"),
+    paste0("\\newcommand{\\rgid}{",  "$\\beta =$ ", full_model_edge_df$est[17], "$\\pm$", full_model_edge_df$se[17], ", p <0.01}"),
+    paste0("\\newcommand{\\rghb}{",  "$\\beta =$ ", full_model_edge_df$est[21], "$\\pm$", full_model_edge_df$se[21], ", p <0.01}"),
     paste0("\\newcommand{\\pcfmmp}{", full_model_edge_df$est[1], "}"),
     paste0("\\newcommand{\\pcfmmpc}{", full_model_edge_df$est[2], "}"),
     paste0("\\newcommand{\\pcfmmt}{", full_model_edge_df$est[3], "}"),
@@ -701,7 +709,7 @@ full_mod_summ$PE %>%filter(op %in% c("~", ":="))
 
 full_mod_regs <- mod_summ_full(full_mod_summ$PE)
 
-pdf(file = paste0("img/full_model_slopes", ext, ".pdf"), width = 12, height = 6)
+pdf(file = paste0("img/full_model_slopes", ext, ".pdf"), width = 12, height = 8)
 ggplot() + 
   geom_hline(yintercept = 0, linetype = 2) + 
   geom_errorbar(data = full_mod_regs, 

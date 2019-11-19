@@ -9,51 +9,51 @@ Warning--I didn't find a database entry for "ANOTHER"
 Warning--I didn't find a database entry for "SEOSAW"
 Warning--I didn't find a database entry for "Otto"
 Warning--I didn't find a database entry for "Dufrene1997"
-Warning--I didn't find a database entry for "Valery2009"
-Warning--I didn't find a database entry for "Zhang2012"
+Warning--I didn't find a database entry for "Beaujean2014"
 Warning--I didn't find a database entry for "Ali2019a"
 Warning--I didn't find a database entry for "Ali2019b"
 Warning--I didn't find a database entry for "Poorter2017"
 Warning--can't use both author and editor fields in Schulze1994
-You've used 48 entries,
+Warning--empty title in Valery2009
+You've used 56 entries,
             2878 wiz_defined-function locations,
-            988 strings with 18528 characters,
-and the built_in function-call counts, 658842 in all, are:
-= -- 110900
-> -- 9158
+            1033 strings with 19888 characters,
+and the built_in function-call counts, 709818 in all, are:
+= -- 119329
+> -- 9882
 < -- 0
-+ -- 56728
-- -- 2955
-* -- 60882
-:= -- 124952
-add.period$ -- 52
-call.type$ -- 48
-change.case$ -- 664
-chr.to.int$ -- 48
-cite$ -- 49
-duplicate$ -- 764
-empty$ -- 1580
-format.name$ -- 3116
-if$ -- 118561
++ -- 60887
+- -- 3179
+* -- 65452
+:= -- 134903
+add.period$ -- 60
+call.type$ -- 56
+change.case$ -- 773
+chr.to.int$ -- 56
+cite$ -- 58
+duplicate$ -- 892
+empty$ -- 1842
+format.name$ -- 3368
+if$ -- 127728
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 46
-newline$ -- 151
-num.names$ -- 515
-pop$ -- 140
+missing$ -- 54
+newline$ -- 175
+num.names$ -- 607
+pop$ -- 173
 preamble$ -- 1
-purify$ -- 720
+purify$ -- 840
 quote$ -- 0
-skip$ -- 592
+skip$ -- 683
 stack$ -- 0
-substring$ -- 163477
-swap$ -- 136
-text.length$ -- 672
+substring$ -- 175632
+swap$ -- 155
+text.length$ -- 784
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 186
-warning$ -- 1
-while$ -- 1087
+type$ -- 214
+warning$ -- 2
+while$ -- 1267
 width$ -- 0
-write$ -- 656
+write$ -- 761
 (There were 12 warnings)

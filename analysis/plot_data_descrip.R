@@ -72,8 +72,9 @@ plot_map <- ggplot() +
   coord_map() + 
   ylim(-35.5, 10) + 
   labs(x = "Longitude", y = "Latitude") + 
-  theme_classic() + 
-  theme(legend.position = c(0.9, 0.2))
+  theme_classic() +
+  theme(legend.position = "none")
+  # theme(legend.position = c(0.9, 0.2))
 
 pdf(file = "img/plot_loc.pdf", width = 5, height = 8)
 plot_map
@@ -241,7 +242,7 @@ ggplot() +
     breaks = c(1, 5, 10, 50, 100, 200, 400)) + 
   new_scale_fill() +
   geom_point(data = plot_data_final,
-    mapping = aes(x = mean_temp_rev_std, y = total_precip_std, fill = as.character(clust5)), 
+    mapping = aes(x = mean_temp_rev_std, y = total_precip_std, fill = as.character(clust5_plot)), 
     colour = "black", shape = 21) + 
   geom_polygon(data = plot_hull_fort,
     aes(x = long, y = lat), fill = NA, colour = "#A3152A") + 

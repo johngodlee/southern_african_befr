@@ -77,6 +77,7 @@ clust_summ <- plot_data %>%
   mutate(bchave = exp(bchave_log),
     n_stems_ha = n_stems / area_of_plot) %>%
   summarise(
+    n_plots = n(),
     bchave_min = round(min(bchave, na.rm = TRUE), digits = 3),
     bchave_max = round(max(bchave, na.rm = TRUE), digits = 3),
     bchave_median = round(mean(bchave, na.rm = TRUE), digits = 1),
@@ -96,7 +97,7 @@ clust_summ <- plot_data %>%
     sp_rich_raref = paste0(sp_rich_raref_median, "(", sp_rich_raref_iqr, ")"),
     n_stems_ha = paste0(n_stems_ha_median, "(", n_stems_ha_iqr, ")")) %>%
   select(clust5, c_ind, 
-    sp_rich_raref, n_stems_ha, bchave)
+    n_plots, sp_rich_raref, n_stems_ha, bchave)
 
 fileConn <- file("output/include/clust_summ.tex")
 writeLines(stargazer(clust_summ, 

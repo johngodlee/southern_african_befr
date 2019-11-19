@@ -14,9 +14,8 @@
 \contentsline {subsection}{\numberline {3.4}Moderation effects of moisture availability and soil}{17}{subsection.3.4}% 
 \contentsline {section}{\numberline {4}Discussion}{18}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}Effect of tree species diversity on AGB}{18}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}Structural diversity as a mechanism for the BEFR}{18}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.2}Structural diversity as a mechanism for the BEFR}{19}{subsection.4.2}% 
 \contentsline {subsection}{\numberline {4.3}Effects of moisture availability and soil fertility}{19}{subsection.4.3}% 
-\contentsline {subsection}{\numberline {4.4}Vegetation type cluster specific responses}{19}{subsection.4.4}% 
-\contentsline {subsection}{\numberline {4.5}Stem density effects}{19}{subsection.4.5}% 
-\contentsline {subsection}{\numberline {4.6}Future work}{19}{subsection.4.6}% 
-\contentsline {subsection}{\numberline {4.7}Conclusion}{20}{subsection.4.7}% 
+\contentsline {subsection}{\numberline {4.4}Vegetation type cluster specific responses}{20}{subsection.4.4}% 
+\contentsline {subsection}{\numberline {4.5}Stem density effects}{20}{subsection.4.5}% 
+\contentsline {subsection}{\numberline {4.6}Conclusion}{20}{subsection.4.6}% 

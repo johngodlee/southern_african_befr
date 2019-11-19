@@ -2,7 +2,7 @@
 
 OUT="../manuscript/img/"
 INC="../manuscript/include/"
-STRUC_HEAD="{Cluster} \& {Params.} \& {n} \& {\$\\\\chi\^{2}\$} \& {DoF} \& {CFI} \& {TLI} \& {LogLik} \& {AIC} \& {RMSEA} \& {SRMR} \\\\\\\\"
+STRUC_HEAD="{Cluster} \& {Params.} \& {n} \& {\$\\\\chi\^{2}\$} \& {DoF} \& {CFI} \& {TLI} \& {LogLik} \& {AIC} \& {RMSEA} \& {SRMR} \& {\$R\^{2}\$ AGB} \\\\\\\\"
 
 # Transfer images from analysis to manuscript
 
@@ -112,7 +112,7 @@ sed -i '10s/.*/{Cluster} \& {Indicator species} \& {Species richness} \& {Stems 
 
 sed -i '13,16i\\\hline' "${INC}clust_summ.tex"
 
-sed -i 's/caption{}/caption{Description of the biogeographical clusters (C1-C5) to which each plot in the study was assigned. Indicator species were generated using Dufrene-Legendre indicator species analysis \\citep{Dufrene1997} implemented with \\texttt{indval()} from the \\texttt{labdsv} R package \\citep{labdsv}. Numeric values are means $\\pm$ 1 standard deviation.}/g' "${INC}clust_summ.tex" 
+sed -i 's/caption{}/caption{Description of the biogeographical clusters (C1-C5) to which each plot in the study was assigned. Indicator species were generated using Dufrene-Legendre indicator species analysis \\citep{Dufrene1997} implemented with \\texttt{indval()} from the \\texttt{labdsv} R package \\citep{labdsv}. Numeric values are medians and interquartile ranges.}/g' "${INC}clust_summ.tex" 
 
 ## Correlation coefficients table
 cp output/include/corr_ci_tab.tex $INC

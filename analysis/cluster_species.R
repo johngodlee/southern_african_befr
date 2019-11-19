@@ -76,19 +76,27 @@ clust_summ <- plot_data %>%
   group_by(clust5) %>%
   mutate(bchave = exp(bchave_log),
     n_stems_ha = n_stems / area_of_plot) %>%
-  summarise(bchave_mean = round(mean(bchave, na.rm = TRUE), digits = 1),
-    bchave_sd = round(sd(bchave, na.rm = TRUE), digits=  2),
-    sp_rich_mean = round(mean(sp_rich, na.rm = TRUE), digits = 0),
-    sp_rich_sd = round(sd(sp_rich, na.rm = TRUE), digits = 1),
-    n_stems_ha_mean = round(mean(n_stems_ha, na.rm = TRUE), digits = 0),
+  summarise(
+    bchave_min = round(min(bchave, na.rm = TRUE), digits = 3),
+    bchave_max = round(max(bchave, na.rm = TRUE), digits = 3),
+    bchave_median = round(mean(bchave, na.rm = TRUE), digits = 1),
+    bchave_sd = round(sd(bchave, na.rm = TRUE), digits =  2),
+    bchave_iqr = round(IQR(bchave, na.rm = TRUE), digits = 2),
+   
+    sp_rich_raref_median = round(mean(sp_rich, na.rm = TRUE), digits = 0),
+    sp_rich_raref_sd = round(sd(sp_rich, na.rm = TRUE), digits = 1),
+    sp_rich_raref_iqr = round(IQR(sp_rich, na.rm = TRUE), digits = 1),
+    
+    n_stems_ha_median = round(mean(n_stems_ha, na.rm = TRUE), digits = 0),
+    n_stems_ha_iqr = round(IQR(n_stems_ha, na.rm = TRUE), digits = 1),
     n_stems_ha_sd = round(sd(n_stems_ha, na.rm = TRUE), digits = 1)) %>%
   mutate(c_name, c_ind,
     clust5 = paste0("C", clust5),
-    bchave = paste0(bchave_mean, "+", bchave_sd),
-    sp_rich_raref = paste0(sp_rich_raref_mean, "+", sp_rich_raref_sd),
-    n_stems_ha = paste0(n_stems_ha_mean, "+", n_stems_ha_sd)) %>%
-  select(clust5, c_ind, sp_rich_raref, n_stems_ha, bchave)
-
+    bchave = paste0(bchave_median, "(", bchave_iqr, ")"),
+    sp_rich_raref = paste0(sp_rich_raref_median, "(", sp_rich_raref_iqr, ")"),
+    n_stems_ha = paste0(n_stems_ha_median, "(", n_stems_ha_iqr, ")")) %>%
+  select(clust5, c_ind, 
+    sp_rich_raref, n_stems_ha, bchave)
 
 fileConn <- file("output/include/clust_summ.tex")
 writeLines(stargazer(clust_summ, 

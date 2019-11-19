@@ -3,54 +3,57 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: chapter_1.aux
 The style file: /Users/johngodlee/.texmf/agsmnourl.bst
 Database file #1: /Users/johngodlee/google_drive/bib/lib.bib
-Warning--I didn't find a database entry for "Review"
+Warning--I didn't find a database entry for "MORE"
 Warning--I didn't find a database entry for ""
-Warning--I didn't find a database entry for "and"
-Warning--I didn't find a database entry for "others"
+Warning--I didn't find a database entry for "ANOTHER"
+Warning--I didn't find a database entry for "SEOSAW"
 Warning--I didn't find a database entry for "Otto"
 Warning--I didn't find a database entry for "Dufrene1997"
+Warning--I didn't find a database entry for "Valery2009"
+Warning--I didn't find a database entry for "Zhang2012"
 Warning--I didn't find a database entry for "Ali2019a"
 Warning--I didn't find a database entry for "Ali2019b"
 Warning--I didn't find a database entry for "Poorter2017"
-You've used 42 entries,
+Warning--can't use both author and editor fields in Schulze1994
+You've used 48 entries,
             2878 wiz_defined-function locations,
-            947 strings with 17094 characters,
-and the built_in function-call counts, 620339 in all, are:
-= -- 104508
-> -- 8643
+            988 strings with 18528 characters,
+and the built_in function-call counts, 658842 in all, are:
+= -- 110900
+> -- 9158
 < -- 0
-+ -- 53574
-- -- 2794
-* -- 57436
-:= -- 117437
-add.period$ -- 45
-call.type$ -- 42
-change.case$ -- 582
-chr.to.int$ -- 42
-cite$ -- 42
-duplicate$ -- 667
-empty$ -- 1394
-format.name$ -- 2929
-if$ -- 111640
++ -- 56728
+- -- 2955
+* -- 60882
+:= -- 124952
+add.period$ -- 52
+call.type$ -- 48
+change.case$ -- 664
+chr.to.int$ -- 48
+cite$ -- 49
+duplicate$ -- 764
+empty$ -- 1580
+format.name$ -- 3116
+if$ -- 118561
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 40
-newline$ -- 132
-num.names$ -- 453
-pop$ -- 116
+missing$ -- 46
+newline$ -- 151
+num.names$ -- 515
+pop$ -- 140
 preamble$ -- 1
-purify$ -- 630
+purify$ -- 720
 quote$ -- 0
-skip$ -- 520
+skip$ -- 592
 stack$ -- 0
-substring$ -- 154268
-swap$ -- 118
-text.length$ -- 588
+substring$ -- 163477
+swap$ -- 136
+text.length$ -- 672
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 164
-warning$ -- 0
-while$ -- 952
+type$ -- 186
+warning$ -- 1
+while$ -- 1087
 width$ -- 0
-write$ -- 577
-(There were 9 warnings)
+write$ -- 656
+(There were 12 warnings)

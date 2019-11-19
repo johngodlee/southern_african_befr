@@ -1,58 +1,68 @@
+$FIT
+             npar              fmin             chisq                df            pvalue    baseline.chisq 
+           15.000             0.150            14.978             6.000             0.020            72.808 
+      baseline.df   baseline.pvalue               cfi               tli              logl unrestricted.logl 
+           15.000             0.000             0.845             0.612          -355.439          -347.949 
+              aic               bic            ntotal              bic2             rmsea    rmsea.ci.lower 
+          740.877           769.558            50.000           722.475             0.173             0.063 
+   rmsea.ci.upper      rmsea.pvalue              srmr 
+            0.285             0.038             0.144 
+
 $PE
-                     lhs op                   rhs                 label exo           est se  z pvalue
-1                    div =~ sp_rich_raref_log_std                         0  1.000000e+00  0 NA     NA
-2                    div =~ shannon_equit_log_std                         0  1.547833e-05 NA NA     NA
-3                  struc =~        cov_height_std                         0  1.000000e+00  0 NA     NA
-4                  struc =~           cov_dbh_std                         0  1.190997e+00 NA NA     NA
-5         bchave_log_std  ~                   div                     c   0 -4.762537e-06 NA NA     NA
-6         bchave_log_std  ~                 struc                     b   0  5.747606e-01 NA NA     NA
-7                  struc  ~                   div                     a   0  1.580587e-06 NA NA     NA
-8         bchave_log_std  ~      stems_ha_log_std                     d   0  2.860214e-01 NA NA     NA
-9       stems_ha_log_std  ~                   div                     e   0  1.091156e-06 NA NA     NA
-10 sp_rich_raref_log_std ~~ sp_rich_raref_log_std                         0 -5.795609e+04 NA NA     NA
-11 shannon_equit_log_std ~~ shannon_equit_log_std                         0  1.383770e+00 NA NA     NA
-12        cov_height_std ~~        cov_height_std                         0  3.195324e-01 NA NA     NA
-13           cov_dbh_std ~~           cov_dbh_std                         0  3.851490e-01 NA NA     NA
-14        bchave_log_std ~~        bchave_log_std                         0  2.512371e-01 NA NA     NA
-15      stems_ha_log_std ~~      stems_ha_log_std                         0  4.959180e-01 NA NA     NA
-16                   div ~~                   div                         0  5.795774e+04 NA NA     NA
-17                 struc ~~                 struc                         0  3.113985e-01 NA NA     NA
-18 biomass_div_via_struc :=                   a*b biomass_div_via_struc   0  9.084589e-07  0 NA     NA
-19 biomass_div_via_stems :=                   d*e biomass_div_via_stems   0  3.120939e-07  0 NA     NA
-20     biomass_div_total :=         c+(a*b)+(d*e)     biomass_div_total   0 -3.541984e-06  0 NA     NA
-21 sp_rich_raref_log_std r2 sp_rich_raref_log_std                         0            NA NA NA     NA
-22 shannon_equit_log_std r2 shannon_equit_log_std                         0  1.003440e-05 NA NA     NA
-23        cov_height_std r2        cov_height_std                         0  4.935541e-01 NA NA     NA
-24           cov_dbh_std r2           cov_dbh_std                         0  5.342029e-01 NA NA     NA
-25        bchave_log_std r2        bchave_log_std                         0  3.634385e-01 NA NA     NA
-26      stems_ha_log_std r2      stems_ha_log_std                         0  1.391473e-07 NA NA     NA
-27                 struc r2                 struc                         0  4.649768e-07 NA NA     NA
-          std.lv       std.all       std.nox
-1   2.407441e+02  1.875747e+02  1.875747e+02
-2   3.726318e-03  3.167712e-03  3.167712e-03
-3   5.580311e-01  7.025341e-01  7.025341e-01
-4   6.646135e-01  7.308919e-01  7.308919e-01
-5  -1.146553e-03 -1.825040e-03 -1.825040e-03
-6   3.207343e-01  5.105328e-01  5.105328e-01
-7   6.818921e-04  6.818921e-04  6.818921e-04
-8   2.860214e-01  3.206135e-01  3.206135e-01
-9   2.626893e-04  3.730246e-04  3.730246e-04
-10 -5.795609e+04 -3.518326e+04 -3.518326e+04
-11  1.383770e+00  9.999900e-01  9.999900e-01
-12  3.195324e-01  5.064459e-01  5.064459e-01
-13  3.851490e-01  4.657971e-01  4.657971e-01
-14  2.512371e-01  6.365615e-01  6.365615e-01
-15  4.959180e-01  9.999999e-01  9.999999e-01
-16  1.000000e+00  1.000000e+00  1.000000e+00
-17  9.999995e-01  9.999995e-01  9.999995e-01
-18  2.187061e-04  3.481283e-04  3.481283e-04
-19  7.513477e-05  1.195967e-04  1.195967e-04
-20 -8.527119e-04 -1.357315e-03 -1.357315e-03
-21            NA            NA            NA
-22            NA            NA            NA
-23            NA            NA            NA
-24            NA            NA            NA
-25            NA            NA            NA
-26            NA            NA            NA
-27            NA            NA            NA
+                     lhs op                   rhs                 label exo           est           se           z
+1                    div =~ sp_rich_raref_log_std                         0  1.000000e+00 0.000000e+00          NA
+2                    div =~ shannon_equit_log_std                         0  6.145405e-03 3.225480e-01  0.01905268
+3                  struc =~        cov_height_std                         0  1.000000e+00 0.000000e+00          NA
+4                  struc =~           cov_dbh_std                         0  1.189137e+00 3.505463e-01  3.39223842
+5         bchave_log_std  ~                   div                     c   0 -1.893565e-03 9.962680e-02 -0.01900658
+6         bchave_log_std  ~                 struc                     b   0  5.752092e-01 2.015035e-01  2.85458662
+7                  struc  ~                   div                     a   0  6.294641e-04 3.311863e-02  0.01900634
+8         bchave_log_std  ~      stems_ha_log_std                     d   0  2.864543e-01 1.075678e-01  2.66301204
+9       stems_ha_log_std  ~                   div                     e   0  4.389463e-04 2.310201e-02  0.01900035
+10 sp_rich_raref_log_std ~~ sp_rich_raref_log_std                         0 -1.443659e+02 7.649864e+03 -0.01887169
+11 shannon_equit_log_std ~~ shannon_equit_log_std                         0  1.378247e+00 3.993079e-01  3.45158947
+12        cov_height_std ~~        cov_height_std                         0  3.190468e-01 1.028291e-01  3.10268855
+13           cov_dbh_std ~~           cov_dbh_std                         0  3.858409e-01 1.376817e-01  2.80241296
+14        bchave_log_std ~~        bchave_log_std                         0  2.506466e-01 6.659156e-02  3.76393923
+15      stems_ha_log_std ~~      stems_ha_log_std                         0  4.958843e-01 9.918240e-02  4.99972037
+16                   div ~~                   div                         0  1.460123e+02 7.649755e+03  0.01908719
+17                 struc ~~                 struc                         0  3.118302e-01 1.354818e-01  2.30163858
+18 biomass_div_via_struc :=                   a*b biomass_div_via_struc   0  3.620735e-04 1.906783e-02  0.01898871
+19 biomass_div_via_stems :=                   d*e biomass_div_via_stems   0  1.257380e-04 6.622490e-03  0.01898652
+20     biomass_div_total :=         c+(a*b)+(d*e)     biomass_div_total   0 -1.405754e-03 7.394346e-02 -0.01901119
+21 sp_rich_raref_log_std r2 sp_rich_raref_log_std                         0            NA           NA          NA
+22 shannon_equit_log_std r2 shannon_equit_log_std                         0  3.985010e-03           NA          NA
+23        cov_height_std r2        cov_height_std                         0  4.943268e-01           NA          NA
+24           cov_dbh_std r2           cov_dbh_std                         0  5.333689e-01           NA          NA
+25        bchave_log_std r2        bchave_log_std                         0  3.651291e-01           NA          NA
+26      stems_ha_log_std r2      stems_ha_log_std                         0  5.672927e-05           NA          NA
+27                 struc r2                 struc                         0  1.854952e-04           NA          NA
+         pvalue        std.lv       std.all       std.nox
+1            NA  1.208356e+01   9.417165364   9.417165364
+2  9.847991e-01  7.425835e-02   0.063126932   0.063126932
+3            NA  5.584693e-01   0.703083810   0.703083810
+4  6.932409e-04  6.640964e-01   0.730321078   0.730321078
+5  9.848359e-01 -2.288100e-02  -0.036415542  -0.036415542
+6  4.309288e-03  3.212367e-01   0.511254263   0.511254263
+7  9.848360e-01  1.361966e-02   0.013619663   0.013619663
+8  7.744464e-03  2.864543e-01   0.321047730   0.321047730
+9  9.848408e-01  5.304031e-03   0.007531884   0.007531884
+10 9.849435e-01 -1.443659e+02 -87.683003488 -87.683003488
+11 5.572950e-04  1.378247e+00   0.996014990   0.996014990
+12 1.917713e-03  3.190468e-01   0.505673156   0.505673156
+13 5.072190e-03  3.858409e-01   0.466631123   0.466631123
+14 1.672575e-04  2.506466e-01   0.634870910   0.634870910
+15 5.741352e-07  4.958843e-01   0.999943271   0.999943271
+16 9.847716e-01  1.000000e+00   1.000000000   1.000000000
+17 2.135556e-02  9.998145e-01   0.999814505   0.999814505
+18 9.848501e-01  4.375135e-03   0.006963111   0.006963111
+19 9.848519e-01  1.519363e-03   0.002418094   0.002418094
+20 9.848322e-01 -1.698650e-02  -0.027034337  -0.027034337
+21           NA            NA            NA            NA
+22           NA            NA            NA            NA
+23           NA            NA            NA            NA
+24           NA            NA            NA            NA
+25           NA            NA            NA            NA
+26           NA            NA            NA            NA
+27           NA            NA            NA            NA
 

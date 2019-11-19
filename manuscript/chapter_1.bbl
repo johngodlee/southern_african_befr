@@ -5,20 +5,21 @@ Bond, W.~J. \harvardand\ Keeley, J.~E.  \harvardyearleft 2005\harvardyearright
   , `Fire as a global `herbivore': the ecology and evolution of flammable
   ecosystems', {\em Trends in Ecology and Evolution} {\bf 20}(7),~387--394.
 
-\harvarditem[Brooks et~al.]{Brooks, Mittermeier, {da Fonseca}, Gerlach,
-  Hoffmann, Lamoreux, Mittermeier, Pilgrim \harvardand\
-  Rodrigues}{2006}{Brooks2006}
-Brooks, T.~M., Mittermeier, R.~A., {da Fonseca}, G. A.~B., Gerlach, J.,
-  Hoffmann, M., Lamoreux, J.~F., Mittermeier, C.~G., Pilgrim, J.~D.
-  \harvardand\ Rodrigues, S.~L.  \harvardyearleft 2006\harvardyearright ,
-  `Global biodiversity conservation priorities', {\em Science} {\bf
-  313},~58--61.
-
 \harvarditem[Cardinale et~al.]{Cardinale, Palmer \harvardand\
   Collins}{2002}{Cardinale2002}
 Cardinale, B.~J., Palmer, M.~A. \harvardand\ Collins, S.~L.  \harvardyearleft
   2002\harvardyearright , `Species diversity enhances ecosystem functioning
   through interspecific facilitation', {\em Nature} {\bf 415},~426--429.
+
+\harvarditem[Cardinale et~al.]{Cardinale, Srivastava, Duffy, Wright, Downing,
+  Sankaran, Jouseau, Cadotte, Carroll, Weis, Hector \harvardand\
+  Loreau}{2009}{Cardinale2009}
+Cardinale, B.~J., Srivastava, D.~S., Duffy, J.~E., Wright, J.~P., Downing,
+  A.~L., Sankaran, M., Jouseau, C., Cadotte, M.~W., Carroll, I.~T., Weis,
+  J.~J., Hector, A. \harvardand\ Loreau, M.  \harvardyearleft
+  2009\harvardyearright , `Effects of biodiversity on the functioning of
+  ecosystems: a summary of 164 experimental manipulations of species richness',
+  {\em Ecology} {\bf 90}(3),~854--854.
 
 \harvarditem[Cham et~al.]{Cham, Reshetnyak, Rosenfeld \harvardand\
   Breitbart}{2017}{Cham2017}
@@ -70,6 +71,12 @@ Condit, R., Engelbrecht, B. M.~J., Pino, D., P{\'e}rez, R. \harvardand\ Turner,
   of tropical trees', {\em Proceedings of the National Academy of Sciences}
   {\bf 110}(13),~5064--5068.
 
+\harvarditem{{Copernicus Climate Change Service}}{2017}{ERA5}
+{Copernicus Climate Change Service}  \harvardyearleft 2017\harvardyearright ,
+  {\em ERA5: Fifth generation of ECMWF atmospheric reanalyses of the global
+  climate}, Copernicus Climate Change Service Climate Data Store (CDS).
+\newblock Accessed: 2019-09-03.
+
 \harvarditem[Dohn et~al.]{Dohn, Demb{\'e}l{\'e}, Karemb{\'e}, Moustakas,
   Am{\'e}vor \harvardand\ Hanan}{2013}{Dohn2013}
 Dohn, J., Demb{\'e}l{\'e}, F., Karemb{\'e}, M., Moustakas, A., Am{\'e}vor,
@@ -110,6 +117,11 @@ Frost, P.  \harvardyearleft 1996\harvardyearright , The ecology of miombo
   and welfare in Africa', Center for International Forestry Research, Bogor,
   Indonesia, pp.~11--55.
 
+\harvarditem{Hector \harvardand\ Bagchi}{2007}{Hector2007}
+Hector, A. \harvardand\ Bagchi, R.  \harvardyearleft 2007\harvardyearright ,
+  `Biodiversity and ecosystem multifunctionality', {\em Nature} {\bf
+  448},~188--190.
+
 \harvarditem[Hengl et~al.]{Hengl, {Mendes de Jesus}, Heuvelink, Gonzalez,
   Kilibarda, Blagoti{\'c}, Shangguan, Wright, Geng, {Bauer-Marschallinger},
   Guevara, Vargas, MacMillan, Batjes, Leenaars, Ribeiro, Wheeler, Mantel
@@ -132,12 +144,6 @@ Higgins, S.~I., Bond, W.~J., February, E.~C., Bronn, A., Euston-Brown, D.
   manipulation on woody vegetation structure in savanna', {\em Ecology} {\bf
   88}(5),~1119--1125.
 
-\harvarditem[Hinsley et~al.]{Hinsley, Entwistle \harvardand\
-  Pio}{2015}{Hinsley2015}
-Hinsley, A., Entwistle, A. \harvardand\ Pio, D.~V.  \harvardyearleft
-  2015\harvardyearright , `Does the long-term success of redd+ also depend on
-  biodiversity', {\em Oryx} {\bf 49}(2),~216--221.
-
 \harvarditem{Hopkins \harvardand\ White}{1987}{White1987}
 Hopkins, B. \harvardand\ White, F.  \harvardyearleft 1987\harvardyearright ,
   `Vegetation map of africa. the vegetation of africa: A descriptive memoir to
@@ -159,6 +165,14 @@ Hu, L. \harvardand\ Bentler, P.~M.  \harvardyearleft 1999\harvardyearright ,
 \harvarditem{Jax}{2005}{Jax2005}
 Jax, K.  \harvardyearleft 2005\harvardyearright , `Function and ``functioning''
   in ecology: what does it mean?', {\em Oikos} {\bf 111}(3),~641--648.
+
+\harvarditem[Kunz et~al.]{Kunz, Fichtner, H{\:a}rdtle, Raumonen, Bruelheide
+  \harvardand\ {von Oheimb}}{2019}{Kunz2019}
+Kunz, M., Fichtner, A., H{\:a}rdtle, W., Raumonen, P., Bruelheide, H.
+  \harvardand\ {von Oheimb}, G.  \harvardyearleft 2019\harvardyearright ,
+  `Neighbour species richness and local structural variability modulate
+  aboveground allocation patterns and crown morphology of individual trees',
+  {\em Ecology Letters} pp.~1--11.
 
 \harvarditem{Lee}{2007}{Lee2007}
 Lee, S.~Y.  \harvardyearleft 2007\harvardyearright , {\em Structural Equation
@@ -216,13 +230,11 @@ Michaletz, S.~T., Kerkhoff, A.~J. \harvardand\ Enquist, B.~J.  \harvardyearleft
   geographical gradients', {\em Global Ecology and Biogeography} {\bf
   27},~166--174.
 
-\harvarditem[Mittermeier et~al.]{Mittermeier, Mittermeier, Brooks, Pilgrim,
-  Konstant, {da Fonseca} \harvardand\ Kormos}{2003}{Mittermeier2003}
-Mittermeier, R.~A., Mittermeier, C.~G., Brooks, T.~M., Pilgrim, J.~D.,
-  Konstant, W.~R., {da Fonseca}, G. A.~B. \harvardand\ Kormos, C.
-  \harvardyearleft 2003\harvardyearright , `Wilderness and biodiversity
-  conservation', {\em Proceedings of the National Academy of Sciences} {\bf
-  100}(18),~10309--10313.
+\harvarditem{Mutowo \harvardand\ Murwira}{2012}{Mutowo2012}
+Mutowo, G. \harvardand\ Murwira, A.  \harvardyearleft 2012\harvardyearright ,
+  `Relationship between remotely sensed variables and tree species diversity in
+  savanna woodlands of southern africa', {\em International Journal of Remote
+  Sensing} {\bf 33}(20),~6378--6402.
 
 \harvarditem[Parr et~al.]{Parr, Lehmann, Bond, Hoffmann \harvardand\
   Andersen}{2014}{Parr2014}
@@ -304,6 +316,19 @@ Sankaran, M., Hanan, N.~P., Scholes, R.~J., Ratnam, J., Augustine, D.~J., Cade,
   , `Determinants of woody cover in african savannas', {\em Nature} {\bf
   438}(8),~846--849.
 
+\harvarditem{Schulze \harvardand\ Mooney}{1994}{Schulze1994}
+Schulze, E.~D. \harvardand\ Mooney, H.~A.  \harvardyearleft
+  1994\harvardyearright , {\em Ecosystem function of biodiversity: A summary},
+  Springer Berlin Heidelberg, Berlin, Germany.
+
+\harvarditem[Shirima et~al.]{Shirima, Pfeifer, Platts, Totland \harvardand\
+  Moe}{2015}{Shirima2015}
+Shirima, D.~D., Pfeifer, M., Platts, P.~J., Totland, {\O}. \harvardand\ Moe,
+  S.~R.  \harvardyearleft 2015\harvardyearright , `Interactions between canopy
+  structure and herbaceous biomass along environmental gradients in moist
+  forest and dry miombo woodland of tanzania', {\em PLoS ONE} {\bf
+  10}(11),~1--15.
+
 \harvarditem[Solbrig et~al.]{Solbrig, Medina \harvardand\
   Silva}{1996}{Solbrig1996}
 Solbrig, O.~T., Medina, E. \harvardand\ Silva, J.~F.  \harvardyearleft
@@ -316,6 +341,14 @@ Staver, A.~C., Bond, W.~J., Stock, W.~D., {van Rensburg}, S.~J. \harvardand\
   Waldram, M.~S.  \harvardyearleft 2009\harvardyearright , `Browsing and fire
   interact to suppress tree density in an african savanna', {\em Ecological
   Applications} {\bf 19}(7),~1909--1919.
+
+\harvarditem[Thompson et~al.]{Thompson, Okabe, Tylianakis, Kumar, Brockerhoff,
+  Schellhorn, Parrotta \harvardand\ Nasi}{2011}{Thompson2011}
+Thompson, I.~D., Okabe, K., Tylianakis, J.~M., Kumar, P., Brockerhoff, E.~G.,
+  Schellhorn, N.~A., Parrotta, J.~A. \harvardand\ Nasi, R.  \harvardyearleft
+  2011\harvardyearright , `Forest biodiversity and the delivery of ecosystem
+  goods and services: translating science into policy', {\em BioScience} {\bf
+  61}(12),~972--981.
 
 \harvarditem{Tilman \harvardand\ Downing}{1994}{Tilman1994}
 Tilman, D. \harvardand\ Downing, J.~A.  \harvardyearleft 1994\harvardyearright
@@ -340,6 +373,13 @@ Vil\`{a}, M., Inchausti, P., Vayreda, J., Barrantes, O., Gracia, C.,
 Wildi, O.  \harvardyearleft 2017\harvardyearright , {\em dave: Functions for
   "Data Analysis in Vegetation Ecology"}.
 \newblock R package version 2.0.
+
+\harvarditem[Wright et~al.]{Wright, Wardle, Callaway \harvardand\
+  Gaxiola}{2017}{Wright2017}
+Wright, A.~J., Wardle, W. D.~A., Callaway, W.~R. \harvardand\ Gaxiola, A.
+  \harvardyearleft 2017\harvardyearright , `The overlooked role of facilitation
+  in biodiversity experiments', {\em Trends in Ecology and Evolution} {\bf
+  32}(5),~383--390.
 
 \harvarditem[Zanne et~al.]{Zanne, Lopez-Gonzalez, Coomes, Ilic, Jansen, Lewis,
   Miller, Swenson, Wiemann \harvardand\ Chave}{2009}{Zanne2009}

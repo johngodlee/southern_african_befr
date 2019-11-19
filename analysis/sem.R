@@ -67,20 +67,7 @@ corr_df <- sem_data %>%
     total_precip_std, precip_seasonality_log_std,
     mean_temp_std, temp_seasonality_log_std,
     sp_rich_raref_log_std, shannon_equit_log_std,
-    cov_height_std, cov_dbh_std, stems_ha_log_std, bchave_log) %>%
-  rename(`Sand %` = sand_per_std,
-    `Organic C %` = ocdens_std,
-    `CEC` = cation_ex_cap_std,
-    `MAP` = total_precip_std, 
-    `MAP CoV` = precip_seasonality_log_std, 
-    `MAT` = mean_temp_std, 
-    `MAT CoV` = temp_seasonality_log_std,
-    `Extrap. sp. rich.` = sp_rich_raref_log_std, 
-    `Shannon equit.` = shannon_equit_log_std,
-    `Tree height CoV` = cov_height_std, 
-    `DBH CoV` = cov_dbh_std,
-    `Stem density` = stems_ha_log_std,
-    `AGB` = bchave_log)
+    cov_height_std, cov_dbh_std, stems_ha_log_std, bchave_log)
 
 # Make a dataframe of labels
 label_df <- data.frame(lab = names(corr_df),
@@ -111,6 +98,32 @@ ggcorrplot(cor(corr_df, use = "complete.obs"),
   show.legend = FALSE,
   outline.color = "black",
   digits = 2, lab_size = 3) + 
+  scale_y_discrete(labels = c(
+    "sand_per_std" = expression(bolditalic(underline("Sand %"))),
+    "ocdens_std" = "Org. C %",
+    "cation_ex_cap_std" = "CEC", 
+    "total_precip_std" = "MAP",
+    "precip_seasonality_log_std" = expression(bolditalic(underline("MAP CoV"))), 
+    "mean_temp_std" = expression(bolditalic(underline("MAT"))),
+    "temp_seasonality_log_std" = expression(bolditalic(underline("MAT CoV"))),
+    "sp_rich_raref_log_std" = "Extrap. sp. rich.",
+    "shannon_equit_log_std" = "Shannon equit.",
+    "cov_height_std" = "Tree height CoV",
+    "cov_dbh_std" = "CBH CoV",
+    "stems_ha_log_std" = "Stem density")) + 
+  scale_x_discrete(labels = c(
+    "ocdens_std" = "Org. C %",
+    "cation_ex_cap_std" = "CEC", 
+    "total_precip_std" = "MAP",
+    "precip_seasonality_log_std" = expression(bolditalic(underline("MAP CoV"))), 
+    "mean_temp_std" = expression(bolditalic(underline("MAT"))),
+    "temp_seasonality_log_std" = expression(bolditalic(underline("MAT CoV"))),
+    "sp_rich_raref_log_std" = "Extrap. sp. rich.",
+    "shannon_equit_log_std" = "Shannon equit.",
+    "cov_height_std" = "Tree height CoV",
+    "cov_dbh_std" = "CBH CoV",
+    "stems_ha_log_std" = "Stem density",
+    "bchave_log" = "AGB")) + 
   theme(axis.text.x = element_text(
     face = c(rep("plain", 3), "bold.italic", "plain", "bold.italic", rep("plain", 6)),
     colour = c(rep("#D65A2D", 2), rep("#287F9C", 4), rep("#468A21", 2), rep("#844099", 2), rep("black", 2))),
@@ -186,6 +199,8 @@ struc_model_edge_df <- struc_model_summ$PE %>%
   filter(op %in% c("=~", "~")) %>%
   mutate(est = round(est, digits = 2))
 
+struc_mod_rsq <- round(lavInspect(struc_model_fit, "rsquare")[5], digits = 2)
+  
 fileConn <- file(paste0("output/include/path_coef_struc.tex"))
 writeLines(
   c(
@@ -197,7 +212,8 @@ writeLines(
     paste0("\\newcommand{\\pcshb}{", struc_model_edge_df$est[6], "}"),
     paste0("\\newcommand{\\pcsdh}{", struc_model_edge_df$est[7], "}"),
     paste0("\\newcommand{\\pcsib}{", struc_model_edge_df$est[8], "}"),
-    paste0("\\newcommand{\\pcsdi}{", struc_model_edge_df$est[9], "}")),
+    paste0("\\newcommand{\\pcsdi}{", struc_model_edge_df$est[9], "}"),
+    paste0("\\newcommand{\\strucrsq}{", struc_mod_rsq, "}")),
     fileConn)
 close(fileConn)
 
@@ -258,7 +274,8 @@ clust_mod <- function(mod, mod_name, mutate_summ){
   model_diag_clust_list <- list()
   model_regs_list <- list()
   for(i in 1:length(sem_data_clust_list)){
-    model_fit_clust_list[[i]] <- sem(mod, data = sem_data_clust_list[[i]])
+    model_fit_clust_list[[i]] <- sem(mod, data = sem_data_clust_list[[i]],
+      optim.method = "BFGS")
   
   model_summ_clust_list[[i]] <- summary(model_fit_clust_list[[i]], 
     fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
@@ -275,7 +292,8 @@ clust_mod <- function(mod, mod_name, mutate_summ){
   plot(model_diag_clust_list[[i]])
   dev.off()
   
-  sink(paste0("output/", mod_name, "_model_fit_clust_", sem_data_clust_list[[i]]$clust5[1], ext, ".txt"))
+  sink(paste0("output/", mod_name, "_model_fit_clust_", 
+    sem_data_clust_list[[i]]$clust5[1], ext, ".txt"))
   print(model_summ_clust_list[[i]])
   sink()
   
@@ -283,7 +301,8 @@ clust_mod <- function(mod, mod_name, mutate_summ){
     mutate_summ(.) %>%
     mutate(model = first(sem_data_clust_list[[i]]$clust5))
   
-  pdf(file = paste0("img/", mod_name, "_model_slopes_clust_", sem_data_clust_list[[i]]$clust5[1], ext, ".pdf"), width = 12, height = 4)
+  pdf(file = paste0("img/", mod_name, "_model_slopes_clust_", 
+    sem_data_clust_list[[i]]$clust5[1], ext, ".pdf"), width = 12, height = 4)
   print(ggplot() + 
     geom_hline(yintercept = 0, linetype = 2) + 
     geom_errorbar(data = model_regs_list[[i]], aes(x = rhs, ymin = est - se, ymax = est + se),
@@ -341,6 +360,10 @@ dev.off()
 mod_slopes_all(struc_model_regs_list, struc_model_regs, 
   paste0("struc_model_slopes_all", ext, ".pdf"))
 
+rsquare_clust <- c(sapply(struc_model_fit_clust_list, function(x){
+  lavInspect(x, "rsquare")[5]
+}), lavInspect(struc_model_fit, "rsquare")[5])
+
 sem_fit_tab <- function(mod_summ_list, mod_all, file){
 mod_summ_list_all <- c(mod_summ_list, list(mod_all))
 fit_df <- as.data.frame(sapply(mod_summ_list_all, function(x){
@@ -375,11 +398,12 @@ fit_df_clean_output <- fit_df_clean_output %>%
     aic = round(as.numeric(aic), digits = 1),
     ntotal = round(as.numeric(ntotal)),
     rmsea = round(as.numeric(rmsea), digits = 2),
-    srmr = round(as.numeric(srmr), digits = 3)
+    srmr = round(as.numeric(srmr), digits = 3),
+    rsquare_agb = round(rsquare_clust, digits = 2)
     ) %>%
   dplyr::select(cluster, npar, ntotal, chisq, df, cfi, tli, logl, aic, 
-    rmsea, srmr)
-
+    rmsea, srmr, rsquare_agb)
+  
 fileConn <- file(paste0("output/include/", file, ".tex"))
 writeLines(stargazer(fit_df_clean_output, 
   summary = FALSE,
@@ -427,7 +451,9 @@ biomass_div_total := c + (a*b)
 "
 
 for(i in 1:length(sem_data_quant_list)){
-  struc_sem_quant_list[[i]] <- sem(struc_model_no_stem_dens_spec, data = sem_data_quant_list[[i]])
+  struc_sem_quant_list[[i]] <- sem(struc_model_no_stem_dens_spec, 
+    data = sem_data_quant_list[[i]],
+    optim.method = "BFGS")
   struc_sem_quant_summ_list[[i]] <- summary(struc_sem_quant_list[[i]], 
     fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
   
@@ -719,11 +745,14 @@ lavTestLRT(full_mod_fit, struc_model_fit,
 ##' Uses latent variables as interaction terms
 
 # Regression with predefined interactions
-int_df <- data.frame(bchave = sem_data$bchave_log_std, sp_rich_raref_log_std = comp_list[[2]]$sp_rich_raref_log_std, 
-  total_precip_std = comp_list[[1]]$total_precip_std, ocdens_std = comp_list[[3]]$ocdens_std) %>%
+int_df <- data.frame(bchave = sem_data$bchave_log_std, 
+  sp_rich_raref_log_std = comp_list[[2]]$sp_rich_raref_log_std, 
+  total_precip_std = comp_list[[1]]$total_precip_std, 
+  ocdens_std = comp_list[[3]]$ocdens_std) %>%
   mutate_all(.funs = list(std = ~(scale(.) %>% as.vector)))
 
-mois_div_int_mod <- lm(bchave_std ~ sp_rich_raref_log_std_std + total_precip_std_std + sp_rich_raref_log_std_std*total_precip_std_std , data = int_df)
+mois_div_int_mod <- lm(bchave_std ~ sp_rich_raref_log_std_std + total_precip_std_std + 
+    sp_rich_raref_log_std_std*total_precip_std_std , data = int_df)
 
 z1 <- seq(min(int_df$sp_rich_raref_log_std_std), max(int_df$sp_rich_raref_log_std_std))
 z2 <- seq(-2, 2)
@@ -749,7 +778,8 @@ pdf("img/mois_int.pdf", width = 8, height = 5)
 mois_int
 dev.off()
 
-soil_div_int_mod <- lm(bchave_std ~ sp_rich_raref_log_std_std + ocdens_std_std + sp_rich_raref_log_std_std*ocdens_std_std , data = int_df)
+soil_div_int_mod <- lm(bchave_std ~ sp_rich_raref_log_std_std + ocdens_std_std + 
+    sp_rich_raref_log_std_std*ocdens_std_std , data = int_df)
 
 z1 <- seq(min(int_df$sp_rich_raref_log_std_std), max(int_df$sp_rich_raref_log_std_std))
 z2 <- seq(-2, 2)

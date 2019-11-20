@@ -42,6 +42,7 @@ library(beepr)
 library(ggnewscale)
 
 source("clust_pal.R")
+clust_pal <- clust_pal[1:4]
 source("full_best.R")
 
 # Import data ----
@@ -139,9 +140,43 @@ dev.off()
 corr_ci_tab <- corr_ci %>%
   dplyr::select(x_var, y_var, raw.r, raw.lower, raw.upper, n, p)
 
+row.names(corr_ci_tab) <- seq(1:length(corr_ci_tab$x_var))
+
 fileConn <- file(paste0("output/include/corr_ci_tab.tex"))
 writeLines(stargazer(corr_ci_tab, 
   summary = FALSE, label = "corr_ci_tab", digit.separate = 0, rownames = FALSE),
+  fileConn)
+close(fileConn)
+
+p_format <- function(p){
+  case_when(p < 0.01 ~ paste0("p <0.01"),
+    p < 0.05 ~ paste0("p <0.05"),
+    TRUE ~ paste0("p = ", round(p, digits = 2)))
+}
+
+corr_format <- function(id, row_num){
+  paste0("\\newcommand{\\", id, "}{", "$\\rho =$ ", corr_ci_tab$raw.r[row_num], ", ", p_format(corr_ci_tab$p[row_num]), "}")
+}
+
+# Correlations tex variables
+fileConn <- file(paste0("output/include/corr_coef.tex"))
+writeLines(
+  c(
+    corr_format("ccib", 78),
+    corr_format("ccmb", 42),
+    corr_format("ccmcb", 50),
+    corr_format("ccob", 23),
+    corr_format("ccsb", 12),
+    corr_format("ccms", 37),
+    corr_format("ccme", 38),
+    corr_format("ccmh", 39),
+    corr_format("ccmi", 41),
+    corr_format("ccsi", 67),
+    corr_format("ccei", 71),
+    corr_format("cctb", 57),
+    corr_format("cctcb", 63)
+    
+    ),
   fileConn)
 close(fileConn)
 
@@ -165,7 +200,7 @@ sink()
 struc_model_spec <- "
 # Latent vars
 div     =~  sp_rich_raref_log_std + shannon_equit_log_std
-struc   =~  cov_height_std + cov_dbh_std
+struc   =~  cov_dbh_std + cov_height_std
 
 # Modifications
 
@@ -196,26 +231,11 @@ struc_model_summ <- summary(struc_model_fit,
   fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
 
 struc_model_edge_df <- struc_model_summ$PE %>%
-  filter(op %in% c("=~", "~")) %>%
+  filter(op %in% c("=~", "~", ":=")) %>%
   mutate(est = round(est, digits = 2))
 
-struc_mod_rsq <- round(lavInspect(struc_model_fit, "rsquare")[5], digits = 2)
   
-fileConn <- file(paste0("output/include/path_coef_struc.tex"))
-writeLines(
-  c(
-    paste0("\\newcommand{\\pcsdsd}{", struc_model_edge_df$est[1], "}"),
-    paste0("\\newcommand{\\pcsded}{", struc_model_edge_df$est[2], "}"),
-    paste0("\\newcommand{\\pcshdh}{", struc_model_edge_df$est[3], "}"),
-    paste0("\\newcommand{\\pcshhh}{", struc_model_edge_df$est[4], "}"),
-    paste0("\\newcommand{\\pcsdb}{", struc_model_edge_df$est[5], "}"),
-    paste0("\\newcommand{\\pcshb}{", struc_model_edge_df$est[6], "}"),
-    paste0("\\newcommand{\\pcsdh}{", struc_model_edge_df$est[7], "}"),
-    paste0("\\newcommand{\\pcsib}{", struc_model_edge_df$est[8], "}"),
-    paste0("\\newcommand{\\pcsdi}{", struc_model_edge_df$est[9], "}"),
-    paste0("\\newcommand{\\strucrsq}{", struc_mod_rsq, "}")),
-    fileConn)
-close(fileConn)
+
 
 sink(paste0("output/struc_model_fit", ext, ".txt"))
 print(struc_model_summ)
@@ -255,8 +275,8 @@ ggplot() +
   geom_errorbar(data = struc_model_regs, 
     aes(x = rhs, ymin = std.all - se, ymax = std.all + se),
     width = 0.2) + 
-  geom_point(data = struc_model_regs, aes(x = rhs, y = std.all, fill = rhs),
-    colour = "black", shape = 21, size = 2) +
+  geom_point(data = struc_model_regs, aes(x = rhs, y = std.all, group = rhs),
+    colour = "black", size = 2) +
   facet_grid(op~., scales = "free_y", switch = "y") + 
   labs(x = "Factor", y = expression("Path coefficient")) + 
   coord_flip() + 
@@ -266,7 +286,7 @@ ggplot() +
 dev.off()
 
 # Structural SEM for each cluster ----
-sem_data_clust_list <- split(sem_data, sem_data$clust5)
+sem_data_clust_list <- split(sem_data, sem_data$clust4)
 
 clust_mod <- function(mod, mod_name, mutate_summ){
   model_fit_clust_list <- list()
@@ -274,8 +294,7 @@ clust_mod <- function(mod, mod_name, mutate_summ){
   model_diag_clust_list <- list()
   model_regs_list <- list()
   for(i in 1:length(sem_data_clust_list)){
-    model_fit_clust_list[[i]] <- sem(mod, data = sem_data_clust_list[[i]],
-      optim.method = "BFGS")
+    model_fit_clust_list[[i]] <- sem(mod, data = sem_data_clust_list[[i]])
   
   model_summ_clust_list[[i]] <- summary(model_fit_clust_list[[i]], 
     fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
@@ -287,22 +306,22 @@ clust_mod <- function(mod, mod_name, mutate_summ){
     label.cex = 2, ask = FALSE)
   
   pdf(file = paste0("img/", mod_name, "_model_clust_", 
-    sem_data_clust_list[[i]]$clust5[1], ext, ".pdf"), 
+    sem_data_clust_list[[i]]$clust4[1], ext, ".pdf"), 
     width = 12, height = 4)
   plot(model_diag_clust_list[[i]])
   dev.off()
   
   sink(paste0("output/", mod_name, "_model_fit_clust_", 
-    sem_data_clust_list[[i]]$clust5[1], ext, ".txt"))
+    sem_data_clust_list[[i]]$clust4[1], ext, ".txt"))
   print(model_summ_clust_list[[i]])
   sink()
   
   model_regs_list[[i]] <- model_summ_clust_list[[i]]$PE %>% 
     mutate_summ(.) %>%
-    mutate(model = first(sem_data_clust_list[[i]]$clust5))
+    mutate(model = first(sem_data_clust_list[[i]]$clust4))
   
   pdf(file = paste0("img/", mod_name, "_model_slopes_clust_", 
-    sem_data_clust_list[[i]]$clust5[1], ext, ".pdf"), width = 12, height = 4)
+    sem_data_clust_list[[i]]$clust4[1], ext, ".pdf"), width = 12, height = 4)
   print(ggplot() + 
     geom_hline(yintercept = 0, linetype = 2) + 
     geom_errorbar(data = model_regs_list[[i]], aes(x = rhs, ymin = est - se, ymax = est + se),
@@ -340,13 +359,13 @@ print(ggplot() +
   geom_hline(yintercept = 0, linetype = 2) + 
   geom_errorbar(data = model_regs_all, 
     aes(x = rhs, ymin = est - se, ymax = est + se, 
-      colour = factor(model, levels = c("1", "2", "3", "4", "5", "all"), 
-        labels = c("C1", "C2", "C3", "C4", "C5", "All"))),
+      colour = factor(model, levels = c("1", "2", "3", "4", "all"), 
+        labels = c("C1", "C2", "C3", "C4", "All"))),
     width = 0.4, position = position_dodge(width = 0.5)) + 
   geom_point(data = model_regs_all, 
     aes(x = rhs, y = est, 
-      fill = factor(model, levels = c("1", "2", "3", "4", "5", "all"), 
-        labels = c("C1", "C2", "C3", "C4", "C5", "All"))),
+      fill = factor(model, levels = c("1", "2", "3", "4", "all"), 
+        labels = c("C1", "C2", "C3", "C4", "All"))),
     colour = "black", shape = 21, size = 2, 
     position = position_dodge(width = 0.5)) +
   scale_colour_manual(values = c(clust_pal, "black"), name = "Cluster") + 
@@ -376,7 +395,7 @@ fit_df_clean <- fit_df %>%
   mutate(stat =  row.names(.)) %>%
   select(stat = stat, 1:6) %>%
   rename_at(vars(contains('V')), funs(sub('V', 'C', .))) %>%
-  rename("All" = C6)
+  rename("All" = C5)
 
 sink(paste0("output/", file, ".txt" ))
 fit_df_clean
@@ -403,8 +422,8 @@ fit_df_clean_output <- fit_df_clean_output %>%
     srmr = round(as.numeric(srmr), digits = 3),
     rsquare_agb = round(rsquare_clust, digits = 2)
     ) %>%
-  dplyr::select(cluster, npar, ntotal, chisq, df, cfi, tli, logl, aic, 
-    rmsea, srmr, rsquare_agb)
+  dplyr::select(cluster, ntotal, chisq, df, cfi, tli, logl, 
+    rmsea, rsquare_agb)
   
 fileConn <- file(paste0("output/include/", file, ".tex"))
 writeLines(stargazer(fit_df_clean_output, 
@@ -416,10 +435,56 @@ close(fileConn)
 sem_fit_tab(struc_model_summ_clust_list, struc_model_summ,
   file = paste0("struc_model_fit_clust_stats", ext))
 
+
+
+
+fileConn <- file(paste0("output/include/path_coef_struc.tex"))
+writeLines(
+  c(
+    paste0("\\newcommand{\\pcsdsd}{", struc_model_edge_df$est[1], "}"),
+    paste0("\\newcommand{\\pcsded}{", struc_model_edge_df$est[2], "}"),
+    paste0("\\newcommand{\\pcshdh}{", struc_model_edge_df$est[3], "}"),
+    paste0("\\newcommand{\\pcshhh}{", struc_model_edge_df$est[4], "}"),
+    paste0("\\newcommand{\\pcsdb}{", struc_model_edge_df$est[5], "}"),
+    paste0("\\newcommand{\\pcshb}{", struc_model_edge_df$est[6], "}"),
+    paste0("\\newcommand{\\pcsdh}{", struc_model_edge_df$est[7], "}"),
+    paste0("\\newcommand{\\pcsib}{", struc_model_edge_df$est[8], "}"),
+    paste0("\\newcommand{\\pcsdi}{", struc_model_edge_df$est[9], "}"),
+    paste0("\\newcommand{\\strucrsq}{", round(lavInspect(struc_model_fit, "rsquare")[5], digits = 2), "}"),
+    paste0("\\newcommand{\\strucbrsq}{", round(lavInspect( struc_model_fit_clust_list[[2]], "rsquare")[5], digits = 2), "}"),
+    paste0("\\newcommand{\\struccrsq}{", round(lavInspect( struc_model_fit_clust_list[[3]], "rsquare")[5], digits = 2), "}"),
+    paste0("\\newcommand{\\strucsib}{$\\beta =$ ",  struc_model_edge_df$est[11], "$\\pm$", struc_model_edge_df$se[11], ", ", p_format(struc_model_edge_df$p[11]), "}"),
+    paste0(
+      "\\newcommand{\\strucbsb}{$\\beta =$ ", 
+      round(struc_model_summ_clust_list[[2]]$PE$est[5], digits = 2), 
+      "$\\pm$", 
+      round(struc_model_summ_clust_list[[2]]$PE$se[5], digits = 3), 
+      ", ", 
+      p_format(struc_model_summ_clust_list[[2]]$PE$pvalue[5]), 
+      "}"),
+    paste0(
+      "\\newcommand{\\strucbhb}{$\\beta =$ ",
+      round(struc_model_summ_clust_list[[2]]$PE$est[6], digits = 2),
+      "$\\pm$", 
+      round(struc_model_summ_clust_list[[2]]$PE$se[6], digits = 3), 
+      ", ", 
+      p_format(struc_model_summ_clust_list[[2]]$PE$pvalue[6]), 
+      "}"),
+    paste0(
+      "\\newcommand{\\struccsb}{$\\beta =$ ", 
+      round(struc_model_summ_clust_list[[3]]$PE$est[5], digits = 2), 
+      "$\\pm$", 
+      round(struc_model_summ_clust_list[[3]]$PE$se[5], digits = 3), 
+      ", ", 
+      p_format(struc_model_summ_clust_list[[3]]$PE$pvalue[5]), 
+      "}")),
+  fileConn)
+close(fileConn)
+
 # Structural SEM - Variation in stem density ----
 
-min_quantile <- seq(from = 0.01, to = 0.9, by = 0.001)
-max_quantile <- seq(from = 0.11, to = 1, by = 0.001)
+min_quantile <- seq(from = 0.01, to = 0.8, by = 0.01)
+max_quantile <- seq(from = 0.21, to = 1, by = 0.01)
 
 sem_data_quant_list <- list()
 for(i in 1:length(min_quantile)){
@@ -440,7 +505,7 @@ struc_sem_quant_regs_list <- list()
 struc_model_no_stem_dens_spec <- "
 # Latent vars
 div     =~  sp_rich_raref_log_std + shannon_equit_log_std
-struc   =~  cov_height_std + cov_dbh_std
+struc   =~  cov_dbh_std + cov_height_std
 
 # Regressions
 bchave_log_std ~ c*div
@@ -484,14 +549,14 @@ ggplot(data = struc_sem_quant_regs) +
   geom_hline(aes(yintercept = 0), linetype = 5) + 
   geom_line(aes(x = stems_ha, y = est)) +  
   geom_smooth(aes(x = stems_ha, y = est), 
-    method = "loess", size = 0.5, colour = "#C44620") + 
+    method = "loess", size = 0.5, span = 0.5, colour = "#C44620") + 
   facet_wrap(~rhs) +
   labs(x = expression("Stems" ~ ha^-1), y = "Path coefficient") + 
   theme_classic()
 dev.off()
 
 pdf("img/sp_rich_stems_ha.pdf", width = 10, height = 6)
-ggplot(data = filter(struc_sem_quant_regs, rhs == "Diversity")) + 
+ggplot(data = filter(struc_sem_quant_regs, rhs == "Species div. -> AGB")) + 
   geom_point(aes(x = quant, y = sp_rich_raref)) +  
   geom_smooth(aes(x = quant, y = sp_rich_raref)) + 
   labs(x = expression("Median stems" ~ ha^-1), y = "Extrapolated species richness") + 
@@ -570,7 +635,7 @@ moisture =~ total_precip_std + precip_seasonality_rev_log_std +
 mean_temp_rev_std + temp_seasonality_rev_log_std
 div      =~ sp_rich_raref_log_std + shannon_equit_log_std
 soil     =~ sand_per_rev_std + ocdens_std + cation_ex_cap_std
-struc    =~ cov_height_std + cov_dbh_std
+struc    =~ cov_dbh_std + cov_height_std
 
 ## Diversity
 div ~ a*moisture
@@ -656,7 +721,7 @@ writeLines(
 close(fileConn)
 
 
-  sink(paste0("output/full_mod_fit", ext, ".txt"))
+sink(paste0("output/full_mod_fit", ext, ".txt"))
 print(full_mod_summ)
 sink()
 
@@ -715,8 +780,8 @@ ggplot() +
   geom_errorbar(data = full_mod_regs, 
     aes(x = rhs, ymin = est - se, ymax = est + se),
     width = 0.3) + 
-  geom_point(data = full_mod_regs, aes(x = rhs, y = est, fill = rhs), 
-    colour = "black", shape = 21, size = 2) +
+  geom_point(data = full_mod_regs, aes(x = rhs, y = est, group = rhs), 
+    colour = "black", size = 2) +
   facet_grid(op~., scales = "free_y", switch = "y") + 
   labs(x = "Effect on AGB", y = expression("Path coefficient")) + 
   coord_flip() + 
@@ -771,7 +836,7 @@ mois_int <- ggplot() +
   geom_point(data = int_df, 
     aes(x = sp_rich_raref_log_std_std, y = bchave_std, fill = total_precip_std_std),
     shape = 21) + 
-  scale_fill_viridis_c(name="Moisture\navailability (SD)", option = "C") + 
+  scale_fill_viridis_c(name="Moisture\navailability (SD)", option = "C", breaks = z2, limits = c(-2,2)) + 
   new_scale("fill") + 
   stat_smooth(data=transform(newdf, 
     yp=predict(mois_div_int_mod, newdf)), 
@@ -798,7 +863,7 @@ soil_int <- ggplot() +
   geom_point(data = int_df, 
     aes(x = sp_rich_raref_log_std_std, y = bchave_std, fill = ocdens_std_std),
     shape = 21) + 
-  scale_fill_viridis_c(name="Soil\nfertility (SD)", option = "C") + 
+  scale_fill_viridis_c(name="Soil\nfertility (SD)", option = "C", breaks = z2, limits = c(-2,2)) + 
   new_scale("fill") + 
   stat_smooth(data=transform(newdf, 
     yp=predict(soil_div_int_mod, newdf)), 
@@ -815,11 +880,11 @@ dev.off()
 
 # Summary of models
 fileConn <- file(paste0("output/include/mois_div_int_mod.tex"))
-writeLines(stargazer(mois_div_int_mod, notes.label = "", notes.append = FALSE),
+writeLines(stargazer(mois_div_int_mod, notes.label = "", label = "mois_div_int_mod", notes.append = FALSE),
   fileConn)
 close(fileConn)
 
 fileConn <- file(paste0("output/include/soil_div_int_mod.tex"))
-writeLines(stargazer(soil_div_int_mod, notes.label = "", notes.append = FALSE),
+writeLines(stargazer(soil_div_int_mod, notes.label = "", label = "soil_div_int_mod",  notes.append = FALSE),
   fileConn)
 close(fileConn)

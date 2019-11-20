@@ -1,5 +1,32 @@
 \begin{thebibliography}{xx}
 
+\harvarditem[Aleman et~al.]{Aleman, Blarquez \harvardand\
+  Staver}{2016}{Aleman2016}
+Aleman, J.~C., Blarquez, O. \harvardand\ Staver, C.~A.  \harvardyearleft
+  2016\harvardyearright , `Land-use change outweighs projected effects of
+  changing rainfall on tree cover in sub-saharan africa', {\em Global Change
+  Biology} {\bf 22},~3013--3025.
+
+\harvarditem[Ali et~al.]{Ali, Lin, He, Kong, Yu \harvardand\ Jiang}{2019{\em
+  a}}{Ali2019a}
+Ali, A., Lin, S., He, J., Kong, F., Yu, J. \harvardand\ Jiang, H.
+  \harvardyearleft 2019{\em a}\harvardyearright , `Big-sized trees overrule
+  remaining trees' attributes and species richness as determinants of
+  aboveground biomass in tropical forests', {\em Global Change Biology} {\bf
+  25},~2810--2824.
+
+\harvarditem[Ali et~al.]{Ali, Lin, He, Kong, Yu \harvardand\ Jiang}{2019{\em
+  b}}{Ali2019b}
+Ali, A., Lin, S., He, J., Kong, F., Yu, J. \harvardand\ Jiang, H.
+  \harvardyearleft 2019{\em b}\harvardyearright , `Climate and soils determine
+  aboveground biomass indirectly via species diversity and stand structural
+  complexity in tropical forests', {\em Forest Ecology and Management} {\bf
+  432},~823--831.
+
+\harvarditem{Beaujean}{2014}{Beaujean2014}
+Beaujean, A.~A.  \harvardyearleft 2014\harvardyearright , {\em Latent variable
+  modeling using R}, Routledge, New York NY, USA.
+
 \harvarditem{Bond \harvardand\ Keeley}{2005}{Bond2005}
 Bond, W.~J. \harvardand\ Keeley, J.~E.  \harvardyearleft 2005\harvardyearright
   , `Fire as a global `herbivore': the ecology and evolution of flammable
@@ -33,6 +60,13 @@ Cham, H., Reshetnyak, E., Rosenfeld, B. \harvardand\ Breitbart, W.
   estimation for latent variable interactions with incomplete indicators', {\em
   Multivariate Behavioural Research} {\bf 52}(1),~12--30.
 
+\harvarditem[Charles-Dominique et~al.]{Charles-Dominique, Midgley, Tomlinson
+  \harvardand\ Bond}{2018}{Charles-Dominique2018}
+Charles-Dominique, T., Midgley, G.~F., Tomlinson, K.~W. \harvardand\ Bond,
+  W.~J.  \harvardyearleft 2018\harvardyearright , `Steal the light: shade vs
+  fire adapted vegetation in forest-savanna mosaics', {\em New Phytologist}
+  {\bf 218},~1419--1429.
+
 \harvarditem[Chave et~al.]{Chave, Coomes, Jansen, Lewis, Swenson \harvardand\
   Zanne}{2009}{Chave2009}
 Chave, J., Coomes, D., Jansen, S., Lewis, S.~L., Swenson, N.~G. \harvardand\
@@ -60,6 +94,30 @@ Chen, I., Hill, J.~K., Ohlem{\"u}ller, R., Roy, D.~B. \harvardand\ Thomas,
   C.~D.  \harvardyearleft 2011\harvardyearright , `Rapid range of species
   associated with high levels of climate warming', {\em Science} {\bf
   333},~1024--1026.
+
+\harvarditem[Chisholm et~al.]{Chisholm, Muller-Landau, Rahman, Bebber, Bin,
+  Bohlman, Bourg, Brinks, Bunyavejchewin, Butt, Cao, Cao, C{\'a}rdenas, Chang,
+  Chiang, Chuyong, Condit, Dattaraja, Davies, Duque, Fletcher, Gunatilleke,
+  Gunatilleke, Hao, Harrison, Howe, Hsieh, Hubbell, Itoh, Kenfack,
+  Kiratiprayoon, Larson, Lian, Lin, Liu, Lutz, Ma, Malhi, McMahon, McShea,
+  Meegaskumbura, Razman, Morecroft, Nytch, Oliveira, Parker, Pulla,
+  Punchi-Manage, Romero-Saltos, Sang, Schurman, Su, Sukumar, Sun, Suresh, Tan,
+  Thomas, Thomas, Thompson, Valencia, Wolf, Yap, Ye, Yuan \harvardand\
+  Zimmermann}{2013}{Chisholm2013}
+Chisholm, R.~A., Muller-Landau, H.~C., Rahman, K.~A., Bebber, D.~P., Bin, Y.,
+  Bohlman, S.~A., Bourg, N.~A., Brinks, J., Bunyavejchewin, S., Butt, N., Cao,
+  H., Cao, M., C{\'a}rdenas, D., Chang, L., Chiang, J., Chuyong, G., Condit,
+  R., Dattaraja, H.~S., Davies, S., Duque, A., Fletcher, C., Gunatilleke, N.,
+  Gunatilleke, S., Hao, Z., Harrison, R.~D., Howe, R., Hsieh, C., Hubbell,
+  S.~P., Itoh, A., Kenfack, D., Kiratiprayoon, S., Larson, A.~J., Lian, J.,
+  Lin, D., Liu, H., Lutz, J.~A., Ma, K., Malhi, Y., McMahon, S., McShea, W.,
+  Meegaskumbura, M., Razman, S.~M., Morecroft, M.~D., Nytch, C.~J., Oliveira,
+  A., Parker, G.~G., Pulla, S., Punchi-Manage, R., Romero-Saltos, H., Sang, W.,
+  Schurman, J., Su, S., Sukumar, R., Sun, I., Suresh, H.~S., Tan, S., Thomas,
+  D., Thomas, S., Thompson, J., Valencia, R., Wolf, A., Yap, S., Ye, W., Yuan,
+  Z. \harvardand\ Zimmermann, J.~K.  \harvardyearleft 2013\harvardyearright ,
+  `Scale-dependent relatiosnhips between tree species richness and ecosystem
+  function in forests', {\em Journal of Ecology} {\bf 101},~1214--1224.
 
 \harvarditem[Clarke et~al.]{Clarke, York, Rasheed \harvardand\
   Northfield}{2017}{Clarke2017}
@@ -94,6 +152,19 @@ Dohn, J., Demb{\'e}l{\'e}, F., Karemb{\'e}, M., Moustakas, A., Am{\'e}vor,
   `Tree effects on grass growth in savannas: competition, facilitation and the
   stress-gradient hypothesis', {\em Journal of Ecology} {\bf 101},~202--209.
 
+\harvarditem{Dufr{\^e}ne \harvardand\ Legendre}{1997}{Dufrene1997}
+Dufr{\^e}ne, M. \harvardand\ Legendre, P.  \harvardyearleft
+  1997\harvardyearright , `Species assemblage and indicator species: the need
+  for a flexible asymmetrical approach', {\em Ecological Monographs} {\bf
+  67}(3),~345--366.
+
+\harvarditem[Eldridge et~al.]{Eldridge, Maestre, Maltez-Mouro \harvardand\
+  Bowker}{2012}{Eldridge2012}
+Eldridge, D.~J., Maestre, F.~T., Maltez-Mouro, S. \harvardand\ Bowker, M.~A.
+  \harvardyearleft 2012\harvardyearright , `A global database of shrub
+  encroachment effects on ecosystem structure and functioning', {\em Ecology}
+  {\bf 93}(11),~2499.
+
 \harvarditem[Fayolle et~al.]{Fayolle, Swaine, Aleman, Azihou, Bauman, {te
   Beest}, Chidumayo, Cromsigt, Dessard, Finkch, Gon\c{c}alves, Gillet, Gorel,
   Hick, Holdo, Kirunda, Mahy, McNicol, Ryan, Revermann, Plumptre, Pritchard,
@@ -126,6 +197,13 @@ Frost, P.  \harvardyearleft 1996\harvardyearright , The ecology of miombo
   woodlands, {\em in} B.~Campbell, ed., `The miombo in transition: woodlands
   and welfare in Africa', Center for International Forestry Research, Bogor,
   Indonesia, pp.~11--55.
+
+\harvarditem[Hardiman et~al.]{Hardiman, Bohrer, Gough, Vogel \harvardand\
+  Curtis}{2011}{Hardiman2011}
+Hardiman, B.~S., Bohrer, G., Gough, C.~M., Vogel, C.~S. \harvardand\ Curtis,
+  P.~S.  \harvardyearleft 2011\harvardyearright , `The role of canopy
+  structural complexity in wood net primary production of a maturing northern
+  deciduous forest', {\em Ecology} {\bf 92}(9),~1818--1827.
 
 \harvarditem{Hector \harvardand\ Bagchi}{2007}{Hector2007}
 Hector, A. \harvardand\ Bagchi, R.  \harvardyearleft 2007\harvardyearright ,
@@ -189,6 +267,20 @@ Kunz, M., Fichtner, A., H{\:a}rdtle, W., Raumonen, P., Bruelheide, H.
   aboveground allocation patterns and crown morphology of individual trees',
   {\em Ecology Letters} pp.~1--11.
 
+\harvarditem[LaRue et~al.]{LaRue, Hardiman, Elliott \harvardand\
+  Fei}{2019}{LaRue2019}
+LaRue, E.~A., Hardiman, B.~S., Elliott, J.~M. \harvardand\ Fei, S.
+  \harvardyearleft 2019\harvardyearright , `Structural diversity as a predictor
+  of ecosystem function', {\em Environmental Research Letters} {\bf
+  14},~114011.
+
+\harvarditem[Lasky et~al.]{Lasky, Uriarte, Boukili, Erickson, Kress
+  \harvardand\ Chazdon}{2014}{Lasky2014}
+Lasky, J.~R., Uriarte, M., Boukili, V.~K., Erickson, D.~L., Kress, W.~J.
+  \harvardand\ Chazdon, R.~L.  \harvardyearleft 2014\harvardyearright , `The
+  relationship between tree biodiversity and biomass dynamic changes with
+  tropical forest succession', {\em Ecology Letters} {\bf 17},~1158--1167.
+
 \harvarditem{Lee}{2007}{Lee2007}
 Lee, S.~Y.  \harvardyearleft 2007\harvardyearright , {\em Structural Equation
   Modeling: A Bayesian Approach}, Wiley, New York, USA.
@@ -225,6 +317,19 @@ Liang, J., Crowther, T.~W., Picard, N., Wiser, S., Zhou, M., Alberti, G.,
   relationship predominant in global forests', {\em Science} {\bf
   354}(6309),~aaf8957--aaf8957.
 
+\harvarditem{Linder}{2014}{Linder2014}
+Linder, H.~P.  \harvardyearleft 2014\harvardyearright , `The evolution of
+  african plant diversity', {\em Frontiers in Ecology and Evolution} {\bf
+  2}(38),~1--14.
+
+\harvarditem[Mayaux et~al.]{Mayaux, Eva, Brink, Achard \harvardand\
+  Belward}{2008}{Mayaux2008}
+Mayaux, P., Eva, H., Brink, A., Achard, F. \harvardand\ Belward, A.
+  \harvardyearleft 2008\harvardyearright , Remote sensing of land-cover and
+  land-use dynamics, {\em in} `Earth Observation of Global Change: The Role of
+  Satellite Remote Sensing in Monitoring the Global Environment',
+  Springer-Verlag, Berlin, Germany, pp.~85--108.
+
 \harvarditem[McNicol et~al.]{McNicol, Ryan, Dexter, Ball \harvardand\
   Williams}{2018}{McNicol2018}
 McNicol, I.~M., Ryan, C.~M., Dexter, K.~G., Ball, S. M.~J. \harvardand\
@@ -245,11 +350,28 @@ Michaletz, S.~T., Kerkhoff, A.~J. \harvardand\ Enquist, B.~J.  \harvardyearleft
   geographical gradients', {\em Global Ecology and Biogeography} {\bf
   27},~166--174.
 
+\harvarditem[Murphy et~al.]{Murphy, Andersen \harvardand\
+  Parr}{2016}{Murphy2016}
+Murphy, B.~P., Andersen, A.~N. \harvardand\ Parr, C.~L.  \harvardyearleft
+  2016\harvardyearright , `The underestimated biodiversity of tropical grassy
+  biomes', {\em Philosophical Transactions of the Royal Society B: Biological
+  Sciences} {\bf 371},~20150319.
+
+\harvarditem[Muscolo et~al.]{Muscolo, Bagnato, Sidari \harvardand\
+  Mercurio}{2014}{Muscolo2014}
+Muscolo, A., Bagnato, S., Sidari, M. \harvardand\ Mercurio, R.
+  \harvardyearleft 2014\harvardyearright , `A review of the roles of forest
+  canopy gaps', {\em Journal of Forestry Research} {\bf 25}(4),~725--736.
+
 \harvarditem{Mutowo \harvardand\ Murwira}{2012}{Mutowo2012}
 Mutowo, G. \harvardand\ Murwira, A.  \harvardyearleft 2012\harvardyearright ,
   `Relationship between remotely sensed variables and tree species diversity in
   savanna woodlands of southern africa', {\em International Journal of Remote
   Sensing} {\bf 33}(20),~6378--6402.
+
+\harvarditem{Otto}{2013}{Otto2013}
+Otto, W.  \harvardyearleft 2013\harvardyearright , {\em Data analysis in
+  veegtation ecology}, Wiley-Blackwell, Chichester, UK.
 
 \harvarditem[Parr et~al.]{Parr, Lehmann, Bond, Hoffmann \harvardand\
   Andersen}{2014}{Parr2014}
@@ -257,6 +379,68 @@ Parr, C.~L., Lehmann, C. E.~R., Bond, W.~J., Hoffmann, W.~A. \harvardand\
   Andersen, A.~N.  \harvardyearleft 2014\harvardyearright , `Tropical grassy
   biomes: misunderstood, neglected, and under threat', {\em Trends in Ecology
   and Evolution} {\bf 29}(4),~205--213.
+
+\harvarditem[Pasari et~al.]{Pasari, Levi, Zavaleta \harvardand\
+  Tilman}{2013}{Pasari2013}
+Pasari, J.~R., Levi, T., Zavaleta, E.~S. \harvardand\ Tilman, D.
+  \harvardyearleft 2013\harvardyearright , `Several scales of biodiversity
+  affect ecosystem multifunctionality', {\em Proceedings of the National
+  Academy of Sciences} {\bf 110}(25),~10219--10222.
+
+\harvarditem[Poorter et~al.]{Poorter, {van de Sande}, Thompson, Arets,
+  Alarc{\`o}n, {\`A}lvarez-S{\`a}nchez, Ascarrunz, Balvanera,
+  Barajas-Guzm{\`a}n, Boit, Bongers, Carvalho, Casanoves, Cornejo-Tenorio,
+  Costa, {de Castilho}, Duivenvoorden, Dutrieux, Enquist,
+  Fern{\`a}ndez-M{\`e}ndez, Finegan, Gormley, Healey, Hoosbeek,
+  Ibarra-Manr{\`i}quez, Junqueira, Levis, Licona, Lisboa, Magnusson,
+  Mart{\`i}nez-Ramos, Mart{\`i}nez-Yrizar, Martorano, Maskell, Mazzei, Meave,
+  Mora, Mu{\~n}oz, Nytch, Pansonato, Parr, Paz, P{\`e}rez-Garc{\`i}a,
+  Renter{\`i}a, Rodr{\`i}guez-Velazquez, Rozendaal, Ruschel, Sakschewski,
+  Salgado-Negret, Schietti, Sim{\~o}es, Sinclair, Souza, Souza, Stropp, {ter
+  Steege}, Swenson, Thonicke, Toledo, Uriarte, {van der Hout}, Walker, Zamora
+  \harvardand\ Pe{\~n}a-Claros}{2015}{Poorter2015}
+Poorter, L., {van de Sande}, M.~T., Thompson, J., Arets, E. J. M.~M.,
+  Alarc{\`o}n, A., {\`A}lvarez-S{\`a}nchez, J., Ascarrunz, N., Balvanera, P.,
+  Barajas-Guzm{\`a}n, G., Boit, A., Bongers, F., Carvalho, F.~A., Casanoves,
+  F., Cornejo-Tenorio, G., Costa, F. R.~C., {de Castilho}, C.~V.,
+  Duivenvoorden, J.~F., Dutrieux, L.~P., Enquist, B.~J.,
+  Fern{\`a}ndez-M{\`e}ndez, F., Finegan, B., Gormley, L. H.~L., Healey, J.~R.,
+  Hoosbeek, M.~R., Ibarra-Manr{\`i}quez, G., Junqueira, A.~B., Levis, C.,
+  Licona, J.~C., Lisboa, L.~S., Magnusson, W.~E., Mart{\`i}nez-Ramos, M.,
+  Mart{\`i}nez-Yrizar, A., Martorano, L.~G., Maskell, L.~C., Mazzei, L., Meave,
+  J.~A., Mora, F., Mu{\~n}oz, R., Nytch, C., Pansonato, M.~P., Parr, T.~W.,
+  Paz, H., P{\`e}rez-Garc{\`i}a, E.~A., Renter{\`i}a, L.~Y.,
+  Rodr{\`i}guez-Velazquez, J., Rozendaal, D. M.~A., Ruschel, A.~R.,
+  Sakschewski, B., Salgado-Negret, B., Schietti, J., Sim{\~o}es, M., Sinclair,
+  F.~L., Souza, P.~F., Souza, F.~C., Stropp, J., {ter Steege}, H., Swenson,
+  N.~G., Thonicke, K., Toledo, M., Uriarte, M., {van der Hout}, P., Walker, P.,
+  Zamora, N. \harvardand\ Pe{\~n}a-Claros, M.  \harvardyearleft
+  2015\harvardyearright , `Diversity enhances carbon storage in tropical
+  forests', {\em Global Ecology and Biogeography} {\bf 24},~1314--1328.
+
+\harvarditem[Poorter et~al.]{Poorter, {van der Sande}, Arets, Ascarrunz,
+  Enquist, Finegan, Licona, Mart{\'i}nez-Ramos, Mazzei, Meave, Mu{\~n}oz,
+  Nytch, {de Oliveira}, P{\'e}rez-Garc{\'i}a, Prado-Junior,
+  Rodr{\'i}guez-Vel{\'a}zques, Ruschel, Salgado-Negret, Schiavini, Swenson,
+  Tenorio, Thompson, Toledo, Uriarte, {van der Hout}, Zimmerman \harvardand\
+  Pe{\~n}a0-Claros}{2017}{Poorter2017}
+Poorter, L., {van der Sande}, M.~T., Arets, E. J. M.~M., Ascarrunz, N.,
+  Enquist, B.~J., Finegan, B., Licona, J.~C., Mart{\'i}nez-Ramos, M., Mazzei,
+  L., Meave, J.~A., Mu{\~n}oz, R., Nytch, C.~J., {de Oliveira}, A.~A.,
+  P{\'e}rez-Garc{\'i}a, E.~A., Prado-Junior, J., Rodr{\'i}guez-Vel{\'a}zques,
+  J., Ruschel, A.~R., Salgado-Negret, B., Schiavini, I., Swenson, N.~G.,
+  Tenorio, E.~A., Thompson, J., Toledo, M., Uriarte, M., {van der Hout}, P.,
+  Zimmerman, J.~K. \harvardand\ Pe{\~n}a0-Claros, M.  \harvardyearleft
+  2017\harvardyearright , `Biodiversity and climate determine the functioning
+  of neotropical forests', {\em Global Ecology and Biogeography} {\bf
+  26},~1423--1434.
+
+\harvarditem[Prado-Junior et~al.]{Prado-Junior, Schiavini, Vale, Arantes, {van
+  der Sande}, Lohbeck \harvardand\ Poorter}{2016}{Prado-Junior2016}
+Prado-Junior, J.~A., Schiavini, I., Vale, V.~S., Arantes, C.~S., {van der
+  Sande}, M.~T., Lohbeck, M. \harvardand\ Poorter, L.  \harvardyearleft
+  2016\harvardyearright , `Conservative species drive biomass productivity in
+  tropical dry forests', {\em Journal of Ecology} {\bf 104},~817--827.
 
 \harvarditem{{R Core Team}}{2019}{R2019}
 {R Core Team}  \harvardyearleft 2019\harvardyearright , {\em R: A Language and
@@ -307,6 +491,11 @@ Roques, K.~G., {O'Connor}, T.~G. \harvardand\ Watkinson, A.~R.
   an african savanna: relative influences of fire, herbivory, rainfall and
   density dependence', {\em Journal of Applied Ecology} {\bf 38},~268--280.
 
+\harvarditem{Rosseel}{2012}{lavaan}
+Rosseel, Y.  \harvardyearleft 2012\harvardyearright , `{lavaan}: An {R} package
+  for structural equation modeling', {\em Journal of Statistical Software} {\bf
+  48}(2),~1--36.
+
 \harvarditem[Rowland et~al.]{Rowland, {da Costa}, Galbraith, Oliveira, Binks,
   Oliveira, Pullen, Doughty, Metcalfe, Vasconcelos, Ferreira, Malhi, Grace,
   Mencuccini \harvardand\ Meir}{2015}{Rowland2015a}
@@ -347,6 +536,12 @@ Sankaran, M., Hanan, N.~P., Scholes, R.~J., Ratnam, J., Augustine, D.~J., Cade,
   , `Determinants of woody cover in african savannas', {\em Nature} {\bf
   438}(8),~846--849.
 
+\harvarditem[Scholes et~al.]{Scholes, Frost \harvardand\
+  Tian}{2004}{Scholes2004}
+Scholes, R.~J., Frost, P. G.~H. \harvardand\ Tian, Y.  \harvardyearleft
+  2004\harvardyearright , `Canopy structure in savannas along a moisture
+  gradient on kalahari sands', {\em Global Change Biology} {\bf 10},~292--302.
+
 \harvarditem{Schulze \harvardand\ Mooney}{1994}{Schulze1994}
 Schulze, E.~D. \harvardand\ Mooney, H.~A.  \harvardyearleft
   1994\harvardyearright , {\em Ecosystem function of biodiversity: A summary},
@@ -358,6 +553,11 @@ Selaya, N.~G. \harvardand\ Anten, P.~R.  \harvardyearleft 2008\harvardyearright
   stability between lianas and trees in early secondary tropical forest', {\em
   Functional Ecology} {\bf 22},~30--39.
 
+\harvarditem{SEOSAW}{2019}{seosaw_web}
+SEOSAW  \harvardyearleft 2019\harvardyearright , `Seosaw: A socio-ecological
+  observatory for southern african woodlands'.
+\newblock [Online; 15-January-2019].
+
 \harvarditem[Shirima et~al.]{Shirima, Pfeifer, Platts, Totland \harvardand\
   Moe}{2015}{Shirima2015}
 Shirima, D.~D., Pfeifer, M., Platts, P.~J., Totland, {\O}. \harvardand\ Moe,
@@ -366,11 +566,35 @@ Shirima, D.~D., Pfeifer, M., Platts, P.~J., Totland, {\O}. \harvardand\ Moe,
   forest and dry miombo woodland of tanzania', {\em PLoS ONE} {\bf
   10}(11),~1--15.
 
+\harvarditem{Smith \harvardand\ Wilson}{1996}{Smith1996}
+Smith, B. \harvardand\ Wilson, J.~B.  \harvardyearleft 1996\harvardyearright ,
+  `A consumer's guide to evenness indices', {\em Oikos} {\bf 76}(1),~70--82.
+
 \harvarditem[Solbrig et~al.]{Solbrig, Medina \harvardand\
   Silva}{1996}{Solbrig1996}
 Solbrig, O.~T., Medina, E. \harvardand\ Silva, J.~F.  \harvardyearleft
   1996\harvardyearright , {\em Biodiversity and Savanna Ecosystem Processes},
   Springer-Verlag, Berlin, Germany.
+
+\harvarditem[Spasojevic et~al.]{Spasojevic, Grace, Harrison \harvardand\
+  Damschen}{2014}{Spasojevic2014}
+Spasojevic, M.~J., Grace, J.~B., Harrison, S. \harvardand\ Damschen, E.~I.
+  \harvardyearleft 2014\harvardyearright , `Functional diversity supports the
+  physiological tolerance hyopthesis for plant species richness along climatic
+  gradients', {\em Journal of Ecology} {\bf 102},~447--455.
+
+\harvarditem[Stark et~al.]{Stark, Leitold, Wu, Hunter, {de Castilho}, Costa,
+  McMahon, Parker, Shimabukuro, Lefsky, Keller, Alves, Schietti, Shimabukuro,
+  Brand{\~a}o, Woodcock, Higuchi, {de Camargo}, {de Oliveira} \harvardand\
+  Saleska}{2012}{Stark2012}
+Stark, S.~C., Leitold, V., Wu, J.~L., Hunter, M.~O., {de Castilho}, C.~V.,
+  Costa, F. R.~C., McMahon, S.~M., Parker, G.~G., Shimabukuro, M.~T., Lefsky,
+  M.~A., Keller, M., Alves, L.~F., Schietti, J., Shimabukuro, Y.~E.,
+  Brand{\~a}o, D.~O., Woodcock, T.~K., Higuchi, N., {de Camargo}, P.~B., {de
+  Oliveira}, R.~C. \harvardand\ Saleska, S.~R.  \harvardyearleft
+  2012\harvardyearright , `Amazon foreast carbon dynamics predicted by profiles
+  of canopy leaf area and light environment', {\em Ecology Letters} {\bf
+  15},~1406--1414.
 
 \harvarditem[Staver et~al.]{Staver, Bond, Stock, {van Rensburg} \harvardand\
   Waldram}{2009}{Staver2009}
@@ -378,6 +602,14 @@ Staver, A.~C., Bond, W.~J., Stock, W.~D., {van Rensburg}, S.~J. \harvardand\
   Waldram, M.~S.  \harvardyearleft 2009\harvardyearright , `Browsing and fire
   interact to suppress tree density in an african savanna', {\em Ecological
   Applications} {\bf 19}(7),~1909--1919.
+
+\harvarditem[Stegen et~al.]{Stegen, Swenson, Enquist, White, Phillips,
+  J{\o}rgensen, Weiser, Mendoza \harvardand\ Vargas}{2011}{Stegen2011}
+Stegen, J.~C., Swenson, N.~G., Enquist, B.~J., White, E.~P., Phillips, O.~L.,
+  J{\o}rgensen, P.~M., Weiser, M.~D., Mendoza, A.~M. \harvardand\ Vargas, P.~N.
+   \harvardyearleft 2011\harvardyearright , `Variation in above-ground forest
+  biomass across broad climatic gradients', {\em Global Ecology and
+  Biogeography} {\bf 20},~744--754.
 
 \harvarditem[Thompson et~al.]{Thompson, Okabe, Tylianakis, Kumar, Brockerhoff,
   Schellhorn, Parrotta \harvardand\ Nasi}{2011}{Thompson2011}
@@ -398,11 +630,30 @@ Tilman, D., Isbell, F. \harvardand\ Cowles, J.~M.  \harvardyearleft
   2014\harvardyearright , `Biodiversity and ecosystem functioning', {\em Annual
   Review of Ecology, Evolution, and Systematics} {\bf 45},~471--493.
 
+\harvarditem[Tobner et~al.]{Tobner, Paquette, Gravel, Reich, Williams
+  \harvardand\ Messier}{2016}{Tobner2016}
+Tobner, C.~M., Paquette, A., Gravel, D., Reich, P.~B., Williams, L.~J.
+  \harvardand\ Messier, C.  \harvardyearleft 2016\harvardyearright ,
+  `Functional identity is the main driver of diversity effects in young tree
+  communities', {\em Ecology Letters} {\bf 19},~638--647.
+
 \harvarditem[Val{\'e}ry et~al.]{Val{\'e}ry, Fritz, Lefeuvre \harvardand\
   Simberloff}{2009}{Valery2009}
 Val{\'e}ry, L., Fritz, H., Lefeuvre, J. \harvardand\ Simberloff, D.
-  \harvardyearleft 2009\harvardyearright , {\em Biological Invasions} {\bf
+  \harvardyearleft 2009\harvardyearright , `Ecosystem-level consequences of
+  invasions by native species as a way to investigate relationships between
+  evenness and ecosystem function', {\em Biological Invasions} {\bf
   11},~609--617.
+
+\harvarditem[{van der Sande} et~al.]{{van der Sande}, Poorter, Kooistra,
+  Balvanera, Thonicke, Thompson, Arets, Alaniz, Jones, Mora, Mwampamba, Parr
+  \harvardand\ Pe{\~n}a-Claros}{2017}{Sande2017a}
+{van der Sande}, M.~T., Poorter, L., Kooistra, L., Balvanera, P., Thonicke, K.,
+  Thompson, J., Arets, E. J. M.~M., Alaniz, N.~G., Jones, L., Mora, F.,
+  Mwampamba, T.~H., Parr, T. \harvardand\ Pe{\~n}a-Claros, M.  \harvardyearleft
+  2017\harvardyearright , `Biodiversity in species, traits, and structure
+  determines carbon stocks and uptake in tropical forests', {\em Biotropica}
+  {\bf 49}(5),~593--603.
 
 \harvarditem[Vil\`{a} et~al.]{Vil\`{a}, Inchausti, Vayreda, Barrantes, Gracia,
   Ib\`{a}\~{n}ez \harvardand\ Mata}{2005}{Vila2005}

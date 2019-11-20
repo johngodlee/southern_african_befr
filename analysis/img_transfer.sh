@@ -2,7 +2,7 @@
 
 OUT="../manuscript/img/"
 INC="../manuscript/include/"
-STRUC_HEAD="{Cluster} \& {Params.} \& {n} \& {\$\\\\chi\^{2}\$} \& {DoF} \& {CFI} \& {TLI} \& {LogLik} \& {AIC} \& {RMSEA} \& {SRMR} \& {\$R\^{2}\$ AGB} \\\\\\\\"
+STRUC_HEAD="{Cluster} \& {n} \& {\$\\\\chi\^{2}\$} \& {DoF} \& {CFI} \& {TLI} \& {LogLik} \& {RMSEA} \& {\$R\^{2}\$ AGB} \\\\\\\\"
 
 # Transfer images from analysis to manuscript
 
@@ -65,6 +65,7 @@ cp output/include/path_diagram_full.tex $INC
 
 cp output/include/path_diagram_concept.tex $INC
 
+cp output/include/corr_coef.tex $INC
 
 # Transfer tables from analysis to manuscript
 
@@ -92,13 +93,14 @@ sed -i "10s/.*/${STRUC_HEAD}/" "${INC}full_model_fit_clust_stats.tex"
 ## Biogeographical cluster description
 cp output/include/clust_summ.tex $INC
 
-sed -i 's/ccccc/clccc/g' "${INC}clust_summ.tex"
 
 sed -i 's/\\extracolsep{5pt}/\\extracolsep{0pt}/g' "${INC}clust_summ.tex"
 
-sed -i '12,16s/&/& \\begin\{tabular\}[l]\{@\{\}l@\{\}l@\{\}\}/' "${INC}clust_summ.tex" 
-
+sed -i '12,16s/&/& \\begin\{tabular\}[c]\{@\{\}c@\{\}c@\{\}\}/' "${INC}clust_summ.tex" 
 sed -i '12,16s/&/\\end\{tabular\} &/2' "${INC}clust_summ.tex"
+
+sed -i '12,16s/&/& \\begin\{tabular\}[c]\{@\{\}c@\{\}c@\{\}\}/2' "${INC}clust_summ.tex" 
+sed -i '12,16s/&/\\end\{tabular\} &/3' "${INC}clust_summ.tex"
 
 sed -i '12,16s/,/ \\\\/g' "${INC}clust_summ.tex"
 
@@ -108,11 +110,11 @@ sed -i -r '12,16s/\w+ \w+\.*/\\textit\{&\}/g' "${INC}clust_summ.tex"
 
 sed -i '12,16s/spp\.\}/\}spp./g' "${INC}clust_summ.tex"
 
-sed -i '10s/.*/{Cluster} \& {Indicator species} \& {Species richness} \& {N plots} \& {Stems ha\\textsuperscript{-1}} \& {AGB (t ha\\textsuperscript{-1})} \\\\/' "${INC}clust_summ.tex"
+sed -i '10s/.*/{Cluster} \& {Dominant species} \& {Indicator species} \& {N plots} \& {Species rich.} \& {Stems ha\\textsuperscript{-1}} \& {AGB (t ha\\textsuperscript{-1})} \\\\/' "${INC}clust_summ.tex"
 
 sed -i '13,16i\\\hline' "${INC}clust_summ.tex"
 
-sed -i 's/caption{}/caption{Description of the biogeographical clusters (C1-C5) to which each plot in the study was assigned. Indicator species were generated using Dufrene-Legendre indicator species analysis \\citep{Dufrene1997} implemented with \\texttt{indval()} from the \\texttt{labdsv} R package \\citep{labdsv}. Numeric values of species richness, stems ha\\textsuperscript{-1} and AGB are medians and interquartile ranges.}/g' "${INC}clust_summ.tex" 
+sed -i 's/caption{}/caption{Description of the biogeographical clusters (C1-C5) to which each plot in the study was assigned. Indicator species were generated using Dufrene-Legendre indicator species analysis \\citep{Dufrene1997} implemented with \\texttt{indval()} from the \\texttt{labdsv} R package \\citep{labdsv} and represent species which define the given cluster. Dominant species were identified by choosing the species with the largest AGB contribution within each cluster. Numeric values of species richness, stems ha\\textsuperscript{-1} and AGB are medians and interquartile ranges.}/g' "${INC}clust_summ.tex" 
 
 ## Correlation coefficients table
 cp output/include/corr_ci_tab.tex $INC

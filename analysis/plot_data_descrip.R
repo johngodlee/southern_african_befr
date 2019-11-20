@@ -47,6 +47,7 @@ load("data/seosaw_plot_summary5Apr2019.Rdata")
 bchave_quantile_df <- read.csv("data/bchave_quantile.csv")
 
 source("clust_pal.R")
+clust_pal <- clust_pal[1:4]
 
 # Map of plot locations, compared to full SEOSAW dataset ----
 
@@ -65,7 +66,7 @@ plot_map <- ggplot() +
     data = white_veg_miombo, alpha = 1) +
   # geom_point(data = ssaw8$plotInfoFull, aes(x = longitude_of_centre, y = latitude_of_centre), alpha = 0.6) + 
     geom_point(data = plot_data_final, 
-      aes(x = longitude_of_centre, y = latitude_of_centre, fill = paste0("C", as.character(clust5))), 
+      aes(x = longitude_of_centre, y = latitude_of_centre, fill = paste0("C", as.character(clust4))), 
     colour = "black", shape = 21, size = 2, alpha = 1) +
   map_africa_colour +
   scale_fill_manual(name = "Cluster", values = clust_pal) + 
@@ -157,17 +158,17 @@ var_map(plot_data_final,
   lab = expression("log(Fire" ~ "Return" ~ "interval)"))
 dev.off()
 
-plot_data_final$clust5_plot <- as.character(paste0("C",plot_data_final$clust5))
+plot_data_final$clust4_plot <- as.character(paste0("C",plot_data_final$clust4))
 
 # Biogeographic clusters
-pdf(file = "img/clust_map.pdf", width = 5, height = 8)
+pdf(file = "img/clust_map.pdf", width = 12, height = 5)
 ggplot() + 
   map_africa + 
   geom_point(data = plot_data_final, 
-    aes(x = longitude_of_centre, y = latitude_of_centre, fill = clust5_plot), 
+    aes(x = longitude_of_centre, y = latitude_of_centre, fill = clust4_plot), 
     size = 2, shape = 21, colour = "black", position = "jitter") +
   scale_fill_manual(name = "Cluster", values = clust_pal) + 
-  facet_wrap(~clust5_plot) + 
+  facet_wrap(~clust4_plot, nrow = 1) + 
   coord_map() + 
   ylim(-35.5, 10) + 
   labs(x = "Longitude", y = "Latitude") + 
@@ -187,7 +188,7 @@ ggplot() +
     breaks = c(1, 5, 10, 50, 100, 200, 400)) + 
   new_scale_fill() +
   geom_point(data = plot_data_final,
-    mapping = aes(x = mean_temp, y = total_precip, fill = as.character(clust5)), 
+    mapping = aes(x = mean_temp, y = total_precip, fill = as.character(clust4)), 
     colour = "black", shape = 21) + 
   scale_fill_manual(name = "Cluster", values = clust_pal) + 
   theme_classic() + 
@@ -203,15 +204,16 @@ t_p_std <- data.frame(
   p_vals_std = as.vector(scale(t_p$p_vals)))
 
 t_p_std_nona <- na.omit(t_p_std)
+t_p_nona <- na.omit(t_p)
 
 t_p_sp <- SpatialPointsDataFrame(
   coords = t_p_std_nona, data = t_p_std_nona)
 
 # Create a convex hull spatialpolygons object
-plot_hull <- chull(plot_data_final$mean_temp_rev_std, plot_data_final$total_precip_std)
+plot_hull <- chull(plot_data_final$mean_temp, plot_data_final$total_precip)
 plot_hull <- c(plot_hull, plot_hull[1])
 plot_hull_data <- plot_data_final[plot_hull,]
-plot_hull_coords <- plot_hull_data %>% dplyr::select(mean_temp_rev_std, total_precip_std)
+plot_hull_coords <- plot_hull_data %>% dplyr::select(mean_temp, total_precip)
 
 plot_hull_poly <- Polygon(plot_hull_coords, hole=F)
 plot_hull_polys <- Polygons(list(plot_hull_poly), 1)
@@ -233,8 +235,12 @@ plot_hull_fort <- fortify(plot_hull_polys_sp)
 
 pdf(file = "img/temp_precip_hull.pdf", width = 6, height = 6)
 ggplot() + 
-  stat_binhex(data = t_p_std, 
-    mapping = aes(x = t_vals_std, y = p_vals_std, colour = ..count.., fill = ..count..),
+  geom_polygon(aes(x = c(15.1,15.2,15.2,15.1), y = c(1001,1001,1002,1002), fill = "Miombo\nwoodland"),
+    colour = "#06A2BD") +
+  scale_fill_manual(name = "", values = "#06A2BD") + 
+  new_scale_fill() +
+  stat_binhex(data = t_p, 
+    mapping = aes(x = t_vals, y = p_vals, colour = ..count.., fill = ..count..),
     bins = 500) + 
   scale_fill_continuous(name = "Density", type = "viridis", trans = "log",
     breaks = c(1, 5, 10, 50, 100, 200, 400)) + 
@@ -242,7 +248,7 @@ ggplot() +
     breaks = c(1, 5, 10, 50, 100, 200, 400)) + 
   new_scale_fill() +
   geom_point(data = plot_data_final,
-    mapping = aes(x = mean_temp_rev_std, y = total_precip_std, fill = as.character(clust5_plot)), 
+    mapping = aes(x = mean_temp, y = total_precip, fill = as.character(clust4_plot)), 
     colour = "black", shape = 21) + 
   geom_polygon(data = plot_hull_fort,
     aes(x = long, y = lat), fill = NA, colour = "#A3152A") + 
@@ -317,23 +323,23 @@ sum(plot_data_final$n_stems)
 
 
 # Make cluster non-ordinal
-plot_data_final$clust5 <- as.character(plot_data_final$clust5)
+plot_data_final$clust4 <- as.character(plot_data_final$clust4)
 
 # Remove plots not in a cluster
 plot_data_final <- plot_data_final %>%
-  filter(!is.na(clust5))
+  filter(!is.na(clust4))
 
 # Plot all variables against bchave_log in a facet wrap ----
 # Climatic variables
 plot_data_gather_clim <- plot_data_final %>%
-  select(clust5, bchave_log, total_precip, precip_seasonality_log, mean_temp, temp_seasonality_log, 
+  select(clust4, bchave_log, total_precip, precip_seasonality_log, mean_temp, temp_seasonality_log, 
     fire_return_mean_log,
     ocdens, sand_per, cation_ex_cap) %>%
   gather(key = "variable", value = "value", 3:10)
 pdf(file = "img/biomass_clim_lm_clust.pdf", width = 12, height = 10)
 ggplot(plot_data_gather_clim, aes(x = value, y = bchave_log)) + 
-  geom_point(aes(fill = clust5), colour = "black", shape = 21) + 
-  geom_smooth(method = "lm", aes(colour = clust5)) +
+  geom_point(aes(fill = clust4), colour = "black", shape = 21) + 
+  geom_smooth(method = "lm", aes(colour = clust4)) +
   geom_smooth(method = "lm", colour = "black") +
   scale_fill_manual(name = "Cluster", values = clust_pal) + 
   scale_colour_manual(name = "Cluster", values = clust_pal) + 
@@ -343,14 +349,14 @@ dev.off()
 
 # Diversity variables
 plot_data_gather_div <- plot_data_final %>%
-  select(clust5, bchave_log, mean_height, cov_height, mean_dbh_log,
+  select(clust4, bchave_log, mean_height, cov_height, mean_dbh_log,
     cov_dbh, stems_ha_log, shannon_log, sp_rich, sp_rich_raref_log) %>%
   gather(key = "variable", value = "value", 3:10)
 
 pdf(file = "img/biomass_div_lm_clust.pdf", width = 12, height = 10)
 ggplot(plot_data_gather_div, aes(x = value, y = bchave_log)) + 
-  geom_point(aes(fill = clust5), colour = "black", shape = 21) + 
-  geom_smooth(method = "lm", aes(colour = clust5)) + 
+  geom_point(aes(fill = clust4), colour = "black", shape = 21) + 
+  geom_smooth(method = "lm", aes(colour = clust4)) + 
   scale_fill_manual(name = "Cluster", values = clust_pal) + 
   scale_colour_manual(name = "Cluster", values = clust_pal) + 
   theme_classic() + 
@@ -359,8 +365,8 @@ dev.off()
 
 pdf(file = "img/biomass_sp_rich_lm_clust.pdf", width = 12, height = 10)
 ggplot(plot_data_final, aes(x = sp_rich, y = bchave_log)) + 
-  geom_point(aes(fill = clust5), colour = "black", shape = 21) + 
-  geom_smooth(method = "lm", aes(colour = clust5)) + 
+  geom_point(aes(fill = clust4), colour = "black", shape = 21) + 
+  geom_smooth(method = "lm", aes(colour = clust4)) + 
   scale_fill_manual(name = "Cluster", values = clust_pal) + 
   scale_colour_manual(name = "Cluster", values = clust_pal) +
   labs(x = "Species richness", y = expression("AGB" ~ (t ~ ha^-1))) + 
@@ -370,8 +376,8 @@ dev.off()
 # Investigating species richness vs. biomass
 pdf(file = "img/biomass_sp_rich_lm_clust.pdf", width = 12, height = 10)
 ggplot(plot_data_final, aes(x = sp_rich_raref, y = bchave_log)) + 
-  geom_point(aes(fill = clust5), colour = "black", shape = 21) + 
-  geom_smooth(method = "lm", aes(colour = clust5)) + 
+  geom_point(aes(fill = clust4), colour = "black", shape = 21) + 
+  geom_smooth(method = "lm", aes(colour = clust4)) + 
   scale_fill_manual(name = "Cluster", values = clust_pal) + 
   scale_colour_manual(name = "Cluster", values = clust_pal) +
   labs(x = "Rarefied Species richness", y = expression("AGB" ~ (t ~ ha^-1))) + 
@@ -381,11 +387,11 @@ dev.off()
 # How do extrapolated species richnesses compare to actual?
 pdf(file = "img/sp_rich_vs_raref_clust.pdf", width = 12, height = 7)
 ggplot(plot_data_final, aes(x = sp_rich, y = sp_rich_raref)) + 
-  geom_point(aes(colour = clust5), 
+  geom_point(aes(colour = clust4), 
     alpha = 0.6) + 
   geom_abline(aes(intercept = 0, slope = 1), 
     linetype = 2) + 
-  facet_wrap(~clust5, nrow = 1) + 
+  facet_wrap(~clust4, nrow = 1) + 
   theme_classic() +
   coord_equal()
 dev.off()
@@ -487,7 +493,6 @@ dev.off()
 bchave_quantile_lm_list <- list()
 for(i in names(bchave_quantile_df)[startsWith(names(bchave_quantile_df), "bchave_mean_95_0")]){
   bchave_quantile_lm_list[[i]] <- lm(get(i) ~ sp_rich_raref, 
-    data = bchave_quantile_df)
 }
 
 bchave_quantile_lm_coef <- sapply(bchave_quantile_lm_list, function(x){x$coefficients[2]})

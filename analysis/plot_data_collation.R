@@ -320,6 +320,20 @@ plot_data_agg$temp_seasonality_rev <- -1 * plot_data_agg$temp_seasonality + 1000
 plot_data_agg$sand_per_rev <- -1 * plot_data_agg$sand_per + 1000
 plot_data_agg$mean_temp_rev <- -1 * plot_data_agg$mean_temp + 1000
 
+# Exclude clust5-5/clust4-4
+#plot_data_agg <- plot_data_agg %>%
+#  filter(clust4 != 4)
+
+# Randomly take 50 plots from C4-2 and add to C4-3
+c2_c3_vec <- plot_data_agg %>%
+  filter(clust4 == 2) %>%
+  sample_n(50) %>%
+  pull(plot_group)
+
+plot_data_agg <- plot_data_agg %>%
+  mutate(clust4 = case_when(
+    plot_group %in% c2_c3_vec ~ 3,
+    TRUE ~ as.double(clust4)))
 
 
 if(full_best == "full"){

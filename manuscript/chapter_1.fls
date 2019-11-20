@@ -268,6 +268,10 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/shapes/circui
 INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/shapes/circuits/pgflibraryshapes.gates.logic.code.tex
 INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytrees.code.tex
 INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytrees.code.tex
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/graphics/lscape.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/graphics/lscape.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/tools/longtable.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/tools/longtable.sty
 INPUT include/n_plots.tex
@@ -280,6 +284,8 @@ INPUT include/path_coef_struc.tex
 INPUT include/path_coef_struc.tex
 INPUT include/path_coef_full.tex
 INPUT include/path_coef_full.tex
+INPUT include/corr_coef.tex
+INPUT include/corr_coef.tex
 INPUT chapter_1.aux
 INPUT chapter_1.aux
 OUTPUT chapter_1.aux

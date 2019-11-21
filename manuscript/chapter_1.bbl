@@ -32,6 +32,15 @@ Bond, W.~J. \harvardand\ Keeley, J.~E.  \harvardyearleft 2005\harvardyearright
   , `Fire as a global `herbivore': the ecology and evolution of flammable
   ecosystems', {\em Trends in Ecology and Evolution} {\bf 20}(7),~387--394.
 
+\harvarditem[Brooks et~al.]{Brooks, Mittermeier, {da Fonseca}, Gerlach,
+  Hoffmann, Lamoreux, Mittermeier, Pilgrim \harvardand\
+  Rodrigues}{2006}{Brooks2006}
+Brooks, T.~M., Mittermeier, R.~A., {da Fonseca}, G. A.~B., Gerlach, J.,
+  Hoffmann, M., Lamoreux, J.~F., Mittermeier, C.~G., Pilgrim, J.~D.
+  \harvardand\ Rodrigues, S.~L.  \harvardyearleft 2006\harvardyearright ,
+  `Global biodiversity conservation priorities', {\em Science} {\bf
+  313},~58--61.
+
 \harvarditem{Campbell}{1996}{Campbell1996}
 Campbell, B.~M., ed.  \harvardyearleft 1996\harvardyearright , {\em The miombo
   in transition: woodlands and welfare in Africa}, Centre for International
@@ -180,12 +189,6 @@ Fayolle, A., Swaine, M.~D., Aleman, J., Azihou, A.~F., Bauman, D., {te Beest},
   regionalization of african savannas', {\em Journal of Biogeography} {\bf
   46}(2),~1--12.
 
-\harvarditem[Fensham et~al.]{Fensham, Fairfax \harvardand\
-  Ward}{2009}{Fensham2009}
-Fensham, R.~J., Fairfax, R.~J. \harvardand\ Ward, D.~P.  \harvardyearleft
-  2009\harvardyearright , `Drought-induced tree death in savanna', {\em Global
-  Change Biology} {\bf 15},~380--387.
-
 \harvarditem{Fick \harvardand\ Hijmans}{2017}{Fick2017}
 Fick, S.~E. \harvardand\ Hijmans, R.~J.  \harvardyearleft 2017\harvardyearright
   , `Worldclim 2: new 1‐km spatial resolution climate surfaces for global
@@ -237,23 +240,29 @@ Hill, M.~J. \harvardand\ Hanan, N.~P., eds  \harvardyearleft
   2011\harvardyearright , {\em Ecosystem function in savannas}, CRC Press, Boca
   Raton FL, USA.
 
+\harvarditem[Hinsley et~al.]{Hinsley, Entwistle \harvardand\
+  Pio}{2015}{Hinsley2015}
+Hinsley, A., Entwistle, A. \harvardand\ Pio, D.~V.  \harvardyearleft
+  2015\harvardyearright , `Does the long-term success of redd+ also depend on
+  biodiversity', {\em Oryx} {\bf 49}(2),~216--221.
+
 \harvarditem{Hopkins \harvardand\ White}{1987}{White1987}
 Hopkins, B. \harvardand\ White, F.  \harvardyearleft 1987\harvardyearright ,
   `Vegetation map of africa. the vegetation of africa: A descriptive memoir to
   accompany the unesco/aetfat/unso vegetation map of africa.', {\em The Journal
   of Ecology} {\bf 75}(4).
 
+\harvarditem[Houghton et~al.]{Houghton, Hall \harvardand\
+  Goetz}{2009}{Houghton2009}
+Houghton, R.~A., Hall, F. \harvardand\ Goetz, S.~J.  \harvardyearleft
+  2009\harvardyearright , `Importance of biomass in the global carbon cycle',
+  {\em Journal of Geophysical Research} {\bf 114},~1--13.
+
 \harvarditem[Hsieh et~al.]{Hsieh, Ma \harvardand\ Chao}{2016}{Hsieh2016}
 Hsieh, T.~C., Ma, K.~H. \harvardand\ Chao, A.  \harvardyearleft
   2016\harvardyearright , `inext: an r package for rarefaction and
   extrapolation of species diversity (hill numbers)', {\em Methods in Ecology
   and Evolution} {\bf 7},~1451--1456.
-
-\harvarditem{Hu \harvardand\ Bentler}{1999}{Hu1999}
-Hu, L. \harvardand\ Bentler, P.~M.  \harvardyearleft 1999\harvardyearright ,
-  `Cutoff criteria for fit indexes in covariance structure analysis:
-  conventional criteria versus new alternatives', {\em Structural Equation
-  Modeling} {\bf 6}(1),~1--55.
 
 \harvarditem{Jax}{2005}{Jax2005}
 Jax, K.  \harvardyearleft 2005\harvardyearright , `Function and ``functioning''
@@ -350,6 +359,14 @@ Michaletz, S.~T., Kerkhoff, A.~J. \harvardand\ Enquist, B.~J.  \harvardyearleft
   geographical gradients', {\em Global Ecology and Biogeography} {\bf
   27},~166--174.
 
+\harvarditem[Mittermeier et~al.]{Mittermeier, Mittermeier, Brooks, Pilgrim,
+  Konstant, {da Fonseca} \harvardand\ Kormos}{2003}{Mittermeier2003}
+Mittermeier, R.~A., Mittermeier, C.~G., Brooks, T.~M., Pilgrim, J.~D.,
+  Konstant, W.~R., {da Fonseca}, G. A.~B. \harvardand\ Kormos, C.
+  \harvardyearleft 2003\harvardyearright , `Wilderness and biodiversity
+  conservation', {\em Proceedings of the National Academy of Sciences} {\bf
+  100}(18),~10309--10313.
+
 \harvarditem[Murphy et~al.]{Murphy, Andersen \harvardand\
   Parr}{2016}{Murphy2016}
 Murphy, B.~P., Andersen, A.~N. \harvardand\ Parr, C.~L.  \harvardyearleft
@@ -368,6 +385,13 @@ Mutowo, G. \harvardand\ Murwira, A.  \harvardyearleft 2012\harvardyearright ,
   `Relationship between remotely sensed variables and tree species diversity in
   savanna woodlands of southern africa', {\em International Journal of Remote
   Sensing} {\bf 33}(20),~6378--6402.
+
+\harvarditem[Nachtigall et~al.]{Nachtigall, Kroehne, Funke \harvardand\
+  Steyer}{2003}{Nachtigall2003}
+Nachtigall, C., Kroehne, U., Funke, F. \harvardand\ Steyer, R.
+  \harvardyearleft 2003\harvardyearright , `(why) should we use sem? pros and
+  cons of structural equation modeling', {\em Methods of Psychological
+  Research} {\bf 8}(2),~1--22.
 
 \harvarditem{Otto}{2013}{Otto2013}
 Otto, W.  \harvardyearleft 2013\harvardyearright , {\em Data analysis in
@@ -495,16 +519,6 @@ Roques, K.~G., {O'Connor}, T.~G. \harvardand\ Watkinson, A.~R.
 Rosseel, Y.  \harvardyearleft 2012\harvardyearright , `{lavaan}: An {R} package
   for structural equation modeling', {\em Journal of Statistical Software} {\bf
   48}(2),~1--36.
-
-\harvarditem[Rowland et~al.]{Rowland, {da Costa}, Galbraith, Oliveira, Binks,
-  Oliveira, Pullen, Doughty, Metcalfe, Vasconcelos, Ferreira, Malhi, Grace,
-  Mencuccini \harvardand\ Meir}{2015}{Rowland2015a}
-Rowland, L., {da Costa}, A. C.~L., Galbraith, D.~R., Oliveira, R.~S., Binks,
-  O.~J., Oliveira, A. A.~R., Pullen, A.~M., Doughty, C.~E., Metcalfe, D.~B.,
-  Vasconcelos, S.~S., Ferreira, L.~V., Malhi, Y., Grace, J., Mencuccini, M.
-  \harvardand\ Meir, P.  \harvardyearleft 2015\harvardyearright , `Death from
-  drought in tropical forests is triggered by hydraulics not carbon
-  starvation', {\em Nature} {\bf 528},~119--122.
 
 \harvarditem[Ryan et~al.]{Ryan, Pritchard, McNicol, Owen, Fisher \harvardand\
   Lehmann}{2016}{Ryan2016}

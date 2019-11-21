@@ -161,7 +161,7 @@ dev.off()
 plot_data_final$clust4_plot <- as.character(paste0("C",plot_data_final$clust4))
 
 # Biogeographic clusters
-pdf(file = "img/clust_map.pdf", width = 12, height = 5)
+pdf(file = "img/clust_map.pdf", width = 14, height = 6)
 ggplot() + 
   map_africa + 
   geom_point(data = plot_data_final, 
@@ -219,10 +219,23 @@ plot_hull_poly <- Polygon(plot_hull_coords, hole=F)
 plot_hull_polys <- Polygons(list(plot_hull_poly), 1)
 plot_hull_polys_sp = SpatialPolygons(list(plot_hull_polys))
 
+plot_hull_std <- chull(plot_data_final$mean_temp_rev_std, plot_data_final$total_precip_std)
+plot_hull_std <- c(plot_hull_std, plot_hull_std[1])
+plot_hull_std_data<- plot_data_final[plot_hull_std,]
+plot_hull_std_coords <- plot_hull_std_data %>% dplyr::select(mean_temp_rev_std, total_precip_std)
+
+plot_hull_std_poly <- Polygon(plot_hull_std_coords, hole=F)
+plot_hull_std_polys <- Polygons(list(plot_hull_std_poly), 1)
+plot_hull_std_polys_sp = SpatialPolygons(list(plot_hull_std_polys))
+
+
 # Count number of pixels covered by polygon
 t_p_hull <- over(t_p_sp, plot_hull_polys_sp)
 
-pixel_cover <- round(100 - length(t_p_hull[is.na(t_p_hull)]) / length(t_p_hull[!is.na(t_p_hull)]) * 100, 
+t_p_hull_std <- over(t_p_sp, plot_hull_std_polys_sp)
+
+
+pixel_cover <- round(100 - length(t_p_hull_std[is.na(t_p_hull_std)]) / length(t_p_hull_std[!is.na(t_p_hull_std)]) * 100, 
   digits = 1)
 
 fileConn <- file(paste0("output/include/hull_cover.tex"))

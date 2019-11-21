@@ -286,6 +286,10 @@ INPUT include/path_coef_full.tex
 INPUT include/path_coef_full.tex
 INPUT include/corr_coef.tex
 INPUT include/corr_coef.tex
+INPUT include/moder_coef.tex
+INPUT include/moder_coef.tex
+INPUT include/dens_stats.tex
+INPUT include/dens_stats.tex
 INPUT chapter_1.aux
 INPUT chapter_1.aux
 OUTPUT chapter_1.aux

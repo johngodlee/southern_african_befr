@@ -253,16 +253,16 @@ mod_summ_mutate_struc <- function(x){
   mutate(.,
     op = case_when(
       op == "~" & lhs == "bchave_log_std" ~ "Direct: AGB",
-      TRUE ~ "Other eff."),
+      TRUE ~ "Other effects"),
     rhs = case_when(
-      op == "Direct: AGB" & rhs == "div" ~ "Diversity",
-      op == "Direct: AGB" & rhs == "struc" ~ "Struct.",
+      op == "Direct: AGB" & rhs == "div" ~ "Species div.",
+      op == "Direct: AGB" & rhs == "struc" ~ "Struct. div.",
       op == "Direct: AGB" & rhs == "stems_ha_log_std" ~ "Stem dens.",
-      lhs == "struc" & op == "Other eff." & rhs == "div" ~ "Div. -> Struct",
-      lhs == "stems_ha_log_std" & op == "Other eff." & rhs == "div" ~ "Div. -> Stem dens.",
-      op == "Other eff." & rhs == "a*b" ~ "Indirect: Div. -> Struct. -> AGB",
-      op == "Other eff." & rhs == "d*e" ~ "Indirect: Div. -> Stem dens -> AGB",
-      op == "Other eff." & (rhs == "c+(a*b)+(d*e)" | rhs == "c+(a*b)")  ~ "Total effect: Div. -> AGB",
+      lhs == "struc" & op == "Other effects" & rhs == "div" ~ "Species div. -> Struct. div.",
+      lhs == "stems_ha_log_std" & op == "Other effects" & rhs == "div" ~ "Species div. -> Stem dens.",
+      op == "Other effects" & rhs == "a*b" ~ "Indirect: Species div. -> Struct. div. -> AGB",
+      op == "Other effects" & rhs == "d*e" ~ "Indirect: Species div. -> Stem dens. -> AGB",
+      op == "Other effects" & (rhs == "c+(a*b)+(d*e)" | rhs == "c+(a*b)")  ~ "Total effect: Species div. -> AGB",
     TRUE ~ rhs))
 }
 
@@ -453,7 +453,7 @@ writeLines(
     paste0("\\newcommand{\\strucrsq}{", round(lavInspect(struc_model_fit, "rsquare")[5], digits = 2), "}"),
     paste0("\\newcommand{\\strucbrsq}{", round(lavInspect( struc_model_fit_clust_list[[2]], "rsquare")[5], digits = 2), "}"),
     paste0("\\newcommand{\\struccrsq}{", round(lavInspect( struc_model_fit_clust_list[[3]], "rsquare")[5], digits = 2), "}"),
-    paste0("\\newcommand{\\strucsib}{$\\beta =$ ",  struc_model_edge_df$est[11], "$\\pm$", struc_model_edge_df$se[11], ", ", p_format(struc_model_edge_df$p[11]), "}"),
+    paste0("\\newcommand{\\strucsib}{$\\beta =$ ",  struc_model_edge_df$est[11], "$\\pm$", round(struc_model_edge_df$se[11], digits = 3), ", ", p_format(struc_model_edge_df$p[11]), "}"),
     paste0(
       "\\newcommand{\\strucbsb}{$\\beta =$ ", 
       round(struc_model_summ_clust_list[[2]]$PE$est[5], digits = 2), 
@@ -497,6 +497,47 @@ for(i in 1:length(min_quantile)){
 quant_stems_ha <- sapply(sem_data_quant_list, function(x){median(x$stems_ha)})
 quant_plots <- sapply(sem_data_quant_list, nrow)
 quant_sp_rich_raref <- sapply(sem_data_quant_list, function(x){median(x$sp_rich_raref)})
+
+fileConn <- file(paste0("output/include/dens_stats.tex"))
+writeLines(
+  c(
+    paste0("\\newcommand{\\subn}{", length(quant_plots), "}"),
+    paste0("\\newcommand{\\subp}{", mean(quant_plots), "}")),
+  fileConn)
+close(fileConn)
+
+# animated map of quantile datasets
+library(gganimate)
+sem_data_quant_list <- lapply(1:length(sem_data_quant_list), function(x){
+  sem_data_quant_list[[x]]$stem_dens <- round(quant_stems_ha[x], digits = 1)
+  return(sem_data_quant_list[[x]])
+})
+
+test <- bind_rows(sem_data_quant_list, .id = "column_label")
+# Create vector of southern Africa ISO codes - find a way to mine the data for this
+s_af <- iso.expand(c("ZAF", "COD", "NAM", "ZMB", "BWA", "ZWE", "MOZ", "MWI", "AGO", "TZA", "KEN", "COG"))
+
+# Create map of country outlines
+map_africa <- borders(database = "world", regions = s_af, fill = "grey90", colour = "black")
+map_africa_fill <- borders(database = "world", regions = s_af, fill = "grey90")
+map_africa_colour <- borders(database = "world", regions = s_af, colour = "black")
+
+pg <- ggplot(test) +
+  map_africa_fill + 
+  geom_point(aes(x = longitude_of_centre, y = latitude_of_centre, colour = as.character(clust4))) + 
+  map_africa_colour +
+  ylim(-35.5, 10) + 
+  labs(title = 'Stem density: {frame}', x = "Longitude", y = "Latitude") + 
+  theme_classic() +
+  theme(legend.position = "none") + 
+  coord_map() + 
+  transition_states(stem_dens, transition_length = 1, state_length = 1,
+    wrap = TRUE) + 
+  enter_appear() + exit_disappear()
+
+animate(pg, 
+  duration = 60,
+  fps = 10)
 
 struc_sem_quant_list <- list()
 struc_sem_quant_summ_list <- list()
@@ -695,6 +736,10 @@ writeLines(
     paste0("\\newcommand{\\rgsbd}{",  "$\\beta =$ ", full_model_edge_df$est[28], "$\\pm$", full_model_edge_df$se[28], ", p = ", full_model_edge_df$p[28], "}"),
     paste0("\\newcommand{\\rgid}{",  "$\\beta =$ ", full_model_edge_df$est[17], "$\\pm$", full_model_edge_df$se[17], ", p <0.01}"),
     paste0("\\newcommand{\\rghb}{",  "$\\beta =$ ", full_model_edge_df$est[21], "$\\pm$", full_model_edge_df$se[21], ", p <0.01}"),
+    paste0("\\newcommand{\\fmrsq}{", full_mod_summ$PE$est[66], "}"),
+    paste0("\\newcommand{\\fmrmsea}{", full_mod_summ$FIT["rmsea"], "}"),
+    paste0("\\newcommand{\\fmtli}{", full_mod_summ$FIT["tli"], "}"),
+    paste0("\\newcommand{\\fmcfi}{", full_mod_summ$FIT["cfi"], "}"),
     paste0("\\newcommand{\\pcfmmp}{", full_model_edge_df$est[1], "}"),
     paste0("\\newcommand{\\pcfmmpc}{", full_model_edge_df$est[2], "}"),
     paste0("\\newcommand{\\pcfmmt}{", full_model_edge_df$est[3], "}"),
@@ -744,7 +789,7 @@ mod_summ_full <- function(x){
       grepl("_moisture_", lhs) ~ "Moisture",
       grepl("_soil_", lhs) ~ "Soil",
       grepl("_div_", lhs) ~ "Species\ndiversity",
-      TRUE ~ "Other eff."),
+      TRUE ~ "Other effects"),
     rhs = case_when(
       lhs == "bchave_log_std" & rhs == "moisture" ~ "Direct",
       lhs == "bchave_log_std" & rhs == "soil" ~ "Direct",
@@ -756,18 +801,18 @@ mod_summ_full <- function(x){
       grepl("_via_stems", label) ~ "Indirect, via Stem density",
       grepl("_via_div", label) ~ "Indirect, via Div.",
       grepl("_total", label) ~ "Total",
-      lhs == "bchave_log_std" & rhs == "struc" & op == "Other eff." ~ "Direct: Struc. -> AGB",
-      lhs == "bchave_log_std" & rhs == "stems_ha_log_std" & op == "Other eff." ~ "Direct: Stem density -> AGB",
-      lhs == "stems_ha_log_std" & rhs == "soil" & op == "Other eff." ~ "Direct: Soil -> Stem density",
-      lhs == "stems_ha_log_std" & rhs == "moisture" & op == "Other eff." ~ "Direct: Mois. -> Stem density",
-      lhs == "div" & rhs == "moisture" & op == "Other eff." ~ "Direct: Mois. -> Div.",
-      lhs == "div" & rhs == "soil" & op == "Other eff." ~ "Direct: Soil -> Div.",
-      lhs == "struc" & rhs == "moisture" & op == "Other eff." ~ "Direct: Mois. -> Struc.",
-      lhs == "struc" & rhs == "div" & op == "Other eff." ~ "Direct: Div. -> Struc.",
-      lhs == "stems_ha_log_std" & rhs == "div" & op == "Other eff." ~ "Direct: Div. -> Stem density",
+      lhs == "bchave_log_std" & rhs == "struc" & op == "Other effects" ~ "Direct: Struc. -> AGB",
+      lhs == "bchave_log_std" & rhs == "stems_ha_log_std" & op == "Other effects" ~ "Direct: Stem density -> AGB",
+      lhs == "stems_ha_log_std" & rhs == "soil" & op == "Other effects" ~ "Direct: Soil -> Stem density",
+      lhs == "stems_ha_log_std" & rhs == "moisture" & op == "Other effects" ~ "Direct: Mois. -> Stem density",
+      lhs == "div" & rhs == "moisture" & op == "Other effects" ~ "Direct: Mois. -> Div.",
+      lhs == "div" & rhs == "soil" & op == "Other effects" ~ "Direct: Soil -> Div.",
+      lhs == "struc" & rhs == "moisture" & op == "Other effects" ~ "Direct: Mois. -> Struc.",
+      lhs == "struc" & rhs == "div" & op == "Other effects" ~ "Direct: Div. -> Struc.",
+      lhs == "stems_ha_log_std" & rhs == "div" & op == "Other effects" ~ "Direct: Div. -> Stem density",
       TRUE ~ rhs)) %>%
     mutate(op = factor(op, 
-      levels = c('Moisture','Soil','Species\ndiversity','Other eff.')))
+      levels = c('Moisture','Soil','Species\ndiversity','Other effects')))
 }
 
 full_mod_summ$PE %>%filter(op %in% c("~", ":="))
@@ -877,6 +922,21 @@ soil_int <- ggplot() +
 pdf("img/soil_int.pdf", width = 8, height = 5)
 soil_int
 dev.off()
+
+test <- summary(mois_div_int_mod)
+
+fileConn <- file(paste0("output/include/moder_coef.tex"))
+writeLines(
+  c(
+    paste0("\\newcommand{\\moderp}{", "$\\beta =$ ", round(summary(mois_div_int_mod)$coefficients[4,1], digits = 2), 
+      ", t(", summary(mois_div_int_mod)$df[2], ") = ", round(summary(mois_div_int_mod)$coefficients[4,3], digits = 2),", ", 
+      p_format(summary(mois_div_int_mod)$coefficients[4,4]), "}"),
+    paste0("\\newcommand{\\moders}{", "$\\beta =$ ", round(summary(soil_div_int_mod)$coefficients[4,1], digits = 2), 
+      ", t(", summary(soil_div_int_mod)$df[2], ") = ", round(summary(soil_div_int_mod)$coefficients[4,3], digits = 2),", ", 
+      p_format(summary(soil_div_int_mod)$coefficients[4,4]), "}")),
+    fileConn)
+close(fileConn)
+
 
 # Summary of models
 fileConn <- file(paste0("output/include/mois_div_int_mod.tex"))

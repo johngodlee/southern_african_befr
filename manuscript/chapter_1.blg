@@ -3,46 +3,47 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: chapter_1.aux
 The style file: /Users/johngodlee/.texmf/agsmnourl.bst
 Database file #1: /Users/johngodlee/google_drive/bib/lib.bib
+Warning--I didn't find a database entry for ""
 Warning--can't use both author and editor fields in Schulze1994
-You've used 85 entries,
+You've used 87 entries,
             2878 wiz_defined-function locations,
-            1189 strings with 28274 characters,
-and the built_in function-call counts, 1158273 in all, are:
-= -- 195031
-> -- 15962
+            1203 strings with 28548 characters,
+and the built_in function-call counts, 1171286 in all, are:
+= -- 197215
+> -- 16104
 < -- 0
-+ -- 99698
-- -- 5146
-* -- 106966
-:= -- 219636
-add.period$ -- 90
-call.type$ -- 85
-change.case$ -- 1178
-chr.to.int$ -- 84
-cite$ -- 86
-duplicate$ -- 1359
-empty$ -- 2838
-format.name$ -- 5423
-if$ -- 208470
++ -- 100760
+- -- 5188
+* -- 108128
+:= -- 222163
+add.period$ -- 92
+call.type$ -- 87
+change.case$ -- 1206
+chr.to.int$ -- 86
+cite$ -- 88
+duplicate$ -- 1391
+empty$ -- 2907
+format.name$ -- 5468
+if$ -- 210818
 int.to.chr$ -- 6
 int.to.str$ -- 0
-missing$ -- 84
-newline$ -- 263
-num.names$ -- 919
-pop$ -- 251
+missing$ -- 86
+newline$ -- 269
+num.names$ -- 942
+pop$ -- 254
 preamble$ -- 1
-purify$ -- 1275
+purify$ -- 1305
 quote$ -- 0
-skip$ -- 1053
+skip$ -- 1080
 stack$ -- 0
-substring$ -- 287523
-swap$ -- 243
-text.length$ -- 1190
+substring$ -- 290678
+swap$ -- 249
+text.length$ -- 1218
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 326
+type$ -- 334
 warning$ -- 1
-while$ -- 1926
+while$ -- 1972
 width$ -- 0
-write$ -- 1160
-(There was 1 warning)
+write$ -- 1190
+(There were 2 warnings)

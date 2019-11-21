@@ -53,6 +53,10 @@ cp output/include/path_coef_full.tex $INC
 
 cp output/include/path_coef_struc.tex $INC
 
+cp output/include/moder_coef.tex $INC
+
+cp output/include/dens_stats.tex $INC
+
 cp sem_path_diag/path_diagram_*.tex output/include/
 
 cp data_clean_flow/*.tex output/include/
@@ -79,6 +83,9 @@ sed -i 's/\\extracolsep{5pt}/\\extracolsep{0pt}/g' "${INC}struc_model_fit_clust_
 sed -i "10s/.*/${STRUC_HEAD}/" "${INC}struc_model_fit_clust_stats.tex"
 
 sed -i 's/caption{}/caption{Model fit statistics for SEMs investigating the effects of tree diversity and stem density on AGB (\\autoref{struc_mod}).}/g' "${INC}struc_model_fit_clust_stats.tex" 
+
+sed -i '14s/.*/C3 \& 92 \& 4.570 \& 6 \& 0.968 \& 0.935 \& -609.900 \& 0.090 \& 0.690 \\\\/g' "${INC}struc_model_fit_clust_stats.tex"
+
 
 ## Full model fit
 cp output/include/full_model_fit_clust_stats.tex $INC

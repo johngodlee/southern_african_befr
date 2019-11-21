@@ -1,6 +1,5 @@
 Linear mixed model fit by REML ['lmerMod']
-Formula: bchave_log ~ ocdens_std + sand_per_std + cation_ex_cap_std +  
-    aridity_index_std + total_precip_std + precip_seasonality_log_std +  
+Formula: bchave_log ~ ocdens_std + sand_per_std + cation_ex_cap_std +      aridity_index_std + total_precip_std + precip_seasonality_log_std +  
     mean_temp_std + temp_seasonality_log_std + isothermality_std +      fire_return_mean_log_std + (1 | clust5)
    Data: sem_data
 

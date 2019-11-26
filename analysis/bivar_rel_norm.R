@@ -89,44 +89,45 @@ dev.off()
 facet_levels <- c(
   "total_precip",
   "precip_seasonality",
+  "precip_seasonality_log", 
   "mean_temp",
   "temp_seasonality",
+  "temp_seasonality_log",
   "bchave",
+  "bchave_log", 
   "cation_ex_cap",
   "sand_per",
   "ocdens",
   "cov_dbh",
   "cov_height",
   "stems_ha",
-  "shannon_equit",
-  "sp_rich_raref",
-  "bchave_log", 
   "stems_ha_log",
-  "sp_rich_raref_log",
-  "shannon_equit_log", 
-  "precip_seasonality_log", 
-  "temp_seasonality_log")
+  "shannon_equit",
+  "shannon_equit_log",
+  "sp_rich_raref",
+  "sp_rich_raref_log"
+  )
 
 facet_labels <- c(  
   expression("MAP" ~ (mm ~ y^-1)),
   expression("Precip." ~ "seasonality"),
+  expression("log(Precip." ~ "seasonality)"),
   expression("MAT" ~ (degree * C)), 
   expression("Temp." ~ "seasonality"),
+  expression("log(Temp." ~ "seasonality)"),
   expression("AGB" ~ (t ~ ha^-1)),
+  expression("log(AGB)" ~ (t ~ ha^-1)),
   expression("CEC"),
   expression("Sand" ~ "%"), 
   expression("Org." ~ "C" ~ "%"),
   expression("Coef." ~ "var." ~ "DBH"),
   expression("Coef." ~ "var." ~ "height"),
   expression("Stem" ~ "density" ~ ">5" ~ cm ~ (n ~ ha^-1)),
-  expression("Shannon" ~ "equit." ~ (E[H])),
-  expression("Extrap." ~ "species" ~ "rich."),
-  expression("log(AGB)" ~ (t ~ ha^-1)),
   expression("log(Stem" ~ "density)" ~ ">5" ~ cm ~ (n ~ ha^-1)),
-  expression("log(Extrap." ~ "species" ~ "rich.)"),
+  expression("Shannon" ~ "equit." ~ (E[H])),
   expression("log(Shannon" ~ "equit.)" ~ (E[H])),
-  expression("log(Precip." ~ "seasonality)"),
-  expression("log(Temp." ~ "seasonality)"))
+  expression("Extrap." ~ "species" ~ "rich."),
+  expression("log(Extrap." ~ "species" ~ "rich.)"))
 
 histogram_raw_obs <- sem_data_fil_agg %>%
   dplyr::select(bchave, stems_ha, 
@@ -181,11 +182,11 @@ histogram_trans
 dev.off()
 
 histogram_trans_obs <- sem_data_trans %>%
-  dplyr::select(stems_ha_log, bchave_log, 
+  dplyr::select(bchave_log, stems_ha_log,
     sp_rich_raref_log, shannon_equit_log,
     cation_ex_cap, sand_per, ocdens,
-    total_precip, precip_seasonality_log, cov_height, cov_dbh,
-    mean_temp, temp_seasonality_log) %>%
+    total_precip, precip_seasonality_log, mean_temp, temp_seasonality_log,
+    cov_height, cov_dbh) %>%
   gather(variable, value) %>%
   mutate(facet_label = factor(variable,
     levels = facet_levels,

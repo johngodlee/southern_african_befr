@@ -40,6 +40,9 @@ library(tidyr)
 library(psych)
 library(beepr)
 library(ggnewscale)
+library(maps)
+library(gganimate)
+library(MVN)
 
 source("clust_pal.R")
 clust_pal <- clust_pal[1:4]
@@ -142,12 +145,6 @@ corr_ci_tab <- corr_ci %>%
 
 row.names(corr_ci_tab) <- seq(1:length(corr_ci_tab$x_var))
 
-fileConn <- file(paste0("output/include/corr_ci_tab.tex"))
-writeLines(stargazer(corr_ci_tab, 
-  summary = FALSE, label = "corr_ci_tab", digit.separate = 0, rownames = FALSE),
-  fileConn)
-close(fileConn)
-
 p_format <- function(p){
   case_when(p < 0.01 ~ paste0("p <0.01"),
     p < 0.05 ~ paste0("p <0.05"),
@@ -155,8 +152,49 @@ p_format <- function(p){
 }
 
 corr_format <- function(id, row_num){
-  paste0("\\newcommand{\\", id, "}{", "$\\rho =$ ", corr_ci_tab$raw.r[row_num], ", ", p_format(corr_ci_tab$p[row_num]), "}")
+  paste0("\\newcommand{\\", id, "}{", "$\\rho =$ ", corr_ci_tab$raw.r[row_num], ", ", corr_ci_tab$p[row_num], "}")
 }
+
+corr_ci_tab <- corr_ci_tab %>%
+  mutate(x_var = case_when(
+    x_var == "sand_per_std" ~ "Sand %" ,
+    x_var == "ocdens_std" ~ "Org. C %",
+    x_var == "cation_ex_cap_std" ~ "CEC",
+    x_var == "total_precip_std" ~ "MAP",
+    x_var == "precip_seasonality_log_std" ~ "MAP CoV",
+    x_var == "mean_temp_std" ~ "MAT",
+    x_var == "temp_seasonality_log_std" ~ "MAT CoV",
+    x_var == "sp_rich_raref_log_std" ~ "Sp. rich.",
+    x_var == "shannon_equit_log_std" ~ "Shannon equit.",
+    x_var == "cov_height_std" ~ "Tree height CoV",
+    x_var == "cov_dbh_std" ~ "DBH CoV",
+    x_var == "stems_ha_log_std" ~ "Stems ha",
+    TRUE ~ x_var
+  ),
+    y_var = case_when(
+    y_var == "sand_per_std" ~ "Sand %" ,
+    y_var == "ocdens_std" ~ "Org. C %",
+    y_var == "cation_ex_cap_std" ~ "CEC",
+    y_var == "total_precip_std" ~ "MAP",
+    y_var == "precip_seasonality_log_std" ~ "MAP CoV",
+    y_var == "mean_temp_std" ~ "MAT",
+    y_var == "temp_seasonality_log_std" ~ "MAT CoV",
+    y_var == "sp_rich_raref_log_std" ~ "Sp. rich.",
+    y_var == "shannon_equit_log_std" ~ "Shannon equit.",
+    y_var == "cov_height_std" ~ "Tree height CoV",
+    y_var == "cov_dbh_std" ~ "DBH CoV",
+    y_var == "stems_ha_log_std" ~ "Stems ha",
+    y_var == "bchave_log" ~ "AGB",
+    TRUE ~ y_var
+    ),
+    p = p_format(p))
+
+fileConn <- file(paste0("output/include/corr_ci_tab.tex"))
+writeLines(stargazer(corr_ci_tab, 
+  summary = FALSE, label = "corr_ci_tab", digit.separate = 0, rownames = FALSE),
+  fileConn)
+close(fileConn)
+
 
 # Correlations tex variables
 fileConn <- file(paste0("output/include/corr_coef.tex"))
@@ -221,11 +259,11 @@ biomass_div_total := c + (a*b) + (d*e)
 ##' Lots of missing values for canopy height covariance, 
 ##' because many plots have no height data
 
-struc_model_fit <- sem(struc_model_spec, data = sem_data, se = "bootstrap")
+struc_model_fit <- sem(struc_model_spec, data = sem_data, estimator = "MLM")
 
 resid(struc_model_fit, type = "cor")
 
-struc_mod_mi <- modificationindices(struc_model_fit)
+struc_mod_mi <- modificationindices(struc_model_fit, sort. = TRUE)
 
 struc_model_summ <- summary(struc_model_fit, 
   fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
@@ -233,8 +271,6 @@ struc_model_summ <- summary(struc_model_fit,
 struc_model_edge_df <- struc_model_summ$PE %>%
   filter(op %in% c("=~", "~", ":=")) %>%
   mutate(est = round(est, digits = 2))
-
-  
 
 
 sink(paste0("output/struc_model_fit", ext, ".txt"))
@@ -294,7 +330,7 @@ clust_mod <- function(mod, mod_name, mutate_summ){
   model_diag_clust_list <- list()
   model_regs_list <- list()
   for(i in 1:length(sem_data_clust_list)){
-    model_fit_clust_list[[i]] <- sem(mod, data = sem_data_clust_list[[i]])
+    model_fit_clust_list[[i]] <- sem(mod, data = sem_data_clust_list[[i]], estimator = "MLM")
   
   model_summ_clust_list[[i]] <- summary(model_fit_clust_list[[i]], 
     fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
@@ -435,9 +471,6 @@ close(fileConn)
 sem_fit_tab(struc_model_summ_clust_list, struc_model_summ,
   file = paste0("struc_model_fit_clust_stats", ext))
 
-
-
-
 fileConn <- file(paste0("output/include/path_coef_struc.tex"))
 writeLines(
   c(
@@ -507,9 +540,10 @@ writeLines(
 close(fileConn)
 
 # animated map of quantile datasets
-library(gganimate)
 sem_data_quant_list <- lapply(1:length(sem_data_quant_list), function(x){
-  sem_data_quant_list[[x]]$stem_dens <- round(quant_stems_ha[x], digits = 1)
+  sem_data_quant_list[[x]]$stem_dens_round <- round(quant_stems_ha[x], digits = 0)
+  sem_data_quant_list[[x]]$stem_dens <- quant_stems_ha[x]
+  
   return(sem_data_quant_list[[x]])
 })
 
@@ -524,20 +558,20 @@ map_africa_colour <- borders(database = "world", regions = s_af, colour = "black
 
 pg <- ggplot(test) +
   map_africa_fill + 
-  geom_point(aes(x = longitude_of_centre, y = latitude_of_centre, colour = as.character(clust4))) + 
+  geom_point(
+    aes(x = longitude_of_centre, y = latitude_of_centre, fill = as.character(clust4)),
+    colour = "black", shape = 21, size = 2) + 
+  scale_fill_manual(values = clust_pal, name = "Cluster") + 
   map_africa_colour +
   ylim(-35.5, 10) + 
-  labs(title = 'Stem density: {frame}', x = "Longitude", y = "Latitude") + 
+  labs(title = 'Stem density: {current_frame}', x = "Longitude", y = "Latitude") + 
   theme_classic() +
-  theme(legend.position = "none") + 
+  theme(legend.position = "right") + 
   coord_map() + 
-  transition_states(stem_dens, transition_length = 1, state_length = 1,
-    wrap = TRUE) + 
+  transition_manual(frames = stem_dens_round) +
   enter_appear() + exit_disappear()
 
-animate(pg, 
-  duration = 60,
-  fps = 10)
+anim_save("img/stem_dens_anim_map.gif", animation = pg, width = 500, height = 700)
 
 struc_sem_quant_list <- list()
 struc_sem_quant_summ_list <- list()
@@ -670,6 +704,17 @@ sink()
 ##' Latent constructs
 ##' Mediation 
 
+# Test for multivariate normality 
+sem_data_multivar_norm <- sem_data %>%
+  dplyr::select(total_precip_std, precip_seasonality_rev_log_std,
+    mean_temp_rev_std, temp_seasonality_rev_log_std,
+    sp_rich_raref_log_std, shannon_equit_log_std,
+    sand_per_rev_std, ocdens_std, cation_ex_cap_std,
+    cov_dbh_std, cov_height_std, stems_ha_log_std, bchave_log_std) %>%
+  mvn(., mvnTest = "mardia",  multivariateOutlierMethod = "adj", showNewData = TRUE)
+##' Not multivariate normal at all, but does it matter with ML?
+
+
 full_mod_spec <- "
 # Latent vars
 moisture =~ total_precip_std + precip_seasonality_rev_log_std + 
@@ -715,10 +760,21 @@ biomass_soil_total := k + (j*b) + (d*e) + (a*f*g) + (a*h*e)
 biomass_div_via_struc := f*g
 biomass_div_via_stems := h*e
 biomass_div_total := b + (f*g) + (h*e)
+
+# Modifications
+#mean_temp_rev_std ~~ temp_seasonality_rev_log_std 
+#sp_rich_raref_log_std ~~ stems_ha_log_std 
+#total_precip_std ~~ mean_temp_rev_std 
+#total_precip_std ~~ sand_per_rev_std 
+
 "
 
+# Run model
 full_mod_fit <- sem(full_mod_spec, 
-  data = sem_data, se = "bootstrap")
+  data = sem_data,  estimator = "MLM")
+
+# Modification indices
+head(modificationIndices(full_mod_fit, sort. = TRUE), n = 10)
 
 full_mod_summ <- summary(full_mod_fit, 
   fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
@@ -732,14 +788,14 @@ full_model_edge_df <- full_mod_summ$PE %>%
 fileConn <- file(paste0("output/include/path_coef_full.tex"))
 writeLines(
   c(
-    paste0("\\newcommand{\\rgmbd}{", "$\\beta =$ ", full_model_edge_df$est[23], "$\\pm$", full_model_edge_df$se[23],", p <0.05}"),
-    paste0("\\newcommand{\\rgsbd}{",  "$\\beta =$ ", full_model_edge_df$est[28], "$\\pm$", full_model_edge_df$se[28], ", p = ", full_model_edge_df$p[28], "}"),
-    paste0("\\newcommand{\\rgid}{",  "$\\beta =$ ", full_model_edge_df$est[17], "$\\pm$", full_model_edge_df$se[17], ", p <0.01}"),
-    paste0("\\newcommand{\\rghb}{",  "$\\beta =$ ", full_model_edge_df$est[21], "$\\pm$", full_model_edge_df$se[21], ", p <0.01}"),
-    paste0("\\newcommand{\\fmrsq}{", full_mod_summ$PE$est[66], "}"),
-    paste0("\\newcommand{\\fmrmsea}{", full_mod_summ$FIT["rmsea"], "}"),
-    paste0("\\newcommand{\\fmtli}{", full_mod_summ$FIT["tli"], "}"),
-    paste0("\\newcommand{\\fmcfi}{", full_mod_summ$FIT["cfi"], "}"),
+    paste0("\\newcommand{\\rgmbd}{", "$\\beta =$ ", full_model_edge_df$est[23], "$\\pm$", full_model_edge_df$se[23],", ", p_format(full_model_edge_df$p[23]), "}"),
+    paste0("\\newcommand{\\rgsbd}{",  "$\\beta =$ ", full_model_edge_df$est[28], "$\\pm$", full_model_edge_df$se[28],", ", p_format(full_model_edge_df$p[28]), "}"),
+    paste0("\\newcommand{\\rgid}{",  "$\\beta =$ ", full_model_edge_df$est[17], "$\\pm$", full_model_edge_df$se[17],", ", p_format(full_model_edge_df$p[17]), "}"),
+    paste0("\\newcommand{\\rghb}{",  "$\\beta =$ ", full_model_edge_df$est[21], "$\\pm$", full_model_edge_df$se[21],", ", p_format(full_model_edge_df$p[21]), "}"),
+    paste0("\\newcommand{\\fmrsq}{", round(full_mod_summ$PE$est[66], digits = 1), "}"),
+    paste0("\\newcommand{\\fmrmsea}{", round(full_mod_summ$FIT["rmsea"], digits = 3), "}"),
+    paste0("\\newcommand{\\fmtli}{", round(full_mod_summ$FIT["tli"], digits = 3), "}"),
+    paste0("\\newcommand{\\fmcfi}{", round(full_mod_summ$FIT["cfi"], digits = 3), "}"),
     paste0("\\newcommand{\\pcfmmp}{", full_model_edge_df$est[1], "}"),
     paste0("\\newcommand{\\pcfmmpc}{", full_model_edge_df$est[2], "}"),
     paste0("\\newcommand{\\pcfmmt}{", full_model_edge_df$est[3], "}"),
@@ -764,7 +820,6 @@ writeLines(
     paste0("\\newcommand{\\pcfib}{", full_model_edge_df$est[22], "}")),
   fileConn)
 close(fileConn)
-
 
 sink(paste0("output/full_mod_fit", ext, ".txt"))
 print(full_mod_summ)

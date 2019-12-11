@@ -51,16 +51,16 @@ stem_ab_mat <- dplyr::select(stem_ab_mat, -plot_group)
 # No convergent solutions - best solution after 20 tries
 
 
-# # Identify outlier threshold for ~5% of plots
-# outlier_list <- list()
-# 
-# for(i in 1:100){
-#   x <- seq(from = 0.005, to = 0.5, by = 0.005)[i]
-#   outlier_list[[i]] <- outlier(stem_ab_mat, thresh = x, y = 0.5)
-# }
-# 
-# # Save to data file
-# saveRDS(outlier_list, file = paste0("data/outlier_list", ext, ".rds"))
+# Identify outlier threshold for ~5% of plots
+outlier_list <- list()
+
+for(i in 1:100){
+  x <- seq(from = 0.005, to = 0.5, by = 0.005)[i]
+  outlier_list[[i]] <- outlier(stem_ab_mat, thresh = x, y = 0.5)
+}
+
+# Save to data file
+saveRDS(outlier_list, file = paste0("data/outlier_list", ext, ".rds"))
 
 outlier_list <- readRDS(paste0("data/outlier_list", ext, ".rds"))
 

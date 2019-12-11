@@ -52,19 +52,20 @@ clust_pal <- clust_pal[1:4]
 # Map of plot locations, compared to full SEOSAW dataset ----
 
 # Create vector of southern Africa ISO codes - find a way to mine the data for this
-s_af <- iso.expand(c("ZAF", "COD", "NAM", "ZMB", "BWA", "ZWE", "MOZ", "MWI", "AGO", "TZA", "KEN", "COG"))
-  
+s_af <- iso.expand(c("ZAF", "COD", "NAM", "ZMB", "BWA", "ZWE", "MOZ", 
+  "MWI", "AGO", "TZA", "COG", "RWA", "BDI", "UGA", "KEN")) 
+
 # Create map of country outlines
 map_africa <- borders(database = "world", regions = s_af, fill = "grey90", colour = "black")
 map_africa_fill <- borders(database = "world", regions = s_af, fill = "grey90")
 map_africa_colour <- borders(database = "world", regions = s_af, colour = "black")
 
 plot_map <- ggplot() + 
-  map_africa_fill + 
-  geom_polygon(aes(x = long, y = lat, group = group), 
-    fill = "#06A2BD", colour = "#06A2BD",
+  geom_polygon(aes(x = long, y = lat, group = group, fill = "Miombo\nwoodland"), 
+    colour = "#06A2BD",
     data = white_veg_miombo, alpha = 1) +
-  # geom_point(data = ssaw8$plotInfoFull, aes(x = longitude_of_centre, y = latitude_of_centre), alpha = 0.6) + 
+  scale_fill_manual(name = "", values = "#06A2BD") +
+  new_scale_fill() + 
     geom_point(data = plot_data_final, 
       aes(x = longitude_of_centre, y = latitude_of_centre, fill = paste0("C", as.character(clust4))), 
     colour = "black", shape = 21, size = 2, alpha = 1) +
@@ -73,9 +74,7 @@ plot_map <- ggplot() +
   coord_map() + 
   ylim(-35.5, 10) + 
   labs(x = "Longitude", y = "Latitude") + 
-  theme_classic() +
-  theme(legend.position = "none")
-  # theme(legend.position = c(0.9, 0.2))
+  theme_classic()
 
 pdf(file = "img/plot_loc.pdf", width = 5, height = 8)
 plot_map
@@ -248,13 +247,9 @@ plot_hull_fort <- fortify(plot_hull_polys_sp)
 
 pdf(file = "img/temp_precip_hull.pdf", width = 6, height = 6)
 ggplot() + 
-  geom_polygon(aes(x = c(15.1,15.2,15.2,15.1), y = c(1001,1001,1002,1002), fill = "Miombo\nwoodland"),
-    colour = "#06A2BD") +
-  scale_fill_manual(name = "", values = "#06A2BD") + 
-  new_scale_fill() +
   stat_binhex(data = t_p, 
     mapping = aes(x = t_vals, y = p_vals, colour = ..count.., fill = ..count..),
-    bins = 500) + 
+    bins = 500, alpha = 0.2) + 
   scale_fill_continuous(name = "Density", type = "viridis", trans = "log",
     breaks = c(1, 5, 10, 50, 100, 200, 400)) + 
   scale_colour_continuous(name = "Density", type = "viridis", trans = "log", 
@@ -480,6 +475,8 @@ bchave_quantile_df$sp_rich_raref_std <- scale(bchave_quantile_df$sp_rich_raref)
 bchave_quantile_df_gather <- bchave_quantile_df %>% 
   gather("quantile", "value", -plot_group, -sp_rich_raref, -sp_rich, -sp_rich_raref_std)
 
+quantile_lo <- seq(from = 0, to = 0.95, by = 0.05) * 100
+
 quantile_labs <- paste0(quantile_lo, "-", (seq(from = 0, to = 0.95, by = 0.05) + 0.05) * 100)
 
 bchave_quantile_df_gather$quantile <- factor(bchave_quantile_df_gather$quantile,
@@ -504,14 +501,13 @@ ggplot(bchave_quantile_df_gather, aes(x = sp_rich_raref, y = log(value))) +
 dev.off()
 
 bchave_quantile_lm_list <- list()
-for(i in names(bchave_quantile_df)[startsWith(names(bchave_quantile_df), "bchave_mean_95_0")]){
-  bchave_quantile_lm_list[[i]] <- lm(get(i) ~ sp_rich_raref, 
+for(i in names(bchave_quantile_df)[startsWith(names(bchave_quantile_df), "bchave_mean_95")]){
+  bchave_quantile_lm_list[[i]] <- lm(get(i) ~ sp_rich_raref, data = bchave_quantile_df) 
 }
 
 bchave_quantile_lm_coef <- sapply(bchave_quantile_lm_list, function(x){x$coefficients[2]})
 bchave_quantile_lm_se <- sapply(bchave_quantile_lm_list, function(x){summary(x)$coefficients[2,2]})
 
-quantile_lo <- seq(from = 0, to = 0.95, by = 0.05) * 100
 
 bchave_quantile_lm_coef_df <- data.frame(quantile_lo, bchave_quantile_lm_coef,
   bchave_quantile_lm_se)

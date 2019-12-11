@@ -1,14 +1,11 @@
-Cluster 1 - Diplorhynchus-Combretum
-Combretum.zeyheri, Brachystegia.floribunda, Brachystegia.utilis
+Cluster 1 - Diplorhynchus-Burkea
+Diplorhynchus.condylocarpon, Burkea.africana, Pseudolachnostylis.maprouneifolia
 
 Cluster 2 - Miombo
 Julbernardia.paniculata, Isoberlinia.angolensis, Albizia.antunesiana, Brachystegia.longifolia
 
-Cluster 3 - Burkea-Pterocarpus
-Burkea.africana, Pterocarpus.angolensis, Baikiaea.plurijuga
+Cluster 3 - Burkea-Senegalia
+Baikiaea.plurijuga, Senegalia.ataxacantha, Combretum.collinum
 
-Cluster 4 - Baikiaea
-Baikiaea.plurijuga, Terminalia.randii, Albizia.amara
-
-Cluster 5 - Mopane
+Cluster 4 - Mopane
 Colophospermum mopane

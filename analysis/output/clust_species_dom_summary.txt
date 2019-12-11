@@ -4,7 +4,7 @@ Julbernadia.spp., Brachystegia.spiciformis, Baikiaea.plurijuga
 Cluster 2 - Miombo
 Julbernadia.spp., Brachystegia.spp., Isoberlinia.angolensis
 
-Cluster 3 - Burkea-Senegalia
+Cluster 3 - Spirostachys-Senegalia
 Spirostachys.africana, Senegalia.spp., Euclea.racemosa
 
 Cluster 4 - Mopane

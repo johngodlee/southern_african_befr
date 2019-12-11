@@ -178,7 +178,7 @@ s_diam_summ <- s %>%
 # Big trees only 
 s_fil <- s %>%
   filter(!is.na(plot_group), 
-    diam >= 5) %>%
+    diam >= 10) %>%
   filter(alive %in% c("A", NA),
     !is.na(gen_sp))
 
@@ -197,7 +197,8 @@ s_fil_summ <- s_fil %>%
     var_dbh = var(diam, na.rm = TRUE),
     mean_dbh = mean(diam, na.rm = TRUE),
     sd_dbh = sd(diam, na.rm = TRUE),
-    max_dbh = max(diam, na.rm = TRUE)) %>%
+    max_dbh = max(diam, na.rm = TRUE),
+    agb = sum(Bchave, na.rm = TRUE)) %>%
   mutate(cov_height = sd_height / mean_height * 100,
     cov_dbh = sd_dbh / mean_dbh * 100)
 

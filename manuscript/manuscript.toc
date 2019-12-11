@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}Hypotheses}{4}{subsection.1.1}% 
+\contentsline {section}{\numberline {2}Methods}{5}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Study location}{5}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Data collection}{6}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Data analysis}{6}{subsection.2.3}% 
+\contentsline {subsubsection}{\numberline {2.3.1}Vegetation clusters}{7}{subsubsection.2.3.1}% 
+\contentsline {subsubsection}{\numberline {2.3.2}Structural Equation Modelling}{9}{subsubsection.2.3.2}% 
+\contentsline {section}{\numberline {3}Results}{11}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Structural and species diversity models}{12}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Variation among vegetation clusters in structural and species diversity effects}{13}{subsection.3.2}% 
+\contentsline {subsubsection}{\numberline {3.2.1}Moderation of Diversity-AGB relationship by stem density}{14}{subsubsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.3}Mediation of environmental covariates via diversity}{15}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Moderation effects of moisture availability and soil}{17}{subsection.3.4}% 
+\contentsline {section}{\numberline {4}Discussion}{18}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Effect of tree species diversity on AGB}{18}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Structural diversity as a mechanism for the BEFR}{19}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Effects of moisture availability and soil fertility}{19}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {4.4}Vegetation type cluster specific responses}{20}{subsection.4.4}% 
+\contentsline {subsection}{\numberline {4.5}Stem density effects}{20}{subsection.4.5}% 
+\contentsline {subsection}{\numberline {4.6}Conclusion}{20}{subsection.4.6}% 

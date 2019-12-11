@@ -70,7 +70,7 @@ sem_data_fil_agg <- read.csv(paste0("data/plot_data_fil_agg", ext, ".csv"))
 # Which variables need to be log transformed? ----
 ##' Look at histograms
 histogram_raw <- sem_data_fil_agg %>%
-	dplyr::select(stems_ha, bchave, sp_rich, 
+	dplyr::select(stems_ha, agb, sp_rich, 
 	  sp_rich_raref, shannon_exp, shannon_equit,
 	  cation_ex_cap, sand_per_rev, ocdens, aridity_index, total_precip, precip_seasonality_rev,
 		mean_height, cov_height, mean_dbh, cov_dbh, diam_even, bchave_mean_95, fire_return_mean, firecount_2001_2018, 
@@ -93,8 +93,8 @@ facet_levels <- c(
   "mean_temp",
   "temp_seasonality",
   "temp_seasonality_log",
-  "bchave",
-  "bchave_log", 
+  "agb",
+  "agb_log", 
   "cation_ex_cap",
   "sand_per",
   "ocdens",
@@ -130,7 +130,7 @@ facet_labels <- c(
   expression("log(Extrap." ~ "species" ~ "rich.)"))
 
 histogram_raw_obs <- sem_data_fil_agg %>%
-  dplyr::select(bchave, stems_ha, 
+  dplyr::select(agb, stems_ha, 
     sp_rich_raref, shannon_equit,
     cation_ex_cap, sand_per, ocdens, 
     total_precip, precip_seasonality, mean_temp, temp_seasonality,
@@ -150,7 +150,7 @@ histogram_raw_obs
 dev.off()
 
 sem_data_trans <- sem_data_fil_agg %>%
-	mutate(bchave_log = log(bchave),
+	mutate(agb_log = log(agb),
 		mean_dbh_log = log(mean_dbh),
 		stems_ha_log = log(stems_ha), 
 		shannon_log = log(shannon_exp), 
@@ -164,7 +164,7 @@ sem_data_trans <- sem_data_fil_agg %>%
 	  ocdens = ocdens)
 
 histogram_trans <- sem_data_trans %>%
-	dplyr::select(stems_ha_log, bchave_log, sp_rich, 
+	dplyr::select(stems_ha_log, agb_log, sp_rich, 
 	  sp_rich_raref_log, shannon_log, shannon_equit_log, diam_even,
 		cation_ex_cap, sand_per_rev, ocdens, aridity_index,
 	  total_precip, precip_seasonality_rev_log,
@@ -182,7 +182,7 @@ histogram_trans
 dev.off()
 
 histogram_trans_obs <- sem_data_trans %>%
-  dplyr::select(bchave_log, stems_ha_log,
+  dplyr::select(agb_log, stems_ha_log,
     sp_rich_raref_log, shannon_equit_log,
     cation_ex_cap, sand_per, ocdens,
     total_precip, precip_seasonality_log, mean_temp, temp_seasonality_log,
@@ -209,7 +209,7 @@ sem_data_norm_std <- sem_data_trans %>%
 		"mean_temp_rev",
 		"temp_seasonality_rev_log",
 	  "isothermality",
-		"bchave_log",
+		"agb_log",
 		"cation_ex_cap",
 		"sand_per_rev",
 		"ocdens",
@@ -229,7 +229,7 @@ sem_data_norm_std <- sem_data_trans %>%
 		.funs = list(std = ~(scale(.) %>% as.vector)))
 
 histogram_trans_std <- sem_data_norm_std %>%
-	dplyr::select(stems_ha_log_std, bchave_log_std, sp_rich_std, sp_rich_raref_log_std, 
+	dplyr::select(stems_ha_log_std, agb_log_std, sp_rich_std, sp_rich_raref_log_std, 
 	  shannon_log_std, shannon_equit_log_std, diam_even_std, cation_ex_cap_std, sand_per_rev_std, ocdens_std, 
 	  aridity_index_std, total_precip_std, precip_seasonality_rev_log_std,
 		mean_height_std, cov_height_std, mean_dbh_log_std, cov_dbh_std, bchave_mean_95_std, 
@@ -248,21 +248,21 @@ dev.off()
 # Which bivariate relationships should be plotted? ----
 ##' Refers to causal paths in SEM conceptual diagram
 bivar_list <- c(
-  "bchave_log_std ~ cation_ex_cap_std",
-  "bchave_log_std ~ ocdens_std",
-  "bchave_log_std ~ cov_dbh_std",
-  "bchave_log_std ~ cov_height_std",
-  "bchave_log_std ~ shannon_log_std",
-  "bchave_log_std ~ shannon_equit_log_std",
-  "bchave_log_std ~ sp_rich_raref_log_std",
-  "bchave_log_std ~ fire_return_mean_log_std",
-  "bchave_log_std ~ aridity_index_std",
-  "bchave_log_std ~ mean_temp_rev_std",
-  "bchave_log_std ~ temp_seasonality_rev_log_std",
-  "bchave_log_std ~ isothermality_std",
-  "bchave_log_std ~ total_precip_std",
-  "bchave_log_std ~ precip_seasonality_rev_log_std",
-  "bchave_log_std ~ stems_ha_log_std",
+  "agb_log_std ~ cation_ex_cap_std",
+  "agb_log_std ~ ocdens_std",
+  "agb_log_std ~ cov_dbh_std",
+  "agb_log_std ~ cov_height_std",
+  "agb_log_std ~ shannon_log_std",
+  "agb_log_std ~ shannon_equit_log_std",
+  "agb_log_std ~ sp_rich_raref_log_std",
+  "agb_log_std ~ fire_return_mean_log_std",
+  "agb_log_std ~ aridity_index_std",
+  "agb_log_std ~ mean_temp_rev_std",
+  "agb_log_std ~ temp_seasonality_rev_log_std",
+  "agb_log_std ~ isothermality_std",
+  "agb_log_std ~ total_precip_std",
+  "agb_log_std ~ precip_seasonality_rev_log_std",
+  "agb_log_std ~ stems_ha_log_std",
   "cov_height_std ~ cation_ex_cap_std",
   "cov_height_std ~ aridity_index_std",
   "cov_height_std ~ fire_return_mean_log_std",
@@ -384,10 +384,10 @@ dev.off()
 
 # Save standardized data to csv ----
 write.csv(sem_data_norm_std, file = paste0("data/plot_data_fil_agg", ext, "_norm_std.csv"), row.names = FALSE)
-
+histogram_raw_obs
 # Look at how relationships vary with cluster ----
 cluster_compare <- data.frame(
-  bchave_log = sem_data_norm_std$bchave_log,
+  agb_log = sem_data_norm_std$agb_log,
   sp_rich = sem_data_norm_std$sp_rich,
   sp_rich_raref = sem_data_norm_std$sp_rich_raref_log,
   shannon_log = sem_data_norm_std$shannon_log,

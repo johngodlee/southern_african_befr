@@ -1,201 +1,114 @@
-                            cluster indicator_value
-Diplorhynchus.condylocarpon       1          0.2033
-Burkea.africana                   1          0.1227
-Combretum.zeyheri                 1          0.0884
-Combretum.apiculatum              1          0.0525
-Brachystegia.utilis               1          0.0495
-Berchemia.zeyheri                 1          0.0443
-Euclea.racemosa                   1          0.0441
-Cussonia.arborea                  1          0.0369
-Ochna.schweinfurthiana            1          0.0368
-Euclea.divinorum                  1          0.0334
-Flacourtia.indica                 1          0.0279
-Diospyros.dichrophylla            1          0.0202
-Grewia.caffra                     1          0.0179
-Vachellia.amythethophylla         1          0.0167
-Senna.petersiana                  1          0.0135
-Dovyalis.longispina               1          0.0132
-Julbernardia.paniculata           2          0.2144
-Parinari.curatellifolia           2          0.1927
-Pterocarpus.angolensis            2          0.1884
-Brachystegia.boehmii              2          0.1873
-Isoberlinia.angolensis            2          0.1861
-Brachystegia.longifolia           2          0.1839
-Uapaca.kirkiana                   2          0.1772
-Brachystegia.spiciformis          2          0.1709
-Pericopsis.angolensis             2          0.1637
-Anisophyllea.boehmii              2          0.1561
-Albizia.antunesiana               2          0.1553
-Monotes.africanus                 2          0.1514
-Uapaca.nitida                     2          0.1479
-Erythrophleum.africanum           2          0.1185
-Bobgunnia.madagascariensis        2          0.0963
-Diospyros.batocana                2          0.0820
-Ochna.pulchra                     2          0.0815
-Syzygium.guineense                2          0.0762
-Uapaca.sansibarica                2          0.0749
-Brachystegia.floribunda           2          0.0704
-Trillesanthus.macroura            2          0.0619
-Baphia.bequaertii                 2          0.0609
-Albizia.adianthifolia             2          0.0605
-Faurea.saligna                    2          0.0543
-Brachystegia.indet                2          0.0503
-Brachystegia.taxifolia            2          0.0490
-Vitex.doniana                     2          0.0443
-Syzygium.cordatum                 2          0.0402
-Cryptosepalum.exfoliatum          2          0.0381
-Pterocarpus.tinctorius            2          0.0315
-Magnistipula.butayei              2          0.0286
-Uapaca.gossweileri                2          0.0270
-Monotes.katangensis               2          0.0258
-Faurea.intermedia                 2          0.0247
-Garcinia.huillensis               2          0.0238
-Monotes.indet                     2          0.0237
-Brachystegia.wangermeeana         2          0.0181
-Ochna.indet                       2          0.0140
-Baikiaea.plurijuga                3          0.1218
-Senegalia.ataxacantha             3          0.0507
-Philenoptera.nelsii               3          0.0353
-Albizia.amara                     3          0.0318
-Terminalia.randii                 3          0.0300
-Euphorbia.ingens                  3          0.0228
-Kirkia.acuminata                  3          0.0205
-Searsia.lancea                    3          0.0201
-Commiphora.mossambicensis         3          0.0093
-Mundulea.sericea                  3          0.0091
-Colophospermum.mopane             4          0.4361
-Boscia.albitrunca                 4          0.0968
-Terminalia.sericea                4          0.0769
-Vachellia.gerrardii               4          0.0757
-Ziziphus.mucronata                4          0.0706
-Tarchonanthus.camphoratus         4          0.0633
-Grewia.monticola                  4          0.0497
-Vachellia.karroo                  4          0.0492
-Strychnos.madagascariensis        4          0.0372
-Euclea.natalensis                 4          0.0354
-Aganope.stuhlmannii               4          0.0340
-Vachellia.tortilis                4          0.0323
-Pappea.capensis                   4          0.0265
-Antidesma.venosum                 4          0.0261
-Grewia.bicolor                    4          0.0258
-Terminalia.stenostachya           4          0.0251
-Vachellia.erioloba                4          0.0236
-Searsia.pyroides                  4          0.0233
-Terminalia.brachystemma           4          0.0230
-Ormocarpum.trichocarpum           4          0.0215
-Pterocarpus.lucens                4          0.0215
-Senegalia.senegal                 4          0.0203
-Pteleopsis.anisoptera             4          0.0193
-Commiphora.edulis                 4          0.0172
-Faidherbia.albida                 4          0.0160
-Glenniea.africana                 4          0.0149
-Sorindeia.madagascariensis        4          0.0139
-Synsepalum.indet                  4          0.0098
-Mimusops.obovata                  4          0.0095
-                            probability
-Diplorhynchus.condylocarpon       0.039
-Burkea.africana                   0.025
-Combretum.zeyheri                 0.007
-Combretum.apiculatum              0.003
-Brachystegia.utilis               0.035
-Berchemia.zeyheri                 0.010
-Euclea.racemosa                   0.033
-Cussonia.arborea                  0.013
-Ochna.schweinfurthiana            0.011
-Euclea.divinorum                  0.042
-Flacourtia.indica                 0.018
-Diospyros.dichrophylla            0.034
-Grewia.caffra                     0.045
-Vachellia.amythethophylla         0.026
-Senna.petersiana                  0.048
-Dovyalis.longispina               0.050
-Julbernardia.paniculata           0.001
-Parinari.curatellifolia           0.001
-Pterocarpus.angolensis            0.010
-Brachystegia.boehmii              0.011
-Isoberlinia.angolensis            0.001
-Brachystegia.longifolia           0.001
-Uapaca.kirkiana                   0.001
-Brachystegia.spiciformis          0.001
-Pericopsis.angolensis             0.001
-Anisophyllea.boehmii              0.001
-Albizia.antunesiana               0.001
-Monotes.africanus                 0.001
-Uapaca.nitida                     0.001
-Erythrophleum.africanum           0.004
-Bobgunnia.madagascariensis        0.012
-Diospyros.batocana                0.004
-Ochna.pulchra                     0.007
-Syzygium.guineense                0.008
-Uapaca.sansibarica                0.001
-Brachystegia.floribunda           0.024
-Trillesanthus.macroura            0.004
-Baphia.bequaertii                 0.007
-Albizia.adianthifolia             0.003
-Faurea.saligna                    0.016
-Brachystegia.indet                0.006
-Brachystegia.taxifolia            0.005
-Vitex.doniana                     0.018
-Syzygium.cordatum                 0.026
-Cryptosepalum.exfoliatum          0.023
-Pterocarpus.tinctorius            0.020
-Magnistipula.butayei              0.013
-Uapaca.gossweileri                0.036
-Monotes.katangensis               0.015
-Faurea.intermedia                 0.019
-Garcinia.huillensis               0.045
-Monotes.indet                     0.041
-Brachystegia.wangermeeana         0.040
-Ochna.indet                       0.041
-Baikiaea.plurijuga                0.001
-Senegalia.ataxacantha             0.002
-Philenoptera.nelsii               0.005
-Albizia.amara                     0.004
-Terminalia.randii                 0.002
-Euphorbia.ingens                  0.004
-Kirkia.acuminata                  0.016
-Searsia.lancea                    0.003
-Commiphora.mossambicensis         0.037
-Mundulea.sericea                  0.020
-Colophospermum.mopane             0.001
-Boscia.albitrunca                 0.001
-Terminalia.sericea                0.008
-Vachellia.gerrardii               0.001
-Ziziphus.mucronata                0.003
-Tarchonanthus.camphoratus         0.001
-Grewia.monticola                  0.001
-Vachellia.karroo                  0.005
-Strychnos.madagascariensis        0.016
-Euclea.natalensis                 0.015
-Aganope.stuhlmannii               0.026
-Vachellia.tortilis                0.022
-Pappea.capensis                   0.015
-Antidesma.venosum                 0.009
-Grewia.bicolor                    0.009
-Terminalia.stenostachya           0.045
-Vachellia.erioloba                0.031
-Searsia.pyroides                  0.008
-Terminalia.brachystemma           0.023
-Ormocarpum.trichocarpum           0.014
-Pterocarpus.lucens                0.023
-Senegalia.senegal                 0.048
-Pteleopsis.anisoptera             0.007
-Commiphora.edulis                 0.010
-Faidherbia.albida                 0.049
-Glenniea.africana                 0.050
-Sorindeia.madagascariensis        0.021
-Synsepalum.indet                  0.046
-Mimusops.obovata                  0.049
+                            cluster indicator_value probability
+Diplorhynchus.condylocarpon       1          0.2026       0.041
+Burkea.africana                   1          0.1235       0.024
+Combretum.zeyheri                 1          0.0877       0.012
+Combretum.apiculatum              1          0.0526       0.005
+Brachystegia.utilis               1          0.0496       0.036
+Berchemia.zeyheri                 1          0.0446       0.014
+Euclea.racemosa                   1          0.0441       0.046
+Cussonia.arborea                  1          0.0373       0.016
+Ochna.schweinfurthiana            1          0.0369       0.011
+Flacourtia.indica                 1          0.0301       0.008
+Faurea.rochetiana                 1          0.0252       0.047
+Diospyros.dichrophylla            1          0.0202       0.030
+Vachellia.amythethophylla         1          0.0167       0.040
+Vitex.payos                       1          0.0157       0.045
+Dovyalis.longispina               1          0.0132       0.042
+Julbernardia.paniculata           2          0.2257       0.001
+Parinari.curatellifolia           2          0.2086       0.001
+Uapaca.kirkiana                   2          0.2073       0.001
+Isoberlinia.angolensis            2          0.2051       0.001
+Brachystegia.longifolia           2          0.1991       0.001
+Pterocarpus.angolensis            2          0.1936       0.015
+Brachystegia.boehmii              2          0.1902       0.004
+Brachystegia.spiciformis          2          0.1769       0.005
+Albizia.antunesiana               2          0.1693       0.001
+Anisophyllea.boehmii              2          0.1672       0.001
+Uapaca.nitida                     2          0.1637       0.001
+Pericopsis.angolensis             2          0.1573       0.001
+Monotes.africanus                 2          0.1515       0.001
+Erythrophleum.africanum           2          0.1203       0.006
+Bobgunnia.madagascariensis        2          0.1131       0.006
+Ochna.pulchra                     2          0.1038       0.002
+Trillesanthus.macroura            2          0.0897       0.001
+Syzygium.guineense                2          0.0800       0.005
+Diospyros.batocana                2          0.0793       0.001
+Uapaca.sansibarica                2          0.0768       0.001
+Brachystegia.floribunda           2          0.0743       0.023
+Baphia.bequaertii                 2          0.0733       0.002
+Faurea.saligna                    2          0.0681       0.003
+Albizia.adianthifolia             2          0.0612       0.005
+Brachystegia.taxifolia            2          0.0533       0.002
+Brachystegia.indet                2          0.0523       0.002
+Vitex.doniana                     2          0.0480       0.010
+Cryptosepalum.exfoliatum          2          0.0464       0.006
+Syzygium.cordatum                 2          0.0390       0.033
+Strychnos.pungens                 2          0.0327       0.039
+Magnistipula.butayei              2          0.0287       0.017
+Pterocarpus.tinctorius            2          0.0286       0.030
+Monotes.indet                     2          0.0282       0.021
+Uapaca.gossweileri                2          0.0280       0.042
+Faurea.intermedia                 2          0.0247       0.013
+Garcinia.huillensis               2          0.0238       0.030
+Monotes.katangensis               2          0.0234       0.016
+Steganotaenia.araliacea           2          0.0216       0.040
+Brachystegia.wangermeeana         2          0.0172       0.046
+Memecylon.flavovirens             2          0.0170       0.047
+Baikiaea.plurijuga                3          0.1185       0.001
+Senegalia.ataxacantha             3          0.0465       0.001
+Albizia.amara                     3          0.0347       0.008
+Terminalia.randii                 3          0.0300       0.001
+Philenoptera.nelsii               3          0.0290       0.017
+Euphorbia.ingens                  3          0.0228       0.001
+Kirkia.acuminata                  3          0.0205       0.014
+Searsia.lancea                    3          0.0201       0.005
+Commiphora.pyracanthoides         3          0.0171       0.031
+Commiphora.mossambicensis         3          0.0093       0.032
+Mundulea.sericea                  3          0.0091       0.028
+Colophospermum.mopane             4          0.4373       0.001
+Boscia.albitrunca                 4          0.0967       0.001
+Terminalia.sericea                4          0.0772       0.015
+Vachellia.gerrardii               4          0.0750       0.001
+Ziziphus.mucronata                4          0.0703       0.004
+Tarchonanthus.camphoratus         4          0.0615       0.001
+Grewia.monticola                  4          0.0497       0.001
+Vachellia.karroo                  4          0.0477       0.008
+Gymnosporia.heterophylla          4          0.0395       0.044
+Euclea.natalensis                 4          0.0359       0.006
+Strychnos.madagascariensis        4          0.0343       0.012
+Aganope.stuhlmannii               4          0.0332       0.036
+Vachellia.tortilis                4          0.0317       0.025
+Pappea.capensis                   4          0.0275       0.014
+Antidesma.venosum                 4          0.0261       0.007
+Grewia.bicolor                    4          0.0258       0.009
+Terminalia.stenostachya           4          0.0251       0.044
+Vachellia.erioloba                4          0.0237       0.023
+Searsia.pyroides                  4          0.0233       0.015
+Terminalia.brachystemma           4          0.0233       0.024
+Gardenia.volkensii                4          0.0227       0.042
+Ormocarpum.trichocarpum           4          0.0214       0.011
+Pterocarpus.lucens                4          0.0211       0.024
+Senegalia.senegal                 4          0.0203       0.050
+Pteleopsis.anisoptera             4          0.0193       0.007
+Commiphora.edulis                 4          0.0172       0.007
+Faidherbia.albida                 4          0.0160       0.037
+Sorindeia.madagascariensis        4          0.0139       0.014
+Synsepalum.brevipes               4          0.0134       0.047
+Vachellia.luederitzii             4          0.0121       0.044
+Gymnanthemum.amygdalinum          4          0.0098       0.042
+Synsepalum.indet                  4          0.0098       0.047
+Mimusops.obovata                  4          0.0095       0.048
+Ozoroa.engleri                    4          0.0083       0.047
 
-Sum of probabilities                 =  288.357 
+Sum of probabilities                 =  288.034 
 
-Sum of Indicator Values              =  10.12 
+Sum of Indicator Values              =  10.41 
 
-Sum of Significant Indicator Values  =  6.12 
+Sum of Significant Indicator Values  =  6.51 
 
-Number of Significant Indicators     =  93 
+Number of Significant Indicators     =  100 
 
 Significant Indicator Distribution
 
  1  2  3  4 
-16 38 10 29 
+15 40 11 34 

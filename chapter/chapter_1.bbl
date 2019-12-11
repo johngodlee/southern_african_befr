@@ -32,14 +32,9 @@ Bond, W.~J. \harvardand\ Keeley, J.~E.  \harvardyearleft 2005\harvardyearright
   , `Fire as a global `herbivore': the ecology and evolution of flammable
   ecosystems', {\em Trends in Ecology and Evolution} {\bf 20}(7),~387--394.
 
-\harvarditem[Brooks et~al.]{Brooks, Mittermeier, {da Fonseca}, Gerlach,
-  Hoffmann, Lamoreux, Mittermeier, Pilgrim \harvardand\
-  Rodrigues}{2006}{Brooks2006}
-Brooks, T.~M., Mittermeier, R.~A., {da Fonseca}, G. A.~B., Gerlach, J.,
-  Hoffmann, M., Lamoreux, J.~F., Mittermeier, C.~G., Pilgrim, J.~D.
-  \harvardand\ Rodrigues, S.~L.  \harvardyearleft 2006\harvardyearright ,
-  `Global biodiversity conservation priorities', {\em Science} {\bf
-  313},~58--61.
+\harvarditem{Byers}{2001}{Byers2001}
+Byers, B.  \harvardyearleft 2001\harvardyearright , `Conserving the miombo
+  ecoregion'.
 
 \harvarditem{Campbell}{1996}{Campbell1996}
 Campbell, B.~M., ed.  \harvardyearleft 1996\harvardyearright , {\em The miombo
@@ -201,6 +196,10 @@ Frost, P.  \harvardyearleft 1996\harvardyearright , The ecology of miombo
   and welfare in Africa', Center for International Forestry Research, Bogor,
   Indonesia, pp.~11--55.
 
+\harvarditem{Grime}{1979}{Grime1979}
+Grime, J.~P.  \harvardyearleft 1979\harvardyearright , {\em Plant strategies
+  and vegetation processes}, John Wiley and Sons, Chichester, UK.
+
 \harvarditem[Hardiman et~al.]{Hardiman, Bohrer, Gough, Vogel \harvardand\
   Curtis}{2011}{Hardiman2011}
 Hardiman, B.~S., Bohrer, G., Gough, C.~M., Vogel, C.~S. \harvardand\ Curtis,
@@ -264,9 +263,21 @@ Hsieh, T.~C., Ma, K.~H. \harvardand\ Chao, A.  \harvardyearleft
   extrapolation of species diversity (hill numbers)', {\em Methods in Ecology
   and Evolution} {\bf 7},~1451--1456.
 
+\harvarditem{Hu \harvardand\ Bentler}{1999}{Hu1999}
+Hu, L. \harvardand\ Bentler, P.~M.  \harvardyearleft 1999\harvardyearright ,
+  `Cutoff criteria for fit indexes in covariance structure analysis:
+  conventional criteria versus new alternatives', {\em Structural Equation
+  Modeling} {\bf 6}(1),~1--55.
+
 \harvarditem{Jax}{2005}{Jax2005}
 Jax, K.  \harvardyearleft 2005\harvardyearright , `Function and ``functioning''
   in ecology: what does it mean?', {\em Oikos} {\bf 111}(3),~641--648.
+
+\harvarditem{Keddy}{1990}{Grace1990}
+Keddy, P.~A.  \harvardyearleft 1990\harvardyearright , Competitive hierarchies
+  and centrifugal organization in plant communities, {\em in} J.~B. Grace
+  \harvardand\ D.~Tilman, eds, `Perspectives on plant competition', Academic
+  Press, San Diego CA, USA, pp.~266--287.
 
 \harvarditem[Kunz et~al.]{Kunz, Fichtner, H{\:a}rdtle, Raumonen, Bruelheide
   \harvardand\ {von Oheimb}}{2019}{Kunz2019}
@@ -572,6 +583,11 @@ SEOSAW  \harvardyearleft 2019\harvardyearright , `Seosaw: A socio-ecological
   observatory for southern african woodlands'.
 \newblock [Online; 15-January-2019].
 
+\harvarditem{Shapiro}{1983}{Shapiro1983}
+Shapiro, A.  \harvardyearleft 1983\harvardyearright , `Asymptotic distribution
+  theory in the analysis of covariance structures (a unified approach)', {\em
+  South African Statistical Journal} {\bf 17},~33--81.
+
 \harvarditem[Shirima et~al.]{Shirima, Pfeifer, Platts, Totland \harvardand\
   Moe}{2015}{Shirima2015}
 Shirima, D.~D., Pfeifer, M., Platts, P.~J., Totland, {\O}. \harvardand\ Moe,
@@ -624,14 +640,6 @@ Stegen, J.~C., Swenson, N.~G., Enquist, B.~J., White, E.~P., Phillips, O.~L.,
    \harvardyearleft 2011\harvardyearright , `Variation in above-ground forest
   biomass across broad climatic gradients', {\em Global Ecology and
   Biogeography} {\bf 20},~744--754.
-
-\harvarditem[Thompson et~al.]{Thompson, Okabe, Tylianakis, Kumar, Brockerhoff,
-  Schellhorn, Parrotta \harvardand\ Nasi}{2011}{Thompson2011}
-Thompson, I.~D., Okabe, K., Tylianakis, J.~M., Kumar, P., Brockerhoff, E.~G.,
-  Schellhorn, N.~A., Parrotta, J.~A. \harvardand\ Nasi, R.  \harvardyearleft
-  2011\harvardyearright , `Forest biodiversity and the delivery of ecosystem
-  goods and services: translating science into policy', {\em BioScience} {\bf
-  61}(12),~972--981.
 
 \harvarditem{Tilman \harvardand\ Downing}{1994}{Tilman1994}
 Tilman, D. \harvardand\ Downing, J.~A.  \harvardyearleft 1994\harvardyearright

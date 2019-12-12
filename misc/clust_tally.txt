@@ -1,0 +1,5 @@
+  clust4     n   <int> <int>1      1   5042      2   6083      3   2104      4    65  clust5     n   <int> <int>1      1   4422      2   6083      3    624      4   2105      5    65
+
+C4-1 = C5-1 + C5-3
+
+Everything else is the ame between the clusterings

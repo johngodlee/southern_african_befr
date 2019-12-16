@@ -22,7 +22,7 @@ library(gridExtra)  #
 library(lme4)  #
 library(MuMIn)  #
 
-source("scripts/clust_pal.R")
+source("scripts/clust_defin.R")
 
 # Import data ----
 
@@ -89,7 +89,7 @@ dev.off()
 sem_data_trans <- plot_data %>%
 	mutate(agb_ha_log = log(agb_ha),
 		stems_ha_log = log(stems_ha), 
-	  n_species_raref_log = log(n_species_raref))
+	  n_species_raref_log = log(n_species_raref + 4))
 
 hist_trans <- sem_data_trans %>%
   dplyr::select(agb_ha_log, stems_ha_log,
@@ -106,7 +106,7 @@ hist_trans <- sem_data_trans %>%
   facet_wrap(~facet_label, scales = "free", labeller = label_parsed) + 
   labs(x = "", y = "")
 
-pdf(file =  "img/hist_trans.pdf", width = 12, height = 7)
+pdf(file = "img/hist_trans.pdf", width = 12, height = 7)
 hist_trans
 dev.off()
 

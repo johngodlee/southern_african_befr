@@ -2,6 +2,7 @@
 	observed/.style={rectangle,draw,thick,inner sep=5pt,minimum size=1cm, align=center},
 	latent/.style={circle, draw, thick, inner sep=0pt, minimum size=2cm, align=center}, 
 	path/.style={->, thick, >=stealth'},
+	corr/.style={<->, thick, bend left=15, dotted, >=stealth'},
 	loading/.style={->, thick, dotted, >=stealth'},
 	loadingset/.style={->, thick, dashed, >=stealth'}]
 
@@ -15,9 +16,9 @@
 
 \coordinate[above= 0.7in of m] (momid);
 \node [observed] (mp) [left = 0.8in of momid] {MAP};
-\node [observed] (mpc) [left = 0.1in of momid] {MAP\\CoV};
+\node [observed] (mpc) [left = 0.1in of momid] {PS};
 \node [observed] (mt) [right = 0.1in of momid] {MAT};
-\node [observed] (mtc) [right = 0.8in of momid] {MAT\\CoV};
+\node [observed] (mtc) [right = 0.8in of momid] {TS};
 
 \coordinate[below= 0.7in of s] (somid);
 \node [observed] (ss) [left = 0.5in of somid] {Sand};
@@ -39,7 +40,7 @@
 \draw [path] (h) to node {\pcfhb{}} (b);
 \draw [path] (m) to node[above=0.1in, pos=0.5] {\pcfmi{}} (i);
 \draw [path] (s) to node {\pcfsi{}} (i);
-\draw [path] (d) to node {\pcfdi{}} (i);
+\draw [corr] (d) to node[above=0.05in, pos=0.5] {\pcfdi{}} (i);
 \draw [path] (m) to node {\pcfmb{}} (b);
 \draw [path] (s) to node[below=0.1in, pos=0.5] {\pcfsb{}} (b);
 

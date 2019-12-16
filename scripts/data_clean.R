@@ -18,6 +18,7 @@ library(dplyr)  #
 library(tidyr)  #
 library(iNEXT)  #
 library(vegan)  # 
+library(ggplot2) # 
 
 # Import data ----
 
@@ -174,6 +175,15 @@ s_fil_summ <- s_fil %>%
   mutate(cov_height = sd_height / mean_height * 100,
     cov_dbh = sd_dbh / mean_dbh * 100)
 
+# Remove tiny tree-less plots ----
+plot_data_agg <- left_join(plot_data_agg, s_fil_summ, 
+  by = c("plot_group" = "plot_group")) %>%
+  mutate(stems_ha = n_stems / area_plot,
+    agb_ha = agb / area_plot) %>%
+  filter(area_plot >= 0.1,
+    stems_ha >= 10) %>%
+  filter(plot_group != "DKS001")
+
 # Estimate rarefied species diversity ----
 
 # Create matrix for estimating rarefied sp. rich.
@@ -194,34 +204,47 @@ ab_mat_clean <- dplyr::select(ab_mat, -plot_group)
 saveRDS(ab_mat_clean, "data/stems_ab_mat.rds")
 
 # Hill number estimation of species richness and shannon index
-chao_rich_list <- apply(ab_mat_clean, 1, ChaoRichness)
+ab_mat_clean_t <- as.data.frame(t(ab_mat_clean))
 
-chao_rich_df <- do.call("rbind", chao_rich_list)
+chao_list <- iNEXT(ab_mat_clean_t, q = 0)
 
-chao_rich_df$plot_group <- row.names(chao_rich_df)
+chao_rich_df <- chao_list$AsyEst %>%
+  filter(Diversity == "Species richness") %>%
+  dplyr::select(plot_group = Site, n_species_raref = Estimator, 
+    n_species_raref_se = s.e., n_species_lower_ci_95 = LCL, n_species_upper_ci_95 = UCL)
 
-names(chao_rich_df) <- c("n_species", "n_species_raref", "n_species_raref_se", "n_species_lower_ci_95", "n_species_upper_ci_95", "plot_group")
+chao_shannon_df <- chao_list$AsyEst %>%
+  filter(Diversity == "Shannon diversity") %>%
+  dplyr::select(plot_group = Site, shannon_exp = Estimator, 
+    shannon_se = s.e., shannon_lower_ci_95 = LCL, shannon_upper_ci_95 = UCL)
 
-chao_shannon_list <- apply(ab_mat_clean, 1, ChaoShannon, transform = TRUE)
-
-chao_shannon_df <- do.call("rbind", chao_shannon_list)
-
-chao_shannon_df$plot_group <- row.names(chao_shannon_df)
-
-names(chao_shannon_df) <- c("shannon_obs", "shannon_exp", "shannon_se", "shannon_lower_ci_95", "shannon_upper_ci_95", "plot_group")
-
-chao_df <- left_join(chao_rich_df[,-1], chao_shannon_df, by = c("plot_group" = "plot_group"))
+chao_df <- left_join(chao_rich_df, chao_shannon_df, by = c("plot_group" = "plot_group"))
 
 # Estimate Species abundance evenness from Shannon
 chao_df$shannon_equit <- chao_df$shannon_exp / chao_df$n_species_raref
 
+# Plot extrapolated estimates 
+inext_output_bind <- bind_rows(chao_list$iNextEst, .id = "id")
+inext_output_bind_obs <- inext_output_bind %>% filter(method == "observed")
+inext_output_bind_interp <- inext_output_bind %>% filter(method == "interpolated")
+inext_output_bind_extrap <- inext_output_bind %>% filter(method == "extrapolated")
+inext_output_bind_extrap_double <- inext_output_bind %>% group_by(id) %>%
+  summarise(m_max = max(m), qd_max = max(qD))
+
+pdf("img/chao_richness_extrap.pdf", width = 12, height = 6)
+ggplot() +
+  geom_line(data = inext_output_bind_interp,
+    aes(x = m, y = qD, group = id)) +
+  geom_line(data = inext_output_bind_extrap,
+    aes(x = m, y = qD, group = id),
+    linetype = 2) +
+  theme_classic() +
+  theme(legend.position = "none") +
+  labs(x = "Bootstrap sample size", y = "Extrapolated species richness")
+dev.off()
+
 # Clean dataframe, add stem summary data ----
-plot_data_agg_clean <- left_join(plot_data_agg, s_fil_summ, by = c("plot_group" = "plot_group")) %>%
-  left_join(., chao_df, by = c("plot_group" = "plot_group")) %>%
-  mutate(stems_ha = n_stems / area_plot,
-    agb_ha = agb / area_plot) %>%
-  filter(area_plot >= 0.1,
-  stems_ha >= 10) %>%
+plot_data_agg_clean <- left_join(plot_data_agg, chao_df, by = c("plot_group" = "plot_group")) %>%
   dplyr::select(plot_group, plotcode, plotcode_vec, plot_id, country, pi, area_plot, clust4,
     long, lat, 
     cec, sand_per, org_c_per, ocdens,
@@ -236,6 +259,7 @@ plot_data_agg_clean$precip_seasonality_rev <- -1 * plot_data_agg_clean$precip_se
 plot_data_agg_clean$temp_seasonality_rev <- -1 * plot_data_agg_clean$temp_seasonality + 1000
 plot_data_agg_clean$sand_per_rev <- -1 * plot_data_agg_clean$sand_per + 1000
 plot_data_agg_clean$mean_temp_rev <- -1 * plot_data_agg_clean$mean_temp + 1000
+plot_data_agg_clean$shannon_equit <- -1 * plot_data_agg_clean$shannon_equit + 1000
 
 # Write data ----
 # Plot group - plotcode lookup 
@@ -247,5 +271,4 @@ saveRDS(plotcode_plot_group_lookup, "data/plotcode_plot_group_lookup.rds")
 # Plot data
 plot_data_agg_clean <- plot_data_agg_clean %>% dplyr::select(-plotcode_vec)
 saveRDS(plot_data_agg_clean, "data/plot_data_fil_agg.rds")
-
 

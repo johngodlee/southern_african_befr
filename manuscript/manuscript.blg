@@ -4,45 +4,45 @@ The top-level auxiliary file: manuscript.aux
 The style file: /Users/johngodlee/.texmf/agsmnourl.bst
 Database file #1: /Users/johngodlee/google_drive/bib/papers/lib.bib
 Warning--I didn't find a database entry for ""
-You've used 90 entries,
+You've used 83 entries,
             2878 wiz_defined-function locations,
-            1227 strings with 28766 characters,
-and the built_in function-call counts, 1152567 in all, are:
-= -- 193864
-> -- 15883
+            1188 strings with 27183 characters,
+and the built_in function-call counts, 1087771 in all, are:
+= -- 183010
+> -- 15017
 < -- 0
-+ -- 98921
-- -- 5113
-* -- 106244
-:= -- 218930
-add.period$ -- 95
-call.type$ -- 90
-change.case$ -- 1247
-chr.to.int$ -- 89
-cite$ -- 90
-duplicate$ -- 1444
-empty$ -- 3005
-format.name$ -- 5401
-if$ -- 207420
++ -- 93473
+- -- 4840
+* -- 100336
+:= -- 206511
+add.period$ -- 88
+call.type$ -- 83
+change.case$ -- 1150
+chr.to.int$ -- 82
+cite$ -- 83
+duplicate$ -- 1332
+empty$ -- 2762
+format.name$ -- 5105
+if$ -- 195751
 int.to.chr$ -- 6
 int.to.str$ -- 0
-missing$ -- 89
-newline$ -- 278
-num.names$ -- 972
-pop$ -- 281
+missing$ -- 82
+newline$ -- 257
+num.names$ -- 893
+pop$ -- 261
 preamble$ -- 1
-purify$ -- 1350
+purify$ -- 1245
 quote$ -- 0
-skip$ -- 1118
+skip$ -- 1032
 stack$ -- 0
-substring$ -- 285509
-swap$ -- 259
-text.length$ -- 1260
+substring$ -- 269641
+swap$ -- 240
+text.length$ -- 1162
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 344
+type$ -- 318
 warning$ -- 0
-while$ -- 2039
+while$ -- 1880
 width$ -- 0
-write$ -- 1225
+write$ -- 1130
 (There was 1 warning)

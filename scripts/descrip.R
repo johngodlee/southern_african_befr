@@ -34,6 +34,13 @@ plot_data$clust4 <- factor(plot_data$clust4,
   levels = clust_names, 
   labels = clust_names)
 
+stem_ab_mat <- readRDS("data/stems_ab_mat.rds")
+
+stem_ab_mat$plot_group <- row.names(stem_ab_mat)
+
+stem_ab_mat_clean <- filter(stem_ab_mat, plot_group %in% plot_data$plot_group) %>%
+  dplyr::select(-plot_group)
+
 # Setup an example data frame
 df <- data.frame(id=c("id1","id2","id3","id4","id5","id6","id7","id8"),
   val=c(0,1,0,2,3,1,2,NA))
@@ -232,11 +239,15 @@ n_plots_num <- length(unique(plot_data$plot_group))
 # Plot number pre-outlier detection
 n_plots_pcoa <- n_plots_num + 110
 
+# How many stems did we measure?
+n_stems_total <- sum(rowSums(stem_ab_mat_clean))
+
 fileConn <- file(paste0("include/n_plots.tex"))
 writeLines(
   c(
     paste0("\\newcommand{\\nplots}{", n_plots_num, "}"),
-    paste0("\\newcommand{\\nplotspcoa}{", n_plots_pcoa, "}")),
+    paste0("\\newcommand{\\nplotspcoa}{", n_plots_pcoa, "}"),
+    paste0("\\newcommand{\\nstems}{", n_stems_total, "}")),
   fileConn)
 close(fileConn)
 

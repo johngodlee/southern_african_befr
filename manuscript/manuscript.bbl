@@ -23,29 +23,19 @@ Ali, A., Lin, S., He, J., Kong, F., Yu, J. \harvardand\ Jiang, H.
   complexity in tropical forests', {\em Forest Ecology and Management} {\bf
   432},~823--831.
 
+\harvarditem[Barthlott et~al.]{Barthlott, Mutke, Rafiqpoor, Kier \harvardand\
+  Kreft}{2005}{Barthlott2005}
+Barthlott, W., Mutke, J., Rafiqpoor, D., Kier, G. \harvardand\ Kreft, H.
+  \harvardyearleft 2005\harvardyearright , `Global centers of vascular plant
+  diversity', {\em Nova Acta Leopoldina} {\bf 92}(342),~61--83.
+
 \harvarditem{Beaujean}{2014}{Beaujean2014}
 Beaujean, A.~A.  \harvardyearleft 2014\harvardyearright , {\em Latent variable
   modeling using R}, Routledge, New York NY, USA.
 
-\harvarditem{Bond \harvardand\ Keeley}{2005}{Bond2005}
-Bond, W.~J. \harvardand\ Keeley, J.~E.  \harvardyearleft 2005\harvardyearright
-  , `Fire as a global `herbivore': the ecology and evolution of flammable
-  ecosystems', {\em Trends in Ecology and Evolution} {\bf 20}(7),~387--394.
-
 \harvarditem{Byers}{2001}{Byers2001}
 Byers, B.  \harvardyearleft 2001\harvardyearright , `Conserving the miombo
   ecoregion'.
-
-\harvarditem{Campbell}{1996}{Campbell1996}
-Campbell, B.~M., ed.  \harvardyearleft 1996\harvardyearright , {\em The miombo
-  in transition: woodlands and welfare in Africa}, Centre for International
-  Forestry Research, Bogor, Indonesia.
-
-\harvarditem[Cardinale et~al.]{Cardinale, Palmer \harvardand\
-  Collins}{2002}{Cardinale2002}
-Cardinale, B.~J., Palmer, M.~A. \harvardand\ Collins, S.~L.  \harvardyearleft
-  2002\harvardyearright , `Species diversity enhances ecosystem functioning
-  through interspecific facilitation', {\em Nature} {\bf 415},~426--429.
 
 \harvarditem[Cardinale et~al.]{Cardinale, Srivastava, Duffy, Wright, Downing,
   Sankaran, Jouseau, Cadotte, Carroll, Weis, Hector \harvardand\
@@ -149,13 +139,6 @@ Dengler, J.  \harvardyearleft 2009\harvardyearright , `Which function describes
   the species-area relationship best? a review and empirical evaluation', {\em
   Journal of Biogeography} {\bf 36},~728--744.
 
-\harvarditem[Dohn et~al.]{Dohn, Demb{\'e}l{\'e}, Karemb{\'e}, Moustakas,
-  Am{\'e}vor \harvardand\ Hanan}{2013}{Dohn2013}
-Dohn, J., Demb{\'e}l{\'e}, F., Karemb{\'e}, M., Moustakas, A., Am{\'e}vor,
-  K.~A. \harvardand\ Hanan, N.~P.  \harvardyearleft 2013\harvardyearright ,
-  `Tree effects on grass growth in savannas: competition, facilitation and the
-  stress-gradient hypothesis', {\em Journal of Ecology} {\bf 101},~202--209.
-
 \harvarditem{Dufr{\^e}ne \harvardand\ Legendre}{1997}{Dufrene1997}
 Dufr{\^e}ne, M. \harvardand\ Legendre, P.  \harvardyearleft
   1997\harvardyearright , `Species assemblage and indicator species: the need
@@ -223,16 +206,6 @@ Hengl, T., {Mendes de Jesus}, J., Heuvelink, G. B.~M., Gonzalez, M.~R.,
   \harvardand\ Kempen, B.  \harvardyearleft 2017\harvardyearright ,
   `Soilgrids250m: Global gridded soil information based on machine learning',
   {\em PLoS ONE} {\bf 12}(2),~1--40.
-
-\harvarditem[Higgins et~al.]{Higgins, Bond, February, Bronn, Euston-Brown,
-  Enslin, Govender, Rademan, {O'Regan}, Potgieter, Scheiter, Sowry, Trollope
-  \harvardand\ Trollope}{2007}{Higgins2007}
-Higgins, S.~I., Bond, W.~J., February, E.~C., Bronn, A., Euston-Brown, D.
-  I.~W., Enslin, B., Govender, N., Rademan, L., {O'Regan}, S., Potgieter, A.
-  L.~F., Scheiter, S., Sowry, R., Trollope, L. \harvardand\ Trollope, W. S.~W.
-  \harvardyearleft 2007\harvardyearright , `Effects of four decades of fire
-  manipulation on woody vegetation structure in savanna', {\em Ecology} {\bf
-  88}(5),~1119--1125.
 
 \harvarditem{Hill \harvardand\ Hanan}{2011}{Hill2010}
 Hill, M.~J. \harvardand\ Hanan, N.~P., eds  \harvardyearleft
@@ -519,13 +492,6 @@ Roberts, D.~W.  \harvardyearleft 2019\harvardyearright , {\em labdsv:
   Ordination and Multivariate Analysis for Ecology}.
 \newblock R package version 2.0-1.
 
-\harvarditem[Roques et~al.]{Roques, {O'Connor} \harvardand\
-  Watkinson}{2001}{Roques2001}
-Roques, K.~G., {O'Connor}, T.~G. \harvardand\ Watkinson, A.~R.
-  \harvardyearleft 2001\harvardyearright , `Dynamics of shrub encroachment in
-  an african savanna: relative influences of fire, herbivory, rainfall and
-  density dependence', {\em Journal of Applied Ecology} {\bf 38},~268--280.
-
 \harvarditem{Rosseel}{2012}{lavaan}
 Rosseel, Y.  \harvardyearleft 2012\harvardyearright , `{lavaan}: An {R} package
   for structural equation modeling', {\em Journal of Statistical Software} {\bf
@@ -538,14 +504,6 @@ Ryan, C.~M., Pritchard, R., McNicol, I., Owen, M., Fisher, J.~A. \harvardand\
   from southern african woodlands and their future under global change', {\em
   Philosophical Transactions of the Royal Society B: Biological Sciences} {\bf
   371}(1703),~1--16.
-
-\harvarditem[Saito et~al.]{Saito, Luyssaert, Poulter, Williams, Ciais,
-  Bellassen, Ryan, Yue, Cadule \harvardand\ Peylin}{2014}{Saito2014}
-Saito, M., Luyssaert, S., Poulter, B., Williams, M., Ciais, P., Bellassen, V.,
-  Ryan, C.~M., Yue, C., Cadule, P. \harvardand\ Peylin, P.  \harvardyearleft
-  2014\harvardyearright , `Fire regimes and variability in aboveground woody
-  biomass in miombo woodland', {\em Journal of Geophysical Research:
-  Biogeosciences} {\bf 119},~1014--1029.
 
 \harvarditem[Sankaran et~al.]{Sankaran, Hanan, Scholes, Ratnam, Augustine,
   Cade, Gignoux, Higgins, {Le Roux}, Ludwig, Ardo, Banyikwa, Bronn, Bucini,
@@ -625,13 +583,6 @@ Stark, S.~C., Leitold, V., Wu, J.~L., Hunter, M.~O., {de Castilho}, C.~V.,
   2012\harvardyearright , `Amazon foreast carbon dynamics predicted by profiles
   of canopy leaf area and light environment', {\em Ecology Letters} {\bf
   15},~1406--1414.
-
-\harvarditem[Staver et~al.]{Staver, Bond, Stock, {van Rensburg} \harvardand\
-  Waldram}{2009}{Staver2009}
-Staver, A.~C., Bond, W.~J., Stock, W.~D., {van Rensburg}, S.~J. \harvardand\
-  Waldram, M.~S.  \harvardyearleft 2009\harvardyearright , `Browsing and fire
-  interact to suppress tree density in an african savanna', {\em Ecological
-  Applications} {\bf 19}(7),~1909--1919.
 
 \harvarditem[Stegen et~al.]{Stegen, Swenson, Enquist, White, Phillips,
   J{\o}rgensen, Weiser, Mendoza \harvardand\ Vargas}{2011}{Stegen2011}

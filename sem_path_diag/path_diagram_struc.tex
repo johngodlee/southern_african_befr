@@ -2,6 +2,7 @@
 	observed/.style={rectangle,draw,thick,inner sep=5pt, outer sep=2pt, minimum size=1cm, align=center},
 	latent/.style={circle, draw, thick, inner sep=0pt, outer sep=2pt, minimum size=2cm, align=center}, 
 	path/.style={->, thick, >=stealth'},
+	corr/.style={<->, thick, bend right=15, dotted, >=stealth'},
 	loading/.style={->, thick, dotted, >=stealth'},
 	loadingset/.style={->, thick, dashed, >=stealth'}]
 
@@ -26,7 +27,7 @@
 
 \draw [path] (d) to node {\pcsdh{}} (h);
 \draw [path] (h) to node {\pcshb{}} (b);
-\draw [path] (d) to node {\pcsdi{}} (i);
+\draw [corr] (d) to node {\pcsdi{}} (i);
 \draw [path] (i) to node {\pcsib{}} (b);
 \draw [path] (d) to node {\pcsdb{}} (b);
 

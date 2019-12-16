@@ -1,13 +1,13 @@
 
-Sum of probabilities                 =  226.782 
+Sum of probabilities                 =  224.177 
 
-Sum of Indicator Values              =  11.45 
+Sum of Indicator Values              =  10.66 
 
-Sum of Significant Indicator Values  =  7.35 
+Sum of Significant Indicator Values  =  6.7 
 
-Number of Significant Indicators     =  112 
+Number of Significant Indicators     =  102 
 
 Significant Indicator Distribution
 
  1  2  3  4 
-14 41 13 44 
+ 9 40 12 41 

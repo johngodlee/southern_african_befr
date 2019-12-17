@@ -41,19 +41,6 @@ stem_ab_mat$plot_group <- row.names(stem_ab_mat)
 stem_ab_mat_clean <- filter(stem_ab_mat, plot_group %in% plot_data$plot_group) %>%
   dplyr::select(-plot_group)
 
-# Setup an example data frame
-df <- data.frame(id=c("id1","id2","id3","id4","id5","id6","id7","id8"),
-  val=c(0,1,0,2,3,1,2,NA))
-
-# Now setup the translation vector - essentially a lookup table
-trans <- c("ZZT","ZZU","ZZV","ZZW",NA)
-names(trans) <- c(0,1,2,3,NA)
-
-# Now translate the values into a new column and print it out 
-df$nval <- trans[ as.character(df$val) ]
-df$nval
-# [1] "ZZT" "ZZU" "ZZT" "ZZV" "ZZW" "ZZU" "ZZV" NA 
-
 # Plotcode lookup
 plotcode_plot_group_lookup <- readRDS("data/plotcode_plot_group_lookup.rds")
 
@@ -439,7 +426,8 @@ clust_summ <- plot_data %>%
   mutate(c_name, c_ind, c_dom,
     agb_ha = paste0(agb_ha_median, "(", agb_ha_iqr, ")"),
     n_species_raref = paste0(n_species_raref_median, "(", n_species_raref_iqr, ")"),
-    stems_ha = paste0(stems_ha_median, "(", stems_ha_iqr, ")")) %>%
+    stems_ha = paste0(stems_ha_median, "(", stems_ha_iqr, ")"),
+    clust4 = as.character(clust4)) %>%
   select(clust4, c_dom, c_ind,  
     n_plots, n_species_raref, stems_ha, agb_ha)
 

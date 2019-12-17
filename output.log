@@ -9,6 +9,189 @@ The following objects are masked from ‘package:base’:
 
     intersect, setdiff, setequal, union
 
+Loading required package: sp
+rgdal: version: 1.4-4, (SVN revision 833)
+ Geospatial Data Abstraction Library extensions to R successfully loaded
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rgdal/gdal
+ GDAL binary built with GEOS: FALSE 
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
+ Path to PROJ.4 shared files: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rgdal/proj
+ Linking to sp version: 1.3-1 
+
+Please cite as: 
+
+ Hlavac, Marek (2018). stargazer: Well-Formatted Regression and Summary Statistics Tables.
+ R package version 5.2.2. https://CRAN.R-project.org/package=stargazer 
+
+Loading required package: mgcv
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+This is mgcv 1.8-28. For overview type 'help("mgcv-package")'.
+This is labdsv 2.0-1
+convert existing ordinations with as.dsvord()
+
+Attaching package: ‘labdsv’
+
+The following object is masked from ‘package:stats’:
+
+    density
+
+OGR data source with driver: ESRI Shapefile 
+Source: "/Users/johngodlee/google_drive/postgrad/phd/confirmation_report/resources/whitesveg", layer: "Whites vegetation"
+with 20 features
+It has 3 fields
+Integer64 fields read as strings:  COUNT 
+SpP is invalid
+Warning messages:
+1: In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
+  Ring Self-intersection at or near point 25.96923065 -16.173994059999998
+2: In rgeos::gUnaryUnion(spgeom = SpP, id = IDs) :
+  Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
+[1] "long"  "lat"   "order" "hole"  "piece" "id"    "group"
+[1] 19
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+Warning message:
+Removed 6449439 rows containing non-finite values (new_stat_binhex). 
+null device 
+          1 
+ [1] "South Africa"      "Zimbabwe"          "Angola"           
+ [4] "Malawi"            "DRC"               "Tanzania"         
+ [7] "Mozambique"        "Kenya"             "Zambia"           
+[10] "Botswana"          "Namibia"           "Republic of Congo"
+[1] 12
+ [1] "Zambia"       "South Africa" "Malawi"       "DRC"          "Zimbabwe"    
+ [6] "Mozambique"   "Tanzania"     "Angola"       "Botswana"     "Namibia"     
+[1] 10
+[1] 5385
+ [1] 1638 1638 1646 1648 1686 1687 1694 1697 1729 1730 1732 1735 1739 1740 1757
+[16] 1777 1786 1791 1825 1840
+ [1] 454 457 459 459 461 462 463 463 464 464 465 465 465 466 466 466 466 466 467
+[20] 467
+null device 
+          1 
+[1] 93256
+Warning messages:
+1: Removed 889 rows containing non-finite values (stat_smooth). 
+2: Removed 889 rows containing missing values (geom_point). 
+null device 
+          1 
+Warning messages:
+1: Column `plotcode`/`plotcode_vec` joining factor and character vector, coercing into character vector 
+2: Column `plot_group` joining character vector and factor, coercing into character vector 
+There were 50 or more warnings (use warnings() to see the first 50)
+                                   sp Marginal miombo
+187       Diplorhynchus.condylocarpon      0.21572031
+88                    Burkea.africana      0.14260489
+421 Pseudolachnostylis.maprouneifolia      0.12757325
+303                       Indet.indet      0.12685901
+430            Pterocarpus.angolensis      0.11064695
+129                 Combretum.zeyheri      0.08292812
+                         sp Core miombo
+310 Julbernardia.paniculata   0.2613469
+394 Parinari.curatellifolia   0.2461976
+543         Uapaca.kirkiana   0.2272968
+304  Isoberlinia.angolensis   0.2183783
+68     Brachystegia.boehmii   0.2052485
+72  Brachystegia.longifolia   0.2033418
+                          sp   Baikiaea
+38        Baikiaea.plurijuga 0.13062898
+526       Terminalia.sericea 0.06472045
+308  Julbernardia.globiflora 0.05978606
+10             Albizia.amara 0.04589459
+75  Brachystegia.spiciformis 0.04148727
+118       Combretum.collinum 0.03390558
+                                   sp     Mopane
+114             Colophospermum.mopane 0.41133010
+125                   Combretum.molle 0.08706064
+421 Pseudolachnostylis.maprouneifolia 0.07750408
+56                  Boscia.albitrunca 0.06513044
+303                       Indet.indet 0.06446778
+229                   Euclea.racemosa 0.05752928
+# A tibble: 6 x 3
+# Groups:   clust4 [1]
+  clust4          gen_sp                   bchave_total
+  <fct>           <fct>                           <dbl>
+1 Marginal miombo Julbernardia globiflora          582.
+2 Marginal miombo Brachystegia spiciformis         468.
+3 Marginal miombo Julbernardia paniculata          445.
+4 Marginal miombo Baikiaea plurijuga               408.
+5 Marginal miombo Brachystegia boehmii             365.
+6 Marginal miombo Indet indet                      296.
+# A tibble: 6 x 3
+# Groups:   clust4 [1]
+  clust4      gen_sp                   bchave_total
+  <fct>       <fct>                           <dbl>
+1 Core miombo Julbernardia paniculata         1243.
+2 Core miombo Brachystegia spiciformis        1213.
+3 Core miombo Brachystegia boehmii            1137.
+4 Core miombo Julbernardia globiflora          686.
+5 Core miombo Brachystegia longifolia          505.
+6 Core miombo Isoberlinia angolensis           393.
+# A tibble: 6 x 3
+# Groups:   clust4 [1]
+  clust4   gen_sp                bchave_total
+  <fct>    <fct>                        <dbl>
+1 Baikiaea Spirostachys africana        649. 
+2 Baikiaea Senegalia nigrescens         183. 
+3 Baikiaea Euclea racemosa              169. 
+4 Baikiaea Senegalia burkei             167. 
+5 Baikiaea Schotia brachypetala          98.6
+6 Baikiaea Combretum molle               83.9
+# A tibble: 6 x 3
+# Groups:   clust4 [1]
+  clust4 gen_sp                            bchave_total
+  <fct>  <fct>                                    <dbl>
+1 Mopane Colophospermum mopane                    734. 
+2 Mopane Julbernardia globiflora                   17.7
+3 Mopane Pseudolachnostylis maprouneifolia         16.5
+4 Mopane Indet indet                               16.2
+5 Mopane Brachystegia spiciformis                  15.8
+6 Mopane Brachystegia boehmii                      13.3
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Tue, Dec 17, 2019 - 16:40:59
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{clust_summ} 
+\begin{tabular}{@{\extracolsep{5pt}} ccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+clust4 & c\_dom & c\_ind & n\_plots & n\_species\_raref & stems\_ha & agb\_ha \\ 
+\hline \\[-1.8ex] 
+Marginal miombo & Julbernadia spp., Brachystegia spiciformis, Baikeaea plurijuga & Diplorhynchus condylocarpon, Burkea africana, Pseudolachnostylis maprouneifolia & 687 & 11(11.2) & 170(145.3) & 37(34.68) \\ 
+Core miombo & Julbernadia spp., Brachystegia spp., Isoberlinia angolensis & Julbernardia paniculata, Isoberlinia angolensis, Brachystegia longifolia & 757 & 18(17.6) & 215(171.7) & 48.8(43.7) \\ 
+Baikiaea & Spirostachys africana, Senegalia spp., Euclea racemosa & Baikiaea plurijuga, Senegalia ataxacantha, Combretum collinum & 226 & 10(10) & 165(157.5) & 46(47.81) \\ 
+Mopane & Colophospermum mopane & Colophospermum mopane, Combretum spp. & 99 & 7(8.2) & 190(155.7) & 41.5(36.93) \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
 This is lavaan 0.6-5
 lavaan is BETA software! Please report any bugs.
 Registered S3 methods overwritten by 'huge':
@@ -370,7 +553,7 @@ null device
           1 
 
 % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Mon, Dec 16, 2019 - 16:41:40
+% Date and time: Tue, Dec 17, 2019 - 16:41:06
 \begin{table}[!htbp] \centering 
   \caption{} 
   \label{corr_ci_tab} 
@@ -1038,7 +1221,7 @@ pdf
   2 
 
 % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Mon, Dec 16, 2019 - 16:41:44
+% Date and time: Tue, Dec 17, 2019 - 16:41:10
 \begin{table}[!htbp] \centering 
   \caption{} 
   \label{struc_model_fit_clust_stats} 
@@ -6246,7 +6429,7 @@ pdf
 6                               h   0  0.79418492 0.038086669 20.8520445
 7                               k   0 -0.02910929 0.013753279 -2.1165347
 8                               c   0  0.07337310 0.011686032  6.2787008
-9                               b   0 -0.15653018 0.037751645 -4.1463140
+9                               b   0  0.15653018 0.037751645 -4.1463140
 10                              g   0  0.40743464 0.038795482 10.5021155
 11                              e   0  0.77752106 0.030013358 25.9058334
 12       biomass_moisture_via_div   0 -0.01409596 0.004372506 -3.2237712
@@ -6915,7 +7098,7 @@ pdf
   2 
 
 % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Mon, Dec 16, 2019 - 16:41:56
+% Date and time: Tue, Dec 17, 2019 - 16:41:22
 \begin{table}[!htbp] \centering 
   \caption{} 
   \label{mois_div_int_mod} 
@@ -6951,7 +7134,7 @@ F Statistic & 202.726$^{***}$ (df = 3; 1765) \\
 \end{table} 
 
 % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Mon, Dec 16, 2019 - 16:41:57
+% Date and time: Tue, Dec 17, 2019 - 16:41:22
 \begin{table}[!htbp] \centering 
   \caption{} 
   \label{soil_div_int_mod} 

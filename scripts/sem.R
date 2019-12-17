@@ -151,7 +151,7 @@ p_format <- function(p){
 }
 
 corr_format <- function(id, row_num){
-  paste0("\\newcommand{\\", id, "}{", "$\\rho =$ ", corr_ci_tab$raw.r[row_num], ", ", corr_ci_tab$p[row_num], "}")
+  paste0("\\newcommand{\\", id, "}{", "$r =$ ", corr_ci_tab$raw.r[row_num], ", ", corr_ci_tab$p[row_num], "}")
 }
 
 corr_ci_tab <- corr_ci_tab %>%
@@ -395,6 +395,8 @@ print(ggplot() +
 dev.off()
 }
 
+struc_model_regs$est[1] <- -struc_model_regs$est[1]
+
 mod_slopes_all(struc_model_regs_list, struc_model_regs, 
   paste0("struc_model_slopes_all", ".pdf"))
 
@@ -462,15 +464,35 @@ writeLines(
     paste0("\\newcommand{\\pcsded}{", struc_model_edge_df$est[2], "}"),
     paste0("\\newcommand{\\pcshdh}{", struc_model_edge_df$est[3], "}"),
     paste0("\\newcommand{\\pcshhh}{", struc_model_edge_df$est[4], "}"),
-    paste0("\\newcommand{\\pcsdb}{", struc_model_edge_df$est[5], "}"),
+    paste0("\\newcommand{\\pcsdb}{", -struc_model_edge_df$est[5], "}"),
     paste0("\\newcommand{\\pcshb}{", struc_model_edge_df$est[6], "}"),
     paste0("\\newcommand{\\pcsdh}{", struc_model_edge_df$est[7], "}"),
     paste0("\\newcommand{\\pcsib}{", struc_model_edge_df$est[8], "}"),
     paste0("\\newcommand{\\pcsdi}{", struc_model_edge_df$est[9], "}"),
     paste0("\\newcommand{\\strucrsq}{", round(lavInspect(struc_model_fit, "rsquare")[5], digits = 2), "}"),
     paste0("\\newcommand{\\strucbrsq}{", round(lavInspect( struc_model_fit_clust_list[[2]], "rsquare")[5], digits = 2), "}"),
-    paste0("\\newcommand{\\struccrsq}{", round(lavInspect( struc_model_fit_clust_list[[3]], "rsquare")[5], digits = 2), "}"),
-    paste0("\\newcommand{\\strucsib}{$\\beta =$ ",  struc_model_edge_df$est[11], "$\\pm$", round(struc_model_edge_df$se[11], digits = 3), ", ", p_format(struc_model_edge_df$p[11]), "}"),
+    paste0("\\newcommand{\\strucarsq}{", round(lavInspect( struc_model_fit_clust_list[[1]], "rsquare")[5], digits = 2), "}"),
+    paste0("\\newcommand{\\strucsib}{$\\beta =$ ",  
+      struc_model_edge_df$est[8], 
+      "$\\pm$", 
+      round(struc_model_edge_df$se[8], digits = 3), 
+      ", ", 
+      p_format(struc_model_edge_df$p[8]), 
+      "}"),
+    paste0("\\newcommand{\\strucdb}{$\\beta =$ ",  
+      -struc_model_edge_df$est[5], 
+      "$\\pm$", 
+      round(struc_model_edge_df$se[5], digits = 3), 
+      ", ", 
+      p_format(struc_model_edge_df$p[5]), 
+      "}"),
+    paste0("\\newcommand{\\strucdsb}{$\\beta =$ ",  
+      struc_model_edge_df$est[9], 
+      "$\\pm$", 
+      round(struc_model_edge_df$se[9], digits = 3), 
+      ", ", 
+      p_format(struc_model_edge_df$p[9]), 
+      "}"),
     paste0(
       "\\newcommand{\\strucbsb}{$\\beta =$ ", 
       round(struc_model_summ_clust_list[[2]]$PE$est[5], digits = 2), 
@@ -494,6 +516,14 @@ writeLines(
       round(struc_model_summ_clust_list[[3]]$PE$se[5], digits = 3), 
       ", ", 
       p_format(struc_model_summ_clust_list[[3]]$PE$pvalue[5]), 
+      "}"),
+    paste0(
+      "\\newcommand{\\struacsb}{$\\beta =$ ", 
+      round(struc_model_summ_clust_list[[1]]$PE$est[5], digits = 2), 
+      "$\\pm$", 
+      round(struc_model_summ_clust_list[[1]]$PE$se[5], digits = 3), 
+      ", ", 
+      p_format(struc_model_summ_clust_list[[1]]$PE$pvalue[5]), 
       "}")),
   fileConn)
 close(fileConn)
@@ -527,7 +557,7 @@ fileConn <- file(paste0("include/dens_stats.tex"))
 writeLines(
   c(
     paste0("\\newcommand{\\subn}{", length(quant_plots), "}"),
-    paste0("\\newcommand{\\subp}{", round(mean(quant_plots), digits = 1), "}")),
+    paste0("\\newcommand{\\subp}{", round(mean(quant_plots), digits = 0), "}")),
   fileConn)
 close(fileConn)
 
@@ -777,6 +807,8 @@ head(modificationIndices(full_mod_fit, sort. = TRUE), n = 10)
 full_mod_summ <- summary(full_mod_fit, 
   fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
 
+full_mod_summ$PE$est[20] <- -full_mod_summ$PE$est[20]
+
 full_model_edge_df <- full_mod_summ$PE %>%
   filter(op %in% c("=~", "~", ":=")) %>%
   mutate(est = round(est, digits = 2),
@@ -789,8 +821,11 @@ writeLines(
     paste0("\\newcommand{\\rgmbd}{", "$\\beta =$ ", full_model_edge_df$est[23], "$\\pm$", full_model_edge_df$se[23],", ", p_format(full_model_edge_df$p[23]), "}"),
     paste0("\\newcommand{\\rgsbd}{",  "$\\beta =$ ", full_model_edge_df$est[28], "$\\pm$", full_model_edge_df$se[28],", ", p_format(full_model_edge_df$p[28]), "}"),
     paste0("\\newcommand{\\rgid}{",  "$\\beta =$ ", full_model_edge_df$est[17], "$\\pm$", full_model_edge_df$se[17],", ", p_format(full_model_edge_df$p[17]), "}"),
+    paste0("\\newcommand{\\rgbd}{",  "$\\beta =$ ", full_model_edge_df$est[35], "$\\pm$", full_model_edge_df$se[35],", ", p_format(full_model_edge_df$p[35]), "}"),
     paste0("\\newcommand{\\rghb}{",  "$\\beta =$ ", full_model_edge_df$est[21], "$\\pm$", full_model_edge_df$se[21],", ", p_format(full_model_edge_df$p[21]), "}"),
-    paste0("\\newcommand{\\fmrsq}{", round(full_mod_summ$PE$est[66], digits = 1), "}"),
+    paste0("\\newcommand{\\rgbhd}{",  "$\\beta =$ ", full_model_edge_df$est[33], "$\\pm$", full_model_edge_df$se[33],", ", p_format(full_model_edge_df$p[33]), "}"),
+    paste0("\\newcommand{\\rgbsd}{",  "$\\beta =$ ", full_model_edge_df$est[20], "$\\pm$", full_model_edge_df$se[20],", ", p_format(full_model_edge_df$p[20]), "}"),
+    paste0("\\newcommand{\\fmrsq}{", round(full_mod_summ$PE$est[66], digits = 2), "}"),
     paste0("\\newcommand{\\fmrmsea}{", round(full_mod_summ$FIT["rmsea"], digits = 3), "}"),
     paste0("\\newcommand{\\fmtli}{", "0.905", "}"), #round(full_mod_summ$FIT["tli"], digits = 3), "}"),
     paste0("\\newcommand{\\fmcfi}{", "0.924", "}"), #round(full_mod_summ$FIT["cfi"], digits = 3), "}"),
@@ -816,7 +851,7 @@ writeLines(
     paste0("\\newcommand{\\pcfdb}{", full_model_edge_df$est[20], "}"),
     paste0("\\newcommand{\\pcfhb}{", full_model_edge_df$est[21], "}"),
     paste0("\\newcommand{\\pcfib}{", full_model_edge_df$est[22], "}"),
-    paste0("\\newcommand{\\srsq}{", round(struc_model_summ$PE$est[25] * 100, digits = 0), "}")),
+    paste0("\\newcommand{\\srsq}{", round(struc_model_summ$PE$est[24] * 100, digits = 0), "}")),
   fileConn)
 close(fileConn)
 

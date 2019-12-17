@@ -13,7 +13,7 @@ INC="manuscript/include/"
 # Rscript scripts/data_clean.R
 # Rscript scripts/standardise.R
 # Rscript scripts/composition.R
-# Rscript scripts/descrip.R
+Rscript scripts/descrip.R
 Rscript scripts/sem.R
 
 # Transfer images to manuscript

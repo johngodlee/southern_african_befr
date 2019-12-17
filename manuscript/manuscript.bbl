@@ -4,7 +4,7 @@
   Staver}{2016}{Aleman2016}
 Aleman, J.~C., Blarquez, O. \harvardand\ Staver, C.~A.  \harvardyearleft
   2016\harvardyearright , `Land-use change outweighs projected effects of
-  changing rainfall on tree cover in sub-saharan africa', {\em Global Change
+  changing rainfall on tree cover in {sub-Saharan Africa}', {\em Global Change
   Biology} {\bf 22},~3013--3025.
 
 \harvarditem[Ali et~al.]{Ali, Lin, He, Kong, Yu \harvardand\ Jiang}{2019{\em
@@ -34,8 +34,8 @@ Beaujean, A.~A.  \harvardyearleft 2014\harvardyearright , {\em Latent variable
   modeling using R}, Routledge, New York NY, USA.
 
 \harvarditem{Byers}{2001}{Byers2001}
-Byers, B.  \harvardyearleft 2001\harvardyearright , `Conserving the miombo
-  ecoregion'.
+Byers, B.  \harvardyearleft 2001\harvardyearright , {\em Conserving the miombo
+  ecoregion}, WWF Southern Africa, Harare, Zimbabwe.
 
 \harvarditem[Cardinale et~al.]{Cardinale, Srivastava, Duffy, Wright, Downing,
   Sankaran, Jouseau, Cadotte, Carroll, Weis, Hector \harvardand\
@@ -89,6 +89,12 @@ Chen, I., Hill, J.~K., Ohlem{\"u}ller, R., Roy, D.~B. \harvardand\ Thomas,
   associated with high levels of climate warming', {\em Science} {\bf
   333},~1024--1026.
 
+\harvarditem{Chidumayo}{2013}{Chidumayo2013}
+Chidumayo, E.~N.  \harvardyearleft 2013\harvardyearright , `Forest degradation
+  and recovery in a miombo woodland landscape in {Zambia}: 22 years of
+  observations on permanent sample plots', {\em Forest Ecology and Management}
+  {\bf 291},~154--161.
+
 \harvarditem[Chisholm et~al.]{Chisholm, Muller-Landau, Rahman, Bebber, Bin,
   Bohlman, Bourg, Brinks, Bunyavejchewin, Butt, Cao, Cao, C{\'a}rdenas, Chang,
   Chiang, Chuyong, Condit, Dattaraja, Davies, Duque, Fletcher, Gunatilleke,
@@ -110,7 +116,7 @@ Chisholm, R.~A., Muller-Landau, H.~C., Rahman, K.~A., Bebber, D.~P., Bin, Y.,
   Schurman, J., Su, S., Sukumar, R., Sun, I., Suresh, H.~S., Tan, S., Thomas,
   D., Thomas, S., Thompson, J., Valencia, R., Wolf, A., Yap, S., Ye, W., Yuan,
   Z. \harvardand\ Zimmermann, J.~K.  \harvardyearleft 2013\harvardyearright ,
-  `Scale-dependent relatiosnhips between tree species richness and ecosystem
+  `Scale-dependent relationships between tree species richness and ecosystem
   function in forests', {\em Journal of Ecology} {\bf 101},~1214--1224.
 
 \harvarditem[Clarke et~al.]{Clarke, York, Rasheed \harvardand\
@@ -124,7 +130,7 @@ Clarke, D.~A., York, P.~H., Rasheed, M.~A. \harvardand\ Northfield, T.~D.
   Turner}{2013}{Condit2013}
 Condit, R., Engelbrecht, B. M.~J., Pino, D., P{\'e}rez, R. \harvardand\ Turner,
   B.~L.  \harvardyearleft 2013\harvardyearright , `Species distributions in
-  repsonse to individual soil nutrients and seasonal drought across a community
+  response to individual soil nutrients and seasonal drought across a community
   of tropical trees', {\em Proceedings of the National Academy of Sciences}
   {\bf 110}(13),~5064--5068.
 
@@ -164,7 +170,7 @@ Fayolle, A., Swaine, M.~D., Aleman, J., Azihou, A.~F., Bauman, D., {te Beest},
   Pritchard, R., Nieto-Quintano, P., Schmitt, C.~B., Seghieri, J., Swemmer, A.,
   Talila, H. \harvardand\ Woollen, E.  \harvardyearleft 2018\harvardyearright ,
   `A sharp floristic discontinuity revealed by the biogeographic
-  regionalization of african savannas', {\em Journal of Biogeography} {\bf
+  regionalization of {African} savannas', {\em Journal of Biogeography} {\bf
   46}(2),~1--12.
 
 \harvarditem{Fick \harvardand\ Hijmans}{2017}{Fick2017}
@@ -204,7 +210,7 @@ Hengl, T., {Mendes de Jesus}, J., Heuvelink, G. B.~M., Gonzalez, M.~R.,
   {Bauer-Marschallinger}, B., Guevara, M.~A., Vargas, R., MacMillan, R.~A.,
   Batjes, N.~H., Leenaars, J. G.~B., Ribeiro, E., Wheeler, I., Mantel, S.
   \harvardand\ Kempen, B.  \harvardyearleft 2017\harvardyearright ,
-  `Soilgrids250m: Global gridded soil information based on machine learning',
+  `Soilgrids250m: global gridded soil information based on machine learning',
   {\em PLoS ONE} {\bf 12}(2),~1--40.
 
 \harvarditem{Hill \harvardand\ Hanan}{2011}{Hill2010}
@@ -215,14 +221,21 @@ Hill, M.~J. \harvardand\ Hanan, N.~P., eds  \harvardyearleft
 \harvarditem[Hinsley et~al.]{Hinsley, Entwistle \harvardand\
   Pio}{2015}{Hinsley2015}
 Hinsley, A., Entwistle, A. \harvardand\ Pio, D.~V.  \harvardyearleft
-  2015\harvardyearright , `Does the long-term success of redd+ also depend on
+  2015\harvardyearright , `Does the long-term success of {REDD+} also depend on
   biodiversity', {\em Oryx} {\bf 49}(2),~216--221.
+
+\harvarditem[Hooper et~al.]{Hooper, Coughlan \harvardand\
+  Mullen}{2008}{Hooper2008}
+Hooper, D., Coughlan, J. \harvardand\ Mullen, M.~R.  \harvardyearleft
+  2008\harvardyearright , `Structural equation modelling: guidelines for
+  determining model fit', {\em Electronic Journal of Business Research Methods}
+  {\bf 6}(1),~53--60.
 
 \harvarditem{Hopkins \harvardand\ White}{1987}{White1987}
 Hopkins, B. \harvardand\ White, F.  \harvardyearleft 1987\harvardyearright ,
-  `Vegetation map of africa. the vegetation of africa: A descriptive memoir to
-  accompany the unesco/aetfat/unso vegetation map of africa.', {\em The Journal
-  of Ecology} {\bf 75}(4).
+  `Vegetation map of {Africa}. the vegetation of {Africa}: A descriptive memoir
+  to accompany the {UNESCO/AETFAT/UNSO} vegetation map of {Africa.}', {\em The
+  Journal of Ecology} {\bf 75}(4).
 
 \harvarditem[Houghton et~al.]{Houghton, Hall \harvardand\
   Goetz}{2009}{Houghton2009}
@@ -232,8 +245,8 @@ Houghton, R.~A., Hall, F. \harvardand\ Goetz, S.~J.  \harvardyearleft
 
 \harvarditem[Hsieh et~al.]{Hsieh, Ma \harvardand\ Chao}{2016}{Hsieh2016}
 Hsieh, T.~C., Ma, K.~H. \harvardand\ Chao, A.  \harvardyearleft
-  2016\harvardyearright , `inext: an r package for rarefaction and
-  extrapolation of species diversity (hill numbers)', {\em Methods in Ecology
+  2016\harvardyearright , `{iNEXT}: an {R} package for rarefaction and
+  extrapolation of species diversity ({Hill} numbers)', {\em Methods in Ecology
   and Evolution} {\bf 7},~1451--1456.
 
 \harvarditem{Hu \harvardand\ Bentler}{1999}{Hu1999}
@@ -251,6 +264,12 @@ Keddy, P.~A.  \harvardyearleft 1990\harvardyearright , Competitive hierarchies
   and centrifugal organization in plant communities, {\em in} J.~B. Grace
   \harvardand\ D.~Tilman, eds, `Perspectives on plant competition', Academic
   Press, San Diego CA, USA, pp.~266--287.
+
+\harvarditem{Kraaij \harvardand\ Ward}{2006}{Kraaij2006}
+Kraaij, T. \harvardand\ Ward, D.  \harvardyearleft 2006\harvardyearright ,
+  `Effects of rain, nitrogen, fire and grazing on tree recruitment and early
+  survival in bush-encroached savanna, {South Africa}', {\em Plant Ecology}
+  {\bf 186},~235--246.
 
 \harvarditem[Kunz et~al.]{Kunz, Fichtner, H{\:a}rdtle, Raumonen, Bruelheide
   \harvardand\ {von Oheimb}}{2019}{Kunz2019}
@@ -312,7 +331,7 @@ Liang, J., Crowther, T.~W., Picard, N., Wiser, S., Zhou, M., Alberti, G.,
 
 \harvarditem{Linder}{2014}{Linder2014}
 Linder, H.~P.  \harvardyearleft 2014\harvardyearright , `The evolution of
-  african plant diversity', {\em Frontiers in Ecology and Evolution} {\bf
+  {African} plant diversity', {\em Frontiers in Ecology and Evolution} {\bf
   2}(38),~1--14.
 
 \harvarditem[Mayaux et~al.]{Mayaux, Eva, Brink, Achard \harvardand\
@@ -328,7 +347,8 @@ Mayaux, P., Eva, H., Brink, A., Achard, F. \harvardand\ Belward, A.
 McNicol, I.~M., Ryan, C.~M., Dexter, K.~G., Ball, S. M.~J. \harvardand\
   Williams, M.  \harvardyearleft 2018\harvardyearright , `Aboveground carbon
   storage and its links to stand structure, tree diversity and floristic
-  composition in south-eastern tanzania', {\em Ecosystems} {\bf 21},~740--754.
+  composition in south-eastern {Tanzania}', {\em Ecosystems} {\bf
+  21},~740--754.
 
 \harvarditem[Michaletz et~al.]{Michaletz, Cheng, Kerkhoff \harvardand\
   Enquist}{2014}{Michaletz2014}
@@ -351,13 +371,6 @@ Mittermeier, R.~A., Mittermeier, C.~G., Brooks, T.~M., Pilgrim, J.~D.,
   conservation', {\em Proceedings of the National Academy of Sciences} {\bf
   100}(18),~10309--10313.
 
-\harvarditem[Murphy et~al.]{Murphy, Andersen \harvardand\
-  Parr}{2016}{Murphy2016}
-Murphy, B.~P., Andersen, A.~N. \harvardand\ Parr, C.~L.  \harvardyearleft
-  2016\harvardyearright , `The underestimated biodiversity of tropical grassy
-  biomes', {\em Philosophical Transactions of the Royal Society B: Biological
-  Sciences} {\bf 371},~20150319.
-
 \harvarditem[Muscolo et~al.]{Muscolo, Bagnato, Sidari \harvardand\
   Mercurio}{2014}{Muscolo2014}
 Muscolo, A., Bagnato, S., Sidari, M. \harvardand\ Mercurio, R.
@@ -367,14 +380,14 @@ Muscolo, A., Bagnato, S., Sidari, M. \harvardand\ Mercurio, R.
 \harvarditem{Mutowo \harvardand\ Murwira}{2012}{Mutowo2012}
 Mutowo, G. \harvardand\ Murwira, A.  \harvardyearleft 2012\harvardyearright ,
   `Relationship between remotely sensed variables and tree species diversity in
-  savanna woodlands of southern africa', {\em International Journal of Remote
+  savanna woodlands of southern {Africa}', {\em International Journal of Remote
   Sensing} {\bf 33}(20),~6378--6402.
 
 \harvarditem[Nachtigall et~al.]{Nachtigall, Kroehne, Funke \harvardand\
   Steyer}{2003}{Nachtigall2003}
 Nachtigall, C., Kroehne, U., Funke, F. \harvardand\ Steyer, R.
-  \harvardyearleft 2003\harvardyearright , `(why) should we use sem? pros and
-  cons of structural equation modeling', {\em Methods of Psychological
+  \harvardyearleft 2003\harvardyearright , `{(Why)} should we use {SEM}? pros
+  and cons of structural equation modeling', {\em Methods of Psychological
   Research} {\bf 8}(2),~1--22.
 
 \harvarditem{Otto}{2013}{Otto2013}
@@ -476,7 +489,7 @@ Ratcliffe, S., Wirth, C., Jucker, T., {van der Plas}, F., Scherer-Lorenzen, M.,
   Raulund-Rasmussen, K., Roger, F., Ruiz-Benito, P., Seidl, R., Selvi, F.,
   Seiferling, I., Stenlid, J., Valladares, F., Vesterdal, L. \harvardand\
   Baeten, L.  \harvardyearleft 2017\harvardyearright , `Biodiversity and
-  ecosystem functioning relations in european forests depend on environmental
+  ecosystem functioning relations in {European} forests depend on environmental
   context', {\em Ecology Letters} {\bf 20},~1414--1426.
 
 \harvarditem[Ratnam et~al.]{Ratnam, Bond, Fensham, Hoffmann, Archibald,
@@ -501,7 +514,7 @@ Rosseel, Y.  \harvardyearleft 2012\harvardyearright , `{lavaan}: An {R} package
   Lehmann}{2016}{Ryan2016}
 Ryan, C.~M., Pritchard, R., McNicol, I., Owen, M., Fisher, J.~A. \harvardand\
   Lehmann, C.  \harvardyearleft 2016\harvardyearright , `Ecosystem services
-  from southern african woodlands and their future under global change', {\em
+  from southern {African} woodlands and their future under global change', {\em
   Philosophical Transactions of the Royal Society B: Biological Sciences} {\bf
   371}(1703),~1--16.
 
@@ -516,7 +529,7 @@ Sankaran, M., Hanan, N.~P., Scholes, R.~J., Ratnam, J., Augustine, D.~J., Cade,
   A., Ekaya, W., Feral, C.~J., February, E.~C., Frost, P. G.~H., Hiernaux, P.,
   Hrabar, H., Metzger, K.~L., Prins, H. H.~T., Ringrose, S., Sea, W., Tews, J.,
   Worden, J. \harvardand\ Zambatis, N.  \harvardyearleft 2005\harvardyearright
-  , `Determinants of woody cover in african savannas', {\em Nature} {\bf
+  , `Determinants of woody cover in {African} savannas', {\em Nature} {\bf
   438}(8),~846--849.
 
 \harvarditem[Scholes et~al.]{Scholes, Frost \harvardand\
@@ -530,6 +543,13 @@ Schulze, E.~D. \harvardand\ Mooney, H.~A.  \harvardyearleft
   1994\harvardyearright , {\em Ecosystem function of biodiversity: A summary},
   Springer Berlin Heidelberg, Berlin, Germany.
 
+\harvarditem[Seidel et~al.]{Seidel, Ehbrecht, Dorji, Jambay, Ammer \harvardand\
+  Annigh{\"o}fer}{2019}{Seidel2019}
+Seidel, D., Ehbrecht, M., Dorji, Y., Jambay, J., Ammer, C. \harvardand\
+  Annigh{\"o}fer, P.  \harvardyearleft 2019\harvardyearright , `Identifying
+  architectural characteristics that determine tree structural complexity',
+  {\em Trees} {\bf 33}(3),~911--919.
+
 \harvarditem{Selaya \harvardand\ Anten}{2008}{Selaya2008}
 Selaya, N.~G. \harvardand\ Anten, P.~R.  \harvardyearleft 2008\harvardyearright
   , `Differences in biomass allocation, light interception and mechanical
@@ -537,8 +557,8 @@ Selaya, N.~G. \harvardand\ Anten, P.~R.  \harvardyearleft 2008\harvardyearright
   Functional Ecology} {\bf 22},~30--39.
 
 \harvarditem{SEOSAW}{2019}{seosaw_web}
-SEOSAW  \harvardyearleft 2019\harvardyearright , `Seosaw: A socio-ecological
-  observatory for southern african woodlands'.
+SEOSAW  \harvardyearleft 2019\harvardyearright , `{SEOSAW: A Socio-Ecological
+  Observatory for Southern African Woodlands}'.
 \newblock [Online; 15-January-2019].
 
 \harvarditem{Shapiro}{1983}{Shapiro1983}
@@ -580,7 +600,7 @@ Stark, S.~C., Leitold, V., Wu, J.~L., Hunter, M.~O., {de Castilho}, C.~V.,
   M.~A., Keller, M., Alves, L.~F., Schietti, J., Shimabukuro, Y.~E.,
   Brand{\~a}o, D.~O., Woodcock, T.~K., Higuchi, N., {de Camargo}, P.~B., {de
   Oliveira}, R.~C. \harvardand\ Saleska, S.~R.  \harvardyearleft
-  2012\harvardyearright , `Amazon foreast carbon dynamics predicted by profiles
+  2012\harvardyearright , `Amazon forest carbon dynamics predicted by profiles
   of canopy leaf area and light environment', {\em Ecology Letters} {\bf
   15},~1406--1414.
 
@@ -592,16 +612,26 @@ Stegen, J.~C., Swenson, N.~G., Enquist, B.~J., White, E.~P., Phillips, O.~L.,
   biomass across broad climatic gradients', {\em Global Ecology and
   Biogeography} {\bf 20},~744--754.
 
-\harvarditem{Tilman \harvardand\ Downing}{1994}{Tilman1994}
-Tilman, D. \harvardand\ Downing, J.~A.  \harvardyearleft 1994\harvardyearright
-  , `Biodiversity and stability in grasslands', {\em Nature} {\bf
-  367},~363--365.
+\harvarditem[Syampungani et~al.]{Syampungani, Chirwa, Akinnifesi, Sileshi
+  \harvardand\ Ajayi}{2009}{Syampungani2009}
+Syampungani, S., Chirwa, P.~W., Akinnifesi, F.~K., Sileshi, G. \harvardand\
+  Ajayi, O.~C.  \harvardyearleft 2009\harvardyearright , `The miombo woodlands
+  at the cross roads: potential threats, sustainable livelihoods, policy gaps
+  and challenges', {\em Natural Resources Forum} {\bf 33},~150--159.
 
 \harvarditem[Tilman et~al.]{Tilman, Isbell \harvardand\
   Cowles}{2014}{Tilman2014}
 Tilman, D., Isbell, F. \harvardand\ Cowles, J.~M.  \harvardyearleft
   2014\harvardyearright , `Biodiversity and ecosystem functioning', {\em Annual
   Review of Ecology, Evolution, and Systematics} {\bf 45},~471--493.
+
+\harvarditem[Timberlake et~al.]{Timberlake, Chidumayo \harvardand\
+  Sawadogo}{2010}{Timberlake2010}
+Timberlake, J., Chidumayo, E. \harvardand\ Sawadogo, L.  \harvardyearleft
+  2010\harvardyearright , Distribution and characteristics of {African} dry
+  forests and woodlands, {\em in} `The Dry Forests and Woodlands of Africa:
+  Managing for Products and Services', EarthScan, London, United Kingdom,
+  pp.~11--42.
 
 \harvarditem[Tobner et~al.]{Tobner, Paquette, Gravel, Reich, Williams
   \harvardand\ Messier}{2016}{Tobner2016}

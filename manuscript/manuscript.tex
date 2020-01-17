@@ -1,6 +1,74 @@
 \documentclass[11pt,a4paper]{article}
 
-\usepackage{mynotes}
+% Define page geometry
+\usepackage{geometry}
+\geometry{left=2.2cm,
+	right=2.2cm,
+	top=2.2cm,
+	bottom=2cm}
+\parskip 0.15cm
+\setlength{\parindent}{0cm}
+\usepackage{pdflscape}
+
+% Set font
+\usepackage[T1]{fontenc}
+
+% Image handling
+\usepackage{graphics}  % Insert images easily
+\usepackage{graphicx}  % Extended image support
+
+\makeatletter
+	\g@addto@macro\@floatboxreset\centering  % Automatically centre images (floats)
+\makeatother
+
+\graphicspath{ {img/} }
+\usepackage{float}  %  Graphics placement [H] [H!] arguments
+\usepackage{subfig}  % Compound figures
+
+% Tables
+\usepackage{multirow}
+\usepackage{longtable}
+
+% Bibliography management
+\usepackage{natbib}    % Bibliography management - Use author/date citations
+\bibliographystyle{agsmnourl}  % Use custom agsm bibliography template with no URL
+\usepackage{cite}  % Citation options
+
+% Text formatting
+\usepackage{url} % Allow nice formatting of URLs in text
+
+\usepackage{enumerate}  % Enumerated lists
+
+\usepackage{lineno}  % Line numbers
+
+\usepackage{textcomp}
+\newcommand{\textapprox}{\raisebox{0.5ex}{\texttildelow}}  % Command for a good tilde
+
+\usepackage{siunitx}
+\usepackage{amsmath}
+
+\usepackage{xcolor}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{#1}}}   % \todo{NOTE TO SELF WRITTEN IN RED}
+
+\input{code_format}
+
+% Custom title formatting
+\let\oldtitle\title
+
+\renewcommand{\title}[1]{\oldtitle{\vspace{-1.5cm}#1}}
+
+\usepackage[breaklinks]{hyperref}
+\definecolor{links}{RGB}{191,59,72}
+\hypersetup{
+	breaklinks,
+	colorlinks,
+	allcolors=links,
+	linktoc=section,
+	pdfauthor={John L. Godlee}
+}
+\def\subsectionautorefname{section}
+\def\subsubsectionautorefname{section}
+% \usepackage{biblatex}
 
 \usepackage{dcolumn}
 \usepackage{multirow}
@@ -10,8 +78,11 @@
 \usepackage{longtable}
 \usepackage{fmtcount}
 
+\usepackage{lineno}
+\linenumbers
+
 \title{An assessment of the biodiversity - ecosystem function relationship in southern African woodlands}
-\author{John L. Godlee}
+\author{}
 \date{}
 
 \input{include/n_plots}
@@ -26,29 +97,71 @@
 
 \begin{document}
 
-\maketitle
-\tableofcontents
+{\LARGE{Title: An assessment of the biodiversity - ecosystem function relationship in southern African woodlands}}
+
+\vspace{1cm}
+
+Authors: Godlee, J. L.\textsuperscript{1}, Dexter, K. G.\textsuperscript{1}, Ryan, C. M.\textsuperscript{1}
+
+\textsuperscript{1}: School of GeoSciences, University of Edinburgh, Edinburgh, United Kingdom \\
+\textsuperscript{2}: Some other address
+
+\vspace{1em}
+Corresponding author:
+
+John L. Godlee
+
+johngodlee@gmail.com
+
+School of GeoSciences, University of Edinburgh, Edinburgh, United Kingdom
+
+
+\section*{Acknowledgements}
+
+\section*{Biosketch}
 \newpage{}
 
-\begin{abstract}
-	Studies in natural and experimental settings have shown a positive relationship between tree species diversity and ecosystem functionality but many ecosystems are understudied in this regard. In this study we conducted the first regional estimation of the relationship between tree species diversity and above-ground biomass in southern African woodlands, using a network of \nplots{} woodland plots. We used structural equation modelling (SEM) to determine the relationship between tree species diversity and aboveground biomass, with comparison to the effects of resource availability and along a gradient of stem density. A positive effect of tree species diversity on biomass was demonstrated, with most of this as an indirect effect via woodland structural diversity. We found that the effect of tree species diversity on biomass increases with stem density. Finally, we found that resource availability determines biomass in southern African woodlands largely indirectly via its effect on species diversity.
-\end{abstract}
+{\LARGE{\textbf{Blinded Main Text File}}}
 
-\section{Introduction}
+\LARGE{Title: An assessment of the biodiversity - ecosystem function relationship in southern African woodlands}
 
-A large number of studies have shown relationships between biodiversity and ecosystem functionality (e.g. \citealt{Liang2016, Cardinale2009}). The strength and direction of these observed Biodiversity - Ecosystem Function Relationships (BEFRs) varies depending on the ecosystem being studied, the ecosystem function(s) of interest \citep{Hector2007}, and the inclusion of environmental covariates in statistical models \citep{Vila2005}, but there appears to be a generalisable positive correlation between biodiversity and ecosystem functionality \citep{Liang2016}. Over the past decade, many observational studies of the BEFR have been conducted, mostly in wet tropical and temperate forests, and grasslands \citep{Chen2011}. %These studies support early findings from small scale experimental studies which began in earnest during the 1990s as concern grew over the global loss of biodiversity \citep{Tilman1994, Tilman2014}.
+\normalsize{Running title: Woodland functionality in southern Africa}
 
-Ecosystem functions can be defined in broad terms as rate processes and properties of ecosystems which describe the degree of biotic activity within an ecosystem \citep{Jax2005}. This includes basic processes of primary production such as gross primary productivity and atmospheric nitrogen fixation, but can be extended to indirect measures of function such as resistance of productivity to disturbance, and further to ecosystem properties which themselves influence process, such as trophic complexity and total vegetative biomass. The frequently reported and intuitive relationship between biodiversity and ecosystem functionality invokes three main mechanisms which drive the relationship \citep{Tilman2014}: 1) niche complementarity, whereby communities with greater diversity fill a greater breadth of realised niche space and avoid competition due to differences in their traits, 2) selection effects, whereby communities with greater diversity are more likely to include a species which contributes highly to the measured ecosystem function, and 3) facilitation effects, whereby communities with greater diversity are more likely to include combinations of species which together increase the others functional contribution.
+\section*{Abstract}
 
-The representation of dry tropical ecosystems in the BEFR literature is poor compared to other ecosystems. \citet{Clarke2017} conducted a meta-analysis of 182 published BEFR studies, finding that only 13\% were conducted in the tropics generally, with 42\% of those being conducted in the wet tropical forests of Costa Rica, which hold many endemic species and unique ecosystem assemblages \citep{Barthlott2005}. In wet tropical forests, much of the observed effect of biodiversity on ecosystem function can be attributed to niche complementarity, which is driven by interspecific competition \citep{Wright2017, Poorter2015, Sande2017a}. In the dry tropics however, low precipitation, high seasonality of rainfall and temperature, and high levels of disturbance from fire and herbivory mean that niche complementarity and competition may not play as great a role in the relationship between biodiversity and ecosystem function. Disturbance may weaken the role of competition in determining local species distribution and allow weak competitors to co-exist where they would normally be excluded \citep{Grime1979,Grace1990}. Instead, stress tolerance and the functional contribution of more abundant species (selection effects) may be the predominant forces which influence ecosystem functionality \citep{Lasky2014, Tobner2016}. Similarly, more diverse species assemblages may lead to facilitation effects between certain species combinations in environments which are more hostile to growth \citep{Ratcliffe2017}.
+\textbf{Aim:} Positive correlations between tree biodiversity and ecosystem function have been widely documented, but the nature of the relationship in highly disturbed and ecophysiologically stressful systems is less clear. Here, we explore the relationship between tree biodiversity and aboveground biomass across southern African savannas and woodlands, with respect to gradients in stem density and resource availability, to build a general understanding of the biodiversity - ecosystem function relationship in this understudied ecological context.
 
-Savannas and sparse woodlands are the dominant vegetation type across the southern African region, spanning >4 million km\textsuperscript{2} \citep{Ryan2016} (Figure \autoref{clust_map}). The carbon stored in these woodlands is comparable to that found in the wet forests of the Congo basin and is of global importance to the carbon cycle \citep{Houghton2009, Mayaux2008}. Climatic conditions and biogeography vary across southern African woodlands, resulting in a diverse range of woodland tree species assemblages, which retain the common features of an open tree canopy and an understorey generally dominated by C4 grass species. Southern African woodlands are highly diverse, thought to harbour \textapprox{}8500 plant species of which there are >300 tree species \citep{Frost1996}, and have been identified by previous studies as a priority for conservation efforts \citep{Byers2001, Mittermeier2003}. Many conservation projects in the region currently aim to conserve biodiversity and woody biomass stocks simultaneously under the directive of the United Nations REDD+ programme or the similar Forest Carbon Partnership Facility (FCPF) \citep{Hinsley2015}. Despite these efforts however, human actions are driving rapid changes in biodiversity, with largely un-quantified consequences for ecosystem structure and functionality.
+\textbf{Location:} Southern African savannas and woodlands
 
-Southern African woodlands are relied upon heavily for their ecosystem service provision, which is itself affected by ecosystem functionality \citep{Schulze1994}. This has raised interest in how biodiversity influences ecosystem function in these ecosystems. Resource extraction by humans directly influences biodiversity via selective tree-felling for timber, charcoal making, non-timber forest products and through land use change to agriculture \citep{Aleman2016, Ryan2016}. Climate change is also indirectly affecting the biodiversity of southern African woodlands, altering temperature and precipitation, and affecting climate seasonality which heavily influences the degree of seasonal drought and thus woodland structure \citep{Scholes2004, Eldridge2012}. While rapid biodiversity change is being observed in southern African woodlands \citep{Syampungani2009}, research into the relationship between biodiversity and ecosystem functionality remains scarce.
+\textbf{Time period:} 2010-2019
 
-A small number of studies in southern African woodlands have shown that above ground woody carbon/biomass stocks correlate positively with tree species richness \citep{McNicol2018, Shirima2015, Mutowo2012}, but the scientific impact of these studies has been hampered by a restricted climatic and biogeographical range of study sites. Due to the highly variable environmental conditions within which southern African woodlands occur \citep{Frost1996}, and given the potential importance of environment and biogeography in defining the strength and form of a relationship between biodiversity and woody biomass, it is important to sample across these gradients to be able to infer a truly regional scale relationship between diversity and biomass. Studies conducted over small environmental gradients often find that at local scales, diversity shows a strong effect on ecosystem function, but at large scales diversity effects pale in significance compared to abiotic factors such as climate \citep{Pasari2013}. Small scale studies may therefore be over-estimating the effect of diversity.
+\textbf{Major taxa studied:} Trees
 
-In forests, climatic variation is known to affect both woody biomass \citep{Michaletz2014, Michaletz2018} and species diversity independently \citep{Spasojevic2014}. It is important therefore to account for climatic factors and understand how they interact with biomass and diversity to effectively model and correctly attribute the effects of biodiversity on woody biomass in analyses at large spatial scales. \citet{Sankaran2005} used data from 854 African woodland field sites to show that mean annual precipitation (MAP) sets the upper limit for woody cover in savannas, which is positively correlated with biomass \citep{Chisholm2013, Prado-Junior2016}. Similarly, \citet{Condit2013} found that dry season intensity was the main determinant of tree species distribution and abundance evenness in a wet Panamanian tropical forest. In European forests \citep{Ratcliffe2017} found stronger positive relationships between tree species richness and various ecosystem functions in more arid environments. They suggest that in dry ecosystems, facilitative effects and selection effects may be more important than niche complementarity in driving the relationship between species diversity and ecosystem function. Stress tolerance rather than competitiveness may be the mechanism by which a tree species' success is measured in dry forested ecosystems.
+\textbf{Methods:} We used a network of \nplots{} savanna and woodland plots located across the southern African sub-continent in which each tree >5 cm diameter was measured. We used Structural Equation Modelling and path analysis to determine the relationship between tree species diversity and aboveground biomass, with comparison to the effects of resource availability and along a gradient of stem density.
+
+\textbf{Results:} A positive effect of tree species diversity on biomass was demonstrated, observed largely as an indirect effect of increasing woodland structural diversity. We also found that the effect of tree species diversity on biomass increases with stem density. Finally, we found that resource availability affects biomass in southern African woodlands largely indirectly via its effect on species diversity.
+
+\textbf{Main conclusions:} Tree species diversity plays an important role in determining the ecosystem functionality and structure of southern African woodlands. Our results demonstrate the importance of considering environmental conditions and woodland structural attributes to more accurately describe the relationship between biodiversity and ecosystem functionality.
+
+% Studies in natural and experimental settings have shown a positive relationship between tree species diversity and ecosystem functionality but many ecosystems are understudied in this regard. In this study we conducted the first regional estimation of the relationship between tree species diversity and above-ground biomass in southern African woodlands, using a network of \nplots{} woodland plots. We used structural equation modelling (SEM) to determine the relationship between tree species diversity and aboveground biomass, with comparison to the effects of resource availability and along a gradient of stem density. A positive effect of tree species diversity on biomass was demonstrated, with most of this as an indirect effect via woodland structural diversity. We found that the effect of tree species diversity on biomass increases with stem density. Finally, we found that resource availability determines biomass in southern African woodlands largely indirectly via its effect on species diversity.
+
+\section*{Introduction}
+
+Numerous studies have shown relationships between biodiversity and ecosystem function (e.g. \citealt{Liang2016, Cardinale2009}). The strength and direction of these observed Biodiversity - Ecosystem Function Relationships (BEFRs) varies depending on the ecosystem being studied, the ecosystem function(s) of interest \citep{Hector2007}, and the inclusion of environmental covariates in statistical models \citep{Vila2005}, but there appears to be a generalisable positive correlation between biodiversity and ecosystem functionality \citep{Liang2016}. Over the past decade, many observational studies of the BEFR have been conducted, mostly in wet tropical and temperate forests, and grasslands \citep{Chen2011}. These studies support early findings from small scale experimental studies predominantly in grassland patches, which began in earnest during the 1990s as concern grew over the global loss of biodiversity \citep{Tilman1994, Tilman2014}.
+
+Ecosystem functions can be defined in broad terms as rate processes and properties of ecosystems which describe the degree of biotic activity within an ecosystem \citep{Jax2005}. This includes basic processes of primary production such as gross primary productivity and atmospheric nitrogen fixation, but can be extended to indirect measures of function such as resistance of productivity to disturbance, and further to ecosystem properties which themselves influence process, such as trophic complexity and total vegetative biomass. The frequently reported and intuitive relationship between biodiversity and ecosystem functionality invokes three main mechanisms which drive the relationship \citep{Tilman2014}: 1) niche complementarity, whereby communities with greater diversity fill a greater breadth of realised niche space and avoid competition due to differences in their traits, 2) selection effects, whereby communities with greater diversity are more likely to include a species which contributes highly to the measured ecosystem function, and 3) facilitation effects, whereby communities with greater diversity are more likely to include combinations of species which together increase the others' functional contribution.
+
+Compared to other forested ecosystems, dry tropical woodlands are highly structured by disturbance, mainly through fire, and in Africa notably by herbivory also \citep{}. High levels of disturbance may weaken the role of competition in determinging local species distribution and allow weak competitors to co-exist where they would normally be excluded \citep{Grime1979, Grace1990}. This means that interspecific competition and therefore the effect of niche complementarity, which contributes the majority of the observed biodiversity effect on ecosystem function in temperate and wet tropical forests \citep{Wright2017, Poorter2015, Sande2017a}, may not be as apparent in dry woodland ecosystems. Instead, stress tolerance and the functional contribution of more abundant species (selection effects) may be the predominant forces which influence ecosystem functionality \citep{Lasky2014, Tobner2016}. Similarly, more diverse species assemblages may lead to facilitation effects between certain species combinations in environments which are more hostile to growth. In European forests \citep{Ratcliffe2017} found stronger positive relationships between tree species richness and various ecosystem functions in more arid environments. They suggest that in dry ecosystems, facilitative effects and selection effects may be more important than niche complementarity in driving the relationship between species diversity and ecosystem function. This potential mismatch in the contribution of different mechanisms to the BEFR between dry tropical woodlands and other forested ecosystems demands further investigation. 
+
+
+% COME BACK TO THIS: In forests, climatic variation is known to affect both woody biomass \citep{Michaletz2014, Michaletz2018} and species diversity independently \citep{Spasojevic2014}. It is important therefore to account for climatic factors and understand how they interact with biomass and diversity to effectively model and correctly attribute the effects of biodiversity on woody biomass in analyses at large spatial scales. \citet{Sankaran2005} used data from 854 African woodland field sites to show that mean annual precipitation (MAP) sets the upper limit for woody cover in savannas, which is positively correlated with biomass \citep{Chisholm2013, Prado-Junior2016}. Similarly, \citet{Condit2013} found that dry season intensity was the main determinant of tree species distribution and abundance evenness in a wet Panamanian tropical forest.
+
+The representation of dry tropical ecosystems in the BEFR literature is poor compared to other ecosystems. \citet{Clarke2017} conducted a meta-analysis of 182 published BEFR studies, finding that only 13\% were conducted in the tropics generally, with 42\% of those being conducted in the wet tropical forests of Costa Rica, which hold many endemic species and unique ecosystem assemblages \citep{Barthlott2005}. A severe lack of study in dry tropical ecosystems, especially given the potential mismatch in BEFR mechanism described above, suggests that a focus on these ecosystems could greatly strengthen our understanding of a general BEFR and it's environmental determinants.
+
+Savannas and woodlands are the dominant vegetation type across the southern African region, spanning >4 million km\textsuperscript{2} \citep{Ryan2016} (\autoref{clust_map}). The carbon stored in this vegetation is comparable to that found in the wet forests of the Congo basin and is of global importance to the carbon cycle \citep{Houghton2009, Mayaux2008}. Climatic conditions and biogeography vary across southern African vegetation, resulting in a diverse range of savanna and woodland tree species assemblages, which retain the common features of an open tree canopy and an understorey generally dominated by C4 grass species. Southern African savannas and woodlands are highly diverse, thought to harbour \textapprox{}8500 plant species of which there are >300 tree species \citep{Frost1996}, and have been identified by previous studies as a priority for conservation efforts \citep{Byers2001, Mittermeier2003}. Many conservation projects in the region currently aim to conserve biodiversity and woody biomass stocks simultaneously under the directive of the United Nations REDD+ programme or the similar Forest Carbon Partnership Facility (FCPF) \citep{Hinsley2015}. Despite these efforts however, human actions are driving rapid changes in biodiversity, with largely un-quantified consequences for ecosystem structure and functionality.
+
+
+A small number of studies in southern African savannas and woodlands have shown that above ground woody carbon/biomass stocks correlate positively with tree species richness \citep{McNicol2018, Shirima2015, Mutowo2012}. However, studied conducted over small environmental gradients often find that at local scales, diversity shows a strong effect on ecosystem function, but at large scales diversity effects pale in significance compared to abiotic factors such as climate \citep{Pasari2013}. Small scale studies may therefore be over-estimating the effect of diversity. Due to the highly variable environmental conditions within which southern African woodlands occur \citep{Frost1996}, and given the potential importance of environment and biogeography in defining the strength and form of a relationship between biodiversity and woody biomass \citep{}, it is important to sample across geographic and environmental gradients to be able to infer a truly regional scale relationship between diversity and biomass. 
 
 %Environmental conditions may also indirectly moderate the observed relationship between biodiversity and ecosystem function \citep{Vila2005}.
 
@@ -56,29 +169,18 @@ In forests, climatic variation is known to affect both woody biomass \citep{Mich
 
 %While southern African woodlands are species rich in the herbaceous understorey \citep{Murphy2016}, the tree layer is relatively species poor. 
 
-\citet{Solbrig1996} writes that southern African woodlands possess structurally diverse tree canopies, with trees occupying distinct layers of the canopy at different growth stages and among species. This structural diversity may be one mechanism through which diversity influences woody biomass. \citep{Kunz2019} found that crown complementarity and crown plasticity both increased with species richness in a seasonally dry subtropical forest. They also found that trees growing in species rich neighbourhoods exhibited enhanced biomass production. Occupation of multiple canopy layers allows a more full canopy with a greater total foliage density, enhancing productivity and allowing greater standing woody biomass in a smaller area as a form of niche complementarity. This mechanism however, which has been supported by experiments and observational studies in temperate and wet tropical ecosystems \citep{Hardiman2011, Stark2012}, may not be relevant in savannas, which are structured by disturbance rather than competition. Instead, disturbance history may override the effects of species diversity on structural diversity nullifying the effects of species diversity on structural diversity.
+\citet{Solbrig1996} writes that southern African woodlands possess structurally diverse tree canopies, with trees occupying distinct layers of the canopy at different growth stages and among species. This structural diversity may be one mechanism through which diversity influences woody biomass. \citep{Kunz2019} found that crown complementarity and crown plasticity both increased with species richness in a seasonally dry subtropical forest. They also found that trees growing in species rich neighbourhoods exhibited enhanced biomass production. Occupation of multiple canopy layers allows a more full canopy with a greater total foliage density, enhancing productivity and allowing greater standing woody biomass in a smaller area via a form of niche complementarity. This mechanism however, which has been supported by experiments and observational studies in temperate and wet tropical ecosystems \citep{Hardiman2011, Stark2012}, may not be relevant in savannas, which are structured by disturbance rather than competition. Instead, disturbance history may override the effects of species diversity on structural diversity nullifying the effects of species diversity on structural diversity. 
 
-%\citet{Zhang2012} conducted a meta-analysis of 54 studies of the BEFR in forest ecosystems and found that greater tree species abundance evenness led to an increased effect size of species richness on productivity. They suggest this effect is caused by increased heterogeneity of functional traits over space at small scales, leading to a more evenly filled environmental niche volume, which allows a greater number of species to maximise their productivity. We expect that this effect will occur in southern African woodlands as well. A decrease in species abundance evenness may be found as a result of increased disturbance, which prevents dominance by one species, or due to more extreme environmental conditions which preclude the growth of many species, instead favouring those few species which can effectively tolerate sub-optimal conditions. It is important therefore to consider not only species richness as a measure of diversity, but also the evenness of the distribution of trees among species when assessing the impact of diversity on ecosystem function.
+% High levels of disturbance in southern African woodlands may moderate the observable BEFR through it's effect on ecosystem composition. Fire disturbance in forests has been linked to abundance dependent mortality among smaller tree stems \citep{Roques2001, Staver2009, Bond2005}. A dominant and competitive species which tends to produce many small fast-growing stems is more likely to experience mortality during a fire as the higher surface area to volume ratio of the trunk increases the likelihood of combustion. These fast-growing bushy species often proliferate in southern African woodlands when fire is deliberately excluded, leading to the growth of thicket vegetation which precludes the growth of high biomass tree species \citep{Higgins2007}. Additionally, the dominance of a single species is likely to decrease overall functioning by decreasing niche space utilisation \citep{Cardinale2002}.
+% KGD: This text is useful in demonstrating your biological understanding of the ecosystem. I think it could be useful to include some of this biological knowledge in the paragraph above that ends with the statements on disturbance (the paragraph starting with Slobrig 1996). Or you could include this whole paragraph just after that one. The co-authors will reign us in if this kind of logic is not sensible for the ecosystems we are studying.
 
-%High levels of disturbance in the form of seasonal fires and herbivory from large mammals may moderate the strength of observable BEFRs in southern African woodlands \citep{Staver2009, Bond2005}. Fire disturbance in forests has been linked to abundance dependent mortality among smaller stems \citep{Roques2001}. A dominant and competitive species which tends to produce many small fast-growing stems is more likely to experience mortality during a fire as the higher surface area to volume ratio of the trunk increases the likelihood of combustion. These fast-growing bushy species exist in southern African woodlands and often proliferate when fire is deliberately excluded, leading to the growth of thicket vegetation which precludes the growth of high biomass tree species \citep{Higgins2007}. Additionally, the dominance of a single species is likely to decrease overall functioning by decreasing niche space utilisation \citep{Cardinale2002}.
+In this study, we made the first known regional estimation of the Biodiversity-Ecosystem Function Relationship across southern African savannas and woodlands, using inventory plots which span environmental and biogeographical gradients (\autoref{clust_map}). We compared the relative effects of tree species biodiversity with that of environmental factors known to affect ecosystem productivity and biomass accumulation, namely water availability, energy input and soil fertility. We also investigated the potential moderating effects of environmental covariates on the relationship between tree species diversity and biomass. We incorporated vegetation type based on major tree species compositional units as a factor in our analyses to understand how species composition as well as species biodiversity affected ecosystem functionality and assess the generality of our results. We used Structural Equation Modelling (SEM) and path analysis as a preferred method to simultaneously account for environmental and biotic factors, which may interact their effect on ecosystem structure and therefore biomass. Initially, we made three hypotheses: (1) water availability and soil fertility will indirectly positively affect woody biomass via an increase in tree species diversity, (2) the effect size of species diversity on woody biomass will increase with stem density, due to an increased importance of niche complementarity as competition increases, and (3) tree species diversity will increase tree structural diversity, which will provide an indirect path by which tree diversity increases woody biomass.
 
-In this study, we made the first known regional estimation of the Biodiversity-Ecosystem Function Relationship in southern African woodlands, using inventory plots which span multi-dimensional environmental and biogeographical gradients (\autoref{clust_map}). We investigated the relationship between aboveground woody biomass and tree biodiversity. We compared the relative effects of tree species biodiversity with that of environmental factors known to affect ecosystem productivity and biomass accumulation: precipitation, temperature and soil fertility. We also investigated the potential moderation effects of environmental covariates on the relationship between tree species diversity and biomass. We incorporated vegetation type based on major tree species compositional units as a factor in our analyses to understand how species composition as well as species biodiversity affected ecosystem functionality. Initially, we made three hypotheses: 
+\section*{Materials and methods}
 
-\subsection{Hypotheses}
+\subsection*{Study location}
 
-\begin{enumerate}
-	\item{Precipitation and soil fertility will indirectly positively affect woody biomass via an increase in tree species diversity.}
-	\item{The effect size of species diversity on woody biomass will increase with stem density, due to an increased importance of niche complementarity as competition increases.}
-	\item{Tree structural diversity will indirectly influence tree species diversity to provide an indirect path of influence between structural diversity and woody biomass.} \label{lst:num}
-\end{enumerate}
-
-%To address these hypotheses we used Structural Equation Models with path analysis as a preferred method to simultaneously account for environmental factors and biotic factors, which may interact in their effect on ecosystem structure and therefore biomass.
-
-\section{Methods}
-
-\subsection{Study location}
-
-The study used \nplots{} woodland monitoring plots from the larger SEOSAW network \citep{seosaw_web} located across 10 countries within southern Africa in so-called miombo woodlands (\autoref{clust_map}, \citealt{White1987}). The study region spans a precipitation gradient from \textapprox{}460 mm y\textsuperscript{-1} in southern Mozambique and southern Zimbabwe to \textapprox{}1700 mm y\textsuperscript{-1} in northern Zambia, Malawi and northern Mozambique. The study sites span the core climate space of the region as a whole. The 2D convex hull of Mean Annual Precipitation (MAP) and Mean Annual Temperature (MAT) of the study sites covers \hullcover{}\% of the pixel-wise climate space of the miombo woodland area as defined by \citet{White1987}, using WorldClim estimates of temperature and precipitation between the year 1970 and 2000 with a pixel size of 30 arc seconds (0.86 km\textsuperscript{2} at the equator) \citep{Fick2017}. 
+The study used \nplots{} woodland monitoring plots from the larger SEOSAW network \citep{seosaw_web} located across 10 countries within southern Africa in so-called miombo woodlands (\autoref{clust_map}, \citealt{White1983}). The study region spans a precipitation gradient from \textapprox{}460 mm y\textsuperscript{-1} in southern Mozambique and southern Zimbabwe to \textapprox{}1700 mm y\textsuperscript{-1} in northern Zambia, Malawi and northern Mozambique. The study sites span the core climate space of the region as a whole. The 2D convex hull of Mean Annual Precipitation (MAP) and Mean Annual Temperature (MAT) of the study sites covers \hullcover{}\% of the pixel-wise climate space of the miombo woodland area as defined by \citet{White1983}, using WorldClim estimates of temperature and precipitation between the year 1970 and 2000 with a pixel size of 30 arc seconds (0.86 km\textsuperscript{2} at the equator) \citep{Fick2017}. 
 
 Plots were chosen from a larger pool of 5395 plots based on the quality and completeness of data collection, and plot setup. Plot vegetation was identified under the broad term of ``savanna'', which includes ``woodland'', ``savanna woodland'', and ``tree savanna'', variously defined in other areas of the scientific literature \citep{Ratnam2011, Hill2010}. Plots with evidence of farming, human resource extraction or experimental treatments such as prescribed burning or herbivore exclusion were excluded from the initial pool. Only plots >0.1 hectares were used in analysis, as area based biomass estimation from small plots is highly influenced by rare large trees \citep{Stegen2011}, leading to inaccurate estimates. Only plots with a stem density >10 stems ha\textsuperscript{-1} (>10 cm stem diameter) were used, to ensure all plots were within woodland rather than ``grassy savanna'', which are considered a separate biome with very different species composition \citep{Parr2014}. 
 
@@ -86,7 +188,7 @@ Many plots provided by the Zambian Forestry Commission were arranged in clusters
 
 After the initial plot data cleaning described above, we conducted an outlier removal procedure of plots with rare tree species composition. We used the \verb|outlier()| function from the \verb|dave| R package \citep{dave}, which uses a nearest neighbour criterion for each plot in species abundance ordination space and a threshold value for the minimum nearest neighbour distance to identify outliers. We set the threshold value to remove the top 5\% of plots with the largest nearest neighbour distances in multidimensional species composition space \citep{Otto2013}, thus removing \noutliers{} plots (\hyperref[appendixa]{Appendix A}).
 
-\subsection{Data collection}
+\subsection*{Data collection}
  
 We considered only trees and shrubs in our calculations of above-ground woody biomass (AGB), including woody species such as palms and cycads which are functionally tree-like, but excluding lianas, which fill a different ecological niche \citep{Selaya2008}. Only stems >10 cm DBH (Diameter at Breast Height, 1.3 m) were included in analyses. Many plots in the dataset did not include data on stems <10 cm DBH. For those plots with stem measurements <10 cm DBH, those small stems only accounted for a median average of \percsmallagb{}\% of the plot level AGB. 
 
@@ -111,7 +213,7 @@ Climatic data were collected from the ECMWF ERA5 dataset, generated using Copern
 % 
 % \todo{Where $t_{i}$ is the date of fire $i$, and $n$ is the total number of fires in the time period.}
 
-\subsection{Data analysis}
+\subsection*{Data analysis}
 Estimated tree species richness was calculated for each plot using \verb|ChaoRichness()| from the \verb|iNEXT| package in R \citep{Hsieh2016}. This procedure extrapolates a species rarefaction curve to its predicted asymptote and uses this value as its estimated species richness value. Extrapolated species richness accounts for variation in plot size (0.1-10 ha) and therefore sampling effort among plots. Larger plots will tend to encompass more individuals, and therefore more species \citep{Dengler2009}.
 
 To measure tree species abundance evenness, the Shannon Equitability index ($E_{H'}$) \citep{Smith1996} (\autoref{shannon_equit}) was calculated: 
@@ -125,23 +227,22 @@ To measure tree species abundance evenness, the Shannon Equitability index ($E_{
 
 Where $H'_{e}$ is an estimation of the Shannon diversity index of trees by extrapolation of the observed Shannon diversity index ($H'$) to its asymptote via Hill numbers using the \verb|ChaoShannon()| function from the \verb|iNEXT| package in R \citep{Hsieh2016}, and $S$ is the extrapolated tree species richness in the plot, using the \verb|ChaoRichness()| function. We calculated tree structural diversity for each plot by calculating the coefficient of variation of DBH (DBH CV) and tree height (Height CV). 
 
-\subsubsection{Vegetation clusters}
+\subsubsection*{Vegetation clusters}
 
 Plots were assigned to vegetation type groups based on tree species composition. Groups were identified in \citet{Fayolle2018} in an Africa wide analysis of floristic units using plot data in savannas and woodlands with tree species diversity and relative abundance data. Groups were identified using unconstrained correspondence analysis and ordination, followed by clustering based on dominant ordination axes. Plot data used in this study occurred in four vegetation type groups. See \autoref{clust_summ} for a description of each vegetation cluster and \autoref{clust_map} for the spatial distribution of plots from each of these clusters .
 
 \begin{landscape}
 \input{include/clust_summ}
 
-
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1.4\textwidth]{clust_map}
-	\caption{The locations of the \nplots{} plots used in this study, as points by geographic location with respect to the distribution of miombo woodland vegetation according to \citet{White1987}. Each panel shows plots categorized by their vegetation type as defined by the vegetation types in \autoref{clust_summ}.}
+	\caption{The locations of the \nplots{} plots used in this study, as points by geographic location with respect to the distribution of miombo woodland vegetation according to \citet{White1983}. Each panel shows plots categorized by their vegetation type as defined by the vegetation types in \autoref{clust_summ}.}
 	\label{clust_map}
 \end{figure}
 \end{landscape}
 
-\subsubsection{Structural Equation Modelling}
+\subsubsection*{Structural Equation Modelling}
 
 Structural Equation Models (SEM) investigated the determinants of AGB. All SEMs were constructed and analysed in the \verb|lavaan| package \citep{lavaan} in R version 3.6.0 \citep{R2019}. SEM was used because of its suitability for modelling complex causal interactions in ecological systems \citep{Lee2007}. A key aspect to our decision to use SEMs is that they can explicitly model and partition variance to indirect effects, which is challenging in standard multiple regression. Using SEMs also allowed us to describe theoretical latent constructs which have been suggested to act upon diversity and biomass/productivity in previous studies despite these factors not having single observable measures in our dataset. Structural equation modelling is also necessary to properly account for potential feedback mechanisms between aspects of climate and tree species diversity, which could otherwise increase the chances of Type I error and wrongly attribute inference due to covariance of explanatory variables when using conventional regression analyses \citep{Nachtigall2003}.
 
@@ -168,7 +269,7 @@ Second, we incorporated environmental covariates into our model to understand th
 
 % We fitted separate moderation models to investigate whether there was an interaction effect whereby the strength of the relationship between species diversity and AGB was influenced by moisture availability and soil fertility. The \verb|lavaan| R package does not natively support moderation of latent variables in its model specification. Instead we manually calculated interaction variables for both soil fertility and moisture availability from the product of predicted values of these latent variables in a Confirmatory Factor Analysis (CFA). Interaction variables were the products: tree species diversity $\times$ moisture availability, and tree species diversity $\times$ soil fertility. These interaction terms were included as explanatory terms in multiple regressions alongside the latent variable of species diversity to predict AGB. Regression coefficients and model fit were analysed to determine the presence and form of interaction effects.
 
-\section{Results}
+\section*{Results}
 
 \begin{figure}[H]
 \centering
@@ -183,7 +284,7 @@ The direction of these correlations was used as a test of our assumptions of the
 
 MAP had positive correlations with tree species richness (\ccms{}), abundance evenness (\ccme{}), tree height diversity (\ccmh{}) and tree stem density (\ccmi{}). MAT had weak correlations with tree species and structural diversity variables. Tree species diversity variables had clear positive correlations with stem density (Species richness: \ccsi{}; Shannon equitability: \ccei{}). 
 
-\subsection{Structural and species diversity models}
+\subsection*{Structural and species diversity models}
 
 In an SEM describing the effect of tree species diversity on AGB via the mediating effects of stand structural diversity and stem density (\autoref{struc_mod}), species diversity had a small positive direct effect on AGB (\strucdb{}), and indirectly via structural diversity (\strucdsb{}) (\autoref{struc_mod}). Tree species diversity had a positive correlation with stem density. Model fit was good with high factor loadings for all observed variables, all path coefficients were significant (p <0.01) (\autoref{struc_model_fit_clust_stats}). The R\textsuperscript{2} of AGB was \strucrsq{}. The strongest direct effect on AGB was from stem density (\strucsib{}).
 
@@ -194,7 +295,7 @@ In an SEM describing the effect of tree species diversity on AGB via the mediati
 	\label{struc_mod}
 \end{figure}
 
-\subsection{Variation among vegetation types}
+\subsection*{Variation among vegetation types}
 
 When the tree species and structural diversity model (\autoref{struc_mod}) was refitted separately using data from each of the 4 vegetation types the strengths of unstandardised path coefficients varied.  The direct effect of tree species diversity on AGB was positive in Baikiaea and Mopane, but negative in Marginal and Core miombo (\autoref{struc_model_slopes_all}). Relationships between structural diversity and AGB remained generally similar with the same sign and significant overlap between the 95\% confidence intervals of path coefficients. The total effect of species diversity on AGB remained strongly positive for all vegetation types. All vegetation types except Mopane exhibited a positive effect of species diversity on structural diversity. All models had adequate goodness-of-fit (\autoref{struc_model_fit_clust_stats}), though confidence intervals around the unstandardised path coefficients were wide particularly for Mopane and Baikiaea. $\chi^{2}$ statistics were high for some vegetation types, but this appears to be highly correlated with sample size for each vegetation type \citep{Hooper2008}.
 
@@ -209,7 +310,7 @@ The strongest total effect of tree species diversity on AGB was in Baikiaea wood
 
 \input{include/struc_model_fit_clust_stats}
 
-\subsection{Moderation of Diversity-AGB relationship by stem density}
+\subsection*{Moderation of Diversity-AGB relationship by stem density}
 
 We repeatedly sub-sampled the plot dataset to build \subn{} datasets of varying mean stem density in order to test how the relationship between species diversity, structural diversity and biomass varied with stem density. Each dataset consisted of approximately \subp{} plots with overlap of plot identity between subsampled datasets.  \autoref{sem_struc_stems_ha} shows a positive effect of tree species diversity on AGB as stem density increases. There appears to be a minimum stem density threshold at \textapprox{}180 stems ha\textsuperscript{-1} below which there appears to be a reasonably constant low baseline effect of tree diversity on biomass. The effect of structural diversity on AGB appears to remain constant with increasing stem density. The indirect effect of species diversity on AGB via structural diversity climbs slightly as stem density increases.
 
@@ -220,7 +321,7 @@ We repeatedly sub-sampled the plot dataset to build \subn{} datasets of varying 
 	\label{sem_struc_stems_ha}
 \end{figure}
 
-\subsection{Environmental covariates and diversity}
+\subsection*{Environmental covariates and diversity}
 
 A model incorporating the latent variables of moisture availability and soil fertility showed that the total effect of species diversity on biomass was greater than that of both moisture availability and soil fertility (\autoref{full_mod}). Surprisingly, the direct effects of moisture availability and soil fertility on biomass were negligible, with nearly all of their observed effect on AGB coming from the indirect path via species diversity (moisture: \rgmbd{}, soil: \rgsbd{}). MAP and temperature seasonality (TS) had the greatest contributions to the latent variable of moisture availability. Moisture availability and soil fertility also had negligible direct effects on stem density.  Model fit was acceptable: CFI = \fmcfi{}, TLI = \fmtli{}, and RMSEA = \fmrmsea{}, R\textsuperscript{2} of AGB = \fmrsq{}.
 
@@ -235,7 +336,7 @@ Similar to the model which only considered tree species and structural diversity
 
 % \input{include/full_model_fit_clust_stats} - Excluded, low fit
 
-% \subsection{Moderation effects of moisture availability and soil}
+% \subsection*{Moderation effects of moisture availability and soil}
 % 
 % To address the hypothesis (H\textsubscript{1}) that more arid plots and plots with less fertile soil will show a stronger positive effect of tree species richness on above ground woody biomass, we fit separate linear multiple regressions with the latent variables of moisture availability and soil fertility as moderators on the relationship between species diversity and AGB.
 % 
@@ -254,71 +355,66 @@ Similar to the model which only considered tree species and structural diversity
 % 	\label{int_plots}
 % \end{figure}
 
-\section{Discussion}
+\section*{Discussion}
 
 % Precipitation and soil fertility will indirectly positively effect AGB via an increase in tree species diversity.
 % Tree structural diversity will indirectly influence tree species diversity to provide an indirect path of influence between structural diversity and AGB.
 % The effect size of species diversity on AGB will increase with stem density, due to an increased importance of niche complementarity as competition increases.
 
-In this study, we assessed the importance of [a] tree species richness, [b] tree structural diversity, [c] resource availability via moisture availability and soil fertility, [d] stem density and their interactions on above ground woody biomass (AGB) across southern African woodlands, using a network of \nplots{} woodland survey plots. Using latent variables and Structural Equation Modelling (SEM), we found support for a general relationship between tree species diversity and AGB, with an indirect relationship between tree species diversity and AGB via structural diversity (H\textsubscript{1}). We found that the effect size of tree species diversity on AGB increased with stem density (H\textsubscript{2}).  Tree diversity, structural diversity and stem density accounted for \srsq{}\% of the variation in AGB across the region, while models for certain vegetation types showed even greater explanatory power (\autoref{struc_model_fit_clust_stats}). The strongest effect on AGB was that of stem density. Interestingly, when tree species diversity, structural diversity and stem density were controlled for, we found little evidence of an effect of resource availability, in the form of moisture availability and soil fertility, on AGB (H\textsubscript{3}). We found that vegetation composition in the form of discrete vegetation types affected the relationship between tree species diversity and AGB.
+In this study, we assessed the importance of [a] tree species richness, [b] tree structural diversity, [c] resource availability, i.e. moisture availability and soil fertility, [d] stem density and their interactions on above ground woody biomass (AGB) across southern African woodlands, using a network of \nplots{} woodland survey plots. Using latent variables and Structural Equation Modelling (SEM), we found support for a general positive relationship between tree species diversity and AGB, with an indirect influence of tree species diversity on AGB via structural diversity (H\textsubscript{1}). We found that the effect size of tree species diversity on AGB increased with stem density (H\textsubscript{2}).  Tree diversity, structural diversity and stem density accounted for \srsq{}\% of the variation in AGB across the region, while models for specific vegetation types showed even greater explanatory power (\autoref{struc_model_fit_clust_stats}). The strongest effect on AGB was that of stem density. Interestingly, when the effects of tree species diversity, structural diversity and stem density were controlled for, we found little evidence of a direct effect of resource availability, in the form of moisture or energy availability or soil fertility, on AGB (H\textsubscript{3}). 
 
-\subsection{Effect of tree species diversity on AGB}
+\subsection*{Inter-related effects of tree species and structural diversity on AGB}
 
-% I would just write that you had a consistent positive effect across all models, as that is your general result with regard to this question.
+We found a consistent positive effect of tree species diversity on AGB across all models in this study. Within the savanna woodlands of southern Africa we therefore find support that higher tree species richness and evenness causes higher woody AGB. This finding is in agreement with many other studies across different ecosystems and biomes, supporting that there is a generalisable positive association between diversity and ecosystem functionality \citep{Liang2016, Cardinale2009}. Our study provides a novel dissection of the mechanisms underlying this relationship, particularly in the context of a disturbance-structured  and poorly studied ecological system, southern African woodlands and savannas.
 
-We found a consistent positive total effect of tree species diversity on AGB across all models in this study. Within the savanna woodlands of southern Africa we therefore find support that higher tree species richness causes higher woody AGB. This finding is in agreement with many other studies across different ecosystems and biomes, showing that there is a generalisable positive association between species richness and ecosystem functionality \citep{Liang2016, Cardinale2009}. In addition however, our study provides a novel dissection of the mechanisms underlying this relationship and their interaction with resource availability and vegetation type in southern African woodlands as an understudied biome. 
+% In our extrapolation of species richness according to sampling effort (stem density) we partially accounted for this effect, but our analyses cannot properly assess to what extent a real effect of species diversity on stem density exists. We cannot decompose the relative effects of tree species richness and abundance evenness in our model, but previous studies have shown that both richness and evenness have similar importance in their effects on ecosystem function \citep{Valery2009, Zhang2012}.
 
-Much of the total variation in AGB was caused by stem density. Stem density also correlated with species diversity in our SEMs. It is possible that within southern African woodlands a higher species diversity allows for a greater density of tree stems, leading to an increase in total AGB. Reverse causation is plausible however, with increased stem density causing higher species richness through an increased probability of encountering new species. In our extrapolation of species richness according to sampling effort (stem density) we partially accounted for this effect, but our analyses cannot properly assess to what extent a real effect of species diversity on stem density exists. We cannot decompose the relative effects of tree species richness and abundance evenness in our model, but previous studies have shown that both richness and evenness have similar importance in their effects on ecosystem function \citep{Valery2009, Zhang2012}. We suggest that an increase in tree species diversity through species richness and evenness produces an assemblage of species which can occupy a greater proportion of the total woodland canopy volume with leaf area, utilising more of the available light resulting in greater total AGB at the plot level. This is supported by the moderately strong positive effect of tree species diversity on AGB via structural diversity.
+Much of the total variation in AGB was driven by variation in stem density. Stem density also correlated with species diversity in our SEMs. It is possible that within southern African woodlands a higher species diversity allows for a greater density of tree stems, leading to an increase in total AGB. The opposite is also plausible however, with increased stem density causing higher species richness through an increased probability of encountering new species. We suggest that an increase in tree species diversity through species richness and evenness produces an assemblage of species which can occupy a greater proportion of the total woodland canopy volume with leaf area, utilising more of the available light resulting in greater total AGB at the plot level. This is supported by the moderately strong positive effect of tree species diversity on AGB via structural diversity.
 
-% There are counter-examples, e.g. Johnson et al. 2016. GCB (from Leeds group, Tim Baker senior author), but feel free to leave text as is for now.
+% KGD: There are counter-examples, e.g. Johnson et al. 2016. GCB (from Leeds group, Tim Baker senior author), but feel free to leave text as is for now.
 
 % The question of whether lots of small stems or a few large stems maximises AGB has yet to be solved \citep{}.
 
-While we did not explicitly measure Net Primary Productivity (NPP) in this study, other studies have shown a strong positive correlation between woody AGB and NPP in woodland and forest ecosystems \citep{Chisholm2013, Prado-Junior2016}. This suggests that as has been found in many other woodland/forest ecosystems, woody biomass and woody productivity in southern African woodlands can be maximised by increasing species diversity. 
+While we did not explicitly measure Net Primary Productivity (NPP) in this study, other studies have shown a strong positive correlation between woody AGB and NPP in woodland and forest ecosystems \citep{Chisholm2013, Prado-Junior2016}. This suggests that, as has been found in many other woodland/forest ecosystems, woody biomass and woody productivity in southern African woodlands can be maximised by increasing species diversity. 
 
-\subsection{Structural diversity as a mechanism for the BEFR}
-
-We found evidence that tree species diversity led to an increase in AGB indirectly via tree structural diversity and we therefore find support for our hypothesis (H\textsubscript{2}). A higher tree species diversity allows for a greater diversity of tree functional forms within a plot and this may act as a mechanism of niche complementarity, with a highly diverse canopy being able to take advantage of a greater proportion of the available light. Variation in structural diversity may be a joint result of disturbance history and tree species diversity, with highly disturbed plots generally having a less structurally diverse canopy \citep{LaRue2019}. In forests, where the tree canopy is effectively closed, as the stand matures a more diverse canopy emerges via competition and tree mortality events which open canopy gaps \citep{Muscolo2014}. In frequently disturbed woodlands such as those studied here however, a tree canopy similar to that of a forest is frequently not reached, Instead, a simple open canopy is maintained that can be made more complex and productive via an increase in species diversity. While we did not have access to adequate data on disturbance history in our plots, previous studies have found that southern African woodlands with higher species diversity tend to be less disturbed and tend to form a more closed canopy \citep{Chidumayo2013, Mutowo2012}.
-
-\subsection{Effects of moisture availability and soil fertility}
-
-Surprisingly, moisture availability and soil fertility had only small effects on AGB compared to that of tree species diversity. We expected that higher moisture availability and soil fertility would lead to higher AGB under the assumption that higher resource availability would allow for greater resource partitioning among individual trees and a greater stem density per unit area \citep{Kraaij2006, Shirima2015}.
-
-Previous studies in tropical forests have shown that moisture availability increases AGB both directly and indirectly via increasing tree species diversity and via increasing stand structural diversity \citep{Ali2019a, Ali2019b, Poorter2017}. In this study, while we observed weak indirect effects via species diversity, we saw no evidence for a direct effect on AGB. Compared to moist tropical forests, moisture availability is more of a limiting factor to tree growth in southern African woodlands, which are frequently droughted. It is possible that the range of observed moisture availability in this study (\textapprox{}460-1700 mm y\textsuperscript{-1}) may not have been able to capture variation in AGB. We deliberately excluded plots with very low stem density as they are not considered woodlands, but grassy savannas. It may be that by excluding the bottom end of this stem density continuum we prevented a relationship being observed between moisture and AGB/stem density. Additionally, due to the high levels of adaptation of tree species to drought conditions in southern Africa, at the large scale we conducted our experiment turnover in species composition may have prevented a direct relationship being observed between resource availability and AGB.
-
-In southern African woodlands moisture availability is closely linked with the intensity of disturbance from seasonal fires. The growth of C4 grasses in wetter woodlands leads to more intense seasonal fires which limit tree growth \citep{Charles-Dominique2018}, and may also limit species diversity \citep{Linder2014}. It is possible therefore that the effect of moisture availability, which is expected to increase AGB, is confounded in its effect on AGB with the unmeasured variable of fire regime intensity, which is expected to decrease AGB. The direct effect of moisture availability on stem density may also be confounded in this way. This may also have caused us to not observe a stronger effect between moisture availability and AGB.
-
-% In a separate set of linear multiple regressions, we found a weak positive interaction effect of moisture availability on the relationship between tree species diversity and AGB. As moisture availability increased, the relationship between tree species diversity and AGB became stronger. This is in contrast to \citet{Ratcliffe2017} who found that in European forests, a decrease in water availability due to drought led to a stronger effect of tree species diversity on AGB. They attributed this to an increase in selection effects which allowed dominance of stress tolerant species which were more likely to occur in high diversity assemblages. 
-
-\subsection{Vegetation type specific responses}
-
-% See thoughts above for C3 results. C2 should be discussed even if we cannot give a good reason. It is very intriguing. The results for C4 also surprise me, as I would have expected mopane to be too species poor to be able to show a result. You can discuss how many mopane stands are monospecific and even thought such things as 'cathedral mopane' exist, where biomass can be quite high, it seems that adding even a few species to mopane can increase its total AGB (of the stands). That is cool and shows robustness of results. Basically, the fact that C3 and C4 show significant results means that your results are robust across a range of species richnesses (not just do to patterns at low, 1-6, or high, 6-12, species richness). I still have a great sense of what C1 is, so with withhold commentary on that for the moment. If it is 'disturbed miombo', then maybe something can be said about the contrast between results for C1 and C2 and the role that disturbance may play.
-
-Core miombo and marginal miombo woodland vegetation exhibited a small negative direct effect of tree species diversity on AGB, while the total effect via structural diversity remained positive in these vegetation types. Compared to Baikiaea and Mopane woodlands these woodlands have higher median tree species richness. Baikiaea and Mopane woodlands are also dominated by fewer tree species, notably \textit{Baikiaea plurijuga} in Baikiaea woodlands and \textit{Colophospermum mopane} in Mopane woodlands which tend to produce large canopy dominating trees. We postulate that this negative effect of tree species richness on AGB in miombo woodlands may be due to an increase in interspecific competition through canopy crowding, but that this effect is not present in Baikiaea and Mopane woodlands, where the woodland canopy is dominated often by a single species. Higher functional redundancy among tree species in miombo woodlands may lead to smaller trees with lower AGB in the most diverse plots, more resembling thicket vegetation. Again, these highly diverse plots in miombo woodlands may be the result of disturbance which can promote a mosaic of woodland of different successional stages and stem densities.
-
-Despite Mopane woodland having very low species diversity generally, with often monospecific stands \citep{Timberlake2010}, a positive effect of tree species diversity on AGB was observed. In previous studies across ecosystem types it has been found often that the effect on ecosystem function of adding species is stronger in low diversity assemblages \citep{Hector2007}. This has been attributed to an increase in functional redundancy as species diversity increases. \textit{I.e.} with more species, it is more likely that the addition of a new species will occupy the same ecological niche space as an existing species, meaning niche complementarity will not occur and competition will lead to niche partitioning, while making little difference to overall ecosystem functioning. Mopane woodlands also have a negligible effect of species diversity on structural diversity. This may be due to the species which tend to co-exist with \textit{C. mopane}, many of which are small shrub-like trees which do not grow into large canopy trees \citep{Timberlake2010}. Larger canopy trees tend to have greater variation in physical structure \citep{Seidel2019}.
-
-Baikiaea woodland had the strongest total effect of species diversity on AGB. Baikiaea also has relatively low median species richness compared to miombo and Mopane woodlands, but the addition of new species appears to make a larger difference to the AGB of these plots than mopane. We suggest that this is due mostly to the particular identity of species found in Baikiaea woodlands and their contribution to ecosystem functioning. Unlike mopane woodlands, Baikiaea woodlands do sometimes contain species other than \textit{B. plurijuga} which grow to be high biomass canopy trees. 
-
-\subsection{Stem density effects}
+We found evidence that tree species diversity led to an increase in AGB indirectly via tree structural diversity and we therefore find support for our hypothesis (H\textsubscript{2}). A higher tree species diversity allows for a greater structural diversity of trees, i.e. greater variation in DBH and height. This may act as a mechanism of niche complementarity, with a highly diverse canopy being able to take advantage of a greater proportion of the available light. Although we did not measure it here, we would also expect that tree species diversity allows for a greater range of tree functional forms \citep{}, i.e. wider variation in canopy shape and overall growth form; bushy understorey vs. emergent canopy, for example. Variation in structural diversity may be a joint result of disturbance history and tree species diversity, with highly disturbed plots generally having a less structurally diverse canopy \citep{LaRue2019}. In forests, where the tree canopy is effectively closed, as the stand matures a more diverse canopy emerges via competition and tree mortality events which open canopy gaps \citep{Muscolo2014}. Indeed, our finding that the strength of the effect of tree diversity on AGB increases with stem density supports this. In frequently disturbed woodlands such as those studied here however, a tree canopy similar to that of a forest is frequently not reached, Instead, a simple open canopy is maintained that can be made more complex and productive via an increase in species diversity. While we did not have access to adequate data on disturbance history in our plots, previous studies have found that southern African woodlands with higher species diversity tend to be less disturbed and tend to form a more closed canopy \citep{Chidumayo2013, Mutowo2012}.
 
 We found a non linear positive effect of stem density on the relationship between tree species diversity and AGB (\autoref{sem_struc_stems_ha}). At low stem densities competition between trees may not occur, meaning that the niche complementarity provided by an increase in tree species richness might not make any difference to plot level AGB, accounting for the low and constant effect of tree species diversity on AGB below \textapprox{}180 stems ha\textsuperscript{-1}.
 
-At high stem densities, where the woodland approaches a more forest-like canopy structure an increase in niche complementarity in canopy occupation may allow a higher AGB per unit area. There may be an effect whereby high stem density plots have many small stems which do not hold much woody biomass, but we did not observe this in our study, possibly because we only considered stems >10 cm DBH. An abundance of small stems may prevent the growth of large trees which hold the majority of the AGB in a plot.
+\subsection*{Effects of moisture availability and soil fertility}
 
-% Indeed, we need to address this point, as it is surprising. If we were to go to the wet forest literature, we would say that high richness dilutes specialist natural enemies (and many of natural enemies in wet forests do seem to specialise on specific tree species). Are natural enemies in woodlands species specialists? I have no idea. In tropical wet forests, insect herbivores remove way more biomass than vertebrate herbivores, and insects are more likeliy to specialise on a specific tree species than an herbivore. But, I had the vague idea that vertebrates (namely mammals) remove more plant biomass than insects in woodlands, but I could be completely wrong. In any case, that could be a mechanism that explains species richness effect holding strong, even as the effect of structural diversity disappears.
+Surprisingly, moisture availability and soil fertility had only small effects on AGB compared to that of tree species diversity. We expected that higher moisture availability and soil fertility would lead to higher AGB under the assumption that higher resource availability would allow for a greater stem density per unit area, greater productivity per unit area and additionally greater tree species diversity due to niche partitioning \citep{Kraaij2006, Shirima2015}.
 
-% At very high biomass, tree species diversity is low because it is associated with intense competition for light leading to dominance of usually a single species (Huston 1997, Oindo and Skidmore 2002).
+Previous studies in tropical forests have shown that moisture availability increases AGB both directly and indirectly via increasing tree species diversity and via increasing stand structural diversity \citep{Ali2019a, Ali2019b, Poorter2017}. In this study, while we observed weak indirect effects via species diversity, we saw no evidence for a direct effect on AGB. Compared to moist tropical forests, moisture availability is more of a limiting factor to tree growth in southern African woodlands, which are frequently droughted. It is possible that the range of observed moisture availability in this study (\textapprox{}460-1700 mm y\textsuperscript{-1}) may not have been able to capture variation in AGB. We deliberately excluded plots with very low stem density as they are not considered woodlands, but grassy savannas. It may be that by excluding the bottom end of this stem density continuum we prevented a relationship being observed between moisture and AGB/stem density. Additionally, due to the high levels of adaptation of tree species to drought conditions in southern Africa, at the large scale we conducted our experiment turnover in species composition may have prevented a direct relationship being observed between resource availability and AGB.
+% KGD: NEED MORE ON THIS ABOVE, FOR CLARIFICATION OF WHAT YOU MEAN
 
-% \subsection{Future work}
+In southern African woodlands moisture availability is closely linked with the intensity of disturbance from seasonal fires. The growth of C4 grasses in wetter woodlands leads to more intense seasonal fires which limit tree growth \citep{Charles-Dominique2018}, and may also limit species diversity \citep{Linder2014}. It is possible therefore that the effect of moisture availability, which is expected to increase AGB, is confounded in its effect on AGB with the unmeasured variable of fire regime intensity, which is expected to decrease AGB. The direct effect of moisture availability on stem density may also be confounded in this way. This may also have caused us to not observe a stronger effect between moisture availability and AGB.
 
-% We hope that this study prompts further investigation of the relationship between woody productuivity and species richness and composition in southern African woodlands. While AGB is correlated with NPP,...
+We expected a positive effect of soil fertility on AGB, but found no evidence of this in our models. We measured soil fertility using the observed variables of soil organic carbon content, sand particle content and Cation Exchange Capacity (CEC). In wet tropical forests a clear relationship has been observed between these variables and AGB \citep{Slik2010, MORE}. 
+% KGD: You have written little about soil fertility in this section, but I think you need to. There is at least one paper which could be taken to suggest a positive relationship between AGB and soil fertility (Coelho de Souza et al. 2019. NEE, see my publications).
 
-\subsection{Conclusion}
+% In a separate set of linear multiple regressions, we found a weak positive interaction effect of moisture availability on the relationship between tree species diversity and AGB. As moisture availability increased, the relationship between tree species diversity and AGB became stronger. This is in contrast to \citet{Ratcliffe2017} who found that in European forests, a decrease in water availability due to drought led to a stronger effect of tree species diversity on AGB. They attributed this to an increase in selection effects which allowed dominance of stress tolerant species which were more likely to occur in high diversity assemblages. 
 
-In this study we found that across southern African woodlands, there is a generalisable positive association between tree species diversity and woody biomass as a measure of ecosystem functionality. Additionally, we found that much of this effect of species diversity on biomass exists as an indirect effect by increasing the structural diversity of woodland tree canopies. We found that the multiple vegetation types which comprise southern African woodlands exhibit variation in the strength of the relationship between species diversity and woody biomass. In contrast to previous studies, we found that across the region, the direct effects of moisture availability and soil fertility on woody biomass were negligible, with most of their effect being indirectly through species and structural diversity. A gap in available data means that we could not incorporate disturbance history into our models adequately, but this factor likely plays a large part in the association between species diversity and woody biomass in southern African woodlands.
+\subsection*{Vegetation type specific responses}
 
-\bibliography{/Users/johngodlee/google_drive/bib/papers/lib.bib}
+% KGD: See thoughts above for C3 results. C2 should be discussed even if we cannot give a good reason. It is very intriguing. The results for C4 also surprise me, as I would have expected mopane to be too species poor to be able to show a result. You can discuss how many mopane stands are monospecific and even thought such things as 'cathedral mopane' exist, where biomass can be quite high, it seems that adding even a few species to mopane can increase its total AGB (of the stands). That is cool and shows robustness of results. Basically, the fact that C3 and C4 show significant results means that your results are robust across a range of species richnesses (not just do to patterns at low, 1-6, or high, 6-12, species richness). I still have a great sense of what C1 is, so with withhold commentary on that for the moment. If it is 'disturbed miombo', then maybe something can be said about the contrast between results for C1 and C2 and the role that disturbance may play.
+
+Core miombo and marginal miombo woodland vegetation exhibited a small negative direct effect of tree species diversity on AGB, while the total effect, incorporating the indirect effect via  structural diversity, remained positive in these vegetation types. Compared to Baikiaea and Mopane woodlands, miombo woodlands have higher median tree species richness. Baikiaea and Mopane woodlands are also dominated by fewer tree species, notably \textit{Baikiaea plurijuga} in Baikiaea woodlands and \textit{Colophospermum mopane} in Mopane woodlands which often produce large canopy dominating trees. We postulate that this negative effect of tree species richness on AGB in miombo woodlands may be due to an increase in interspecific competition through canopy crowding, but that this effect is not present in Baikiaea and Mopane woodlands, where the woodland canopy is dominated often by a single species. Higher functional redundancy among tree species in miombo woodlands may lead to smaller trees with lower AGB in the most diverse plots, more resembling thicket vegetation. Again, these highly diverse plots in miombo woodlands may be the result of disturbance which can promote a mosaic of woodland of different successional stages and stem densities. Alternatively, this small negative direct effect may be an artefact of particularly noisy data, especially given that the overall effect of diversity on AGB is positive.
+
+Despite Mopane woodland having very low species diversity generally, with often monospecific stands \citep{Timberlake2010}, a positive effect of tree species diversity on AGB was observed. In previous studies across ecosystem types it has been found often that the effect on ecosystem function of adding species is stronger in low diversity assemblages \citep{Hector2007}. This has been attributed to an increase in functional redundancy as species diversity increases. \textit{I.e.} with more species, it is more likely that the addition of a new species will occupy the same ecological niche space as an existing species, meaning niche complementarity will not occur and competition will lead to niche partitioning, while making little difference to overall ecosystem functioning. Mopane woodlands also have a negligible effect of species diversity on structural diversity. This may be due to the species which tend to co-exist with \textit{C. mopane}, many of which are small shrub-like trees which do not grow into large canopy trees \citep{Timberlake2010}. Larger canopy trees tend to have greater variation in physical structure \citep{Seidel2019}.
+
+Baikiaea woodland had the strongest total effect of species diversity on AGB. Baikiaea also has relatively low median species richness compared to miombo, but the addition of new species appears to make a larger difference to the AGB of these plots than in mopane woodlands. We suggest that this is due mostly to the particular identity of species found in Baikiaea woodlands and their contribution to ecosystem functioning. Unlike mopane woodlands, Baikiaea woodlands do sometimes contain species other than \textit{B. plurijuga} which grow to be high biomass canopy trees. 
+
+\subsection*{Conclusion}
+
+In this study we found that across southern African woodlands, there is a generalisable positive association between tree species diversity and woody biomass as a measure of ecosystem functionality. Additionally, we found that much of this effect of species diversity on biomass exists as an indirect effect by increasing the structural diversity of woodland tree canopies. We found that the multiple vegetation types which comprise southern African woodlands exhibit variation in the strength of the relationship between species diversity and woody biomass, inferring that models of regional and global biodiversity-ecosystem function relationships could benefit from including vegetation type terms and the structural properties of those vegetation types, such as structural diversity and stem density. In contrast to previous studies, we found that across the region, the direct effects of moisture availability and soil fertility on woody biomass were negligible, with most of their effect being indirectly through species and structural diversity. A gap in available data means that we could not incorporate disturbance history into our models adequately, but this factor likely plays a large part in the association between species diversity and woody biomass in southern African woodlands.
+
+Southern African woodlands are relied heavily upon for their ecosystem service provision, which is itself affect by ecosystem functionality. Resource extraction by humans in southern Africa is directly influencing biodiversity via selective tree-felling for timber, among other forest products. Our study shows that biodiversity change through human actions will have the greatest negative impact on ecosystem function in areas of high stem density and Baikiaea woodlands, which are predominantly targeted for tree felling. This raises concerns about the robustness of these ecosystems to further resource extraction and biodiversity loss.
+
+% KGD: these conclusions are a bit dry and repetitive on earlier text. What do our results mean for woodland management? for conservation? for our understanding of basic ecological theory? As an aside, we have circled back around to niche complementarity in this discussion, but not really to selection effects or facilitation.
+% Southern African woodlands are relied upon heavily for their ecosystem service provision, which is itself affected by ecosystem functionality \citep{Schulze1994}. This has raised interest in how biodiversity influences ecosystem function in these ecosystems. Resource extraction by humans directly influences biodiversity via selective tree-felling for timber, charcoal making, non-timber forest products and through land use change to agriculture \citep{Aleman2016, Ryan2016}. Climate change is also indirectly affecting the biodiversity of southern African woodlands, altering temperature and precipitation, and affecting climate seasonality which heavily influences the degree of seasonal drought and thus woodland structure \citep{Scholes2004, Eldridge2012}. While rapid biodiversity change is being observed in southern African woodlands \citep{Syampungani2009}, research into the relationship between biodiversity and ecosystem functionality remains scarce.
+
+\bibliography{lib.bib}
 
 \newpage{}
 \appendix{}

@@ -18,7 +18,7 @@ library(dplyr)  #
 library(tidyr)  #
 library(iNEXT)  #
 library(vegan)  # 
-library(ggplot2) # 
+library(ggplot2)  # 
 
 # Import data ----
 
@@ -158,7 +158,28 @@ s_fil <- s %>%
     diam >= 10,
     alive %in% c("A", NA))
 
-s_fil_summ <- s_fil %>%
+# Which plots have multiple censuses?
+multi_year_plots <- s_fil %>%
+  group_by(plotcode, year) %>%
+  summarise() %>%
+  .[duplicated(.$plotcode),] %>% 
+  pull(plotcode) %>%
+  unique()
+
+s_fil_mgr <- s_fil %>% 
+  filter(grepl("MGR", plotcode)) %>% 
+  group_by(plotcode, tag_id) %>%
+  filter(year == max(year))
+
+s_fil_all_other <- s_fil  %>% 
+  filter(grepl("MCL|DKS|MNR|TIM|TKW|ZCC|ZPF", plotcode)) %>% 
+  group_by(stem_id, plotcode) %>%
+  filter(year == max(year)) %>%
+  bind_rows(., 
+    s_fil_mgr, 
+    filter(s_fil, !plotcode %in% multi_year_plots))
+
+s_fil_summ <- s_fil_all_other %>%
   group_by(plot_group) %>%
   summarise(
     n_stems = n(),
@@ -271,4 +292,3 @@ saveRDS(plotcode_plot_group_lookup, "data/plotcode_plot_group_lookup.rds")
 # Plot data
 plot_data_agg_clean <- plot_data_agg_clean %>% dplyr::select(-plotcode_vec)
 saveRDS(plot_data_agg_clean, "data/plot_data_fil_agg.rds")
-

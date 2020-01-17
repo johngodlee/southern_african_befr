@@ -1,124 +1,65 @@
 $FIT
                          npar                          fmin 
-                       15.000                         0.044 
+                       15.000                         0.043 
                         chisq                            df 
-                       59.436                         6.000 
+                       57.214                         6.000 
                        pvalue                  chisq.scaled 
-                        0.000                        49.316 
+                        0.000                        47.167 
                     df.scaled                 pvalue.scaled 
                         6.000                         0.000 
          chisq.scaling.factor                baseline.chisq 
-                        1.205                      1909.604 
+                        1.213                      1948.694 
                   baseline.df               baseline.pvalue 
                        15.000                         0.000 
         baseline.chisq.scaled            baseline.df.scaled 
-                     1042.059                        15.000 
+                     1089.929                        15.000 
        baseline.pvalue.scaled baseline.chisq.scaling.factor 
-                        0.000                         1.833 
+                        0.000                         1.788 
                           cfi                           tli 
-                        0.972                         0.929 
+                        0.974                         0.934 
                    cfi.scaled                    tli.scaled 
-                        0.958                         0.895 
+                        0.962                         0.904 
                    cfi.robust                    tli.robust 
-                        0.972                         0.931 
+                        0.974                         0.935 
                          logl             unrestricted.logl 
-                    -4218.962                     -4189.244 
+                    -4224.443                     -4195.836 
                           aic                           bic 
-                     8467.925                      8535.489 
+                     8478.887                      8546.451 
                        ntotal                          bic2 
-                      668.000                      8487.863 
+                      668.000                      8498.825 
                         rmsea                rmsea.ci.lower 
-                        0.115                         0.090 
+                        0.113                         0.087 
                rmsea.ci.upper                  rmsea.pvalue 
-                        0.143                         0.000 
+                        0.141                         0.000 
                  rmsea.scaled         rmsea.ci.lower.scaled 
-                        0.104                         0.080 
+                        0.101                         0.078 
         rmsea.ci.upper.scaled           rmsea.pvalue.scaled 
-                        0.129                         0.000 
+                        0.127                         0.000 
                  rmsea.robust         rmsea.ci.lower.robust 
-                        0.114                         0.086 
+                        0.112                         0.083 
         rmsea.ci.upper.robust           rmsea.pvalue.robust 
-                        0.145                            NA 
+                        0.142                            NA 
                          srmr 
-                        0.036 
+                        0.035 
 
 $PE
-                       lhs op                     rhs                 label exo
-1                      div =~       shannon_equit_std                         0
-2                      div =~ n_species_raref_log_std                         0
-3                    struc =~             cov_dbh_std                         0
-4                    struc =~          cov_height_std                         0
-5           agb_ha_log_std  ~                     div                     c   0
-6           agb_ha_log_std  ~                   struc                     b   0
-7                    struc  ~                     div                     a   0
-8           agb_ha_log_std  ~        stems_ha_log_std                     d   0
-9                      div ~~        stems_ha_log_std                         0
-10       shannon_equit_std ~~       shannon_equit_std                         0
-11 n_species_raref_log_std ~~ n_species_raref_log_std                         0
-12             cov_dbh_std ~~             cov_dbh_std                         0
-13          cov_height_std ~~          cov_height_std                         0
-14          agb_ha_log_std ~~          agb_ha_log_std                         0
-15        stems_ha_log_std ~~        stems_ha_log_std                         0
-16                     div ~~                     div                         0
-17                   struc ~~                   struc                         0
-18   biomass_div_via_struc :=                     a*b biomass_div_via_struc   0
-19       biomass_div_total :=             c+(a*b)+(d)     biomass_div_total   0
-20       shannon_equit_std r2       shannon_equit_std                         0
-21 n_species_raref_log_std r2 n_species_raref_log_std                         0
-22             cov_dbh_std r2             cov_dbh_std                         0
-23          cov_height_std r2          cov_height_std                         0
-24          agb_ha_log_std r2          agb_ha_log_std                         0
-25                   struc r2                   struc                         0
-          est         se         z       pvalue      std.lv    std.all
-1   1.0000000 0.00000000        NA           NA  0.74927288  0.8389504
-2   1.0114880 0.06322676 15.997783 0.000000e+00  0.75788056  0.8057694
-3   1.0000000 0.00000000        NA           NA  0.80544591  0.9250220
-4   0.6390800 0.08760707  7.294845 2.990941e-13  0.51474436  0.5585590
-5  -0.1973108 0.05242487 -3.763688 1.674258e-04 -0.14783966 -0.1851607
-6   0.2718252 0.04797981  5.665408 1.466747e-08  0.21894053  0.2742105
-7   0.4197805 0.06237511  6.729936 1.697376e-11  0.39050434  0.3905043
-8   0.8205043 0.04533159 18.100055 0.000000e+00  0.82050425  0.8448041
-9   0.4648178 0.04287623 10.840922 0.000000e+00  0.62035855  0.7546150
-10  0.2362312 0.02321993 10.173639 0.000000e+00  0.23623116  0.2961623
-11  0.3102843 0.03093655 10.029698 0.000000e+00  0.31028429  0.3507356
-12  0.1094304 0.08055512  1.358454 1.743196e-01  0.10943043  0.1443343
-13  0.5843068 0.06182730  9.450627 0.000000e+00  0.58430681  0.6880118
-14  0.2014755 0.01560277 12.912800 0.000000e+00  0.20147551  0.3160370
-15  0.6758256 0.04667342 14.479882 0.000000e+00  0.67582562  1.0000000
-16  0.5614098 0.05262541 10.668038 0.000000e+00  1.00000000  1.0000000
-17  0.5498139 0.09448414  5.819113 5.916061e-09  0.84750636  0.8475064
-18  0.1141069 0.02632363  4.334771 1.459117e-05  0.08549723  0.1070804
-19  0.7373004 0.03732847 19.751692 0.000000e+00  0.75816183  0.7667238
-20  0.7038377         NA        NA           NA          NA         NA
-21  0.6492644         NA        NA           NA          NA         NA
-22  0.8556657         NA        NA           NA          NA         NA
-23  0.3119882         NA        NA           NA          NA         NA
-24  0.6839630         NA        NA           NA          NA         NA
-25  0.1524936         NA        NA           NA          NA         NA
-      std.nox
-1   0.8389504
-2   0.8057694
-3   0.9250220
-4   0.5585590
-5  -0.1851607
-6   0.2742105
-7   0.3905043
-8   0.8448041
-9   0.7546150
-10  0.2961623
-11  0.3507356
-12  0.1443343
-13  0.6880118
-14  0.3160370
-15  1.0000000
-16  1.0000000
-17  0.8475064
-18  0.1070804
-19  0.7667238
-20         NA
-21         NA
-22         NA
-23         NA
-24         NA
-25         NA
+             lhs op                     rhs label exo     est      se      z
+1            div =~       shannon_equit_std         0  1.0000 0.00000     NA
+2            div =~ n_species_raref_log_std         0  1.0119 0.06056 16.709
+3          struc =~             cov_dbh_std         0  1.0000 0.00000     NA
+4          struc =~          cov_height_std         0  0.6453 0.08795  7.338
+5 agb_ha_log_std  ~                     div     c   0 -0.2019 0.05803 -3.480
+6 agb_ha_log_std  ~                   struc     b   0  0.2784 0.04846  5.744
+7          struc  ~                     div     a   0  0.4120 0.06198  6.647
+8 agb_ha_log_std  ~        stems_ha_log_std     d   0  0.8163 0.04903 16.650
+     pvalue  std.lv std.all std.nox
+1        NA  0.7488  0.8407  0.8407
+2 0.000e+00  0.7578  0.8049  0.8049
+3        NA  0.8025  0.9183  0.9183
+4 2.172e-13  0.5179  0.5607  0.5607
+5 5.020e-04 -0.1512 -0.1869 -0.1869
+6 9.242e-09  0.2234  0.2761  0.2761
+7 2.988e-11  0.3845  0.3845  0.3845
+8 0.000e+00  0.8163  0.8486  0.8486
+ [ reached 'max' / getOption("max.print") -- omitted 17 rows ]
 

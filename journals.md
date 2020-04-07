@@ -14,7 +14,7 @@ __Global Ecology & Biogeography__
 	* Tables and Figures ~3 pages when printed
 	* Up to 7000 words in total, __including abstract and references__
 	* Should include a 'biosketch'
-		* 30-100 words for one author / 150 words total for first three authors, describind research interests of th authors
+		* 30-100 words for one author / 150 words total for first three authors, describing research interests of the authors
 		* For papers with four or more authors, biosketch should be supplied for the first author and/or a general statement of the focus of the research team (group web page link)
 		* A statement of author contributions
 	* Tables with legends above

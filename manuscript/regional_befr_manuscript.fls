@@ -344,10 +344,10 @@ INPUT regional_befr_manuscript.out
 INPUT regional_befr_manuscript.out
 INPUT regional_befr_manuscript.out
 INPUT regional_befr_manuscript.out
+OUTPUT regional_befr_manuscript.pdf
 INPUT ./regional_befr_manuscript.out
 INPUT ./regional_befr_manuscript.out
 OUTPUT regional_befr_manuscript.out
-OUTPUT regional_befr_manuscript.pdf
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/fmtcount/fc-english.def
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/fmtcount/fc-english.def
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr8.tfm

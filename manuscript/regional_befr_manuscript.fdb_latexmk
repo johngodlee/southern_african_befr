@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex regional_befr_manuscript"] 1586165586 "regional_befr_manuscript.aux" "regional_befr_manuscript.bbl" "regional_befr_manuscript" 1586166080
+["bibtex regional_befr_manuscript"] 1586422993 "regional_befr_manuscript.aux" "regional_befr_manuscript.bbl" "regional_befr_manuscript" 1586423416
   "./agsmnourl.bst" 1578649436 25316 cf53889aef81b6ecf7ac8509cde40966 ""
   "lib.bib" 1586165301 180695 50884985c004a43e8995d0aeade24ecd ""
-  "regional_befr_manuscript.aux" 1586166079 25956 658ce7ad494a714c8ce5a25ca0ded526 "pdflatex"
+  "regional_befr_manuscript.aux" 1586423289 29707 9b717dd3030bf43df493968f0a4b3ed7 "pdflatex"
   (generated)
-  "regional_befr_manuscript.blg"
   "regional_befr_manuscript.bbl"
-["pdflatex"] 1586166077 "regional_befr_manuscript.tex" "regional_befr_manuscript.pdf" "regional_befr_manuscript" 1586166080
+  "regional_befr_manuscript.blg"
+["pdflatex"] 1586423416 "regional_befr_manuscript.tex" "regional_befr_manuscript.pdf" "regional_befr_manuscript" 1586423416
   "/Users/johngodlee/.texmf/code_format.tex" 1584813593 857 601e50ac7629ea4e5f739ceaa1f228f4 ""
-  "/dev/null" 1586166075 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "/dev/null" 1586423413 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -262,13 +262,13 @@
   "include/path_diagram_struc.tex" 1576489677 1498 ecceff3b00e67875f4e23fa7301aee73 ""
   "include/perc_small_agb.tex" 1576148550 32 68610bfa4216237665d7d7bfb7e3cdd1 ""
   "include/struc_model_fit_clust_stats.tex" 1579263998 986 334cdf025a921373e843b3be9e296a6d ""
-  "regional_befr_manuscript.aux" 1586166079 25956 658ce7ad494a714c8ce5a25ca0ded526 "pdflatex"
-  "regional_befr_manuscript.bbl" 1586165587 37735 52efacd1ac6cc048e1eb4ebda62656a6 "bibtex regional_befr_manuscript"
-  "regional_befr_manuscript.out" 1586166078 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "regional_befr_manuscript.tex" 1586166077 69633 7db708c932022aeedc3b1d4f10804dfe ""
+  "regional_befr_manuscript.aux" 1586423289 29707 9b717dd3030bf43df493968f0a4b3ed7 "pdflatex"
+  "regional_befr_manuscript.bbl" 1586422994 37735 52efacd1ac6cc048e1eb4ebda62656a6 "bibtex regional_befr_manuscript"
+  "regional_befr_manuscript.out" 1586423289 2042 e2e8eeeabf33ab5182526ff981fffdf4 "pdflatex"
+  "regional_befr_manuscript.tex" 1586423416 71053 557eea24d3722096eee8fd9146405e0f ""
   "revdiff.sty" 1585313722 4057 977a1cdf7322744a82496f68048f2b95 ""
   (generated)
-  "regional_befr_manuscript.pdf"
   "regional_befr_manuscript.out"
   "regional_befr_manuscript.log"
   "regional_befr_manuscript.aux"
+  "regional_befr_manuscript.pdf"

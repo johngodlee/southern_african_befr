@@ -366,27 +366,29 @@ writeLines(c(
 ), fileConn)
 close(fileConn)
 
-# Find dominant species by biomass per cluster
+# Find dominant species by biomass per plot per cluster
 clust_dom <- s_fil %>%
+  left_join(., dplyr::select(ssaw8$structPerHa, plotcode, Bchave), by = "plotcode") %>%
+  mutate(bchave_prop = Bchave.x / Bchave.y) %>%
   group_by(clust4, gen_sp) %>%
-  summarise(bchave_total = sum(Bchave))
+  summarise(bchave_prop_total = sum(bchave_prop))
 
 clust_dom_list <- split(clust_dom, clust_dom$clust4)
 
 for(i in 1:4){
-  print(head(clust_dom_list[[i]][order(clust_dom_list[[i]]$bchave_total, decreasing = TRUE),]))
+  print(head(clust_dom_list[[i]][order(clust_dom_list[[i]]$bchave_prop_total, decreasing = TRUE),]))
 }
 
 fileConn <- file("output/clust_species_dom_summary.txt")
 writeLines(c(
   "Cluster 1 - Marginal miombo",
-  "Julbernadia.spp., Brachystegia.spiciformis, Baikiaea.plurijuga",
+  "Julbernadia.spp., Burkea.africana, Brachystegia.spp.",
   "",
   "Cluster 2 - Core miombo",
   "Julbernadia.spp., Brachystegia.spp., Isoberlinia.angolensis",
   "",
   "Cluster 3 - Baikiaea",
-  "Spirostachys.africana, Senegalia.spp., Euclea.racemosa",
+  "Spirostachys.africana, Senegalia.spp., Vachellia.nilotica",
   "",
   "Cluster 4 - Mopane",
   "Colophospermum.mopane"
@@ -401,9 +403,9 @@ c_ind <- c(
   "Baikiaea plurijuga, Senegalia ataxacantha, Combretum collinum",
   "Colophospermum mopane, Combretum spp.")
 c_dom <- c(
-  "Julbernadia spp., Brachystegia spiciformis, Baikeaea plurijuga",
+  "Julbernadia spp., Burkea africana, Brachystegia",
   "Julbernadia spp., Brachystegia spp., Isoberlinia angolensis",
-  "Spirostachys africana, Senegalia spp., Euclea racemosa",
+  "Spirostachys africana, Senegalia spp., Vachellia nilotica",
   "Colophospermum mopane")
 
 clust_summ <- plot_data %>%

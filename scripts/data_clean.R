@@ -197,12 +197,28 @@ s_fil_summ <- s_fil_all_other %>%
     cov_dbh = sd_dbh / mean_dbh * 100)
 
 # Remove tiny tree-less plots ----
+
+# How many plots with various stems/ha
+thresh_df <- data.frame(stems_ha = seq(from = 0, to = 500, by = 10))
+
+thresh_df$n_plots <- sapply(thresh_df$stems_ha, function(x){
+  left_join(plot_data_agg, s_fil_summ, 
+  by = c("plot_group" = "plot_group")) %>%
+  mutate(stems_ha = n_stems / area_plot,
+    agb_ha = agb / area_plot) %>%
+  filter(area_plot >= 0.1,
+    stems_ha >= x) %>%
+  filter(plot_group != "DKS001") %>%
+  group_by(plot_group) %>%
+  n_distinct()
+})
+
 plot_data_agg <- left_join(plot_data_agg, s_fil_summ, 
   by = c("plot_group" = "plot_group")) %>%
   mutate(stems_ha = n_stems / area_plot,
     agb_ha = agb / area_plot) %>%
   filter(area_plot >= 0.1,
-    stems_ha >= 10) %>%
+    stems_ha >= 50) %>%
   filter(plot_group != "DKS001")
 
 # Estimate rarefied species diversity ----

@@ -75,8 +75,9 @@ close(fileConn)
 # Get plot names of outliers at 0.05 threshold
 outlier_best <- outlier_list[[which(thresh == thresh_0.05[1])]]$new.data
 
-plot_data_clean <- plot_data %>%
-  filter(plot_group %in% row.names(outlier_best))
+# This outlier removal has been REMOVED from analysis
+plot_data_clean <- plot_data #%>%
+  #filter(plot_group %in% row.names(outlier_best))
 
 # Save plot data
 saveRDS(plot_data_clean, "data/plot_data_fil_agg_norm_std_outlier.rds")

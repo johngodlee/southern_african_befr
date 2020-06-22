@@ -1,3 +1,4 @@
 *.tif
 analysis/data/region_temp_precip.csv 
+.DS_Store
 

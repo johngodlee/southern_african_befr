@@ -1,13 +1,16 @@
 *.tif
-analysis/data/region_temp_precip.csv 
 .DS_Store
+journals.md
 gganim*.png
+
+# Directories
 img/**
 data/**
 include/**
 misc/**
 output/**
-journals.md
+
+# TeX
 *.log
 *.aux
 *.lof

@@ -7,7 +7,6 @@ data/**
 include/**
 misc/**
 output/**
-Rplots.pdf
 journals.md
 *.log
 *.aux

@@ -2,11 +2,11 @@
 analysis/data/region_temp_precip.csv 
 .DS_Store
 gganim*.png
-./img/**
-./data/**
-./include/**
-./misc/**
-./output/**
+img/**
+data/**
+include/**
+misc/**
+output/**
 Rplots.pdf
 journals.md
 *.log

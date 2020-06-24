@@ -6,21 +6,18 @@ lm(formula = mreg_list[[i]]$model$agb_ha_log ~ unlist(comp_list[[i]],
 
 Residuals:
    Min     1Q Median     3Q    Max 
--4.607 -0.537  0.223  0.769  2.369 
+-3.905 -0.442  0.098  0.572  1.798 
 
 Coefficients:
-                                          Estimate Std. Error t value Pr(>|t|)
-(Intercept)                                 3.2253     0.0261     124   <2e-16
-unlist(comp_list[[i]], use.names = FALSE)   1.0000     0.0907      11   <2e-16
-                                             
-(Intercept)                               ***
-unlist(comp_list[[i]], use.names = FALSE) ***
+                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                 3.4479     0.0228   151.0   <2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)   1.0000     0.0926    10.8   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.1 on 1765 degrees of freedom
-Multiple R-squared:  0.0644,	Adjusted R-squared:  0.0639 
-F-statistic:  121 on 1 and 1765 DF,  p-value: <2e-16
+Residual standard error: 0.803 on 1233 degrees of freedom
+Multiple R-squared:  0.0863,	Adjusted R-squared:  0.0856 
+F-statistic:  117 on 1 and 1233 DF,  p-value: <2e-16
 
 
 [[2]]
@@ -31,21 +28,18 @@ lm(formula = mreg_list[[i]]$model$agb_ha_log ~ unlist(comp_list[[i]],
 
 Residuals:
    Min     1Q Median     3Q    Max 
--4.633 -0.503  0.093  0.629  3.009 
+-3.419 -0.479  0.052  0.511  2.642 
 
 Coefficients:
-                                          Estimate Std. Error t value Pr(>|t|)
-(Intercept)                                 3.2188     0.0231   139.4   <2e-16
-unlist(comp_list[[i]], use.names = FALSE)   1.0000     0.0395    25.3   <2e-16
-                                             
-(Intercept)                               ***
-unlist(comp_list[[i]], use.names = FALSE) ***
+                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                 3.4479     0.0222   155.6   <2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)   1.0000     0.0705    14.2   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 0.971 on 1765 degrees of freedom
-Multiple R-squared:  0.266,	Adjusted R-squared:  0.266 
-F-statistic:  640 on 1 and 1765 DF,  p-value: <2e-16
+Residual standard error: 0.779 on 1233 degrees of freedom
+Multiple R-squared:  0.14,	Adjusted R-squared:  0.14 
+F-statistic:  201 on 1 and 1233 DF,  p-value: <2e-16
 
 
 [[3]]
@@ -56,20 +50,17 @@ lm(formula = mreg_list[[i]]$model$agb_ha_log ~ unlist(comp_list[[i]],
 
 Residuals:
    Min     1Q Median     3Q    Max 
--4.723 -0.496  0.225  0.729  2.495 
+-3.628 -0.446  0.094  0.524  1.950 
 
 Coefficients:
-                                          Estimate Std. Error t value Pr(>|t|)
-(Intercept)                                 3.2257     0.0256   126.2   <2e-16
-unlist(comp_list[[i]], use.names = FALSE)   1.0000     0.0708    14.1   <2e-16
-                                             
-(Intercept)                               ***
-unlist(comp_list[[i]], use.names = FALSE) ***
+                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                 3.4479     0.0227   152.1   <2e-16 ***
+unlist(comp_list[[i]], use.names = FALSE)   1.0000     0.0855    11.7   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.07 on 1765 degrees of freedom
-Multiple R-squared:  0.101,	Adjusted R-squared:  0.101 
-F-statistic:  199 on 1 and 1765 DF,  p-value: <2e-16
+Residual standard error: 0.797 on 1233 degrees of freedom
+Multiple R-squared:   0.1,	Adjusted R-squared:  0.0992 
+F-statistic:  137 on 1 and 1233 DF,  p-value: <2e-16
 
 

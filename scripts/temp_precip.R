@@ -1,125 +1,82 @@
-# Generate a dataset of precipitation and temperature means across the Miombo region
+# Generate dataset of precip and temp means across miombo ecoregion
 # John Godlee (johngodlee@gmail.com)
-# 2019_10_02
+# 2019-10-02
+# 2020-06-22
 
+# Clean env.
 rm(list = ls())
 
 # Packages
 library(raster)
 library(rgdal)
 
-# Get Miombo shape
-white_veg <- readOGR(dsn="data/whitesveg", 
-  layer="Whites vegetation")
+# Get Miombo outline ---- 
+white_veg <- readOGR(dsn="/Volumes/john/whitesveg", layer="")
 
-white_veg_miombo <- white_veg[!is.na(white_veg@data$DESCRIPTIO) & white_veg@data$DESCRIPTIO == "Moist-infertile savanna" , ]
+# Subset to White's miombo 
+white_veg_miombo <- white_veg[!is.na(white_veg@data$DESCRIPTIO) & 
+  white_veg@data$DESCRIPTIO == "Moist-infertile savanna", ]
 
+# Get southern part only
 white_veg_miombo_south <- crop(white_veg_miombo, extent(10, 40, -30, 0))
 
-load("data/seosaw_plot_summary5Apr2019.Rdata")
+# Fill holes
+white_veg_miombo_south_fill <- SpatialPolygons(list(Polygons(
+      Filter(function(f) { 
+        f@ringDir==1
+      }, white_veg_miombo_south@polygons[[1]]@Polygons), ID = 1)))
 
-plot_loc <- data.frame(plotcode = ssaw8$plotInfoFull$plotcode,
-  lon = ssaw8$plotInfoFull$longitude_of_centre,
-  lat = ssaw8$plotInfoFull$latitude_of_centre)
-
-plot_loc_spdf <- SpatialPointsDataFrame(coords = data.frame(plot_loc$lon, plot_loc$lat), data = plot_loc)
-
-# Temperature ----
+# Get Worldclim data ----
 
 # Get list of files
-rastlist_t <- list.files(path = "data/wc2.0_30s_tavg", 
+rastlist_t <- list.files(path = "/Volumes/john/worldclim/wc2.1_30s_tavg", 
   pattern = '.tif$', 
   all.files = TRUE, 
   full.names = TRUE)
 
-# Import
-allrasters_t <- lapply(rastlist_t, raster)
-
-# Crop to plot extent
-allrasters_t_crop <- lapply(allrasters_t, function(x){
-  crop(x, plot_loc_spdf)
-})
-
-# Stack
-allrasters_t_crop_stack <- raster::stack(allrasters_t_crop)
-
-# Take mean of all in stack
-allrasters_t_mean <- calc(allrasters_t_crop_stack, mean, na.rm = TRUE)
-
-# Crop to miombo outline
-allrasters_t_mean_crop_mask <- mask(allrasters_t_mean, white_veg_miombo_south)
-
-# Extract all values
-t_vals <- values(allrasters_t_mean_crop_mask)
-
-# Take CV of all values
-allrasters_t_cv <- calc(allrasters_t_crop_stack, fun = function(x){
-  sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE) * 100
-  })
-
-# Crop to miombo outline
-allrasters_t_cv_crop_mask <- mask(allrasters_t_cv, white_veg_miombo_south)
-
-# Extract all values
-t_cv <- values(allrasters_t_cv_crop_mask)
-
-# Precipitation ----
-
-# Get list of files
-rastlist_p <- list.files(path = "data/wc2.0_30s_prec", 
+rastlist_p <- list.files(path = "/Volumes/john/worldclim/wc2.1_30s_prec", 
   pattern = '.tif$', 
   all.files = TRUE, 
   full.names = TRUE)
 
-# Import
-allrasters_p <- lapply(rastlist_p, raster)
+rastlist <- list(rastlist_t, rastlist_p)
 
-# Crop to plot extent
-allrasters_p_crop <- lapply(allrasters_p, function(x){
-  crop(x, plot_loc_spdf)
-})
+rastlist_extrac <- lapply(rastlist, function(x) {
+  # Import rasters
+  allrasters <- stack(lapply(x, raster))
 
-# Stack
-allrasters_p_crop_stack <- raster::stack(allrasters_p_crop)
+  # Crop and mask to miombo outline
+  allrasters_crop <- crop(allrasters, extent(white_veg_miombo_south_fill))
+  allrasters_mask <- mask(allrasters_crop, white_veg_miombo_south_fill)
 
-# Take mean of all in stack
-allrasters_p_mean <- calc(allrasters_p_crop_stack, sum, na.rm = TRUE)
+  # Take mean of all in stack
+  if (grepl("tavg", x[1])) {
+    allrasters_calc <- calc(allrasters_mask, mean, na.rm = TRUE)
+  } 
+  else if (grepl("prec", x[1])) {
+    allrasters_calc <- calc(allrasters_mask, sum, na.rm = TRUE)
+  } 
 
-# Crop to miombo outline
-allrasters_p_mean_crop_mask <- mask(allrasters_p_mean, white_veg_miombo_south)
+  # Extract all values
+  vals <- values(allrasters_calc)
 
-# Extract all values
-p_vals <- values(allrasters_p_mean_crop_mask)
-
-# Take CV of all values
-allrasters_p_cv <- calc(allrasters_p_crop_stack, fun = function(x){
-  sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE) * 100
+  # Take CoV of all values
+  allrasters_cv <- calc(allrasters_mask, fun = function(y){
+    sd(y, na.rm = TRUE) / mean(y, na.rm = TRUE) * 100
   })
 
-# Crop to miombo outline
-allrasters_p_cv_crop_mask <- mask(allrasters_p_cv, white_veg_miombo_south)
+  # Extract all values
+  vals_cv <- values(allrasters_cv)
 
-# Extract all values
-p_cv <- values(allrasters_p_cv_crop_mask)
+  # Create dataframe
+  out <- data.frame(vals, vals_cv)
+  return(out)
+})
 
 # Combine to dataframe
-t_p <- data.frame(t_vals, t_cv, p_vals, p_cv)
+t_p <- data.frame(t_vals = rastlist_extrac[[1]][,1], t_cv = rastlist_extrac[[1]][,2],
+  p_vals = rastlist_extrac[[2]][,1], p_cv = rastlist_extrac[[2]][,2],
 
+# Save to file
 saveRDS(t_p, "data/temp_precip.rds")
-
-# Get good temperature values for all the plots in SEOSAW, bioclim is wank
-t_plot <- extract(allrasters_t_mean, plot_loc_spdf)
-t_cv_plot <- extract(allrasters_t_cv, plot_loc_spdf)
-
-plot_temp <- data.frame(plotcode = plot_loc$plotcode, t_plot, t_cv_plot)
-
-saveRDS(plot_temp, "data/plot_temp.rds")
-
-# Get good precip values for all the plots in SEOSAW, bioclim is wank
-p_plot <- extract(allrasters_p_mean, plot_loc_spdf)
-p_cv_plot <- extract(allrasters_p_cv, plot_loc_spdf)
-
-plot_precip <- data.frame(plotcode = plot_loc$plotcode, p_plot, p_cv_plot)
-
-saveRDS(plot_precip, "data/plot_precip.rds")
 

@@ -1,15 +1,13 @@
-> summary(clust_indval, p = 0.05, type = "short", digits = 2, show = p)
 
-Sum of probabilities                 =  219.327 
+Sum of probabilities                 =  144.252 
 
-Sum of Indicator Values              =  10.93 
+Sum of Indicator Values              =  17.42 
 
-Sum of Significant Indicator Values  =  7.01 
+Sum of Significant Indicator Values  =  14.61 
 
-Number of Significant Indicators     =  106 
+Number of Significant Indicators     =  134 
 
 Significant Indicator Distribution
 
  1  2  3  4 
-10 39 14 43 
-> sink()
+65 37 16 16 

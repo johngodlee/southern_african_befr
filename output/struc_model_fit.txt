@@ -1,65 +1,53 @@
+> print(struc_model_summ)
 $FIT
-                         npar                          fmin 
-                       15.000                         0.030 
-                        chisq                            df 
-                       78.429                         6.000 
-                       pvalue                  chisq.scaled 
-                        0.000                        71.297 
-                    df.scaled                 pvalue.scaled 
-                        6.000                         0.000 
-         chisq.scaling.factor                baseline.chisq 
-                        1.100                      3763.414 
-                  baseline.df               baseline.pvalue 
-                       15.000                         0.000 
-        baseline.chisq.scaled            baseline.df.scaled 
-                     2582.337                        15.000 
-       baseline.pvalue.scaled baseline.chisq.scaling.factor 
-                        0.000                         1.457 
-                          cfi                           tli 
-                        0.981                         0.952 
-                   cfi.scaled                    tli.scaled 
-                        0.975                         0.936 
-                   cfi.robust                    tli.robust 
-                        0.981                         0.952 
-                         logl             unrestricted.logl 
-                    -9118.735                     -9079.521 
-                          aic                           bic 
-                    18267.471                     18345.297 
-                       ntotal                          bic2 
-                     1324.000                     18297.649 
-                        rmsea                rmsea.ci.lower 
-                        0.095                         0.077 
-               rmsea.ci.upper                  rmsea.pvalue 
-                        0.115                         0.000 
-                 rmsea.scaled         rmsea.ci.lower.scaled 
-                        0.091                         0.073 
-        rmsea.ci.upper.scaled           rmsea.pvalue.scaled 
-                        0.109                         0.000 
-                 rmsea.robust         rmsea.ci.lower.robust 
-                        0.095                         0.076 
-        rmsea.ci.upper.robust           rmsea.pvalue.robust 
-                        0.115                            NA 
-                         srmr 
-                        0.034 
+                         npar                          fmin                         chisq 
+                       15.000                         0.047                        91.382 
+                           df                        pvalue                  chisq.scaled 
+                        6.000                         0.000                        86.236 
+                    df.scaled                 pvalue.scaled          chisq.scaling.factor 
+                        6.000                         0.000                         1.060 
+               baseline.chisq                   baseline.df               baseline.pvalue 
+                     1608.881                        15.000                         0.000 
+        baseline.chisq.scaled            baseline.df.scaled        baseline.pvalue.scaled 
+                     1292.216                        15.000                         0.000 
+baseline.chisq.scaling.factor                           cfi                           tli 
+                        1.245                         0.946                         0.866 
+                   cfi.scaled                    tli.scaled                    cfi.robust 
+                        0.937                         0.843                         0.947 
+                   tli.robust                          logl             unrestricted.logl 
+                        0.866                     -7516.691                     -7471.000 
+                          aic                           bic                        ntotal 
+                    15063.382                     15136.711                       981.000 
+                         bic2                         rmsea                rmsea.ci.lower 
+                    15089.070                         0.120                         0.099 
+               rmsea.ci.upper                  rmsea.pvalue                  rmsea.scaled 
+                        0.143                         0.000                         0.117 
+        rmsea.ci.lower.scaled         rmsea.ci.upper.scaled           rmsea.pvalue.scaled 
+                        0.096                         0.139                         0.000 
+                 rmsea.robust         rmsea.ci.lower.robust         rmsea.ci.upper.robust 
+                        0.120                         0.098                         0.143 
+          rmsea.pvalue.robust                          srmr 
+                           NA                         0.048 
 
 $PE
-             lhs op                     rhs label exo     est      se      z
-1            div =~       shannon_equit_std         0  1.0000 0.00000     NA
-2            div =~ n_species_raref_log_std         0  0.9727 0.03764 25.842
-3          struc =~             cov_dbh_std         0  1.0000 0.00000     NA
-4          struc =~          cov_height_std         0  0.7101 0.05238 13.557
-5 agb_ha_log_std  ~                     div     c   0 -0.1050 0.03909 -2.687
-6 agb_ha_log_std  ~                   struc     b   0  0.4026 0.03832 10.507
-7          struc  ~                     div     a   0  0.3806 0.04041  9.417
-8 agb_ha_log_std  ~        stems_ha_log_std     d   0  0.7375 0.03301 22.340
-    pvalue  std.lv  std.all  std.nox
-1       NA  0.8293  0.87486  0.87486
-2 0.000000  0.8067  0.78076  0.78076
-3       NA  0.8456  0.85537  0.85537
-4 0.000000  0.6004  0.60126  0.60126
-5 0.007215 -0.0871 -0.09532 -0.09532
-6 0.000000  0.3404  0.37259  0.37259
-7 0.000000  0.3732  0.37324  0.37324
-8 0.000000  0.7375  0.72033  0.72033
+             lhs op                     rhs label exo      est      se        z    pvalue    std.lv   std.all
+1            div =~ n_species_raref_log_std         0  1.00000 0.00000       NA        NA  0.769446  0.754128
+2            div =~       shannon_equit_std         0 -1.06647 0.07840 -13.6021 0.000e+00 -0.820590 -0.834189
+3          struc =~             cov_dbh_std         0  1.00000 0.00000       NA        NA  0.823566  0.813937
+4          struc =~          cov_height_std         0  0.70111 0.07428   9.4384 0.000e+00  0.577411  0.577705
+5 agb_ha_log_std  ~                     div     c   0  0.00791 0.05348   0.1479 8.824e-01  0.006087  0.006379
+6 agb_ha_log_std  ~                   struc     b   0  0.47844 0.07659   6.2470 4.183e-10  0.394031  0.412952
+7          struc  ~                     div     a   0  0.38609 0.04832   7.9896 1.332e-15  0.360718  0.360718
+8 agb_ha_log_std  ~ n_trees_gt10_ha_log_std     d   0  0.50174 0.03255  15.4132 0.000e+00  0.501739  0.505205
+    std.nox
+1  0.754128
+2 -0.834189
+3  0.813937
+4  0.577705
+5  0.006379
+6  0.412952
+7  0.360718
+8  0.505205
  [ reached 'max' / getOption("max.print") -- omitted 17 rows ]
 
+> sink()

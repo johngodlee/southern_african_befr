@@ -1,11 +1,12 @@
-Cluster 1 - Marginal miombo
-Julbernadia.spp., Brachystegia.spiciformis, Baikiaea.plurijuga
+Marginal miombo
+Baikiaea.plurijuga, Burkea.africana, Pterocarpus.angolensis
 
-Cluster 2 - Core miombo
-Julbernadia.spp., Brachystegia.spp., Isoberlinia.angolensis
+Core miombo
+Brachystegia.spiciformis, Julbernardia.paniculata, Brachystegia.boehmii
 
-Cluster 3 - Baikiaea
-Spirostachys.africana, Senegalia.spp., Euclea.racemosa
+Acacia shrubland
+Spirostachys.africana, Senegalia.burkei, Senegalia.nigrescens
 
-Cluster 4 - Mopane
-Colophospermum.mopane
+Mopane
+Colophospermum.mopane, Androstachys.johnsonii, Kirkia.acuminata
+

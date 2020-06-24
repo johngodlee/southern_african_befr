@@ -1,65 +1,32 @@
 $FIT
-                         npar                          fmin 
-                       36.000                         0.752 
-                        chisq                            df 
-                     1991.853                        55.000 
-                       pvalue                  chisq.scaled 
-                        0.000                      1914.988 
-                    df.scaled                 pvalue.scaled 
-                       55.000                         0.000 
-         chisq.scaling.factor                baseline.chisq 
-                        1.040                      8906.346 
-                  baseline.df               baseline.pvalue 
-                       78.000                         0.000 
-        baseline.chisq.scaled            baseline.df.scaled 
-                     7753.642                        78.000 
-       baseline.pvalue.scaled baseline.chisq.scaling.factor 
-                        0.000                         1.149 
-                          cfi                           tli 
-                        0.781                         0.689 
-                   cfi.scaled                    tli.scaled 
-                        0.758                         0.656 
-                   cfi.robust                    tli.robust 
-                        0.781                         0.689 
-                         logl             unrestricted.logl 
-                   -19359.707                    -18363.781 
-                          aic                           bic 
-                    38791.415                     38978.198 
-                       ntotal                          bic2 
-                     1324.000                     38863.842 
-                        rmsea                rmsea.ci.lower 
-                        0.163                         0.157 
-               rmsea.ci.upper                  rmsea.pvalue 
-                        0.169                         0.000 
-                 rmsea.scaled         rmsea.ci.lower.scaled 
-                        0.160                         0.154 
-        rmsea.ci.upper.scaled           rmsea.pvalue.scaled 
-                        0.166                         0.000 
-                 rmsea.robust         rmsea.ci.lower.robust 
-                        0.163                         0.157 
-        rmsea.ci.upper.robust           rmsea.pvalue.robust 
-                        0.169                            NA 
+                         npar                          fmin                         chisq                            df                        pvalue 
+                       36.000                         0.734                      1440.274                        55.000                         0.000 
+                 chisq.scaled                     df.scaled                 pvalue.scaled          chisq.scaling.factor                baseline.chisq 
+                     1340.069                        55.000                         0.000                         1.075                      5341.246 
+                  baseline.df               baseline.pvalue         baseline.chisq.scaled            baseline.df.scaled        baseline.pvalue.scaled 
+                       78.000                         0.000                      4582.296                        78.000                         0.000 
+baseline.chisq.scaling.factor                           cfi                           tli                    cfi.scaled                    tli.scaled 
+                        1.166                         0.737                         0.627                         0.715                         0.595 
+                   cfi.robust                    tli.robust                          logl             unrestricted.logl                           aic 
+                        0.737                         0.627                    -14900.856                    -14180.719                     29873.713 
+                          bic                        ntotal                          bic2                         rmsea                rmsea.ci.lower 
+                    30049.702                       981.000                     29935.365                         0.160                         0.153 
+               rmsea.ci.upper                  rmsea.pvalue                  rmsea.scaled         rmsea.ci.lower.scaled         rmsea.ci.upper.scaled 
+                        0.167                         0.000                         0.154                         0.147                         0.161 
+          rmsea.pvalue.scaled                  rmsea.robust         rmsea.ci.lower.robust         rmsea.ci.upper.robust           rmsea.pvalue.robust 
+                        0.000                         0.160                         0.153                         0.167                            NA 
                          srmr 
-                        0.102 
+                        0.103 
 
 $PE
-       lhs op                        rhs label exo    est       se      z
-1 moisture =~           total_precip_std         0 1.0000 0.000000     NA
-2 moisture =~ precip_seasonality_rev_std         0 0.1051 0.008763 11.995
-3 moisture =~          mean_temp_rev_std         0 0.1513 0.019883  7.609
-4 moisture =~   temp_seasonality_rev_std         0 0.5604 0.020656 27.129
-5      div =~    n_species_raref_log_std         0 1.0000 0.000000     NA
-6      div =~          shannon_equit_std         0 0.9170 0.031736 28.893
-7     soil =~           sand_per_rev_std         0 1.0000 0.000000     NA
-8     soil =~                 ocdens_std         0 0.3622 0.035078 10.324
-     pvalue std.lv std.all std.nox
-1        NA 1.1943  1.2063  1.2063
-2 0.000e+00 0.1255  0.3086  0.3086
-3 2.776e-14 0.1807  0.1970  0.1970
-4 0.000e+00 0.6692  0.6384  0.6384
-5        NA 0.8544  0.8269  0.8269
-6 0.000e+00 0.7835  0.8265  0.8265
-7        NA 1.1261  1.0666  1.0666
-8 0.000e+00 0.4078  0.3933  0.3933
+       lhs op                     rhs label exo      est      se        z pvalue   std.lv  std.all  std.nox
+1 moisture =~              precip_std         0  1.00000 0.00000       NA     NA  1.08180  1.07407  1.07407
+2 moisture =~     precip_seas_rev_std         0  0.14768 0.01017  14.5253 0.0000  0.15976  0.41605  0.41605
+3 moisture =~            temp_rev_std         0  0.02734 0.02894   0.9448 0.3447  0.02958  0.03103  0.03103
+4 moisture =~       temp_seas_rev_std         0  0.71548 0.03263  21.9291 0.0000  0.77401  0.73920  0.73920
+5      div =~ n_species_raref_log_std         0  1.00000 0.00000       NA     NA  0.91172  0.89357  0.89357
+6      div =~       shannon_equit_std         0 -0.75650 0.04686 -16.1428 0.0000 -0.68971 -0.70114 -0.70114
+7     soil =~            sand_rev_std         0  1.00000 0.00000       NA     NA  0.98344  0.96076  0.96076
+8     soil =~          soil_c_log_std         0  0.58320 0.04402  13.2496 0.0000  0.57354  0.58918  0.58918
  [ reached 'max' / getOption("max.print") -- omitted 60 rows ]
 

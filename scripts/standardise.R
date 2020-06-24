@@ -1,6 +1,7 @@
-# Bivariate relationships between variables, transform, normalise and standardize the data
+# Bivariate relationships between vars., transform, normalise, standardise data
 # John Godlee (johngodlee@gmail.com)
-# 2018_12_10
+# 2018-12-10
+# 2020-06-24
 
 # Preamble ----
 
@@ -26,22 +27,26 @@ source("scripts/clust_defin.R")
 
 # Import data ----
 
-plot_data <- readRDS("data/plot_data_fil_agg.rds")
+dat <- readRDS("data/plot_data_fil_agg.rds")
+
+
+# Create histogram labels ----
 
 facet_levels <- c(
-  "total_precip",
-  "precip_seasonality",
-  "mean_temp",
-  "temp_seasonality",
+  "precip",
+  "precip_seas",
+  "temp",
+  "temp_seas",
   "agb_ha",
   "agb_ha_log", 
   "cec",
-  "sand_per",
-  "ocdens",
+  "sand",
+  "soil_c",
+  "soil_c_log",
   "cov_dbh",
   "cov_height",
-  "stems_ha",
-  "stems_ha_log",
+  "n_trees_gt10_ha",
+  "n_trees_gt10_ha_log",
   "shannon_equit",
   "n_species_raref",
   "n_species_raref_log"
@@ -56,7 +61,8 @@ facet_labels <- c(
   expression("log(AGB)" ~ (t ~ ha^-1)),
   expression("CEC"),
   expression("Sand" ~ "%"), 
-  expression("Org." ~ "C" ~ "%"),
+  expression("Org." ~ "C" ~ "(ppt)"),
+  expression("log(Org." ~ "C)" ~ "(ppt)"),
   expression("Coef." ~ "var." ~ "DBH"),
   expression("Coef." ~ "var." ~ "height"),
   expression("Stem" ~ "density" ~ ">10" ~ cm ~ (n ~ ha^-1)),
@@ -67,11 +73,13 @@ facet_labels <- c(
 
 facets <- list(facet_levels = facet_levels, facet_labels = facet_labels)
 
-hist_raw <- plot_data %>%
-  dplyr::select(agb_ha, stems_ha, 
+# Create histogram of raw data ----
+
+hist_raw <- dat %>%
+  dplyr::select(agb_ha, n_trees_gt10_ha, 
     n_species_raref, shannon_equit,
-    cec, sand_per, ocdens, 
-    total_precip, precip_seasonality, mean_temp, temp_seasonality,
+    cec, sand, soil_c, 
+    precip, precip_seas, temp, temp_seas,
     cov_height, cov_dbh) %>%
   gather(variable, value) %>%
   mutate(facet_label = factor(variable,
@@ -86,16 +94,20 @@ pdf(file = "img/hist_raw.pdf", width = 12, height = 7)
 hist_raw
 dev.off()
 
-sem_data_trans <- plot_data %>%
-	mutate(agb_ha_log = log(agb_ha),
-		stems_ha_log = log(stems_ha), 
-	  n_species_raref_log = log(n_species_raref + 4))
 
-hist_trans <- sem_data_trans %>%
-  dplyr::select(agb_ha_log, stems_ha_log,
+# Transform necessary variables ----
+
+dat_trans <- dat %>%
+	mutate(agb_ha_log = log(agb_ha),
+		n_trees_gt10_ha_log = log(n_trees_gt10_ha), 
+	  n_species_raref_log = log(n_species_raref + 4),
+	  soil_c_log = log(soil_c + 4))
+
+hist_trans <- dat_trans %>%
+  dplyr::select(agb_ha_log, n_trees_gt10_ha_log,
     n_species_raref_log, shannon_equit,
-    cec, sand_per, ocdens,
-    total_precip, precip_seasonality, mean_temp, temp_seasonality,
+    cec, sand, soil_c_log,
+    precip, precip_seas, temp, temp_seas,
     cov_height, cov_dbh) %>%
   gather(variable, value) %>%
   mutate(facet_label = factor(variable,
@@ -110,57 +122,60 @@ pdf(file = "img/hist_trans.pdf", width = 12, height = 7)
 hist_trans
 dev.off()
 
-# Standardize each variable
-sem_data_norm_std <- sem_data_trans %>%
+
+# Standardize each variable ----
+sem_data_norm_std <- dat_trans %>%
 	mutate_at(.vars = c(
-	  "total_precip",
-	  "precip_seasonality_rev",
-		"mean_temp_rev",
-		"temp_seasonality_rev",
-		"agb_ha_log",
-		"cec",
-		"sand_per_rev",
-		"ocdens",
-		"cov_dbh",
-		"cov_height",
-		"stems_ha_log",
+	  "precip",
+	  "precip_seas",
+	  "temp",
+	  "temp_seas",
+	  "agb_ha_log",
+	  "cec",
+	  "sand",
+	  "soil_c_log",
+	  "cov_dbh",
+	  "cov_height",
+	  "n_trees_gt10_ha_log",
 	  "shannon_equit",
 	  "n_species_raref_log"),
 	  .funs = list(std = ~(scale(.) %>% as.vector)))
 
-# Which bivariate relationships should be plotted? ----
+
+# Plot bivariate relationships ----
+
 ##' Refers to causal paths in SEM conceptual diagram
 bivar_list <- c(
   "agb_ha_log_std ~ cec_std",
-  "agb_ha_log_std ~ ocdens_std",
-  "agb_ha_log_std ~ sand_per_rev_std",
+  "agb_ha_log_std ~ soil_c_log_std",
+  "agb_ha_log_std ~ sand_std",
   "agb_ha_log_std ~ cov_dbh_std",
   "agb_ha_log_std ~ cov_height_std",
   "agb_ha_log_std ~ shannon_equit_std",
   "agb_ha_log_std ~ n_species_raref_log_std",
-  "agb_ha_log_std ~ mean_temp_rev_std",
-  "agb_ha_log_std ~ temp_seasonality_rev_std",
-  "agb_ha_log_std ~ total_precip_std",
-  "agb_ha_log_std ~ precip_seasonality_rev_std",
-  "agb_ha_log_std ~ stems_ha_log_std",
+  "agb_ha_log_std ~ temp_std",
+  "agb_ha_log_std ~ temp_seas_std",
+  "agb_ha_log_std ~ precip_std",
+  "agb_ha_log_std ~ precip_seas_std",
+  "agb_ha_log_std ~ n_trees_gt10_ha_log_std",
   
-  "stems_ha_log_std ~ n_species_raref_log_std",
-  "stems_ha_log_std ~ shannon_equit_std",
-  "stems_ha_log_std ~ mean_temp_rev_std",
-  "stems_ha_log_std ~ temp_seasonality_rev_std",
-  "stems_ha_log_std ~ total_precip_std",
-  "stems_ha_log_std ~ precip_seasonality_rev_std",
-  "stems_ha_log_std ~ cec_std",
-  "stems_ha_log_std ~ ocdens_std",
-  "stems_ha_log_std ~ sand_per_rev_std",
+  "n_trees_gt10_ha_log_std ~ n_species_raref_log_std",
+  "n_trees_gt10_ha_log_std ~ shannon_equit_std",
+  "n_trees_gt10_ha_log_std ~ temp_std",
+  "n_trees_gt10_ha_log_std ~ temp_seas_std",
+  "n_trees_gt10_ha_log_std ~ precip_std",
+  "n_trees_gt10_ha_log_std ~ precip_seas_std",
+  "n_trees_gt10_ha_log_std ~ cec_std",
+  "n_trees_gt10_ha_log_std ~ soil_c_log_std",
+  "n_trees_gt10_ha_log_std ~ sand_std",
   
   "n_species_raref_log_std ~ cec_std",
-  "n_species_raref_log_std ~ ocdens_std",
-  "n_species_raref_log_std ~ sand_per_rev_std",
-  "n_species_raref_log_std ~ mean_temp_rev_std",
-  "n_species_raref_log_std ~ temp_seasonality_rev_std",
-  "n_species_raref_log_std ~ total_precip_std",
-  "n_species_raref_log_std ~ precip_seasonality_rev_std")
+  "n_species_raref_log_std ~ soil_c_log_std",
+  "n_species_raref_log_std ~ sand_std",
+  "n_species_raref_log_std ~ temp_std",
+  "n_species_raref_log_std ~ temp_seas_std",
+  "n_species_raref_log_std ~ precip_std",
+  "n_species_raref_log_std ~ precip_seas_std")
 
 # Create models
 lm_list <- list()
@@ -265,18 +280,16 @@ pdf(file =  "img/bivar_lm.pdf", width = 14, height = 10)
 do.call("grid.arrange", c(plot_list, ncol = 5))
 dev.off()
 
-# Save standardized data ----
+# Write standardized data ----
 saveRDS(sem_data_norm_std, "data/plot_data_fil_agg_norm_std.rds")
 
 # Look at how relationships vary with cluster ----
 cluster_compare <- sem_data_norm_std %>%
   group_by(clust4) %>%
-  drop_na(.) %>%
   summarise_all(list(~mean(., na.rm = TRUE), ~sd(., na.rm = TRUE))) %>%
   select_if(function(x){any(!is.na(x))}) %>%
   dplyr::select(-ends_with("_std_mean")) %>%
   dplyr::select(-ends_with("_std_sd")) %>%
-  dplyr::select(-contains("_rev_")) %>%
   dplyr::select(-starts_with("var_"))
   
 cluster_compare_mean <- cluster_compare %>%

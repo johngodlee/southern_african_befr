@@ -1,190 +1,127 @@
 # Creating a dataset for use in Chapter 1:
 # Regional analysis of the factors affecting woody AGB and productivity
 # John Godlee (johngodlee@gmail.com)
-# 2018_12_10
-# 2019_12_11
+# 2018-12-10
+# 2019-12-11
+# 2020-06-22
 
 # Preamble ----
 
-# Remove old crap
+# Reset env.
 rm(list=ls())
-#dev.off()
-
-# Set working directory to the location of the source file
-#setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 # Packages
-library(dplyr)  #
-library(tidyr)  #
-library(iNEXT)  #
-library(vegan)  # 
-library(ggplot2)  # 
+library(dplyr)
+library(tidyr)  
+library(iNEXT)  
+library(vegan) 
+library(ggplot2)
+library(seosawr)
 
-# Import data ----
 
-# Base SEOSAW plot summary dataset
+# Import plot and stems data ----
+
+# SEOSAW v1 plot summary data, for vegetation clusters
 load("data/seosaw_plot_summary5Apr2019.Rdata")
 
-# Per stem data 
-load("data/clean_input_data.Rdata")
+# SEOSAW v2 plot summary data
+plots <- read.csv("data/plots_v2.7.csv")
 
-# Soil organic carbon
-ocdens <- readRDS("data/seosaw_ocdens.rds")
+# SEOSAW v2 stem data
+stems <- read.csv("data/stems_latest_v2.7.csv")
+ 
+# Datasets used in analysis
+dataset_codes <- c("ZIS", "SSM", "MCL", "ZPF", "ZNF", "MNR", "MGR", "MAR",
+  "ZKS", "TKW", "MLC", "ZCC", "VAS", "ABG", "MCF", "MNF", "SHD")
 
-# WorldClim temp.
-temp <- readRDS("data/plot_temp.rds")
 
-# WorldClim precip.
-precip <- readRDS("data/plot_precip.rds")
+# Remove plots with human-altered conditions ----
+plots_clean <- plots %>%
+  filter_at(.vars = c("charcoal_harvesting", "timber_harvesting", 
+    "high_graded_100_years", "manipulation_experiment", "fuel_wood_harvesting", 
+    "other_woody_product_harvesting", "ntfp_harvesting", "farmed_30_years",
+    "fire_exclusion", "fire_treatment", "cattle_grazing", "goat_grazing"),
+    all_vars(. %in% c(FALSE, NA))) %>%
+    filter(grepl(paste(dataset_codes, 
+        collapse = "|"), plot_id)) %>%
+    dplyr::select(
+      plot_cluster, 
+      plot_id,
+      prinv,
+      longitude_of_centre,
+      latitude_of_centre, 
+      plot_area, 
+      cec = CECSOL, 
+      sand = SNDPPT, 
+      soil_c = ORCDRC, 
+      temp = bio1, 
+      temp_seas = bio4, 
+      precip = bio12, 
+      precip_seas = bio15, 
+      fire = firecount_2001_2018,
+      herbivory = total_herbivory)
 
-# Clean data ----
-
-# Create large raw dataframe
-plot_data <- ssaw8$struct %>%
-  left_join(., ssaw8$structPerHa, by = c("plotcode" = "plotcode")) %>%
-  left_join(., ssaw8$plotInfoFull, by = c("plotcode" = "plotcode")) %>%
-  left_join(., ssaw8$floristicsGT5, by = c("plotcode" = "plotcode")) %>%
-  left_join(., ssaw8$soil, by = c("plotcode" = "plotcode")) %>%
-  left_join(., ssaw8$climate, by = c("plotcode" = "plotcode")) %>%
-  left_join(., ssaw8$env, by = c("plotcode" = "plotcode")) %>%
-  left_join(., ssaw8$cluster, by = c("plotcode" = "plotcode")) %>%
-  left_join(., ocdens, by = c("plotcode" = "plotcode")) %>%
-  left_join(., temp, by = c("plotcode" = "plotcode")) %>%
-  left_join(., precip, by = c("plotcode" = "plotcode")) %>%
-  dplyr::select(plotcode,
-    long = longitude_of_centre.x.x,
-    lat = latitude_of_centre.x.x,
-    country = country.x,
-    area_plot = area_of_plot.x, 
-    shape_of_plot, 
-    manipulation_experiment, 
-    timber_harvesting_occurring, 
-    was_the_plot_high_graded_in_last_100_years, 
-    fuel_wood_harvesting, charcoal_harvesting, 
-    other_woody_product_harvesting, ntfp_harvesting,
-    used_for_farming_in_last_30_years, 
-    protected_from_fire, elephant_exclosure, 
-    cattle_graze_here, goats_graze_here,
-    cec = CECSOL_M_sl1_1km_ll,
-    sand_per = SNDPPT_M_sl1_1km_ll,
-    org_c_per = ORCDRC_M_sl1_1km_ll,
-    total_precip = p_plot,
-    precip_seasonality = p_cv_plot,
-    ocdens = ocdens,
-    mean_temp = t_plot,
-    isothermality = bio3,
-    temp_seasonality = t_cv_plot,
-    pi, 
-    plot_id,
-    clust4) %>%
-  filter(
-    charcoal_harvesting %in% c("N", "No", "No (its not common here)", NA, ""), 
-    timber_harvesting_occurring %in% c(NA, "N", "No (no pecies of commercial value)", "", "No"),
-    was_the_plot_high_graded_in_last_100_years %in% c("N", "No", "Unknown", "", NA),
-    manipulation_experiment %in% c("N", NA, "", "n"),
-    fuel_wood_harvesting %in% c(NA, "N", "yes deadwood", "", "No"),
-    other_woody_product_harvesting %in% c(NA, "N", "No", ""),
-    used_for_farming_in_last_30_years %in% c(NA, "N", "No (becaues of slope mostly its hilly, but in low lying areas farming is practised)", "", "?"),
-    protected_from_fire %in% c(NA, "N", "No", "", "not intentionally"),
-    cattle_graze_here %in% c(NA, "N", "Yes but mainly along the boundaries/edge", "", "No", "N "),
-    goats_graze_here %in% c(NA, "N", "Yes bu mainly along the boundaries/edge", "", "No"),
-    !is.na(clust4))
 
 # Aggregate Zambian Forestry Commission plots ----
 
 # Split into Zambia and non-Zambia datasets
-plot_data_zam <- plot_data %>%
-  filter(pi == "Siampale")
+plots_zam <- plots_clean %>%
+  filter(prinv == "Siampale A.")
   
-plot_data_nozam <- plot_data %>%
-  filter(pi != "Siampale")
+plots_nozam <- plots_clean %>%
+  filter(prinv != "Siampale A.") %>%
+  mutate(plot_cluster = plot_id)
 
 # Aggregate values for Zambian plots and randomly sample rows
-plot_data_zam_agg <- plot_data_zam %>%
-  separate(plot_id, c("plot_group", "plot_subset"), remove = FALSE) %>%
-  mutate(plot_group = paste0(plot_group, "_zambia")) %>%
-  group_by(plot_group) %>%
-  summarise(plotcode = paste0(plotcode, collapse = ","),
-    long = mean(long, na.rm = TRUE),
-    lat = mean(lat, na.rm = TRUE),
-    country = first(na.omit(country)),
-    area_plot = sum(area_plot, na.rm = TRUE),
-    shape_of_plot = first(na.omit(shape_of_plot)),
-    manipulation_experiment = first(na.omit(manipulation_experiment)),
-    timber_harvesting_occurring = first(na.omit(timber_harvesting_occurring)),
-    was_the_plot_high_graded_in_last_100_years = first(na.omit(was_the_plot_high_graded_in_last_100_years)),
-    fuel_wood_harvesting = first(na.omit(fuel_wood_harvesting)),
-    charcoal_harvesting = first(na.omit(charcoal_harvesting)),
-    other_woody_product_harvesting = first(na.omit(other_woody_product_harvesting)),
-    ntfp_harvesting = first(na.omit(ntfp_harvesting)),
-    used_for_farming_in_last_30_years = first(na.omit(used_for_farming_in_last_30_years)),
-    protected_from_fire = first(na.omit(protected_from_fire)), 
-    elephant_exclosure = first(na.omit(elephant_exclosure)),
-    cattle_graze_here = first(na.omit(cattle_graze_here)),
-    goats_graze_here = first(na.omit(goats_graze_here)),
+plots_zam_agg <- plots_zam %>%
+  group_by(plot_cluster) %>%
+  summarise(plot_id = paste0(plot_id, collapse = ","),
+    longitude_of_centre = mean(longitude_of_centre, na.rm = TRUE),
+    latitude_of_centre = mean(latitude_of_centre, na.rm = TRUE),
+    plot_area = sum(plot_area, na.rm = TRUE),
     cec = mean(cec, na.rm = TRUE),
-    sand_per = mean(sand_per, na.rm = TRUE),
-    org_c_per = mean(org_c_per, na.rm = TRUE),
-    total_precip = mean(total_precip, na.rm = TRUE),
-    precip_seasonality = mean(precip_seasonality, na.rm = TRUE),
-    ocdens = mean(ocdens, na.rm = TRUE),
-    mean_temp = mean(mean_temp, na.rm = TRUE),
-    temp_seasonality = mean(temp_seasonality, na.rm = TRUE),
-    isothermality = mean(isothermality, na.rm = TRUE),
-    pi = first(na.omit(pi)),
-    plot_id = first(na.omit(plot_id)),
-    clust4 = first(na.omit(clust4))) 
+    sand = mean(sand, na.rm = TRUE),
+    soil_c = mean(soil_c, na.rm = TRUE),
+    precip = mean(precip, na.rm = TRUE),
+    precip_seas = mean(precip_seas, na.rm = TRUE),
+    temp = mean(temp, na.rm = TRUE),
+    temp_seas = mean(temp_seas, na.rm = TRUE),
+    fire = mean(fire, na.rm = TRUE),
+    herbivory = mean(herbivory, na.rm = TRUE),
+    prinv = first(na.omit(prinv)))
 
-# Combine Zambian aggregated data with non-aggregated other data ----
-plot_data_agg <- bind_rows(plot_data_zam_agg, plot_data_nozam) %>%
-  mutate(plot_group = if_else(!is.na(plot_group), plot_group, plotcode))
+# Combine Zambian aggregated data with non-aggregated other data
+plots_agg <- bind_rows(plots_zam_agg, plots_nozam)
 
-# Add plot_group identifier to stem level data ----
-plot_data_agg$plotcode_vec <- strsplit(as.character(plot_data_agg$plotcode), 
-  split=",")
-
-plotcode_plot_group_lookup <- plot_data_agg %>%
-  dplyr::select(plotcode_vec, plot_group) %>%
-  unnest(plotcode_vec)
-
-s <- left_join(s, plotcode_plot_group_lookup, by = c("plotcode" = "plotcode_vec"))
 
 # Calculate plot level values from stems ----
-# Filter to big trees, alive trees, and trees with identity
-s_fil <- s %>%
+
+# Add plot_cluster identifier to stem level data
+plots_agg$plot_id_vec <- strsplit(as.character(plots_agg$plot_id), 
+  split=",")
+
+plot_id_plot_cluster_lookup <- plots_agg %>%
+  dplyr::select(plot_id_vec, plot_cluster) %>%
+  unnest(plot_id_vec)
+
+# Filter stems to big trees, alive trees, and trees with species identity
+stems_fil <- left_join(stems, plot_id_plot_cluster_lookup, 
+  by = c("plot_id" = "plot_id_vec")) %>%
+  mutate(species_name_clean = case_when(
+      is.na(species_name_clean) ~ species_orig_binom,
+      TRUE ~ species_name_clean)) %>%
   filter(
-    !is.na(plot_group),
-    !is.na(gen_sp),
+    !is.na(plot_cluster),
+    !is.na(species_name_clean),
+    !grepl("indet", species_name_clean, ignore.case = TRUE),
     diam >= 10,
     alive %in% c("A", NA))
 
-# Which plots have multiple censuses?
-multi_year_plots <- s_fil %>%
-  group_by(plotcode, year) %>%
-  summarise() %>%
-  .[duplicated(.$plotcode),] %>% 
-  pull(plotcode) %>%
-  unique()
-
-s_fil_mgr <- s_fil %>% 
-  filter(grepl("MGR", plotcode)) %>% 
-  group_by(plotcode, tag_id) %>%
-  filter(year == max(year))
-
-s_fil_all_other <- s_fil  %>% 
-  filter(grepl("MCL|DKS|MNR|TIM|TKW|ZCC|ZPF", plotcode)) %>% 
-  group_by(stem_id, plotcode) %>%
-  filter(year == max(year)) %>%
-  bind_rows(., 
-    s_fil_mgr, 
-    filter(s_fil, !plotcode %in% multi_year_plots))
-
-s_fil_summ <- s_fil_all_other %>%
-  group_by(plot_group) %>%
+# Calculate plot level statistics
+stems_fil_summ <- stems_fil %>%
+  group_by(plot_cluster) %>%
   summarise(
-    n_stems = n(),
-    n_species = n_distinct(gen_sp),
-    agb = sum(Bchave, na.rm = TRUE),
+    agb = sum(agb, na.rm = TRUE),
     var_height = var(height, na.rm = TRUE),
     mean_height = mean(height, na.rm = TRUE),
     sd_height = sd(height, na.rm = TRUE),
@@ -196,66 +133,34 @@ s_fil_summ <- s_fil_all_other %>%
   mutate(cov_height = sd_height / mean_height * 100,
     cov_dbh = sd_dbh / mean_dbh * 100)
 
-# Remove tiny tree-less plots ----
+# Join to plots table
+plots_stems <- left_join(stems_fil_summ, plots_agg, by = "plot_cluster")
 
-# How many plots with various stems/ha
-thresh_df <- data.frame(stems_ha = seq(from = 0, to = 500, by = 10))
+# Calculate AGB per ha
+plots_stems$agb_ha <- plots_stems$agb / plots_stems$plot_area
 
-thresh_df$n_plots <- sapply(thresh_df$stems_ha, function(x){
-  left_join(plot_data_agg, s_fil_summ, 
-  by = c("plot_group" = "plot_group")) %>%
-  mutate(stems_ha = n_stems / area_plot,
-    agb_ha = agb / area_plot) %>%
-  filter(area_plot >= 0.1,
-    stems_ha >= x) %>%
-  filter(plot_group != "DKS001") %>%
-  group_by(plot_group) %>%
-  n_distinct()
-})
 
-plot_data_agg <- left_join(plot_data_agg, s_fil_summ, 
-  by = c("plot_group" = "plot_group")) %>%
-  mutate(stems_ha = n_stems / area_plot,
-    agb_ha = agb / area_plot) %>%
-  filter(area_plot >= 0.1,
-    stems_ha >= 50) %>%
-  filter(plot_group != "DKS001")
-
-# Estimate rarefied species diversity ----
-
-# Create matrix for estimating rarefied sp. rich.
-## Aggregate by plot_group
-ab_mat <- s_fil %>% 
-  filter(plot_group %in% plot_data_agg$plot_group) %>%
-  group_by(plot_group, gen_sp, .drop = FALSE) %>%
-  tally() %>%
-  spread(gen_sp, n, fill = 0) %>%
-  ungroup() %>%
-  data.frame() 
-
-# Make tidy
-row.names(ab_mat) <- ab_mat$plot_group
-ab_mat_clean <- dplyr::select(ab_mat, -plot_group)
-
-# Save for later use
-saveRDS(ab_mat_clean, "data/stems_ab_mat.rds")
+# Estimate rarefied species diversity statistics ----
+# Create abundance matrix by tree_id
+ab_mat <- abMatGen(stems_fil, plot_id = "plot_cluster", tree_id = "tree_id",
+  species_name = "species_name_clean", fpc = "fpc")
 
 # Hill number estimation of species richness and shannon index
-ab_mat_clean_t <- as.data.frame(t(ab_mat_clean))
+ab_mat_t <- as.data.frame(t(ab_mat))
 
-chao_list <- iNEXT(ab_mat_clean_t, q = 0)
+chao_list <- iNEXT(ab_mat_t, q = 0)
 
 chao_rich_df <- chao_list$AsyEst %>%
   filter(Diversity == "Species richness") %>%
-  dplyr::select(plot_group = Site, n_species_raref = Estimator, 
+  dplyr::select(plot_cluster = Site, n_species_raref = Estimator, 
     n_species_raref_se = s.e., n_species_lower_ci_95 = LCL, n_species_upper_ci_95 = UCL)
 
 chao_shannon_df <- chao_list$AsyEst %>%
   filter(Diversity == "Shannon diversity") %>%
-  dplyr::select(plot_group = Site, shannon_exp = Estimator, 
+  dplyr::select(plot_cluster = Site, shannon_exp = Estimator, 
     shannon_se = s.e., shannon_lower_ci_95 = LCL, shannon_upper_ci_95 = UCL)
 
-chao_df <- left_join(chao_rich_df, chao_shannon_df, by = c("plot_group" = "plot_group"))
+chao_df <- left_join(chao_rich_df, chao_shannon_df, by = "plot_cluster")
 
 # Estimate Species abundance evenness from Shannon
 chao_df$shannon_equit <- chao_df$shannon_exp / chao_df$n_species_raref
@@ -280,31 +185,48 @@ ggplot() +
   labs(x = "Bootstrap sample size", y = "Extrapolated species richness")
 dev.off()
 
-# Clean dataframe, add stem summary data ----
-plot_data_agg_clean <- left_join(plot_data_agg, chao_df, by = c("plot_group" = "plot_group")) %>%
-  dplyr::select(plot_group, plotcode, plotcode_vec, plot_id, country, pi, area_plot, clust4,
-    long, lat, 
-    cec, sand_per, org_c_per, ocdens,
-    total_precip, precip_seasonality, mean_temp, temp_seasonality, isothermality,
-    n_stems, n_species, n_species_raref, agb_ha, stems_ha,
-    shannon_exp, shannon_equit,
-    var_height, mean_height, sd_height, max_height, cov_height,
-    var_dbh, mean_dbh, sd_dbh, max_dbh, cov_dbh)
 
-# Ensure that variables all have the same direciton for SEM
-plot_data_agg_clean$precip_seasonality_rev <- -1 * plot_data_agg_clean$precip_seasonality + 1000
-plot_data_agg_clean$temp_seasonality_rev <- -1 * plot_data_agg_clean$temp_seasonality + 1000
-plot_data_agg_clean$sand_per_rev <- -1 * plot_data_agg_clean$sand_per + 1000
-plot_data_agg_clean$mean_temp_rev <- -1 * plot_data_agg_clean$mean_temp + 1000
-plot_data_agg_clean$shannon_equit <- -1 * plot_data_agg_clean$shannon_equit + 1000
+# Add tree diversity data to plot level data ----
+plots_div <- left_join(plots_stems, chao_df, by = "plot_cluster") %>%
+  left_join(., as.data.frame(rowSums(ab_mat)) %>%
+  mutate(plot_cluster = row.names(.)) %>%
+  rename(n_trees_gt10 = `rowSums(ab_mat)`), by = "plot_cluster") %>%
+  mutate(n_trees_gt10_ha = n_trees_gt10 / plot_area)
+
+
+# Remove plots with less than 50 trees per ha, less than 0.1 ha plot area ----
+plots_div_clean <- plots_div %>%
+  filter(n_trees_gt10_ha >= 50,
+    plot_area >= 0.1)
+
+# Add plot clusters from old data ----
+clust <- ssaw8$cluster %>% 
+  filter(grepl(paste(dataset_codes, 
+    collapse = "|"), plotcode)) %>%
+  mutate(plot_id = gsub("-(0)?(0)?", "_", plotcode)) %>%
+  dplyr::select(plot_id, starts_with("clust")) 
+
+plots_clust <- left_join(plots_div_clean, clust, 
+  by = c("plot_cluster" = "plot_id")) %>%
+  filter(!is.na(clust4))
 
 # Write data ----
 # Plot group - plotcode lookup 
-plotcode_plot_group_lookup <- plot_data_agg_clean %>%
-  dplyr::select(plotcode_vec, plot_group) %>%
-  unnest(plotcode_vec)
-saveRDS(plotcode_plot_group_lookup, "data/plotcode_plot_group_lookup.rds")
+plotcode_plot_cluster_lookup <- plots_clust %>%
+  dplyr::select(plot_id_vec, plot_cluster) %>%
+  unnest(plot_id_vec)
+saveRDS(plotcode_plot_cluster_lookup, "data/plotcode_plot_cluster_lookup.rds")
 
 # Plot data
-plot_data_agg_clean <- plot_data_agg_clean %>% dplyr::select(-plotcode_vec)
-saveRDS(plot_data_agg_clean, "data/plot_data_fil_agg.rds")
+plots_clust_clean <- plots_clust %>% 
+  dplyr::select(-plot_id_vec, -plot_id, -prinv)
+saveRDS(plots_clust_clean, "data/plot_data_fil_agg.rds")
+
+# Tree abundance matrix
+ab_mat$plot_cluster <- row.names(ab_mat)
+ab_mat_clean <- ab_mat %>%
+  filter(plot_cluster %in% plots_clust_clean$plot_cluster) %>%
+  dplyr::select(-plot_cluster)
+ab_mat_clean_clean <- ab_mat_clean[,!colSums(ab_mat_clean) == 0]
+
+saveRDS(ab_mat_clean_clean, "data/stems_ab_mat.rds")

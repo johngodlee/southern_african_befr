@@ -8,11 +8,9 @@ INC="manuscript/include/"
 # Remove intermediate objects
 
 # Run data compilation
-# Rscript scripts/temp_precip.R
-# Rscript scripts/soil_carbon.R
+Rscript scripts/temp_precip.R
 Rscript scripts/data_clean.R
 Rscript scripts/standardise.R
-Rscript scripts/composition.R
 Rscript scripts/descrip.R
 Rscript scripts/sem.R
 

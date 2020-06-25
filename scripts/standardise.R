@@ -37,6 +37,7 @@ facet_levels <- c(
   "precip_seas",
   "temp",
   "temp_seas",
+  "temp_stress",
   "agb_ha",
   "agb_ha_log", 
   "cec",
@@ -57,6 +58,7 @@ facet_labels <- c(
   expression("Precip." ~ "seasonality"),
   expression("MAT" ~ (degree * C)), 
   expression("Temp." ~ "seasonality"),
+  expression("Temp." ~ "stress"),
   expression("AGB" ~ (t ~ ha^-1)),
   expression("log(AGB)" ~ (t ~ ha^-1)),
   expression("CEC"),
@@ -79,7 +81,7 @@ hist_raw <- dat %>%
   dplyr::select(agb_ha, n_trees_gt10_ha, 
     n_species_raref, shannon_equit,
     cec, sand, soil_c, 
-    precip, precip_seas, temp, temp_seas,
+    precip, precip_seas, temp, temp_seas, temp_stress,
     cov_height, cov_dbh) %>%
   gather(variable, value) %>%
   mutate(facet_label = factor(variable,
@@ -107,7 +109,7 @@ hist_trans <- dat_trans %>%
   dplyr::select(agb_ha_log, n_trees_gt10_ha_log,
     n_species_raref_log, shannon_equit,
     cec, sand, soil_c_log,
-    precip, precip_seas, temp, temp_seas,
+    precip, precip_seas, temp, temp_seas, temp_stress,
     cov_height, cov_dbh) %>%
   gather(variable, value) %>%
   mutate(facet_label = factor(variable,
@@ -130,6 +132,7 @@ sem_data_norm_std <- dat_trans %>%
 	  "precip_seas",
 	  "temp",
 	  "temp_seas",
+	  "temp_stress",
 	  "agb_ha_log",
 	  "cec",
 	  "sand",
@@ -155,6 +158,7 @@ bivar_list <- c(
   "agb_ha_log_std ~ n_species_raref_log_std",
   "agb_ha_log_std ~ temp_std",
   "agb_ha_log_std ~ temp_seas_std",
+  "agb_ha_log_std ~ temp_stress_std",
   "agb_ha_log_std ~ precip_std",
   "agb_ha_log_std ~ precip_seas_std",
   "agb_ha_log_std ~ n_trees_gt10_ha_log_std",
@@ -163,6 +167,7 @@ bivar_list <- c(
   "n_trees_gt10_ha_log_std ~ shannon_equit_std",
   "n_trees_gt10_ha_log_std ~ temp_std",
   "n_trees_gt10_ha_log_std ~ temp_seas_std",
+  "n_trees_gt10_ha_log_std ~ temp_stress_std",
   "n_trees_gt10_ha_log_std ~ precip_std",
   "n_trees_gt10_ha_log_std ~ precip_seas_std",
   "n_trees_gt10_ha_log_std ~ cec_std",
@@ -174,6 +179,7 @@ bivar_list <- c(
   "n_species_raref_log_std ~ sand_std",
   "n_species_raref_log_std ~ temp_std",
   "n_species_raref_log_std ~ temp_seas_std",
+  "n_species_raref_log_std ~ temp_stress_std",
   "n_species_raref_log_std ~ precip_std",
   "n_species_raref_log_std ~ precip_seas_std")
 

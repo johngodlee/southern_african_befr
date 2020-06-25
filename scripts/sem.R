@@ -56,6 +56,7 @@ dat <- dat %>%
   mutate(
     precip_seas_rev_std = -1 * precip_seas_std,
     temp_seas_rev_std = -1 * temp_seas_std,
+    temp_stress_rev_std = -1 * temp_stress_std,
     sand_rev_std = -1 * sand_std,
     temp_rev_std = -1 * temp_std,
     shannon_equit_rev_std = -1 * shannon_equit_std)
@@ -67,7 +68,7 @@ dat <- dat %>%
 corr_df <- dat %>%
   dplyr::select(sand_std, soil_c_log_std, cec_std, 
     precip_std, precip_seas_std,
-    temp_std, temp_seas_std,
+    temp_std, temp_stress_std,
     n_species_raref_log_std, shannon_equit_std,
     cov_height_std, cov_dbh_std, n_trees_gt10_ha_log_std, agb_ha_log_std)
 
@@ -107,7 +108,7 @@ ggcorrplot(cor(corr_df, use = "complete.obs"),
     "precip_std" = "MAP",
     "precip_seas_std" = expression(bolditalic(underline("PS"))), 
     "temp_std" = expression(bolditalic(underline("MAT"))),
-    "temp_seas_std" = expression(bolditalic(underline("TS"))),
+    "temp_stress_std" = expression(bolditalic(underline("TS"))),
     "n_species_raref_log_std" = "Extrap. sp. rich.",
     "shannon_equit_std" = "Shannon equit.",
     "cov_height_std" = "Tree height CoV",
@@ -119,7 +120,7 @@ ggcorrplot(cor(corr_df, use = "complete.obs"),
     "precip_std" = "MAP",
     "precip_seas_std" = expression(bolditalic(underline("PS"))), 
     "temp_std" = expression(bolditalic(underline("MAT"))),
-    "temp_seas_std" = expression(bolditalic(underline("TS"))),
+    "temp_stress_std" = expression(bolditalic(underline("TS"))),
     "n_species_raref_log_std" = "Extrap. sp. rich.",
     "shannon_equit_std" = "Shannon equit.",
     "cov_height_std" = "Tree height CV",
@@ -161,7 +162,7 @@ corr_ci_tab <- corr_ci_tab %>%
     x_var == "precip_std" ~ "MAP",
     x_var == "precip_sea_std" ~ "PS",
     x_var == "temp_std" ~ "MAT",
-    x_var == "temp_seas_std" ~ "TS",
+    x_var == "temp_stress_std" ~ "TS",
     x_var == "n_species_raref_log_std" ~ "Sp. rich.",
     x_var == "shannon_equit_std" ~ "Shannon equit.",
     x_var == "cov_height_std" ~ "Tree height CV",
@@ -176,7 +177,7 @@ corr_ci_tab <- corr_ci_tab %>%
     y_var == "precip_std" ~ "MAP",
     y_var == "precip_seas_std" ~ "PS",
     y_var == "temp_std" ~ "MAT",
-    y_var == "temp_seas_std" ~ "TS",
+    y_var == "temp_stress_std" ~ "TS",
     y_var == "n_species_raref_log_std" ~ "Sp. rich.",
     y_var == "shannon_equit_std" ~ "Shannon equit.",
     y_var == "cov_height_std" ~ "Tree height CV",
@@ -683,7 +684,7 @@ struc_sem_quant_regs[struc_sem_quant_regs$est == unname(sapply(
 # Model list
 mreg_list <- list(
   mod_mois <- lm(agb_ha_log ~ precip_std + precip_seas_rev_std + 
-    temp_rev_std + temp_seas_rev_std, data = dat),
+    temp_rev_std + temp_stress_rev_std, data = dat),
   mod_div <- lm(agb_ha_log ~ n_species_raref_log_std + shannon_equit_std, data = dat),
   mod_soil <- lm(agb_ha_log ~ soil_c_log_std + sand_rev_std + cec_std, data = dat)
 )
@@ -735,7 +736,7 @@ sink()
 # Test for multivariate normality 
 dat_multivar_norm <- dat %>%
   dplyr::select(precip_std, precip_seas_rev_std,
-    temp_rev_std, temp_seas_rev_std,
+    temp_rev_std, temp_stress_rev_std,
     n_species_raref_log_std, shannon_equit_std,
     sand_rev_std, soil_c_log_std, cec_std,
     cov_dbh_std, cov_height_std, n_trees_gt10_ha_log_std, agb_ha_log_std) %>%
@@ -745,7 +746,7 @@ dat_multivar_norm <- dat %>%
 full_mod_spec <- "
 # Latent vars
 moisture =~ precip_std + precip_seas_rev_std + 
-temp_rev_std + temp_seas_rev_std
+temp_rev_std + temp_stress_rev_std
 div      =~ n_species_raref_log_std + shannon_equit_std
 soil     =~ sand_rev_std + soil_c_log_std + cec_std
 struc    =~ cov_dbh_std + cov_height_std
@@ -789,7 +790,7 @@ biomass_div_via_stems := h*e
 biomass_div_total := b + (f*g) + (h*e)
 
 # Modifications
-#mean_temp_rev_std ~~ temp_seasonality_rev_log_std 
+#mean_temp_rev_std ~~ temp_stressonality_rev_log_std 
 #sp_rich_raref_log_std ~~ stems_ha_log_std 
 #total_precip_std ~~ mean_temp_rev_std 
 #total_precip_std ~~ sand_per_rev_std 

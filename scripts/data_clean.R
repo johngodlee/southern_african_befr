@@ -25,10 +25,10 @@ library(seosawr)
 load("data/seosaw_plot_summary5Apr2019.Rdata")
 
 # SEOSAW v2 plot summary data
-plots <- read.csv("data/plots_v2.7.csv")
+plots <- read.csv("~/git_proj/seosaw_data/data_out/plots_v2.7.csv")
 
 # SEOSAW v2 stem data
-stems <- read.csv("data/stems_latest_v2.7.csv")
+stems <- read.csv("~/git_proj/seosaw_data/data_out/stems_latest_v2.7.csv")
  
 # Datasets used in analysis
 dataset_codes <- c("ZIS", "SSM", "MCL", "ZPF", "ZNF", "MNR", "MGR", "MAR",
@@ -56,6 +56,7 @@ plots_clean <- plots %>%
       soil_c = ORCDRC, 
       temp = bio1, 
       temp_seas = bio4, 
+      temp_stress = bio2,
       precip = bio12, 
       precip_seas = bio15, 
       fire = firecount_2001_2018,
@@ -86,6 +87,7 @@ plots_zam_agg <- plots_zam %>%
     precip_seas = mean(precip_seas, na.rm = TRUE),
     temp = mean(temp, na.rm = TRUE),
     temp_seas = mean(temp_seas, na.rm = TRUE),
+    temp_stress = mean(temp_stress, na.rm = TRUE),
     fire = mean(fire, na.rm = TRUE),
     herbivory = mean(herbivory, na.rm = TRUE),
     prinv = first(na.omit(prinv)))

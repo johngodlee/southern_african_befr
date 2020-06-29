@@ -44,6 +44,9 @@ facet_levels <- c(
   "sand",
   "soil_c",
   "soil_c_log",
+  "fire_buffer", 
+  "fire_buffer_log", 
+  "herbivory",
   "cov_dbh",
   "cov_height",
   "n_trees_gt10_ha",
@@ -65,6 +68,9 @@ facet_labels <- c(
   expression("Sand" ~ "%"), 
   expression("Org." ~ "C" ~ "(ppt)"),
   expression("log(Org." ~ "C)" ~ "(ppt)"),
+  expression("Mean" ~ "fire" ~ "freq." ~ (2001-2018)),
+  expression("log(Mean" ~ "fire" ~ "freq.)" ~ (2001-2018)),
+  expression("Herbivore" ~ "biomass" ~ (kg ~ ha^-1)),
   expression("Coef." ~ "var." ~ "DBH"),
   expression("Coef." ~ "var." ~ "height"),
   expression("Stem" ~ "density" ~ ">10" ~ cm ~ (n ~ ha^-1)),
@@ -81,6 +87,7 @@ hist_raw <- dat %>%
   dplyr::select(agb_ha, n_trees_gt10_ha, 
     n_species_raref, shannon_equit,
     cec, sand, soil_c, 
+    fire_buffer, herbivory,
     precip, precip_seas, temp, temp_seas, temp_stress,
     cov_height, cov_dbh) %>%
   gather(variable, value) %>%
@@ -103,12 +110,14 @@ dat_trans <- dat %>%
 	mutate(agb_ha_log = log(agb_ha),
 		n_trees_gt10_ha_log = log(n_trees_gt10_ha), 
 	  n_species_raref_log = log(n_species_raref + 4),
-	  soil_c_log = log(soil_c + 4))
+	  soil_c_log = log(soil_c + 4),
+	  fire_buffer_log = log(fire_buffer + 4))
 
 hist_trans <- dat_trans %>%
   dplyr::select(agb_ha_log, n_trees_gt10_ha_log,
     n_species_raref_log, shannon_equit,
     cec, sand, soil_c_log,
+    fire_buffer_log, herbivory,
     precip, precip_seas, temp, temp_seas, temp_stress,
     cov_height, cov_dbh) %>%
   gather(variable, value) %>%
@@ -137,6 +146,8 @@ sem_data_norm_std <- dat_trans %>%
 	  "cec",
 	  "sand",
 	  "soil_c_log",
+	  "fire_buffer_log", 
+	  "herbivory",
 	  "cov_dbh",
 	  "cov_height",
 	  "n_trees_gt10_ha_log",
@@ -162,6 +173,8 @@ bivar_list <- c(
   "agb_ha_log_std ~ precip_std",
   "agb_ha_log_std ~ precip_seas_std",
   "agb_ha_log_std ~ n_trees_gt10_ha_log_std",
+  "agb_ha_log_std ~ fire_buffer_log_std",
+  "agb_ha_log_std ~ herbivory_std",
   
   "n_trees_gt10_ha_log_std ~ n_species_raref_log_std",
   "n_trees_gt10_ha_log_std ~ shannon_equit_std",
@@ -173,6 +186,8 @@ bivar_list <- c(
   "n_trees_gt10_ha_log_std ~ cec_std",
   "n_trees_gt10_ha_log_std ~ soil_c_log_std",
   "n_trees_gt10_ha_log_std ~ sand_std",
+  "n_trees_gt10_ha_log_std ~ fire_buffer_log_std",
+  "n_trees_gt10_ha_log_std ~ herbivory_std",
   
   "n_species_raref_log_std ~ cec_std",
   "n_species_raref_log_std ~ soil_c_log_std",
@@ -181,7 +196,9 @@ bivar_list <- c(
   "n_species_raref_log_std ~ temp_seas_std",
   "n_species_raref_log_std ~ temp_stress_std",
   "n_species_raref_log_std ~ precip_std",
-  "n_species_raref_log_std ~ precip_seas_std")
+  "n_species_raref_log_std ~ precip_seas_std",
+  "n_species_raref_log_std ~ fire_buffer_log_std",
+  "n_species_raref_log_std ~ herbivory_std" )
 
 # Create models
 lm_list <- list()

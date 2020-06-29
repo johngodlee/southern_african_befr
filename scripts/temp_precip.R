@@ -11,7 +11,7 @@ library(raster)
 library(rgdal)
 
 # Get Miombo outline ---- 
-white_veg <- readOGR(dsn="/Volumes/john/whitesveg", layer="")
+white_veg <- readOGR(dsn="/Volumes/john/whitesveg", layer="whitesveg")
 
 # Subset to White's miombo 
 white_veg_miombo <- white_veg[!is.na(white_veg@data$DESCRIPTIO) & 
@@ -75,7 +75,7 @@ rastlist_extrac <- lapply(rastlist, function(x) {
 
 # Combine to dataframe
 t_p <- data.frame(t_vals = rastlist_extrac[[1]][,1], t_cv = rastlist_extrac[[1]][,2],
-  p_vals = rastlist_extrac[[2]][,1], p_cv = rastlist_extrac[[2]][,2],
+  p_vals = rastlist_extrac[[2]][,1], p_cv = rastlist_extrac[[2]][,2])
 
 # Save to file
 saveRDS(t_p, "data/temp_precip.rds")

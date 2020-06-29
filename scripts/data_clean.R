@@ -17,6 +17,8 @@ library(iNEXT)
 library(vegan) 
 library(ggplot2)
 library(seosawr)
+library(raster)
+library(sf)
 
 
 # Import plot and stems data ----
@@ -29,6 +31,10 @@ plots <- read.csv("~/git_proj/seosaw_data/data_out/plots_v2.7.csv")
 
 # SEOSAW v2 stem data
 stems <- read.csv("~/git_proj/seosaw_data/data_out/stems_latest_v2.7.csv")
+
+# Fire layer for manual calculation
+fire_count <- raster("~/Downloads/firecount_2001_2018.tif")
+
  
 # Datasets used in analysis
 dataset_codes <- c("ZIS", "SSM", "MCL", "ZPF", "ZNF", "MNR", "MGR", "MAR",
@@ -211,6 +217,42 @@ clust <- ssaw8$cluster %>%
 plots_clust <- left_join(plots_div_clean, clust, 
   by = c("plot_cluster" = "plot_id")) %>%
   filter(!is.na(clust4))
+
+
+# Calculate fire count for buffer area ----
+x <- plots_clust %>% 
+  filter(!is.na(longitude_of_centre), !is.na(latitude_of_centre)) %>%
+  st_as_sf(., coords = c("longitude_of_centre", "latitude_of_centre"))  
+
+# Subset raster and set projection from EPSG
+ds <- raster::stack(fire_count)
+
+# Add optional radius buffer
+x$utm <- latLong2UTM(x = st_coordinates(x)[,1],
+  y = st_coordinates(x)[,2])
+
+st_crs(x) <- 4326
+
+# Split by UTM 
+x_split <- split(x, x$utm)
+
+x_buffer_split <- lapply(x_split, function(y) {
+  y_utm <- sf::st_transform(y, crs = UTMProj4(unique(y$utm)))
+  y_buffer <- sf::st_buffer(y_utm, 500)
+  y_latlon <- sf::st_transform(y_buffer, crs = 4326)
+  y_latlon
+})
+
+x_buffer <- do.call(rbind, x_buffer_split)
+
+# Pull values from points in raster
+out_nona <- raster::extract(ds, x_buffer, method = "simple", 
+    fun = mean, factors = TRUE)
+out_nona_clean <- as.data.frame(cbind(plot_cluster = x_buffer$plot_cluster , out_nona))
+names(out_nona_clean) <- c("plot_cluster", "fire_buffer")
+out_nona_clean$fire_buffer <- as.numeric(out_nona_clean$fire_buffer)
+
+plots_clust <- left_join(plots_clust, out_nona_clean, by = "plot_cluster") 
 
 # Write data ----
 # Plot group - plotcode lookup 

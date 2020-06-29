@@ -10,6 +10,8 @@ include/**
 misc/**
 output/**
 
+Rplots.pdf
+
 # TeX
 *.log
 *.aux

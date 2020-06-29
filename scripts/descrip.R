@@ -30,7 +30,7 @@ source("scripts/clust_defin.R")
 plot_data <- readRDS("data/plot_data_fil_agg_norm_std.rds")
 
 # SEOSAW v2 stems data
-stems <- read.csv("data/stems_latest_v2.7.csv")
+stems <- read.csv("~/git_proj/seosaw_data/data_out/stems_latest_v2.7.csv")
 
 # Tree abundance matrix
 ab_mat <- readRDS("data/stems_ab_mat.rds")
@@ -212,13 +212,13 @@ dev.off()
 n_plots_num <- length(unique(plot_data$plot_cluster))
 
 # How many stems did we measure?
-n_stems_total <- sum(rowSums(ab_mat[,!(names(ab_mat) == "plot_cluster")]))
+n_trees_total <- sum(rowSums(ab_mat[,!(names(ab_mat) == "plot_cluster")]))
 
 fileConn <- file(paste0("include/n_plots.tex"))
 writeLines(
   c(
     paste0("\\newcommand{\\nplots}{", n_plots_num, "}"),
-    paste0("\\newcommand{\\nstems}{", n_stems_total, "}")),
+    paste0("\\newcommand{\\ntrees}{", n_trees_total, "}")),
   fileConn)
 close(fileConn)
 

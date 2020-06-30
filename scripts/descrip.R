@@ -23,7 +23,6 @@ library(labdsv)
 
 source("scripts/clust_defin.R")
 
-
 # Import data ----
 
 # Cleaned data
@@ -45,7 +44,6 @@ t_p <- readRDS("data/temp_precip.rds")
 white_veg <- readOGR(dsn="/Volumes/john/whitesveg", 
   layer="whitesveg")
 
-
 # Fortify whitesveg and subset to Miombo ----
 white_veg_fort <- fortify(white_veg, region = "DESCRIPTIO")
 
@@ -53,11 +51,9 @@ white_veg_miombo <- white_veg_fort %>%
   filter(id %in% c("Moist-infertile savanna"),
     lat < -2)
 
-
 # Make clust4 as factor ----
 plot_data$clust4 <- clust_names[plot_data$clust4]
 plot_data$clust4 <- factor(plot_data$clust4)
-
 
 # Map of plot locations, compared to full SEOSAW dataset ----
 
@@ -69,50 +65,6 @@ s_af <- iso.expand(c("ZAF", "COD", "NAM", "ZMB", "BWA", "ZWE", "MOZ",
 map_africa <- borders(database = "world", regions = s_af, fill = "grey90", colour = "black")
 map_africa_fill <- borders(database = "world", regions = s_af, fill = "grey90")
 map_africa_colour <- borders(database = "world", regions = s_af, colour = "black")
-
-# Spatial distribution of key variables
-
-var_map <- function(x, var, lab = expression("log(AGB) (t ha"^-1*")")){
-  map_var <- ggplot() + 
-    map_africa + 
-    geom_point(data = x, aes(x = longitude_of_centre, y = latitude_of_centre, fill = var), 
-      size = 2, shape = 21, colour = "black", position = "jitter") +
-    scale_fill_viridis_c(name = lab) +
-    coord_map() + 
-    ylim(-35.5, 10) + 
-    labs(x = "Longitude", y = "Latitude") + 
-    theme_classic()
-  
-  return(map_var)
-}
-
-# Biomass
-pdf(file = "img/biomass_map.pdf", width = 5, height = 8)
-var_map(plot_data, 
-  var = plot_data$agb_ha, 
-  lab = expression("log(AGB) (t ha"^-1*")"))
-dev.off()
-
-# Precipitation
-pdf(file = "img/precip_map.pdf", width = 5, height = 8)
-var_map(plot_data, 
-  var = plot_data$precip, 
-  lab = expression("Mean" ~ "Annual" ~ "Precipitation" ~ (mm ~ y^-1)))
-dev.off()
-
-# Temp
-pdf(file = "img/temp_map.pdf", width = 5, height = 8)
-var_map(plot_data, 
-  var = plot_data$temp, 
-  lab = expression("MAT" ~ (degree*C)))
-dev.off()
-
-# Soil Organic Carbon
-pdf(file = "img/ocdens_map.pdf", width = 5, height = 8)
-var_map(plot_data, 
-  var = plot_data$soil_c, 
-  lab = expression("Organic" ~ "C" ~ "(%)"))
-dev.off()
 
 # Biogeographic clusters facetted
 pdf(file = "img/clust_map.pdf", width = 14, height = 6)
@@ -134,7 +86,6 @@ ggplot() +
   theme_classic() + 
   theme(legend.position = "none")
 dev.off()
-
 
 # How much climate space do the plots cover ----
 # Standardize pixel values and convert to spatialpoints object
@@ -211,8 +162,8 @@ dev.off()
 # How many plots does the clean dataset have?
 n_plots_num <- length(unique(plot_data$plot_cluster))
 
-# How many stems did we measure?
-n_trees_total <- sum(rowSums(ab_mat[,!(names(ab_mat) == "plot_cluster")]))
+# How many trees did we measure?
+n_trees_total <- round(sum(rowSums(ab_mat[,!(names(ab_mat) == "plot_cluster")])), 0)
 
 fileConn <- file(paste0("include/n_plots.tex"))
 writeLines(
@@ -233,40 +184,6 @@ plot_data_precip_max_min <- plot_data %>%
     precip > median(plot_data$precip) ~ "hi",
     precip < median(plot_data$precip) ~ "lo"
   ))
-
-pdf(file = "img/precip_extremes_map.pdf", width = 5, height = 8)
-ggplot() + 
-  map_africa_fill + 
-  geom_polygon(aes(x = long, y = lat, group = group), 
-    fill = "#16CC7D", colour = "#16CC7D",
-    data = white_veg_miombo, alpha = 1) +
-  geom_point(data = plot_data_precip_max_min, 
-    aes(x = longitude_of_centre, y = latitude_of_centre, fill = hi_lo), 
-    colour = "black", shape = 21, size = 2, alpha = 1) +
-  map_africa_colour +
-  scale_fill_manual(name = "Precip.", values =  c("#56CDD6", "#DECA59"))+ 
-  coord_map() + 
-  ylim(-35.5, 10) + 
-  labs(x = "Longitude", y = "Latitude") + 
-  theme_classic() + 
-  theme(legend.position = c(0.9, 0.2))
-dev.off()
-
-# Diversity variables
-plot_data_gather_div <- plot_data %>%
-  dplyr::select(clust4, agb_ha_log, mean_height, cov_height,
-    cov_dbh, n_trees_gt10_ha_log, n_species_raref_log) %>%
-  gather(key = "variable", value = "value", 3:7)
-
-pdf(file = "img/biomass_div_lm_clust.pdf", width = 12, height = 10)
-ggplot(plot_data_gather_div, aes(x = value, y = agb_ha_log)) + 
-  geom_point(aes(fill = clust4), colour = "black", shape = 21) + 
-  geom_smooth(method = "lm", aes(colour = clust4)) + 
-  scale_fill_manual(name = "Cluster", values = clust_pal) + 
-  scale_colour_manual(name = "Cluster", values = clust_pal) + 
-  theme_classic() + 
-  facet_wrap(~variable, scales = "free_x", labeller = label_parsed)
-dev.off()
 
 # How much AGB is in small stems
 ##' Small stems = those not included in analyses

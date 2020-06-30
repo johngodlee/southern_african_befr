@@ -50,98 +50,78 @@ source("scripts/clust_defin.R")
 
 dat <- readRDS("data/plot_data_fil_agg_norm_std.rds")
 
-
 # Reverse some variables ----
 dat <- dat %>%
   mutate(
     precip_seas_rev_std = -1 * precip_seas_std,
-    temp_seas_rev_std = -1 * temp_seas_std,
     temp_stress_rev_std = -1 * temp_stress_std,
     sand_rev_std = -1 * sand_std,
-    temp_rev_std = -1 * temp_std,
     shannon_equit_rev_std = -1 * shannon_equit_std)
-
 
 # Correlation matrix between variables ----
 
 # Create a dataframe 
 corr_df <- dat %>%
-  dplyr::select(sand_std, soil_c_log_std, cec_std, 
-    fire_buffer_log_std, herbivory_std,
-    precip_std, precip_seas_std,
-    temp_std, temp_stress_std,
+  dplyr::select(soil_c_log_std, cec_std, nitrogen_log_std,
+    fire_log_std, herbivory_std,
+    precip_std, precip_seas_std, temp_stress_std, sand_std,
     n_species_raref_log_std, shannon_equit_std,
-    cov_height_std, cov_dbh_std, n_trees_gt10_ha_log_std, agb_ha_log_std)
+    cov_height_std, cov_dbh_std, 
+    n_trees_gt10_ha_log_std, agb_ha_log_std)
 
 # Make a dataframe of labels
-label_df <- data.frame(lab = names(corr_df),
-  x_loc = seq(from = 1, to = length(names(corr_df)), by = 1),
-  y_loc = seq(from = 0.8, to = length(names(corr_df)) - 1 + 0.8, by = 1))
-
-corr <- psych::corr.test(corr_df, alpha = 0.05, adjust = "none")
+corr <- psych::corr.test(corr_df, alpha = 0.05, adjust = "none") 
 corr_ci <- print(corr, short = FALSE)
 corr_ci$vars <- row.names(corr_ci)
-corr_ci$conf <- (corr_ci$lower.adj > 0) == (corr_ci$upper.adj > 0)
-corr_ci$conf_x <- unlist(sapply(1:14, function(i){print(c(1:14)[i:14])}))
-rev_mat <- 14:1
-corr_ci$conf_y <- unlist(sapply(1:14, function(i){rep(i, times = rev_mat[i])}))
-n_seq <- 2:15
-corr_ci$n <- unlist(sapply(1:14, function(i){corr[[2]][n_seq[i]:15,i]}))
-corr_ci$p <- round(unlist(sapply(1:14, function(i){corr[[4]][n_seq[i]:15,i]})), digits = 3)
-corr_ci$x_var <- unlist(sapply(1:14, function(i){rep(row.names(corr[[1]])[i], rev_mat[i])}))
-corr_ci$y_var <- unlist(sapply(1:14, function(i){row.names(corr[[1]])[n_seq[i]:15]}))
+corr_ci$conf_x <- unlist(sapply(1:(length(corr_df)-1), function(i){
+    print(c(1:(length(corr_df)-1))[i:(length(corr_df)-1)])
+  })) + 1
+rev_mat <- (length(corr_df)-1):1
+corr_ci$conf_y <- unlist(sapply(1:(length(corr_df)-1), function(i){
+    rep(i, times = rev_mat[i])
+  }))
+n_seq <- 2:length(corr_df)
+corr_ci$n <- unlist(sapply(1:(length(corr_df)-1), function(i){corr[[2]][n_seq[i]:length(corr_df),i]}))
+corr_ci$p <- round(unlist(sapply(1:(length(corr_df)-1), function(i){corr[[4]][n_seq[i]:length(corr_df),i]})), digits = 3)
+corr_ci$y_var <- unlist(sapply(1:(length(corr_df)-1), function(i){rep(row.names(corr[[1]])[i], rev_mat[i])}))
+corr_ci$x_var <- unlist(sapply(1:(length(corr_df)-1), function(i){row.names(corr[[1]])[n_seq[i]:length(corr_df)]}))
+corr_ci$x_var <- factor(corr_ci$x_var, 
+  levels = c("cec_std", "nitrogen_log_std", "fire_log_std", "herbivory_std", 
+    "precip_std", "precip_seas_std", "temp_stress_std", "sand_std", "n_species_raref_log_std",
+    "shannon_equit_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std", "agb_ha_log_std"),
+  labels = c("Soil CEC", "Soil N", "Fire freq.", "Herbivore biomass", "MAP",
+  "Precip. seas.", "Temp. stress", "Sand %", "Extrap. sp. rich.", "Shannon equit",
+  "Tree Height CoV", "DBH CoV", "Tree Density", "AGB"))
+corr_ci$y_var <- factor(corr_ci$y_var, 
+  levels = c("soil_c_log_std", "cec_std", "nitrogen_log_std", "fire_log_std", "herbivory_std", 
+    "precip_std", "precip_seas_std", "temp_stress_std", "sand_std", "n_species_raref_log_std",
+    "shannon_equit_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std"), 
+  labels = c("Soil C", "Soil CEC", "Soil N", "Fire freq.", "Herbivore biomass", "MAP",
+    "Precip. seas.", "Temp. stress", "Sand %", "Extrap. sp. rich.", "Shannon equit",
+    "Tree Height CoV", "DBH CoV", "Tree Density"))
+corr_ci$conf <- (corr_ci$raw.lower > 0) == (corr_ci$raw.upper > 0)
 
-# Plot
 pdf(file = "img/corr_mat.pdf", width = 8, height = 8)
-ggcorrplot(cor(corr_df, use = "complete.obs"), 
-  type = "lower", 
-  lab = TRUE,
-  method = "square",
-  colors = c("blue", "white", "red"),
-  ggtheme = theme_classic, 
-  show.legend = FALSE,
-  outline.color = "black",
-  digits = 2, lab_size = 3) + 
-  scale_y_discrete(labels = c(
-    "sand_std" = expression(bolditalic(underline("Sand %"))),
-    "soil_c_log_std" = "Org. C (ppt)",
-    "cec_std" = "CEC", 
-    "fire_buffer_log_std" = "Fire freq.",
-    "herbivory_std" = "Herbivore biomass",
-    "precip_std" = "MAP",
-    "precip_seas_std" = expression(bolditalic(underline("PS"))), 
-    "temp_std" = expression(bolditalic(underline("MAT"))),
-    "temp_stress_std" = expression(bolditalic(underline("TS"))),
-    "n_species_raref_log_std" = "Extrap. sp. rich.",
-    "shannon_equit_std" = "Shannon equit.",
-    "cov_height_std" = "Tree height CoV",
-    "cov_dbh_std" = "CBH CoV",
-    "n_trees_gt10_ha_log_std" = "Stem density")) + 
-  scale_x_discrete(labels = c(
-    "soil_c_log_std" = "Org. C (ppt)",
-    "cec_std" = "CEC", 
-    "fire_buffer_log_std" = "Fire freq.",
-    "herbivory_std" = "Herbivore biomass",
-    "precip_std" = "MAP",
-    "precip_seas_std" = expression(bolditalic(underline("PS"))), 
-    "temp_std" = expression(bolditalic(underline("MAT"))),
-    "temp_stress_std" = expression(bolditalic(underline("TS"))),
-    "n_species_raref_log_std" = "Extrap. sp. rich.",
-    "shannon_equit_std" = "Shannon equit.",
-    "cov_height_std" = "Tree height CV",
-    "cov_dbh_std" = "DBH CV",
-    "n_trees_gt10_ha_log_std" = "Stem density",
-    "agb_ha_log_std" = "AGB")) + 
-  theme(axis.text.x = element_text(
-    face = c(rep("plain", 3), "bold.italic", "plain", "bold.italic", rep("plain", 6)),
-    colour = c(rep("#D65A2D", 2), rep("#331d8b", 2), rep("#287F9C", 4), rep("#468A21", 2), rep("#844099", 2), rep("black", 2))),
-
+ggplot() + 
+  geom_tile(data = corr_ci, 
+    aes(x = x_var, y = y_var, 
+      fill = raw.r), colour = "black") + 
+  geom_text(data = corr_ci, 
+    aes(x = x_var, y = y_var, label = raw.r),
+    size = 3) + 
+  geom_point(data = corr_ci[corr_ci$conf == FALSE,], 
+    aes(x = x_var, y = y_var), fill = NA, colour = "black", shape = 21, size = 11) + 
+  scale_fill_gradient2(name = "r", low = "red", mid = "white", high = "blue") + 
+  theme_classic() + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5,
+      colour = c(rep("#D65A2D", 2), rep("#331d8b", 2), rep("#287F9C", 4), 
+        rep("#468A21", 2), rep("#844099", 2), rep("black", 2))),
     axis.text.y = element_text(
-      face = c("bold.italic", rep("plain", 3), "bold.italic", "plain", "bold.italic", rep("plain", 6)),
-      colour = c(rep("#D65A2D", 3), rep("#331d8b", 2), rep("#287F9C", 4), rep("#468A21", 2), rep("#844099", 2), "black"))
-      ) + 
-  geom_point(data = filter(corr_ci, conf == FALSE), 
-    aes(x = conf_x, y = conf_y), fill = NA, colour = "black", shape = 21, size = 11)
+      colour = c(rep("#D65A2D", 3), rep("#331d8b", 2), rep("#287F9C", 4), 
+        rep("#468A21", 2), rep("#844099", 2), "black")),
+    legend.position = "none") + 
+  labs(x = "", y = "") + 
+  coord_equal()
 dev.off()
 
 # Correlations table
@@ -161,16 +141,18 @@ corr_format <- function(id, row_num){
 }
 
 corr_ci_tab <- corr_ci_tab %>%
+  mutate(x_var = as.character(x_var),
+    y_var = as.character(y_var)) %>%
   mutate(x_var = case_when(
-    x_var == "sand_std" ~ "Sand %" ,
     x_var == "soil_c_log_std" ~ "Org. C (ppt)",
     x_var == "cec_std" ~ "CEC",
-    x_var == "fire_buffer_log_std" ~ "Fire freq.",
+    x_var == "nitrogen_log_std" ~ "Nitrogen",
+    x_var == "fire_log_std" ~ "Fire freq.",
     x_var == "herbivory_std" ~ "Herbivore biomass",
     x_var == "precip_std" ~ "MAP",
-    x_var == "precip_seas_std" ~ "PS",
-    x_var == "temp_std" ~ "MAT",
-    x_var == "temp_stress_std" ~ "TS",
+    x_var == "precip_seas_std" ~ "Precip seas.",
+    x_var == "temp_stress_std" ~ "Temp. stress",
+    x_var == "sand_std" ~ "Sand %" ,
     x_var == "n_species_raref_log_std" ~ "Sp. rich.",
     x_var == "shannon_equit_std" ~ "Shannon equit.",
     x_var == "cov_height_std" ~ "Tree height CV",
@@ -179,15 +161,15 @@ corr_ci_tab <- corr_ci_tab %>%
     TRUE ~ x_var
   ),
     y_var = case_when(
-    y_var == "sand_std" ~ "Sand %" ,
     y_var == "soil_c_log_std" ~ "Org. C (ppt)",
     y_var == "cec_std" ~ "CEC",
-    x_var == "fire_buffer_log_std" ~ "Fire freq.",
+    x_var == "nitrogen_log_std" ~ "Nitrogen",
+    x_var == "fire_log_std" ~ "Fire freq.",
     x_var == "herbivory_std" ~ "Herbivore biomass",
     y_var == "precip_std" ~ "MAP",
-    y_var == "precip_seas_std" ~ "PS",
-    y_var == "temp_std" ~ "MAT",
-    y_var == "temp_stress_std" ~ "TS",
+    y_var == "precip_seas_std" ~ "Precip seas.",
+    y_var == "temp_stress_std" ~ "Temp. stress",
+    y_var == "sand_std" ~ "Sand %" ,
     y_var == "n_species_raref_log_std" ~ "Sp. rich.",
     y_var == "shannon_equit_std" ~ "Shannon equit.",
     y_var == "cov_height_std" ~ "Tree height CV",
@@ -208,19 +190,21 @@ close(fileConn)
 fileConn <- file("include/corr_coef.tex")
 writeLines(
   c(
-    corr_format("ccib", corr_ci_tab[corr_ci_tab$x_var=="Stems ha" & corr_ci_tab$y_var=="AGB", "raw.r"]),
-    corr_format("ccmb", corr_ci_tab[corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="AGB", "raw.r"]),
-    corr_format("ccmcb", corr_ci_tab[corr_ci_tab$x_var=="PS" & corr_ci_tab$y_var=="AGB", "raw.r"]),
-    corr_format("ccob", corr_ci_tab[corr_ci_tab$x_var=="Org. C (ppt)" & corr_ci_tab$y_var=="AGB", "raw.r"]),
-    corr_format("ccsb", corr_ci_tab[corr_ci_tab$x_var=="Sand %" & corr_ci_tab$y_var=="AGB", "raw.r"]),
-    corr_format("ccms", corr_ci_tab[corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Sp. rich.", "raw.r"]),
-    corr_format("ccme", corr_ci_tab[corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Shannon equit.", "raw.r"]),
-    corr_format("ccmh", corr_ci_tab[corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Tree height CV", "raw.r"]),
-    corr_format("ccmi", corr_ci_tab[corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Stems ha", "raw.r"]),
-    corr_format("ccsi", corr_ci_tab[corr_ci_tab$x_var=="Sp. rich." & corr_ci_tab$y_var=="Stems ha", "raw.r"]),
-    corr_format("ccei", corr_ci_tab[corr_ci_tab$x_var=="Sp. rich." & corr_ci_tab$y_var=="Shannon equit.", "raw.r"]),
-    corr_format("cctb", corr_ci_tab[corr_ci_tab$x_var=="MAT" & corr_ci_tab$y_var=="AGB", "raw.r"]),
-    corr_format("cctcb", corr_ci_tab[corr_ci_tab$x_var=="TS" & corr_ci_tab$y_var=="AGB", "raw.r"])
+    corr_format("ccib", which(corr_ci_tab$x_var=="Stems ha" & corr_ci_tab$y_var=="AGB")),
+    corr_format("ccmb", which(corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="AGB")),
+    corr_format("ccmcb",which(corr_ci_tab$x_var=="Precip seas." & corr_ci_tab$y_var=="AGB")),
+    corr_format("ccob", which(corr_ci_tab$x_var=="Org. C (ppt)" & corr_ci_tab$y_var=="AGB")),
+    corr_format("ccsb", which(corr_ci_tab$x_var=="Sand %" & corr_ci_tab$y_var=="AGB")),
+    corr_format("ccms", which(corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Sp. rich.")),
+    corr_format("ccme", which(corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Shannon equit.")),
+    corr_format("ccmh", which(corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Tree height CV")),
+    corr_format("ccmi", which(corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Stems ha")),
+    corr_format("ccsi", which(corr_ci_tab$x_var=="Sp. rich." & corr_ci_tab$y_var=="Stems ha")),
+    corr_format("ccei", which(corr_ci_tab$x_var=="Sp. rich." & corr_ci_tab$y_var=="Shannon equit.")),
+    corr_format("cctb", which(corr_ci_tab$x_var=="MAT" & corr_ci_tab$y_var=="AGB")),
+    corr_format("cctcb",which(corr_ci_tab$x_var=="TS" & corr_ci_tab$y_var=="AGB")),
+    corr_format("ccfb", which(corr_ci_tab$x_var=="Fire freq." & corr_ci_tab$y_var=="AGB")),
+    corr_format("ccfs", which(corr_ci_tab$x_var=="Fire freq." & corr_ci_tab$y_var=="Sp. rich."))
     ),
   fileConn)
 close(fileConn)
@@ -655,7 +639,7 @@ struc_sem_quant_fit_df$n_plots <- quant_plots[sapply(struc_sem_quant_fit, nrow) 
 
 # Extract model statistics
 struc_sem_quant_regs <- do.call(rbind, struc_sem_quant_regs_list) %>%
-  select(rhs, quant, stems_ha, n_plots, n_species_raref, est, std.all) %>%
+  dplyr::select(rhs, quant, stems_ha, n_plots, n_species_raref, est, std.all) %>%
   mutate(rhs = case_when(
     rhs == "Div. -> Struct" ~ "Species div -> Struct. div",
     rhs == "Indirect: Div. -> Struct. -> AGB" ~ "Indirect: Species div -> Struct. div -> AGB",
@@ -744,21 +728,21 @@ sink()
 
 # Test for multivariate normality 
 dat_multivar_norm <- dat %>%
-  dplyr::select(precip_std, precip_seas_rev_std,
-    temp_rev_std, temp_stress_rev_std,
-    n_species_raref_log_std, shannon_equit_std,
-    sand_rev_std, soil_c_log_std, cec_std,
-    fire, herbivory,
-    cov_dbh_std, cov_height_std, n_trees_gt10_ha_log_std, agb_ha_log_std) %>%
+  dplyr::select(precip_std, precip_seas_rev_std, 
+    temp_stress_rev_std, sand_rev_std,
+    n_species_raref_log_std, shannon_equit_std, 
+    soil_c_log_std, cec_std, nitrogen_log_std,
+    fire, 
+    cov_dbh_std, cov_height_std, 
+    n_trees_gt10_ha_log_std, agb_ha_log_std) %>%
   mvn(., mvnTest = "mardia",  multivariateOutlierMethod = "adj", showNewData = TRUE)
 ##' Not multivariate normal at all, but does it matter with ML?
 
 full_mod_spec <- "
 # Latent vars
-moisture =~ precip_std + precip_seas_rev_std + 
-temp_rev_std + temp_stress_rev_std
-disturb  =~ fire_buffer_log_std + herbivory_std
-soil     =~ sand_rev_std + soil_c_log_std + cec_std
+moisture =~ precip_std + precip_seas_std + temp_stress_rev_std + sand_rev_std
+disturb  =~ fire_log_std 
+soil     =~ soil_c_log_std + cec_std + nitrogen_log_std
 div      =~ n_species_raref_log_std + shannon_equit_std
 struc    =~ cov_dbh_std + cov_height_std
 
@@ -814,12 +798,11 @@ biomass_div_total := b + (f*g) + (h*e)
 #sp_rich_raref_log_std ~~ stems_ha_log_std 
 #total_precip_std ~~ mean_temp_rev_std 
 #total_precip_std ~~ sand_per_rev_std 
-
 "
 
 # Run model
 full_mod_fit <- sem(full_mod_spec, 
-  data = dat,  estimator = "MLM")
+  data = dat)
 
 # Modification indices
 head(modificationIndices(full_mod_fit, sort. = TRUE), n = 10)
@@ -965,95 +948,4 @@ lavTestLRT(full_mod_fit, struc_model_fit,
 ##' It might make it impossible to compare models if they contain different
 ##' sets of observed variables, whether they are nested or not. It seems 
 ##' this test is made more for testing different correlation structures and paths.
-
-# Precipitation and soil as moderators ----
-##' Uses latent variables as interaction terms
-
-# Regression with predefined interactions
-int_df <- data.frame(agb_ha_log_std = dat$agb_ha_log_std, 
-  n_species_raref_log_std = comp_list[[2]]$n_species_raref_log_std, 
-  precip_std = comp_list[[1]]$precip_std, 
-  soil_c_log_std = comp_list[[3]]$soil_c_log_std) %>%
-  mutate_all(.funs = list(std = ~(scale(.) %>% as.vector)))
-
-mois_div_int_mod <- lm(agb_ha_log_std_std ~ n_species_raref_log_std_std + precip_std_std + 
-    n_species_raref_log_std_std*precip_std_std , data = int_df)
-
-z1 <- seq(min(int_df$n_species_raref_log_std_std), max(int_df$n_species_raref_log_std_std))
-z2 <- seq(-2, 2)
-
-newdf <- expand.grid(n_species_raref_log_std_std = z1, precip_std_std = z2)
-
-mois_int <- ggplot() + 
-  geom_point(data = int_df, 
-    aes(x = n_species_raref_log_std_std, y = agb_ha_log_std_std, fill = precip_std_std),
-    shape = 21) + 
-  scale_fill_viridis_c(name="Moisture\navailability (SD)", option = "C", breaks = z2, limits = c(-2,2)) + 
-  new_scale("fill") + 
-  stat_smooth(data=transform(newdf, 
-    yp=predict(mois_div_int_mod, newdf)), 
-    aes(y=yp, x=n_species_raref_log_std_std, color=factor(precip_std_std)), 
-    method="lm") + 
-  scale_colour_viridis_d(name=, option = "C", guide = FALSE) + 
-  labs(x="Tree species diversity", y="AGB") + 
-  theme_classic() + 
-  theme(legend.position = c(0.9,0.3))
-
-pdf("img/mois_int.pdf", width = 8, height = 5)
-mois_int
-dev.off()
-
-soil_div_int_mod <- lm(agb_ha_log_std_std ~ n_species_raref_log_std_std + soil_c_log_std_std + 
-    n_species_raref_log_std_std*soil_c_log_std_std , data = int_df)
-
-z1 <- seq(min(int_df$n_species_raref_log_std_std), max(int_df$n_species_raref_log_std_std))
-z2 <- seq(-2, 2)
-
-newdf <- expand.grid(n_species_raref_log_std_std = z1, soil_c_log_std_std = z2)
-
-soil_int <- ggplot() + 
-  geom_point(data = int_df, 
-    aes(x = n_species_raref_log_std_std, y = agb_ha_log_std_std, fill = soil_c_log_std_std),
-    shape = 21) + 
-  scale_fill_viridis_c(name="Soil\nfertility (SD)", option = "C", breaks = z2, limits = c(-2,2)) + 
-  new_scale("fill") + 
-  stat_smooth(data=transform(newdf, 
-    yp=predict(soil_div_int_mod, newdf)), 
-    aes(y=yp, x=n_species_raref_log_std_std, color=factor(soil_c_log_std_std)), 
-    method="lm") + 
-  scale_colour_viridis_d(name=, option = "C", guide = FALSE) + 
-  labs(x="Tree species diversity", y="AGB") + 
-  theme_classic() + 
-  theme(legend.position = c(0.9,0.3))
-
-pdf("img/soil_int.pdf", width = 8, height = 5)
-soil_int
-dev.off()
-
-test <- summary(mois_div_int_mod)
-
-fileConn <- file("include/moder_coef.tex")
-writeLines(
-  c(
-    paste0("\\newcommand{\\moderp}{", "$\\beta =$ ", round(summary(mois_div_int_mod)$coefficients[4,1], digits = 2), 
-      ", t(", summary(mois_div_int_mod)$df[2], ") = ", round(summary(mois_div_int_mod)$coefficients[4,3], digits = 2),", ", 
-      p_format(summary(mois_div_int_mod)$coefficients[4,4]), "}"),
-    paste0("\\newcommand{\\moders}{", "$\\beta =$ ", round(summary(soil_div_int_mod)$coefficients[4,1], digits = 2), 
-      ", t(", summary(soil_div_int_mod)$df[2], ") = ", round(summary(soil_div_int_mod)$coefficients[4,3], digits = 2),", ", 
-      p_format(summary(soil_div_int_mod)$coefficients[4,4]), "}")),
-    fileConn)
-close(fileConn)
-
-
-# Summary of models
-fileConn <- file("include/mois_div_int_mod.tex")
-writeLines(stargazer(mois_div_int_mod, notes.label = "", label = "mois_div_int_mod", notes.append = FALSE),
-  fileConn)
-close(fileConn)
-
-fileConn <- file("include/soil_div_int_mod.tex")
-writeLines(stargazer(soil_div_int_mod, notes.label = "", label = "soil_div_int_mod",  notes.append = FALSE),
-  fileConn)
-close(fileConn)
-
 

@@ -36,7 +36,6 @@ facet_levels <- c(
   "precip",
   "precip_seas",
   "temp",
-  "temp_seas",
   "temp_stress",
   "agb_ha",
   "agb_ha_log", 
@@ -44,8 +43,10 @@ facet_levels <- c(
   "sand",
   "soil_c",
   "soil_c_log",
-  "fire_buffer", 
-  "fire_buffer_log", 
+  "nitrogen",
+  "nitrogen_log",
+  "fire", 
+  "fire_log", 
   "herbivory",
   "cov_dbh",
   "cov_height",
@@ -60,7 +61,6 @@ facet_labels <- c(
   expression("MAP" ~ (mm ~ y^-1)),
   expression("Precip." ~ "seasonality"),
   expression("MAT" ~ (degree * C)), 
-  expression("Temp." ~ "seasonality"),
   expression("Temp." ~ "stress"),
   expression("AGB" ~ (t ~ ha^-1)),
   expression("log(AGB)" ~ (t ~ ha^-1)),
@@ -68,6 +68,8 @@ facet_labels <- c(
   expression("Sand" ~ "%"), 
   expression("Org." ~ "C" ~ "(ppt)"),
   expression("log(Org." ~ "C)" ~ "(ppt)"),
+  expression("Nitrogen" ~ (g ~ kg^-1)),
+  expression("log(Nitrogen)" ~ (g ~ kg^-1)),
   expression("Mean" ~ "fire" ~ "freq." ~ (2001-2018)),
   expression("log(Mean" ~ "fire" ~ "freq.)" ~ (2001-2018)),
   expression("Herbivore" ~ "biomass" ~ (kg ~ ha^-1)),
@@ -86,9 +88,9 @@ facets <- list(facet_levels = facet_levels, facet_labels = facet_labels)
 hist_raw <- dat %>%
   dplyr::select(agb_ha, n_trees_gt10_ha, 
     n_species_raref, shannon_equit,
-    cec, sand, soil_c, 
-    fire_buffer, herbivory,
-    precip, precip_seas, temp, temp_seas, temp_stress,
+    cec, sand, soil_c, nitrogen,
+    fire, herbivory,
+    precip, precip_seas, temp, temp_stress,
     cov_height, cov_dbh) %>%
   gather(variable, value) %>%
   mutate(facet_label = factor(variable,
@@ -111,14 +113,15 @@ dat_trans <- dat %>%
 		n_trees_gt10_ha_log = log(n_trees_gt10_ha), 
 	  n_species_raref_log = log(n_species_raref + 4),
 	  soil_c_log = log(soil_c + 4),
-	  fire_buffer_log = log(fire_buffer + 4))
+	  nitrogen_log = log(nitrogen + 4),
+	  fire_log = log(fire + 4))
 
 hist_trans <- dat_trans %>%
   dplyr::select(agb_ha_log, n_trees_gt10_ha_log,
     n_species_raref_log, shannon_equit,
-    cec, sand, soil_c_log,
-    fire_buffer_log, herbivory,
-    precip, precip_seas, temp, temp_seas, temp_stress,
+    cec, sand, soil_c_log, nitrogen_log,
+    fire_log, herbivory,
+    precip, precip_seas, temp, temp_stress,
     cov_height, cov_dbh) %>%
   gather(variable, value) %>%
   mutate(facet_label = factor(variable,
@@ -133,20 +136,19 @@ pdf(file = "img/hist_trans.pdf", width = 12, height = 7)
 hist_trans
 dev.off()
 
-
 # Standardize each variable ----
 sem_data_norm_std <- dat_trans %>%
 	mutate_at(.vars = c(
 	  "precip",
 	  "precip_seas",
 	  "temp",
-	  "temp_seas",
 	  "temp_stress",
 	  "agb_ha_log",
 	  "cec",
 	  "sand",
 	  "soil_c_log",
-	  "fire_buffer_log", 
+	  "nitrogen_log",
+	  "fire_log", 
 	  "herbivory",
 	  "cov_dbh",
 	  "cov_height",
@@ -162,42 +164,42 @@ sem_data_norm_std <- dat_trans %>%
 bivar_list <- c(
   "agb_ha_log_std ~ cec_std",
   "agb_ha_log_std ~ soil_c_log_std",
+  "agb_ha_log_std ~ nitrogen_log_std",
   "agb_ha_log_std ~ sand_std",
   "agb_ha_log_std ~ cov_dbh_std",
   "agb_ha_log_std ~ cov_height_std",
   "agb_ha_log_std ~ shannon_equit_std",
   "agb_ha_log_std ~ n_species_raref_log_std",
   "agb_ha_log_std ~ temp_std",
-  "agb_ha_log_std ~ temp_seas_std",
   "agb_ha_log_std ~ temp_stress_std",
   "agb_ha_log_std ~ precip_std",
   "agb_ha_log_std ~ precip_seas_std",
   "agb_ha_log_std ~ n_trees_gt10_ha_log_std",
-  "agb_ha_log_std ~ fire_buffer_log_std",
+  "agb_ha_log_std ~ fire_log_std",
   "agb_ha_log_std ~ herbivory_std",
   
   "n_trees_gt10_ha_log_std ~ n_species_raref_log_std",
   "n_trees_gt10_ha_log_std ~ shannon_equit_std",
   "n_trees_gt10_ha_log_std ~ temp_std",
-  "n_trees_gt10_ha_log_std ~ temp_seas_std",
   "n_trees_gt10_ha_log_std ~ temp_stress_std",
   "n_trees_gt10_ha_log_std ~ precip_std",
   "n_trees_gt10_ha_log_std ~ precip_seas_std",
   "n_trees_gt10_ha_log_std ~ cec_std",
   "n_trees_gt10_ha_log_std ~ soil_c_log_std",
+  "n_trees_gt10_ha_log_std ~ nitrogen_log_std",
   "n_trees_gt10_ha_log_std ~ sand_std",
-  "n_trees_gt10_ha_log_std ~ fire_buffer_log_std",
+  "n_trees_gt10_ha_log_std ~ fire_log_std",
   "n_trees_gt10_ha_log_std ~ herbivory_std",
   
   "n_species_raref_log_std ~ cec_std",
   "n_species_raref_log_std ~ soil_c_log_std",
+  "n_species_raref_log_std ~ nitrogen_log_std",
   "n_species_raref_log_std ~ sand_std",
   "n_species_raref_log_std ~ temp_std",
-  "n_species_raref_log_std ~ temp_seas_std",
   "n_species_raref_log_std ~ temp_stress_std",
   "n_species_raref_log_std ~ precip_std",
   "n_species_raref_log_std ~ precip_seas_std",
-  "n_species_raref_log_std ~ fire_buffer_log_std",
+  "n_species_raref_log_std ~ fire_log_std",
   "n_species_raref_log_std ~ herbivory_std" )
 
 # Create models
@@ -331,7 +333,7 @@ cluster_compare_gather <- left_join(cluster_compare_mean, cluster_compare_sd, by
 
 cluster_compare_gather$clust4 <- as.character(cluster_compare_gather$clust4)
 
-pdf(file = "img/cluster_variable_bar.pdf", width = 10, height = 7)
+pdf(file = "img/cluster_variable_bar.pdf", width = 10, height = 7) 
 ggplot(cluster_compare_gather, aes(x = clust4, y = mean, fill = clust4)) + 
     geom_bar(stat = "identity", colour = "black") + 
     geom_errorbar(aes(x = clust4, ymin = mean - sd, ymax = mean + sd), width = 0.5) + 

@@ -63,7 +63,7 @@ dat <- dat %>%
 # Create a dataframe 
 corr_df <- dat %>%
   dplyr::select(soil_c_log_std, cec_std, nitrogen_log_std,
-    fire_log_std, herbivory_std,
+    fire_log_std, 
     precip_std, precip_seas_std, temp_stress_std, sand_std,
     n_species_raref_log_std, shannon_equit_std,
     cov_height_std, cov_dbh_std, 
@@ -86,17 +86,17 @@ corr_ci$p <- round(unlist(sapply(1:(length(corr_df)-1), function(i){corr[[4]][n_
 corr_ci$y_var <- unlist(sapply(1:(length(corr_df)-1), function(i){rep(row.names(corr[[1]])[i], rev_mat[i])}))
 corr_ci$x_var <- unlist(sapply(1:(length(corr_df)-1), function(i){row.names(corr[[1]])[n_seq[i]:length(corr_df)]}))
 corr_ci$x_var <- factor(corr_ci$x_var, 
-  levels = c("cec_std", "nitrogen_log_std", "fire_log_std", "herbivory_std", 
+  levels = c("cec_std", "nitrogen_log_std", "fire_log_std", 
     "precip_std", "precip_seas_std", "temp_stress_std", "sand_std", "n_species_raref_log_std",
     "shannon_equit_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std", "agb_ha_log_std"),
-  labels = c("Soil CEC", "Soil N", "Fire freq.", "Herbivore biomass", "MAP",
+  labels = c("Soil CEC", "Soil N", "Fire freq.", "MAP",
   "Precip. seas.", "Temp. stress", "Sand %", "Extrap. sp. rich.", "Shannon equit",
   "Tree Height CoV", "DBH CoV", "Tree Density", "AGB"))
 corr_ci$y_var <- factor(corr_ci$y_var, 
-  levels = c("soil_c_log_std", "cec_std", "nitrogen_log_std", "fire_log_std", "herbivory_std", 
+  levels = c("soil_c_log_std", "cec_std", "nitrogen_log_std", "fire_log_std",
     "precip_std", "precip_seas_std", "temp_stress_std", "sand_std", "n_species_raref_log_std",
     "shannon_equit_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std"), 
-  labels = c("Soil C", "Soil CEC", "Soil N", "Fire freq.", "Herbivore biomass", "MAP",
+  labels = c("Soil C", "Soil CEC", "Soil N", "Fire freq.", "MAP",
     "Precip. seas.", "Temp. stress", "Sand %", "Extrap. sp. rich.", "Shannon equit",
     "Tree Height CoV", "DBH CoV", "Tree Density"))
 corr_ci$conf <- (corr_ci$raw.lower > 0) == (corr_ci$raw.upper > 0)
@@ -114,10 +114,10 @@ ggplot() +
   scale_fill_gradient2(name = "r", low = "red", mid = "white", high = "blue") + 
   theme_classic() + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5,
-      colour = c(rep("#D65A2D", 2), rep("#331d8b", 2), rep("#287F9C", 4), 
+      colour = c(rep("#D65A2D", 2), rep("#331d8b", 1), rep("#287F9C", 4), 
         rep("#468A21", 2), rep("#844099", 2), rep("black", 2))),
     axis.text.y = element_text(
-      colour = c(rep("#D65A2D", 3), rep("#331d8b", 2), rep("#287F9C", 4), 
+      colour = c(rep("#D65A2D", 3), rep("#331d8b", 1), rep("#287F9C", 4), 
         rep("#468A21", 2), rep("#844099", 2), "black")),
     legend.position = "none") + 
   labs(x = "", y = "") + 
@@ -148,7 +148,6 @@ corr_ci_tab <- corr_ci_tab %>%
     x_var == "cec_std" ~ "CEC",
     x_var == "nitrogen_log_std" ~ "Nitrogen",
     x_var == "fire_log_std" ~ "Fire freq.",
-    x_var == "herbivory_std" ~ "Herbivore biomass",
     x_var == "precip_std" ~ "MAP",
     x_var == "precip_seas_std" ~ "Precip seas.",
     x_var == "temp_stress_std" ~ "Temp. stress",
@@ -165,7 +164,6 @@ corr_ci_tab <- corr_ci_tab %>%
     y_var == "cec_std" ~ "CEC",
     x_var == "nitrogen_log_std" ~ "Nitrogen",
     x_var == "fire_log_std" ~ "Fire freq.",
-    x_var == "herbivory_std" ~ "Herbivore biomass",
     y_var == "precip_std" ~ "MAP",
     y_var == "precip_seas_std" ~ "Precip seas.",
     y_var == "temp_stress_std" ~ "Temp. stress",
@@ -678,12 +676,15 @@ struc_sem_quant_regs[struc_sem_quant_regs$est == unname(sapply(
 # Model list
 mreg_list <- list(
   mod_mois <- lm(agb_ha_log ~ precip_std + precip_seas_rev_std + 
-    temp_rev_std + temp_stress_rev_std, data = dat),
+  	  temp_stress_rev_std + sand_rev_std, data = dat),
   mod_div <- lm(agb_ha_log ~ n_species_raref_log_std + shannon_equit_std, data = dat),
-  mod_soil <- lm(agb_ha_log ~ soil_c_log_std + sand_rev_std + cec_std, data = dat)
+  mod_struc <- lm(agb_ha_log ~ cov_dbh_std + cov_height_std, data = dat), 
+  mod_soil <- lm(agb_ha_log ~ soil_c_log_std + nitrogen_log_std + cec_std, 
+  	  data = dat),
+  mod_disturbance <- lm(agb_ha_log ~ fire_log_std, data = dat)
 )
 
-names(mreg_list) <- c("mois", "div", "soil")
+names(mreg_list) <- c("mois", "div", "struc", "soil", "disturbance")
 
 beta_list <- list()
 comp_loading_list <- list()
@@ -752,9 +753,7 @@ div ~ j*soil
 div ~ l*disturb
 
 ## Struc
-#struc ~ moisture
 struc ~ f*div
-#struc ~ soil
 
 # stems_ha
 n_trees_gt10_ha_log_std ~ d*moisture
@@ -792,12 +791,6 @@ biomass_disturb_total := n + (l*b) + (d*e) + (a*f*g) + (a*h*e)
 biomass_div_via_struc := f*g
 biomass_div_via_stems := h*e
 biomass_div_total := b + (f*g) + (h*e)
-
-# Modifications
-#mean_temp_rev_std ~~ temp_stress_rev_log_std 
-#sp_rich_raref_log_std ~~ stems_ha_log_std 
-#total_precip_std ~~ mean_temp_rev_std 
-#total_precip_std ~~ sand_per_rev_std 
 "
 
 # Run model
@@ -871,56 +864,57 @@ semPaths(full_mod_fit ,'mod', "est",
 dev.off()
 
 # Dot and line plots
-mod_summ_full <- function(x){
-  filter(x, op %in% c("~", ":=")) %>%
+
+# Code groupings
+full_mod_regs <- full_mod_summ$PE %>%
+  filter(op %in% c("~", ":=")) %>%
   mutate(
-    op = case_when(
-      lhs == "agb_ha_log_std" & rhs == "moisture" ~ "Moisture",
-      lhs == "agb_ha_log_std" & rhs == "soil" ~ "Soil",
-      lhs == "agb_ha_log_std" & rhs == "div" ~ "Species\ndiversity",
-      grepl("moisture", lhs) ~ "Moisture",
-      grepl("soil", lhs) ~ "Soil",
-      grepl("div", lhs) ~ "Species\ndiversity",
-      TRUE ~ "Other effects"),
-    rhs = case_when(
-      lhs == "agb_ha_log_std" & rhs == "moisture" ~ "Direct",
-      lhs == "agb_ha_log_std" & rhs == "soil" ~ "Direct",
-      lhs == "agb_ha_log_std" & rhs == "div" ~ "Direct",
-      grepl("_via_div_struc", label) ~ "Indirect, via Div. via. Struc.",
-      grepl("_via_div_struc", label) ~ "Indirect, via Div. via. Struc.",
-      grepl("_via_div_stems", label) ~ "Indirect, via Div. via. Stem density",
-      grepl("_via_struc", label) ~ "Indirect, via Struc.",
-      grepl("_via_stems", label) ~ "Indirect, via Stem density",
-      grepl("_via_div", label) ~ "Indirect, via Div.",
-      grepl("_total", label) ~ "Total",
-      lhs == "agb_ha_log_std" & rhs == "struc" & op == "Other effects" ~ "Direct: Struc. -> AGB",
-      lhs == "agb_ha_log_std" & rhs == "n_trees_gt10_ha_log_std" & op == "Other effects" ~ "Direct: Stem density -> AGB",
-      lhs == "n_trees_gt10_ha_log_std" & rhs == "soil" & op == "Other effects" ~ "Direct: Soil -> Stem density",
-      lhs == "n_trees_gt10_ha_log_std" & rhs == "moisture" & op == "Other effects" ~ "Direct: Mois. -> Stem density",
-      lhs == "div" & rhs == "moisture" & op == "Other effects" ~ "Direct: Mois. -> Div.",
-      lhs == "div" & rhs == "soil" & op == "Other effects" ~ "Direct: Soil -> Div.",
-      lhs == "struc" & rhs == "moisture" & op == "Other effects" ~ "Direct: Mois. -> Struc.",
-      lhs == "struc" & rhs == "div" & op == "Other effects" ~ "Direct: Div. -> Struc.",
-      lhs == "n_trees_gt10_ha_log_std" & rhs == "div" & op == "Other effects" ~ "Direct: Div. -> Stem density",
-      TRUE ~ rhs)) %>%
-    mutate(op = factor(op, 
-      levels = c('Moisture','Soil','Species\ndiversity','Other effects')))
-}
+  group = case_when(
+    label %in% c("a", "j", "l", "f", "d", "i", "m", "h", "g", "e") ~ "Other",
+    label == "k" ~ "Soil", 
+    label == "c" ~ "Moisture",
+    label == "n" ~ "Disturbance", 
+    label == "b" ~ "Diversity", 
+    grepl("_moisture_", label) ~ "Moisture",
+    grepl("_soil_", label) ~ "Soil", 
+    grepl("_disturb_", label) ~ "Disturbance", 
+    grepl("_div_", label) ~ "Diversity"),
+  effect = case_when(
+    grepl("_via_div_struc", label) ~ "Indirect, via Div. via. Struc.",
+    grepl("_via_div_stems", label) ~ "Indirect, via Div. via. Stocking dens.",
+    grepl("_via_struc", label) ~ "Indirect, via Struc.",
+    grepl("_via_stems", label) ~ "Indirect, via Stocking dens.",
+    grepl("_via_div", label) ~ "Indirect, via Div.",
+    grepl("_total", label) ~ "Total",
+    lhs == "agb_ha_log_std" & rhs == "moisture" ~ "Direct",
+    lhs == "agb_ha_log_std" & rhs == "soil" ~ "Direct",
+    lhs == "agb_ha_log_std" & rhs == "div" ~ "Direct",
+    lhs == "agb_ha_log_std" & rhs == "disturb" ~ "Direct",
+    label == "g" ~ "Direct: Struc. -> AGB",
+    label == "e" ~ "Direct: Stocking dens. -> AGB",
+    lhs == "div" & rhs == "moisture" ~ "Direct: Mois. -> Div.",
+    lhs == "div" & rhs == "soil" ~ "Direct: Soil -> Div.",
+    lhs == "div" & rhs == "disturb" ~ "Direct: Disturb. -> Div.",
+    lhs == "struc" & rhs == "div" ~ "Direct: Div. -> Struc.",
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "moisture" ~ "Direct: Mois. -> Stocking dens.",
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "soil" ~ "Direct: Soil -> Stocking dens.",
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "disturb" ~ "Direct: Disturb. -> Stocking dens.",
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "div" ~ "Direct: Div. -> Stocking dens.")
+  ) %>% 
+  mutate(group = factor(group, 
+      levels = c("Diversity", "Disturbance", "Moisture", "Soil", "Other")))
 
-full_mod_summ$PE %>%filter(op %in% c("~", ":="))
-
-full_mod_regs <- mod_summ_full(full_mod_summ$PE)
-
-pdf(file = "img/full_model_slopes.pdf", width = 12, height = 8)
+# Create plot
+pdf(file = "img/full_model_slopes.pdf", width = 10, height = 12)
 ggplot() + 
   geom_hline(yintercept = 0, linetype = 2) + 
   geom_errorbar(data = full_mod_regs, 
-    aes(x = rhs, ymin = est - se, ymax = est + se),
+    aes(x = effect, ymin = est - se, ymax = est + se),
     width = 0.3) + 
-  geom_point(data = full_mod_regs, aes(x = rhs, y = est, group = rhs), 
+  geom_point(data = full_mod_regs, aes(x = effect, y = est, group = effect), 
     colour = "black", size = 2) +
-  facet_grid(op~., scales = "free_y", switch = "y") + 
-  labs(x = "Effect on AGB", y = expression("Path coefficient")) + 
+  facet_grid(group~., scales = "free_y", switch = "y") + 
+  labs(x = "", y = expression("Path coefficient")) + 
   coord_flip() + 
   theme_classic() + 
   theme(legend.position = "none", 
@@ -938,14 +932,4 @@ mod_slopes_all(full_model_regs_list, full_mod_regs,
 # extract model fit statistics and save to file
 #sem_fit_tab(full_model_summ_clust_list, full_mod_summ, 
 #  file = "full_model_fit_clust_stats")
-
-# Chi squared test of full model vs. structural model ----
-lavTestLRT(full_mod_fit, struc_model_fit, 
-  method = "default", A.method = "delta",
-  scaled.shifted = TRUE,
-  H1 = TRUE, type = "Chisq", model.names = NULL)
-
-##' It might make it impossible to compare models if they contain different
-##' sets of observed variables, whether they are nested or not. It seems 
-##' this test is made more for testing different correlation structures and paths.
 

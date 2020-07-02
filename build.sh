@@ -18,15 +18,16 @@ INC="manuscript/include/"
 cp img/clust_map.pdf $IMG  # Cluster map
 cp img/corr_mat.pdf $IMG  # Correlation matrix
 cp img/struc_model_slopes_all.pdf $IMG  # SEM slopes - structural model
-cp img/sem_struc_stems_ha.pdf $IMG  # SEM stem density line plots 
+cp img/full_model_slopes.pdf $IMG  # SEM slopes - full model
+#cp img/sem_struc_stems_ha.pdf $IMG  # SEM stem density line plots 
 cp img/hist_raw.pdf $IMG  # Histogram of variables, raw
 cp img/hist_trans.pdf $IMG  # Histogram of variables, transformed
 cp img/bivar_lm.pdf $IMG  # Bivariate linear regressions of variables
 
 # Transfer path diagrams to manuscript 
-cp sem_path_diag/path_diagram_concept.tex $INC  # Concept path diagram
-cp sem_path_diag/path_diagram_struc.tex $INC  # Structural path diagram
-cp sem_path_diag/path_diagram_full.tex $INC  # Full model path diagram
+cp sem_path_diag/concept.png $IMG  # Concept path diagram
+cp sem_path_diag/struc.png $IMG  # Structural path diagram
+cp sem_path_diag/full.png $IMG  # Full model path diagram
 
 # Transfer snippets to manuscript
 cp include/n_plots.tex $INC  # \nplots, \ntrees
@@ -46,8 +47,8 @@ cp include/corr_ci_tab.tex $INC  # Correlation matrix statistics
 ## Structural model fit statistics - struc_model_fit_clust_stats.tex
 sed -i 's/\$//g' "${INC}struc_model_fit_clust_stats.tex"
 sed -i 's/\\extracolsep{5pt}/\\extracolsep{0pt}/g' "${INC}struc_model_fit_clust_stats.tex"
-sed -i "10s/.*/{Cluster} \& {n} \& {\$\\\\chi\^{2}\$} \& {DoF} \& {CFI} \& {TLI} \& {LogLik} \& {RMSEA} \& {\$R\^{2}\$ AGB} \\\\\\\\/" "${INC}struc_model_fit_clust_stats.tex"
-sed -i 's/caption{}/caption{Model fit statistics for SEMs investigating the effects of tree diversity and stem density on AGB (\\autoref{struc_mod}). n = number of plots in cluster, $\\chi^{2}$ = Chi-squared fit statistic, DoF = model degrees of freedom, CFI = Comparative Fit Index, TLI = Tucker-Lewis Index, RMSEA = Root Mean Square Error of Approximation, $R^{2}$ AGB = R-squared of AGB predicted values.}/g' "${INC}struc_model_fit_clust_stats.tex" 
+sed -i "10s/.*/{Cluster} \& {n} \& {\$\\\\chi\^{2}\$} \& {DoF} \& {CFI} \& {TLI} \& {RMSEA} \& {\$R\^{2}\$ AGB} \\\\\\\\/" "${INC}struc_model_fit_clust_stats.tex"
+sed -i 's/caption{}/caption{Model fit statistics for SEMs investigating the effects of tree diversity and stem density on AGB (\\autoref{struc_mod}). n = number of plots in cluster, $\\chi^{2}$ = Chi-squared fit statistic, DoF = model degrees of freedom, CFI = Comparative Fit Index, TLI = Tucker-Lewis Index, RMSEA = Root Mean Square Error of Approximation, $R^{2}$ AGB = R-squared of AGB.}/g' "${INC}struc_model_fit_clust_stats.tex" 
 
 ## Cluster description table - clust_summ.tex
 sed -i 's/\\extracolsep{5pt}/\\extracolsep{0pt}/g' "${INC}clust_summ.tex"
@@ -57,7 +58,8 @@ sed -i '12,16s/&/& \\begin\{tabular\}[c]\{@\{\}c@\{\}c@\{\}\}/2' "${INC}clust_su
 sed -i '12,16s/&/\\end\{tabular\} &/3' "${INC}clust_summ.tex"
 sed -i '12,16s/,/ \\\\/g' "${INC}clust_summ.tex"
 sed -i '12,16s/+/$\\pm$/g' "${INC}clust_summ.tex"
-sed -i -r '12,16s/\w+ \w+\.*/\\textit\{&\}/g2' "${INC}clust_summ.tex"
+sed -i -r '12,15s/\w+ \w+\.*/\\textit\{&\}/g2' "${INC}clust_summ.tex"
+sed -i -r 's/Colophospermum mopane/\\textit\{&\}/g' "${INC}clust_summ.tex"
 sed -i '12,16s/spp\.\}/\}spp./g' "${INC}clust_summ.tex"
 sed -i '10s/.*/{Cluster} \& {Dominant species} \& {Indicator species} \& {N plots} \& {Species rich.} \& {Stems ha\\textsuperscript{-1}} \& {AGB (t ha\\textsuperscript{-1})} \\\\/' "${INC}clust_summ.tex"
 sed -i '13,16i\\\hline' "${INC}clust_summ.tex"

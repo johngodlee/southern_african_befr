@@ -46,6 +46,23 @@ library(MVN)
 
 source("scripts/clust_defin.R")
 
+p_format <- function(p){
+  case_when(p < 0.01 ~ paste0("p <0.01"),
+    p < 0.05 ~ paste0("p <0.05"),
+    TRUE ~ paste0("p = ", round(p, digits = 2)))
+}
+
+corr_format <- function(id, row_num){
+  paste0("\\newcommand{\\", id, "}{", "$r =$ ", corr_ci_tab$raw.r[row_num], ", ", corr_ci_tab$p[row_num], "}")
+}
+
+beta_format <- function(x, id, row_num) {
+    paste0("\\newcommand{\\", id, "}{", 
+      "$\\beta =$ ", round(x[row_num, "est"], 2),
+      "$\\pm$", round(x[row_num, "se"], 3),", ", 
+      p_format(x[row_num, "pvalue"]), "}")
+}
+
 # Import data ----
 
 dat <- readRDS("data/plot_data_fil_agg_norm_std.rds")
@@ -55,7 +72,7 @@ dat <- dat %>%
   mutate(
     precip_seas_rev_std = -1 * precip_seas_std,
     temp_stress_rev_std = -1 * temp_stress_std,
-    sand_rev_std = -1 * sand_std,
+    sand_rev_std = -1 * sand_std, 
     shannon_equit_rev_std = -1 * shannon_equit_std)
 
 # Correlation matrix between variables ----
@@ -65,7 +82,7 @@ corr_df <- dat %>%
   dplyr::select(soil_c_log_std, cec_std, nitrogen_log_std,
     fire_log_std, 
     precip_std, precip_seas_std, temp_stress_std, sand_std,
-    n_species_raref_log_std, shannon_equit_std,
+    n_species_raref_log_std, shannon_equit_rev_std,
     cov_height_std, cov_dbh_std, 
     n_trees_gt10_ha_log_std, agb_ha_log_std)
 
@@ -88,17 +105,17 @@ corr_ci$x_var <- unlist(sapply(1:(length(corr_df)-1), function(i){row.names(corr
 corr_ci$x_var <- factor(corr_ci$x_var, 
   levels = c("cec_std", "nitrogen_log_std", "fire_log_std", 
     "precip_std", "precip_seas_std", "temp_stress_std", "sand_std", "n_species_raref_log_std",
-    "shannon_equit_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std", "agb_ha_log_std"),
+    "shannon_equit_rev_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std", "agb_ha_log_std"),
   labels = c("Soil CEC", "Soil N", "Fire freq.", "MAP",
   "Precip. seas.", "Temp. stress", "Sand %", "Extrap. sp. rich.", "Shannon equit",
-  "Tree Height CoV", "DBH CoV", "Tree Density", "AGB"))
+  "Tree height CoV", "DBH CoV", "Stocking density", "AGB"))
 corr_ci$y_var <- factor(corr_ci$y_var, 
   levels = c("soil_c_log_std", "cec_std", "nitrogen_log_std", "fire_log_std",
     "precip_std", "precip_seas_std", "temp_stress_std", "sand_std", "n_species_raref_log_std",
-    "shannon_equit_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std"), 
+    "shannon_equit_rev_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std"), 
   labels = c("Soil C", "Soil CEC", "Soil N", "Fire freq.", "MAP",
     "Precip. seas.", "Temp. stress", "Sand %", "Extrap. sp. rich.", "Shannon equit",
-    "Tree Height CoV", "DBH CoV", "Tree Density"))
+    "Tree height CoV", "DBH CoV", "Stocking density"))
 corr_ci$conf <- (corr_ci$raw.lower > 0) == (corr_ci$raw.upper > 0)
 
 pdf(file = "img/corr_mat.pdf", width = 8, height = 8)
@@ -111,7 +128,7 @@ ggplot() +
     size = 3) + 
   geom_point(data = corr_ci[corr_ci$conf == FALSE,], 
     aes(x = x_var, y = y_var), fill = NA, colour = "black", shape = 21, size = 11) + 
-  scale_fill_gradient2(name = "r", low = "red", mid = "white", high = "blue") + 
+  scale_fill_gradient2(name = "r", low = "blue", mid = "white", high = "red") + 
   theme_classic() + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5,
       colour = c(rep("#D65A2D", 2), rep("#331d8b", 1), rep("#287F9C", 4), 
@@ -130,52 +147,9 @@ corr_ci_tab <- corr_ci %>%
 
 row.names(corr_ci_tab) <- seq(1:length(corr_ci_tab$x_var))
 
-p_format <- function(p){
-  case_when(p < 0.01 ~ paste0("p <0.01"),
-    p < 0.05 ~ paste0("p <0.05"),
-    TRUE ~ paste0("p = ", round(p, digits = 2)))
-}
-
-corr_format <- function(id, row_num){
-  paste0("\\newcommand{\\", id, "}{", "$r =$ ", corr_ci_tab$raw.r[row_num], ", ", corr_ci_tab$p[row_num], "}")
-}
-
 corr_ci_tab <- corr_ci_tab %>%
   mutate(x_var = as.character(x_var),
-    y_var = as.character(y_var)) %>%
-  mutate(x_var = case_when(
-    x_var == "soil_c_log_std" ~ "Org. C (ppt)",
-    x_var == "cec_std" ~ "CEC",
-    x_var == "nitrogen_log_std" ~ "Nitrogen",
-    x_var == "fire_log_std" ~ "Fire freq.",
-    x_var == "precip_std" ~ "MAP",
-    x_var == "precip_seas_std" ~ "Precip seas.",
-    x_var == "temp_stress_std" ~ "Temp. stress",
-    x_var == "sand_std" ~ "Sand %" ,
-    x_var == "n_species_raref_log_std" ~ "Sp. rich.",
-    x_var == "shannon_equit_std" ~ "Shannon equit.",
-    x_var == "cov_height_std" ~ "Tree height CV",
-    x_var == "cov_dbh_std" ~ "DBH CV",
-    x_var == "n_trees_gt10_ha_log_std" ~ "Stems ha",
-    TRUE ~ x_var
-  ),
-    y_var = case_when(
-    y_var == "soil_c_log_std" ~ "Org. C (ppt)",
-    y_var == "cec_std" ~ "CEC",
-    x_var == "nitrogen_log_std" ~ "Nitrogen",
-    x_var == "fire_log_std" ~ "Fire freq.",
-    y_var == "precip_std" ~ "MAP",
-    y_var == "precip_seas_std" ~ "Precip seas.",
-    y_var == "temp_stress_std" ~ "Temp. stress",
-    y_var == "sand_std" ~ "Sand %" ,
-    y_var == "n_species_raref_log_std" ~ "Sp. rich.",
-    y_var == "shannon_equit_std" ~ "Shannon equit.",
-    y_var == "cov_height_std" ~ "Tree height CV",
-    y_var == "cov_dbh_std" ~ "DBH CV",
-    y_var == "n_trees_gt10_ha_log_std" ~ "Stems ha",
-    y_var == "agb_ha_log_std" ~ "AGB",
-    TRUE ~ y_var
-    ),
+    y_var = as.character(y_var),
     p = p_format(p))
 
 fileConn <- file(paste0("include/corr_ci_tab.tex"))
@@ -188,21 +162,23 @@ close(fileConn)
 fileConn <- file("include/corr_coef.tex")
 writeLines(
   c(
-    corr_format("ccib", which(corr_ci_tab$x_var=="Stems ha" & corr_ci_tab$y_var=="AGB")),
-    corr_format("ccmb", which(corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="AGB")),
-    corr_format("ccmcb",which(corr_ci_tab$x_var=="Precip seas." & corr_ci_tab$y_var=="AGB")),
-    corr_format("ccob", which(corr_ci_tab$x_var=="Org. C (ppt)" & corr_ci_tab$y_var=="AGB")),
-    corr_format("ccsb", which(corr_ci_tab$x_var=="Sand %" & corr_ci_tab$y_var=="AGB")),
-    corr_format("ccms", which(corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Sp. rich.")),
-    corr_format("ccme", which(corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Shannon equit.")),
-    corr_format("ccmh", which(corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Tree height CV")),
-    corr_format("ccmi", which(corr_ci_tab$x_var=="MAP" & corr_ci_tab$y_var=="Stems ha")),
-    corr_format("ccsi", which(corr_ci_tab$x_var=="Sp. rich." & corr_ci_tab$y_var=="Stems ha")),
-    corr_format("ccei", which(corr_ci_tab$x_var=="Sp. rich." & corr_ci_tab$y_var=="Shannon equit.")),
-    corr_format("cctb", which(corr_ci_tab$x_var=="MAT" & corr_ci_tab$y_var=="AGB")),
-    corr_format("cctcb",which(corr_ci_tab$x_var=="TS" & corr_ci_tab$y_var=="AGB")),
-    corr_format("ccfb", which(corr_ci_tab$x_var=="Fire freq." & corr_ci_tab$y_var=="AGB")),
-    corr_format("ccfs", which(corr_ci_tab$x_var=="Fire freq." & corr_ci_tab$y_var=="Sp. rich."))
+    corr_format("ccnb", which(corr_ci_tab$y_var=="Soil N" & corr_ci_tab$x_var=="AGB")),
+    corr_format("ccib", which(corr_ci_tab$y_var=="Stocking density" & corr_ci_tab$x_var=="AGB")),
+    corr_format("ccmb", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="AGB")),
+    corr_format("ccmcb",which(corr_ci_tab$y_var=="Precip. seas." & corr_ci_tab$x_var=="AGB")),
+    corr_format("ccob", which(corr_ci_tab$y_var=="Soil C" & corr_ci_tab$x_var=="AGB")),
+    corr_format("ccsb", which(corr_ci_tab$y_var=="Sand %" & corr_ci_tab$x_var=="AGB")),
+    corr_format("ccms", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Extrap. sp. rich.")),
+    corr_format("ccme", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Shannon equit")),
+    corr_format("ccmh", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Tree height CoV")),
+    corr_format("ccmi", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Stocking density")),
+    corr_format("ccsi", which(corr_ci_tab$y_var=="Extrap. sp. rich." & corr_ci_tab$x_var=="Stocking density")),
+    corr_format("ccei", which(corr_ci_tab$y_var=="Extrap. sp. rich." & corr_ci_tab$x_var=="Shannon equit")),
+    corr_format("cctcb",which(corr_ci_tab$y_var=="Temp. stress" & corr_ci_tab$x_var=="AGB")),
+    corr_format("ccfb", which(corr_ci_tab$y_var=="Fire freq." & corr_ci_tab$x_var=="AGB")),
+    corr_format("ccfs", which(corr_ci_tab$y_var=="Fire freq." & corr_ci_tab$x_var=="Extrap. sp. rich.")),
+    corr_format("ccdvi", which(corr_ci_tab$y_var=="DBH CoV" & corr_ci_tab$x_var=="Stocking density")),
+    corr_format("cchvi", which(corr_ci_tab$y_var=="Tree height CoV" & corr_ci_tab$x_var=="Stocking density"))
     ),
   fileConn)
 close(fileConn)
@@ -211,7 +187,7 @@ close(fileConn)
 
 struc_model_spec <- "
 # Latent vars
-div     =~  n_species_raref_log_std + shannon_equit_std 
+div     =~  n_species_raref_log_std + shannon_equit_rev_std 
 struc   =~  cov_dbh_std + cov_height_std
 
 # Modifications
@@ -221,7 +197,6 @@ agb_ha_log_std ~ c*div
 agb_ha_log_std ~ b*struc
 struc ~ a*div
 agb_ha_log_std ~ d*n_trees_gt10_ha_log_std
-div ~~ n_trees_gt10_ha_log_std
 
 
 # Explicitly model direct and indirect effects
@@ -261,16 +236,16 @@ mod_summ_mutate_struc <- function(x){
   mutate(.,
     op = case_when(
       op == "~" & lhs == "agb_ha_log_std" ~ "Direct: AGB",
-      TRUE ~ "Other effects"),
+      TRUE ~ "Other"),
     rhs = case_when(
       op == "Direct: AGB" & rhs == "div" ~ "Species div.",
       op == "Direct: AGB" & rhs == "struc" ~ "Struct. div.",
       op == "Direct: AGB" & rhs == "stems_ha_log_std" ~ "Stem dens.",
-      lhs == "struc" & op == "Other effects" & rhs == "div" ~ "Species div. -> Struct. div.",
-      lhs == "stems_ha_log_std" & op == "Other effects" & rhs == "div" ~ "Species div. -> Stem dens.",
-      op == "Other effects" & rhs == "a*b" ~ "Indirect: Species div. -> Struct. div. -> AGB",
-      op == "Other effects" & rhs == "d*e" ~ "Indirect: Species div. -> Stem dens. -> AGB",
-      op == "Other effects" & (rhs == "c+(a*b)+(d)" | rhs == "c+(a*b)+(d*e)" | rhs == "c+(a*b)")  ~ "Total effect: Species div. -> AGB",
+      lhs == "struc" & op == "Other" & rhs == "div" ~ "Species div. -> Struct. div.",
+      lhs == "stems_ha_log_std" & op == "Other" & rhs == "div" ~ "Species div. -> Stem dens.",
+      op == "Other" & rhs == "a*b" ~ "Indirect: Species div. -> Struct. div. -> AGB",
+      op == "Other" & rhs == "d*e" ~ "Indirect: Species div. -> Stem dens. -> AGB",
+      op == "Other" & (rhs == "c+(a*b)+(d)" | rhs == "c+(a*b)+(d*e)" | rhs == "c+(a*b)")  ~ "Total effect: Species div. -> AGB",
     TRUE ~ rhs))
 }
 
@@ -451,71 +426,22 @@ sem_fit_tab(struc_model_summ_clust_list, struc_model_summ,
 fileConn <- file(paste0("include/path_coef_struc.tex"))
 writeLines(
   c(
-    paste0("\\newcommand{\\pcsdsd}{", struc_model_edge_df$est[1], "}"),
-    paste0("\\newcommand{\\pcsded}{", struc_model_edge_df$est[2], "}"),
-    paste0("\\newcommand{\\pcshdh}{", struc_model_edge_df$est[3], "}"),
-    paste0("\\newcommand{\\pcshhh}{", struc_model_edge_df$est[4], "}"),
-    paste0("\\newcommand{\\pcsdb}{", -struc_model_edge_df$est[5], "}"),
-    paste0("\\newcommand{\\pcshb}{", struc_model_edge_df$est[6], "}"),
-    paste0("\\newcommand{\\pcsdh}{", struc_model_edge_df$est[7], "}"),
-    paste0("\\newcommand{\\pcsib}{", struc_model_edge_df$est[8], "}"),
-    paste0("\\newcommand{\\pcsdi}{", struc_model_edge_df$est[9], "}"),
-    paste0("\\newcommand{\\strucrsq}{", round(lavInspect(struc_model_fit, "rsquare")[5], digits = 2), "}"),
-    paste0("\\newcommand{\\strucbrsq}{", round(lavInspect( struc_model_fit_clust_list[[2]], "rsquare")[5], digits = 2), "}"),
+    paste0("\\newcommand{\\strucrsq}{",  round(lavInspect( struc_model_fit,                 "rsquare")[5], digits = 2), "}"),
     paste0("\\newcommand{\\strucarsq}{", round(lavInspect( struc_model_fit_clust_list[[1]], "rsquare")[5], digits = 2), "}"),
-    paste0("\\newcommand{\\strucsib}{$\\beta =$ ",  
-      struc_model_edge_df$est[8], 
-      "$\\pm$", 
-      round(struc_model_edge_df$se[8], digits = 3), 
-      ", ", 
-      p_format(struc_model_edge_df$p[8]), 
-      "}"),
-    paste0("\\newcommand{\\strucdb}{$\\beta =$ ",  
-      -struc_model_edge_df$est[5], 
-      "$\\pm$", 
-      round(struc_model_edge_df$se[5], digits = 3), 
-      ", ", 
-      p_format(struc_model_edge_df$p[5]), 
-      "}"),
-    paste0("\\newcommand{\\strucdsb}{$\\beta =$ ",  
-      struc_model_edge_df$est[9], 
-      "$\\pm$", 
-      round(struc_model_edge_df$se[9], digits = 3), 
-      ", ", 
-      p_format(struc_model_edge_df$p[9]), 
-      "}"),
-    paste0(
-      "\\newcommand{\\strucbsb}{$\\beta =$ ", 
-      round(struc_model_summ_clust_list[[2]]$PE$est[5], digits = 2), 
-      "$\\pm$", 
-      round(struc_model_summ_clust_list[[2]]$PE$se[5], digits = 3), 
-      ", ", 
-      p_format(struc_model_summ_clust_list[[2]]$PE$pvalue[5]), 
-      "}"),
-    paste0(
-      "\\newcommand{\\strucbhb}{$\\beta =$ ",
-      round(struc_model_summ_clust_list[[2]]$PE$est[6], digits = 2),
-      "$\\pm$", 
-      round(struc_model_summ_clust_list[[2]]$PE$se[6], digits = 3), 
-      ", ", 
-      p_format(struc_model_summ_clust_list[[2]]$PE$pvalue[6]), 
-      "}"),
-    paste0(
-      "\\newcommand{\\struccsb}{$\\beta =$ ", 
-      round(struc_model_summ_clust_list[[3]]$PE$est[5], digits = 2), 
-      "$\\pm$", 
-      round(struc_model_summ_clust_list[[3]]$PE$se[5], digits = 3), 
-      ", ", 
-      p_format(struc_model_summ_clust_list[[3]]$PE$pvalue[5]), 
-      "}"),
-    paste0(
-      "\\newcommand{\\struacsb}{$\\beta =$ ", 
-      round(struc_model_summ_clust_list[[1]]$PE$est[5], digits = 2), 
-      "$\\pm$", 
-      round(struc_model_summ_clust_list[[1]]$PE$se[5], digits = 3), 
-      ", ", 
-      p_format(struc_model_summ_clust_list[[1]]$PE$pvalue[5]), 
-      "}")),
+    paste0("\\newcommand{\\strucbrsq}{", round(lavInspect( struc_model_fit_clust_list[[2]], "rsquare")[5], digits = 2), "}"),
+    paste0("\\newcommand{\\struccrsq}{", round(lavInspect( struc_model_fit_clust_list[[3]], "rsquare")[5], digits = 2), "}"),
+    paste0("\\newcommand{\\strucdrsq}{", round(lavInspect( struc_model_fit_clust_list[[4]], "rsquare")[5], digits = 2), "}"),
+    beta_format(struc_model_edge_df, "strucbetadb", 5),
+    beta_format(struc_model_edge_df, "strucbetadib", 9),
+    beta_format(struc_model_edge_df, "strucbetaib", 8),
+    beta_format(struc_model_summ_clust_list[[1]]$PE, "strucbetaasb", 5),
+    beta_format(struc_model_summ_clust_list[[1]]$PE, "strucbetaahb", 6),
+    beta_format(struc_model_summ_clust_list[[2]]$PE, "strucbetabsb", 5),
+    beta_format(struc_model_summ_clust_list[[2]]$PE, "strucbetabhb", 6),
+    beta_format(struc_model_summ_clust_list[[3]]$PE, "strucbetacsb", 5),
+    beta_format(struc_model_summ_clust_list[[3]]$PE, "strucbetachb", 6),
+    beta_format(struc_model_summ_clust_list[[4]]$PE, "strucbetadsb", 5),
+    beta_format(struc_model_summ_clust_list[[4]]$PE, "strucbetadhb", 6)),
   fileConn)
 close(fileConn)
 
@@ -586,12 +512,12 @@ pg <- ggplot(dat_quant_df) +
   transition_manual(frames = stem_dens_round) +
   enter_appear() + exit_disappear()
 
-anim_save("img/stem_dens_anim_map.gif", animation = pg, width = 500, height = 700)
+#anim_save("img/stem_dens_anim_map.gif", animation = pg, width = 500, height = 700)
 
 # Define a model without stem density
 struc_model_no_stem_dens_spec <- "
 # Latent vars
-div     =~  n_species_raref_log_std + shannon_equit_std
+div     =~  n_species_raref_log_std + shannon_equit_rev_std
 struc   =~  cov_dbh_std
 
 # Regressions
@@ -677,7 +603,7 @@ struc_sem_quant_regs[struc_sem_quant_regs$est == unname(sapply(
 mreg_list <- list(
   mod_mois <- lm(agb_ha_log ~ precip_std + precip_seas_rev_std + 
   	  temp_stress_rev_std + sand_rev_std, data = dat),
-  mod_div <- lm(agb_ha_log ~ n_species_raref_log_std + shannon_equit_std, data = dat),
+  mod_div <- lm(agb_ha_log ~ n_species_raref_log_std + shannon_equit_rev_std, data = dat),
   mod_struc <- lm(agb_ha_log ~ cov_dbh_std + cov_height_std, data = dat), 
   mod_soil <- lm(agb_ha_log ~ soil_c_log_std + nitrogen_log_std + cec_std, 
   	  data = dat),
@@ -731,7 +657,7 @@ sink()
 dat_multivar_norm <- dat %>%
   dplyr::select(precip_std, precip_seas_rev_std, 
     temp_stress_rev_std, sand_rev_std,
-    n_species_raref_log_std, shannon_equit_std, 
+    n_species_raref_log_std, shannon_equit_rev_std, 
     soil_c_log_std, cec_std, nitrogen_log_std,
     fire, 
     cov_dbh_std, cov_height_std, 
@@ -744,7 +670,7 @@ full_mod_spec <- "
 moisture =~ precip_std + precip_seas_std + temp_stress_rev_std + sand_rev_std
 disturb  =~ fire_log_std 
 soil     =~ soil_c_log_std + cec_std + nitrogen_log_std
-div      =~ n_species_raref_log_std + shannon_equit_std
+div      =~ n_species_raref_log_std + shannon_equit_rev_std
 struc    =~ cov_dbh_std + cov_height_std
 
 ## Diversity
@@ -811,43 +737,27 @@ full_model_edge_df <- full_mod_summ$PE %>%
     se = round(se, digits = 3),
     p = round(pvalue, digits = 3))
 
+
 fileConn <- file("include/path_coef_full.tex")
 writeLines(
   c(
-    paste0("\\newcommand{\\rgmbd}{", "$\\beta =$ ", full_model_edge_df$est[23], "$\\pm$", full_model_edge_df$se[23],", ", p_format(full_model_edge_df$p[23]), "}"),
-    paste0("\\newcommand{\\rgsbd}{",  "$\\beta =$ ", full_model_edge_df$est[28], "$\\pm$", full_model_edge_df$se[28],", ", p_format(full_model_edge_df$p[28]), "}"),
-    paste0("\\newcommand{\\rgid}{",  "$\\beta =$ ", full_model_edge_df$est[17], "$\\pm$", full_model_edge_df$se[17],", ", p_format(full_model_edge_df$p[17]), "}"),
-    paste0("\\newcommand{\\rgbd}{",  "$\\beta =$ ", full_model_edge_df$est[35], "$\\pm$", full_model_edge_df$se[35],", ", p_format(full_model_edge_df$p[35]), "}"),
-    paste0("\\newcommand{\\rghb}{",  "$\\beta =$ ", full_model_edge_df$est[21], "$\\pm$", full_model_edge_df$se[21],", ", p_format(full_model_edge_df$p[21]), "}"),
-    paste0("\\newcommand{\\rgbhd}{",  "$\\beta =$ ", full_model_edge_df$est[33], "$\\pm$", full_model_edge_df$se[33],", ", p_format(full_model_edge_df$p[33]), "}"),
-    paste0("\\newcommand{\\rgbsd}{",  "$\\beta =$ ", full_model_edge_df$est[20], "$\\pm$", full_model_edge_df$se[20],", ", p_format(full_model_edge_df$p[20]), "}"),
+    beta_format(full_model_edge_df, "fmbetatotaldb", 44),
+    beta_format(full_model_edge_df, "fmbetadb", 24),
+    beta_format(full_model_edge_df, "fmbetadhb", 42), 
+    beta_format(full_model_edge_df, "fmbetamb", 22), 
+    beta_format(full_model_edge_df, "fmbetasb", 21), 
+    beta_format(full_model_edge_df, "fmbetafb", 23), 
+    beta_format(full_model_edge_df, "fmbetamib", 28), 
+    beta_format(full_model_edge_df, "fmbetasib", 33), 
+    beta_format(full_model_edge_df, "fmbetafib", 38), 
+    beta_format(full_model_edge_df, "fmbetamd", 13), 
+    beta_format(full_model_edge_df, "fmbetasd", 14), 
+    beta_format(full_model_edge_df, "fmbetafd", 15), 
     paste0("\\newcommand{\\fmrsq}{", round(full_mod_summ$PE$est[66], digits = 2), "}"),
     paste0("\\newcommand{\\fmrmsea}{", round(full_mod_summ$FIT["rmsea"], digits = 3), "}"),
-    paste0("\\newcommand{\\fmtli}{", "0.905", "}"), #round(full_mod_summ$FIT["tli"], digits = 3), "}"),
-    paste0("\\newcommand{\\fmcfi}{", "0.924", "}"), #round(full_mod_summ$FIT["cfi"], digits = 3), "}"),
-    paste0("\\newcommand{\\pcfmmp}{", full_model_edge_df$est[1], "}"),
-    paste0("\\newcommand{\\pcfmmpc}{", full_model_edge_df$est[2], "}"),
-    paste0("\\newcommand{\\pcfmmt}{", full_model_edge_df$est[3], "}"),
-    paste0("\\newcommand{\\pcfmmtc}{", full_model_edge_df$est[4], "}"),
-    paste0("\\newcommand{\\pcfdds}{", full_model_edge_df$est[5], "}"),
-    paste0("\\newcommand{\\pcfdde}{", full_model_edge_df$est[6], "}"),
-    paste0("\\newcommand{\\pcfsss}{", full_model_edge_df$est[7], "}"),
-    paste0("\\newcommand{\\pcfsso}{", full_model_edge_df$est[8], "}"),
-    paste0("\\newcommand{\\pcfssc}{", full_model_edge_df$est[9], "}"),
-    paste0("\\newcommand{\\pcfhhh}{", full_model_edge_df$est[10], "}"),
-    paste0("\\newcommand{\\pcfhhd}{", full_model_edge_df$est[11], "}"),
-    paste0("\\newcommand{\\pcfmd}{", full_model_edge_df$est[12], "}"),
-    paste0("\\newcommand{\\pcfsd}{", full_model_edge_df$est[13], "}"),
-    paste0("\\newcommand{\\pcfdh}{", full_model_edge_df$est[14], "}"),
-    paste0("\\newcommand{\\pcfmi}{", full_model_edge_df$est[15], "}"),
-    paste0("\\newcommand{\\pcfsi}{", full_model_edge_df$est[16], "}"),
-    paste0("\\newcommand{\\pcfdi}{", full_model_edge_df$est[17], "}"),
-    paste0("\\newcommand{\\pcfsb}{", full_model_edge_df$est[18], "}"),
-    paste0("\\newcommand{\\pcfmb}{", full_model_edge_df$est[19], "}"),
-    paste0("\\newcommand{\\pcfdb}{", full_model_edge_df$est[20], "}"),
-    paste0("\\newcommand{\\pcfhb}{", full_model_edge_df$est[21], "}"),
-    paste0("\\newcommand{\\pcfib}{", full_model_edge_df$est[22], "}"),
-    paste0("\\newcommand{\\srsq}{", round(struc_model_summ$PE$est[24] * 100, digits = 0), "}")),
+    paste0("\\newcommand{\\fmtli}{", round(full_mod_summ$FIT["tli"], digits = 3), "}"),
+    paste0("\\newcommand{\\fmcfi}{", round(full_mod_summ$FIT["cfi"], digits = 3), "}"),
+    paste0("\\newcommand{\\smrsq}{", round(struc_model_summ$PE$est[24] * 100, digits = 0), "}")),
   fileConn)
 close(fileConn)
 
@@ -902,7 +812,9 @@ full_mod_regs <- full_mod_summ$PE %>%
     lhs == "n_trees_gt10_ha_log_std" & rhs == "div" ~ "Direct: Div. -> Stocking dens.")
   ) %>% 
   mutate(group = factor(group, 
-      levels = c("Diversity", "Disturbance", "Moisture", "Soil", "Other")))
+      levels = c("Diversity", "Disturbance", "Moisture", "Soil", "Other"))) %>%
+  filter(effect != "Indirect, via Div. via. Stocking dens.", 
+    !((effect == "Indirect, via Stocking dens.") & (group == "Diversity")))
 
 # Create plot
 pdf(file = "img/full_model_slopes.pdf", width = 10, height = 12)
@@ -923,13 +835,12 @@ ggplot() +
 dev.off()
 
 # Full SEM for each cluster ----
-clust_mod(full_mod_spec, "full", mod_summ_full)
-
-# Combine all into one dot and line plot
-mod_slopes_all(full_model_regs_list, full_mod_regs, 
-  "full_model_slopes_all.pdf")
+#clust_mod(full_mod_spec, "full", mod_summ_full)
+#
+## Combine all into one dot and line plot
+#mod_slopes_all(full_model_regs_list, full_mod_regs, 
+#  "full_model_slopes_all.pdf")
 
 # extract model fit statistics and save to file
-#sem_fit_tab(full_model_summ_clust_list, full_mod_summ, 
-#  file = "full_model_fit_clust_stats")
-
+# sem_fit_tab(full_model_summ_clust_list, full_mod_summ, 
+#   file = "full_model_fit_clust_stats")

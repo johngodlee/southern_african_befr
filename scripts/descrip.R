@@ -52,8 +52,8 @@ white_veg_miombo <- white_veg_fort %>%
     lat < -2)
 
 # Make clust4 as factor ----
-plot_data$clust4 <- clust_names[plot_data$clust4]
-plot_data$clust4 <- factor(plot_data$clust4)
+plot_data$clust4_fac <- clust_names[plot_data$clust4]
+plot_data$clust4_fac <- factor(plot_data$clust4_fac)
 
 # Map of plot locations, compared to full SEOSAW dataset ----
 
@@ -75,11 +75,11 @@ ggplot() +
   scale_fill_manual(name = "", values = "#A37803") +
   new_scale_fill() + 
   geom_point(data = plot_data, 
-    aes(x = longitude_of_centre, y = latitude_of_centre, fill = as.character(clust4)), 
+    aes(x = longitude_of_centre, y = latitude_of_centre, fill = as.character(clust4_fac)), 
     size = 2, shape = 21, colour = "black", position = "jitter") +
   scale_fill_manual(name = "Cluster", values = clust_pal) + 
   map_africa_colour +
-  facet_wrap(~clust4, nrow = 1) + 
+  facet_wrap(~clust4_fac, nrow = 1) + 
   coord_map() + 
   ylim(-35.5, 10) + 
   labs(x = "Longitude", y = "Latitude") + 
@@ -148,7 +148,7 @@ ggplot() +
     breaks = c(1, 5, 10, 50, 100, 200, 400)) + 
   new_scale_fill() +
   geom_point(data = plot_data,
-    mapping = aes(x = temp, y = precip, fill = clust4), 
+    mapping = aes(x = temp, y = precip, fill = clust4_fac), 
     colour = "black", shape = 21) + 
   geom_polygon(data = plot_hull_fort,
     aes(x = long, y = lat), fill = NA, colour = "#A3152A") + 
@@ -212,7 +212,7 @@ close(fileConn)
 # Which species make up the vegetation clusters? ----
 
 # Run Dufrene-Legendre indicator species analysis
-clust_indval <- indval(ab_mat, clustering = plot_data$clust4)
+clust_indval <- indval(ab_mat, clustering = plot_data$clust4_fac)
 
 sink("output/clust_species_indicators.txt")
 summary(clust_indval, p = 0.05, type = "short", digits = 2, show = p)
@@ -247,11 +247,11 @@ clust_dom <- stems %>%
   inner_join(., plotcode_plot_cluster_lookup, by = c("plot_id" = "plot_id_vec")) %>%
   inner_join(., plot_data, by = "plot_cluster") %>%
   mutate(bchave_prop = agb.x / agb.y) %>%
-  group_by(clust4, species_name_clean) %>%
+  group_by(clust4_fac, species_name_clean) %>%
   summarise(bchave_prop_total = sum(bchave_prop)) %>%
-  dplyr::select(-clust4)
+  dplyr::select(-clust4_fac)
 
-clust_dom_list <- split(clust_dom, clust_dom$clust4)
+clust_dom_list <- split(clust_dom, clust_dom$clust4_fac)
 
 dom_extrac <- lapply(1:4, function(x) {
   out <- head(clust_dom_list[[x]][order(clust_dom_list[[x]]$bchave_prop_total, 
@@ -280,7 +280,7 @@ c_ind <- gsub("\\.", " ", indval_extrac_tidy[c(2,5,8,11)])
 c_dom <- gsub("\\.", " ", dom_extrac_tidy[c(2,5,8,11)])
 
 clust_summ <- plot_data %>%
-  group_by(clust4) %>%
+  group_by(clust4_fac) %>%
   summarise(
     n_plots = n(),
     agb_ha_min = round(min(agb_ha, na.rm = TRUE), digits = 3),
@@ -296,12 +296,12 @@ clust_summ <- plot_data %>%
     stems_ha_median = round(mean(n_trees_gt10_ha, na.rm = TRUE), digits = 0),
     stems_ha_iqr = round(IQR(n_trees_gt10_ha, na.rm = TRUE), digits = 1),
     stems_ha_sd = round(sd(n_trees_gt10_ha, na.rm = TRUE), digits = 1)) %>%
-  mutate(c_name = clust_names, c_ind, c_dom,
+  mutate(c_ind = c_ind[c(3,2,1,4)], c_dom = c_dom[c(3,2,1,4)],
     agb_ha = paste0(agb_ha_median, "(", agb_ha_iqr, ")"),
     n_species_raref = paste0(n_species_raref_median, "(", n_species_raref_iqr, ")"),
     stems_ha = paste0(stems_ha_median, "(", stems_ha_iqr, ")"),
-    clust4 = as.character(clust4)) %>%
-  select(clust4, c_dom, c_ind,  
+    clust4_fac = as.character(clust4_fac)) %>%
+  select(clust4_fac, c_dom, c_ind,  
     n_plots, n_species_raref, stems_ha, agb_ha)
 
 fileConn <- file("include/clust_summ.tex")
@@ -309,3 +309,4 @@ writeLines(stargazer(clust_summ,
   summary = FALSE,
   label = "clust_summ", digit.separate = 0, rownames = FALSE), fileConn)
 close(fileConn)
+

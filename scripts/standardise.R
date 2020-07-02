@@ -99,7 +99,8 @@ hist_raw <- dat %>%
   ggplot(aes(x = value)) + 
   geom_histogram(colour = "black", fill = "grey") + 
   facet_wrap(~facet_label, scales = "free", labeller = label_parsed) + 
-  labs(x = "", y = "")
+  labs(x = "", y = "") + 
+  theme_bw()
 
 pdf(file = "img/hist_raw.pdf", width = 12, height = 7)
 hist_raw
@@ -130,7 +131,8 @@ hist_trans <- dat_trans %>%
   ggplot(., aes(x = value)) + 
   geom_histogram(colour = "black", fill = "grey") + 
   facet_wrap(~facet_label, scales = "free", labeller = label_parsed) + 
-  labs(x = "", y = "")
+  labs(x = "", y = "") + 
+  theme_bw()
 
 pdf(file = "img/hist_trans.pdf", width = 12, height = 7)
 hist_trans
@@ -162,31 +164,31 @@ sem_data_norm_std <- dat_trans %>%
 
 ##' Refers to causal paths in SEM conceptual diagram
 bivar_list <- c(
+  "agb_ha_log_std ~ n_species_raref_log_std",
+  "agb_ha_log_std ~ shannon_equit_std",
+  "agb_ha_log_std ~ n_trees_gt10_ha_log_std",
+  "agb_ha_log_std ~ cov_dbh_std",
+  "agb_ha_log_std ~ cov_height_std",
   "agb_ha_log_std ~ cec_std",
   "agb_ha_log_std ~ soil_c_log_std",
   "agb_ha_log_std ~ nitrogen_log_std",
-  "agb_ha_log_std ~ sand_std",
-  "agb_ha_log_std ~ cov_dbh_std",
-  "agb_ha_log_std ~ cov_height_std",
-  "agb_ha_log_std ~ shannon_equit_std",
-  "agb_ha_log_std ~ n_species_raref_log_std",
   "agb_ha_log_std ~ temp_std",
   "agb_ha_log_std ~ temp_stress_std",
   "agb_ha_log_std ~ precip_std",
   "agb_ha_log_std ~ precip_seas_std",
-  "agb_ha_log_std ~ n_trees_gt10_ha_log_std",
+  "agb_ha_log_std ~ sand_std",
   "agb_ha_log_std ~ fire_log_std",
   "agb_ha_log_std ~ herbivory_std",
   
   "n_trees_gt10_ha_log_std ~ n_species_raref_log_std",
   "n_trees_gt10_ha_log_std ~ shannon_equit_std",
+  "n_trees_gt10_ha_log_std ~ cec_std",
+  "n_trees_gt10_ha_log_std ~ soil_c_log_std",
+  "n_trees_gt10_ha_log_std ~ nitrogen_log_std",
   "n_trees_gt10_ha_log_std ~ temp_std",
   "n_trees_gt10_ha_log_std ~ temp_stress_std",
   "n_trees_gt10_ha_log_std ~ precip_std",
   "n_trees_gt10_ha_log_std ~ precip_seas_std",
-  "n_trees_gt10_ha_log_std ~ cec_std",
-  "n_trees_gt10_ha_log_std ~ soil_c_log_std",
-  "n_trees_gt10_ha_log_std ~ nitrogen_log_std",
   "n_trees_gt10_ha_log_std ~ sand_std",
   "n_trees_gt10_ha_log_std ~ fire_log_std",
   "n_trees_gt10_ha_log_std ~ herbivory_std",
@@ -194,13 +196,13 @@ bivar_list <- c(
   "n_species_raref_log_std ~ cec_std",
   "n_species_raref_log_std ~ soil_c_log_std",
   "n_species_raref_log_std ~ nitrogen_log_std",
-  "n_species_raref_log_std ~ sand_std",
   "n_species_raref_log_std ~ temp_std",
   "n_species_raref_log_std ~ temp_stress_std",
   "n_species_raref_log_std ~ precip_std",
   "n_species_raref_log_std ~ precip_seas_std",
+  "n_species_raref_log_std ~ sand_std",
   "n_species_raref_log_std ~ fire_log_std",
-  "n_species_raref_log_std ~ herbivory_std" )
+  "n_species_raref_log_std ~ herbivory_std")
 
 # Create models
 lm_list <- list()
@@ -260,6 +262,16 @@ saveRDS(bivar_lm_stats_output, "output/bivar_lm.rds")
 
 # Create plots ----
 plot_list = list()
+
+lab_lookup <- data.frame(orig = c("precip_std", "precip_seas_std", "temp_std",
+    "temp_stress_std", "agb_ha_log_std", "cec_std", "sand_std", "soil_c_log_std",
+    "nitrogen_log_std", "fire_log_std", "herbivory_std", "cov_dbh_std",
+    "cov_height_std", "n_trees_gt10_ha_log_std", "shannon_equit_std",
+    "n_species_raref_log_std"), 
+  new = c("MAP", "Precip. seas.", "MAT", "Temp. stress", "AGB", "Soil CEC", "Soil sand", "Soil C", "Soil N", 
+    "Fire freq.", "Herbivore biomass", "DBH CoV", "Height CoV", "Stocking density", 
+    "Shannon equit.", "Sp. rich."))
+
 for (i in 1:length(bivar_list)) {
   x <- sapply(strsplit(bivar_list, split = " ~ "), function(x){x[2]})[i]
   y <- sapply(strsplit(bivar_list, split = " ~ "), function(x){x[1]})[i]
@@ -293,7 +305,9 @@ for (i in 1:length(bivar_list)) {
 			se = FALSE) + 
 	  scale_fill_manual(name = "Cluster", values = clust_pal) + 
 	  scale_colour_manual(name = "Cluster", values = clust_pal) + 
-	  theme(legend.position = "none")
+	  theme_bw() + 
+	  theme(legend.position = "none") + 
+	  labs(x = lab_lookup[lab_lookup$orig == x, "new"], y = lab_lookup[lab_lookup$orig == y, "new"])
 	plot_list[[i]] = p
 }
 
@@ -301,8 +315,8 @@ for (i in 1:length(bivar_list)) {
 n <- length(plot_list)
 n_col <- floor(sqrt(n))
 
-pdf(file =  "img/bivar_lm.pdf", width = 14, height = 10)
-do.call("grid.arrange", c(plot_list, ncol = 5))
+pdf(file =  "img/bivar_lm.pdf", width = 10, height = 14)
+do.call("grid.arrange", c(plot_list, ncol = 4))
 dev.off()
 
 # Write standardized data ----

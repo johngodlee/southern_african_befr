@@ -178,7 +178,6 @@ bivar_list <- c(
   "agb_ha_log_std ~ precip_seas_std",
   "agb_ha_log_std ~ sand_std",
   "agb_ha_log_std ~ fire_log_std",
-  "agb_ha_log_std ~ herbivory_std",
   
   "n_trees_gt10_ha_log_std ~ n_species_raref_log_std",
   "n_trees_gt10_ha_log_std ~ shannon_equit_std",
@@ -191,7 +190,6 @@ bivar_list <- c(
   "n_trees_gt10_ha_log_std ~ precip_seas_std",
   "n_trees_gt10_ha_log_std ~ sand_std",
   "n_trees_gt10_ha_log_std ~ fire_log_std",
-  "n_trees_gt10_ha_log_std ~ herbivory_std",
   
   "n_species_raref_log_std ~ cec_std",
   "n_species_raref_log_std ~ soil_c_log_std",
@@ -201,8 +199,7 @@ bivar_list <- c(
   "n_species_raref_log_std ~ precip_std",
   "n_species_raref_log_std ~ precip_seas_std",
   "n_species_raref_log_std ~ sand_std",
-  "n_species_raref_log_std ~ fire_log_std",
-  "n_species_raref_log_std ~ herbivory_std")
+  "n_species_raref_log_std ~ fire_log_std")
 
 # Create models
 lm_list <- list()

@@ -33,7 +33,7 @@ plots <- read.csv("~/git_proj/seosaw_data/data_out/plots_v2.7.csv")
 stems <- read.csv("~/git_proj/seosaw_data/data_out/stems_latest_v2.7.csv")
 
 # Fire layer for manual calculation
-fire_count <- raster("~/Downloads/firecount_2001_2018.tif")
+fire_count <- raster("/Volumes/john/AFcount_2001_2018.tif")
 
  
 # Datasets used in analysis

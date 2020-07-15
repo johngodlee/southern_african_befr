@@ -12,5 +12,5 @@ clust_pal <- c("#5cb930", "#6e49cc", "#49b9da", "#da2c57")
 # barplot(height = rep(1, length(clust_pal)), width = rep(1, length(clust_pal)), 
 #   col = clust_pal, axes = FALSE)
 
-clust_names <- c("Marginal miombo", "Core miombo", "Acacia shrubland", "Mopane")
+clust_names <- c("Sparse miombo / Baikiaea", "Core miombo", "ex-Acacia", "Mopane")
 

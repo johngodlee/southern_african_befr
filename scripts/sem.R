@@ -108,14 +108,14 @@ corr_ci$x_var <- factor(corr_ci$x_var,
     "shannon_equit_rev_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std", "agb_ha_log_std"),
   labels = c("Soil CEC", "Soil N", "Fire freq.", "MAP",
   "Precip. seas.", "Temp. stress", "Sand %", "Extrap. sp. rich.", "Shannon equit",
-  "Tree height CoV", "DBH CoV", "Stocking density", "AGB"))
+  "Tree height CoV", "DBH CoV", "Stem density", "AGB"))
 corr_ci$y_var <- factor(corr_ci$y_var, 
   levels = c("soil_c_log_std", "cec_std", "nitrogen_log_std", "fire_log_std",
     "precip_std", "precip_seas_std", "temp_stress_std", "sand_std", "n_species_raref_log_std",
     "shannon_equit_rev_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std"), 
   labels = c("Soil C", "Soil CEC", "Soil N", "Fire freq.", "MAP",
     "Precip. seas.", "Temp. stress", "Sand %", "Extrap. sp. rich.", "Shannon equit",
-    "Tree height CoV", "DBH CoV", "Stocking density"))
+    "Tree height CoV", "DBH CoV", "Stem density"))
 corr_ci$conf <- (corr_ci$raw.lower > 0) == (corr_ci$raw.upper > 0)
 
 pdf(file = "img/corr_mat.pdf", width = 8, height = 8)
@@ -163,7 +163,7 @@ fileConn <- file("include/corr_coef.tex")
 writeLines(
   c(
     corr_format("ccnb", which(corr_ci_tab$y_var=="Soil N" & corr_ci_tab$x_var=="AGB")),
-    corr_format("ccib", which(corr_ci_tab$y_var=="Stocking density" & corr_ci_tab$x_var=="AGB")),
+    corr_format("ccib", which(corr_ci_tab$y_var=="Stem density" & corr_ci_tab$x_var=="AGB")),
     corr_format("ccmb", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="AGB")),
     corr_format("ccmcb",which(corr_ci_tab$y_var=="Precip. seas." & corr_ci_tab$x_var=="AGB")),
     corr_format("ccob", which(corr_ci_tab$y_var=="Soil C" & corr_ci_tab$x_var=="AGB")),
@@ -171,14 +171,14 @@ writeLines(
     corr_format("ccms", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Extrap. sp. rich.")),
     corr_format("ccme", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Shannon equit")),
     corr_format("ccmh", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Tree height CoV")),
-    corr_format("ccmi", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Stocking density")),
-    corr_format("ccsi", which(corr_ci_tab$y_var=="Extrap. sp. rich." & corr_ci_tab$x_var=="Stocking density")),
+    corr_format("ccmi", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Stem density")),
+    corr_format("ccsi", which(corr_ci_tab$y_var=="Extrap. sp. rich." & corr_ci_tab$x_var=="Stem density")),
     corr_format("ccei", which(corr_ci_tab$y_var=="Extrap. sp. rich." & corr_ci_tab$x_var=="Shannon equit")),
     corr_format("cctcb",which(corr_ci_tab$y_var=="Temp. stress" & corr_ci_tab$x_var=="AGB")),
     corr_format("ccfb", which(corr_ci_tab$y_var=="Fire freq." & corr_ci_tab$x_var=="AGB")),
     corr_format("ccfs", which(corr_ci_tab$y_var=="Fire freq." & corr_ci_tab$x_var=="Extrap. sp. rich.")),
-    corr_format("ccdvi", which(corr_ci_tab$y_var=="DBH CoV" & corr_ci_tab$x_var=="Stocking density")),
-    corr_format("cchvi", which(corr_ci_tab$y_var=="Tree height CoV" & corr_ci_tab$x_var=="Stocking density"))
+    corr_format("ccdvi", which(corr_ci_tab$y_var=="DBH CoV" & corr_ci_tab$x_var=="Stem density")),
+    corr_format("cchvi", which(corr_ci_tab$y_var=="Tree height CoV" & corr_ci_tab$x_var=="Stem density"))
     ),
   fileConn)
 close(fileConn)
@@ -189,6 +189,7 @@ struc_model_spec <- "
 # Latent vars
 div     =~  n_species_raref_log_std + shannon_equit_rev_std 
 struc   =~  cov_dbh_std + cov_height_std
+div ~~ n_trees_gt10_ha_log_std
 
 # Modifications
 
@@ -411,8 +412,6 @@ fit_df_clean_output <- fit_df_clean_output %>%
 
 fit_df_clean_output$cluster <- c(clust_names, "All")
 
-
-
 fileConn <- file(paste0("include/", file, ".tex"))
 writeLines(stargazer(fit_df_clean_output, 
   summary = FALSE,
@@ -519,6 +518,7 @@ struc_model_no_stem_dens_spec <- "
 # Latent vars
 div     =~  n_species_raref_log_std + shannon_equit_rev_std
 struc   =~  cov_dbh_std
+
 
 # Regressions
 agb_ha_log_std ~ c*div
@@ -706,13 +706,13 @@ biomass_soil_via_div := j*b
 biomass_soil_via_stems := i*e
 biomass_soil_via_div_struc := j*f*g
 biomass_soil_via_div_stems := j*h*e
-biomass_soil_total := k + (j*b) + (d*e) + (a*f*g) + (a*h*e)
+biomass_soil_total := k + (j*b) + (i*e) + (j*f*g) + (j*h*e)
 
 biomass_disturb_via_div := l*b
 biomass_disturb_via_stems := m*e
 biomass_disturb_via_div_struc := l*f*g
 biomass_disturb_via_div_stems := l*h*e
-biomass_disturb_total := n + (l*b) + (d*e) + (a*f*g) + (a*h*e)
+biomass_disturb_total := n + (l*b) + (m*e) + (l*f*g) + (l*h*e)
 
 biomass_div_via_struc := f*g
 biomass_div_via_stems := h*e
@@ -791,9 +791,9 @@ full_mod_regs <- full_mod_summ$PE %>%
     grepl("_div_", label) ~ "Diversity"),
   effect = case_when(
     grepl("_via_div_struc", label) ~ "Indirect, via Div. via. Struc.",
-    grepl("_via_div_stems", label) ~ "Indirect, via Div. via. Stocking dens.",
+    grepl("_via_div_stems", label) ~ "Indirect, via Div. via. Stem dens.",
     grepl("_via_struc", label) ~ "Indirect, via Struc.",
-    grepl("_via_stems", label) ~ "Indirect, via Stocking dens.",
+    grepl("_via_stems", label) ~ "Indirect, via Stem dens.",
     grepl("_via_div", label) ~ "Indirect, via Div.",
     grepl("_total", label) ~ "Total",
     lhs == "agb_ha_log_std" & rhs == "moisture" ~ "Direct",
@@ -801,20 +801,20 @@ full_mod_regs <- full_mod_summ$PE %>%
     lhs == "agb_ha_log_std" & rhs == "div" ~ "Direct",
     lhs == "agb_ha_log_std" & rhs == "disturb" ~ "Direct",
     label == "g" ~ "Direct: Struc. -> AGB",
-    label == "e" ~ "Direct: Stocking dens. -> AGB",
+    label == "e" ~ "Direct: Stem dens. -> AGB",
     lhs == "div" & rhs == "moisture" ~ "Direct: Mois. -> Div.",
     lhs == "div" & rhs == "soil" ~ "Direct: Soil -> Div.",
     lhs == "div" & rhs == "disturb" ~ "Direct: Disturb. -> Div.",
     lhs == "struc" & rhs == "div" ~ "Direct: Div. -> Struc.",
-    lhs == "n_trees_gt10_ha_log_std" & rhs == "moisture" ~ "Direct: Mois. -> Stocking dens.",
-    lhs == "n_trees_gt10_ha_log_std" & rhs == "soil" ~ "Direct: Soil -> Stocking dens.",
-    lhs == "n_trees_gt10_ha_log_std" & rhs == "disturb" ~ "Direct: Disturb. -> Stocking dens.",
-    lhs == "n_trees_gt10_ha_log_std" & rhs == "div" ~ "Direct: Div. -> Stocking dens.")
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "moisture" ~ "Direct: Mois. -> Stem dens.",
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "soil" ~ "Direct: Soil -> Stem dens.",
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "disturb" ~ "Direct: Disturb. -> Stem dens.",
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "div" ~ "Direct: Div. -> Stem dens.")
   ) %>% 
   mutate(group = factor(group, 
       levels = c("Diversity", "Disturbance", "Moisture", "Soil", "Other"))) %>%
-  filter(effect != "Indirect, via Div. via. Stocking dens.", 
-    !((effect == "Indirect, via Stocking dens.") & (group == "Diversity")))
+  filter(effect != "Indirect, via Div. via. Stem dens.", 
+    !((effect == "Indirect, via Stem dens.") & (group == "Diversity")))
 
 # Create plot
 pdf(file = "img/full_model_slopes.pdf", width = 10, height = 12)

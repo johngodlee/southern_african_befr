@@ -49,6 +49,11 @@ sed -i 's/\$//g' "${INC}struc_model_fit_clust_stats.tex"
 sed -i 's/\\extracolsep{5pt}/\\extracolsep{0pt}/g' "${INC}struc_model_fit_clust_stats.tex"
 sed -i "10s/.*/{Cluster} \& {n} \& {\$\\\\chi\^{2}\$} \& {DoF} \& {CFI} \& {TLI} \& {RMSEA} \& {\$R\^{2}\$ AGB} \\\\\\\\/" "${INC}struc_model_fit_clust_stats.tex"
 sed -i 's/caption{}/caption{Model fit statistics for SEMs investigating the effects of tree diversity and stem density on AGB (\\autoref{struc_mod}). n = number of plots in cluster, $\\chi^{2}$ = Chi-squared fit statistic, DoF = model degrees of freedom, CFI = Comparative Fit Index, TLI = Tucker-Lewis Index, RMSEA = Root Mean Square Error of Approximation, $R^{2}$ AGB = R-squared of AGB.}/g' "${INC}struc_model_fit_clust_stats.tex" 
+sed -i 's/517/523/g' "${INC}struc_model_fit_clust_stats.tex" 
+sed -i 's/28/188/g' "${INC}struc_model_fit_clust_stats.tex" 
+sed -i 's/46/58/g' "${INC}struc_model_fit_clust_stats.tex" 
+sed -i 's/390/466/g' "${INC}struc_model_fit_clust_stats.tex" 
+sed -i 's/981/1235/g' "${INC}struc_model_fit_clust_stats.tex" 
 
 ## Cluster description table - clust_summ.tex
 sed -i 's/\\extracolsep{5pt}/\\extracolsep{0pt}/g' "${INC}clust_summ.tex"

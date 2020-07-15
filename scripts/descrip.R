@@ -228,19 +228,15 @@ indval_extrac <- lapply(1:4, function(x) {
     out[!grepl("indet", out$sp, ignore.case = TRUE),]
   })
 
-indval_extrac_names <- sapply(indval_extrac, function(x) {names(x)[2]})
+indval_extrac_tidy <- do.call(rbind, lapply(indval_extrac, function(x) {
+    clust4_fac <- names(x)[2]
+    out <- x[1:3,]
+    out$clust4_fac <- clust4_fac
+    names(out) <- c("species_name_clean", "indval", "clust4_fac")
+    out[,c(3,1,2)]
+  }))
 
-indval_extrac_order <- indval_extrac[match(indval_extrac_names, clust_names)]
-
-indval_extrac_tidy <- unlist(lapply(1:4, function(x) {
-  c(clust_names[x],
-  paste(gsub(" ", ".", indval_extrac_order[[x]]$sp[1:3]), collapse = ", "),
-  "")
-}))
-
-fileConn<-file("output/clust_species_ind_summary.txt")
-writeLines(indval_extrac_tidy, fileConn)
-close(fileConn)
+write.csv(indval_extrac_tidy, "output/clust_species_ind_summary.csv", row.names = FALSE)
 
 # Find dominant species by biomass per plot per cluster
 clust_dom <- stems %>%
@@ -259,25 +255,23 @@ dom_extrac <- lapply(1:4, function(x) {
   out[!grepl("indet", out$species_name_clean, ignore.case = TRUE),]
 })
 
-dom_extrac_names <- as.character(sapply(dom_extrac, function(x) {
-    unname(unlist(x[1,1]))
+dom_extrac_tidy <- do.call(rbind, lapply(dom_extrac, function(x) {
+    x[1:3,]
   }))
 
-dom_extrac_order <- dom_extrac[match(dom_extrac_names, clust_names)]
-
-dom_extrac_tidy <- unlist(lapply(1:4, function(x) {
-  c(clust_names[x],
-    paste(gsub(" ", ".", dom_extrac_order[[x]]$species_name_clean[1:3]), collapse = ", "),
-    "")
-  }))
-
-fileConn <- file("output/clust_species_dom_summary.txt")
-  writeLines(dom_extrac_tidy, fileConn)
-close(fileConn)
+write.csv(dom_extrac_tidy, "output/clust_species_dom_summary.csv", row.names = FALSE)
 
 # Build a tidy table describing vegetation clusters
-c_ind <- gsub("\\.", " ", indval_extrac_tidy[c(2,5,8,11)])
-c_dom <- gsub("\\.", " ", dom_extrac_tidy[c(2,5,8,11)])
+c_ind <- indval_extrac_tidy %>% 
+  group_by(clust4_fac) %>%
+  top_n(3) %>% 
+  dplyr::select(-indval) %>%
+  summarise(ind_species = paste(species_name_clean, collapse = ","))
+c_dom <- dom_extrac_tidy %>%
+  group_by(clust4_fac) %>%
+  top_n(3) %>% 
+  dplyr::select(-bchave_prop_total) %>%
+  summarise(dom_species = paste(species_name_clean, collapse = ","))
 
 clust_summ <- plot_data %>%
   group_by(clust4_fac) %>%
@@ -296,12 +290,14 @@ clust_summ <- plot_data %>%
     stems_ha_median = round(mean(n_trees_gt10_ha, na.rm = TRUE), digits = 0),
     stems_ha_iqr = round(IQR(n_trees_gt10_ha, na.rm = TRUE), digits = 1),
     stems_ha_sd = round(sd(n_trees_gt10_ha, na.rm = TRUE), digits = 1)) %>%
-  mutate(c_ind = c_ind[c(3,2,1,4)], c_dom = c_dom[c(3,2,1,4)],
+  left_join(., c_ind, by = "clust4_fac") %>% 
+  left_join(., c_dom, by = "clust4_fac") %>%
+  mutate(
     agb_ha = paste0(agb_ha_median, "(", agb_ha_iqr, ")"),
     n_species_raref = paste0(n_species_raref_median, "(", n_species_raref_iqr, ")"),
     stems_ha = paste0(stems_ha_median, "(", stems_ha_iqr, ")"),
     clust4_fac = as.character(clust4_fac)) %>%
-  select(clust4_fac, c_dom, c_ind,  
+  select(clust4_fac, dom_species, ind_species,  
     n_plots, n_species_raref, stems_ha, agb_ha)
 
 fileConn <- file("include/clust_summ.tex")

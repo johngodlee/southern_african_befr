@@ -269,7 +269,7 @@ lab_lookup <- data.frame(orig = c("precip_std", "precip_seas_std", "temp_std",
     "cov_height_std", "n_trees_gt10_ha_log_std", "shannon_equit_std",
     "n_species_raref_log_std"), 
   new = c("MAP", "Precip. seas.", "MAT", "Temp. stress", "AGB", "Soil CEC", "Soil sand", "Soil C", "Soil N", 
-    "Fire freq.", "Herbivore biomass", "DBH CoV", "Height CoV", "Stocking density", 
+    "Fire freq.", "Herbivore biomass", "DBH CoV", "Height CoV", "Stem density", 
     "Shannon equit.", "Sp. rich."))
 
 for (i in 1:length(bivar_list)) {

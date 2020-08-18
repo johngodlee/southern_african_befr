@@ -9,6 +9,9 @@ data/**
 include/**
 misc/**
 output/**
+chapter/**
+co-authors/**
+cover_letter/**
 
 Rplots.pdf
 

@@ -1,6 +1,5 @@
 *.tif
 .DS_Store
-journals.md
 gganim*.png
 
 # Directories

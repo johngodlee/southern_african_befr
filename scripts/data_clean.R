@@ -20,7 +20,6 @@ library(seosawr)
 library(raster)
 library(sf)
 
-
 # Import plot and stems data ----
 
 # SEOSAW v1 plot summary data, for vegetation clusters
@@ -34,15 +33,23 @@ stems <- read.csv("~/git_proj/seosaw_data/data_out/stems_latest_v2.7.csv")
 
 # Fire layer for manual calculation
 fire_count <- raster("/Volumes/john/AFcount_2001_2018.tif")
-
  
 # Datasets used in analysis
 dataset_codes <- c("ZIS", "SSM", "MCL", "ZPF", "ZNF", "MNR", "MGR", "MAR",
-  "ZKS", "TKW", "MLC", "ZCC", "VAS", "ABG", "MCF", "MNF", "SHD")
-
+  "ZKS", "TKW", "MLC", "ZCC", "VAS", "ABG", "MCF", "MNF", "SHD", "DKS")
 
 # Remove plots with human-altered conditions ----
-plots_clean <- plots %>%
+
+# Fix some incorrect metadata
+plots_fix <- plots %>% 
+  mutate(ntfp_harvesting = case_when(
+      grepl("DKS", plot_id) ~ FALSE,
+      TRUE ~ ntfp_harvesting),
+    farmed_30_years = case_when(
+      grepl("DKS", plot_id) ~ FALSE,
+      TRUE ~ farmed_30_years))
+
+plots_clean <- plots_fix %>%
   filter_at(.vars = c("charcoal_harvesting", "timber_harvesting", 
     "high_graded_100_years", "manipulation_experiment", "fuel_wood_harvesting", 
     "other_woody_product_harvesting", "ntfp_harvesting", "farmed_30_years",
@@ -68,13 +75,23 @@ plots_clean <- plots %>%
       fire = firecount_2001_2018,
       herbivory = total_herbivory)
 
-
 # Aggregate Zambian Forestry Commission plots ----
 
 # Split into Zambia and non-Zambia datasets
 plots_zam <- plots_clean %>%
   filter(prinv == "Siampale A.")
-  
+
+zamfullcluster <- plots_zam %>%
+  group_by(plot_cluster) %>%
+  tally() %>%
+  filter(n == 4) 
+
+plots_zam <- plots_zam %>%
+  filter(plot_cluster %in% zamfullcluster$plot_cluster)
+
+nzam <- nrow(plots_zam)
+nzamcluster <- nzam / 4
+
 plots_nozam <- plots_clean %>%
   filter(prinv != "Siampale A.") %>%
   mutate(plot_cluster = plot_id)
@@ -100,7 +117,6 @@ plots_zam_agg <- plots_zam %>%
 
 # Combine Zambian aggregated data with non-aggregated other data
 plots_agg <- bind_rows(plots_zam_agg, plots_nozam)
-
 
 # Calculate plot level values from stems ----
 
@@ -193,14 +209,12 @@ ggplot() +
   labs(x = "Bootstrap sample size", y = "Extrapolated species richness")
 dev.off()
 
-
 # Add tree diversity data to plot level data ----
 plots_div <- left_join(plots_stems, chao_df, by = "plot_cluster") %>%
   left_join(., as.data.frame(rowSums(ab_mat)) %>%
   mutate(plot_cluster = row.names(.)) %>%
   rename(n_trees_gt10 = `rowSums(ab_mat)`), by = "plot_cluster") %>%
   mutate(n_trees_gt10_ha = n_trees_gt10 / plot_area)
-
 
 # Remove plots with less than 50 trees per ha, less than 0.1 ha plot area ----
 plots_div_clean <- plots_div %>%
@@ -212,7 +226,18 @@ clust <- ssaw8$cluster %>%
   filter(grepl(paste(dataset_codes, 
     collapse = "|"), plotcode)) %>%
   mutate(plot_id = gsub("-(0)?(0)?", "_", plotcode)) %>%
-  dplyr::select(plot_id, starts_with("clust")) 
+  dplyr::select(plot_id, starts_with("clust")) %>%
+  mutate(plot_id = case_when(
+      plot_id == "DKS001" ~ "DKS_1",
+      plot_id == "DKS002" ~ "DKS_2",
+      plot_id == "DKS003" ~ "DKS_3",
+      TRUE ~ plot_id))
+
+# Add Bicuar plots which didn't have clusters assigned
+clustadd <- data.frame(plot_id = paste0("ABG_", seq(5, 15)), 
+  clust7 = NA, clust5 = NA, clust4 = 1)
+
+clust <- rbind(clust, clustadd)
 
 plots_clust <- left_join(plots_div_clean, clust, 
   by = c("plot_cluster" = "plot_id")) %>%
@@ -221,14 +246,12 @@ plots_clust <- left_join(plots_div_clean, clust,
 # Extract soil Nitrogren from soil Grids ----
 
 #write.csv(plots_clust[,c("longitude_of_centre", "latitude_of_centre")], 
-#  "~/Downloads/plots_coord.csv", row.names = FALSE)
+#  "../data/plots_coord.csv", row.names = FALSE)
 
 ##' Run external script `scripts/nitrogen_get.sh`
 
-nitrogen <- readLines("data/nitrogen")
+nitrogen <- readLines("data/nitrogen.txt")
 plots_clust$nitrogen <- as.numeric(nitrogen)
-
-# External shell script
 
 # Write data ----
 # Plot group - plotcode lookup 
@@ -250,3 +273,12 @@ ab_mat_clean <- ab_mat %>%
 ab_mat_clean_clean <- ab_mat_clean[,!colSums(ab_mat_clean) == 0]
 
 saveRDS(ab_mat_clean_clean, "data/stems_ab_mat.rds")
+
+fileConn <- file(paste0("include/zam.tex"))
+writeLines(
+  c(
+    paste0("\\newcommand{\\nzam}{", nzam, "}"),
+    paste0("\\newcommand{\\nzamcluster}{", nzamcluster, "}")
+    ),
+  fileConn)
+close(fileConn)

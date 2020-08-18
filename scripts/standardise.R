@@ -29,7 +29,6 @@ source("scripts/clust_defin.R")
 
 dat <- readRDS("data/plot_data_fil_agg.rds")
 
-
 # Create histogram labels ----
 
 facet_levels <- c(
@@ -64,14 +63,14 @@ facet_labels <- c(
   expression("Temp." ~ "stress"),
   expression("AGB" ~ (t ~ ha^-1)),
   expression("log(AGB)" ~ (t ~ ha^-1)),
-  expression("CEC"),
+  expression("CEC" ~ (cmolc ~ kg^-1)),
   expression("Sand" ~ "%"), 
-  expression("Org." ~ "C" ~ "(ppt)"),
+  expression("Org." ~ "C" ~ (kg ~ m^-2)),
   expression("log(Org." ~ "C)" ~ "(ppt)"),
   expression("Nitrogen" ~ (g ~ kg^-1)),
   expression("log(Nitrogen)" ~ (g ~ kg^-1)),
-  expression("Mean" ~ "fire" ~ "freq." ~ (2001-2018)),
-  expression("log(Mean" ~ "fire" ~ "freq.)" ~ (2001-2018)),
+  expression("Fire" ~ "freq." ~ (2001-2018)),
+  expression("log(Fire" ~ "freq.)" ~ (2001-2018)),
   expression("Herbivore" ~ "biomass" ~ (kg ~ ha^-1)),
   expression("Coef." ~ "var." ~ "DBH"),
   expression("Coef." ~ "var." ~ "height"),
@@ -309,9 +308,6 @@ for (i in 1:length(bivar_list)) {
 }
 
 # Arrange on grid
-n <- length(plot_list)
-n_col <- floor(sqrt(n))
-
 pdf(file =  "img/bivar_lm.pdf", width = 10, height = 14)
 do.call("grid.arrange", c(plot_list, ncol = 4))
 dev.off()

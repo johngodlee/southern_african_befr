@@ -38,7 +38,6 @@ library(lme4)
 library(stargazer)
 library(tidyr)
 library(psych)
-library(beepr)
 library(ggnewscale)
 library(maps)
 library(gganimate)
@@ -125,15 +124,15 @@ ggplot() +
       fill = raw.r), colour = "black") + 
   geom_text(data = corr_ci, 
     aes(x = x_var, y = y_var, label = raw.r),
-    size = 3) + 
+    size = 4) + 
   geom_point(data = corr_ci[corr_ci$conf == FALSE,], 
-    aes(x = x_var, y = y_var), fill = NA, colour = "black", shape = 21, size = 11) + 
+    aes(x = x_var, y = y_var), fill = NA, colour = "black", shape = 21, size = 12) + 
   scale_fill_gradient2(name = "r", low = "blue", mid = "white", high = "red") + 
   theme_classic() + 
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5,
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 12,
       colour = c(rep("#D65A2D", 2), rep("#331d8b", 1), rep("#287F9C", 4), 
         rep("#468A21", 2), rep("#844099", 2), rep("black", 2))),
-    axis.text.y = element_text(
+    axis.text.y = element_text(size = 12,
       colour = c(rep("#D65A2D", 3), rep("#331d8b", 1), rep("#287F9C", 4), 
         rep("#468A21", 2), rep("#844099", 2), "black")),
     legend.position = "none") + 
@@ -239,14 +238,14 @@ mod_summ_mutate_struc <- function(x){
       op == "~" & lhs == "agb_ha_log_std" ~ "Direct: AGB",
       TRUE ~ "Other"),
     rhs = case_when(
-      op == "Direct: AGB" & rhs == "div" ~ "Species div.",
-      op == "Direct: AGB" & rhs == "struc" ~ "Struct. div.",
-      op == "Direct: AGB" & rhs == "stems_ha_log_std" ~ "Stem dens.",
-      lhs == "struc" & op == "Other" & rhs == "div" ~ "Species div. -> Struct. div.",
-      lhs == "stems_ha_log_std" & op == "Other" & rhs == "div" ~ "Species div. -> Stem dens.",
-      op == "Other" & rhs == "a*b" ~ "Indirect: Species div. -> Struct. div. -> AGB",
-      op == "Other" & rhs == "d*e" ~ "Indirect: Species div. -> Stem dens. -> AGB",
-      op == "Other" & (rhs == "c+(a*b)+(d)" | rhs == "c+(a*b)+(d*e)" | rhs == "c+(a*b)")  ~ "Total effect: Species div. -> AGB",
+      op == "Direct: AGB" & rhs == "div" ~ "Species\ndiversity",
+      op == "Direct: AGB" & rhs == "struc" ~ "Structural\ndiversity",
+      op == "Direct: AGB" & rhs == "n_trees_gt10_ha_log_std" ~ "Stem density",
+      lhs == "struc" & op == "Other" & rhs == "div" ~ "Species diversity ->\nStructural diversity",
+      lhs == "stems_ha_log_std" & op == "Other" & rhs == "div" ~ "Species diversity ->\nStem density",
+      op == "Other" & rhs == "a*b" ~ "Indirect:\nSpecies diversity ->\nStructural diversity ->\nAGB",
+      op == "Other" & rhs == "d*e" ~ "Indirect:\nSpecies diversity ->\nStem density ->\nAGB",
+      op == "Other" & (rhs == "c+(a*b)+(d)" | rhs == "c+(a*b)+(d*e)" | rhs == "c+(a*b)")  ~ "Total effect:\nSpecies diversity ->\nAGB",
     TRUE ~ rhs))
 }
 
@@ -357,7 +356,8 @@ print(ggplot() +
   labs(x = "Factor", y = expression("Path coefficient")) + 
   coord_flip() + 
   theme_classic() + 
-  theme(panel.grid.major.y = element_line(colour = "#E0E0E0")))
+  theme(panel.grid.major.y = element_line(colour = "#E0E0E0"),
+    axis.text = element_text(size = 12)))
 dev.off()
 }
 
@@ -496,20 +496,20 @@ map_africa <- borders(database = "world", regions = s_af, fill = "grey90", colou
 map_africa_fill <- borders(database = "world", regions = s_af, fill = "grey90")
 map_africa_colour <- borders(database = "world", regions = s_af, colour = "black")
 
-pg <- ggplot(dat_quant_df) +
-  map_africa_fill + 
-  geom_point(
-    aes(x = longitude_of_centre, y = latitude_of_centre, fill = as.character(clust4)),
-    colour = "black", shape = 21, size = 2) + 
-  scale_fill_manual(values = clust_pal, name = "Cluster") + 
-  map_africa_colour +
-  ylim(-35.5, 10) + 
-  labs(title = 'Stem density: {current_frame}', x = "Longitude", y = "Latitude") + 
-  theme_classic() +
-  theme(legend.position = "right") + 
-  coord_map() + 
-  transition_manual(frames = stem_dens_round) +
-  enter_appear() + exit_disappear()
+#pg <- ggplot(dat_quant_df) +
+#  map_africa_fill + 
+#  geom_point(
+#    aes(x = longitude_of_centre, y = latitude_of_centre, fill = as.character(clust4)),
+#    colour = "black", shape = 21, size = 2) + 
+#  scale_fill_manual(values = clust_pal, name = "Cluster") + 
+#  map_africa_colour +
+#  ylim(-35.5, 10) + 
+#  labs(title = 'Stem density: {current_frame}', x = "Longitude", y = "Latitude") + 
+#  theme_classic() +
+#  theme(legend.position = "right") + 
+#  coord_map() + 
+#  transition_manual(frames = stem_dens_round) +
+#  enter_appear() + exit_disappear()
 
 #anim_save("img/stem_dens_anim_map.gif", animation = pg, width = 500, height = 700)
 
@@ -565,11 +565,11 @@ struc_sem_quant_fit_df$n_plots <- quant_plots[sapply(struc_sem_quant_fit, nrow) 
 struc_sem_quant_regs <- do.call(rbind, struc_sem_quant_regs_list) %>%
   dplyr::select(rhs, quant, stems_ha, n_plots, n_species_raref, est, std.all) %>%
   mutate(rhs = case_when(
-    rhs == "Div. -> Struct" ~ "Species div -> Struct. div",
-    rhs == "Indirect: Div. -> Struct. -> AGB" ~ "Indirect: Species div -> Struct. div -> AGB",
-    rhs == "Total effect: Div. -> AGB" ~ "Total effect: Species div -> AGB",
-    rhs == "Diversity" ~ "Species div. -> AGB",
-    rhs == "Struct." ~ "Struct. div -> AGB",
+    rhs == "Species diversity ->\nStructural diversity " ~ "Species diversity -> Structural diversity",
+    rhs == "Indirect:\nSpecies diversity ->\nStructural diversity ->\nAGB" ~ "Species diversity -> Structural diversity -> AGB",
+    rhs == "Total effect:\nSpecies diversity ->\nAGB" ~ "Total effect: Species diversity -> AGB",
+    rhs == "Species\ndiversity" ~ "Species diversity -> AGB",
+    rhs == "Structural\ndiversity" ~ "Structural diversity -> AGB",
     TRUE ~ rhs
   ))
 
@@ -581,7 +581,11 @@ ggplot(data = struc_sem_quant_regs) +
     method = "loess", size = 0.5, span = 0.5, colour = "#C44620") + 
   facet_wrap(~rhs) +
   labs(x = expression("Stems" ~ ha^-1), y = "Unstandardised path coefficient") + 
-  theme_classic()
+  scale_x_continuous(breaks = seq(100,250, by = 25)) + 
+  theme_classic() + 
+  theme(axis.text = element_text(size = 12),
+    strip.text = element_text(size = 10),
+    axis.title = element_text(size = 12))
 dev.off()
 
 # Where is the peak of the relationship?

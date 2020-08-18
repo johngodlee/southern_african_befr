@@ -20,6 +20,8 @@ library(rgdal)
 library(ggnewscale)   
 library(stargazer)  
 library(labdsv)  
+library(sf)
+library(nngeo)
 
 source("scripts/clust_defin.R")
 
@@ -30,6 +32,9 @@ plot_data <- readRDS("data/plot_data_fil_agg_norm_std.rds")
 
 # SEOSAW v2 stems data
 stems <- read.csv("~/git_proj/seosaw_data/data_out/stems_latest_v2.7.csv")
+
+# SEOSAW v2 plots data
+plots <- read.csv("~/git_proj/seosaw_data/data_out/plots_v2.7.csv")
 
 # Tree abundance matrix
 ab_mat <- readRDS("data/stems_ab_mat.rds")
@@ -45,11 +50,13 @@ white_veg <- readOGR(dsn="/Volumes/john/whitesveg",
   layer="whitesveg")
 
 # Fortify whitesveg and subset to Miombo ----
-white_veg_fort <- fortify(white_veg, region = "DESCRIPTIO")
-
-white_veg_miombo <- white_veg_fort %>%
-  filter(id %in% c("Moist-infertile savanna"),
-    lat < -2)
+white_veg_miombo <- white_veg %>%
+  st_as_sf(.) %>%
+  filter(DESCRIPTIO %in% c("Moist-infertile savanna")) %>%
+  st_make_valid() %>%
+  st_crop(., xmin=-180, xmax=180, ymin=-90, ymax=-2) %>%
+  `st_crs<-`(4326) %>%
+  st_remove_holes()
 
 # Make clust4 as factor ----
 plot_data$clust4_fac <- clust_names[plot_data$clust4]
@@ -58,33 +65,31 @@ plot_data$clust4_fac <- factor(plot_data$clust4_fac)
 # Map of plot locations, compared to full SEOSAW dataset ----
 
 # Create vector of southern Africa ISO codes  
-s_af <- iso.expand(c("ZAF", "COD", "NAM", "ZMB", "BWA", "ZWE", "MOZ", 
-  "MWI", "AGO", "TZA", "COG", "RWA", "BDI", "UGA", "KEN", "SWZ")) 
+s_af <- c("ZAF", "COD", "NAM", "ZMB", "BWA", "ZWE", "MOZ", 
+  "MWI", "AGO", "TZA", "COG", "RWA", "BDI", "UGA", "KEN", "SWZ")
 
 # Create map of country outlines
-map_africa <- borders(database = "world", regions = s_af, fill = "grey90", colour = "black")
-map_africa_fill <- borders(database = "world", regions = s_af, fill = "grey90")
-map_africa_colour <- borders(database = "world", regions = s_af, colour = "black")
+map_africa <- st_read("/Volumes/john/africa_countries/africa.shp") %>%
+  filter(iso_a3 %in% s_af)
 
 # Biogeographic clusters facetted
+
 pdf(file = "img/clust_map.pdf", width = 14, height = 6)
 ggplot() + 
-  geom_polygon(aes(x = long, y = lat, group = group, fill = "Miombo\nwoodland"), 
-    colour = "#A37803",
-    data = white_veg_miombo, alpha = 1) +
-  scale_fill_manual(name = "", values = "#A37803") +
-  new_scale_fill() + 
+  geom_sf(data = white_veg_miombo, colour = "#A37803", fill = "#A37803") + 
+  geom_sf(data = map_africa, colour = "black", fill = NA) + 
   geom_point(data = plot_data, 
     aes(x = longitude_of_centre, y = latitude_of_centre, fill = as.character(clust4_fac)), 
-    size = 2, shape = 21, colour = "black", position = "jitter") +
-  scale_fill_manual(name = "Cluster", values = clust_pal) + 
-  map_africa_colour +
-  facet_wrap(~clust4_fac, nrow = 1) + 
-  coord_map() + 
-  ylim(-35.5, 10) + 
-  labs(x = "Longitude", y = "Latitude") + 
+    size = 2, shape = 21, colour = "black", position = "jitter") + 
+  scale_fill_manual(name = "Cluster", values = clust_pal) +
+  facet_wrap(~clust4_fac, nrow = 1) +
+  ylim(-35.5, 10) +
+  labs(x = "", y = "") + 
+  scale_x_continuous(breaks = seq(10, 40, by = 10)) +
   theme_classic() + 
-  theme(legend.position = "none")
+  theme(legend.position = "none",
+    strip.text = element_text(size = 12),
+    axis.text = element_text(size = 12))
 dev.off()
 
 # How much climate space do the plots cover ----
@@ -305,4 +310,35 @@ writeLines(stargazer(clust_summ,
   summary = FALSE,
   label = "clust_summ", digit.separate = 0, rownames = FALSE), fileConn)
 close(fileConn)
+
+# Whose data am I using? ----
+
+plots_fil <- plots %>% 
+  filter(plot_cluster %in% plot_data$plot_cluster) 
+
+data_originators <- plots_fil %>% 
+  group_by(prinv) %>%
+  tally() %>%
+  arrange(desc(n))
+
+write.csv(data_originators, "output/data_originator_list.csv", row.names = FALSE)
+
+# Breakdown of plots for each data originator
+
+plots_split <- plots_fil %>% 
+  dplyr::select(prinv, plot_id, plot_name, 
+    longitude_of_centre, latitude_of_centre, last_census_date) %>%
+  split(., .$prinv)
+
+for (i in 1:length(plots_split)) {
+  plot_data <- plots_split[[i]][,c("plot_id", "plot_name", 
+    "longitude_of_centre", "latitude_of_centre", "last_census_date")]
+  pi_name <- tolower(
+    gsub(",", "", 
+      gsub("\\s", "_", 
+        gsub("\\.", "", names(plots_split[i])))))
+  
+
+  write.csv(plot_data, paste0("output/co-author_plots/", pi_name, ".csv"), row.names = FALSE)
+}
 

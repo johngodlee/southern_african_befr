@@ -9,10 +9,10 @@ INC="manuscript/include/"
 
 # Run data compilation
 #Rscript scripts/temp_precip.R
-#Rscript scripts/data_clean.R
-#Rscript scripts/standardise.R
-#Rscript scripts/descrip.R
-#Rscript scripts/sem.R
+Rscript scripts/data_clean.R
+Rscript scripts/standardise.R
+Rscript scripts/descrip.R
+Rscript scripts/sem.R
 
 # Transfer images to manuscript
 cp img/clust_map.pdf $IMG  # Cluster map

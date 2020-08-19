@@ -2,26 +2,15 @@
 # John Godlee (johngodlee@gmail.com)
 # 2019_09_19
 
-# Preamble ----
-
-# Remove old crap
-rm(list=ls())
-#dev.off()
-
-# Set working directory to the location of the source file
-#setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
 # Packages
 library(dplyr)  
 library(ggplot2)  
+library(ggnewscale)
 library(tidyr)  
-library(maps)  
-library(rgdal)  
-library(ggnewscale)   
 library(stargazer)  
 library(labdsv)  
 library(sf)
-library(nngeo)
+library(rgdal)
 
 source("scripts/clust_defin.R")
 
@@ -45,18 +34,8 @@ plotcode_plot_cluster_lookup <- readRDS("data/plotcode_plot_cluster_lookup.rds")
 # Regional tmeperature and precipitation data for the Miombo woodlands
 t_p <- readRDS("data/temp_precip.rds")
 
-# Whites veg map
-white_veg <- readOGR(dsn="/Volumes/john/whitesveg", 
-  layer="whitesveg")
-
-# Fortify whitesveg and subset to Miombo ----
-white_veg_miombo <- white_veg %>%
-  st_as_sf(.) %>%
-  filter(DESCRIPTIO %in% c("Moist-infertile savanna")) %>%
-  st_make_valid() %>%
-  st_crop(., xmin=-180, xmax=180, ymin=-90, ymax=-2) %>%
-  `st_crs<-`(4326) %>%
-  st_remove_holes()
+# Whites veg map - miombo
+white_veg_miombo <- readRDS("data/white_veg_miombo.rds")
 
 # Make clust4 as factor ----
 plot_data$clust4_fac <- clust_names[plot_data$clust4]

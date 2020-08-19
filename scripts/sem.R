@@ -14,19 +14,6 @@
 ##' <~ Composite variable
 ##' ~~ Correlated with
 
-# Preamble ----
-
-# Source files
-# source("dat_collation.R")
-# source("bivariate_relationships.R")
-
-# Remove old crap
-rm(list=ls())
-#dev.off()
-
-# Set working directory to the location of the source file
-#setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
 # Packages
 library(dplyr)
 library(ggplot2)
@@ -837,14 +824,3 @@ ggplot() +
     panel.grid.major.y = element_line(colour = "#E0E0E0"), 
     text = element_text(size = 14))
 dev.off()
-
-# Full SEM for each cluster ----
-#clust_mod(full_mod_spec, "full", mod_summ_full)
-#
-## Combine all into one dot and line plot
-#mod_slopes_all(full_model_regs_list, full_mod_regs, 
-#  "full_model_slopes_all.pdf")
-
-# extract model fit statistics and save to file
-# sem_fit_tab(full_model_summ_clust_list, full_mod_summ, 
-#   file = "full_model_fit_clust_stats")

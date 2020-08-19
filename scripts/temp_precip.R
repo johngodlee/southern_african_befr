@@ -1,30 +1,27 @@
-# Generate dataset of precip and temp means across miombo ecoregion
+# Generate dataset of precip and temp means across the miombo ecoregion
 # John Godlee (johngodlee@gmail.com)
 # 2019-10-02
 # 2020-06-22
-
-# Clean env.
-rm(list = ls())
+# 2020-08-19
 
 # Packages
 library(raster)
-library(rgdal)
+library(sf)
+library(nngeo)  # st_remove_holes()
+library(dplyr)
 
 # Get Miombo outline ---- 
-white_veg <- readOGR(dsn="/Volumes/john/whitesveg", layer="whitesveg")
+white_veg <- st_read("/Volumes/john/whitesveg/whitesveg.shp")
 
-# Subset to White's miombo 
-white_veg_miombo <- white_veg[!is.na(white_veg@data$DESCRIPTIO) & 
-  white_veg@data$DESCRIPTIO == "Moist-infertile savanna", ]
+# Get southern woodlands only
+white_veg_miombo <- white_veg %>%
+  filter(DESCRIPTIO %in% c("Moist-infertile savanna")) %>%
+  st_make_valid() %>%
+  st_crop(., xmin=-180, xmax=180, ymin=-90, ymax=-2) %>%
+  `st_crs<-`(4326) %>%
+  st_remove_holes()
 
-# Get southern part only
-white_veg_miombo_south <- crop(white_veg_miombo, extent(10, 40, -30, 0))
-
-# Fill holes
-white_veg_miombo_south_fill <- SpatialPolygons(list(Polygons(
-      Filter(function(f) { 
-        f@ringDir==1
-      }, white_veg_miombo_south@polygons[[1]]@Polygons), ID = 1)))
+saveRDS(white_veg_miombo, "data/white_veg_miombo.rds")
 
 # Get Worldclim data ----
 
@@ -45,9 +42,9 @@ rastlist_extrac <- lapply(rastlist, function(x) {
   # Import rasters
   allrasters <- stack(lapply(x, raster))
 
-  # Crop and mask to miombo outline
-  allrasters_crop <- crop(allrasters, extent(white_veg_miombo_south_fill))
-  allrasters_mask <- mask(allrasters_crop, white_veg_miombo_south_fill)
+  # Crop to miombo outline
+  allrasters_crop <- crop(allrasters, extent(white_veg_miombo))
+  allrasters_mask <- mask(allrasters_crop, white_veg_miombo)
 
   # Take mean of all in stack
   if (grepl("tavg", x[1])) {

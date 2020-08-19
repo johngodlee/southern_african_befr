@@ -4,11 +4,7 @@
 # 2018-12-10
 # 2019-12-11
 # 2020-06-22
-
-# Preamble ----
-
-# Reset env.
-rm(list=ls())
+# 2020-08-19
 
 # Packages
 library(dplyr)
@@ -31,7 +27,7 @@ plots <- read.csv("~/git_proj/seosaw_data/data_out/plots_v2.7.csv")
 # SEOSAW v2 stem data
 stems <- read.csv("~/git_proj/seosaw_data/data_out/stems_latest_v2.7.csv")
 
-# Fire layer for manual calculation
+# Fire layer 
 fire_count <- raster("/Volumes/john/AFcount_2001_2018.tif")
  
 # Datasets used in analysis
@@ -162,7 +158,6 @@ plots_stems <- left_join(stems_fil_summ, plots_agg, by = "plot_cluster")
 
 # Calculate AGB per ha
 plots_stems$agb_ha <- plots_stems$agb / plots_stems$plot_area
-
 
 # Estimate rarefied species diversity statistics ----
 # Create abundance matrix by tree_id

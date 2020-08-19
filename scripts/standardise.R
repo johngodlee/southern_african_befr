@@ -2,26 +2,15 @@
 # John Godlee (johngodlee@gmail.com)
 # 2018-12-10
 # 2020-06-24
-
-# Preamble ----
-
-# Source files
-# source("sem_data_collation.R")
-
-# Remove old crap
-rm(list=ls())
-#dev.off()
-
-# Set working directory to the location of the source file
-#setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+# 2020-08-19
 
 # Packages
-library(dplyr)  #
-library(tidyr)  #
-library(ggplot2)  #
-library(gridExtra)  #
-library(lme4)  #
-library(MuMIn)  #
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(gridExtra)
+library(lme4)
+library(MuMIn)
 
 source("scripts/clust_defin.R")
 
@@ -66,7 +55,7 @@ facet_labels <- c(
   expression("CEC" ~ (cmolc ~ kg^-1)),
   expression("Sand" ~ "%"), 
   expression("Org." ~ "C" ~ (kg ~ m^-2)),
-  expression("log(Org." ~ "C)" ~ "(ppt)"),
+  expression("log(Org." ~ "C)" ~ (kg ~ m^-2)),
   expression("Nitrogen" ~ (g ~ kg^-1)),
   expression("log(Nitrogen)" ~ (g ~ kg^-1)),
   expression("Fire" ~ "freq." ~ (2001-2018)),
@@ -78,7 +67,8 @@ facet_labels <- c(
   expression("log(Stem" ~ "density)" ~ ">10" ~ cm ~ (n ~ ha^-1)),
   expression("Shannon" ~ "equit." ~ (E[H])),
   expression("Extrap." ~ "species" ~ "rich."),
-  expression("log(Extrap." ~ "species" ~ "rich.)"))
+  expression("log(Extrap." ~ "species" ~ "rich.)")
+)
 
 facets <- list(facet_levels = facet_levels, facet_labels = facet_labels)
 

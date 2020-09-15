@@ -31,9 +31,9 @@
 \usepackage{longtable}
 
 % Bibliography management
-\usepackage{natbib}    % Bibliography management - Use author/date citations
-\bibliographystyle{agsmnourl}  % Use custom agsm bibliography template with no URL
-\usepackage{cite}  % Citation options
+\usepackage[UKenglish]{babel}
+\usepackage[natbibapa]{apacite}
+\bibliographystyle{apacite}
 
 % Text formatting
 \usepackage{url} % Allow nice formatting of URLs in text
@@ -50,9 +50,6 @@
 
 \usepackage{xcolor}
 \newcommand{\todo}[1]{\textcolor{red}{\textbf{#1}}}   % \todo{NOTE TO SELF WRITTEN IN RED}
-
-\usepackage[clean]{revdiff}
-
 
 \input{code_format}
 
@@ -100,14 +97,35 @@
 
 \begin{document}
 
-{\LARGE{Title: Tree biodiversity and ecosystem function relationship across southern African woodlands}}
+{\LARGE{Title: Tree species and structural diversity are important determinants of ecosystem function across southern African woodlands}}
 
 \vspace{1cm}
 
-Authors: Godlee, J. L.\textsuperscript{1}, Dexter, K. G.\textsuperscript{1,2}, Ryan, C. M.\textsuperscript{1}
+Authors: John L. Godlee\textsuperscript{1}, Casey M. Ryan\textsuperscript{1}, David Bauman\textsuperscript{2,3}, Samuel J. Bowers\textsuperscript{1}, Joao M. B. Carreiras\textsuperscript{4}, Antonio Valter Chisingui\textsuperscript{5}, Joris P. G. M. Cromsigt\textsuperscript{6,7,8}, Dave J. Druce\textsuperscript{9,10}, Manfred Finkch\textsuperscript{11}, Francisco Maiato Gon\c{c}alves\textsuperscript{5}, Ricardo M. Holdo\textsuperscript{12}, Steve Makungwa\textsuperscript{13}, Iain M. McNicol\textsuperscript{1}, Edward T. A. Mitchard\textsuperscript{1}, Anderson Muchawona\textsuperscript{14}, Rasmus Revermann\textsuperscript{11,15}, Natasha Sofia Ribeiro\textsuperscript{16}, Abel Siampale\textsuperscript{17}, Stephen Syampungani\textsuperscript{18}, Jos\'{e} Jo\~{a}o Tchamba\textsuperscript{5}, Hemant G. Tripathi\textsuperscript{19}, Johannes Wallenfang\textsuperscript{11}, Mariska te Beest\textsuperscript{20,21,22}, Mathew Williams\textsuperscript{1}, Dexter, K. G.\textsuperscript{1,2}
 
-\textsuperscript{1}: School of GeoSciences, University of Edinburgh, Edinburgh, EH9 3FF, United Kingdom \\
-\textsuperscript{2}: Royal Botanic Garden Edinburgh, Edinburgh, EH3 5LR, United Kingdom
+1: School of GeoSciences, University of Edinburgh, Edinburgh, EH9 3FF, United Kingdom \\
+2: Environmental Change Institute, School of Geography and the Environment, University of Oxford, Oxford, United Kingdom \\
+3: Laboratoire d'\'{E}cologie V\'{e}g\'{e}tale et Biogéochimie, CP 244, Universit\'{e} Libre de Bruxelles, Brussels, Belgium \\
+4: National Centre for Earth Observation (NCEO), University of Sheffield, Hicks Building, Hounsfield Road, Sheffield, S3 7RH, United Kingdom \\
+5: Herbarium of Lubango, ISCED Hu\'{i}la, Sarmento Rodrigues Str. No. 2, CP. 230, Lubango, Angola \\
+6: Department of Wildlife, Fish, and Environmental Studies, Swedish University of Agricultural Sciences, Ume\aa, Sweden \\
+7: Department of Zoology, Centre for African Conservation Ecology, Nelson Mandela University, Port Elizabeth, South Africa \\
+8: Copernicus Institute of Sustainable Development, Utrecht University, 3584CS Utrecht, the Netherlands \\
+9: Ecological Advice, Ezemvelo KZN Wildlife, Hluhluwe-iMfolozi Park, South Africa \\
+10: School of Life Sciences, University of KwaZulu-Natal, Pietermaritzburg, South Africa \\
+11: Biodiversity, Evolution and Ecology of Plants, Institute of Plant Sciences and Microbiology, University of Hamburg, Ohnhorststr. 18, 22609 Hamburg, Germany \\
+12: Odum School of Ecology, University of Georgia, 140 E. Green St., Athens, GA 30602, USA \\
+13: Lilongwe University of Agriculture and Natural Resources (LUANAR), Lilongwe, Malawi \\
+14: Forest Research Center, 1 Orange Groove Highlands, Harare, Zimbabwe \\
+15: Faculty of Natural Resources and Spatial Sciences, Namibia University of Science and Technology, Windhoek, Namibia \\
+16: Department of Forest Engineering, Faculty of Agronomy and Forest Engineering, UEM Av. Julius Nyerere, 3453, Campus Universitario, Maputo, Mozambique \\
+17: Forestry Department Headquarters - MLNR, Cairo Road, Lusaka, Zambia \\
+18: School of Natural Resources, Copperbelt University, Kitwe, Zambia \\
+19: Faculty of Biological Sciences, University of Leeds, LS2 9JT, United Kingdom\\
+20: Copernicus Institute of Sustainable Development, Utrecht University, 3508 TC Utrecht, The Netherlands \\
+21: Centre for African Conservation Ecology, Nelson Mandela University, Port Elizabeth, 6031, South Africa \\
+22: South African Environmental Observation Network, Grasslands-Forests-Wetlands Node, Montrose, 3201, South Africa \\
+23: Royal Botanic Garden Edinburgh, Edinburgh, EH3 5LR, United Kingdom \\
 
 \vspace{1em}
 Corresponding author:
@@ -118,10 +136,13 @@ johngodlee@gmail.com
 
 School of GeoSciences, University of Edinburgh, Edinburgh, EH9 3FF, United Kingdom
 
-
 \section{Acknowledgements}
 
-This work is funded by a NERC E3 Doctoral Training Partnership PhD studentship at the University of Edinburgh (J. L. Godlee, Grant No. NE/L002558/1). The data provided for this study was constributed by a number of independently funded projects and was assembled and prepared by SEOSAW (A Socio-Ecological Observatory for Southern African Woodlands, \url{https://seosaw.github.io}), an activity of the Miombo Network and a NERC-funded project (Grant No. NE/P008755/1). We thank all data providers and the field assistance they received when collecting plot data. JMBC was supported by the Natural Environment Research Council (Agreement PR140015 between NERC and the National Centre for Earth Observation).
+This work is funded by a NERC E3 Doctoral Training Partnership PhD studentship at the University of Edinburgh (John L. Godlee, Grant No. NE/L002558/1). The data for this study was contributed by a number of independently funded projects and was assembled and prepared by SEOSAW (A Socio-Ecological Observatory for Southern African Woodlands, \url{https://seosaw.github.io}), an activity of the Miombo Network and a NERC-funded project (Grant No. NE/P008755/1). Revisions of the SEOSAW dataset were funded by SavannaChange, a GCRF/University of Edinburgh funded project. We thank all data providers and the field assistance they received when collecting plot data. JMBC was supported by the Natural Environment Research Council (Agreement PR140015 between NERC and the National Centre for Earth Observation). 
+
+\section{Conflict of interest statement}
+
+All authors declare no conflict of interest regarding this study.
 
 \section{Biosketch}
 
@@ -131,9 +152,9 @@ SEOSAW (A Socio-Ecological Observatory for Southern African Woodlands, \url{http
 
 {\LARGE{\textbf{Blinded Main Text File}}}
 
-\LARGE{Title: An assessment of the biodiversity - ecosystem function relationship in southern African woodlands}
+\LARGE{Title: Tree species and structural diversity are important determinants of ecosystem function across southern African woodlands}
 
-\normalsize{Running title: Ecosystem function in southern African woodlands}
+\normalsize{Running title: Diversity - ecosystem function in southern African woodlands}
 
 \section{Abstract}
 
@@ -150,6 +171,7 @@ SEOSAW (A Socio-Ecological Observatory for Southern African Woodlands, \url{http
 
 \textbf{Main conclusions:} The study underlines the close association between tree diversity and ecosystem structure and function of highly disturbed southern African savannas and woodlands. Our results demonstrate the importance of accounting for environmental conditions and vegetation type in order to accurately model a general relationship between biodiversity and ecosystem function at a regional level. 
 
+\textbf{Keywords:} biodiversity, ecosystem function, woodland, miombo, biomass, structural equation modelling, forest structure.
 
 \section{Introduction}
 
@@ -169,7 +191,7 @@ Compared to forest ecosystems, southern African dry tropical woodlands and savan
 More diverse species assemblages may lead to facilitation effects between certain species combinations under the limiting environmental conditions prevalent across African savannas, such as low water availability. Across European forests \citet{Ratcliffe2017} found stronger positive relationships between tree species richness and various ecosystem functions in more arid environments. They suggest that in water-limited ecosystems, facilitative effects and selection effects may be more important than niche complementarity in driving the relationship between species diversity and ecosystem function, as competition diminishes in ecosystems where environmental stress limits individual species' abundances, thus reducing the competition which drives niche complementarity effects. This potential mismatch in the contribution of different mechanisms to the BEF relationship between dry tropical woodlands and other forested ecosystems demands further investigation if we are to derive a generalisable BEF relationship.
 
 % African savannas are understudied in this regard
-The representation of dry tropical ecosystems in the BEF relationship literature is poor compared to other ecosystems. \citet{Clarke2017} conducted a meta-analysis of 182 published BEF relationship studies, finding that only 13\% were conducted in the tropics generally, with 42\% of those being conducted in the wet tropical forests of Costa Rica, a narrow geographic region \citep{Barthlott2005}. A severe lack of study in dry tropical ecosystems, especially given the potential divergence in BEF relationship mechanisms described above, suggests that a focus on the BEF in southern African woodlands could greatly strengthen our understanding of a global BEF relationship and its environmental determinants. A small number of studies in southern African woodlands, all of which were restricted in spatial scope to a small region of miombo woodland, found that above-ground woody carbon/biomass stocks correlate positively with tree species richness \citep{McNicol2018, Shirima2015, Mutowo2012}. The results of these fine-scale studies concur with similar studies in other biomes \citep{Cardinale2009}. Studies of the BEF relationship often find that at fine spatial scales (<1 ha), biodiversity shows a strong effect on ecosystem function, but at broad spatial scales  (>100s ha) biodiversity effects pale in significance compared to abiotic factors such as climate \citep{Pasari2013}. 
+The representation of dry tropical ecosystems in the BEF relationship literature is poor compared to other ecosystems. \citet{Clarke2017} conducted a meta-analysis of 182 published BEF relationship studies, finding that only 13\% were conducted in the tropics generally, with 42\% of those being conducted in the wet tropical forests of Costa Rica, a narrow geographic region \citep{Barthlott2005}. A severe lack of study in dry tropical ecosystems, especially given the potential divergence in BEF relationship mechanisms described above, suggests that a focus on the BEF in southern African woodlands could greatly strengthen our understanding of a global BEF relationship and its environmental determinants. A small number of studies in southern African woodlands, all of which were restricted in spatial scope to a small region of miombo woodland, found that above-ground woody carbon/biomass stocks correlate positively with tree species richness \citep{McNicol2018, Shirima2015, Mutowo2012}. The results of these fine-scale studies concur with similar studies in other biomes \citep{Cardinale2009}. Studies of the BEF relationship often find that at fine spatial scales (<1 ha), biodiversity shows a strong effect on ecosystem function, but at broad spatial scales  (>10000s ha) biodiversity effects pale in significance compared to abiotic factors such as climate \citep{Pasari2013}. 
 
 % \citep{Michaletz2014, Michaletz2018} \citep{Spasojevic2014}
 %In wet tropical forests in Central America, \citet{Condit2013} found that dry season intensity was the main determinant of tree species distribution and abundance evenness.
@@ -191,7 +213,7 @@ In this study, we made the first known regional estimation of the biodiversity-e
 \subsection{Study location}
 
 % Situation
-The study used \nplots{} woodland monitoring plots from the larger SEOSAW network \citep{seosaw_web} located across 10 countries within southern Africa in the miombo ecoregion (\autoref{clust_map}, \citealt{White1987}). The study area spans the core climate space of the region, with a precipitation gradient from \textapprox{}460 mm y\textsuperscript{-1} in southern Mozambique and southern Zimbabwe to \textapprox{}1700 mm y\textsuperscript{-1} in northern Zambia, Malawi and northern Mozambique. A 2D convex hull of Mean Annual Precipitation (MAP) and Mean Annual Temperature (MAT) of the study sites covers \hullcover{}\% of the pixel-wise climate space of the miombo woodland ecoregion \citep{White1987}, using WorldClim estimates of Mean Annual Temperature (MAT, BIO1) and Mean Annual Precipitation (MAP, BIO12) between 1970 and 2000 with a pixel size of 30 arc seconds (926 m at equator) \citep{Fick2017}. 
+The study used \nplots{} woodland monitoring plots from the larger SEOSAW network \citep{seosaw_web} located across 10 countries within southern Africa in the miombo ecoregion (\autoref{clust_map}; \citealt{White1987}). The study area spans the core climate space of the region, with a precipitation gradient from \textapprox{}460 mm y\textsuperscript{-1} in southern Mozambique and southern Zimbabwe to \textapprox{}1700 mm y\textsuperscript{-1} in northern Zambia, Malawi and northern Mozambique. A 2D convex hull of Mean Annual Precipitation (MAP) and Mean Annual Temperature (MAT) of the study sites covers \hullcover{}\% of the pixel-wise climate space of the miombo woodland ecoregion \citep{White1987}, using WorldClim estimates of Mean Annual Temperature (MAT, BIO1) and Mean Annual Precipitation (MAP, BIO12) between 1970 and 2000 with a pixel size of 30 arc seconds (926 m at equator) \citep{Fick2017}. 
 
 % Plots chosen
 Plots were chosen from a larger pool of 5395 plots held in the SEOSAW database \citep{seosaw_web} based on the quality and completeness of data collection, and plot setup. Plot vegetation was identified under the broad term of ``savanna'', which includes ``woodland'', ``savanna woodland'', and ``tree savanna'', variously defined in other areas of the scientific literature and here referred to collectively as southern African woodlands \citep{Ratnam2011, Hill2010}. Plots with evidence of farming, human resource extraction or experimental treatments such as prescribed burning or herbivore exclusion were excluded from the initial pool. Only plots >0.1 hectares were used in analysis, as area-based biomass estimation from small plots is highly influenced by rare large trees \citep{Stegen2011}, leading to inaccurate estimates. Only plots with a stem density >50 trees ha\textsuperscript{-1} (>10 cm stem diameter) were used, to ensure all plots represented woodland rather than ``grassy savanna'', which is considered a separate biome with very different species composition \citep{Parr2014}. 
@@ -218,43 +240,26 @@ AGB for each plot (t ha\textsuperscript{-1}) was calculated using \autoref{chave
 where $\rho$ is the species mean wood density (g cm\textsuperscript{-3}), $D$ is the DBH\textsubscript{e} (cm) at 1.3 m, and $H$ is the tree height (m). Wood density estimates were taken from the global wood density database for each species where possible \citep{Chave2009, Zanne2009}. Wood density for species without species level estimates was estimated from the means of their respective genera. For stems where tree height was unknown, the plots' climatic parameters, estimated from plot location, were used to estimate tree height, according to \citet{Chave2014}.
 
 % WorldClim, SoilGrids and MODIS
-Climatic data were taken from the WorldClim database, using the BioClim variables \citep{Fick2017}. In addition to MAT and MAP, temperature stress was calculated as the mean diurnal temperature range (BIO2) and precipitation seasonality was calculated as the mean of the coefficient of variation of monthly mean precipitation (BIO15). Soil fertility data were extracted from the ISRIC gridded soil information data product at 250 m resolution, taking the grid cell value for each plot centre \citep{Hengl2017}. We extracted Cation Exchange Capacity (CEC) (cmolc kg\textsuperscript{-1}), soil organic carbon stocks (kg m\textsuperscript{-2}) percentage soil sand content (0.05-2 mm) by weight and soil nitrogen content (g kg\textsuperscript{-1}). These data are a modelled product derived from various remotely sensed and directly measured data sources. The degree of fire disturbance was calculated using the MODIS monthly burned area product at 500 m resolution (MCD64A1, \citealt{MODIS_burn}), counting the total number of times the plot pixel was classified as burning, between 2001 and 2018. We initially aimed to include disturbance by herbivory in our model, including total herbivore biomass from the \citet{Hempson2017} modelled herbivory product, but this inclusion prevented models from converging due to its collinearity with other observed variables, notably MAP and disturbance by fire. 
+Climatic data were taken from the WorldClim database, using the BioClim variables \citep{Fick2017}. In addition to MAT and MAP, temperature stress was calculated as the mean diurnal temperature range (BIO2) and precipitation seasonality was calculated as the mean of the coefficient of variation of monthly mean precipitation (BIO15). Soil fertility data were extracted from the ISRIC gridded soil information data product at 250 m resolution, taking the grid cell value for each plot centre \citep{Hengl2017}. We extracted Cation Exchange Capacity (CEC) (cmolc kg\textsuperscript{-1}), soil organic carbon stocks (kg m\textsuperscript{-2}) percentage soil sand content (0.05-2 mm) by weight and soil nitrogen content (g kg\textsuperscript{-1}). These data are a modelled product derived from various remotely sensed and directly measured data sources. The degree of fire disturbance was calculated using the MODIS monthly burned area product at 500 m resolution (MCD64A1; \citealt{MODIS_burn}), counting the total number of times the plot pixel was classified as burning, between 2001 and 2018. We initially aimed to include disturbance by herbivory in our model, including total herbivore biomass from the \citet{Hempson2017} modelled herbivory product, but this inclusion prevented models from converging due to its collinearity with other observed variables, notably MAP and disturbance by fire. 
 
 \subsection{Data analysis}
 
 \subsubsection{Species diversity and structural diversity metrics}
 
-Estimated tree species richness was calculated for each plot using \verb|ChaoRichness()| from the \verb|iNEXT| package in R \citep{Hsieh2016}. This procedure extrapolates a species rarefaction curve to its predicted asymptote and uses this value as its estimated species richness value. Extrapolated species richness accounts for variation in plot size (0.1-10 ha) and therefore sampling effort among plots. Larger plots will tend to encompass more individuals, and therefore more species \citep{Dengler2009}. To measure tree species evenness, the Shannon Equitability index ($E_{H'}$) \citep{Smith1996} was calculated as the ratio of the estimated Shannon diversity index to the natural log of estimated species richness. Abundance evenness allows for greater niche complementarity at small scales due to potentially increased heterogeneity of functional traits. We quantified tree structural diversity for each plot by calculating the coefficient of variation of DBH (DBH CoV) and tree height (Height CoV). 
+Estimated tree species richness was calculated for each plot using `ChaoRichness()' from the `iNEXT' package in R \citep{Hsieh2016}. This procedure extrapolates a species rarefaction curve to its predicted asymptote and uses this value as its estimated species richness value. Extrapolated species richness accounts for variation in plot size (0.1-10 ha) and therefore sampling effort among plots. Larger plots will tend to encompass more individuals, and therefore more species \citep{Dengler2009}. To measure tree species evenness, the Shannon Equitability index ($E_{H'}$) \citep{Smith1996} was calculated as the ratio of the estimated Shannon diversity index to the natural log of estimated species richness. Abundance evenness allows for greater niche complementarity at small scales due to potentially increased heterogeneity of functional traits. We quantified tree structural diversity for each plot by calculating the coefficient of variation of DBH (DBH CoV) and tree height (Height CoV). 
 
 \subsubsection{Vegetation clusters}
 
 Plots were assigned to vegetation type groups based on tree species composition. Groups were defined in a manner adapted from \citet{Fayolle2018} in an Africa-wide analysis of floristic units using plot data in savannas and woodlands with tree species diversity and relative abundance data. Group identification was conducted using unconstrained correspondence analysis, followed by hierarchical clustering based on dominant ordination axes. Plot data used in this study occurred in four compositional vegetation types. See \autoref{clust_summ} for a description of each vegetation cluster and \autoref{clust_map} for the spatial distribution of plots from each of these clusters. Cluster names were assigned post-hoc based on the dominant and indicator species in each cluster.
 
-\begin{landscape}
-\input{include/clust_summ}
-
-\begin{figure}[H]
-\centering
-	\includegraphics[width=1.4\textwidth]{clust_map}
-	\caption{The locations of the \nplots{} plots used in this study, with respect to the distribution of miombo woodland vegetation according to \citet{White1987}. Each panel shows plots categorized by their vegetation type as defined by the vegetation types in \autoref{clust_summ}.}
-	\label{clust_map}
-\end{figure}
-\end{landscape}
 
 \subsubsection{Structural Equation Modelling}
 
-We used Structural Equation Modelling (SEM) to investigate the determinants of AGB. All SEMs were constructed and analysed in the \verb|lavaan| package \citep{lavaan} in R version 3.6.0 \citep{R2019}. SEM was used because of its suitability for modelling complex causal interactions in ecological systems \citep{Lee2007}. A key aspect to our decision to use SEM is that they can explicitly model and partition variance attributed to indirect effects, which is challenging in standard multiple regressions. Using SEMs also allowed us to describe latent variables such as ``water availability'', ``soil fertility'', and ``disturbance'' which have been suggested to act upon biodiversity and biomass/productivity in previous studies despite these factors not having directly observable measures in our dataset. SEM is also necessary to properly account for potential feedback mechanisms between aspects of environment and tree species diversity, which could otherwise increase the chances of Type I error and wrongly attribute inference due to the covariance of explanatory variables when using conventional regression analyses \citep{Nachtigall2003}.
+We used Structural Equation Modelling (SEM) to investigate the determinants of AGB. All SEMs were constructed and analysed in the `lavaan' package \citep{lavaan} in R version 3.6.0 \citep{R2019}. SEM was used because of its suitability for modelling complex causal interactions in ecological systems \citep{Lee2007}. A key aspect to our decision to use SEM is that they can explicitly model and partition variance attributed to indirect effects, which is challenging in standard multiple regressions. Using SEMs also allowed us to describe latent variables such as ``water availability'', ``soil fertility'', and ``disturbance'' which have been suggested to act upon biodiversity and biomass/productivity in previous studies despite these factors not having directly observable measures in our dataset. SEM is also necessary to properly account for potential feedback mechanisms between aspects of environment and tree species diversity, which could otherwise increase the chances of Type I error and wrongly attribute inference due to the covariance of explanatory variables when using conventional regression analyses \citep{Nachtigall2003}.
 
 Prior to analysis, we specified a conceptual model with factors expected to affect AGB: water availability, soil fertility, disturbance, tree species diversity, tree structural diversity and stem density (\autoref{con_mod}). 
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{concept}
-	\caption{Conceptual Directed Acyclic Graph (DAG) showing the theoretical relationships between environmental factors, tree species diversity, tree structural diversity, stem density, and AGB. Hypothesised paths of causation are depicted as arrows from predictor to response.}
-	\label{con_mod}
-\end{figure}
-
-Observed variables were transformed to achieve normality where necessary and standardised to Z-scores prior to analysis (\hyperref[appendixa]{Appendix A}). Standardisation allows path regression coefficients to be easily compared between paths in the same model to assess their relative effect size, and eliminates confusion in model interpretation arising from the observed variables being on different scales \citep{Beaujean2014}. Standardisation also controls for variables with variation across different orders of magnitude, which could otherwise prevent adequate model estimation from the covariance matrix in \verb|lavaan|. To ensure that observed variables within a latent variable had consistent directions of influence, some observed variables had their sign reversed. For example, overall water availability is expected to decrease as soil sand content increases, therefore sand content was reversed for use in the water availability latent variable. Precipitation seasonality, and temperature stress were also reversed in this way to account for the direction of their effect on water availability. 
+Observed variables were transformed to achieve normality where necessary and standardised to Z-scores prior to analysis (\hyperref[appendixa]{Appendix A}). Standardisation allows path regression coefficients to be easily compared between paths in the same model to assess their relative effect size, and eliminates confusion in model interpretation arising from the observed variables being on different scales \citep{Beaujean2014}. Standardisation also controls for variables with variation across different orders of magnitude, which could otherwise prevent adequate model estimation from the covariance matrix in `lavaan'. To ensure that observed variables within a latent variable had consistent directions of influence, some observed variables had their sign reversed. For example, overall water availability is expected to decrease as soil sand content increases, therefore sand content was reversed for use in the water availability latent variable. Precipitation seasonality, and temperature stress were also reversed in this way to account for the direction of their effect on water availability. 
 
 The factor loadings of the observed variable assumed to contribute most to each latent variable were set to one, as per convention, with other observed variables being allowed to vary \citep{Beaujean2014}.  We tested the robustness of our assumptions with a chi-squared test of all possible combinations of observed variable factor loadings set to one, while ensuring no factor loadings were in excess of one. We found no significant difference between model specifications (p>0.05). Full Information Maximum Likelihood (FIML) was used in each model to estimate the values of missing data in each latent variable \citep{Cham2017}.
 
@@ -264,12 +269,6 @@ To explore the hypothesis that niche complementarity effects increase in strengt
 
 \section{Results}
 
-\begin{figure}[H]
-\centering
-	\includegraphics[width=0.6\textwidth]{corr_mat}
-	\caption{Correlation matrix of standardised observed variables used in the SEMs, with Pearson correlation coefficients ($r$) coloured according to sign ($+$ve red, $-$ve blue) and shaded by strength of correlation. Correlation coefficients marked by a circle indicate that the 95\% confidence interval of $r$ overlapped zero. Colours of variable names group them into latent variables used in the SEMs: red = soil fertility, blue = disturbance, turquoise = water availability, green = tree species diversity, purple = tree structural diversity. See \hyperref[appendixb]{Appendix B} for a full assessment of correlation fit statistics.}
-	\label{corr_mat}
-\end{figure}
 
 % Correlations
 Pairwise correlations between all observed variables used in the Structural Equation Models (SEMs) showed that all tree species diversity and structural diversity variables had moderate positive correlations with AGB. Stem density had the strongest correlation with AGB of all variables considered (\ccib{}). Environmental variables had weaker correlations with AGB than diversity variables, with all environmental variables having significant correlations with AGB, except fire frequency. The direction of these correlations was used as a test of our assumptions for the direction of influence of latent variables later used in the SEMs. MAP had positive correlations with all tree species diversity and structural diversity variables. Tree species diversity variables had clear positive correlations with stem density (species richness: \ccsi{}; Shannon equitability: \ccei{}), but structural diversity variables showed weak correlations with stem density (DBH CoV: \ccdvi{}, Height CoV: \cchvi{}).
@@ -278,36 +277,16 @@ Pairwise correlations between all observed variables used in the Structural Equa
 
 In an SEM describing the effect of tree species diversity on AGB via the mediating effects of tree structural diversity and stem density (\autoref{struc_mod}), species diversity showed no direct effect on AGB (\strucbetadb{}), but did have an indirect positive effect via structural diversity (\strucbetadib{}) (\autoref{struc_mod}). Model fit was good with high factor loadings for all observed variables. All other path coefficients were significant (p <0.01) (\autoref{struc_model_fit_clust_stats}). The R\textsuperscript{2} of AGB was \strucrsq{}. The strongest direct effect on AGB was from stem density (\strucbetaib{}).
 
-\begin{figure}[H]
-\centering
-	\includegraphics[width=0.5\textwidth]{struc}
-	\caption{Path diagram with regression coefficients for the tree diversity SEM, including plots from all vegetation clusters. Latent variables are shown as circles while observed variables are shown as rectangles. Standardised path coefficients are shown as solid arrows pointing from predictor to response with the effect size of the path coefficient expressed in terms of standard deviations on the latent variable response scale. The observed variables that inform the latent variables are connected by dotted arrows, and observed variables with loadings set to one are connected by dashed arrows. Measurement errors of exogenous variables are omitted for clarity.}
-	\label{struc_mod}
-\end{figure}
 
 \subsection{Variation among vegetation types}
 
 When the tree species and structural diversity model (\autoref{struc_mod}) was refitted separately using data from each of the four vegetation types, we found that the effect sizes of each latent variable remained largely similar, though model fit varied. The direct effect of tree species diversity on AGB was positive and marginally significant in ex-Acacia (\strucbetacsb{}) but negligible in Mopane (\strucbetadsb{}), sparse miombo / \textit{Baikiaea} (\strucbetaasb{}) and Core miombo (\strucbetabsb{}) (\autoref{struc_model_slopes_all}). Relationships between structural diversity and AGB remained generally similar, with the same sign and overlap between the 95\% confidence intervals of path coefficients. The R\textsuperscript{2} of AGB was highest in ex-Acacia shrubland (R\textsuperscript{2} = \struccrsq{}) and lowest in sparse miombo / Baikiaea (R\textsuperscript{2} = \strucarsq{}). The total effect of species diversity on AGB remained strongly positive for all vegetation types. All vegetation types exhibited a positive effect of species diversity on structural diversity. All models had adequate goodness-of-fit (\autoref{struc_model_fit_clust_stats}), though confidence intervals around the unstandardised path coefficients were wide particularly for Mopane and ex-Acacia. $\chi^{2}$ statistics were high for some vegetation types, but this appears to be highly correlated with sample size for each vegetation type \citep{Hooper2008}.
 
-\begin{figure}[H]
-\centering
-	\includegraphics[width=\textwidth]{struc_model_slopes_all}
-	\caption{Unstandardised path coefficients for the effects of tree diversity on AGB, mediated by the effect of stand structural diversity. Path coefficients are $\pm$1 standard error. Path coefficients where the interval (standard error) does not overlap zero are considered to be significant effects.}
-	\label{struc_model_slopes_all}
-\end{figure}
-
-\input{include/struc_model_fit_clust_stats}
 
 \subsection{Moderation of Diversity-AGB relationship by stem density}
 
 In our sub-sampling of the plot dataset by stem density, we found an increasing positive effect of tree species diversity on AGB as stem density increased (\autoref{sem_struc_stems_ha}). There appears to be a minimum stem density threshold at \textapprox{}180 trees ha\textsuperscript{-1} below which there appears to be a reasonably constant baseline effect of tree diversity on biomass. The effect of structural diversity on AGB appears to remain constant with increasing stem density. The indirect effect of tree species diversity on AGB via structural diversity climbs as stem density increases. 
 
-\begin{figure}[H]
-\centering
-	\includegraphics[width=0.8\textwidth]{sem_struc_stems_ha}
-	\caption{Line plots showing the variation in path coefficients in the SEM, using datasets with different mean stem density. Smoothed lines are loess curves with standard error shaded bars.}
-	\label{sem_struc_stems_ha}
-\end{figure}
 
 \subsection{Environmental covariates and tree diversity}
 
@@ -315,12 +294,6 @@ A model incorporating the latent variables of water availability, soil fertility
 
 Similar to the model that only considered tree species and structural diversity (\autoref{struc_mod}), the direct effect of species diversity on structural diversity was positive, while structural diversity itself had a positive effect on AGB, leading to a strong positive indirect effect of species diversity on AGB via structural diversity (\fmbetadhb{}) when environmental covariates were accounted for. Again, the direct effect of species diversity on AGB was negligible (\fmbetadb{}). The total effect of species diversity on AGB was positive (\fmbetatotaldb{}). Compared to the simple model with no environmental covariates, the total explanatory power of tree species diversity and structural diversity in this model decreased, but the predictive power of the model as a whole increased.
 
-\begin{figure}[H]
-\centering
-	\includegraphics[width=\textwidth]{full}
-	\caption{Path diagram with regression coefficients for the SEM incorporating environmental covariates and tree species and structural diversity across all five vegetation types. Latent variables are shown as circles while observed variables are shown as rectangles. Standardised path coefficients are shown as solid arrows pointing from predictor to response, with the effect size of the path coefficient expressed in terms of standard deviations on the latent variable response scale. Observed variables that inform the latent variables are connected by dotted arrows, observed variables with loading set to one are connected by dashed arrows. Measurement errors of exogenous variables are omitted for clarity.}
-	\label{full_mod}
-\end{figure}
 
 \section{Discussion}
 
@@ -362,16 +335,73 @@ In this study we found that even in highly disturbed southern African woodlands,
 
 The presence of a stem density threshold above which the effect of tree species diversity on AGB increases clearly implies the presence of niche complementarity effects in southern African woodlands, an aspect which has often been overlooked in favour of disturbance effects. On a practical note, our study shows that biodiversity change through human actions will have the greatest negative impact on ecosystem function in areas of high stem density, and low species diversity, which are those areas predominantly targeted for tree felling. This raises concerns about the robustness of these ecosystems to further resource extraction and biodiversity loss. 
 
-\bibliography{lib.bib}
+\bibliography{regional_befr_manuscript.bib}
 
 \newpage{}
-\appendix{}
 
-\section{Data accessibility statement}
+\section{Author contribution statement}
 
+JG and KD conceived the study. JG conducted data analysis, data management for further versions of the SEOSAW dataset, and wrote the manuscript. CR conceived the SEOSAW database and conducted data management for earlier versions of the SEOSAW dataset. JG, CR, DB, JMBC, MF, RH, EM, SS, HT, HT, MB, MW, and KD contributed to manuscript revisions. JG, CR, SB, VC, JPGMC, DD, MF, FG, SM, IM, AM, RR, NR, AS, SS, JT, JW, MB, and MW contributed to experimental design, field data collection, data preparation and data management of parts of the dataset used in this study. 
+
+
+\begin{landscape}
 \section{Tables}
+\input{include/clust_summ}
+\end{landscape}
 
+\input{include/struc_model_fit_clust_stats}
+
+\begin{landscape}
 \section{Figure legends and embedded figures}
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1.4\textwidth]{clust_map}
+	\caption{The locations of the \nplots{} plots used in this study, with respect to the distribution of miombo woodland vegetation according to \citet{White1987}. Each panel shows plots categorized by their vegetation type as defined by the vegetation types in \autoref{clust_summ}.}
+	\label{clust_map}
+\end{figure}
+\end{landscape}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{concept}
+	\caption{Conceptual Directed Acyclic Graph (DAG) showing the theoretical relationships between environmental factors, tree species diversity, tree structural diversity, stem density, and AGB. Hypothesised paths of causation are depicted as arrows from predictor to response.}
+	\label{con_mod}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.6\textwidth]{corr_mat}
+	\caption{Correlation matrix of standardised observed variables used in the SEMs, with Pearson correlation coefficients ($r$) coloured according to sign ($+$ve red, $-$ve blue) and shaded by strength of correlation. Correlation coefficients marked by a circle indicate that the 95\% confidence interval of $r$ overlapped zero. Colours of variable names group them into latent variables used in the SEMs: red = soil fertility, blue = disturbance, turquoise = water availability, green = tree species diversity, purple = tree structural diversity. See \hyperref[appendixb]{Appendix B} for a full assessment of correlation fit statistics.}
+	\label{corr_mat}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.5\textwidth]{struc}
+	\caption{Path diagram with regression coefficients for the tree diversity SEM, including plots from all vegetation clusters. Latent variables are shown as circles while observed variables are shown as rectangles. Standardised path coefficients are shown as solid arrows pointing from predictor to response with the effect size of the path coefficient expressed in terms of standard deviations on the latent variable response scale. The observed variables that inform the latent variables are connected by dotted arrows, and observed variables with loadings set to one are connected by dashed arrows. Measurement errors of exogenous variables are omitted for clarity.}
+	\label{struc_mod}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=\textwidth]{struc_model_slopes_all}
+	\caption{Unstandardised path coefficients for the effects of tree diversity on AGB, mediated by the effect of stand structural diversity. Path coefficients are $\pm$1 standard error. Path coefficients where the interval (standard error) does not overlap zero are considered to be significant effects.}
+	\label{struc_model_slopes_all}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.8\textwidth]{sem_struc_stems_ha}
+	\caption{Line plots showing the variation in path coefficients in the SEM, using datasets with different mean stem density. Smoothed lines are loess curves with standard error shaded bars.}
+	\label{sem_struc_stems_ha}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=\textwidth]{full}
+	\caption{Path diagram with regression coefficients for the SEM incorporating environmental covariates and tree species and structural diversity across all five vegetation types. Latent variables are shown as circles while observed variables are shown as rectangles. Standardised path coefficients are shown as solid arrows pointing from predictor to response, with the effect size of the path coefficient expressed in terms of standard deviations on the latent variable response scale. Observed variables that inform the latent variables are connected by dotted arrows, observed variables with loading set to one are connected by dashed arrows. Measurement errors of exogenous variables are omitted for clarity.}
+	\label{full_mod}
+\end{figure}
 
 \section{Appendix 1 - Frequency distribution of observed variables} \label{appendixa}
 
@@ -389,6 +419,7 @@ The presence of a stem density threshold above which the effect of tree species 
 	\label{hist_trans}
 \end{figure}
 
+\appendix{}
 \section{Appendix 2 - Table of correlation fit statistics} \label{appendixb}
 
 \input{include/corr_ci_tab.tex}

@@ -1,0 +1,135 @@
+\documentclass[11pt,a4paper]{article}
+
+% Define page geometry
+\usepackage{geometry}
+\geometry{left=2.2cm,
+	right=2.2cm,
+	top=2.2cm,
+	bottom=2cm}
+\parskip 0.15cm
+\setlength{\parindent}{0cm}
+\usepackage{pdflscape}
+\usepackage[document]{ragged2e}
+
+% Set font
+\usepackage[T1]{fontenc}
+
+% Image handling
+\usepackage{graphics}  % Insert images easily
+\usepackage{graphicx}  % Extended image support
+
+\makeatletter
+	\g@addto@macro\@floatboxreset\centering  % Automatically centre images (floats)
+\makeatother
+
+\graphicspath{ {img/} }
+\usepackage{float}  %  Graphics placement [H] [H!] arguments
+\usepackage{subfig}  % Compound figures
+
+% Tables
+\usepackage{multirow}
+\usepackage{longtable}
+
+% Bibliography management
+\usepackage[UKenglish]{babel}
+\usepackage[natbibapa]{apacite}
+\bibliographystyle{apacite}
+
+% Text formatting
+\usepackage{url} % Allow nice formatting of URLs in text
+
+\usepackage{enumerate}  % Enumerated lists
+
+\usepackage{lineno}  % Line numbers
+
+\usepackage{textcomp}
+\newcommand{\textapprox}{\raisebox{0.5ex}{\texttildelow}}  % Command for a good tilde
+
+\usepackage{siunitx}
+\usepackage{amsmath}
+
+\usepackage{xcolor}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{#1}}}   % \todo{NOTE TO SELF WRITTEN IN RED}
+
+\input{code_format}
+
+% Custom title formatting
+\let\oldtitle\title
+
+\renewcommand{\title}[1]{\oldtitle{\vspace{-1.5cm}#1}}
+
+\usepackage[breaklinks]{hyperref}
+\definecolor{links}{RGB}{191,59,72}
+\hypersetup{
+	breaklinks,
+	colorlinks,
+	allcolors=links,
+	linktoc=section,
+	pdfauthor={John L. Godlee}
+}
+\def\subsectionautorefname{section}
+\def\subsubsectionautorefname{section}
+% \usepackage{biblatex}
+
+\usepackage{dcolumn}
+\usepackage{multirow}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows,positioning,shapes,shapes.gates.logic.US,trees}
+\usepackage{pdflscape}
+\usepackage{longtable}
+\usepackage{fmtcount}
+
+\usepackage{lineno}
+\linenumbers
+
+\begin{document}
+
+{\LARGE{Title: Tree species and structural diversity are important determinants of ecosystem function across disturbed southern African woodlands}}
+
+\vspace{1cm}
+
+Authors: John L. Godlee\textsuperscript{1}, Casey M. Ryan\textsuperscript{1}, David Bauman\textsuperscript{2,3}, Samuel J. Bowers\textsuperscript{1}, Joao M. B. Carreiras\textsuperscript{4}, Antonio Valter Chisingui\textsuperscript{5}, Joris P. G. M. Cromsigt\textsuperscript{6,7,8}, Dave J. Druce\textsuperscript{9,10}, Manfred Finkch\textsuperscript{11}, Francisco Maiato Gon\c{c}alves\textsuperscript{5}, Ricardo M. Holdo\textsuperscript{12}, Steve Makungwa\textsuperscript{13}, Iain M. McNicol\textsuperscript{1}, Edward T. A. Mitchard\textsuperscript{1}, Anderson Muchawona\textsuperscript{14}, Rasmus Revermann\textsuperscript{11,15}, Natasha Sofia Ribeiro\textsuperscript{16}, Abel Siampale\textsuperscript{17}, Stephen Syampungani\textsuperscript{18}, Jos\'{e} Jo\~{a}o Tchamba\textsuperscript{5}, Hemant G. Tripathi\textsuperscript{19}, Johannes Wallenfang\textsuperscript{11}, Mariska te Beest\textsuperscript{20,21,22}, Mathew Williams\textsuperscript{1}, Kyle G. Dexter\textsuperscript{1,23}
+
+1: School of GeoSciences, University of Edinburgh, Edinburgh, EH9 3FF, United Kingdom \\
+2: Environmental Change Institute, School of Geography and the Environment, University of Oxford, Oxford, United Kingdom \\
+3: Laboratoire d'\'{E}cologie V\'{e}g\'{e}tale et Biogéochimie, CP 244, Universit\'{e} Libre de Bruxelles, Brussels, Belgium \\
+4: National Centre for Earth Observation (NCEO), University of Sheffield, Hicks Building, Hounsfield Road, Sheffield, S3 7RH, United Kingdom \\
+5: Herbarium of Lubango, ISCED Hu\'{i}la, Sarmento Rodrigues Str. No. 2, CP. 230, Lubango, Angola \\
+6: Department of Wildlife, Fish, and Environmental Studies, Swedish University of Agricultural Sciences, Ume\aa, Sweden \\
+7: Department of Zoology, Centre for African Conservation Ecology, Nelson Mandela University, Port Elizabeth, South Africa \\
+8: Copernicus Institute of Sustainable Development, Utrecht University, 3584CS Utrecht, the Netherlands \\
+9: Ecological Advice, Ezemvelo KZN Wildlife, Hluhluwe-iMfolozi Park, South Africa \\
+10: School of Life Sciences, University of KwaZulu-Natal, Pietermaritzburg, South Africa \\
+11: Biodiversity, Evolution and Ecology of Plants, Institute of Plant Sciences and Microbiology, University of Hamburg, Ohnhorststr. 18, 22609 Hamburg, Germany \\
+12: Odum School of Ecology, University of Georgia, 140 E. Green St., Athens, GA 30602, USA \\
+13: Lilongwe University of Agriculture and Natural Resources (LUANAR), Lilongwe, Malawi \\
+14: Forest Research Centre, 1 Orange Groove Highlands, Harare, Zimbabwe \\
+15: Faculty of Natural Resources and Spatial Sciences, Namibia University of Science and Technology, Windhoek, Namibia \\
+16: Department of Forest Engineering, Faculty of Agronomy and Forest Engineering, Universidade Eduardo Mondlane, Av. Julius Nyerere, 3453, Campus Universitario, Maputo, Mozambique \\
+17: Forestry Department Headquarters - Ministry of Lands and Natural Resources, Cairo Road, Lusaka, Zambia \\
+18: School of Natural Resources, Copperbelt University, Kitwe, Zambia \\
+19: Faculty of Biological Sciences, University of Leeds, LS2 9JT, United Kingdom\\
+20: Copernicus Institute of Sustainable Development, Utrecht University, 3508 TC Utrecht, The Netherlands \\
+21: Centre for African Conservation Ecology, Nelson Mandela University, Port Elizabeth, 6031, South Africa \\
+22: South African Environmental Observation Network, Grasslands-Forests-Wetlands Node, Montrose, 3201, South Africa \\
+23: Royal Botanic Garden Edinburgh, Edinburgh, EH3 5LR, United Kingdom \\
+
+\vspace{1em}
+Corresponding author:
+
+John L. Godlee
+
+johngodlee@gmail.com
+
+School of GeoSciences, University of Edinburgh, Edinburgh, EH9 3FF, United Kingdom
+
+\section{Acknowledgements}
+
+This work is funded by a NERC E3 Doctoral Training Partnership PhD studentship at the University of Edinburgh (John L. Godlee, Grant No. NE/L002558/1). The data for this study was contributed by a number of independently funded projects and was assembled and prepared by SEOSAW (A Socio-Ecological Observatory for Southern African Woodlands, \url{https://seosaw.github.io}), an activity of the Miombo Network and a NERC-funded project (Grant No. NE/P008755/1). Revisions of the SEOSAW dataset were funded by SavannaChange, a GCRF/University of Edinburgh funded project. We thank all data providers and the field assistance they received when collecting plot data. JMBC was supported by the Natural Environment Research Council (Agreement PR140015 between NERC and the National Centre for Earth Observation). 
+
+\section{Biosketch}
+
+SEOSAW (A Socio-Ecological Observatory for Southern African Woodlands, \url{https://seosaw.github.io}) aims to understand the response of southern African woodlands to global change. The goal of SEOSAW is to produce novel analyses of the determinants of ecosystem structure and function for the southern Africa region, based on syntheses of plot data. Additionally the group hopes to develop infrastructure for a long-term regional plan for plot remeasurement in the southern African region. While working on a multitude of diverse projects in the dry tropics at large, all authors have a broad interest in community ecology and ecosystem assemblage in southern African woodlands.
+
+
+\end{document}

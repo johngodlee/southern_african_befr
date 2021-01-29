@@ -20,13 +20,13 @@ source("scripts/clust_defin.R")
 plot_data <- readRDS("data/plot_data_fil_agg_norm_std.rds")
 
 # SEOSAW v2 stems data
-stems <- read.csv("~/git_proj/seosaw_data/data_out/stems_latest_v2.7.csv")
+stems <- read.csv("~/git_proj/seosaw_data/data_out/v2.7/stems_latest_v2.7.csv")
 
 # SEOSAW v2 plots data
-plots <- read.csv("~/git_proj/seosaw_data/data_out/plots_v2.7.csv")
+plots <- read.csv("~/git_proj/seosaw_data/data_out/v2.7/plots_v2.7.csv")
 
 # Tree abundance matrix
-ab_mat <- readRDS("data/stems_ab_mat.rds")
+ab_mat <- readRDS("data/trees_ab_mat.rds")
 
 # plot_id plot_cluster lookup
 plotcode_plot_cluster_lookup <- readRDS("data/plotcode_plot_cluster_lookup.rds")
@@ -84,9 +84,11 @@ t_p_sp <- SpatialPointsDataFrame(
   coords = t_p_std_nona, data = t_p_std_nona)
 
 # Create a convex hull spatialpolygons object
-plot_hull <- chull(plot_data$temp, plot_data$precip)
+plot_data_nona <- plot_data %>%
+  filter(!is.na(temp), !is.na(precip))
+plot_hull <- chull(plot_data_nona$temp, plot_data_nona$precip)
 plot_hull <- c(plot_hull, plot_hull[1])
-plot_hull_data <- plot_data[plot_hull,]
+plot_hull_data <- plot_data_nona[plot_hull,]
 plot_hull_coords <- plot_hull_data %>% 
   dplyr::select(temp, precip)
 
@@ -94,9 +96,9 @@ plot_hull_poly <- Polygon(plot_hull_coords, hole=FALSE)
 plot_hull_polys <- Polygons(list(plot_hull_poly), 1)
 plot_hull_polys_sp = SpatialPolygons(list(plot_hull_polys))
 
-plot_hull_std <- chull(plot_data$temp_std, plot_data$precip_std)
+plot_hull_std <- chull(plot_data_nona$temp_std, plot_data_nona$precip_std)
 plot_hull_std <- c(plot_hull_std, plot_hull_std[1])
-plot_hull_std_data<- plot_data[plot_hull_std,]
+plot_hull_std_data<- plot_data_nona[plot_hull_std,]
 plot_hull_std_coords <- plot_hull_std_data %>% 
   dplyr::select(temp_std, precip_std)
 
@@ -131,7 +133,7 @@ ggplot() +
   scale_colour_continuous(name = "Density", type = "viridis", trans = "log", 
     breaks = c(1, 5, 10, 50, 100, 200, 400)) + 
   new_scale_fill() +
-  geom_point(data = plot_data,
+  geom_point(data = plot_data_nona,
     mapping = aes(x = temp, y = precip, fill = clust4_fac), 
     colour = "black", shape = 21) + 
   geom_polygon(data = plot_hull_fort,
@@ -162,8 +164,8 @@ head(sort(plot_data$precip), n = 20)
 
 # Where are the wettest plots found?
 plot_data_precip_max_min <- plot_data %>%
-  filter(precip > quantile(precip, 0.9) | 
-      precip < quantile(precip, 0.1)) %>%
+  filter(precip > quantile(precip, 0.9, na.rm = TRUE) | 
+      precip < quantile(precip, 0.1, na.rm = TRUE)) %>%
   mutate(hi_lo = case_when(
     precip > median(plot_data$precip) ~ "hi",
     precip < median(plot_data$precip) ~ "lo"
@@ -281,7 +283,7 @@ clust_summ <- plot_data %>%
     n_species_raref = paste0(n_species_raref_median, "(", n_species_raref_iqr, ")"),
     stems_ha = paste0(stems_ha_median, "(", stems_ha_iqr, ")"),
     clust4_fac = as.character(clust4_fac)) %>%
-  select(clust4_fac, dom_species, ind_species,  
+  dplyr::select(clust4_fac, dom_species, ind_species,  
     n_plots, n_species_raref, stems_ha, agb_ha)
 
 fileConn <- file("include/clust_summ.tex")

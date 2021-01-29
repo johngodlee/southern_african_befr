@@ -1,10 +1,10 @@
-# Creating a dataset for use in Chapter 1:
-# Regional analysis of the factors affecting woody AGB and productivity
+# Creattng a dataset 
 # John Godlee (johngodlee@gmail.com)
 # 2018-12-10
 # 2019-12-11
 # 2020-06-22
 # 2020-08-19
+# 2021-01-29
 
 # Packages
 library(dplyr)
@@ -22,79 +22,78 @@ library(sf)
 load("data/seosaw_plot_summary5Apr2019.Rdata")
 
 # SEOSAW v2 plot summary data
-plots <- read.csv("~/git_proj/seosaw_data/data_out/plots_v2.7.csv")
+plots <- read.csv("~/git_proj/seosaw_data/data_out/v2.7/plots_v2.7.csv")
 
 # SEOSAW v2 stem data
-stems <- read.csv("~/git_proj/seosaw_data/data_out/stems_latest_v2.7.csv")
+stems <- read.csv("~/git_proj/seosaw_data/data_out/v2.7/stems_latest_v2.7.csv")
 
-# Fire layer 
-fire_count <- raster("/Volumes/john/AFcount_2001_2018.tif")
- 
+# SEOSAW v2.10 spatial data, for nitrogen, sand, fire, etc.
+spatial <- read.csv("~/git_proj/seosaw_data/data_out/v2.10/plots_spatial_v2.10.csv")
+
 # Datasets used in analysis
 dataset_codes <- c("ZIS", "SSM", "MCL", "ZPF", "ZNF", "MNR", "MGR", "MAR",
   "ZKS", "TKW", "MLC", "ZCC", "VAS", "ABG", "MCF", "MNF", "SHD", "DKS")
 
-# Remove plots with human-altered conditions ----
-
-# Fix some incorrect metadata
-plots_fix <- plots %>% 
+# Clean plots data
+plots_clean <- plots %>%
   mutate(ntfp_harvesting = case_when(
       grepl("DKS", plot_id) ~ FALSE,
       TRUE ~ ntfp_harvesting),
     farmed_30_years = case_when(
       grepl("DKS", plot_id) ~ FALSE,
-      TRUE ~ farmed_30_years))
-
-plots_clean <- plots_fix %>%
+      TRUE ~ farmed_30_years)) %>%  # Fix incorrect metadata
   filter_at(.vars = c("charcoal_harvesting", "timber_harvesting", 
     "high_graded_100_years", "manipulation_experiment", "fuel_wood_harvesting", 
     "other_woody_product_harvesting", "ntfp_harvesting", "farmed_30_years",
     "fire_exclusion", "fire_treatment", "cattle_grazing", "goat_grazing"),
-    all_vars(. %in% c(FALSE, NA))) %>%
+    all_vars(. %in% c(FALSE, NA))) %>%  # Remove human-altered plots
     filter(grepl(paste(dataset_codes, 
-        collapse = "|"), plot_id)) %>%
+        collapse = "|"), plot_id)) %>%  # Only datasets I want
+    left_join(., spatial, by = "plot_id") %>%  # Add spatial data
     dplyr::select(
       plot_cluster, 
       plot_id,
-      prinv,
       longitude_of_centre,
-      latitude_of_centre, 
+      latitude_of_centre,
       plot_area, 
-      cec = CECSOL, 
-      sand = SNDPPT, 
-      soil_c = ORCDRC, 
-      temp = bio1, 
-      temp_seas = bio4, 
-      temp_stress = bio2,
-      precip = bio12, 
-      precip_seas = bio15, 
-      fire = firecount_2001_2018,
-      herbivory = total_herbivory)
+      cec = soil_cation_ex_cap, 
+      sand = soil_sand, 
+      soil_c = soil_org_c, 
+      nitrogen = soil_nitrogen,
+      temp = bio1.y, 
+      temp_seas = bio4.y, 
+      temp_stress = bio2.y,
+      precip = bio12.y, 
+      precip_seas = bio15.y, 
+      fire = fire_count,
+      herbivory = herbiv_total)  # Columns I want
 
-# Aggregate Zambian Forestry Commission plots ----
-
-# Split into Zambia and non-Zambia datasets
+# Create Zambia ILUAii only dataset
 plots_zam <- plots_clean %>%
-  filter(prinv == "Siampale A.")
+  filter(grepl("ZIS", plot_id))
 
-zamfullcluster <- plots_zam %>%
+# Subset to plot clusters which contain 4 plots
+zam_full_clust <- plots_zam %>%
   group_by(plot_cluster) %>%
   tally() %>%
-  filter(n == 4) 
+  filter(n == 4) %>% 
+  pull(plot_cluster)
 
 plots_zam <- plots_zam %>%
-  filter(plot_cluster %in% zamfullcluster$plot_cluster)
+  filter(plot_cluster %in% zam_full_clust)
 
+# How many plots and clusters in Zambia data?
 nzam <- nrow(plots_zam)
 nzamcluster <- nzam / 4
 
+# Create non-Zambia only dataset
 plots_nozam <- plots_clean %>%
-  filter(prinv != "Siampale A.") %>%
+  filter(!grepl("ZIS", plot_id)) %>%
   mutate(plot_cluster = plot_id)
 
-# Aggregate values for Zambian plots and randomly sample rows
-plots_zam_agg <- plots_zam %>%
-  group_by(plot_cluster) %>%
+# Aggregate values for Zambian plots by plot cluster
+plots_zam_agg <- plots_zam %>% 
+  group_by(plot_cluster) %>%  
   summarise(plot_id = paste0(plot_id, collapse = ","),
     longitude_of_centre = mean(longitude_of_centre, na.rm = TRUE),
     latitude_of_centre = mean(latitude_of_centre, na.rm = TRUE),
@@ -108,26 +107,24 @@ plots_zam_agg <- plots_zam %>%
     temp_seas = mean(temp_seas, na.rm = TRUE),
     temp_stress = mean(temp_stress, na.rm = TRUE),
     fire = mean(fire, na.rm = TRUE),
-    herbivory = mean(herbivory, na.rm = TRUE),
-    prinv = first(na.omit(prinv)))
+    herbivory = mean(herbivory, na.rm = TRUE))
 
 # Combine Zambian aggregated data with non-aggregated other data
 plots_agg <- bind_rows(plots_zam_agg, plots_nozam)
 
-# Calculate plot level values from stems ----
-
-# Add plot_cluster identifier to stem level data
+# Add plot_cluster vector to dataframe
 plots_agg$plot_id_vec <- strsplit(as.character(plots_agg$plot_id), 
   split=",")
 
+# Create plot_id vs plot_cluster lookup table
 plot_id_plot_cluster_lookup <- plots_agg %>%
-  dplyr::select(plot_id_vec, plot_cluster) %>%
-  unnest(plot_id_vec)
+  dplyr::select(plot_id = plot_id_vec, plot_cluster) %>%
+  unnest(plot_id)
 
-# Filter stems to big trees, alive trees, and trees with species identity
-stems_fil <- left_join(stems, plot_id_plot_cluster_lookup, 
-  by = c("plot_id" = "plot_id_vec")) %>%
-  mutate(species_name_clean = case_when(
+# Filter stems to >10 cm DBH, alive, and trees with species 
+stems_fil <- left_join(stems, plot_id_plot_cluster_lookup, by = "plot_id") %>%
+  mutate(
+    species_name_clean = case_when(
       is.na(species_name_clean) ~ species_orig_binom,
       TRUE ~ species_name_clean)) %>%
   filter(
@@ -138,7 +135,7 @@ stems_fil <- left_join(stems, plot_id_plot_cluster_lookup,
     alive %in% c("A", NA))
 
 # Calculate plot level statistics
-stems_fil_summ <- stems_fil %>%
+stems_summ <- stems_fil %>%
   group_by(plot_cluster) %>%
   summarise(
     agb = sum(agb, na.rm = TRUE),
@@ -154,12 +151,11 @@ stems_fil_summ <- stems_fil %>%
     cov_dbh = sd_dbh / mean_dbh * 100)
 
 # Join to plots table
-plots_stems <- left_join(stems_fil_summ, plots_agg, by = "plot_cluster")
+plots_stems <- left_join(stems_summ, plots_agg, by = "plot_cluster")
 
 # Calculate AGB per ha
 plots_stems$agb_ha <- plots_stems$agb / plots_stems$plot_area
 
-# Estimate rarefied species diversity statistics ----
 # Create abundance matrix by tree_id
 ab_mat <- abMatGen(stems_fil, plot_id = "plot_cluster", tree_id = "tree_id",
   species_name = "species_name_clean", fpc = "fpc")
@@ -171,8 +167,9 @@ chao_list <- iNEXT(ab_mat_t, q = 0)
 
 chao_rich_df <- chao_list$AsyEst %>%
   filter(Diversity == "Species richness") %>%
-  dplyr::select(plot_cluster = Site, n_species_raref = Estimator, 
-    n_species_raref_se = s.e., n_species_lower_ci_95 = LCL, n_species_upper_ci_95 = UCL)
+  dplyr::select(plot_cluster = Site, 
+    n_species_raref = Estimator, n_species_raref_se = s.e., 
+    n_species_lower_ci_95 = LCL, n_species_upper_ci_95 = UCL)
 
 chao_shannon_df <- chao_list$AsyEst %>%
   filter(Diversity == "Shannon diversity") %>%
@@ -204,22 +201,24 @@ ggplot() +
   labs(x = "Bootstrap sample size", y = "Extrapolated species richness")
 dev.off()
 
-# Add tree diversity data to plot level data ----
+# ab_mat tally per plot
+ab_mat_tally <- rowSums(ab_mat)
+ab_mat_tally_df <- data.frame(n_trees_gt10 = ab_mat_tally, 
+  plot_cluster = names(ab_mat_tally))
+
+# Add tree diversity data to plot level data 
 plots_div <- left_join(plots_stems, chao_df, by = "plot_cluster") %>%
-  left_join(., as.data.frame(rowSums(ab_mat)) %>%
-  mutate(plot_cluster = row.names(.)) %>%
-  rename(n_trees_gt10 = `rowSums(ab_mat)`), by = "plot_cluster") %>%
+  left_join(., ab_mat_tally_df, by = "plot_cluster") %>%
   mutate(n_trees_gt10_ha = n_trees_gt10 / plot_area)
 
-# Remove plots with less than 50 trees per ha, less than 0.1 ha plot area ----
-plots_div_clean <- plots_div %>%
+# Remove plots with less than 50 trees per ha, less than 0.1 ha plot area 
+plots_div_fil <- plots_div %>%
   filter(n_trees_gt10_ha >= 50,
     plot_area >= 0.1)
 
-# Add plot clusters from old data ----
+# Make clean plot cluster dataframe
 clust <- ssaw8$cluster %>% 
-  filter(grepl(paste(dataset_codes, 
-    collapse = "|"), plotcode)) %>%
+  filter(grepl(paste(dataset_codes, collapse = "|"), plotcode)) %>%
   mutate(plot_id = gsub("-(0)?(0)?", "_", plotcode)) %>%
   dplyr::select(plot_id, starts_with("clust")) %>%
   mutate(plot_id = case_when(
@@ -229,46 +228,45 @@ clust <- ssaw8$cluster %>%
       TRUE ~ plot_id))
 
 # Add Bicuar plots which didn't have clusters assigned
-clustadd <- data.frame(plot_id = paste0("ABG_", seq(5, 15)), 
+bicuar_clust <- data.frame(plot_id = paste0("ABG_", seq(5, 15)), 
   clust7 = NA, clust5 = NA, clust4 = 1)
 
-clust <- rbind(clust, clustadd)
+clust <- rbind(clust, bicuar_clust)
 
-plots_clust <- left_join(plots_div_clean, clust, 
+# Add cluster data to plots
+plots_clust <- left_join(plots_div_fil, clust, 
   by = c("plot_cluster" = "plot_id")) %>%
   filter(!is.na(clust4))
 
-# Extract soil Nitrogren from soil Grids ----
-
-#write.csv(plots_clust[,c("longitude_of_centre", "latitude_of_centre")], 
-#  "../data/plots_coord.csv", row.names = FALSE)
-
-##' Run external script `scripts/nitrogen_get.sh`
-
-nitrogen <- readLines("data/nitrogen.txt")
-plots_clust$nitrogen <- as.numeric(nitrogen)
-
-# Write data ----
-# Plot group - plotcode lookup 
+# Write plot cluster ID lookup table
 plotcode_plot_cluster_lookup <- plots_clust %>%
   dplyr::select(plot_id_vec, plot_cluster) %>%
   unnest(plot_id_vec)
+
 saveRDS(plotcode_plot_cluster_lookup, "data/plotcode_plot_cluster_lookup.rds")
 
-# Plot data
+# Write plot-level data
 plots_clust_clean <- plots_clust %>% 
-  dplyr::select(-plot_id_vec, -plot_id, -prinv)
+  dplyr::select(-plot_id_vec, -plot_id)
+
 saveRDS(plots_clust_clean, "data/plot_data_fil_agg.rds")
 
-# Tree abundance matrix
-ab_mat$plot_cluster <- row.names(ab_mat)
+# Write tree abundance matrix
 ab_mat_clean <- ab_mat %>%
+  rownames_to_column("plot_cluster") %>%
   filter(plot_cluster %in% plots_clust_clean$plot_cluster) %>%
-  dplyr::select(-plot_cluster)
-ab_mat_clean_clean <- ab_mat_clean[,!colSums(ab_mat_clean) == 0]
+  column_to_rownames("plot_cluster") %>%
+  dplyr::select(where(~sum(.x) != 0))
 
-saveRDS(ab_mat_clean_clean, "data/stems_ab_mat.rds")
+saveRDS(ab_mat_clean, "data/trees_ab_mat.rds")
 
+# Write stems data
+stems_fil_clean <- stems_fil %>%
+  filter(plot_cluster %in% plots_clust_clean$plot_cluster) 
+
+saveRDS(stems_fil_clean, "data/stems.rds")
+
+# Write statistics for manuscript
 fileConn <- file(paste0("include/zam.tex"))
 writeLines(
   c(

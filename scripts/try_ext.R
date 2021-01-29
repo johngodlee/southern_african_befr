@@ -5,11 +5,13 @@
 # Packages
 library(data.table)
 library(dplyr)
+library(tidyr)
 library(tibble)
 library(ggplot2)
 library(sf)
 library(rnaturalearth)
 library(rnaturalearthdata)
+library(BIOMASS)
 
 source("scripts/clust_defin.R")
 
@@ -19,16 +21,18 @@ dat <- fread("data/try/13399.txt",
 
 # Species from SEOSAW
 plots <- readRDS("data/plot_data_fil_agg_norm_std.rds")
-ab_mat <- readRDS("data/stems_ab_mat.rds")
+ab_mat <- readRDS("data/trees_ab_mat.rds")
+stems <- readRDS("data/stems.rds")
 
 # All plots represented in abundance matrix?
 stopifnot(all(row.names(ab_mat) %in% plots$plot_cluster))
 
 # Gather abundance matrix
 ab <- ab_mat %>%
-  rownames_to_column("plot_id") %>%
-  gather(species, n, -plot_id) %>%
-  mutate(genus = unlist(lapply(strsplit(species, " "), "[", 1)))
+  rownames_to_column("plot_cluster") %>%
+  gather(species, n, -plot_cluster) %>%
+  mutate(genus = unlist(lapply(strsplit(species, " "), "[", 1))) %>%
+  filter(n > 0)
 
 # Clean data
 dat_clean <- dat %>%
@@ -48,11 +52,12 @@ dat_clean <- dat %>%
     error_risk = ErrorRisk) %>%
   mutate(genus = unlist(lapply(strsplit(species, " "), "[", 1)))
 
+# Filter to only the species in my dataset
 dat_species <- dat_clean %>%
   filter(species %in% unique(ab$species)) %>%
   as.data.frame()
 
-# species ID match
+# Generate TRY species ID lookup table 
 species_id_lookup <- dat_species %>%
   dplyr::select(species_id, species) %>%
   distinct()
@@ -142,14 +147,20 @@ saveRDS(traits_species, file = "data/try_species_clean.rds")
 traits_species_split <- split(traits_species, traits_species$trait_id)
 
 traits_species_prop <- do.call(rbind, lapply(traits_species_split, function(x) {
-  species <- unique(x$species)
-  total_ind <- rowSums(ab_mat)
-  rep_ind <- rowSums(ab_mat[,species, drop = FALSE])
-  prop <- rep_ind / total_ind
-  data.frame(plot_id = names(prop), prop, trait_short = unique(x$trait_short))
-    }))
+  sp <- unique(x$species)
+  total_ind <- ab %>%
+    group_by(plot_cluster) %>%
+    summarise(total_ind = sum(n, na.rm = TRUE))
+  rep_ind <- ab %>%
+    group_by(plot_cluster) %>%
+    filter(species %in% sp) %>%
+    summarise(rep_ind = sum(n, na.rm = TRUE)) %>%
+    left_join(., total_ind, by = "plot_cluster") %>%
+    mutate(prop = rep_ind / total_ind,
+      trait_short = unique(x$trait_short))
 
-stopifnot((nrow(traits_species_prop) / nrow(ab_mat)) == length(traits_species_split))
+    return(rep_ind)
+    }))
 
 # Plot representation of individuals per plot per trait as histograms
 pdf(file = "./img/traits_species_hist.pdf", height = 10, width = 12)
@@ -163,7 +174,7 @@ ggplot() +
 dev.off()
 
 # Same as above but coloured by group
-traits_species_prop$clust4 <- factor(plots$clust4[match(traits_species_prop$plot_id, plots$plot_cluster)])
+traits_species_prop$clust4 <- factor(plots$clust4[match(traits_species_prop$plot_cluster, plots$plot_cluster)])
 pdf(file = "./img/traits_species_hist_clust.pdf", height = 10, width = 12)
 ggplot() + 
   geom_histogram(data = traits_species_prop,
@@ -303,20 +314,18 @@ traits_genus_split <- split(traits_genus, traits_genus$trait_id)
 traits_genus_prop <- do.call(rbind, lapply(traits_genus_split, function(x) {
   gen <- unique(x$genus)
   total_ind <- ab %>%
-    group_by(plot_id) %>%
+    group_by(plot_cluster) %>%
     summarise(total_ind = sum(n, na.rm = TRUE))
   rep_ind <- ab %>%
-    group_by(plot_id) %>%
+    group_by(plot_cluster) %>%
     filter(genus %in% gen) %>%
     summarise(rep_ind = sum(n, na.rm = TRUE)) %>%
-    left_join(., total_ind, by = "plot_id") %>%
+    left_join(., total_ind, by = "plot_cluster") %>%
     mutate(prop = rep_ind / total_ind,
       trait_short = unique(x$trait_short))
 
     return(rep_ind)
     }))
-
-stopifnot((nrow(traits_genus_prop) / nrow(ab_mat)) == length(traits_genus_split))
 
 # Plot representation of individuals per plot per trait as histograms
 pdf(file = "./img/traits_genus_hist.pdf", height = 10, width = 12)
@@ -330,7 +339,7 @@ ggplot() +
 dev.off()
 
 # Same as above but coloured by group
-traits_genus_prop$clust4 <- factor(plots$clust4[match(traits_genus_prop$plot_id, plots$plot_cluster)])
+traits_genus_prop$clust4 <- factor(plots$clust4[match(traits_genus_prop$plot_cluster, plots$plot_cluster)])
 pdf(file = "./img/traits_genus_hist_clust.pdf", height = 10, width = 12)
 ggplot() + 
   geom_histogram(data = traits_genus_prop,
@@ -410,4 +419,96 @@ ggplot() +
     aes(x = longitude, y = latitude, fill = trait_short),
     colour = "black", shape = 21) + 
   theme_bw()
+dev.off()
+
+
+# ============================================
+# 
+# ============================================
+
+##' Reviewer wants at least 80% of individuals in plot with trait measurements
+##' Leaf N, Leaf P, Wood density
+##' Leaf N and Leaf P to approximate leaf economic spectrum
+##' Wood density to approximate wood economic spectrum
+
+##' For plots with at least 80% of individuals with a genus-level measurement for 
+##' wood density and Leaf N, are there relationships between community-weighted means 
+##' of those traits and AGB? If no we can stop there.
+
+##' While replication probably should be an issue, it's common to have little 
+##' replication, so it wouldn't be a convincing argument for reviewers
+
+# Get wood density at genus level
+wd_genus <- BIOMASS::wdData %>%
+  filter(
+    genus %in% unique(ab$genus),
+    grepl("africa", region, ignore.case = TRUE)) %>%
+  group_by(genus) %>%
+  summarise(wd = mean(wd, na.rm = TRUE))
+
+ab$wd <- wd_genus$wd[match(ab$genus, wd_genus$genus)]
+
+# Get Leaf N at genus level
+leaf_n_genus <- traits_genus %>%
+  filter(
+    trait_id == 14,
+    genus %in% unique(ab$genus)) %>%
+  group_by(genus) %>%
+  summarise(leaf_n = mean(val_std, na.rm = TRUE))
+
+ab$leaf_n <- leaf_n_genus$leaf_n[match(ab$genus, leaf_n_genus$genus)]
+
+# find plots: >80% of trees with genus-level measurement for density & Leaf N
+ab_split <- split(ab, ab$plot_cluster)
+
+per_ind_trait <- lapply(ab_split, function(x) {
+  n_all <- sum(x$n)
+  n_traits <- sum(x[!is.na(x$wd) & !is.na(x$leaf_n), "n"], na.rm = TRUE)
+  return(n_traits / n_all)
+    })
+
+per_ind_trait_df <- data.frame(plot_cluster = names(per_ind_trait), 
+  per_trait = unlist(per_ind_trait))
+per_ind_trait_df$ge80 <- per_ind_trait_df$per_trait >= 0.8
+
+# How many plots is that?
+length(which(per_ind_trait_df$ge80 == TRUE))
+##' 669
+
+# Generate community weighted means of traits per plot
+stems_cwm <- stems %>% 
+  filter(plot_cluster %in% 
+    per_ind_trait_df[per_ind_trait_df$ge80 == TRUE, "plot_cluster"]) %>% 
+  mutate(ba = pi * (diam/2)^2) %>%
+  left_join(., leaf_n_genus, by = c("genus_clean" = "genus")) %>%
+  left_join(., wd_genus, by = c("genus_clean" = "genus")) %>%
+  group_by(plot_cluster) %>%
+  summarise(
+    leaf_n_cwm = weighted.mean(leaf_n, ba, na.rm = TRUE),
+    wd_cwm = weighted.mean(wd, ba, na.rm = TRUE)) %>%
+  left_join(., plots[,c("plot_cluster", "clust4", "agb_ha")], by = "plot_cluster")
+
+# Linear regressions of CWMs vs. AGB
+mod_list <- list()
+mod_list[[1]] <- mod_agb_n <- lm(agb_ha ~ leaf_n_cwm, data = stems_cwm)
+mod_list[[2]] <- mod_agb_wd <- lm(agb_ha ~ wd_cwm, data = stems_cwm)
+mod_list[[3]] <- mod_agb_n_wd <- lm(agb_ha ~ wd_cwm + leaf_n_cwm, data = stems_cwm)
+
+mod_summ_list <- purrr::map_df(mod_list, glance)
+
+mod_summ_list$preds <- c("Leaf N", "Wood dens.", "Leaf N + Wood dens.")
+
+saveRDS(mod_summ_list, "output/cwm_mod.rds")
+
+# Plot relationship between CWMs and AGB
+stems_cwm_gather <- stems_cwm %>%
+  gather(key, val, -plot_cluster, -clust4, -agb_ha)
+
+pdf(file = "img/stems_cwm_agb.pdf", height = 8, width = 10)
+ggplot(data = stems_cwm_gather, aes(x = val, y = agb_ha)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  facet_wrap(~key, scales = "free_x") + 
+  theme_bw() + 
+  labs(x = "", y = "AGB ha^-1")
 dev.off()

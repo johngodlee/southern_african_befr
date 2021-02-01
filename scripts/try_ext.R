@@ -21,7 +21,7 @@ source("scripts/clust_defin.R")
 try_dat <- fread("data/try/13399.txt", 
   header = TRUE, sep = "\t", dec = ".", quote = "", data.table = FALSE)
 
- Species from SEOSAW
+# Species from SEOSAW
 plots <- readRDS("data/plot_data_fil_agg_norm_std.rds")
 stems <- readRDS("data/stems.rds")
 
@@ -83,26 +83,30 @@ try_split <- split(try_clean, try_clean$obs_id)
 
 # Create clean dataframe of observations
 try_species <- as.data.frame(do.call(rbind, lapply(try_split, function(x) {
-  traits <- x[x$trait_id %in% trait_id_lookup$trait_id,
-    c("species", "trait_id", "val_std")]
+  if(any(x$trait_id %in% trait_id_lookup$trait_id)) {
+    traits <- x[x$trait_id %in% trait_id_lookup$trait_id,
+      c("species", "trait_id", "val_std")]
 
-  traits$trait_id <- trait_id_lookup$trait_col[
-  match(traits$trait_id, trait_id_lookup$trait_id)]
+    traits$trait_id <- trait_id_lookup$trait_col[
+    match(traits$trait_id, trait_id_lookup$trait_id)]
 
-  longitude <- as.numeric(x[x$key_id == 60, "val_std"])
-  if (length(longitude) == 0) {
-    traits$longitude <- NA_real_
+    longitude <- as.numeric(x[x$key_id == 60, "val_std"])
+    if (length(longitude) == 0) {
+      traits$longitude <- NA_real_
+    } else {
+      traits$longitude <- longitude
+    }
+
+    latitude <- as.numeric(x[x$key_id == 59, "val_std"])
+    if (length(latitude) == 0) {
+      traits$latitude <- NA_real_
+    } else {
+      traits$latitude <- latitude
+    }
+    return(traits)
   } else {
-    traits$longitude <- longitude
+    return(NULL)
   }
-
-  latitude <- as.numeric(x[x$key_id == 59, "val_std"])
-  if (length(latitude) == 0) {
-    traits$latitude <- NA_real_
-  } else {
-    traits$latitude <- latitude
-  }
-  return(traits)
     })))
 
 # Add wood density to traits dataframe
@@ -120,10 +124,9 @@ traits_species_summ <- traits %>%
   dplyr::select(-n_meas_wd)
 
 # Add traits to stems dataframe
-stems_species_traits <- left_join(stems, 
-  traits_species_summ %>% 
-    filter(species %in% stems$species_name_clean) %>%
-    dplyr::select(species, starts_with("val_std")),
+stems_species_traits <- left_join(
+  stems, 
+  traits_species_summ %>% filter(species %in% stems$species_name_clean),
   by = c("species_name_clean" = "species"))
 
 # Split stems data by plot
@@ -164,6 +167,19 @@ traits_species_prop_clean <- traits_species_prop %>%
       TRUE ~ trait) 
     ) %>%
   left_join(., plots[,c("plot_cluster", "clust4")], by = "plot_cluster")
+
+# How many plots >80% coverage by both basal area and N trees in all traits?
+traits_species_prop_summ <- traits_species_prop_clean %>%
+  filter(prop >= 0.8) %>%
+  group_by(plot_cluster, trait, method) %>%
+  tally() %>% 
+  group_by(plot_cluster, method) %>%
+  tally() %>%
+  ungroup() %>%
+  filter(n == 4) %>%
+  group_by(method) %>%
+  tally() %>%
+  mutate(per = n / nrow(plots))
 
 # Plot proportional representation of trees per plot per trait 
 pdf(file = "./img/traits_species_cumul.pdf", height = 10, width = 7)
@@ -207,9 +223,7 @@ traits_genus_summ <- traits_species_summ %>%
   filter(genus %in% stems$genus_clean)
 
 # Add traits to stems dataframe
-stems_genus_traits <- left_join(stems, 
-  traits_genus_summ %>% 
-    dplyr::select(genus, starts_with("val_std")),
+stems_genus_traits <- left_join(stems, traits_genus_summ,
   by = c("genus_clean" = "genus"))
 
 # Split stems data by plot
@@ -250,6 +264,19 @@ traits_genus_prop_clean <- traits_genus_prop %>%
       TRUE ~ trait) 
     ) %>%
   left_join(., plots[,c("plot_cluster", "clust4")], by = "plot_cluster")
+
+# How many plots >80% coverage by both basal area and N trees in all traits?
+traits_genus_prop_summ <- traits_genus_prop_clean %>%
+  filter(prop >= 0.8) %>%
+  group_by(plot_cluster, trait, method) %>%
+  tally() %>% 
+  group_by(plot_cluster, method) %>%
+  tally() %>%
+  ungroup() %>%
+  filter(n == 4) %>%
+  group_by(method) %>%
+  tally() %>%
+  mutate(per = n / nrow(plots))
 
 # Plot proportional representation of trees per plot per trait 
 pdf(file = "./img/traits_genus_cumul.pdf", height = 10, width = 7)
@@ -320,15 +347,23 @@ stems_cwm_gather <- stems_cwm %>%
   mutate(key = case_when(
       grepl("leaf_n", key) ~ "Leaf N",
       grepl("wd", key) ~ "Wood density",
-      TRUE ~ key))
+      TRUE ~ key),
+    clust4 = factor(clust4))
 
 # Plot relationship between CWMs and AGB
-pdf(file = "img/stems_cwm_agb.pdf", height = 8, width = 10)
+pdf(file = "img/stems_cwm_agb.pdf", height = 5, width = 10)
 ggplot(data = stems_cwm_gather, aes(x = val, y = agb_ha)) + 
-  geom_point() + 
-  geom_smooth(method = "lm") + 
+  geom_point(
+    aes(fill = factor(clust4, levels = c("1","2","3","4"), labels = clust_names)), 
+    shape = 21, colour = "black") + 
+  geom_smooth(method = "lm", colour = "black") + 
+  geom_smooth(method = "lm", se = FALSE,
+    aes(colour = factor(clust4, levels = c("1","2","3","4"), labels = clust_names))) + 
+  scale_colour_manual(values = c(clust_pal), name = "Cluster") + 
+  scale_fill_manual(values = c(clust_pal), name = "Cluster") + 
   facet_wrap(~key, scales = "free_x") + 
   theme_bw() + 
+  theme(legend.position = "bottom") + 
   labs(x = "", y = expression("AGB"~"ha"^-1))
 dev.off()
 
@@ -380,6 +415,42 @@ traits_genus_n_meas <- traits_genus_summ %>%
 
 # Bind species and genus numbers of measurements together
 traits_n_meas_gather <- bind_rows(traits_species_n_meas, traits_genus_n_meas)
+
+# How many genera or species had given levels of replication for each trait?
+traits_rep_summ <- traits_n_meas_gather %>%
+  group_by(gen_sp, trait) %>%
+  summarise(
+    per_ge10 = length(which(n >= 10)),
+    per_ge20 = length(which(n >= 20)),
+    per_ge30 = length(which(n >= 30)))
+
+# How many plots have more than 80% of basal area represented by a given number of measurements in TRY?
+traits_rep_ge80 <- stems_genus_traits %>%
+  dplyr::select(plot_cluster, ba, starts_with("n_meas")) %>%
+  gather(trait, n, -plot_cluster, -ba) %>%
+  group_by(plot_cluster, trait) %>%
+  summarise(
+    per_ge10 = sum(ba[n >= 10], na.rm = TRUE) / sum(ba, na.rm = TRUE),
+    per_ge20 = sum(ba[n >= 20], na.rm = TRUE) / sum(ba, na.rm = TRUE),
+    per_ge30 = sum(ba[n >= 30], na.rm = TRUE) / sum(ba, na.rm = TRUE)
+    ) %>%
+  gather(key, value, -plot_cluster, -trait)
+
+# Per trait tally
+traits_rep_ge80_trait_summ <- traits_rep_ge80 %>%
+  group_by(plot_cluster, trait, key) %>%
+  summarise(n_ge80 = length(which(value >= 0.8))) %>%
+  filter(n_ge80 == 1) %>%
+  group_by(trait, key) %>%
+  tally()
+
+# All traits tally
+traits_rep_ge80_all_summ <- traits_rep_ge80 %>%
+  group_by(plot_cluster, key) %>%
+  summarise(n_ge80 = length(which(value >= 0.8))) %>%
+  filter(n_ge80 == 3) %>%
+  group_by(key) %>%
+  tally()
 
 # Plot proportion of species with N measurements, cumulative
 pdf(file = "./img/traits_freq.pdf", height = 4, width = 12)

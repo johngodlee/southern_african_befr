@@ -334,9 +334,28 @@ mod_list[[1]] <- mod_agb_n <- lm(agb_ha ~ leaf_n_cwm, data = stems_cwm)
 mod_list[[2]] <- mod_agb_wd <- lm(agb_ha ~ wd_cwm, data = stems_cwm)
 mod_list[[3]] <- mod_agb_n_wd <- lm(agb_ha ~ wd_cwm + leaf_n_cwm, data = stems_cwm)
 
+mod_list[[4]] <- mod_agb_n <- lm(agb_ha ~ leaf_n_cwm, data = stems_cwm[stems_cwm$clust4 == "1",])
+mod_list[[5]] <- mod_agb_wd <- lm(agb_ha ~ wd_cwm, data = stems_cwm[stems_cwm$clust4 == "1",])
+mod_list[[6]] <- mod_agb_n_wd <- lm(agb_ha ~ wd_cwm + leaf_n_cwm, data = stems_cwm[stems_cwm$clust4 == "1",])
+
+mod_list[[7]] <- mod_agb_n <- lm(agb_ha ~ leaf_n_cwm, data = stems_cwm[stems_cwm$clust4 == "2",])
+mod_list[[8]] <- mod_agb_wd <- lm(agb_ha ~ wd_cwm, data = stems_cwm[stems_cwm$clust4 == "2",])
+mod_list[[9]] <- mod_agb_n_wd <- lm(agb_ha ~ wd_cwm + leaf_n_cwm, data = stems_cwm[stems_cwm$clust4 == "2",])
+
+mod_list[[10]] <- mod_agb_n <- lm(agb_ha ~ leaf_n_cwm, data = stems_cwm[stems_cwm$clust4 == "3",])
+mod_list[[11]] <- mod_agb_wd <- lm(agb_ha ~ wd_cwm, data = stems_cwm[stems_cwm$clust4 == "3",])
+mod_list[[12]] <- mod_agb_n_wd <- lm(agb_ha ~ wd_cwm + leaf_n_cwm, data = stems_cwm[stems_cwm$clust4 == "3",])
+
+mod_list[[13]] <- mod_agb_n <- lm(agb_ha ~ leaf_n_cwm, data = stems_cwm[stems_cwm$clust4 == "4",])
+mod_list[[14]] <- mod_agb_wd <- lm(agb_ha ~ wd_cwm, data = stems_cwm[stems_cwm$clust4 == "4",])
+mod_list[[15]] <- mod_agb_n_wd <- lm(agb_ha ~ wd_cwm + leaf_n_cwm, data = stems_cwm[stems_cwm$clust4 == "4",])
+
 # Create dataframe of model summary statistics
 mod_summ_list <- map_df(mod_list, glance) %>%
-  mutate(preds <- c("Leaf N", "Wood dens.", "Leaf N + Wood dens."))
+  mutate(
+    preds = rep(c("Leaf N", "Wood dens.", "Leaf N + Wood dens."), times = 5),
+    clust = rep(c("all", "1", "2", "3", "4"), each = 3)
+  )
 
 # Write to file
 saveRDS(mod_summ_list, "output/cwm_mod.rds")

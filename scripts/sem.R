@@ -228,11 +228,11 @@ mod_summ_mutate_struc <- function(x){
       op == "Direct: AGB" & rhs == "div" ~ "Species\ndiversity",
       op == "Direct: AGB" & rhs == "struc" ~ "Structural\ndiversity",
       op == "Direct: AGB" & rhs == "n_trees_gt10_ha_log_std" ~ "Stem density",
-      lhs == "struc" & op == "Other" & rhs == "div" ~ "Species diversity \u2192\nStructural diversity",
-      lhs == "stems_ha_log_std" & op == "Other" & rhs == "div" ~ "Species diversity \u2192\nStem density",
-      op == "Other" & rhs == "a*b" ~ "Indirect:\nSpecies diversity \u2192\nStructural diversity \u2192\nAGB",
-      op == "Other" & rhs == "d*e" ~ "Indirect:\nSpecies diversity \u2192\nStem density \u2192\nAGB",
-      op == "Other" & (rhs == "c+(a*b)+(d)" | rhs == "c+(a*b)+(d*e)" | rhs == "c+(a*b)")  ~ "Total effect:\nSpecies diversity \u2192\nAGB",
+      lhs == "struc" & op == "Other" & rhs == "div" ~ "Species diversity ->\nStructural diversity",
+      lhs == "stems_ha_log_std" & op == "Other" & rhs == "div" ~ "Species diversity ->\nStem density",
+      op == "Other" & rhs == "a*b" ~ "Indirect:\nSpecies diversity ->\nStructural diversity ->\nAGB",
+      op == "Other" & rhs == "d*e" ~ "Indirect:\nSpecies diversity ->\nStem density ->\nAGB",
+      op == "Other" & (rhs == "c+(a*b)+(d)" | rhs == "c+(a*b)+(d*e)" | rhs == "c+(a*b)")  ~ "Total effect:\nSpecies diversity ->\nAGB",
     TRUE ~ rhs))
 }
 
@@ -552,11 +552,11 @@ struc_sem_quant_fit_df$n_plots <- quant_plots[sapply(struc_sem_quant_fit, nrow) 
 struc_sem_quant_regs <- do.call(rbind, struc_sem_quant_regs_list) %>%
   dplyr::select(rhs, quant, stems_ha, n_plots, n_species_raref, est, std.all) %>%
   mutate(rhs = case_when(
-    rhs == "Species diversity \u2192\nStructural diversity " ~ "Species diversity \u2192 Structural diversity",
-    rhs == "Indirect:\nSpecies diversity \u2192\nStructural diversity \u2192\nAGB" ~ "Species diversity \u2192 Structural diversity \u2192 AGB",
-    rhs == "Total effect:\nSpecies diversity \u2192\nAGB" ~ "Total effect: Species diversity \u2192 AGB",
-    rhs == "Species\ndiversity" ~ "Species diversity \u2192 AGB",
-    rhs == "Structural\ndiversity" ~ "Structural diversity \u2192 AGB",
+    rhs == "Species diversity ->\nStructural diversity " ~ "Species diversity -> Structural diversity",
+    rhs == "Indirect:\nSpecies diversity ->\nStructural diversity ->\nAGB" ~ "Species diversity -> Structural diversity -> AGB",
+    rhs == "Total effect:\nSpecies diversity ->\nAGB" ~ "Total effect: Species diversity -> AGB",
+    rhs == "Species\ndiversity" ~ "Species diversity -> AGB",
+    rhs == "Structural\ndiversity" ~ "Structural diversity -> AGB",
     TRUE ~ rhs
   ))
 
@@ -791,16 +791,16 @@ full_mod_regs <- full_mod_summ$PE %>%
     lhs == "agb_ha_log_std" & rhs == "soil" ~ "Direct",
     lhs == "agb_ha_log_std" & rhs == "div" ~ "Direct",
     lhs == "agb_ha_log_std" & rhs == "disturb" ~ "Direct",
-    label == "g" ~ "Direct: Struc. \u2192 AGB",
-    label == "e" ~ "Direct: Stem dens. \u2192 AGB",
-    lhs == "div" & rhs == "moisture" ~ "Direct: Mois. \u2192 Div.",
-    lhs == "div" & rhs == "soil" ~ "Direct: Soil \u2192 Div.",
-    lhs == "div" & rhs == "disturb" ~ "Direct: Disturb. \u2192 Div.",
-    lhs == "struc" & rhs == "div" ~ "Direct: Div. \u2192 Struc.",
-    lhs == "n_trees_gt10_ha_log_std" & rhs == "moisture" ~ "Direct: Mois. \u2192 Stem dens.",
-    lhs == "n_trees_gt10_ha_log_std" & rhs == "soil" ~ "Direct: Soil \u2192 Stem dens.",
-    lhs == "n_trees_gt10_ha_log_std" & rhs == "disturb" ~ "Direct: Disturb. \u2192 Stem dens.",
-    lhs == "n_trees_gt10_ha_log_std" & rhs == "div" ~ "Direct: Div. \u2192 Stem dens.")
+    label == "g" ~ "Direct: Struc. -> AGB",
+    label == "e" ~ "Direct: Stem dens. -> AGB",
+    lhs == "div" & rhs == "moisture" ~ "Direct: Mois. -> Div.",
+    lhs == "div" & rhs == "soil" ~ "Direct: Soil -> Div.",
+    lhs == "div" & rhs == "disturb" ~ "Direct: Disturb. -> Div.",
+    lhs == "struc" & rhs == "div" ~ "Direct: Div. -> Struc.",
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "moisture" ~ "Direct: Mois. -> Stem dens.",
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "soil" ~ "Direct: Soil -> Stem dens.",
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "disturb" ~ "Direct: Disturb. -> Stem dens.",
+    lhs == "n_trees_gt10_ha_log_std" & rhs == "div" ~ "Direct: Div. -> Stem dens.")
   ) %>% 
   mutate(group = factor(group, 
       levels = c("Diversity", "Disturbance", "Moisture", "Soil", "Other"))) %>%

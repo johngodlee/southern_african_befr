@@ -20,5 +20,6 @@ seosaw_no_match <- seosaw_sp[!seosaw_sp %in% try_sp$AccSpeciesName]
 stopifnot(length(seosaw_no_match) + nrow(try_match) == nrow(seosaw_sp))
 
 # Write matched species IDs to file for upload to TRY website
-writeLines(paste(try_match$AccSpeciesID, collapse = ","), "data/try_match.txt")
+writeLines(paste(try_match$AccSpeciesID, collapse = ","), 
+  "data/try_seosaw_species_id.txt")
 

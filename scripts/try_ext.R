@@ -14,6 +14,8 @@ library(rnaturalearthdata)
 library(BIOMASS)
 library(purrr)
 library(broom)
+library(gridExtra)
+library(grid)
 
 source("scripts/clust_defin.R")
 
@@ -481,3 +483,52 @@ ggplot() +
   labs(x = "N measurements", y = "Proportion of taxa") + 
   theme_bw() 
 dev.off()
+
+# Figure for responses document
+traits_genus_n <- traits_genus_prop_clean[
+  traits_genus_prop_clean$trait == "Leaf N" & 
+    traits_genus_prop_clean$method == "Basal area", 
+  c("prop"), drop = FALSE]
+
+prop_plot <- ggplot() + 
+  geom_line(data = traits_genus_n,
+    aes(x = prop, y = 1 - ..y..), 
+    stat = "ecdf", pad = FALSE, size = 1) + 
+  geom_vline(xintercept = 0.8, linetype = 2, colour = "red") +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(x = "Basal area with leaf N measurements", y = "Plots") + 
+  theme_bw()
+
+stems_cwm_n <- stems_cwm_gather[
+  stems_cwm_gather$key == "Leaf N",
+  c("agb_ha", "val")]
+
+reg_plot <- ggplot(data = stems_cwm_n, aes(x = val, y = agb_ha)) + 
+  geom_point(fill = "grey", colour = "black", shape = 21) + 
+  geom_smooth(method = "lm", colour = "black") + 
+  theme_bw() + 
+  labs(x = expression("Leaf"~"N"~("mg"~"g"^-1)), y = expression("AGB"~"ha"^-1))
+
+prop_plot_grob <- arrangeGrob(prop_plot, 
+  top = textGrob("a", x = unit(0.12, "npc"), y = unit(0.88, "npc"), 
+    just = c("left","top"), 
+    gp = gpar(col="black", fontsize=18)))
+
+reg_plot_grob <- arrangeGrob(reg_plot, 
+  top = textGrob("b", x = unit(0.12, "npc"), y = unit(0.88, "npc"), 
+    just = c("left","top"), 
+    gp = gpar(col="black", fontsize=18)))
+
+pdf(file = "img/response_plot.pdf", height = 5, width = 10)
+grid.arrange(prop_plot_grob, reg_plot_grob, nrow = 1)
+dev.off()
+
+##' Figure 1: (a) Cumulative proportional distribution plot showing the 
+##' percentage of plots in our dataset with at least a given percentage of 
+##' basal area with leaf N measurements from the TRY database, the dashed red 
+##' line shows the 80% cutoff recommended by Reviewer 1. (b) Relationship 
+##' between leaf N and AGB for all plots with at least 80% of basal area with 
+##' leaf N measurements, line of best fit is a linear regression with a 95% 
+##' confidence interval 
+##' (F(1,672) = 1.69, p = 0.2, R2adj = 0.01, β = 0.43±0.334).

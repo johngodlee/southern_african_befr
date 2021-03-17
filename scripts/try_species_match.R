@@ -3,7 +3,7 @@
 # 2021-01-25
 
 # Import data
-try_sp <- read.table("data/try_species_list.txt", header = TRUE, sep = "\t")
+try_sp <- read.table("data/try/try_species_list.txt", header = TRUE, sep = "\t")
 
 seosaw_stems <- read.csv("~/git_proj/seosaw_data/data_out/v2.10/stems_v2.10.csv")
 

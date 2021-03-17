@@ -530,5 +530,4 @@ dev.off()
 ##' line shows the 80% cutoff recommended by Reviewer 1. (b) Relationship 
 ##' between leaf N and AGB for all plots with at least 80% of basal area with 
 ##' leaf N measurements, line of best fit is a linear regression with a 95% 
-##' confidence interval 
-##' (F(1,672) = 1.69, p = 0.2, R2adj = 0.01, β = 0.43±0.334).
+##' confidence interval (F(1,672) = 1.69, p = 0.2, R2adj = 0.01, β = 0.43±0.334).

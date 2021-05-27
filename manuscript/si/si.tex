@@ -1,3 +1,95 @@
+\documentclass[11pt,a4paper]{article}
+
+% Define page geometry
+\usepackage{geometry}
+\geometry{left=2.2cm,
+	right=2.2cm,
+	top=2.2cm,
+	bottom=2cm}
+\parskip 0.15cm
+\setlength{\parindent}{0cm}
+\usepackage{pdflscape}
+\usepackage[document]{ragged2e}
+
+% Set font
+\usepackage[T1]{fontenc}
+
+\usepackage{framed}
+
+% Image handling
+\usepackage{graphics} % Insert images easily
+\usepackage{graphicx} % Extended image support
+
+\makeatletter
+	\g@addto@macro\@floatboxreset\centering % Automatically centre images (floats)
+\makeatother
+
+\graphicspath{ {img/} }
+\usepackage{float} % Graphics placement [H] [H!] arguments
+\usepackage{subfig} % Compound figures
+
+% Tables
+\usepackage{multirow}
+\usepackage{longtable}
+
+% Bibliography management
+\usepackage[UKenglish]{babel}
+\usepackage[natbibapa]{apacite}
+\bibliographystyle{apacite}
+
+% Text formatting
+\usepackage{url} % Allow nice formatting of URLs in text
+
+\usepackage{enumerate} % Enumerated lists
+
+\usepackage{lineno} % Line numbers
+
+\usepackage{textcomp}
+\newcommand{\textapprox}{\raisebox{0.5ex}{\texttildelow}} % Command for a good tilde
+
+\usepackage{siunitx}
+\usepackage{amsmath}
+
+\usepackage{xcolor}
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{#1}}}  % \TODO{NOTE TO SELF WRITTEN IN RED}
+
+\input{code_format}
+
+\usepackage[breaklinks]{hyperref}
+\definecolor{links}{RGB}{0,0,0}
+\hypersetup{
+	breaklinks,
+	colorlinks=true,
+	linkcolor=links,
+	anchorcolor=links,
+	citecolor=links,
+	filecolor=links,
+	menucolor=links,
+	runcolor=links,
+	urlcolor=links,
+	pdfauthor={John L. Godlee}
+}
+\def\subsectionautorefname{section}
+\def\subsubsectionautorefname{section}
+% \usepackage{biblatex}
+
+\usepackage{dcolumn}
+\usepackage{multirow}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows,positioning,shapes,shapes.gates.logic.US,trees}
+\usepackage{pdflscape}
+\usepackage{longtable}
+\usepackage{fmtcount}
+
+\linenumbers
+\linespread{1.25}
+
+\newcommand{\titletext}{Structural diversity and tree density drives variation in the biodiversity-ecosystem function relationship of woodlands and savannas}
+
+\begin{document}
+
+{\Large{Title: \titletext{}}}
+
 \section{Appendix 1 - Frequency distribution of observed variables} \label{appendixa}
 
 \begin{figure}[H]
@@ -37,3 +129,4 @@
 	\label{full_model_slopes}
 \end{figure}
 
+\end{document}

@@ -8,6 +8,7 @@
 	bottom=2cm}
 \parskip 0.15cm
 \setlength{\parindent}{0cm}
+\renewcommand{\baselinestretch}{1.5}
 \usepackage{pdflscape}
 \usepackage[document]{ragged2e}
 
@@ -51,7 +52,7 @@
 \usepackage{amsmath}
 
 \usepackage{xcolor}
-\newcommand{\todo}[1]{\textcolor{red}{\textbf{#1}}}  % \todo{NOTE TO SELF WRITTEN IN RED}
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{#1}}}  % \TODO{NOTE TO SELF WRITTEN IN RED}
 
 \input{code_format}
 
@@ -103,7 +104,7 @@
 
 \begin{itemize}
 	\item{Positive biodiversity-ecosystem function relationships (BEFRs) have been widely documented, but it is unclear if BEFRs should be expected in disturbance-driven systems. Disturbance may limit competition and niche differentiation, which are frequently posited to underlie BEFRs. We provide the first exploration of the relationship between tree species diversity and biomass, one measure of ecosystem function, across southern African woodlands and savannas, an ecological system rife with disturbance from fire, herbivores and humans.}
-	\item{We used >1000 vegetation plots distributed across 10 southern African countries, and structural equation modelling, to determine the relationship between tree species diversity and aboveground woody biomass, accounting for interacting effects of resource availability, disturbance by fire, tree stem density and vegetation type.}
+	\item{We used >1000 vegetation plots distributed across 10 southern African countries, and structural equation modelling, to determine the relationship between tree species diversity and aboveground woody biomass, accounting for interacting effects of resource availability, disturbance by fire, tree stem density at all and vegetation type.}
 	\item{We found positive effects of tree species diversity on aboveground biomass, operating via increased structural diversity. The observed BEFR was highly dependent on organismal density, with a minimum threshold of c. 180 mature stems ha\textsuperscript{-1}. We found that water availability mainly affects biomass indirectly, via increasing species diversity.}
 	\item{The study underlines the close association between tree diversity, ecosystem structure, environment and function in highly disturbed savannas and woodlands. We suggest that tree diversity is an under-appreciated determinant of wooded ecosystem structure and function.}
 \end{itemize}
@@ -132,7 +133,7 @@ In this study, we make the first known estimation of the Biodiversity-Ecosystem 
 \subsection{Study location}
 
 % Situation - DONE
-The study used \nplots{} woodland monitoring plots from a larger pool of 5395 plots in the larger SEOSAW database \citep{SEOSAW2020}, located across 10 countries within southern Africa in the miombo ecoregion (\autoref{clust_map}, \citealp{White1987}). The study area spans the core climate space of the region, with a precipitation gradient from c. 460 mm y\textsuperscript{-1} in southern Mozambique and southern Zimbabwe to c. 1700 mm y\textsuperscript{-1} in northern Zambia, Malawi and northern Mozambique. A 2D convex hull of Mean Annual Precipitation (MAP) and Mean Annual Temn intermediate erature (MAT) of the study sites covers \hullcover{}\% of the pixel-wise climate space of the miombo woodland ecoregion \citep{White1987}, using WorldClim estimates of Mean Annual Temperature (MAT, BIO1) and Mean Annual Precipitation (MAP, BIO12) between 1970 and 2000 with a pixel size of 30 arc seconds (926 m at equator) \citep{Fick2017}. 
+The study used \nplots{} woodland monitoring plots from a larger pool of 5395 plots in the larger SEOSAW database \citep{SEOSAW2020}, located across 10 countries within southern Africa in the miombo ecoregion (\autoref{clust_map}, \citealp{White1987}). The study area spans the core climate space of the region, with a precipitation gradient from c. 460 mm y\textsuperscript{-1} in southern Mozambique and southern Zimbabwe to c. 1700 mm y\textsuperscript{-1} in northern Zambia, Malawi and northern Mozambique. A 2D convex hull of Mean Annual Precipitation (MAP) and Mean Annual Temperature (MAT) of the study sites covers \hullcover{}\% of the pixel-wise climate space of the miombo woodland ecoregion \citep{White1987}, using WorldClim estimates of Mean Annual Temperature (MAT, BIO1) and Mean Annual Precipitation (MAP, BIO12) between 1970 and 2000 with a pixel size of 30 arc seconds (926 m at equator) \citep{Fick2017}. 
 
 % Plots chosen - DONE
 Plots were chosen from the SEOSAW database based on the quality and completeness of data collection, and plot configuration. Plot vegetation was identified under the broad term of `savanna', which includes `woodland', `savanna woodland', and `tree savanna', variously defined in other areas of the scientific literature and here referred to collectively as southern African woodlands, or savannas \citep{Ratnam2011, Hill2010}. Plots with evidence of farming, human resource extraction, experimental treatments such as prescribed burning or herbivore exclusion, or containing termite mounds were excluded from the initial pool. Only plots >0.1 hectares were used in analyses, as area-based biomass estimation from small plots is highly influenced by rare large trees \citep{Stegen2011}, leading to inaccurate biomass estimates. Only plots with a stem density >50 trees ha\textsuperscript{-1} (>10 cm stem diameter) were used, to ensure all plots represented woodland rather than `grassy savanna', which is considered here a separate biome with very different species composition \citep{Parr2014}. \nzam{} plots within the SEOSAW database were arranged in clusters of four 20x50 m plots, with 20 m between plots. Plots within each spatial cluster were combined and treated as a single plot in analyses, resulting in \nzamcluster{} aggregate plots which were then subject to the plot filtering process described above.
@@ -188,7 +189,7 @@ Preliminary models that included herbivore biomass \citep{Hempson2017} did not c
 \section{Results}
 
 % Correlations
-Pairwise correlations between all observed variables used in the Structural Equation Models (SEMs) showed that all tree species diversity (extrapolated tree species richness, Shannon equitability index) and structural diversity (coefficients of variation of DBH and height) variables had moderate positive correlations with AGB (\autoref{corr_mat}, Fig. S3). Stem density had the strongest correlation with AGB of all variables considered (\ccib{}). Environmental variables had weaker correlations with AGB than diversity variables, with all environmental variables having significant correlations with AGB, except fire frequency. The direction of these correlations was used as a test of our assumptions for the direction of influence of latent variables later used in the SEMs. MAP had positive correlations with all tree species diversity and structural diversity variables. Tree species diversity variables had clear positive correlations with stem density (species richness: \ccsi{}; Shannon equitability: \ccei{}), but structural diversity variables showed weak correlations with stem density (DBH CoV: \ccdvi{}, Height CoV: \cchvi{}).
+Pairwise correlations between all observed variables used in the Structural Equation Models (SEMs) showed that all tree species diversity (extrapolated tree species richness, Shannon equitability index) and structural diversity (coefficients of variation of DBH and height) variables had moderate positive correlations with AGB (\autoref{corr_mat}, Figure S3). Stem density had the strongest correlation with AGB of all variables considered (\ccib{}). Environmental variables had weaker correlations with AGB than diversity variables, with all environmental variables having significant correlations with AGB, except fire frequency. The direction of these correlations was used as a test of our assumptions for the direction of influence of latent variables later used in the SEMs. MAP had positive correlations with all tree species diversity and structural diversity variables. Tree species diversity variables had clear positive correlations with stem density (species richness: \ccsi{}; Shannon equitability: \ccei{}), but structural diversity variables showed weak correlations with stem density (DBH CoV: \ccdvi{}, Height CoV: \cchvi{}).
 
 \subsection{Structural and species diversity models}
 
@@ -206,7 +207,7 @@ In the sub-sampling of the plot dataset by stem density, we found an increasing 
 
 \subsection{Environmental covariates and tree diversity}
 
-A model incorporating the latent variables of water availability, soil fertility and disturbance by fire showed that the total effect of tree species diversity on biomass was similar to that of water availability, soil fertility and disturbance (\autoref{full_mod}, Fig. S4). The direct effects of water availability, soil fertility and disturbance on AGB were negligible (water: \fmbetamb{}, soil: \fmbetasb{}, disturbance: \fmbetafb{}), with nearly all of their observed effects on AGB coming from the indirect paths via stem density (water: \fmbetamib{}, soil: \fmbetasib{}, disturbance: \fmbetafib{}) and species diversity (water: \fmbetamd{}, soil: \fmbetasd{}, disturbance: \fmbetafd{}). MAP and soil sand content had the greatest contributions to the latent variable of water availability. Model fit was acceptable: CFI = 0.925, TLI = 0.900, and RMSEA = \fmrmsea{}, R\textsuperscript{2} of AGB = \fmrsq{}. 
+A model incorporating the latent variables of water availability, soil fertility and disturbance by fire showed that the total effect of tree species diversity on biomass was similar to that of water availability, soil fertility and disturbance (\autoref{full_mod}, Figure S4). The direct effects of water availability, soil fertility and disturbance on AGB were negligible (water: \fmbetamb{}, soil: \fmbetasb{}, disturbance: \fmbetafb{}), with nearly all of their observed effects on AGB coming from the indirect paths via stem density (water: \fmbetamib{}, soil: \fmbetasib{}, disturbance: \fmbetafib{}) and species diversity (water: \fmbetamd{}, soil: \fmbetasd{}, disturbance: \fmbetafd{}). MAP and soil sand content had the greatest contributions to the latent variable of water availability. Model fit was acceptable: CFI = 0.925, TLI = 0.900, and RMSEA = \fmrmsea{}, R\textsuperscript{2} of AGB = \fmrsq{}. 
 
 Similar to the model that only considered tree species and structural diversity (\autoref{struc_mod}), the direct effect of species diversity on structural diversity was positive, while structural diversity itself had a positive effect on AGB, leading to a strong positive indirect effect of species diversity on AGB via structural diversity (\fmbetadhb{}) when environmental covariates were accounted for. Again, the direct effect of species diversity on AGB was negligible (\fmbetadb{}). The total effect of species diversity on AGB was positive (\fmbetatotaldb{}). Compared to the simple model with no environmental covariates, the total explanatory power of tree species diversity and structural diversity in this model decreased, but the predictive power of the model as a whole increased.
 
@@ -329,6 +330,8 @@ JG and KD conceived the study. JG conducted data analysis, data management for f
 
 \section{Data Availability}
 
+The data that support the findings of this study are available on request from the corresponding author. The data are not publicly available at the time of submission due to privacy restrictions regarding plot locations. An anonymised version will be made available in a data repository following review.
+
 \bibliography{regional_befr_manuscript.bib}
 
 \vspace{0.5cm}
@@ -340,16 +343,16 @@ JG and KD conceived the study. JG conducted data analysis, data management for f
 Additional supporting information may be found in the online version of this article.
 \vspace{0.2cm}
 
-\textbf{Fig. S1} Histograms of raw untransformed observed variables used in final analyses.
+\textbf{Figure S1} Histograms of raw untransformed observed variables used in final analyses.
 \vspace{0.2cm}
 
-\textbf{Fig. S2} Histograms of observed variables transformed to achieve a normal frequency distribution.
+\textbf{Figure S2} Histograms of observed variables transformed to achieve a normal frequency distribution.
 \vspace{0.2cm}
 
-\textbf{Fig. S3} Bivariate scatter plots for each observed variable used in SEMs, based on hypothesised paths of causality.
+\textbf{Figure S3} Bivariate scatter plots for each observed variable used in SEMs, based on hypothesised paths of causality.
 \vspace{0.2cm}
 
-\textbf{Fig. S4} Unstandardised path coefficients for full SEM model.
+\textbf{Figure S4} Unstandardised path coefficients for full SEM model.
 \vspace{0.2cm}
 
 \textbf{Table S1} Table of correlation fit statistics for each pairwise Pearson correlation test of observed variables used in Structural Equation Models.

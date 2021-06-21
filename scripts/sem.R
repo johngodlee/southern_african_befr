@@ -159,7 +159,7 @@ writeLines(
     corr_format("ccmh", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Tree height CoV")),
     corr_format("ccmi", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Stem density")),
     corr_format("ccsi", which(corr_ci_tab$y_var=="Extrap. sp. rich." & corr_ci_tab$x_var=="Stem density")),
-    corr_format("ccei", which(corr_ci_tab$y_var=="Extrap. sp. rich." & corr_ci_tab$x_var=="Shannon equit")),
+    corr_format("ccei", which(corr_ci_tab$y_var=="Shannon equit" & corr_ci_tab$x_var=="Stem density")),
     corr_format("cctcb",which(corr_ci_tab$y_var=="Temp. stress" & corr_ci_tab$x_var=="AGB")),
     corr_format("ccfb", which(corr_ci_tab$y_var=="Fire freq." & corr_ci_tab$x_var=="AGB")),
     corr_format("ccfs", which(corr_ci_tab$y_var=="Fire freq." & corr_ci_tab$x_var=="Extrap. sp. rich.")),

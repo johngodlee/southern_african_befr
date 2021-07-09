@@ -6,91 +6,43 @@
 	right=2.2cm,
 	top=2.2cm,
 	bottom=2cm}
-\parskip 0.15cm
+\parskip 0.2cm
 \setlength{\parindent}{0cm}
-\usepackage{pdflscape}
-\usepackage[document]{ragged2e}
 
 % Set font
 \usepackage[T1]{fontenc}
 
-\usepackage{framed}
-
 % Image handling
 \usepackage{graphics} % Insert images easily
 \usepackage{graphicx} % Extended image support
+\usepackage{float} % Graphics placement [H] [H!] arguments
 
 \makeatletter
 	\g@addto@macro\@floatboxreset\centering % Automatically centre images (floats)
 \makeatother
 
 \graphicspath{ {img/} }
-\usepackage{float} % Graphics placement [H] [H!] arguments
-\usepackage{subfig} % Compound figures
 
 % Tables
-\usepackage{multirow}
 \usepackage{longtable}
 
-% Bibliography management
-\usepackage[UKenglish]{babel}
-\usepackage[natbibapa]{apacite}
-\bibliographystyle{apacite}
-
-% Text formatting
-\usepackage{url} % Allow nice formatting of URLs in text
-
-\usepackage{enumerate} % Enumerated lists
-
-\usepackage{lineno} % Line numbers
-
-\usepackage{textcomp}
-\newcommand{\textapprox}{\raisebox{0.5ex}{\texttildelow}} % Command for a good tilde
-
-\usepackage{siunitx}
-\usepackage{amsmath}
-
-\usepackage{xcolor}
-\newcommand{\TODO}[1]{\textcolor{red}{\textbf{#1}}}  % \TODO{NOTE TO SELF WRITTEN IN RED}
-
-\input{code_format}
-
-\usepackage[breaklinks]{hyperref}
-\definecolor{links}{RGB}{0,0,0}
-\hypersetup{
-	breaklinks,
-	colorlinks=true,
-	linkcolor=links,
-	anchorcolor=links,
-	citecolor=links,
-	filecolor=links,
-	menucolor=links,
-	runcolor=links,
-	urlcolor=links,
-	pdfauthor={John L. Godlee}
-}
-\def\subsectionautorefname{section}
-\def\subsubsectionautorefname{section}
-% \usepackage{biblatex}
-
-\usepackage{dcolumn}
-\usepackage{multirow}
-\usepackage{tikz}
-\usetikzlibrary{calc,arrows,positioning,shapes,shapes.gates.logic.US,trees}
-\usepackage{pdflscape}
-\usepackage{longtable}
-\usepackage{fmtcount}
-
-\linenumbers
-\linespread{1.25}
-
-\newcommand{\titletext}{Structural diversity and tree density drives variation in the biodiversity-ecosystem function relationship of woodlands and savannas}
+% Figure and table captions
+\usepackage{caption}
+\captionsetup[figure]{name={Fig.},labelsep=period}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
 
 \begin{document}
 
-{\Large{Title: \titletext{}}}
+{\Large{New Phytologist Supporting Information}}
 
-\section{Appendix 1 - Frequency distribution of observed variables} \label{appendixa}
+{\textbf{Title: Structural diversity and tree density drives variation in the biodiversity-ecosystem function relationship of woodlands and savannas}}
+
+John L. Godlee, Casey M. Ryan, David Bauman, Samuel J. Bowers, Joao M. B. Carreiras, Antonio Valter Chisingui, Joris P. G. M. Cromsigt, Dave J. Druce, Manfred Finckh, Francisco Maiato Gon\c{c}alves, Ricardo M. Holdo, Steve Makungwa, Iain M. McNicol, Edward T. A. Mitchard, Anderson Muchawona, Rasmus Revermann, Natasha Sofia Ribeiro, Abel Siampale, Stephen Syampungani, Jos\'{e} Jo\~{a}o Tchamba, Hemant G. Tripathi, Johannes Wallenfang, Mariska te Beest, Mathew Williams, Kyle G. Dexter
+
+Article acceptance date: 1st July 2021
+
+\section*{Figs S1 and S2 - Frequency distribution of observed variables} \label{appendixa}
 
 \begin{figure}[H]
 \centering
@@ -107,20 +59,20 @@
 \end{figure}
 
 \appendix{}
-\section{Appendix 2 - Table of correlation fit statistics} \label{appendixb}
+\section*{Table S1 - Table of correlation fit statistics} \label{appendixb}
 
 \input{include/corr_ci_tab.tex}
 
-\section{Appendix 3 - Bivariate relationships of model variables} \label{appendixc}
+\section*{Fig. S3 - Bivariate relationships of model variables} \label{appendixc}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.9\textwidth]{bivar_lm}
-	\caption{Bivariate scatter plots for each observed variable used in the SEMs, based on hypothesised paths of causality. Points are coloured according to vegetation type. A single linear regression is presented as a black line, which combines all vegetation types, separate loess trend lines are fitted for each vegetation type. An orange loess trend line is fitted for all the data. All data is standardised and variables are transformed where it was appropriate for analysis.}
+	\caption{Bivariate scatter plots for each observed variable used in the SEMs (Structural Equation Models), based on hypothesised paths of causality. Points are coloured according to vegetation type: green = Sparse miombo/Baikiaea, purple = Core miombo, blue = ex-Acacia, red = Mopane. The black line combines all vegetation types in a single linear regression, while loess trend lines are fitted for each vegetation type, separately. An orange loess trend line is fitted for all the data. All data is standardised to a mean of zero and a standard deviation of one. Variables are transformed where it was appropriate for analysis.}
 	\label{bivar_lm}
 \end{figure}
 
-\section{Appendix 4 - Path coefficients for model incorporating environmental covariates} \label{appendixd}
+\section*{Fig. S4 - Path coefficients for model incorporating environmental covariates} \label{appendixd}
 
 \begin{figure}[H]
 \centering

@@ -1,64 +1,52 @@
 \documentclass[12pt,a4paper]{article}
 
-% Define page geometry
+% Page geometry
 \usepackage{geometry}
 \geometry{left=2.2cm,
 	right=2.2cm,
 	top=2.2cm,
 	bottom=2cm}
-\parskip 0.15cm
+\parskip 0.2cm
 \setlength{\parindent}{0cm}
-\renewcommand{\baselinestretch}{1.5}
 \usepackage{pdflscape}
-\usepackage[document]{ragged2e}
-
-% Set font
-\usepackage[T1]{fontenc}
-
 \usepackage{framed}
+\usepackage{lineno} 
+\linenumbers
 
-\usepackage{setspace}
-\doublespacing
+% Text 
+\usepackage[T1]{fontenc}
+\linespread{1.25}
+\usepackage{siunitx}
 
-% Image handling
+% Images 
 \usepackage{graphics} % Insert images easily
 \usepackage{graphicx} % Extended image support
+\usepackage{float} % Graphics placement [H] [H!] arguments
 
 \makeatletter
 	\g@addto@macro\@floatboxreset\centering % Automatically centre images (floats)
 \makeatother
 
 \graphicspath{ {img/} }
-\usepackage{float} % Graphics placement [H] [H!] arguments
-\usepackage{subfig} % Compound figures
 
-% Tables
-\usepackage{multirow}
-\usepackage{longtable}
-
-% Bibliography management
+% Bibliography 
 \usepackage[UKenglish]{babel}
-\usepackage[natbibapa]{apacite}
-\bibliographystyle{apacite}
+\usepackage{csquotes}
+\usepackage[natbib, 
+	style=authoryear, 
+	uniquename=false, 
+	uniquelist=false,
+	maxcitenames=2, 
+	mincitenames=1, 
+	minbibnames=10, 
+	maxbibnames=10, 
+	backend=biber]{biblatex}
+\renewcommand*\finalnamedelim{\addspace\&\space}
+\addbibresource{regional_befr_manuscript.bib}
 
-% Text formatting
-\usepackage{url} % Allow nice formatting of URLs in text
-
-\usepackage{enumerate} % Enumerated lists
-
-\usepackage{lineno} % Line numbers
-
-\usepackage{textcomp}
-\newcommand{\textapprox}{\raisebox{0.5ex}{\texttildelow}} % Command for a good tilde
-
-\usepackage{siunitx}
-\usepackage{amsmath}
-
+% Cross references and hyperlinks
 \usepackage{xcolor}
-\newcommand{\todo}[1]{\textcolor{red}{\textbf{#1}}}  % \todo{NOTE TO SELF WRITTEN IN RED}
-
-\input{code_format}
-
+\usepackage{url} 
 \usepackage[breaklinks]{hyperref}
 \definecolor{links}{RGB}{0,0,0}
 \hypersetup{
@@ -75,23 +63,8 @@
 }
 \def\subsectionautorefname{section}
 \def\subsubsectionautorefname{section}
-% \usepackage{biblatex}
 
-\usepackage{dcolumn}
-\usepackage{multirow}
-\usepackage{tikz}
-\usetikzlibrary{calc,arrows,positioning,shapes,shapes.gates.logic.US,trees}
-\usepackage{pdflscape}
-\usepackage{longtable}
-\usepackage{fmtcount}
-
-\linenumbers
-\linespread{1.25}
-
-\usepackage[clean]{revdiff}
-
-\newcommand{\titletext}{Structural diversity and tree density drives variation in the biodiversity-ecosystem function relationship of woodlands and savannas}
-
+% External files
 \input{include/n_plots}
 \input{include/hull_cover}
 \input{include/path_coef_struc}
@@ -101,10 +74,9 @@
 \input{include/perc_small_agb.tex}
 \input{include/zam.tex}
 
-
 \begin{document}
 
-{\Large{Title: \titletext{}}}
+{\textbf{Title: Structural diversity and tree density drives variation in the biodiversity-ecosystem function relationship of woodlands and savannas}}
 
 \section*{Summary}
 
@@ -283,7 +255,7 @@ In this study we found that even in highly disturbed southern African woodlands,
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{concept.drawio}
-	\caption{Conceptual Directed Acyclic Graph (DAG) showing the theoretical relationships between environmental factors, tree species diversity, tree structural diversity, stem density, and AGB. Hypothesised paths of causation are depicted as arrows from predictor to response. Open arrow heads track the direction of each arrow along its path.}
+\caption{Conceptual Directed Acyclic Graph (DAG) showing the theoretical relationships between environmental factors, tree species diversity, tree structural diversity, stem density, and AGB (Above-Ground Woody Biomass). Hypothesised paths of causation are depicted as arrows from predictor to response. Open arrow heads track the direction of each arrow along its path.}
 	\label{con_mod}
 \end{figure}
 \newpage{}
@@ -291,7 +263,7 @@ In this study we found that even in highly disturbed southern African woodlands,
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.6\textwidth]{corr_mat}
-	\caption{Correlation matrix of standardised observed variables used in the SEMs, with Pearson correlation coefficients ($r$) coloured according to sign ($+$ve red, $-$ve blue) and shaded by strength of correlation. Correlation coefficients marked by a circle indicate that the 95\% confidence interval of $r$ overlapped zero. Colours of variable names group them into latent variables used in the SEMs: red = soil fertility, blue = disturbance, turquoise = water availability, green = tree species diversity, purple = tree structural diversity. See Table S1 for a full assessment of correlation fit statistics.}
+	\caption{Correlation matrix of standardised observed variables used in the SEMs (Structural Equation Models), with Pearson correlation coefficients ($r$) coloured according to sign ($+$ve red, $-$ve blue) and shaded by strength of correlation. Correlation coefficients marked by a circle indicate that the 95\% confidence interval of $r$ overlapped zero. Colours of variable names group them into latent variables used in the SEMs: red = soil fertility, blue = disturbance, turquoise = water availability, green = tree species diversity, purple = tree structural diversity. See Table S1 for a full assessment of correlation fit statistics.}
 	\label{corr_mat}
 \end{figure}
 \newpage{}
@@ -299,7 +271,7 @@ In this study we found that even in highly disturbed southern African woodlands,
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.5\textwidth]{struc.drawio}
-	\caption{Path diagram with regression coefficients for the tree diversity SEM, including plots from all vegetation clusters. Latent variables are shown as circles while observed variables are shown as rectangles. Standardised path coefficients are shown as solid arrows pointing from predictor to response with the effect size of the path coefficient expressed in terms of standard deviations on the latent variable response scale. The observed variables that inform the latent variables are connected by dotted arrows, and observed variables with loadings set to one are connected by dashed arrows. Measurement errors of exogenous variables are omitted for clarity.}
+	\caption{Path diagram with regression coefficients for the tree diversity SEM (Structural Equation Model), including plots from all vegetation clusters. Latent variables are shown as circles while observed variables are shown as rectangles. Standardised path coefficients are shown as solid arrows pointing from predictor to response with the effect size of the path coefficient expressed in terms of standard deviations on the latent variable response scale. The observed variables that inform the latent variables are connected by dotted arrows, and observed variables with loadings set to one are connected by dashed arrows. Measurement errors of exogenous variables are omitted for clarity.}
 	\label{struc_mod}
 \end{figure}
 \newpage{}
@@ -307,7 +279,7 @@ In this study we found that even in highly disturbed southern African woodlands,
 \begin{figure}[H]
 \centering
 	\includegraphics[width=\textwidth]{struc_model_slopes_all}
-	\caption{Unstandardised path coefficients for the effects of tree diversity on AGB, mediated by the effect of stand structural diversity. Path coefficients are $\pm$1 standard error. Path coefficients where the interval (standard error) does not overlap zero are considered to be significant effects.}
+	\caption{Unstandardised path coefficients for the effects of tree diversity on AGB (Above-Ground Woody Biomass), mediated by the effect of stand structural diversity. Path coefficients are $\pm$1 standard error. Path coefficients where the interval (standard error) does not overlap zero are considered to be significant effects.}
 	\label{struc_model_slopes_all}
 \end{figure}
 \newpage{}
@@ -315,7 +287,7 @@ In this study we found that even in highly disturbed southern African woodlands,
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.8\textwidth]{sem_struc_stems_ha}
-	\caption{Line plots showing the variation in SEM path coefficients across datasets with different mean stem density. Smoothed lines are loess curves with $\pm1$ standard error shaded bars. AGB = Above-Ground woody Biomass, arrows in plot titles indicate causal paths in SEM models. Where multiple arrows are present, as in c), this indicates an indirect pathway via an intermediate variable.}
+	\caption{Line plots showing the variation in SEM (Structural Equation Model) path coefficients among latent variables, across datasets with different mean stem density. Smoothed lines are loess curves with $\pm1$ standard error shaded bars. AGB = Above-Ground woody Biomass. Arrows in plot titles indicate causal paths in SEM models. Where multiple arrows are present, as in c), this indicates an indirect pathway via an intermediate variable. a) shows the direct effect of species diversity on structural diversity. b) and d) show the direct effects of species diversity and structural diversity on AGB, respectively. c) shows the indirect effect of species diversity on AGB via structural diversity. e) shows the total effect of species diversity on AGB, incorporating both the direct effect and the indrect effect via structural diversity.}
 	\label{sem_struc_stems_ha}
 \end{figure}
 \newpage{}
@@ -323,24 +295,24 @@ In this study we found that even in highly disturbed southern African woodlands,
 \begin{figure}[H]
 \centering
 	\includegraphics[width=\textwidth]{full.drawio}
-	\caption{Path diagram with regression coefficients for the SEM incorporating environmental covariates and tree species and structural diversity across all five vegetation types. Latent variables are shown as circles while observed variables are shown as rectangles. Standardised path coefficients are shown as solid arrows pointing from predictor to response, with the effect size of the path coefficient expressed in terms of standard deviations on the latent variable response scale. Observed variables that inform the latent variables are connected by dotted arrows, observed variables with loading set to one are connected by dashed arrows. Measurement errors of exogenous variables are omitted for clarity.}
+	\caption{Path diagram with regression coefficients for the SEM (Structural Equation Model) incorporating environmental covariates and tree species and structural diversity across all five vegetation types. Latent variables are shown as circles while observed variables are shown as rectangles. Standardised path coefficients are shown as solid arrows pointing from predictor to response, with the effect size of the path coefficient expressed in terms of standard deviations on the latent variable response scale. Observed variables that inform the latent variables are connected by dotted arrows, observed variables with loading set to one are connected by dashed arrows. Measurement errors of exogenous variables are omitted for clarity.}
 	\label{full_mod}
 \end{figure}
 \newpage{}
 
 \section{Acknowledgements}
 
-This work is funded by a NERC E3 Doctoral Training Partnership PhD studentship at the University of Edinburgh (John L. Godlee, Grant No. NE/L002558/1). The data for this study was contributed by a number of independently funded projects and was assembled and prepared by SEOSAW (A Socio-Ecological Observatory for Southern African Woodlands, \url{https://seosaw.github.io}), an activity of the Miombo Network and a NERC-funded project (Grant No. NE/P008755/1). Revisions of the SEOSAW dataset were funded by SavannaChange, a GCRF/University of Edinburgh funded project. We thank all data providers and the field assistance they received when collecting plot data. JMBC was supported by the Natural Environment Research Council (Agreement PR140015 between NERC and the National Centre for Earth Observation). 
+This work is funded by a NERC E3 Doctoral Training Partnership PhD studentship at the University of Edinburgh (John L. Godlee, Grant No. NE/L002558/1). The data for this study was contributed by a number of independently funded projects and was assembled and prepared by SEOSAW (A Socio-Ecological Observatory for Southern African Woodlands, \url{https://seosaw.github.io}), an activity of the Miombo Network and a NERC-funded project (Grant No. NE/P008755/1). Revisions of the SEOSAW dataset were funded by SavannaChange, a GCRF/University of Edinburgh funded project. We thank all data providers and the field assistance they received in collecting plot data. JMBC was supported by the Natural Environment Research Council (Agreement PR140015 between NERC and the National Centre for Earth Observation). 
 
 \section{Author contribution}
 
-JG and KD conceived the study. JG conducted data analysis, data management for further versions of the SEOSAW dataset, and wrote the manuscript. CR conceived the SEOSAW database and conducted data management for earlier versions of the SEOSAW dataset. JG, CR, DB, JMBC, MF, RH, EM, SS, HT, HT, MB, MW, and KD contributed to manuscript revisions. JG, CR, SB, VC, JPGMC, DD, MF, FG, SM, IM, AM, RR, NR, AS, SS, JT, JW, MB, and MW contributed to experimental design, field data collection, data preparation and data management of parts of the dataset used in this study. 
+JLG and KGD conceived the study. JLG conducted data analysis, data management for further versions of the SEOSAW dataset, and wrote the manuscript. CMR conceived the SEOSAW database and conducted data management for earlier versions of the SEOSAW dataset. JLG, CMR, DB, ETAM, HGT, JMBC, KGD, MF, MW, MtB, RMH and SS contributed to manuscript revisions. JLG, AM, AS, AVC, CMR, DJD, FMG, IM, JJT, JPGMC, JW, MF, MtB, MW, NSR, RR, SJB, SM and SS contributed to experimental design, field data collection, data preparation and data management of parts of the dataset used in this study. 
 
 \section{Data Availability}
 
-The data that support the findings of this study are available on request from the corresponding author. The data are not publicly available at the time of submission due to privacy restrictions regarding plot locations. An anonymised version will be made available in a data repository following review.
+An anonymised version of the data that support the findings of this study are available at this DOI: .
 
-\bibliography{regional_befr_manuscript.bib}
+\printbibliography{}
 
 \vspace{0.5cm}
 

@@ -13,6 +13,14 @@ dat_anon <- dat %>%
     -plot_cluster,
     -longitude_of_centre,
     -latitude_of_centre,
+    -clust5, 
+    -clust7,
+    -temp_seas,
+    -starts_with("sd_"),
+    -starts_with("var_"),
+    -starts_with("mean_"),
+    -starts_with("max_"),
+    -ends_with("_ha"),
     -ends_with("_std"),
     -ends_with("_log")) %>%
   mutate(plot_id = row_number())

@@ -19,12 +19,12 @@
 \usepackage{siunitx}
 
 % Images 
-\usepackage{graphics} % Insert images easily
-\usepackage{graphicx} % Extended image support
-\usepackage{float} % Graphics placement [H] [H!] arguments
+\usepackage{graphics} 
+\usepackage{graphicx} 
+\usepackage{float} 
 
 \makeatletter
-	\g@addto@macro\@floatboxreset\centering % Automatically centre images (floats)
+	\g@addto@macro\@floatboxreset\centering 
 \makeatother
 
 \graphicspath{ {img/} }
@@ -103,28 +103,22 @@ Despite their global importance, African savannas are severely under-represented
 
 A number of studies in miombo woodlands, the dominant savanna type in southern Africa \citep{Campbell1996}, have found that above-ground woody carbon/biomass stocks correlate positively with tree species richness \citep{McNicol2018, Shirima2015, Mutowo2012}. These studies however, lacked the spatial extent required to account for the interacting effects of variation in abiotic environment, disturbance regime, and biogeography which are expected to affect the BEFR. Studies of the BEFR often find that within a small spatial extent (<2500 km\textsuperscript{2}), biodiversity shows a strong effect on ecosystem function, but at broader extents (>100,000s km\textsuperscript{2}) biodiversity effects pale in significance compared to abiotic factors such as climate \citep{Gonzalez2020}. In West Africa, \citet{Mensah2020} found that woodlands and forests showed a positive effect of tree species richness on above-ground carbon, while sparse savannas did not, implying that tree stem density and the presence of dominant large trees may affect the strength of the observed BEFR. In the Brazilian Cerrado savanna, \citet{Loiola2015} found that disturbance by fire reduced tree productivity via its effect on functional trait values. Furthermore, \citet{Carvalho2014} found that disturbance by fire in the Brazilian Cerrado reduced soil fertility, causing an indirect effect of fire frequency on functional trait diversity via soil fertility. Other studies focussing on the herbaceous diversity in disturbance-prone grasslands in North America and Europe have shown that disturbance by fire, mowing and herbivory reduces herbaceous productivity \citep{Grace2007}, allowing weak competitors to co-exist where otherwise they would be excluded \citep{Mason2011}, thus weakening the observable BEFR. Thus, there is a case that in highly disturbed systems, a relationship between diversity and ecosystem function may not exist at all. While these studies together offer some glimpse into how the BEFR may operate in disturbance-prone systems, none provide a full and comprehensive assessment of the interacting effects of diversity, abiotic environment, disturbance and ecosystem function, particularly for wooded ecosystems. Additionally, due to differences in community assembly, evolutionary history and contemporary drivers between the neotropics and the African tropics, inferences from one continent cannot necessarily be applied to the other \citep{Dexter2015}.
 
-% In this study :::
 In this study, we make the first known estimation of the Biodiversity-Ecosystem Function Relationship (BEFR) in disturbance-driven wooded ecosystems (savannas and woodlands), using southern Africa as our study region. We aim to understand the synergistic effects of environmental and biotic drivers of variation in the BEFR, with a view to creating a general model of the BEFR in disturbance-prone wooded ecosystems, which is currently lacking in the BEFR literature. We posit three hypotheses: (1) water availability and soil fertility will indirectly positively affect woody biomass via an increase in tree species diversity, (2) the effect of tree species diversity on woody biomass will increase with organismal density (number of stems ha\textsuperscript{-1}), with competitive interactions becoming more pronounced as stem proximity increases. Relatedly, we expect that an increase in disturbance by fire will decrease organismal density and therefore competition, weakening the effect of tree species diversity on woody biomass. Finally, we expect that (3) tree species diversity will increase tree structural diversity due to inter-specific variation in size strategy (i.e. physiognomic diversity), providing an indirect path by which tree diversity increases woody biomass.
 
 \section{Materials and Methods}
 
 \subsection{Study location}
 
-% Situation - DONE
 The study used \nplots{} woodland monitoring plots from a larger pool of 5395 plots in the larger SEOSAW database \citep{SEOSAW2020}, located across 10 countries within southern Africa in the miombo ecoregion (\autoref{clust_map}, \citealp{White1987}). The study area spans the core climate space of the region, with a precipitation gradient from c. 460 mm y\textsuperscript{-1} in southern Mozambique and southern Zimbabwe to c. 1700 mm y\textsuperscript{-1} in northern Zambia, Malawi and northern Mozambique. A 2D convex hull of Mean Annual Precipitation (MAP) and Mean Annual Temperature (MAT) of the study sites covers \hullcover{}\% of the pixel-wise climate space of the miombo woodland ecoregion \citep{White1987}, using WorldClim estimates of Mean Annual Temperature (MAT, BIO1) and Mean Annual Precipitation (MAP, BIO12) between 1970 and 2000 with a pixel size of 30 arc seconds (926 m at equator) \citep{Fick2017}. 
 
-% Plots chosen - DONE
 Plots were chosen from the SEOSAW database based on the quality and completeness of data collection, and plot configuration. Plot vegetation was identified under the broad term of `savanna', which includes `woodland', `savanna woodland', and `tree savanna', variously defined in other areas of the scientific literature and here referred to collectively as southern African woodlands, or savannas \citep{Ratnam2011, Hill2010}. Plots with evidence of farming, human resource extraction, experimental treatments such as prescribed burning or herbivore exclusion, or containing termite mounds were excluded from the initial pool. Only plots >0.1 hectares were used in analyses, as area-based biomass estimation from small plots is highly influenced by rare large trees \citep{Stegen2011}, leading to inaccurate biomass estimates. Only plots with a stem density >50 trees ha\textsuperscript{-1} (>10 cm stem diameter) were used, to ensure all plots represented woodland rather than `grassy savanna', which is considered here a separate biome with very different species composition \citep{Parr2014}. \nzam{} plots within the SEOSAW database were arranged in clusters of four 20x50 m plots, with 20 m between plots. Plots within each spatial cluster were combined and treated as a single plot in analyses, resulting in \nzamcluster{} aggregate plots which were then subject to the plot filtering process described above.
 
 \subsection{Data collection}
  
-% AGB
 We considered only trees and shrubs in our calculations of Above-Ground woody Biomass (AGB), including woody species such as palms and cycads, which are functionally tree-like. Woody lianas are scarce in our study plots and were not measured. Only living stems >10 cm DBH (Diameter at Breast Height, 1.3 m) were included in analyses. Many plots in the dataset did not include data on stems <10 cm DBH. For those plots which contained stem measurements <10 cm DBH, small stems only accounted for a median of \percsmallagb{}\% of the plot AGB. 
 
-% Number of stems
 All stems >10 cm DBH were measured within each plot resulting in a total of \num[group-separator={,}]{\ntrees{}} stems with measurements. A tree may be comprised of multiple stems and so tree-level richness estimates, rather than stem-level estimates, were used to prevent bias from species which readily coppice. For each tree, we recorded species, tree height to the top of the highest branch material, and the DBH of each stem >10 cm DBH. Height was measured through a variety of means including laser rangefinders, manual clinometers and measuring sticks. When stem DBH could not be reliably measured at 1.3 m due to trunk abnormalities, it was measured at the closest regular portion of the trunk to 1.3 m. The height of this measurement was used to estimate diameter at 1.3 m using a cubic polynomial regression to account for stem taper, with parameters estimated using a test dataset from Ryan C., (unpublished), see \citet{Godlee2020}. 
 
-% AGB Calculation
 AGB for each plot (t ha\textsuperscript{-1}) was calculated as the sum of the AGB of each stem >5 cm DBH ($AGB_{i}$), divided by the plot area, using \autoref{chave_agb} taken from \citet{Chave2014}:
 
 \begin{equation}
@@ -134,7 +128,6 @@ AGB for each plot (t ha\textsuperscript{-1}) was calculated as the sum of the AG
 
 where $\rho$ is the species mean wood density (g cm\textsuperscript{-3}), $D$ is the stem diameter (cm) measured or estimated at 1.3 m, and $H$ is the tree height (m). Wood density estimates were taken from the global wood density database for each species where possible \citep{Chave2009, Zanne2009}. Wood density for species without species level estimates was estimated from the means of their respective genera. For stems where tree height was unknown, the plots' climatic parameters, estimated from plot location, were used to estimate tree height, according to \citet{Chave2014}.
 
-% WorldClim, SoilGrids and MODIS
 Climatic data were taken from the WorldClim database, using the BioClim variables \citep{Fick2017}. In addition to MAT and MAP, temperature stress was calculated as the mean diurnal temperature range (BIO2) and precipitation seasonality was calculated as the mean of the coefficient of variation of monthly mean precipitation (BIO15). Soil fertility data were extracted from the ISRIC gridded soil information data product at 250 m resolution, taking the grid cell value for each plot centre \citep{Hengl2017}. We extracted Cation Exchange Capacity (CEC) (cmolc kg\textsuperscript{-1}), soil organic carbon stocks (kg m\textsuperscript{-2}) percentage soil sand content (0.05-2 mm) by weight and soil nitrogen content (g kg\textsuperscript{-1}). These data are a modelled product derived from various remotely sensed and directly measured data sources. The degree of fire disturbance was calculated using the MODIS monthly burned area product at 500 m resolution (MCD64A1, \citealt{MODIS_burn}), counting the total number of times the plot pixel was classified as burning, between 2001 and 2018. We initially aimed to include disturbance by herbivory in our model, including total herbivore biomass from the \citet{Hempson2017} modelled herbivory product, but this inclusion prevented models from converging due to its collinearity with other observed variables, notably MAP and disturbance by fire. 
 
 \subsection{Data analysis}
@@ -166,7 +159,6 @@ Second, we fitted the full model with environmental covariates, to understand th
 
 \section{Results}
 
-% Correlations
 Pairwise correlations between all observed variables used in the Structural Equation Models (SEMs) showed that all tree species diversity (extrapolated tree species richness, Shannon equitability index) and structural diversity (coefficients of variation of DBH and height) variables had moderate positive correlations with AGB (\autoref{corr_mat}, Figure S3). Stem density had the strongest correlation with AGB of all variables considered (\ccib{}). Environmental variables had weaker correlations with AGB than diversity variables, with all environmental variables having significant correlations with AGB, except fire frequency. The direction of these correlations was used as a test of our assumptions for the direction of influence of latent variables later used in the SEMs. MAP had positive correlations with all tree species diversity and structural diversity variables. Tree species diversity variables had clear positive correlations with stem density (species richness: \ccsi{}; Shannon equitability: \ccei{}), but structural diversity variables showed weak correlations with stem density (DBH CoV: \ccdvi{}, Height CoV: \cchvi{}).
 
 \subsection{Structural and species diversity models}

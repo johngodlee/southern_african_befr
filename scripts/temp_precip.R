@@ -57,7 +57,7 @@ rastlist_extrac <- lapply(rastlist, function(x) {
   # Extract all values
   vals <- values(allrasters_calc)
 
-  # Take CoV of all values
+  # Take CV of all values
   allrasters_cv <- calc(allrasters_mask, fun = function(y){
     sd(y, na.rm = TRUE) / mean(y, na.rm = TRUE) * 100
   })

@@ -94,14 +94,14 @@ corr_ci$x_var <- factor(corr_ci$x_var,
     "shannon_equit_rev_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std", "agb_ha_log_std"),
   labels = c("Soil CEC", "Soil N", "Fire freq.", "MAP",
   "Precip. seas.", "Temp. stress", "Sand %", "Extrap. sp. rich.", "Shannon equit",
-  "Tree height CoV", "DBH CoV", "Stem density", "AGB"))
+  "Tree height CV", "DBH CV", "Stem density", "AGB"))
 corr_ci$y_var <- factor(corr_ci$y_var, 
   levels = c("soil_c_log_std", "cec_std", "nitrogen_log_std", "fire_log_std",
     "precip_std", "precip_seas_std", "temp_stress_std", "sand_std", "n_species_raref_log_std",
     "shannon_equit_rev_std", "cov_height_std", "cov_dbh_std", "n_trees_gt10_ha_log_std"), 
   labels = c("Soil C", "Soil CEC", "Soil N", "Fire freq.", "MAP",
     "Precip. seas.", "Temp. stress", "Sand %", "Extrap. sp. rich.", "Shannon equit",
-    "Tree height CoV", "DBH CoV", "Stem density"))
+    "Tree height CV", "DBH CV", "Stem density"))
 corr_ci$conf <- (corr_ci$raw.lower > 0) == (corr_ci$raw.upper > 0)
 
 pdf(file = "img/corr_mat.pdf", width = 8, height = 8)
@@ -156,15 +156,15 @@ writeLines(
     corr_format("ccsb", which(corr_ci_tab$y_var=="Sand %" & corr_ci_tab$x_var=="AGB")),
     corr_format("ccms", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Extrap. sp. rich.")),
     corr_format("ccme", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Shannon equit")),
-    corr_format("ccmh", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Tree height CoV")),
+    corr_format("ccmh", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Tree height CV")),
     corr_format("ccmi", which(corr_ci_tab$y_var=="MAP" & corr_ci_tab$x_var=="Stem density")),
     corr_format("ccsi", which(corr_ci_tab$y_var=="Extrap. sp. rich." & corr_ci_tab$x_var=="Stem density")),
     corr_format("ccei", which(corr_ci_tab$y_var=="Shannon equit" & corr_ci_tab$x_var=="Stem density")),
     corr_format("cctcb",which(corr_ci_tab$y_var=="Temp. stress" & corr_ci_tab$x_var=="AGB")),
     corr_format("ccfb", which(corr_ci_tab$y_var=="Fire freq." & corr_ci_tab$x_var=="AGB")),
     corr_format("ccfs", which(corr_ci_tab$y_var=="Fire freq." & corr_ci_tab$x_var=="Extrap. sp. rich.")),
-    corr_format("ccdvi", which(corr_ci_tab$y_var=="DBH CoV" & corr_ci_tab$x_var=="Stem density")),
-    corr_format("cchvi", which(corr_ci_tab$y_var=="Tree height CoV" & corr_ci_tab$x_var=="Stem density"))
+    corr_format("ccdvi", which(corr_ci_tab$y_var=="DBH CV" & corr_ci_tab$x_var=="Stem density")),
+    corr_format("cchvi", which(corr_ci_tab$y_var=="Tree height CV" & corr_ci_tab$x_var=="Stem density"))
     ),
   fileConn)
 close(fileConn)

@@ -8,16 +8,15 @@ Godlee, J. L.; Ryan, C. M.; Bauman, D.; Bowers, S. J.; Carreiras, J. M. B.; Chis
 > The study underlines the close association between tree diversity, ecosystem structure, environment and function in highly disturbed savannas and woodlands. We suggest that tree diversity is an under-appreciated determinant of wooded ecosystem structure and function.
 
 ```
-@article{Godlee2021newphytologist,
-  title = {Structural diversity and tree density drives variation in the biodiversity-ecosystem function relationship of woodlands and savannas},
-  author = {John L. Godlee and Casey M. Ryan and David Bauman and Samuel J. Bowers and Joao M. B. Carreiras and Antonio Valter Chisingui and Joris P. G. M. Cromsigt and Dave J. Druce and Manfred Finckh and Francisco Maiato Gon\c{c}alves and Ricardo M. Holdo and Steve Makungwa and Iain M. McNicol and Edward T. A. Mitchard and Anderson Muchawona and Rasmus Revermann and Natasha Sofia Ribeiro and Abel Siampale and Stephen Syampungani and Jos\'{e} Jo\~{a}o Tchamba and Hemant G. Tripathi and Johannes Wallenfang and Mariska te Beest and Mathew Williams and Kyle G. Dexter},
-  journal = {New Phytologist},
-  year = 2021,
-  volume = {},
-  issue = {},
-  pages = {}
-  DOI = {https://dx.doi.org/10.1111/nph.17639}
-}
+@article{Godlee2021,
+        doi = {10.1111/nph.17639},
+        year = 2021,
+        volume = {232},
+        number = {2},
+        pages = {579--594},
+        author = {John L. Godlee and Casey M. Ryan and David Bauman and Samuel J. Bowers and Joao M. B. Carreiras and Antonio Valter Chisingui and Joris P. G. M. Cromsigt and Dave J. Druce and Manfred Finckh and Francisco Maiato Gon{\c{c}}alves and Ricardo M. Holdo and Steve Makungwa and Iain M. McNicol and Edward T. A. Mitchard and Anderson Muchawona and Rasmus Revermann and Natasha Sofia Ribeiro and Abel Siampale and Stephen Syampungani and Jos{\'{e}} Jo{\~{a}}o Tchamba and Hemant G. Tripathi and Johannes Wallenfang and Mariska Beest and Mathew Williams and Kyle G. Dexter},
+        title = {Structural diversity and tree density drives variation in the biodiversity{\textendash}ecosystem function relationship of woodlands and~savannas},
+        journal = {New Phytologist}
 ```
 
 * `manuscript/` contains the working copy of the manuscript following revisions by co-authors and reviewers 
